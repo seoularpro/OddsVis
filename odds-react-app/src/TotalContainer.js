@@ -18,9 +18,9 @@ function TotalContainer() {
   const scrapeEspnStats = async (week) => {
     //https://fantasy.espn.com/apis/v3/games/ffl/seasons/2023/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
     const getUrl =
-      "https://raw.githubusercontent.com/seoular/OddsVis/main/ESPNAPIFiles/latestHppr";
+      "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/latestHppr";
     // we may need to return to this but currently just use the latest one as it has past history as well
-    //  "https://raw.githubusercontent.com/seoular/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
+    //  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
 
     await fetch(getUrl)
       .then((response) => {
@@ -102,12 +102,12 @@ function TotalContainer() {
         lastTestedInt++;
       }
       let yearPrefix = selectedYear == 2024 ? selectedYear : ""
-      console.log("https://raw.githubusercontent.com/seoular/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
+      console.log("https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
         week +
         "" +
         testedInts)
       await fetch(
-        "https://raw.githubusercontent.com/seoular/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
+        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
         week +
         "" +
         testedInts
@@ -348,7 +348,7 @@ function TotalContainer() {
       testedInts++;
       isNewBovadaFileCheck = false;
       bovadaFileLoopFlag = await isFetchable(
-        "https://raw.githubusercontent.com/seoular/OddsVis/main/BovadaAPIFiles/week" +
+        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/week" +
         week +
         "" +
         testedInts
