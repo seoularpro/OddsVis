@@ -1,0 +1,93 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.new-feature-message {
+  color: limegreen;
+  text-align: left;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.ClickedPlayerTotalTable {
+  margin-top: 20px;
+}
+.SangTable {
+  margin-top: 5px;
+  /* display: inline-flex; */
+}
+.updateTimeSection {
+  width: 350px;
+  margin-left: 32px;
+  font-size: 0.82rem;
+}
+
+.select-player-message {
+  text-align: left;
+  /* margin-left: 32px; */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.patreonSection {
+  margin-top: 80px;
+  width: 350px;
+  margin-left: 40px;
+  font-size: 0.82rem;
+}
+
+.button {
+  border-radius: 10px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  width: 180px;
+  height:60px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.invis-mobile {
+  display: none;
+}
+
+.invis-mobile-header {
+  display: none;
+}
+@media screen and (min-width: 480px) {
+  .invis-mobile-header {
+    display: table-cell;
+  }
+  .invis-mobile {
+    display: block;
+  }
+}
