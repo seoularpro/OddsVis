@@ -1,6 +1,6 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
-import { PlayerPosMap, slotcodes, UNIVERSAL_VIG } from "./constants";
+import { PlayerPosMap, PlayerPosMap23, slotcodes, UNIVERSAL_VIG } from "./constants";
 import SangTable from "./SangTable";
 import { isFetchable, getLastElementMap, calculateLatestChange } from "./util";
 import MissingTable from "./MissingTable";
@@ -102,10 +102,7 @@ function TotalContainer() {
         lastTestedInt++;
       }
       let yearPrefix = selectedYear == 2024 ? selectedYear : ""
-      console.log("https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
-        week +
-        "" +
-        testedInts)
+
       await fetch(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
         week +
@@ -135,17 +132,32 @@ function TotalContainer() {
             let eachGameReceptionOutcomes = allNflGames[i].displayGroups
               .find((x) => x.id == "100-94")
               ?.markets.filter((y) => y.marketTypeId == "121332");
-            console.log(allNflGames[i].displayGroups)
+            let eachGamePassingYdOutcomes;
+            let eachGamePassingTDOutcomes;
+            let eachGameIntOutcomes;
+            if (selectedYear == 2023) {
+              eachGamePassingYdOutcomes = allNflGames[i].displayGroups
+                .find((x) => x.id == "100-1188")
+                ?.markets.filter((y) => y.marketTypeId == "121348");
+              eachGamePassingTDOutcomes = allNflGames[i].displayGroups
+                .find((x) => x.id == "100-1188")
+                ?.markets.filter((y) => y.marketTypeId == "121335");
+              eachGameIntOutcomes = allNflGames[i].displayGroups
+                .find((x) => x.id == "100-1188")
+                ?.markets.filter((y) => y.marketTypeId == "121329");
+            } else {
+              eachGamePassingYdOutcomes = allNflGames[i].displayGroups
+                .find((x) => x.id == "100-1932")
+                ?.markets.filter((y) => y.marketTypeId == "121348");
+              eachGamePassingTDOutcomes = allNflGames[i].displayGroups
+                .find((x) => x.id == "100-1932")
+                ?.markets.filter((y) => y.marketTypeId == "121335");
+              eachGameIntOutcomes = allNflGames[i].displayGroups
+                .find((x) => x.id == "100-1932")
+                ?.markets.filter((y) => y.marketTypeId == "121329");
+            }
 
-            let eachGamePassingYdOutcomes = allNflGames[i].displayGroups
-              .find((x) => x.id == "100-1932")
-              ?.markets.filter((y) => y.marketTypeId == "121348");
-            let eachGamePassingTDOutcomes = allNflGames[i].displayGroups
-              .find((x) => x.id == "100-1932")
-              ?.markets.filter((y) => y.marketTypeId == "121335");
-            let eachGameIntOutcomes = allNflGames[i].displayGroups
-              .find((x) => x.id == "100-1932")
-              ?.markets.filter((y) => y.marketTypeId == "121329");
+
             if (typeof eachGameTDOutcomes !== "undefined") {
               let amonRaFlag = false;
               for (let j = 0; j < eachGameTDOutcomes.length; j++) {
@@ -447,21 +459,33 @@ function TotalContainer() {
 
 
     const mapEntries = Array.from(finalPlayerToEV.entries());
-    console.log(mapEntries)
     // Sort the array based on the numeric value (assuming values are numbers)
     mapEntries.sort((a, b) => b[1] - a[1]);
     // Create a new Map from the sorted array
     const sortedMap = new Map(mapEntries);
-    console.log(sortedMap)
-    let finalList = Array.from(sortedMap.entries()).filter(
-      (x) =>
-        typeof PlayerPosMap.get(x[0]) !== "undefined" &&
-        (PlayerPosMap.get(x[0]) == pos ||
-          pos == 99 ||
-          (pos == 98 && PlayerPosMap.get(x[0]) !== 0)) &&
-        x[1] > 1
-    );
-    console.log(finalList)
+    let finalList;
+    if (selectedYear == 2023) {
+      finalList = Array.from(sortedMap.entries()).filter(
+        (x) =>
+          typeof PlayerPosMap23.get(x[0]) !== "undefined" &&
+          (PlayerPosMap23.get(x[0]) == pos ||
+            pos == 99 ||
+            (pos == 98 && PlayerPosMap23.get(x[0]) !== 0)) &&
+          x[1] > 1
+      );
+    } else {
+      console.log('hitting2024')
+      finalList = Array.from(sortedMap.entries()).filter(
+        (x) =>
+          typeof PlayerPosMap.get(x[0]) !== "undefined" &&
+          (PlayerPosMap.get(x[0]) == pos ||
+            pos == 99 ||
+            (pos == 98 && PlayerPosMap.get(x[0]) !== 0)) &&
+          x[1] > 1
+      );
+    }
+
+
 
     let missingList = [];
     if (pos == 0) {
@@ -589,6 +613,8 @@ function TotalContainer() {
     });
     setPlayerMissingList(missingList);
     setPlayerList(finalList);
+
+    console.log(finalList);
   };
 
   useEffect(() => {
@@ -646,14 +672,22 @@ function TotalContainer() {
           <select
             defaultValue={selectedYear}
             onChange={(e) => {
+              if(parseInt(e.target.value) == 2023){
+                if(selectedWeek < 10){
+                  setSelectedWeek(18)
+                  const selectElement = document.getElementById('weekSelect');
+                  selectElement.value = "18"
+                }
+              }
               setSelectedYear(parseInt(e.target.value));
             }}
             style={{ display: "flex", marginLeft: "20px" }}
           >
-            <option value="0">2024</option>
-            <option value="1">2023</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
           </select>
           <select
+            id="weekSelect"
             defaultValue={selectedWeek}
             onChange={(e) => {
               setSelectedWeek(parseInt(e.target.value));
@@ -669,15 +703,15 @@ function TotalContainer() {
             <option value="12">Week 12</option>
             <option value="11">Week 11</option>
             <option value="10">Week 10</option>
-            <option disabled={selectedYear === "2023"} value="9">Week 9</option>
-            <option disabled={selectedYear === "2023"} value="8">Week 8</option>
-            <option disabled={selectedYear === "2023"} value="7">Week 7</option>
-            <option disabled={selectedYear === "2023"} value="6">Week 6</option>
-            <option disabled={selectedYear === "2023"} value="5">Week 5</option>
-            <option disabled={selectedYear === "2023"} value="4">Week 4</option>
-            <option disabled={selectedYear === "2023"} value="3">Week 3</option>
-            <option disabled={selectedYear === "2023"} value="2">Week 2</option>
-            <option disabled={selectedYear === "2023"} value="1">Week 1</option>
+            <option disabled={selectedYear == 2023} value="9">Week 9</option>
+            <option disabled={selectedYear == 2023} value="8">Week 8</option>
+            <option disabled={selectedYear == 2023} value="7">Week 7</option>
+            <option disabled={selectedYear == 2023} value="6">Week 6</option>
+            <option disabled={selectedYear == 2023} value="5">Week 5</option>
+            <option disabled={selectedYear == 2023} value="4">Week 4</option>
+            <option disabled={selectedYear == 2023} value="3">Week 3</option>
+            <option disabled={selectedYear == 2023} value="2">Week 2</option>
+            <option disabled={selectedYear == 2023} value="1">Week 1</option>
           </select>
           <select
             defaultValue={selectedTheme}
