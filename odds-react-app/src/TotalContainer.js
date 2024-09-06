@@ -16,7 +16,7 @@ function TotalContainer() {
   const [playerMissingList, setPlayerMissingList] = useState([]);
 
   const scrapeEspnStats = async (week) => {
-    //https://fantasy.espn.com/apis/v3/games/ffl/seasons/2023/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
+    //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
     const getUrl =
       "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/latestHppr";
     // we may need to return to this but currently just use the latest one as it has past history as well
