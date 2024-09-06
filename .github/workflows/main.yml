@@ -13,19 +13,21 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.PAT_TOKEN }}
 
     - name: Fetch JSON from URL
       id: fetch_json
       run: |
-        curl -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o BovadaAPIFiles/data.json
+        curl -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o TestBovadaFiles/data.json
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
       with:
         author_name: sangactions
         author_email: sangkyun.hanpro@gmail.com
-        message: "Update JSON data file in BovadaAPIFiles"
-        add: 'BovadaAPIFiles/data.json'
+        message: "Update JSON data file in TestBovadaFiles"
+        add: 'TestBovadaFiles/data.json'
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         
