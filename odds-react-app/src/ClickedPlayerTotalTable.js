@@ -1,6 +1,6 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
-import {} from "./util.js";
+import { } from "./util.js";
 
 export default function ClickedPlayerTotalTable(props) {
   const [visList, setVisList] = useState([]);
@@ -33,20 +33,29 @@ export default function ClickedPlayerTotalTable(props) {
               style={
                 props.selectedTheme == 0
                   ? {
-                      backgroundColor: player.calculatedColor,
-                      color:
-                        player.percentile > 77 && player.percentile < 82
-                          ? "lightgrey"
-                          : "white",
-                      border: "1px solid " + player.calculatedColor,
-                      borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      textAlign: "left",
-                    }
-                  : {
+                    backgroundColor: player.calculatedColor,
+                    color:
+                      player.percentile > 77 && player.percentile < 82
+                        ? "lightgrey"
+                        : "white",
+                    border: "1px solid " + player.calculatedColor,
+                    borderRadius: "10px",
+                    whiteSpace: "nowrap",
+                    textAlign: "left",
+                  }
+                  :
+                  props.selectedTheme == 1 ? {
+                    backgroundColor: "white",
+                    color: "black",
+                    border: "1px solid  silver", // + x.calculatedColor,
+                    //   borderRadius: "10px",
+                    whiteSpace: "nowrap",
+                    textAlign: "left",
+                  }
+                    : {
                       backgroundColor: "white",
                       color: "black",
-                      border: "1px solid  silver", // + x.calculatedColor,
+                      border: "1px solid  " + x.calculatedColor,
                       //   borderRadius: "10px",
                       whiteSpace: "nowrap",
                       textAlign: "left",
@@ -65,19 +74,27 @@ export default function ClickedPlayerTotalTable(props) {
               style={
                 props.selectedTheme == 0
                   ? {
-                      backgroundColor: player.calculatedColor,
-                      color:
-                        player.percentile > 77 && player.percentile < 82
-                          ? "lightgrey"
-                          : "white",
-                      border: "1px solid " + player.calculatedColor,
-                      borderRadius: "10px",
-                      width: "46px",
-                    }
-                  : {
+                    backgroundColor: player.calculatedColor,
+                    color:
+                      player.percentile > 77 && player.percentile < 82
+                        ? "lightgrey"
+                        : "white",
+                    border: "1px solid " + player.calculatedColor,
+                    borderRadius: "10px",
+                    width: "46px",
+                  }
+                  :
+                  props.selectedTheme == 1 ? {
+                    backgroundColor: "white",
+                    color: "black",
+                    border: "1px solid silver", // + x.calculatedColor,
+                    width: "46px",
+                    //   borderRadius: "10px",
+                  }
+                    : {
                       backgroundColor: "white",
                       color: "black",
-                      border: "1px solid silver", // + x.calculatedColor,
+                      border: "1px solid " + x.calculatedColor,
                       width: "46px",
                       //   borderRadius: "10px",
                     }

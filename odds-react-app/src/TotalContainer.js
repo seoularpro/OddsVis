@@ -474,7 +474,6 @@ function TotalContainer() {
           x[1] > 1
       );
     } else {
-      console.log('hitting2024')
       finalList = Array.from(sortedMap.entries()).filter(
         (x) =>
           typeof PlayerPosMap.get(x[0]) !== "undefined" &&
@@ -672,11 +671,19 @@ function TotalContainer() {
           <select
             defaultValue={selectedYear}
             onChange={(e) => {
-              if(parseInt(e.target.value) == 2023){
-                if(selectedWeek < 10){
+              if (parseInt(e.target.value) == 2023) {
+                if (selectedWeek < 10) {
+                  console.log('selectedweek < 10')
                   setSelectedWeek(18)
                   const selectElement = document.getElementById('weekSelect');
                   selectElement.value = "18"
+                }
+              } else {
+                // we will need to update this for now
+                if (selectedWeek > 1) {
+                  setSelectedWeek(1)
+                  const selectElement = document.getElementById('weekSelect');
+                  selectElement.value = "1"
                 }
               }
               setSelectedYear(parseInt(e.target.value));
@@ -694,23 +701,23 @@ function TotalContainer() {
             }}
             style={{ display: "flex", marginLeft: "20px" }}
           >
-            <option value="18">Week 18</option>
-            <option value="17">Week 17</option>
-            <option value="16">Week 16</option>
-            <option value="15">Week 15</option>
-            <option value="14">Week 14</option>
-            <option value="13">Week 13</option>
-            <option value="12">Week 12</option>
-            <option value="11">Week 11</option>
-            <option value="10">Week 10</option>
-            <option disabled={selectedYear == 2023} value="9">Week 9</option>
-            <option disabled={selectedYear == 2023} value="8">Week 8</option>
-            <option disabled={selectedYear == 2023} value="7">Week 7</option>
-            <option disabled={selectedYear == 2023} value="6">Week 6</option>
-            <option disabled={selectedYear == 2023} value="5">Week 5</option>
-            <option disabled={selectedYear == 2023} value="4">Week 4</option>
-            <option disabled={selectedYear == 2023} value="3">Week 3</option>
-            <option disabled={selectedYear == 2023} value="2">Week 2</option>
+            <option disabled={selectedYear == 2024} value="18">Week 18</option>
+            <option disabled={selectedYear == 2024} value="17">Week 17</option>
+            <option disabled={selectedYear == 2024} value="16">Week 16</option>
+            <option disabled={selectedYear == 2024} value="15">Week 15</option>
+            <option disabled={selectedYear == 2024} value="14">Week 14</option>
+            <option disabled={selectedYear == 2024} value="13">Week 13</option>
+            <option disabled={selectedYear == 2024} value="12">Week 12</option>
+            <option disabled={selectedYear == 2024} value="11">Week 11</option>
+            <option disabled={selectedYear == 2024} value="10">Week 10</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="9">Week 9</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="8">Week 8</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="7">Week 7</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="6">Week 6</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="5">Week 5</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="4">Week 4</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="3">Week 3</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="2">Week 2</option>
             <option disabled={selectedYear == 2023} value="1">Week 1</option>
           </select>
           <select
@@ -721,7 +728,9 @@ function TotalContainer() {
             style={{ display: "flex", marginLeft: "20px" }}
           >
             <option value="0">Color</option>
-            <option value="1">Silver</option>
+            <option value="2">Color Outline</option>
+            <option value="1">Silver Outline</option>
+            
           </select>
         </div>
         <SangTable

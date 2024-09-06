@@ -89,11 +89,11 @@ export default function SangTable(props) {
             style={
               window.mobileCheck()
                 ? {
-                    width: "300px",
-                  }
+                  width: "300px",
+                }
                 : {
-                    width: "450px",
-                  }
+                  width: "450px",
+                }
             }
           >
             Player {props.position}
@@ -140,17 +140,26 @@ export default function SangTable(props) {
               style={
                 props.selectedTheme == 0
                   ? {
-                      backgroundColor: x.calculatedColor,
-                      color:
-                        x.percentile > 77 && x.percentile < 82
-                          ? "lightgrey"
-                          : "white",
-                      border: "1px solid " + x.calculatedColor,
-                      borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      fontSize: ".5rem",
-                    }
-                  : {
+                    backgroundColor: x.calculatedColor,
+                    color:
+                      x.percentile > 77 && x.percentile < 82
+                        ? "lightgrey"
+                        : "white",
+                    border: "1px solid " + x.calculatedColor,
+                    borderRadius: "10px",
+                    whiteSpace: "nowrap",
+                    fontSize: ".5rem",
+                  }
+                  :
+                  props.selectedTheme == 1 ? {
+                    backgroundColor: "white",
+                    color: "black",
+                    border: "1px solid silver", // + x.calculatedColor,
+                    whiteSpace: "nowrap",
+                    fontSize: ".5rem",
+                    //   borderRadius: "10px",
+                  }
+                    : {
                       backgroundColor: "white",
                       color: "black",
                       border: "1px solid " + x.calculatedColor,
@@ -166,17 +175,27 @@ export default function SangTable(props) {
               style={
                 props.selectedTheme == 0
                   ? {
-                      backgroundColor: x.calculatedColor,
-                      color:
-                        x.percentile > 77 && x.percentile < 82
-                          ? "lightgrey"
-                          : "white",
-                      border: "1px solid " + x.calculatedColor,
-                      borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      textAlign: "left",
-                    }
-                  : {
+                    backgroundColor: x.calculatedColor,
+                    color:
+                      x.percentile > 77 && x.percentile < 82
+                        ? "lightgrey"
+                        : "white",
+                    border: "1px solid " + x.calculatedColor,
+                    borderRadius: "10px",
+                    whiteSpace: "nowrap",
+                    textAlign: "left",
+                  }
+                  :
+                  props.selectedTheme == 1 ? {
+                    backgroundColor: "white",
+                    color: "black",
+                    border: "1px solid  silver", // + x.calculatedColor,
+                    //   borderRadius: "10px",
+                    whiteSpace: "nowrap",
+                    textAlign: "left",
+                  }
+                    :
+                    {
                       backgroundColor: "white",
                       color: "black",
                       border: "1px solid " + x.calculatedColor,
@@ -203,16 +222,23 @@ export default function SangTable(props) {
               style={
                 props.selectedTheme == 0
                   ? {
-                      backgroundColor: x.calculatedColor,
-                      color:
-                        x.percentile > 77 && x.percentile < 82
-                          ? "lightgrey"
-                          : "white",
-                      border: "1px solid " + x.calculatedColor,
-                      borderRadius: "10px",
-                      width: "100px",
-                    }
-                  : {
+                    backgroundColor: x.calculatedColor,
+                    color:
+                      x.percentile > 77 && x.percentile < 82
+                        ? "lightgrey"
+                        : "white",
+                    border: "1px solid " + x.calculatedColor,
+                    borderRadius: "10px",
+                    width: "100px",
+                  }
+                  : props.selectedTheme == 1 ? {
+                    backgroundColor: "white",
+                    color: "black",
+                    border: "1px solid silver", // + x.calculatedColor,
+                    width: "100px",
+                    //   borderRadius: "10px",
+                  }
+                    : {
                       backgroundColor: "white",
                       color: "black",
                       border: "1px solid " + x.calculatedColor,
@@ -231,8 +257,8 @@ export default function SangTable(props) {
                   x.playerChange > 0
                     ? "limegreen"
                     : x.playerChange == 0
-                    ? "black"
-                    : "red",
+                      ? "black"
+                      : "red",
                 border: "none",
                 borderRadius: "10px",
                 width: "60px",
@@ -265,21 +291,28 @@ export default function SangTable(props) {
                   style={
                     props.selectedTheme == 0
                       ? {
-                          backgroundColor: x.calculatedColor,
-                          color:
-                            x.percentile > 77 && x.percentile < 82
-                              ? "lightgrey"
-                              : "white",
-                          border: "1px solid " + x.calculatedColor,
-                          borderRadius: "10px",
-                          width: "100px",
-                        }
-                      : {
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 77 && x.percentile < 82
+                            ? "lightgrey"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        backgroundColor: "white",
+                        color: "black",
+                        border: "1px solid silver", //+ x.calculatedColor,
+                        width: "100px",
+                      }
+                        : {
                           backgroundColor: "white",
                           color: "black",
-                          border: "1px solid "+ x.calculatedColor,
+                          border: "1px solid " + x.calculatedColor,
                           width: "100px",
                         }
+
                   }
                 >
                   {<div>{x.espnValues?.act}</div>}
@@ -288,21 +321,27 @@ export default function SangTable(props) {
                   style={
                     props.selectedTheme == 0
                       ? {
-                          backgroundColor: x.calculatedColor,
-                          color:
-                            x.percentile > 77 && x.percentile < 82
-                              ? "lightgrey"
-                              : "white",
-                          border: "1px solid " + x.calculatedColor,
-                          borderRadius: "10px",
-                          width: "100px",
-                        }
-                      : {
-                          backgroundColor: "white",
-                          color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 77 && x.percentile < 82
+                            ? "lightgrey"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        backgroundColor: "white",
+                        color: "black",
+                        border: "1px solid silver", // + x.calculatedColor,
+                        width: "100px",
+                      } : 
+                      {
+                        backgroundColor: "white",
+                        color: "black",
+                        border: "1px solid "  + x.calculatedColor,
+                        width: "100px",
+                      }
                   }
                 >
                   {<div>{x.espnValues?.proj}</div>}
