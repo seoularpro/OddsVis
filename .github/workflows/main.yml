@@ -1,6 +1,8 @@
 name: Fetch bovada files
 
 on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour at the start of the hour
   push:
     branches:
       - main
@@ -15,11 +17,56 @@ jobs:
       uses: actions/checkout@v3
       with:
         token: ${{ secrets.PAT_TOKEN }}
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+    - name: Calculate Week Number
+      id: week
+      run: |
+        # Create a script to calculate the week number
+        echo '
+        function getWeekNumber() {
+            const startDate = new Date("2024-09-04");
+            const currentDate = new Date();
+            const diffTime = currentDate - startDate;
+            const diffWeeks = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
+            const weekNumber = Math.min(Math.max(diffWeeks + 1, 1), 18);
+            return weekNumber;
+        }
+        console.log(getWeekNumber());
+        ' > calculateWeek.js
+        
+        # Run the script and output the week number
+        weekNumber=$(node calculateWeek.js)
+        echo "weekNumber=$weekNumber" >> $GITHUB_ENV
+
+    - name: Generate Filename
+      id: filename
+      run: |
+        # Generate a unique filename based on week number and an incrementing integer
+        weekNumber=${{ env.weekNumber }}
+        indexFile="TestBovadaFiles/lastIndex.txt"
+
+        # Retrieve or initialize the index
+        if [ -f $indexFile ]; then
+          lastIndex=$(cat $indexFile)
+          nextIndex=$((lastIndex + 1))
+        else
+          nextIndex=0
+        fi
+
+        # Save the updated index
+        echo $nextIndex > $indexFile
+
+        # Construct the filename
+        filename="TestBovadaFiles/2024week${weekNumber}${nextIndex}.json"
+        echo "filename=$filename" >> $GITHUB_ENV
 
     - name: Fetch JSON from URL
       id: fetch_json
       run: |
-        curl -b "variant=v:0|lgn:0|dt:d|os:ns|cntry:CA|cur:USD|jn:0|rt:o|pb:0; AB=variant; TS01890ddd=014b5d5d07a66650c0240017f9b62f2d4cd17caba0f1d8bac75bfa5c2faa74ca4bfae5c086480ceaefb9eee2ccdf09f20a493b3774b0bbb90746e36c191b65439ba8cc46dca888a2584d37d3f169cde0db3fbddef6" -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o TestBovadaFiles/data.json
+        curl -b "variant=v:0|lgn:0|dt:d|os:ns|cntry:CA|cur:USD|jn:0|rt:o|pb:0; AB=variant; TS01890ddd=014b5d5d07a66650c0240017f9b62f2d4cd17caba0f1d8bac75bfa5c2faa74ca4bfae5c086480ceaefb9eee2ccdf09f20a493b3774b0bbb90746e36c191b65439ba8cc46dca888a2584d37d3f169cde0db3fbddef6" -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o ${{ env.filename }}
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
