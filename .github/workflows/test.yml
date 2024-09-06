@@ -1,6 +1,8 @@
 name: test Fetch bovada files
 
 on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour at the start of the hour
   push:
     branches:
       - main
