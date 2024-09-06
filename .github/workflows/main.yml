@@ -40,6 +40,30 @@ jobs:
         # Run the script and output the week number
         weekNumber=$(node calculateWeek.js)
         echo "weekNumber=$weekNumber" >> $GITHUB_ENV
+    - name: generate cookie string
+      id: week
+      run: |
+        # Create a script to calculate the week number
+        echo '
+        function generateRandomString(length = 160) {
+            const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            const charactersLength = characters.length;
+            
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charactersLength);
+                result += characters[randomIndex];
+            }
+            
+            return result;
+        }
+
+        console.log(generateRandomString());
+        ' > getCookieString.js
+        
+        # Run the script and output the week number
+        cookieString=$(node getCookieString.js)
+        echo "cookieString=$cookieString" >> $GITHUB_ENV
 
     - name: Generate Filename
       id: filename
@@ -60,13 +84,13 @@ jobs:
         echo $nextIndex > $indexFile
 
         # Construct the filename
-        filename="TestBovadaFiles/2024week${weekNumber}${nextIndex}.json"
+        filename="TestBovadaFiles/2024week${weekNumber}${nextIndex}"
         echo "filename=$filename" >> $GITHUB_ENV
 
     - name: Fetch JSON from URL
       id: fetch_json
       run: |
-        curl -b "variant=v:0|lgn:0|dt:d|os:ns|cntry:CA|cur:USD|jn:0|rt:o|pb:0; AB=variant; TS01890ddd=014b5d5d07a66650c0240017f9b62f2d4cd17caba0f1d8bac75bfa5c2faa74ca4bfae5c086480ceaefb9eee2ccdf09f20a493b3774b0bbb90746e36c191b65439ba8cc46dca888a2584d37d3f169cde0db3fbddef6" -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o ${{ env.filename }}
+        curl -b "variant=v:0|lgn:0|dt:d|os:ns|cntry:CA|cur:USD|jn:0|rt:o|pb:0; AB=variant; TS01890ddd=014b5d5d07${{ env.cookieString }}" -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o ${{ env.filename }}
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
