@@ -1,0 +1,28 @@
+name: Fetch and Save JSON
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  fetch-json:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Fetch JSON from URL
+      id: fetch_json
+      run: |
+        curl -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o BovadaAPIFiles/data.json
+
+    - name: Commit and push changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        author_name: sangactions
+        author_email: sangkyun.hanpro@gmail.com
+        message: "Update JSON data file in BovadaAPIFiles"
+        add: 'BovadaAPIFiles/data.json'
