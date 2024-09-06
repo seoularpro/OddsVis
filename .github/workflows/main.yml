@@ -26,3 +26,6 @@ jobs:
         author_email: sangkyun.hanpro@gmail.com
         message: "Update JSON data file in BovadaAPIFiles"
         add: 'BovadaAPIFiles/data.json'
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        
