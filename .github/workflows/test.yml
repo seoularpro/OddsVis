@@ -1,4 +1,4 @@
-name: test Fetch bovada files
+name: Fetch bovada files
 
 on:
   schedule:
@@ -64,10 +64,33 @@ jobs:
         # Run the script and output the week number
         cookieString=$(node getCookieString.js)
         echo "cookieString=$cookieString" >> $GITHUB_ENV
+
+    - name: Generate Filename
+      id: filename
+      run: |
+        # Generate a unique filename based on week number and an incrementing integer
+        weekNumber=${{ env.weekNumber }}
+        indexFile="TestBovadaFiles/lastIndex${{ env.weekNumber }}.txt"
+
+        # Retrieve or initialize the index
+        if [ -f $indexFile ]; then
+          lastIndex=$(cat $indexFile)
+          nextIndex=$((lastIndex + 1))
+        else
+          nextIndex=0
+        fi
+
+        # Save the updated index
+        echo $nextIndex > $indexFile
+
+        # Construct the filename
+        filename="TestBovadaFiles/2024week${weekNumber}${nextIndex}"
+        echo "filename=$filename" >> $GITHUB_ENV
+
     - name: Fetch JSON from URL
       id: fetch_json
       run: |
-        curl -b "variant=v:0|lgn:0|dt:d|os:ns|cntry:CA|cur:USD|jn:0|rt:o|pb:0; AB=variant; TS01890ddd=014b5d5d07s1zghzn26tcrzf2bhpgrmsqdvctq6kr0hv5yi1knjjsogisy1ipq4jpbkibskvlfv6iywx5sf6wxj4awstgck33h3qwom0xwcdyh5eza1rz3knmxzllqp45yf41d50xujqxg0gbxjdypuhxa570fskpltwyuszb9" -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o TestBovadaFiles/data2.json
+        curl -b "variant=v:0|lgn:0|dt:d|os:ns|cntry:CA|cur:USD|jn:0|rt:o|pb:0; AB=variant; TS01890ddd=014b5d5d07${{ env.cookieString }}" -s https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl -o ${{ env.filename }}
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
@@ -75,7 +98,6 @@ jobs:
         author_name: sangactions
         author_email: sangkyun.hanpro@gmail.com
         message: "Update JSON data file in TestBovadaFiles"
-        add: 'TestBovadaFiles/data.json'
+        add: ${{ env.filename }}
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        
