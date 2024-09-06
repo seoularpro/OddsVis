@@ -41,7 +41,7 @@ jobs:
         weekNumber=$(node calculateWeek.js)
         echo "weekNumber=$weekNumber" >> $GITHUB_ENV
     - name: generate cookie string
-      id: week
+      id: cookieString
       run: |
         # Create a script to calculate the week number
         echo '
