@@ -1,0 +1,19 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore logs
+logs
+*.log
+npm-debug.log*
+
+# Ignore environment variable files
+.env
+
+# Ignore build and temp files
+dist/
+build/
+tmp/
+temp/
+
+# Ignore coverage reports
+coverage/

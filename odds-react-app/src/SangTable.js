@@ -153,7 +153,7 @@ export default function SangTable(props) {
                   : {
                       backgroundColor: "white",
                       color: "black",
-                      border: "1px solid silver", // + x.calculatedColor,
+                      border: "1px solid " + x.calculatedColor,
                       whiteSpace: "nowrap",
                       fontSize: ".5rem",
                       //   borderRadius: "10px",
@@ -179,7 +179,7 @@ export default function SangTable(props) {
                   : {
                       backgroundColor: "white",
                       color: "black",
-                      border: "1px solid  silver", // + x.calculatedColor,
+                      border: "1px solid " + x.calculatedColor,
                       //   borderRadius: "10px",
                       whiteSpace: "nowrap",
                       textAlign: "left",
@@ -215,7 +215,7 @@ export default function SangTable(props) {
                   : {
                       backgroundColor: "white",
                       color: "black",
-                      border: "1px solid silver", // + x.calculatedColor,
+                      border: "1px solid " + x.calculatedColor,
                       width: "100px",
                       //   borderRadius: "10px",
                     }
@@ -277,7 +277,7 @@ export default function SangTable(props) {
                       : {
                           backgroundColor: "white",
                           color: "black",
-                          border: "1px solid silver", //+ x.calculatedColor,
+                          border: "1px solid "+ x.calculatedColor,
                           width: "100px",
                         }
                   }
@@ -300,7 +300,7 @@ export default function SangTable(props) {
                       : {
                           backgroundColor: "white",
                           color: "black",
-                          border: "1px solid silver", // + x.calculatedColor,
+                          border: "1px solid " + x.calculatedColor,
                           width: "100px",
                         }
                   }
