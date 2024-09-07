@@ -103,7 +103,7 @@ export default function SangTable(props) {
               width: "46px",
             }}
           >
-            EV
+            Median
           </th>
           <th
             class="invis-mobile-header"
