@@ -626,7 +626,7 @@ function TotalContainer() {
   }, [selectedPosition, selectedMode, selectedWeek]);
 
   const redirectToPatreon = () => {
-    window.location.href = "https://www.patreon.com/evProjecter";
+    window.location.href = "https://www.patreon.com/VegasProjections";
   };
 
   return (
