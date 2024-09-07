@@ -754,7 +754,7 @@ function TotalContainer() {
           onClick={(e) => {
             redirectToPatreon();
           }}>
-          <span>vppPro+</span>
+          <span>vpPro+</span>
         </button>
       </div>
 
