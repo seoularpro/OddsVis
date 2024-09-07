@@ -24,7 +24,7 @@ export default function ClickedPlayerTotalTable(props) {
               width: "46px",
             }}
           >
-            EV
+            Median
           </th>
         </tr>
         {visList.map((player) => (
