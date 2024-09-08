@@ -82,7 +82,7 @@ export const PlayerPosMap = new Map([
   ["Derrick Henry (BAL)", Positions.RB],
   ["Deshaun Watson (CLE)", Positions.QB],
   ["James Cook (BUF)", Positions.RB],
-  ["Kenneth Walker III (SEA)", Positions.RB],
+  ["Kenneth Walker (SEA)", Positions.RB],
   ["Terry McLaurin (WAS)", Positions.WR],
   ["Tyler Lockett (SEA)", Positions.WR],
   ["Brandon Aiyuk (SF)", Positions.WR],
@@ -244,7 +244,6 @@ export const PlayerPosMap = new Map([
   ["Colby Parkinson (LAR)", Positions.TE],
   ["DeeJay Dallas (ARI)", Positions.RB],
 
-  
   ["Jamison Crowder (WAS)", Positions.WR],
   ["Deonte Harty (BAL)", Positions.WR],
   ["Quintin Morris (BUF)", Positions.TE],
@@ -408,11 +407,11 @@ export const PlayerPosMap = new Map([
   ["Gardner Minshew (LV)", Positions.QB],
   ["Derek Carr (NO)", Positions.QB],
 
-  ["Marvin Harrison Jr. (ARI)", Positions.WR],
+  ["Marvin Harrison (ARI)", Positions.WR],
   ["Malik Nabers (NYG)", Positions.WR],
   ["Jonathon Brooks (CAR)", Positions.RB],
   ["Brock Bowers (LV)", Positions.TE],
-  ["Brian Thomas Jr. (JAC)", Positions.WR],
+  ["Brian Thomas (JAC)", Positions.WR],
   ["Xavier Worthy (KC)", Positions.WR],
   ["Xavier Legette (CAR)", Positions.WR],
   ["Caleb Williams (CHI)", Positions.QB],
@@ -443,12 +442,10 @@ export const PlayerPosMap = new Map([
   ["Bo Nix (DEN)", Positions.QB],
   ["Blake Corum (LAR)", Positions.RB],
   ["Rome Odunze (CHI)", Positions.WR],
-  ["Anthony Richardson (IND)", Positions.QB]
-
+  ["Anthony Richardson (IND)", Positions.QB],
 
   // need to add chiefs and dolphins players / week 10 byes
 ]);
-
 
 export const PlayerPosMap23 = new Map([
   ["Dawson Knox", Positions.TE],
@@ -502,10 +499,10 @@ export const PlayerPosMap23 = new Map([
   ["Derrick Henry", Positions.RB],
   ["Deshaun Watson", Positions.QB],
   ["James Cook", Positions.RB],
-  ["Kenneth Walker III", Positions.RB],
+  ["Kenneth Walker", Positions.RB],
   ["Terry McLaurin", Positions.WR],
   ["Tyler Lockett", Positions.WR],
-  ["Brandon Aiyuk ", Positions.WR],
+  ["Brandon Aiyuk", Positions.WR],
   ["Diontae Johnson", Positions.WR],
   ["DeAndre Hopkins", Positions.WR],
   ["Mike Evans", Positions.WR],
@@ -825,7 +822,7 @@ export const PlayerPosMap23 = new Map([
   ["Kyren Williams", Positions.RB],
   ["Gardner Minshew", Positions.QB],
   ["Derek Carr", Positions.QB],
-  ["Anthony Richardson (IND)", Positions.QB]
+  ["Anthony Richardson (IND)", Positions.QB],
 
   // need to add chiefs and dolphins players / week 10 byes
 ]);
