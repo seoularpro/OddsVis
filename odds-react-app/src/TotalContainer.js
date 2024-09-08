@@ -95,13 +95,13 @@ function TotalContainer() {
     let playerToPassTDDataPoints = new Map();
     let playerToPassYdsDataPoints = new Map();
     let playerToIntsDataPoints = new Map();
-
+    let yearPrefix = selectedYear == 2024 ? selectedYear : ""
     while (bovadaFileLoopFlag) {
       if (testedInts > lastTestedInt) {
         isNewBovadaFileCheck = true;
         lastTestedInt++;
       }
-      let yearPrefix = selectedYear == 2024 ? selectedYear : ""
+      
 
       await fetch(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
@@ -360,7 +360,7 @@ function TotalContainer() {
       testedInts++;
       isNewBovadaFileCheck = false;
       bovadaFileLoopFlag = await isFetchable(
-        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/week" +
+        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
         week +
         "" +
         testedInts
