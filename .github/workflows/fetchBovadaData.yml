@@ -1,9 +1,8 @@
 name: Fetch bovada files
 
 on: 
-  workflow_dispatch:
   schedule:
-    - cron: '0 17 * * 1,2,3,4,5,6' # Noon on Monday to Saturday
+    - cron: '0 18 * * 1,2,3,4,5,6' # Noon on Monday to Saturday
     - cron: '0 8,15 * * 0'         # 8 AM and 3 PM on Sunday
     - cron: '0 15 * * 1,4'         # 3 PM on Monday and Thursday
     
