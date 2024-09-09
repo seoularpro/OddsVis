@@ -94,6 +94,6 @@ jobs:
         author_name: sangactions
         author_email: sangkyun.hanpro@gmail.com
         message: "Update JSON data file in TestBovadaFiles"
-        add: ${{ env.filename }}
+        add: '.'
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
