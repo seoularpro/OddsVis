@@ -354,7 +354,7 @@ export default function SangTable(props) {
         ))}
       </table>
       <div class="updateTimeSection">
-        Median values last updated Sunday, 9/8 at 11:41am ET
+        Median values last updated Monday, 9/9 at 11:09am ET
       </div>
       <div className="new-feature-message">
         Player Selector Table
