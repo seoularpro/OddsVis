@@ -1,6 +1,11 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
-import { PlayerPosMap, PlayerPosMap23, slotcodes, UNIVERSAL_VIG } from "./constants";
+import {
+  PlayerPosMap,
+  PlayerPosMap23,
+  slotcodes,
+  UNIVERSAL_VIG,
+} from "./constants";
 import SangTable from "./SangTable";
 import { isFetchable, getLastElementMap, calculateLatestChange } from "./util";
 import MissingTable from "./MissingTable";
@@ -95,19 +100,20 @@ function TotalContainer() {
     let playerToPassTDDataPoints = new Map();
     let playerToPassYdsDataPoints = new Map();
     let playerToIntsDataPoints = new Map();
-    let yearPrefix = selectedYear == 2024 ? selectedYear : ""
+    let yearPrefix = selectedYear == 2024 ? selectedYear : "";
     while (bovadaFileLoopFlag) {
       if (testedInts > lastTestedInt) {
         isNewBovadaFileCheck = true;
         lastTestedInt++;
       }
-      
 
       await fetch(
-        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
-        week +
-        "" +
-        testedInts
+        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" +
+          yearPrefix +
+          "week" +
+          week +
+          "" +
+          testedInts
       )
         .then((response) => {
           return response.json();
@@ -156,7 +162,6 @@ function TotalContainer() {
                 .find((x) => x.id == "100-1932")
                 ?.markets.filter((y) => y.marketTypeId == "121329");
             }
-
 
             if (typeof eachGameTDOutcomes !== "undefined") {
               let amonRaFlag = false;
@@ -355,19 +360,19 @@ function TotalContainer() {
             }
           }
         })
-        .catch((e) => { });
+        .catch((e) => {});
 
       testedInts++;
       isNewBovadaFileCheck = false;
       bovadaFileLoopFlag = await isFetchable(
-        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" + yearPrefix + "week" +
-        week +
-        "" +
-        testedInts
+        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" +
+          yearPrefix +
+          "week" +
+          week +
+          "" +
+          testedInts
       );
     }
-
-
 
     let playerToAnyTD = getLastElementMap(playerToAnyTDDataPoints);
     let playerToRushYds = getLastElementMap(playerToRushYdsDataPoints);
@@ -376,7 +381,6 @@ function TotalContainer() {
     let playerToPassTD = getLastElementMap(playerToPassTDDataPoints);
     let playerToPassYds = getLastElementMap(playerToPassYdsDataPoints);
     let playerToInts = getLastElementMap(playerToIntsDataPoints);
-
 
     let latestCPlayerToAnyTD = calculateLatestChange(playerToAnyTDDataPoints);
     let latestCPlayerToRushYds = calculateLatestChange(
@@ -457,7 +461,6 @@ function TotalContainer() {
       latestCPlayerToInts
     );
 
-
     const mapEntries = Array.from(finalPlayerToEV.entries());
     // Sort the array based on the numeric value (assuming values are numbers)
     mapEntries.sort((a, b) => b[1] - a[1]);
@@ -483,8 +486,6 @@ function TotalContainer() {
           x[1] > 1
       );
     }
-
-
 
     let missingList = [];
     if (pos == 0) {
@@ -596,7 +597,6 @@ function TotalContainer() {
       });
     }
 
-
     finalList = finalList.filter((elem) => {
       return elem[1] > 5;
     });
@@ -635,7 +635,7 @@ function TotalContainer() {
         <div
           style={{
             display: "flex",
-            marginLeft: "20px",
+            marginLeft: "5px",
             marginBottom: "5px",
             marginTop: "15px",
           }}
@@ -648,7 +648,7 @@ function TotalContainer() {
             onChange={(e) => {
               setSelectedPosition(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "20px" }}
+            style={{ display: "flex", marginLeft: "10px" }}
           >
             <option value="0">QB</option>
             <option value="1">RB</option>
@@ -673,17 +673,17 @@ function TotalContainer() {
             onChange={(e) => {
               if (parseInt(e.target.value) == 2023) {
                 if (selectedWeek < 10) {
-                  console.log('selectedweek < 10')
-                  setSelectedWeek(18)
-                  const selectElement = document.getElementById('weekSelect');
-                  selectElement.value = "18"
+                  console.log("selectedweek < 10");
+                  setSelectedWeek(18);
+                  const selectElement = document.getElementById("weekSelect");
+                  selectElement.value = "18";
                 }
               } else {
                 // we will need to update this for now
                 if (selectedWeek > 1) {
-                  setSelectedWeek(1)
-                  const selectElement = document.getElementById('weekSelect');
-                  selectElement.value = "1"
+                  setSelectedWeek(1);
+                  const selectElement = document.getElementById("weekSelect");
+                  selectElement.value = "1";
                 }
               }
               setSelectedYear(parseInt(e.target.value));
@@ -701,50 +701,112 @@ function TotalContainer() {
             }}
             style={{ display: "flex", marginLeft: "20px" }}
           >
-            <option disabled={selectedYear == 2024} value="18">Week 18</option>
-            <option disabled={selectedYear == 2024} value="17">Week 17</option>
-            <option disabled={selectedYear == 2024} value="16">Week 16</option>
-            <option disabled={selectedYear == 2024} value="15">Week 15</option>
-            <option disabled={selectedYear == 2024} value="14">Week 14</option>
-            <option disabled={selectedYear == 2024} value="13">Week 13</option>
-            <option disabled={selectedYear == 2024} value="12">Week 12</option>
-            <option disabled={selectedYear == 2024} value="11">Week 11</option>
-            <option disabled={selectedYear == 2024} value="10">Week 10</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="9">Week 9</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="8">Week 8</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="7">Week 7</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="6">Week 6</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="5">Week 5</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="4">Week 4</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="3">Week 3</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2024} value="2">Week 2</option>
-            <option disabled={selectedYear == 2023} value="1">Week 1</option>
+            <option disabled={selectedYear == 2024} value="18">
+              Week 18
+            </option>
+            <option disabled={selectedYear == 2024} value="17">
+              Week 17
+            </option>
+            <option disabled={selectedYear == 2024} value="16">
+              Week 16
+            </option>
+            <option disabled={selectedYear == 2024} value="15">
+              Week 15
+            </option>
+            <option disabled={selectedYear == 2024} value="14">
+              Week 14
+            </option>
+            <option disabled={selectedYear == 2024} value="13">
+              Week 13
+            </option>
+            <option disabled={selectedYear == 2024} value="12">
+              Week 12
+            </option>
+            <option disabled={selectedYear == 2024} value="11">
+              Week 11
+            </option>
+            <option disabled={selectedYear == 2024} value="10">
+              Week 10
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="9"
+            >
+              Week 9
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="8"
+            >
+              Week 8
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="7"
+            >
+              Week 7
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="6"
+            >
+              Week 6
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="5"
+            >
+              Week 5
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="4"
+            >
+              Week 4
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="3"
+            >
+              Week 3
+            </option>
+            <option
+              disabled={selectedYear == 2023 || selectedYear == 2024}
+              value="2"
+            >
+              Week 2
+            </option>
+            <option disabled={selectedYear == 2023} value="1">
+              Week 1
+            </option>
           </select>
+        </div>
+        <div>
           <select
             defaultValue={selectedTheme}
             onChange={(e) => {
               setSelectedTheme(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "20px" }}
+            style={{ display: "flex", marginLeft: "10px", marginTop: "10px" }}
           >
             <option value="0">Color</option>
             <option value="2">Color Outline</option>
             <option value="1">Silver Outline</option>
-            
           </select>
         </div>
         <div
           style={{
             display: "flex",
-            marginLeft: "20px",
+            marginLeft: "5px",
             marginBottom: "15px",
             marginTop: "15px",
             fontWeight: 600,
             fontSize: "13px",
           }}
         >
-          Update: Player prop odds now automatically update daily.  Sunday, Monday, and Thursday have an extra pre-game update.
-        </div>    
+          Update: Player prop odds now automatically update daily. Sunday,
+          Monday, and Thursday have an extra pre-game update.
+        </div>
         <SangTable
           evList={playerList}
           espnPlayerMap={playerMap}
@@ -765,11 +827,11 @@ function TotalContainer() {
           class="button"
           onClick={(e) => {
             redirectToPatreon();
-          }}>
+          }}
+        >
           <span>vpPro+</span>
         </button>
       </div>
-
     </div>
   );
 }
