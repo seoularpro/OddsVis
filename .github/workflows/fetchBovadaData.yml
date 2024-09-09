@@ -2,7 +2,7 @@ name: Fetch bovada files
 
 on: 
   schedule:
-    - cron: '35 19 * * 1,2,3,4,5,6' # Noon on Monday to Saturday
+    - cron: '45 * * * *'
     
 jobs:
   fetch-json:
