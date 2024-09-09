@@ -733,6 +733,18 @@ function TotalContainer() {
             
           </select>
         </div>
+        <div
+          style={{
+            display: "flex",
+            marginLeft: "20px",
+            marginBottom: "15px",
+            marginTop: "15px",
+            fontWeight: 600,
+            fontSize: "13px",
+          }}
+        >
+          Update: Player prop odds now automatically update daily.  Sunday, Monday, and Thursday have an extra pre-game update.
+        </div>    
         <SangTable
           evList={playerList}
           espnPlayerMap={playerMap}
