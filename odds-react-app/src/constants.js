@@ -55,7 +55,7 @@ export const PlayerPosMap = new Map([
   ["Baker Mayfield (TB)", Positions.QB],
   ["Kyler Murray (ARI)", Positions.QB],
   ["Jordan Love (GB)", Positions.QB],
-  ["Christian McCaffrey (CAR)", Positions.RB],
+  ["Christian McCaffrey (SF)", Positions.RB],
   ["Will Levis (TEN)", Positions.QB],
   ["CJ Stroud (HOU)", Positions.QB],
   ["Zach Wilson (NYJ)", Positions.QB],
