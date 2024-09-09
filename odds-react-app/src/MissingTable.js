@@ -27,7 +27,7 @@ export default function MissingTable(props) {
                   width: "50px",
                 }}
               >
-                EV without prop(s)
+                MED without prop(s)
               </th>
             </>
           ) : (
