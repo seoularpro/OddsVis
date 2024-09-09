@@ -3,7 +3,7 @@ name: Fetch bovada files
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 12 * * *'
   
 jobs:
   fetch-json:
@@ -67,7 +67,7 @@ jobs:
       run: |
         # Generate a unique filename based on week number and an incrementing integer
         weekNumber=${{ env.weekNumber }}
-        indexFile="TestBovadaFiles/lastIndex${{ env.weekNumber }}.txt"
+        indexFile="BovadaAPIFiles/lastIndex${{ env.weekNumber }}.txt"
 
         # Retrieve or initialize the index
         if [ -f $indexFile ]; then
@@ -81,7 +81,7 @@ jobs:
         echo $nextIndex > $indexFile
 
         # Construct the filename
-        filename="TestBovadaFiles/2024week${weekNumber}${nextIndex}"
+        filename="BovadaAPIFiles/2024week${weekNumber}${nextIndex}"
         echo "filename=$filename" >> $GITHUB_ENV
 
     - name: Fetch JSON from URL
@@ -94,7 +94,7 @@ jobs:
       with:
         author_name: sangactions
         author_email: sangkyun.hanpro@gmail.com
-        message: "Update JSON data file in TestBovadaFiles"
+        message: "Update JSON data file in BovadaAPIFiles"
         add: '.'
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
