@@ -19,7 +19,7 @@
 }
 .updateTimeSection {
   width: 350px;
-  margin-left: 32px;
+  margin-left: 16px;
   font-size: 0.82rem;
 }
 
@@ -30,9 +30,9 @@
   font-weight: bold;
 }
 .patreonSection {
-  margin-top: 80px;
+  margin-top: 0px;
   width: 350px;
-  margin-left: 40px;
+  margin-left: 130px;
   font-size: 0.82rem;
 }
 
@@ -42,10 +42,9 @@
   border: none;
   color: #ffffff;
   text-align: center;
-  font-size: 18px;
+  font-size: 28px;
   padding: 20px;
-  width: 180px;
-  height:60px;
+  width: 250px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
