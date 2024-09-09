@@ -1,11 +1,10 @@
 name: Fetch bovada files
 
-on:
+on: 
+  workflow_dispatch:
   schedule:
     - cron: '0 * * * *'
-  push:
-    branches:
-      - main
+  
 jobs:
   fetch-json:
     runs-on: ubuntu-latest
