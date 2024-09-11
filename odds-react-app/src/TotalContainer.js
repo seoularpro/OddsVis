@@ -771,7 +771,7 @@ function TotalContainer() {
               Week 3
             </option>
             <option
-              disabled={selectedYear == 2023 || selectedYear == 2024}
+              disabled={selectedYear == 2023}
               value="2"
             >
               Week 2
