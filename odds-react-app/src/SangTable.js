@@ -354,7 +354,7 @@ export default function SangTable(props) {
         ))}
       </table>
       <div class="updateTimeSection">
-        Median values update Mon-Sat at 3pm, Sun+Mon+Thu at 6pm, and right before the Sunday slate at 11am Eastern Time
+        Median values update every day at noon and midnight, Sun+Mon+Thu at 6pm, and Sunday morning at 8am Eastern Time
       </div>
       <div className="new-feature-message">
         Player Selector Table
