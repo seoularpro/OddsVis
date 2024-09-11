@@ -804,8 +804,8 @@ function TotalContainer() {
             fontSize: "13px",
           }}
         >
-          Update: Player prop odds now automatically update daily. Sunday,
-          Monday, and Thursday have an extra pre-game update.
+          Update: Player prop odds now automatically update twice daily. Sunday,
+          Monday, and Thursday have extra pre-game update(s).
         </div>
         <SangTable
           evList={playerList}
