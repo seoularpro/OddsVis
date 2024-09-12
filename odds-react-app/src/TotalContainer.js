@@ -18,7 +18,7 @@ function TotalContainer() {
   const [selectedMode, setSelectedMode] = useState(0);
   const [selectedWeek, setSelectedWeek] = useState(2);
   const [selectedYear, setSelectedYear] = useState(2024);
-  const [selectedTheme, setSelectedTheme] = useState(0);
+  const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
 
   const handleClick = () => {
@@ -651,6 +651,7 @@ function TotalContainer() {
 
         <div style={{ display: "flex" }}>
           <select
+            className="select select-bordered w-full max-w-xs"
             defaultValue={selectedPosition}
             onChange={(e) => {
               setSelectedPosition(parseInt(e.target.value));
@@ -665,6 +666,7 @@ function TotalContainer() {
             <option value="99">SUPERFLEX</option>
           </select>
           <select
+            className="select select-bordered w-full max-w-xs"
             defaultValue={selectedMode}
             onChange={(e) => {
               setSelectedMode(parseInt(e.target.value));
@@ -676,6 +678,7 @@ function TotalContainer() {
             <option value="2">Full PPR</option>
           </select>
           <select
+            className="select select-bordered w-full max-w-xs"
             defaultValue={selectedYear}
             onChange={(e) => {
               if (parseInt(e.target.value) == 2023) {
@@ -701,6 +704,7 @@ function TotalContainer() {
             <option value="2023">2023</option>
           </select>
           <select
+            className="select select-bordered w-full max-w-xs"
             id="weekSelect"
             defaultValue={selectedWeek}
             onChange={(e) => {
@@ -791,6 +795,7 @@ function TotalContainer() {
         <div style={{ display: "flex" }}>
           <ThemeToggleDropdown />
           <select
+            className="select select-bordered w-full max-w-xs"
             defaultValue={selectedTheme}
             onChange={(e) => {
               setSelectedTheme(parseInt(e.target.value));
@@ -811,7 +816,7 @@ function TotalContainer() {
             fontSize: "12px"
           }}
         >
-          <div style={{marginTop:"3px"}}>
+          <div style={{ marginTop: "3px" }}>
 
             Tips:
 
