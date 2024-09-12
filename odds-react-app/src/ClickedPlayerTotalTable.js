@@ -37,8 +37,8 @@ export default function ClickedPlayerTotalTable(props) {
                   ? {
                     backgroundColor: player.calculatedColor,
                     color:
-                      player.percentile > 77 && player.percentile < 82
-                        ? "lightgrey"
+                      player.percentile > 76 && player.percentile < 82
+                        ? "pink"
                         : "white",
                     // border: "1px solid " + player.calculatedColor,
                     borderRadius: "10px",
@@ -78,8 +78,8 @@ export default function ClickedPlayerTotalTable(props) {
                   ? {
                     backgroundColor: player.calculatedColor,
                     color:
-                      player.percentile > 77 && player.percentile < 82
-                        ? "lightgrey"
+                      player.percentile > 76 && player.percentile < 82
+                        ? "pink"
                         : "white",
                     // border: "1px solid " + player.calculatedColor,
                     borderRadius: "10px",

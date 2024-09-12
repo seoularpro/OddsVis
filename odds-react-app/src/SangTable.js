@@ -142,8 +142,8 @@ export default function SangTable(props) {
                   ? {
                     backgroundColor: x.calculatedColor,
                     color:
-                      x.percentile > 77 && x.percentile < 82
-                        ? "lightgrey"
+                      x.percentile > 76 && x.percentile < 82
+                        ? "pink"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
@@ -177,8 +177,8 @@ export default function SangTable(props) {
                   ? {
                     backgroundColor: x.calculatedColor,
                     color:
-                      x.percentile > 77 && x.percentile < 82
-                        ? "lightgrey"
+                      x.percentile > 76 && x.percentile < 82
+                        ? "pink"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
@@ -224,8 +224,8 @@ export default function SangTable(props) {
                   ? {
                     backgroundColor: x.calculatedColor,
                     color:
-                      x.percentile > 77 && x.percentile < 82
-                        ? "lightgrey"
+                      x.percentile > 76 && x.percentile < 82
+                        ? "pink"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
@@ -293,8 +293,8 @@ export default function SangTable(props) {
                       ? {
                         backgroundColor: x.calculatedColor,
                         color:
-                          x.percentile > 77 && x.percentile < 82
-                            ? "lightgrey"
+                          x.percentile > 76 && x.percentile < 82
+                            ? "pink"
                             : "white",
                         border: "1px solid " + x.calculatedColor,
                         borderRadius: "10px",
@@ -323,8 +323,8 @@ export default function SangTable(props) {
                       ? {
                         backgroundColor: x.calculatedColor,
                         color:
-                          x.percentile > 77 && x.percentile < 82
-                            ? "lightgrey"
+                          x.percentile > 76 && x.percentile < 82
+                            ? "pink"
                             : "white",
                         border: "1px solid " + x.calculatedColor,
                         borderRadius: "10px",
