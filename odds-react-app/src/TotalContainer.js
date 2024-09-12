@@ -181,8 +181,8 @@ function TotalContainer() {
                 }
                 playerOdds.description = playerOdds.description
                   .replace(/\./g, "")
-                  .replace(/ jr/i, "");
-
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
 
                 if (playerOdds.description == "AJ Brown ") {
                   playerOdds.description = playerOdds.description.slice(0, -1);
@@ -223,7 +223,7 @@ function TotalContainer() {
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
-                name = name.replace(/\./g, "").replace(/ jr/i, "");
+                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -251,7 +251,7 @@ function TotalContainer() {
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
-                name = name.replace(/\./g, "").replace(/ jr/i, "");
+                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -280,7 +280,7 @@ function TotalContainer() {
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
-                name = name.replace(/\./g, "").replace(/ jr/i, "");
+                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -307,7 +307,7 @@ function TotalContainer() {
               for (let j = 0; j < eachGamePassingYdOutcomes.length; j++) {
                 let playerOdds = eachGamePassingYdOutcomes[j];
                 let name = playerOdds.description.slice(22);
-                name = name.replace(/\./g, "").replace(/ jr/i, "");
+                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -324,7 +324,7 @@ function TotalContainer() {
               for (let j = 0; j < eachGamePassingTDOutcomes.length; j++) {
                 let playerOdds = eachGamePassingTDOutcomes[j];
                 let name = playerOdds.description.slice(27);
-                name = name.replace(/\./g, "").replace(/ jr/i, "");
+                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -346,7 +346,7 @@ function TotalContainer() {
               for (let j = 0; j < eachGameIntOutcomes.length; j++) {
                 let playerOdds = eachGameIntOutcomes[j];
                 let name = playerOdds.description.slice(29);
-                name = name.replace(/\./g, "").replace(/ jr/i, "");
+                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
