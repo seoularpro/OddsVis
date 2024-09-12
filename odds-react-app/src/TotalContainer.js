@@ -109,11 +109,11 @@ function TotalContainer() {
 
       await fetch(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" +
-          yearPrefix +
-          "week" +
-          week +
-          "" +
-          testedInts
+        yearPrefix +
+        "week" +
+        week +
+        "" +
+        testedInts
       )
         .then((response) => {
           return response.json();
@@ -177,6 +177,8 @@ function TotalContainer() {
                 playerOdds.description = playerOdds.description
                   .replace(/\./g, "")
                   .replace(/ jr/i, "");
+
+
                 if (playerOdds.description == "AJ Brown ") {
                   playerOdds.description = playerOdds.description.slice(0, -1);
                 }
@@ -360,17 +362,17 @@ function TotalContainer() {
             }
           }
         })
-        .catch((e) => {});
+        .catch((e) => { });
 
       testedInts++;
       isNewBovadaFileCheck = false;
       bovadaFileLoopFlag = await isFetchable(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" +
-          yearPrefix +
-          "week" +
-          week +
-          "" +
-          testedInts
+        yearPrefix +
+        "week" +
+        week +
+        "" +
+        testedInts
       );
     }
 
@@ -613,7 +615,6 @@ function TotalContainer() {
     setPlayerMissingList(missingList);
     setPlayerList(finalList);
 
-    console.log(finalList);
   };
 
   useEffect(() => {
@@ -642,6 +643,7 @@ function TotalContainer() {
         >
           Fantasy Football Projections Powered by Vegas Player Props
         </div>
+        
         <div style={{ display: "flex" }}>
           <select
             defaultValue={selectedPosition}
@@ -797,6 +799,20 @@ function TotalContainer() {
         <div
           style={{
             display: "flex",
+            marginLeft: "25px",
+            marginBottom: "15px",
+            marginTop: "15px",
+            fontSize: "12px"
+          }}
+        >
+          Tips:
+          <a href="https://venmo.com/sanghan" target="_blank" rel="noopener noreferrer">
+            Venmo
+          </a>
+        </div>
+        <div
+          style={{
+            display: "flex",
             marginLeft: "5px",
             marginBottom: "15px",
             marginTop: "15px",
@@ -819,10 +835,6 @@ function TotalContainer() {
       />
 
       <div class="patreonSection">
-        <div>
-          Access the Pro version with extra statistical insight and future
-          functionality by supporting my Patreon link below.
-        </div>
         <button
           class="button"
           onClick={(e) => {
