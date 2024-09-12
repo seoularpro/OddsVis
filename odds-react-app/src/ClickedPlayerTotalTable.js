@@ -8,6 +8,8 @@ export default function ClickedPlayerTotalTable(props) {
   useEffect(() => {
     setVisList(props.clickedPlayers);
   }, [props.clickedPlayers]);
+
+  console.log(visList);
   return (
     <div className="ClickedPlayerTotalTable">
       <table style={{}}>
@@ -38,7 +40,7 @@ export default function ClickedPlayerTotalTable(props) {
                       player.percentile > 77 && player.percentile < 82
                         ? "lightgrey"
                         : "white",
-                    border: "1px solid " + player.calculatedColor,
+                    // border: "1px solid " + player.calculatedColor,
                     borderRadius: "10px",
                     whiteSpace: "nowrap",
                     textAlign: "left",
@@ -55,7 +57,7 @@ export default function ClickedPlayerTotalTable(props) {
                     : {
                       backgroundColor: "white",
                       color: "black",
-                      border: "1px solid  " + x.calculatedColor,
+                      border: "1px solid  " + player.calculatedColor,
                       //   borderRadius: "10px",
                       whiteSpace: "nowrap",
                       textAlign: "left",
@@ -79,7 +81,7 @@ export default function ClickedPlayerTotalTable(props) {
                       player.percentile > 77 && player.percentile < 82
                         ? "lightgrey"
                         : "white",
-                    border: "1px solid " + player.calculatedColor,
+                    // border: "1px solid " + player.calculatedColor,
                     borderRadius: "10px",
                     width: "46px",
                   }
@@ -94,7 +96,7 @@ export default function ClickedPlayerTotalTable(props) {
                     : {
                       backgroundColor: "white",
                       color: "black",
-                      border: "1px solid " + x.calculatedColor,
+                      border: "1px solid " + player.calculatedColor,
                       width: "46px",
                       //   borderRadius: "10px",
                     }
