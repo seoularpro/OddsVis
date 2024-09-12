@@ -145,7 +145,7 @@ export default function SangTable(props) {
                       x.percentile > 77 && x.percentile < 82
                         ? "lightgrey"
                         : "white",
-                    border: "1px solid " + x.calculatedColor,
+                    // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
                     whiteSpace: "nowrap",
                     fontSize: ".5rem",
@@ -180,7 +180,7 @@ export default function SangTable(props) {
                       x.percentile > 77 && x.percentile < 82
                         ? "lightgrey"
                         : "white",
-                    border: "1px solid " + x.calculatedColor,
+                    // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
                     whiteSpace: "nowrap",
                     textAlign: "left",
@@ -227,7 +227,7 @@ export default function SangTable(props) {
                       x.percentile > 77 && x.percentile < 82
                         ? "lightgrey"
                         : "white",
-                    border: "1px solid " + x.calculatedColor,
+                    // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
                     width: "100px",
                   }

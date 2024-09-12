@@ -9,6 +9,7 @@ import {
 import SangTable from "./SangTable";
 import { isFetchable, getLastElementMap, calculateLatestChange } from "./util";
 import MissingTable from "./MissingTable";
+import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
 function TotalContainer() {
   const [selectedPosition, setSelectedPosition] = useState(0);
@@ -19,6 +20,10 @@ function TotalContainer() {
   const [selectedYear, setSelectedYear] = useState(2024);
   const [selectedTheme, setSelectedTheme] = useState(0);
   const [playerMissingList, setPlayerMissingList] = useState([]);
+
+  const handleClick = () => {
+    window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
+  };
 
   const scrapeEspnStats = async (week) => {
     //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
@@ -643,7 +648,7 @@ function TotalContainer() {
         >
           Fantasy Football Projections Powered by Vegas Player Props
         </div>
-        
+
         <div style={{ display: "flex" }}>
           <select
             defaultValue={selectedPosition}
@@ -783,13 +788,14 @@ function TotalContainer() {
             </option>
           </select>
         </div>
-        <div>
+        <div style={{ display: "flex" }}>
+          <ThemeToggleDropdown />
           <select
             defaultValue={selectedTheme}
             onChange={(e) => {
               setSelectedTheme(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "10px", marginTop: "10px" }}
+            style={{ display: "inline-flex", marginLeft: "10px", marginTop: "10px" }}
           >
             <option value="0">Color</option>
             <option value="2">Color Outline</option>
@@ -805,10 +811,14 @@ function TotalContainer() {
             fontSize: "12px"
           }}
         >
-          Tips:
-          <a href="https://venmo.com/sanghan" target="_blank" rel="noopener noreferrer">
+          <div style={{marginTop:"3px"}}>
+
+            Tips:
+
+          </div>
+          <button class="button2" onClick={handleClick}>
             Venmo
-          </a>
+          </button>
         </div>
         <div
           style={{
