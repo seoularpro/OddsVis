@@ -108,7 +108,7 @@ function TotalContainer() {
     let yearPrefix = selectedYear == 2024 ? selectedYear : "";
 
 
-    
+
 
     while (bovadaFileLoopFlag) {
       if (testedInts > lastTestedInt) {
@@ -116,6 +116,18 @@ function TotalContainer() {
         lastTestedInt++;
       }
 
+      // await fetch(
+      //   "https://raw.githubusercontent.com/seoularpro/OddsVis/main/FanduelFiles/" +
+      //   yearPrefix +
+      //   "week" +
+      //   week +
+      //   "" +
+      //   testedInts
+      // ).then((response) => {
+      //   return response.json();
+      // }).then((data) => {
+      //   console.log(data);
+      // })
 
       await fetch(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" +
