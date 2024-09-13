@@ -156,7 +156,7 @@ export default function SangTable(props) {
                   }
                   :
                   props.selectedTheme == 1 ? {
-                    backgroundColor: "white",
+                    backgroundColor: x.calculatedColor,
                     color: "black",
                     border: "1px solid silver", // + x.calculatedColor,
                     whiteSpace: "nowrap",
