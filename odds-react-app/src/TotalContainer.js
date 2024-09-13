@@ -106,6 +106,10 @@ function TotalContainer() {
     let playerToPassYdsDataPoints = new Map();
     let playerToIntsDataPoints = new Map();
     let yearPrefix = selectedYear == 2024 ? selectedYear : "";
+
+
+
+
     while (bovadaFileLoopFlag) {
       if (testedInts > lastTestedInt) {
         isNewBovadaFileCheck = true;
