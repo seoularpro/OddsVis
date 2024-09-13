@@ -36,6 +36,10 @@ export default function SangTable(props) {
   const [visList, setVisList] = useState([]);
   const [clickedList, setClickedList] = useState([]);
 
+  const handleBovadaClick = () => {
+    window.open("https://record.revenuenetwork.com/_Z5boJsEUQbn97H-d5Ks7MGNd7ZgqdRLk/1/", "_blank", "noopener,noreferrer");
+  }
+
   const handlePlayerClick = (player) => {
     let newList = clickedList.slice();
     if (!clickedList.find((c) => c.playerName == player.playerName)) {
@@ -367,6 +371,16 @@ export default function SangTable(props) {
         Sat: 12pm, 12am<br></br>
       </div>
 
+      <div style={{ display: "flex" }}>
+        <div className="bovada-section">
+          If you disagree with any of the projections, place a wager at my crypto sportsbook that provides this data through my affiliate link:
+        </div>
+        <div>
+          <button class="bovada-button" onClick={handleBovadaClick}>
+            Bovada
+          </button>
+        </div>
+      </div>
       <div className="new-feature-message">
         Player Selector Table
       </div>

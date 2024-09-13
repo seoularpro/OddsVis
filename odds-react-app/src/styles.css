@@ -10,13 +10,16 @@
   margin-top: 20px;
   font-weight: bold;
 }
+
 .ClickedPlayerTotalTable {
   margin-top: 20px;
 }
+
 .SangTable {
   margin-top: 5px;
   /* display: inline-flex; */
 }
+
 .updateTimeSection {
   width: 350px;
   margin-left: 5px;
@@ -24,6 +27,16 @@
   text-align: left;
   font-weight: 700
 }
+
+.bovada-section {
+  width: 238px;
+  margin-top: 15px;
+  margin-left: 5px;
+  font-size: 0.72rem;
+  text-align: left;
+  font-weight: 700
+}
+
 .updateTimeSection2 {
   width: 350px;
   margin-left: 15px;
@@ -37,6 +50,7 @@
   font-size: 0.9rem;
   font-weight: bold;
 }
+
 .patreonSection {
   margin-top: 10px;
   width: 350px;
@@ -58,20 +72,39 @@
   margin: 5px;
 }
 
-.button2 {
+.bovada-button {
   border-radius: 5px;
-  background-color: black;
-  border-color:black;
+  background-color: #f4511e;
+  border-color: black;
   border: none;
   color: #ffffff;
   text-align: center;
   font-size: 12px;
-  padding:4px;
+  padding: 4px;
   transition: all 0.5s;
   cursor: pointer;
-  margin-left:12px;
+  margin-left: 24px;
   width: 60px;
-  
+  margin-top: 28px;
+
+  /* margin: 5px; */
+
+}
+
+.button2 {
+  border-radius: 5px;
+  background-color: #f4511e;
+  border-color: black;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 12px;
+  width: 60px;
+
   /* margin: 5px; */
 }
 
@@ -100,6 +133,8 @@
   right: 0;
 }
 
+
+
 .invis-mobile {
   display: none;
 }
@@ -107,10 +142,12 @@
 .invis-mobile-header {
   display: none;
 }
+
 @media screen and (min-width: 480px) {
   .invis-mobile-header {
     display: table-cell;
   }
+
   .invis-mobile {
     display: block;
   }
