@@ -335,13 +335,13 @@ export default function SangTable(props) {
                         color: "black",
                         border: "1px solid silver", // + x.calculatedColor,
                         width: "100px",
-                      } : 
-                      {
-                        backgroundColor: "white",
-                        color: "black",
-                        border: "1px solid "  + x.calculatedColor,
-                        width: "100px",
-                      }
+                      } :
+                        {
+                          backgroundColor: "white",
+                          color: "black",
+                          border: "1px solid " + x.calculatedColor,
+                          width: "100px",
+                        }
                   }
                 >
                   {<div>{x.espnValues?.proj}</div>}
@@ -354,8 +354,19 @@ export default function SangTable(props) {
         ))}
       </table>
       <div class="updateTimeSection">
-        Median values update every day at noon and midnight, Sun+Mon+Thu at 6pm, and Sunday morning at 8am Eastern Time
+        Update schedule (ET):<br></br>
+
       </div>
+      <div class="updateTimeSection2">
+        Sun: 8am, 12pm, 6pm, 12am<br></br>
+        Mon: 12pm, 6pm, 12am<br></br>
+        Tues: 12pm, 12am<br></br>
+        Wed: 12pm, 12am<br></br>
+        Thurs: 12pm, 6pm, 12am<br></br>
+        Fri: 12pm, 12am<br></br>
+        Sat: 12pm, 12am<br></br>
+      </div>
+
       <div className="new-feature-message">
         Player Selector Table
       </div>

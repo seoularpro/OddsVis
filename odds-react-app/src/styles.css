@@ -19,8 +19,16 @@
 }
 .updateTimeSection {
   width: 350px;
-  margin-left: 16px;
-  font-size: 0.82rem;
+  margin-left: 5px;
+  font-size: 0.72rem;
+  text-align: left;
+  font-weight: 700
+}
+.updateTimeSection2 {
+  width: 350px;
+  margin-left: 15px;
+  font-size: 0.62rem;
+  text-align: left;
 }
 
 .select-player-message {

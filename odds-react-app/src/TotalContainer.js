@@ -833,6 +833,7 @@ function TotalContainer() {
             marginTop: "15px",
             fontWeight: 600,
             fontSize: "13px",
+            textAlign: "left"
           }}
         >
           Update: Player prop odds now automatically update twice daily. Sunday,
