@@ -146,7 +146,7 @@ export default function SangTable(props) {
                   ? {
                     backgroundColor: x.calculatedColor,
                     color:
-                      x.percentile > 76 && x.percentile < 82
+                      x.percentile > 75.3 && x.percentile < 82.5
                         ? "pink"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
@@ -181,7 +181,7 @@ export default function SangTable(props) {
                   ? {
                     backgroundColor: x.calculatedColor,
                     color:
-                      x.percentile > 76 && x.percentile < 82
+                      x.percentile > 75.3 && x.percentile < 82.5
                         ? "pink"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
@@ -228,7 +228,7 @@ export default function SangTable(props) {
                   ? {
                     backgroundColor: x.calculatedColor,
                     color:
-                      x.percentile > 76 && x.percentile < 82
+                      x.percentile > 75.3 && x.percentile < 82.5
                         ? "pink"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
@@ -297,7 +297,7 @@ export default function SangTable(props) {
                       ? {
                         backgroundColor: x.calculatedColor,
                         color:
-                          x.percentile > 76 && x.percentile < 82
+                          x.percentile > 75.3 && x.percentile < 82.5
                             ? "pink"
                             : "white",
                         border: "1px solid " + x.calculatedColor,
@@ -327,7 +327,7 @@ export default function SangTable(props) {
                       ? {
                         backgroundColor: x.calculatedColor,
                         color:
-                          x.percentile > 76 && x.percentile < 82
+                          x.percentile > 75.3 && x.percentile < 82.5
                             ? "pink"
                             : "white",
                         border: "1px solid " + x.calculatedColor,
