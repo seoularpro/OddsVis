@@ -867,7 +867,7 @@ function TotalContainer() {
             textAlign: "left"
           }}
         >
-          If your player is not present in the table below, please check the Missing Prop table at the bottom of the page.
+          If your player is not present in the table below, please check the Missing Prop table at the bottom of the page.  If your player is present here, you can generally assume they're playing and not injured.
         </div>
         <SangTable
           evList={playerList}
@@ -875,6 +875,19 @@ function TotalContainer() {
           selectedTheme={selectedTheme}
         />
       </div>
+      <div
+          style={{
+            display: "flex",
+            marginLeft: "0px",
+            marginBottom: "15px",
+            marginTop: "30px",
+            fontWeight: 600,
+            fontSize: "13px",
+            textAlign: "left"
+          }}
+        >
+          Players below do not have all their required props.  They will be added to the primary table when their props are available.  Players here may be under injury risk, as Christian McCaffrey was stuck down here throughout week 1.
+        </div>
       <MissingTable
         selectedPosition={selectedPosition}
         missingList={playerMissingList}
