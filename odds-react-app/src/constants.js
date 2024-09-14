@@ -135,7 +135,7 @@ export const PlayerPosMap = new Map([
   ["Brian Robinson Jr (WAS)", Positions.RB],
   ["David Njoku (CLE)", Positions.TE],
   ["Hunter Henry (NE)", Positions.TE],
-  ["Devin Singletary (BUF)", Positions.RB],
+  ["Devin Singletary (NYG)", Positions.RB],
   ["Cade Otton (TB)", Positions.TE],
   ["Quentin Johnston (LAC)", Positions.WR],
   ["Jakobi Meyers (LV)", Positions.WR],
