@@ -856,6 +856,19 @@ function TotalContainer() {
           Update: Player prop odds now automatically update twice daily. Sunday,
           Monday, and Thursday have extra pre-game update(s).
         </div>
+        <div
+          style={{
+            display: "flex",
+            marginLeft: "5px",
+            marginBottom: "15px",
+            marginTop: "30px",
+            fontWeight: 600,
+            fontSize: "13px",
+            textAlign: "left"
+          }}
+        >
+          If your player is not present in the table below, please check the Missing Prop table at the bottom of the page.
+        </div>
         <SangTable
           evList={playerList}
           espnPlayerMap={playerMap}
