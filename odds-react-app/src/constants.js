@@ -193,7 +193,7 @@ export const PlayerPosMap = new Map([
   ["Brian Robinson (WAS)", Positions.RB],
   ["Dontayvion Wicks (GB)", Positions.WR],
   ["DK Metcalf (SEA)", Positions.WR],
-  ["Alexander Mattison (MIN)", Positions.RB],
+  ["Alexander Mattison (LV)", Positions.RB],
   ["Gabriel Davis (BUF)", Positions.WR],
   ["Kalif Raymond (DET)", Positions.WR],
   ["Chris Olave (NO)", Positions.WR],
