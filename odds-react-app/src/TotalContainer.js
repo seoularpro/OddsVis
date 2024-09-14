@@ -143,6 +143,9 @@ function TotalContainer() {
         .then((data) => {
           let allNflGames = data[0].events.slice();
 
+
+
+
           for (let i = 0; i < allNflGames.length; i++) {
             let eachGameTDOutcomes = allNflGames[i].displayGroups
               .find((x) => x.id == "100-1870")
@@ -244,6 +247,12 @@ function TotalContainer() {
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
+                if(name == "Deebo Samuel"){
+                  name = "Deebo Samuel (SF)"
+                }
+
+
+                
 
                 if (!amonRaFlag) {
                   let newRushYdsList = [];
@@ -268,10 +277,17 @@ function TotalContainer() {
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
+                
                 name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
+                if(name == "Deebo Samuel"){
+                  name = "Deebo Samuel (SF)"
+                }
+
+                
+
 
                 if (!amonRaFlag) {
                   let newRecYdsList = [];
@@ -298,6 +314,9 @@ function TotalContainer() {
                   name = "Amon-Ra St. Brown";
                 }
                 name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                if(name == "Deebo Samuel"){
+                  name = "Deebo Samuel (SF)"
+                }
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -397,6 +416,8 @@ function TotalContainer() {
         testedInts
       );
     }
+
+    playerToRushYdsDataPoints.set("Deebo Samuel (SF)", [2.35]);
 
     let playerToAnyTD = getLastElementMap(playerToAnyTDDataPoints);
     let playerToRushYds = getLastElementMap(playerToRushYdsDataPoints);
@@ -700,7 +721,6 @@ function TotalContainer() {
             onChange={(e) => {
               if (parseInt(e.target.value) == 2023) {
                 if (selectedWeek < 10) {
-                  console.log("selectedweek < 10");
                   setSelectedWeek(18);
                   const selectElement = document.getElementById("weekSelect");
                   selectElement.value = "18";
