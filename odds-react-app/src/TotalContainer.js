@@ -100,6 +100,7 @@ function TotalContainer() {
 
     let playerToAnyTDDataPoints = new Map();
     let playerToRushYdsDataPoints = new Map();
+    let playerToRushRecYdsDataPoints = new Map();
     let playerToRecYdsDataPoints = new Map();
     let playerToRecsDataPoints = new Map();
     let playerToPassTDDataPoints = new Map();
@@ -157,6 +158,9 @@ function TotalContainer() {
             let eachGameRushingOutcomes = allNflGames[i].displayGroups
               .find((x) => x.id == "100-93")
               ?.markets.filter((y) => y.marketTypeId == "121337");
+            let eachGameRushingAndReceivingOutcomes = allNflGames[i].displayGroups
+              .find((x) => x.id == "100-93")
+              ?.markets.filter((y) => y.marketTypeId == "121328");
             let eachGameReceivingOutcomes = allNflGames[i].displayGroups
               .find((x) => x.id == "100-94")
               ?.markets.filter((y) => y.marketTypeId == "121333");
@@ -235,6 +239,39 @@ function TotalContainer() {
                 }
               }
             }
+            if (typeof eachGameRushingAndReceivingOutcomes !== "undefined") {
+              let amonRaFlag = false;
+              for (let j = 0; j < eachGameRushingAndReceivingOutcomes.length; j++) {
+                let playerOdds = eachGameRushingAndReceivingOutcomes[j];
+                let name = playerOdds.description.slice(34);
+                if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
+                  name = "Amon-Ra St. Brown";
+                }
+                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                if (name == "AJ Brown ") {
+                  name = name.slice(0, -1);
+                }
+                if (name == "Deebo Samuel") {
+                  name = "Deebo Samuel (SF)"
+                }
+
+
+
+                if (!amonRaFlag) {
+                  let newRushRecYdsList = [];
+                  if (playerToRushRecYdsDataPoints.has(name)) {
+                    newRushRecYdsList = playerToRushRecYdsDataPoints.get(name);
+                  }
+                  newRushRecYdsList.push(
+                    playerOdds.outcomes[0].price.handicap / 10
+                  );
+                  playerToRushRecYdsDataPoints.set(name, newRushRecYdsList);
+                }
+                if (name == "Amon-Ra St. Brown") {
+                  amonRaFlag = true;
+                }
+              }
+            }
             if (typeof eachGameRushingOutcomes !== "undefined") {
               let amonRaFlag = false;
               for (let j = 0; j < eachGameRushingOutcomes.length; j++) {
@@ -247,11 +284,11 @@ function TotalContainer() {
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
-                if(name == "Deebo Samuel"){
+                if (name == "Deebo Samuel") {
                   name = "Deebo Samuel (SF)"
                 }
 
-                
+
 
                 if (!amonRaFlag) {
                   let newRushYdsList = [];
@@ -276,16 +313,16 @@ function TotalContainer() {
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
-                
+
                 name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
-                if(name == "Deebo Samuel"){
+                if (name == "Deebo Samuel") {
                   name = "Deebo Samuel (SF)"
                 }
 
-                
+
 
 
                 if (!amonRaFlag) {
@@ -313,7 +350,7 @@ function TotalContainer() {
                   name = "Amon-Ra St. Brown";
                 }
                 name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
-                if(name == "Deebo Samuel"){
+                if (name == "Deebo Samuel") {
                   name = "Deebo Samuel (SF)"
                 }
                 if (name == "AJ Brown ") {
@@ -420,6 +457,7 @@ function TotalContainer() {
 
     let playerToAnyTD = getLastElementMap(playerToAnyTDDataPoints);
     let playerToRushYds = getLastElementMap(playerToRushYdsDataPoints);
+    let playerToRushRecYds = getLastElementMap(playerToRushRecYdsDataPoints);
     let playerToRecYds = getLastElementMap(playerToRecYdsDataPoints);
     let playerToRecs = getLastElementMap(playerToRecsDataPoints);
     let playerToPassTD = getLastElementMap(playerToPassTDDataPoints);
@@ -429,6 +467,9 @@ function TotalContainer() {
     let latestCPlayerToAnyTD = calculateLatestChange(playerToAnyTDDataPoints);
     let latestCPlayerToRushYds = calculateLatestChange(
       playerToRushYdsDataPoints
+    );
+    let latestCPlayerToRushRecYds = calculateLatestChange(
+      playerToRushRecYdsDataPoints
     );
     let latestCPlayerToRecYds = calculateLatestChange(playerToRecYdsDataPoints);
     let latestCPlayerToRecs = calculateLatestChange(playerToRecsDataPoints);
@@ -530,7 +571,7 @@ function TotalContainer() {
           x[1] > 1
       );
     }
-
+    let replacedRushRecFlag = false;
     let missingList = [];
     if (pos == 0) {
       finalList = finalList.filter((d) => {
@@ -563,13 +604,30 @@ function TotalContainer() {
         return qbHasAllValues;
       });
     } else if (pos == 1) {
-      finalList = finalList.filter((d) => {
+      finalList = finalList.filter((d, di) => {
         let rbHasAllValues =
           playerToAnyTD.has(d[0]) &&
           playerToRushYds.has(d[0]) &&
           playerToRecYds.has(d[0]) &&
           playerToRecs.has(d[0]);
         if (!rbHasAllValues) {
+          if (playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
+            || playerToAnyTD.has(d[0]) && playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
+            || playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])) {
+              
+              if (playerToRushRecYdsDataPoints.has(d[0])){
+                if(playerToRushYds.has(d[0])){
+                  
+                  finalList[di][1] = finalList[di][1] - playerToRushYds.get(d[0])
+                }
+                if(playerToRecYds.has(d[0])){
+                  finalList[di][1] = finalList[di][1] - playerToRecYds.get(d[0])
+                }
+                finalList[di][1] = finalList[di][1] + playerToRushRecYds.get(d[0])
+                replacedRushRecFlag = true;
+                return true;
+              }
+          }
           let rbMessage = "";
           if (!playerToAnyTD.has(d[0])) {
             rbMessage = rbMessage.concat(" AnyTD ");
@@ -640,6 +698,10 @@ function TotalContainer() {
         return flexHasAllValues;
       });
     }
+
+    finalList = finalList.slice();
+    finalList = finalList.sort((a, b) => b[1] - a[1])
+
 
     finalList = finalList.filter((elem) => {
       return elem[1] > 5;
@@ -895,18 +957,18 @@ function TotalContainer() {
         />
       </div>
       <div
-          style={{
-            display: "flex",
-            marginLeft: "0px",
-            marginBottom: "15px",
-            marginTop: "30px",
-            fontWeight: 600,
-            fontSize: "13px",
-            textAlign: "left"
-          }}
-        >
-          Players below do not have all their required props.  They will be added to the primary table when their props are available.  Players here may be under injury risk, as Christian McCaffrey was stuck down here throughout week 1.
-        </div>
+        style={{
+          display: "flex",
+          marginLeft: "0px",
+          marginBottom: "15px",
+          marginTop: "30px",
+          fontWeight: 600,
+          fontSize: "13px",
+          textAlign: "left"
+        }}
+      >
+        Players below do not have all their required props.  They will be added to the primary table when their props are available.  Players here may be under injury risk, as Christian McCaffrey was stuck down here throughout week 1.
+      </div>
       <MissingTable
         selectedPosition={selectedPosition}
         missingList={playerMissingList}

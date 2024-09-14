@@ -9,7 +9,6 @@ export default function ClickedPlayerTotalTable(props) {
     setVisList(props.clickedPlayers);
   }, [props.clickedPlayers]);
 
-  console.log(visList);
   return (
     <div className="ClickedPlayerTotalTable">
       <table style={{}}>
