@@ -164,8 +164,8 @@ export default function SangTable(props) {
                     //   borderRadius: "10px",
                   }
                     : {
-                      backgroundColor: "white",
-                      color: "black",
+                      // backgroundColor: "white",
+                      // color: "black",
                       border: "1px solid " + x.calculatedColor,
                       whiteSpace: "nowrap",
                       fontSize: ".5rem",
@@ -191,8 +191,8 @@ export default function SangTable(props) {
                   }
                   :
                   props.selectedTheme == 1 ? {
-                    backgroundColor: "white",
-                    color: "black",
+                    // backgroundColor: "white",
+                    // color: "black",
                     border: "1px solid  silver", // + x.calculatedColor,
                     //   borderRadius: "10px",
                     whiteSpace: "nowrap",
@@ -200,8 +200,8 @@ export default function SangTable(props) {
                   }
                     :
                     {
-                      backgroundColor: "white",
-                      color: "black",
+                      // backgroundColor: "white",
+                      // color: "black",
                       border: "1px solid " + x.calculatedColor,
                       //   borderRadius: "10px",
                       whiteSpace: "nowrap",
@@ -236,15 +236,15 @@ export default function SangTable(props) {
                     width: "100px",
                   }
                   : props.selectedTheme == 1 ? {
-                    backgroundColor: "white",
-                    color: "black",
+                    // backgroundColor: "white",
+                    // color: "black",
                     border: "1px solid silver", // + x.calculatedColor,
                     width: "100px",
                     //   borderRadius: "10px",
                   }
                     : {
-                      backgroundColor: "white",
-                      color: "black",
+                      // backgroundColor: "white",
+                      // color: "black",
                       border: "1px solid " + x.calculatedColor,
                       width: "100px",
                       //   borderRadius: "10px",
@@ -305,14 +305,14 @@ export default function SangTable(props) {
                         width: "100px",
                       }
                       : props.selectedTheme == 1 ? {
-                        backgroundColor: "white",
-                        color: "black",
+                        // backgroundColor: "white",
+                        // color: "black",
                         border: "1px solid silver", //+ x.calculatedColor,
                         width: "100px",
                       }
                         : {
-                          backgroundColor: "white",
-                          color: "black",
+                          // backgroundColor: "white",
+                          // color: "black",
                           border: "1px solid " + x.calculatedColor,
                           width: "100px",
                         }
@@ -335,14 +335,14 @@ export default function SangTable(props) {
                         width: "100px",
                       }
                       : props.selectedTheme == 1 ? {
-                        backgroundColor: "white",
-                        color: "black",
+                        // backgroundColor: "white",
+                        // color: "black",
                         border: "1px solid silver", // + x.calculatedColor,
                         width: "100px",
                       } :
                         {
-                          backgroundColor: "white",
-                          color: "black",
+                          // backgroundColor: "white",
+                          // color: "black",
                           border: "1px solid " + x.calculatedColor,
                           width: "100px",
                         }

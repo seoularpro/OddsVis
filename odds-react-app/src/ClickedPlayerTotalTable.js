@@ -47,16 +47,16 @@ export default function ClickedPlayerTotalTable(props) {
                   }
                   :
                   props.selectedTheme == 1 ? {
-                    backgroundColor: "white",
-                    color: "black",
+                    // backgroundColor: "white",
+                    // color: "black",
                     border: "1px solid  silver", // + x.calculatedColor,
                     //   borderRadius: "10px",
                     whiteSpace: "nowrap",
                     textAlign: "left",
                   }
                     : {
-                      backgroundColor: "white",
-                      color: "black",
+                      // backgroundColor: "white",
+                      // color: "black",
                       border: "1px solid  " + player.calculatedColor,
                       //   borderRadius: "10px",
                       whiteSpace: "nowrap",
@@ -87,15 +87,15 @@ export default function ClickedPlayerTotalTable(props) {
                   }
                   :
                   props.selectedTheme == 1 ? {
-                    backgroundColor: "white",
-                    color: "black",
+                    // backgroundColor: "white",
+                    // color: "black",
                     border: "1px solid silver", // + x.calculatedColor,
                     width: "46px",
                     //   borderRadius: "10px",
                   }
                     : {
-                      backgroundColor: "white",
-                      color: "black",
+                      // backgroundColor: "white",
+                      // color: "black",
                       border: "1px solid " + player.calculatedColor,
                       width: "46px",
                       //   borderRadius: "10px",
