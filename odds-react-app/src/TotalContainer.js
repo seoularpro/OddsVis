@@ -251,7 +251,6 @@ function TotalContainer() {
                   name = "Deebo Samuel (SF)"
                 }
 
-
                 
 
                 if (!amonRaFlag) {
