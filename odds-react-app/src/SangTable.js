@@ -392,6 +392,7 @@ export default function SangTable(props) {
         clickedPlayers={clickedList}
         selectedTheme={props.selectedTheme}
         playerTotal={calculateTotalEV(clickedList).toFixed(2)}
+        handlePlayerClick={handlePlayerClick}
       />
     </div>
   );

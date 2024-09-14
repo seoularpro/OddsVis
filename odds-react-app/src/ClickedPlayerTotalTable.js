@@ -63,6 +63,7 @@ export default function ClickedPlayerTotalTable(props) {
                       textAlign: "left",
                     }
               }
+              onClick={() => props.handlePlayerClick(player)}
             >
               <div
                 style={{
