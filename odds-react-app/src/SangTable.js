@@ -147,7 +147,7 @@ export default function SangTable(props) {
                     backgroundColor: x.calculatedColor,
                     color:
                       x.percentile > 75.3 && x.percentile < 82.5
-                        ? "pink"
+                        ? "lightgray"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
@@ -182,7 +182,7 @@ export default function SangTable(props) {
                     backgroundColor: x.calculatedColor,
                     color:
                       x.percentile > 75.3 && x.percentile < 82.5
-                        ? "pink"
+                        ? "lightgray"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
@@ -229,7 +229,7 @@ export default function SangTable(props) {
                     backgroundColor: x.calculatedColor,
                     color:
                       x.percentile > 75.3 && x.percentile < 82.5
-                        ? "pink"
+                        ? "lightgray"
                         : "white",
                     // border: "1px solid " + x.calculatedColor,
                     borderRadius: "10px",
@@ -298,7 +298,7 @@ export default function SangTable(props) {
                         backgroundColor: x.calculatedColor,
                         color:
                           x.percentile > 75.3 && x.percentile < 82.5
-                            ? "pink"
+                            ? "lightgray"
                             : "white",
                         border: "1px solid " + x.calculatedColor,
                         borderRadius: "10px",
@@ -328,7 +328,7 @@ export default function SangTable(props) {
                         backgroundColor: x.calculatedColor,
                         color:
                           x.percentile > 75.3 && x.percentile < 82.5
-                            ? "pink"
+                            ? "lightgray"
                             : "white",
                         border: "1px solid " + x.calculatedColor,
                         borderRadius: "10px",
