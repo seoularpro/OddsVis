@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '18 3,15 * * 0,1,2,3,4,5,6'
     - cron: '18 11 * * 0'
-    - cron: '18 21 * * 0,1,4'
+    - cron: '18 21 * * 1,4'
     
 jobs:
   fetch-json:
