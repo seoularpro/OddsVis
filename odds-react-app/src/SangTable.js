@@ -362,7 +362,7 @@ export default function SangTable(props) {
 
       </div>
       <div class="updateTimeSection2">
-        Sun: 8am, 12pm, 6pm, 12am<br></br>
+        Sun: 8am, 12pm, 12am<br></br>
         Mon: 12pm, 6pm, 12am<br></br>
         Tues: 12pm, 12am<br></br>
         Wed: 12pm, 12am<br></br>
