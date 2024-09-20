@@ -143,6 +143,12 @@
   display: none;
 }
 
+.trade-value-theme {
+  margin-left: 4px;
+  display:flex;
+  margin-bottom: 12px;
+}
+
 @media screen and (min-width: 480px) {
   .invis-mobile-header {
     display: table-cell;
