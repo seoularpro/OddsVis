@@ -8,7 +8,7 @@ const GoogleSheetStyled = () => {
     useEffect(() => {
         const fetchData = async () => {
             const sheetId = '1768uTvRzSMq_NuW31qf0H7bItSjTRYcEw9KiaPf1qR0';
-            const apiKey = process.env.SHEETS_API_KEY;
+            const apiKey = process.env.REACT_APP_SHEETS_API_KEY;
             const range = 'Sheet1!A1:F113';
 
             const response = await axios.get(
