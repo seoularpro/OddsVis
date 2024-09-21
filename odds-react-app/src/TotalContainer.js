@@ -210,7 +210,8 @@ function TotalContainer() {
                 playerOdds.description = playerOdds.description
                   .replace(/\./g, "")
                   .replace(/ jr/i, "")
-                  .replace(/ sr/i, "");
+                  .replace(/ sr/i, "")
+                  .replace(/ Jr/i, "")
 
                 if (playerOdds.description == "AJ Brown ") {
                   playerOdds.description = playerOdds.description.slice(0, -1);
@@ -218,8 +219,22 @@ function TotalContainer() {
                 if (playerOdds.description == "Gardner Minshew") {
                   playerOdds.description = "Gardner Minshew II";
                 }
-                if (playerOdds.description == "De'Von Achane") {
-                  playerOdds.description = "Devon Achane";
+                if (playerOdds.description == "Devon Achane (MIA)") {
+                  playerOdds.description = "De'Von Achane (MIA)";
+                }
+                if (playerOdds.description == "Brian Robinson") {
+                  playerOdds.description = "Brian Robinson (WAS)";
+                }
+                if (playerOdds.description == "D'Andre Swift") {
+                  playerOdds.description = "D'Andre Swift (CHI)";
+                }
+                if (playerOdds.description == "Gabriel Davis (JAX)") {
+                  playerOdds.description = "Gabe Davis (JAX)";
+                }
+                if (playerOdds.description == "Rome Odunze (CHI) ") {
+                  playerOdds.description = playerOdds.description.slice(0, -1); 
+                }if (playerOdds.description == "Chigoziem Okonkwo (TEN)") {
+                  playerOdds.description = "Chig Okonkwo (TEN)"; 
                 }
 
                 if (!amonRaFlag) {
