@@ -457,8 +457,6 @@ function TotalContainer() {
       );
     }
 
-    playerToRushYdsDataPoints.set("Deebo Samuel (SF)", [2.35]);
-
     let playerToAnyTD = getLastElementMap(playerToAnyTDDataPoints);
     let playerToRushYds = getLastElementMap(playerToRushYdsDataPoints);
     let playerToRushRecYds = getLastElementMap(playerToRushRecYdsDataPoints);
