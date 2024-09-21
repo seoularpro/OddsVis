@@ -931,9 +931,9 @@ function TotalContainer() {
             fontSize: "12px"
           }}
         >
-          {getQueryStringValue("isPro") == "trade" &&<button class="trade-button" onClick={handleTradeClick}>
+          <button class="trade-button" onClick={handleTradeClick}>
             10 man .5 PPR Trade Value Chart
-          </button>}
+          </button>
           <div style={{ marginTop: "3px", marginLeft: "15px" }}>
 
             Tips:
