@@ -7,7 +7,7 @@ import {
   UNIVERSAL_VIG,
 } from "./constants";
 import SangTable from "./SangTable";
-import { isFetchable, getLastElementMap, calculateLatestChange } from "./util";
+import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue } from "./util";
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
@@ -931,9 +931,9 @@ function TotalContainer() {
             fontSize: "12px"
           }}
         >
-          {/* <button class="trade-button" onClick={handleTradeClick}>
+          {getQueryStringValue("isPro") == "trade" &&<button class="trade-button" onClick={handleTradeClick}>
             10 man .5 PPR Trade Value Chart
-          </button> */}
+          </button>}
           <div style={{ marginTop: "3px", marginLeft: "15px" }}>
 
             Tips:
