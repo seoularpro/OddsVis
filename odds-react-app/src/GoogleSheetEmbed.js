@@ -8,7 +8,7 @@ const GoogleSheetStyled = () => {
     useEffect(() => {
         const fetchData = async () => {
             const sheetId = '1768uTvRzSMq_NuW31qf0H7bItSjTRYcEw9KiaPf1qR0';
-            const apiKey = 'AIzaSyCyFhvdHUpx1C0V7B746SB7807SAIuKdu4';
+            const apiKey = process.env.SHEETS_API_KEY;
             const range = 'Sheet1!A1:F113';
 
             const response = await axios.get(
@@ -52,7 +52,7 @@ const GoogleSheetStyled = () => {
 
     return (
         <div>
-            <h2 style={{textAlign: "left", fontSize: "12px", marginLeft: "15px", marginTop: "10px"}}>
+            <h2 style={{ textAlign: "left", fontSize: "12px", marginLeft: "15px", marginTop: "10px" }}>
                 Values are based on a $200 auction draft budget so multiple trade values should add up to the value of a single player.
             </h2>
             <div className="trade-value-theme">
