@@ -25,6 +25,10 @@ function TotalContainer() {
     window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
   };
 
+  const handleTradeClick = () => {
+    window.location.href = '/tradeValues';
+  };
+
   const scrapeEspnStats = async (week) => {
     //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
     const getUrl =
@@ -614,19 +618,19 @@ function TotalContainer() {
           if (playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
             || playerToAnyTD.has(d[0]) && playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
             || playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])) {
-              
-              if (playerToRushRecYdsDataPoints.has(d[0])){
-                if(playerToRushYds.has(d[0])){
-                  
-                  finalList[di][1] = finalList[di][1] - playerToRushYds.get(d[0])
-                }
-                if(playerToRecYds.has(d[0])){
-                  finalList[di][1] = finalList[di][1] - playerToRecYds.get(d[0])
-                }
-                finalList[di][1] = finalList[di][1] + playerToRushRecYds.get(d[0])
-                replacedRushRecFlag = true;
-                return true;
+
+            if (playerToRushRecYdsDataPoints.has(d[0])) {
+              if (playerToRushYds.has(d[0])) {
+
+                finalList[di][1] = finalList[di][1] - playerToRushYds.get(d[0])
               }
+              if (playerToRecYds.has(d[0])) {
+                finalList[di][1] = finalList[di][1] - playerToRecYds.get(d[0])
+              }
+              finalList[di][1] = finalList[di][1] + playerToRushRecYds.get(d[0])
+              replacedRushRecFlag = true;
+              return true;
+            }
           }
           let rbMessage = "";
           if (!playerToAnyTD.has(d[0])) {
@@ -908,13 +912,16 @@ function TotalContainer() {
         <div
           style={{
             display: "flex",
-            marginLeft: "25px",
+            marginLeft: "5px",
             marginBottom: "15px",
             marginTop: "15px",
             fontSize: "12px"
           }}
         >
-          <div style={{ marginTop: "3px" }}>
+          <button class="trade-button" onClick={handleTradeClick}>
+            10 man .5 PPR Trade Value Chart
+          </button>
+          <div style={{ marginTop: "3px", marginLeft: "15px" }}>
 
             Tips:
 

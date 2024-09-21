@@ -11,7 +11,7 @@ export default function App() {
           <Route path="/" element={
             <TotalContainer />}
           />
-          <Route path="/tradeValue" element={<GoogleSheetEmbed />} />
+          <Route path="/tradeValues" element={<GoogleSheetEmbed />} />
         </Routes>
       </Router>
     </div>

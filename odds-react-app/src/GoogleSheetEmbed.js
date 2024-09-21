@@ -52,8 +52,11 @@ const GoogleSheetStyled = () => {
 
     return (
         <div>
+            <h2 style={{textAlign: "left", fontSize: "12px", marginLeft: "15px", marginTop: "10px"}}>
+                Values are based on a $200 auction draft budget so multiple trade values should add up to the value of a single player.
+            </h2>
             <div className="trade-value-theme">
-            <ThemeToggleDropdown />
+                <ThemeToggleDropdown />
             </div>
             <table>
                 <tbody>

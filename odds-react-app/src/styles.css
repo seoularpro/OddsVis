@@ -149,6 +149,21 @@
   margin-bottom: 12px;
 }
 
+.trade-button{
+  border-radius: 5px;
+  background-color: limegreen;
+  border-color: black;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 12px;
+  width: 200px;
+}
+
 @media screen and (min-width: 480px) {
   .invis-mobile-header {
     display: table-cell;
