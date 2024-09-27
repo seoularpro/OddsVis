@@ -472,11 +472,11 @@ function TotalContainer() {
       );
     }
 
-    playerToRecYdsDataPoints.set("De'Von Achane (MIA)", [2.85]);
-    playerToRecsDataPoints.set("James Cook (BUF)", [1.25]);
-    playerToRecsDataPoints.set("Travis Etienne (JAX)", [1.675]);
-    playerToRecsDataPoints.set("Jerome Ford (CLE)", [1.28]);
-    playerToRecsDataPoints.set("Zach Charbonnet (SEA)", [1.33]);
+    // playerToRecYdsDataPoints.set("De'Von Achane (MIA)", [2.85]);
+    // playerToRecsDataPoints.set("James Cook (BUF)", [1.25]);
+    // playerToRecsDataPoints.set("Travis Etienne (JAX)", [1.675]);
+    // playerToRecsDataPoints.set("Jerome Ford (CLE)", [1.28]);
+    // playerToRecsDataPoints.set("Zach Charbonnet (SEA)", [1.33]);
 
     let playerToAnyTD = getLastElementMap(playerToAnyTDDataPoints);
     let playerToRushYds = getLastElementMap(playerToRushYdsDataPoints);
