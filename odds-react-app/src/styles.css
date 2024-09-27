@@ -3,6 +3,31 @@
   text-align: center;
 }
 
+.hero-message {
+  margin: 0;
+  /* display: inline-block; */
+  /* color: #a363e8; */
+  font-size: 14px;
+  font-family: var(--special-font-bold);
+  text-transform: uppercase;
+  /* letter-spacing: .2em; */
+  background-color: rgba(255, 255, 255, .05);
+  position: relative;
+  line-height: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+  /* width: 350px; */
+  display: flex;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-weight: 600;
+  /* text-align: center; */
+
+}
+
 .new-feature-message {
   color: limegreen;
   text-align: left;
@@ -145,11 +170,11 @@
 
 .trade-value-theme {
   margin-left: 4px;
-  display:flex;
+  display: flex;
   margin-bottom: 12px;
 }
 
-.trade-button{
+.trade-button {
   border-radius: 5px;
   background-color: limegreen;
   border-color: black;

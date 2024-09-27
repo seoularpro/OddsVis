@@ -30,6 +30,8 @@ export const slotcodes = {
 
   // Add more mappings as needed based on your specific data structure
 };
+
+
 //skipped amon-ra cuz he was commented out
 export const PlayerPosMap = new Map([
   ["Daniel Jones (NYG)", Positions.QB],
@@ -455,6 +457,24 @@ export const PlayerPosMap = new Map([
 
   // need to add chiefs and dolphins players / week 10 byes
 ]);
+
+function removeAfterLastSpaceFromMapKeys(originalMap) {
+  const newMap = new Map();
+
+  for (let [key, value] of originalMap.entries()) {
+      // Find the index of the last space in the key
+      const lastSpaceIndex = key.lastIndexOf(' ');
+
+      // If a space was found, remove everything from the last space onward
+      const newKey = lastSpaceIndex !== -1 ? key.slice(0, lastSpaceIndex) : key;
+
+      newMap.set(newKey, value);
+  }
+
+  return newMap;
+}
+
+export const PlayerPosMapNoPos = removeAfterLastSpaceFromMapKeys(PlayerPosMap);
 
 export const PlayerPosMap23 = new Map([
   ["Kirk Cousins", Positions.QB],
