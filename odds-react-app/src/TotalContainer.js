@@ -21,7 +21,7 @@ function TotalContainer() {
   const [selectedYear, setSelectedYear] = useState(2024);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
-  const [apiSource, setApiSource] = useState(0);
+  const [apiSource, setApiSource] = useState(1);
 
   const handleClick = () => {
     window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
@@ -1598,7 +1598,7 @@ function TotalContainer() {
             }}
             style={{ display: "inline-flex", marginLeft: "10px", marginTop: "10px" }}
           >
-            <option value="0">Consensus</option>
+            <option  disabled={selectedWeek == 5} value="0">Consensus</option>
             <option value="1">Bovada</option>
           </select>
         </div>
