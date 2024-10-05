@@ -1648,7 +1648,7 @@ function TotalContainer() {
             textAlign: "left"
           }}
         >
-          If your player is not present in the table below, please check the Missing Prop table at the bottom of the page.  You can generally assume players in the main table are playing and not injured.
+          If your player is not present in the table below, please toggle the Bovada/consensus odds dropdown, or check the Missing Prop table at the bottom of the page.  You can generally assume players in the main table are playing and not injured.
         </div>
         <SangTable
           evList={playerList}
