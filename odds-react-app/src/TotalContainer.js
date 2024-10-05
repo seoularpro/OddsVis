@@ -1598,7 +1598,7 @@ function TotalContainer() {
             }}
             style={{ display: "inline-flex", marginLeft: "10px", marginTop: "10px" }}
           >
-            <option   value="0">Consensus</option>
+            <option value="0">Consensus</option>
             <option value="1">Bovada</option>
           </select>
         </div>
@@ -1624,7 +1624,7 @@ function TotalContainer() {
           </button>
         </div>
         <div
-        className="hero-message"
+          className="hero-message"
           style={{
             display: "flex",
             marginLeft: "5px",
@@ -1635,7 +1635,7 @@ function TotalContainer() {
             textAlign: "left"
           }}
         >
-          Update: New dropdown options for consensus (multiple sportsbooks) and Bovada projections.
+
         </div>
         <div
           style={{
@@ -1675,6 +1675,9 @@ function TotalContainer() {
       />
 
       <div class="patreonSection">
+        <div style={{fontWeight: 600, marginTop: "1rem"}}>
+          Support future functionality by subscribing to my Patreon link below.
+        </div>
         <button
           class="button"
           onClick={(e) => {
