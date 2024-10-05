@@ -34,6 +34,7 @@ export const slotcodes = {
 
 //skipped amon-ra cuz he was commented out
 export const PlayerPosMap = new Map([
+  ["Tyler Huntley (MIA)", Positions.QB],
   ["Trey Sermon (IND)", Positions.RB],
   ["Daniel Jones (NYG)", Positions.QB],
   ["Carson Steele (KC)", Positions.RB],
