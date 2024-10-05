@@ -34,6 +34,7 @@ export const slotcodes = {
 
 //skipped amon-ra cuz he was commented out
 export const PlayerPosMap = new Map([
+  ["Trey Sermon (IND)", Positions.RB],
   ["Daniel Jones (NYG)", Positions.QB],
   ["Carson Steele (KC)", Positions.RB],
   ["Cam Akers (HOU)", Positions.RB],
@@ -163,7 +164,7 @@ export const PlayerPosMap = new Map([
   ["Tyler Conklin (NYJ)", Positions.TE],
   ["Dalton Schultz (DAL)", Positions.TE],
   ["Zack Moss (CIN)", Positions.RB],
-  ["Kareem Hunt (CLE)", Positions.RB],
+  ["Kareem Hunt (KC)", Positions.RB],
   ["Luke Musgrave (GB)", Positions.TE],
   ["Chig Okonkwo (TEN)", Positions.TE],
   ["Darius Slayton (NYG)", Positions.WR],
