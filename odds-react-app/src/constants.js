@@ -50,7 +50,7 @@ export const PlayerPosMap = new Map([
   ["Darren Waller (LV)", Positions.TE],
   ["Nick Mullens (MIN)", Positions.QB],
   ["Joshua Palmer (LAC)", Positions.WR],
-  ["Joe Flacco (NYJ)", Positions.QB],
+  ["Joe Flacco (IND)", Positions.QB],
   ["Jake Browning (CIN)", Positions.QB],
   ["Desmond Ridder (ATL)", Positions.QB],
   ["Isaiah Likely (BAL)", Positions.TE],
