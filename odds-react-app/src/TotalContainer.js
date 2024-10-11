@@ -1598,7 +1598,7 @@ function TotalContainer() {
             }}
             style={{ display: "inline-flex", marginLeft: "10px", marginTop: "10px" }}
           >
-            <option disabled={selectedWeek == 6} value="0">Consensus</option>
+            <option value="0">Consensus</option>
             <option value="1">Bovada</option>
           </select>
         </div>
