@@ -5,7 +5,7 @@ export default function RedditPosts() {
 
         <div class="card shadow-lg p-6 bg-base-100">
             <div class="card-body space-y-6">
-                <h2 class="card-title text-2xl font-bold">Player Projections Powered by Vegas Player Props - Week 7</h2>
+                <h2 class="text-2xl font-bold ">Player Projections Powered by Vegas Player Props - Week 7</h2>
                 <h2 class=" text-sm ">October 19, 2024</h2>
                 <p class="text-lg">
                     New horizons. Unpredictable catalysts. The butterfly effect of injuries. A flurry of trades this week propelling Amari and Davante into a possible “save your miserable season” state.
