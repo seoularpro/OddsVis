@@ -7,6 +7,10 @@ export default function RedditPosts() {
             <div class="card-body space-y-6">
                 <h2 class="text-2xl font-bold ">Player Projections Powered by Vegas Player Props - Week 7</h2>
                 <h2 class=" text-sm ">October 19, 2024</h2>
+                <a class="underline" href="https://www.reddit.com/r/fantasyfootball/comments/1g7l756/player_projections_powered_by_vegas_player_props/"
+                >
+                    Original Reddit Post Link
+                </a>
                 <p class="text-lg">
                     New horizons. Unpredictable catalysts. The butterfly effect of injuries. A flurry of trades this week propelling Amari and Davante into a possible “save your miserable season” state.
                 </p>
