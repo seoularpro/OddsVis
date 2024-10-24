@@ -21,7 +21,7 @@ function TotalContainer() {
   const [selectedYear, setSelectedYear] = useState(2024);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
-  const [apiSource, setApiSource] = useState(1);
+  const [apiSource, setApiSource] = useState(0);
 
   const handleClick = () => {
     window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
