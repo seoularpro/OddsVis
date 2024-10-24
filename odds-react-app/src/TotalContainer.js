@@ -1423,7 +1423,7 @@ function TotalContainer() {
   return (
     <div>
       <div>
-        <div
+        {/* <div
           style={{
             display: "flex",
             marginLeft: "5px",
@@ -1432,16 +1432,16 @@ function TotalContainer() {
           }}
         >
           Fantasy Football Projections Powered by Vegas Player Props
-        </div>
+        </div> */}
 
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", flexWrap: 'wrap' }}>
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered "
             defaultValue={selectedPosition}
             onChange={(e) => {
               setSelectedPosition(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "10px" }}
+            style={{ display: "flex", marginLeft: "5px" }}
           >
             <option value="0">QB</option>
             <option value="1">RB</option>
@@ -1451,19 +1451,19 @@ function TotalContainer() {
             <option value="99">SUPERFLEX</option>
           </select>
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered "
             defaultValue={selectedMode}
             onChange={(e) => {
               setSelectedMode(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "20px" }}
+            style={{ display: "flex", marginLeft: "5px" }}
           >
             <option value="0">Half PPR</option>
             <option value="1">Standard</option>
             <option value="2">Full PPR</option>
           </select>
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered"
             defaultValue={selectedYear}
             onChange={(e) => {
               if (parseInt(e.target.value) == 2023) {
@@ -1482,19 +1482,22 @@ function TotalContainer() {
               }
               setSelectedYear(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "20px" }}
+            style={{ display: "flex", marginLeft: "5px" }}
           >
             <option value="2024">2024</option>
             <option value="2023">2023</option>
           </select>
+          
+        </div>
+        <div style={{ display: "flex", flexWrap: 'wrap'  }}>
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered"
             id="weekSelect"
             defaultValue={selectedWeek}
             onChange={(e) => {
               setSelectedWeek(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "20px" }}
+            style={{ display: "flex", marginLeft: "5px", marginTop:"10px" }}
           >
             <option disabled={selectedYear == 2024} value="18">
               Week 18
@@ -1575,28 +1578,26 @@ function TotalContainer() {
               Week 1
             </option>
           </select>
-        </div>
-        <div style={{ display: "flex" }}>
           <ThemeToggleDropdown />
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered"
             defaultValue={selectedTheme}
             onChange={(e) => {
               setSelectedTheme(parseInt(e.target.value));
             }}
-            style={{ display: "inline-flex", marginLeft: "10px", marginTop: "10px" }}
+            style={{ display: "inline-flex", marginLeft: "5px", marginTop: "10px" }}
           >
             <option value="0">Color</option>
             <option value="2">Color Outline</option>
             <option value="1">Silver Outline</option>
           </select>
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered"
             defaultValue={apiSource}
             onChange={(e) => {
               setApiSource(parseInt(e.target.value));
             }}
-            style={{ display: "inline-flex", marginLeft: "10px", marginTop: "10px" }}
+            style={{ display: "inline-flex", marginLeft: "5px", marginTop: "10px" }}
           >
             <option value="0">Consensus</option>
             <option value="1">Bovada</option>
