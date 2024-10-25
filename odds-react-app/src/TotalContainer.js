@@ -164,7 +164,6 @@ function TotalContainer() {
         })
         .then((data) => {
 
-          console.log(data);
 
 
           // console.log(data);
@@ -179,9 +178,7 @@ function TotalContainer() {
           let intMarket = allMarkets.filter((market) => market.market_id == 101)
 
           // console.log(recYdsMarket)
-          console.log(recYdsMarket.map((elem) => {
-            return elem.participant.name;
-          }));
+
           if (typeof allTDMarket !== "undefined") {
             let amonRaFlag = false;
             for (let j = 0; j < allTDMarket.length; j++) {
@@ -314,10 +311,7 @@ function TotalContainer() {
               if (playerToRecYdsDataPoints.has(name)) {
                 newRecYdsList = playerToRecYdsDataPoints.get(name);
               }
-              if (name == "Kyren Williams") {
-                console.log(playerOdds);
-
-              }
+  
               newRecYdsList.push(
                 playerOdds.over.consensus_line / 10
               );
