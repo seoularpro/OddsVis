@@ -14,8 +14,8 @@ export default function App() {
           <Route path="/" element={
             <TotalContainer />}
           />
-          <Route path="/tradeValues" element={<GoogleSheetEmbed />} />
-          <Route path="/redditPosts/:week" element={<RedditPosts />}>
+          <Route title="Trade Value Chart" path="/tradeValues" element={<GoogleSheetEmbed />} />
+          <Route  path="/redditPosts/:week" element={<RedditPosts />}>
           </Route>
 
         </Routes>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import ThemeToggleDropdown from './ThemeToggleDropdown';
 
 const GoogleSheetStyled = () => {
+    document.title = "Trade Values"
     const [data, setData] = useState([]);
 
     useEffect(() => {
