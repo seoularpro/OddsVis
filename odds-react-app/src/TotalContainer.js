@@ -454,7 +454,7 @@ function TotalContainer() {
       );
     }
 
-    console.log(playerToAnyTDDataPoints)
+    // console.log(playerToAnyTDDataPoints)
     // console.log(playerToRushYdsDataPoints)
     // console.log(playerToRecYdsDataPoints)
     // console.log(playerToRecsDataPoints)
