@@ -1,61 +1,65 @@
+import Week1123 from "./PostArchive/Week1123";
+import Week1223 from "./PostArchive/Week1223";
+import Week124 from "./PostArchive/Week124";
+import Week1323 from "./PostArchive/Week1323";
+import Week1423 from "./PostArchive/Week1423";
+import Week1523 from "./PostArchive/Week1523";
+import Week1623 from "./PostArchive/Week1623";
+import Week1723 from "./PostArchive/Week1723";
+import Week224 from "./PostArchive/Week224";
+import Week324 from "./PostArchive/Week324";
+import Week424 from "./PostArchive/Week424";
+import Week524 from "./PostArchive/Week524";
+import Week624 from "./PostArchive/Week624";
+import Week724 from "./PostArchive/Week724";
+import React, { useState, useEffect } from "react";
+import ThemeToggleDropdown from "./ThemeToggleDropdown";
+import { BrowserRouter as Router, Route, Routes, useParams,useNavigate  } from 'react-router-dom';
+
 
 export default function RedditPosts() {
+    const [postIndex, setPostIndex] = useState(0);
+    const params = useParams();
+    const navigate = useNavigate();
+    const postIndices = [
+        '724', '624', '524', '424', '324', '224', '124',  '1723', '1623', '1523', '1423', '1323', '1223', '1123'
+    ]
+    const WeeklyPostComponents = {
+        Week724, Week624, Week524, Week424, Week324, Week224, Week124,  Week1723, Week1623, Week1523,
+        Week1423, Week1323, Week1223, Week1123
+
+    }
+    const movePastWeek = () => {
+        
+        const { week } = params; 
+        let tempSt = week.slice(4);
+        let tempIndex = postIndices.findIndex((elem) => elem == tempSt);
+        console.log(tempIndex);
+
+        navigate(`/redditPosts/Week${postIndices[tempIndex+1]}`);
+    }
+    const moveNextWeek = () => {
+        const { week } = params; 
+        let tempSt = week.slice(4);
+        let tempIndex = postIndices.findIndex((elem) => elem == tempSt);
+
+        navigate(`/redditPosts/Week${postIndices[tempIndex-1]}`);
+    }
+
+    const DynamicComponent = () => {
+        const { week } = useParams();
+        console.log(week);
+        const Component = WeeklyPostComponents[`${week}`]; // dynamically choose the component
+
+        return Component ? <Component movePastWeek={movePastWeek} moveNextWeek={moveNextWeek} /> : <div>Not found</div>;
+    };
+
     return (
-
-
-        <div class="card shadow-lg p-6 bg-base-100">
-            <div class="card-body space-y-6">
-                <h2 class="text-2xl font-bold ">Player Projections Powered by Vegas Player Props - Week 7</h2>
-                <h2 class=" text-sm ">October 19, 2024</h2>
-                <a class="underline" href="https://www.reddit.com/r/fantasyfootball/comments/1g7l756/player_projections_powered_by_vegas_player_props/"
-                >
-                    Original Reddit Post Link
-                </a>
-                <p class="text-lg">
-                    New horizons. Unpredictable catalysts. The butterfly effect of injuries. A flurry of trades this week propelling Amari and Davante into a possible “save your miserable season” state.
-                </p>
-                <p class="text-lg">
-                    The Jets barely lose a game and immediately make a move. The Bills immediately respond with a gamebreaking move of their own. A whirlwind of events has reshuffled the deck of fantasy outcomes, with the same infinite potential future game states. Will we see another 33-0 comeback by our lord and savior Kirk Cousins? <span class="italic">"You like that?"</span> Our thoughts are a small subset within a tsunami of human opinion, as we upvote the most credible / whatever sounds good. Propaganda can't persist without eloquence.
-                </p>
-                <p class="text-lg">
-                    Those of us in fantasy purgatory at 2-4 and 3-3 are gripping the handrails, desperately hanging on as the ship sinks from roster holes. Complete fantasy squads are beginning to separate from the pack, yet we're not deep enough into the season for it to be much more than a one game difference. The waiver wire is barren. The league is reluctant to trade. All these restricting factors preventing you from reaching fantasy zen.
-                </p>
-                <p class="text-lg font-semibold">
-                    Make a move for a Vegas projected stud through VegasProjections.com, your Optimus Prime of fantasy football projections. You can't get much better than this.
-                </p>
-                <p class="text-lg">
-                    We have color coded ranking tiers, where hot colors indicate higher median fantasy projection tiers within the dropdown constraints. We have a "Luxury" DaisyUI theme dropdown option, lining up with classiness and the upcoming holiday in Halloween. You have to check it out. All figures are based on Vegas market odds, the world capital of money schemes through statistical edges.
-                </p>
-
-                <h3 class="text-xl font-bold mt-4">Top rated skill players this week include:</h3>
-                <ul class="list-disc list-inside text-lg">
-                    <li>Justin Jefferson 15.99</li>
-                    <li>Alvin Kamara 15.50</li>
-                    <li>Kenneth Walker 14.40</li>
-                    <li>Saquon Barkley 14.16</li>
-                    <li>Bijan Robinson 14.11</li>
-                    <li>Chuba Hubbard 14.06</li>
-                    <li>Chris Godwin 13.78</li>
-                    <li>Ja’Marr Chase 13.70</li>
-                    <li>Tony Pollard 13.45</li>
-                    <li>Derrick Henry 13.44</li>
-                    <li>Amon-Ra St. Brown 13.28</li>
-                    <li>Drake London 13.26</li>
-                    <li>Malik Nabers 13.21</li>
-                    <li>Breece Hall 13.20</li>
-                </ul>
-
-                <p class="text-lg">
-                    This week we see Jayden Daniels emerging as the king of fantasy, as the greatest projection amongst all players. At least he didn't go 32nd like Lamar. Kenneth Skywalker is fulfilling his prophecies, and maybe Pollard opened up all of Dallas's opportunities last year.
-                </p>
-                <p class="text-lg">
-                    Justin Jefferson is apparently a tier above everyone else, highlighting the level differences even at the pinnacle of premier sports leagues. Godwin is anointed as a literal god, legitimately merging with the sun Amon-Ra. Malik may be the second coming of Christ. Is Tank about to live up to his namesake? As BTJ and Jaxon Smith-Njigba are steadily climbing up to fantasy relevance. Kelce is the man again, and Engram and LaPorta have finally emerged from the PokéCenter.
-                </p>
-
-                <p class="text-lg font-semibold">GL all this week. Don't forget to switch between the Bovada and Consensus dropdown options to see as many data points as possible.</p>
+        <div>
+            <div className="trade-value-theme">
+                <ThemeToggleDropdown />
             </div>
+            <DynamicComponent  />
         </div>
-
-
     );
 }
