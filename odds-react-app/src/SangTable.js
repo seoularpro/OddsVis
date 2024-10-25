@@ -377,7 +377,7 @@ export default function SangTable(props) {
         </div>
         <div>
           <button class="bovada-button" onClick={handleBovadaClick}>
-            Bovada
+            Sportsbook
           </button>
         </div>
       </div>
