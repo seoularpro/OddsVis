@@ -10,6 +10,8 @@ export default function Week1723(props) {
                 <img class="object-cover h-72 w-72 m-auto" src="https://a57.foxsports.com/static-media.fox.com/fmc/prod/sports/c1c20488-a872-4325-afae-e5fa7a9d77e9/1290/724/itrcpe427xxowd8b.jpg?ve=1&tl=1" />
 
                 <h2 class="text-2xl font-bold ">Player Projections Powered by Vegas Player Props - Week 17</h2>
+                <h2 class=" text-sm pr-8 pl-8">By Sang Han</h2>
+
                 <div class="flex justify-center items-center space-x-4">
                     <button class="btn btn-primary" id="prevBtn" onClick={props.movePastWeek}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">

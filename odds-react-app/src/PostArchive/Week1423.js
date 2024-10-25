@@ -10,6 +10,7 @@ export default function Week1423(props) {
                 <img class="object-cover h-72 w-72 m-auto" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR91YXmT63Yy66uSBBIli4eIHR6dotb9n_5PdZ603LLAYaHUuKf" />
 
                 <h2 class="text-2xl font-bold ">Player Projections Powered by Vegas Player Props - Week 14</h2>
+                <h2 class=" text-sm pr-8 pl-8">By Sang Han</h2>
                 <div class="flex justify-center items-center space-x-4">
                     <button class="btn btn-primary" id="prevBtn" onClick={props.movePastWeek}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
