@@ -34,7 +34,6 @@ export default function RedditPosts() {
         const { week } = params; 
         let tempSt = week.slice(4);
         let tempIndex = postIndices.findIndex((elem) => elem == tempSt);
-        console.log(tempIndex);
 
         navigate(`/redditPosts/Week${postIndices[tempIndex+1]}`);
     }
@@ -48,7 +47,6 @@ export default function RedditPosts() {
 
     const DynamicComponent = () => {
         const { week } = useParams();
-        console.log(week);
         const Component = WeeklyPostComponents[`${week}`]; // dynamically choose the component
 
         return Component ? <Component movePastWeek={movePastWeek} moveNextWeek={moveNextWeek} /> : <div>Not found</div>;
