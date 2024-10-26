@@ -15,6 +15,7 @@ import Week724 from "./PostArchive/Week724";
 import React, { useState, useEffect } from "react";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 import { BrowserRouter as Router, Route, Routes, useParams, useNavigate } from 'react-router-dom';
+import Week824 from "./PostArchive/Week824";
 
 
 export default function RedditPosts(props) {
@@ -23,10 +24,10 @@ export default function RedditPosts(props) {
     const params = useParams();
     const navigate = useNavigate();
     const postIndices = [
-        '724', '624', '524', '424', '324', '224', '124', '1723', '1623', '1523', '1423', '1323', '1223', '1123'
+        '824', '724', '624', '524', '424', '324', '224', '124', '1723', '1623', '1523', '1423', '1323', '1223', '1123'
     ]
     const WeeklyPostComponents = {
-        Week724, Week624, Week524, Week424, Week324, Week224, Week124, Week1723, Week1623, Week1523,
+        Week824, Week724, Week624, Week524, Week424, Week324, Week224, Week124, Week1723, Week1623, Week1523,
         Week1423, Week1323, Week1223, Week1123
 
     }

@@ -18,7 +18,7 @@ export default function Week724(props) {
                         </svg>
                     </button>
                     <h2 class=" text-sm pr-8 pl-8">October 19, 2024</h2>
-                    <button class="btn  btn-disabled" id="nextBtn" onClick={props.moveNextWeek}>
+                    <button class="btn  btn-primary" id="nextBtn" onClick={props.moveNextWeek}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
