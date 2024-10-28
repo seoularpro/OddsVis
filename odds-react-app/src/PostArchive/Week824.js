@@ -24,15 +24,12 @@ export default function Week824(props) {
                         </svg>
                     </button>
                 </div>
-                <a class="underline" href="https://www.reddit.com/r/fantasyfootball/comments/1g7l756/player_projections_powered_by_vegas_player_props/"
+                <a class="underline" href="https://www.reddit.com/r/fantasyfootball/comments/1gcasgp/player_projections_powered_by_vegas_player_props/"
                 >
                     Original Reddit Post Link
                 </a>
                 <p class="text-lg">
                     Sincerity and subterfuge.   Ketchup and barbeque.  As each league is a conglomeration of independent minds, there exists a wide range of player valuation sentiment.  Should you try to scam the shit out of your homies?  Or rather stay transparent to be conducive to future trading.  Mustard is the best condiment on hotdogs.                  </p>
-                <p class="text-lg">
-                    The Jets barely lose a game and immediately make a move. The Bills immediately respond with a gamebreaking move of their own. A whirlwind of events has reshuffled the deck of fantasy outcomes, with the same infinite potential future game states. Will we see another 33-0 comeback by our lord and savior Kirk Cousins? <span class="italic">"You like that?"</span> Our thoughts are a small subset within a tsunami of human opinion, as we upvote the most credible / whatever sounds good. Propaganda can't persist without eloquence.
-                </p>
                 <p class="text-lg">
                     From one perspective, the Los Angeles Rams pretended to have Cooper Kupp on the trading block, to disguise Puka's "magical" recovery.  Is it that far of a stretch to believe that Puka was always going to play?  Sean McVay deals in absolutes.  Supposedly Alvin Kamara is a battered, broken down human being with countless bone integrity issues.  Yet how the hell do you hold on to a football with a broken hand.  Does anyone actually believe that his hand is broken?  With NFL defensive ends and linebackers throwing haymakers toward the vicinity of the football.  With ball security as the highest priority of the running back position.  You're telling me that Kamara is stiff-arming these Space Jam Monstars with a damn broken hand?  Get out of here.  If you're not cheating, you're not trying.  Misdirection is the name of the game.  The Kansas City Shuffle.                </p>
                 <p class="text-lg font-semibold">
