@@ -13,7 +13,7 @@ import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
 function TotalContainer() {
-  const [selectedPosition, setSelectedPosition] = useState(0);
+  const [selectedPosition, setSelectedPosition] = useState(1);
   const [playerList, setPlayerList] = useState([]);
   const [playerMap, setPlayerMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
@@ -1396,11 +1396,11 @@ function TotalContainer() {
   }, [selectedWeek]);
   useEffect(() => {
     if (apiSource == 0) {
-      scrapeBPData(selectedPosition, selectedMode, selectedWeek).catch(
+      scrapeBPData(, selectedMode, selectedWeek).catch(
         console.error
       );
     } else {
-      scrapeData(selectedPosition, selectedMode, selectedWeek).catch(
+      scrapeData(, selectedMode, selectedWeek).catch(
         console.error
       );
     }
