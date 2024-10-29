@@ -1396,11 +1396,11 @@ function TotalContainer() {
   }, [selectedWeek]);
   useEffect(() => {
     if (apiSource == 0) {
-      scrapeBPData(, selectedMode, selectedWeek).catch(
+      scrapeBPData(selectedPosition, selectedMode, selectedWeek).catch(
         console.error
       );
     } else {
-      scrapeData(, selectedMode, selectedWeek).catch(
+      scrapeData(selectedPosition, selectedMode, selectedWeek).catch(
         console.error
       );
     }
