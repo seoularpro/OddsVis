@@ -40,6 +40,11 @@ export default function SangTable(props) {
     window.open("https://record.revenuenetwork.com/_Z5boJsEUQbn97H-d5Ks7MGNd7ZgqdRLk/1/", "_blank", "noopener,noreferrer");
   }
 
+  const handleLicenseFrameClick = () => {
+    window.open("https://amzn.to/3NMJPV2");
+    
+  }
+
   const handlePlayerClick = (player) => {
     let newList = clickedList.slice();
     if (!clickedList.find((c) => c.playerName == player.playerName)) {
@@ -369,6 +374,10 @@ export default function SangTable(props) {
         Thurs: 12pm, 6pm, 12am<br></br>
         Fri: 12pm, 12am<br></br>
         Sat: 12pm, 12am<br></br>
+      </div>
+
+      <div style={{ display: "flex"}}>
+        <img style={{cursor: "pointer" }} onClick={handleLicenseFrameClick} class="object-cover h-[188px] w-[373px] " src="https://i.imgur.com/qZjDXP3.png" />
       </div>
 
       <div style={{ display: "flex" }}>
