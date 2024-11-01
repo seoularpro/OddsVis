@@ -88,7 +88,7 @@ export const PlayerPosMap = new Map([
   ["Breece Hall (NYJ)", Positions.RB],
   ["Saquon Barkley (PHI)", Positions.RB],
   ["Rachaad White (TB)", Positions.RB],
-  ["Aaron Jones (MIN)", Positions.RB],
+  ["Aaron Jones", Positions.RB],
   ["Josh Jacobs (GB)", Positions.RB],
   ["Garrett Wilson (NYJ)", Positions.WR],
   ["Michael Pittman (IND)", Positions.WR],
