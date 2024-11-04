@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTheme } from './ThemeProvider'; // Import the custom hook
 
 const ThemeToggleDropdown = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'luxury');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'autumn');
 
     const themes = ["autumn", "dark", "cupcake", "night", "luxury", "sunset", "dim", "halloween", "light", "synthwave", "cyberpunk", "aqua", "forest"];
 

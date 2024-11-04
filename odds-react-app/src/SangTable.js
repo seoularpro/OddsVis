@@ -42,7 +42,7 @@ export default function SangTable(props) {
 
   const handleLicenseFrameClick = () => {
     window.open("https://amzn.to/3NMJPV2");
-    
+
   }
 
   const handlePlayerClick = (player) => {
@@ -122,7 +122,8 @@ export default function SangTable(props) {
           >
             Δ
           </th>
-          {getQueryStringValue("isPro") == "thanksdudes" ? (
+          {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
+          {true ? (
             <>
               <th
                 style={{
@@ -131,6 +132,13 @@ export default function SangTable(props) {
               >
                 ESPN actual
               </th>
+              {/* <th
+                style={{
+                  width: "46px",
+                }}
+              >
+                Accuracy
+              </th> */}
               <th
                 style={{
                   width: "46px",
@@ -219,8 +227,8 @@ export default function SangTable(props) {
                 <div
                   style={{
                     marginLeft: window.mobileCheck()
-                      ? 0.5 * ((1 / x.playerEV.toFixed(2)) * 2000 - 80) + "px"
-                      : (1 / x.playerEV.toFixed(2)) * 2000 - 80 + "px",
+                      ? " 5px"
+                      : 1 * ((1 / x.playerEV.toFixed(2)) * 2000 - 80) + "px",
                   }}
                 >
                   {x.playerName}
@@ -294,7 +302,8 @@ export default function SangTable(props) {
               )}
             </td>
             {/* {true ?  */}
-            {getQueryStringValue("isPro") == "thanksdudes" ? (
+            {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
+            {true ? (
               <>
                 <td
                   style={
@@ -326,6 +335,36 @@ export default function SangTable(props) {
                 >
                   {<div>{x.espnValues?.act}</div>}
                 </td>
+                {/* <td
+                  style={
+                    props.selectedTheme == 0
+                      ? {
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 75.3 && x.percentile < 82.5
+                            ? "lightgray"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid silver", //+ x.calculatedColor,
+                        width: "100px",
+                      }
+                        : {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid " + x.calculatedColor,
+                          width: "100px",
+                        }
+
+                  }
+                >
+                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
+                </td> */}
                 <td
                   style={
                     props.selectedTheme == 0

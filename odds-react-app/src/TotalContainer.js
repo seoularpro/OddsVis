@@ -34,9 +34,9 @@ function TotalContainer() {
   const scrapeEspnStats = async (week) => {
     //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
     const getUrl =
-      "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/latestHppr";
+      "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/testHppr";
     // const getUrl = "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mBoxscore&view=mMatchupScore&view=mRoster&view=mSettings&view=mStatus&view=mTeam&view=modular&view=mNav"
-    
+
     // we may need to return to this but currently just use the latest one as it has past history as well
     //  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
 
@@ -50,7 +50,7 @@ function TotalContainer() {
         for (const tm of d.teams) {
           const tmid = tm.id;
           for (const p of tm.roster.entries) {
-            const name = p.playerPoolEntry.player.fullName;
+            let name = p.playerPoolEntry.player.fullName;
             const slot = p.lineupSlotId;
             const pos = slotcodes[slot];
 
@@ -76,7 +76,11 @@ function TotalContainer() {
                 proj = stat.appliedTotal;
               }
             }
-
+            
+            name = name.replace(/\./g, "")
+              .replace(/ jr/i, "")
+              .replace(/ sr/i, "")
+              .replace(/ Jr/i, "")
             data.push([week, tmid, name, slot, pos, inj, proj, act]);
             playerMap.set(name, {
               proj: proj?.toFixed(2),
@@ -313,7 +317,7 @@ function TotalContainer() {
               if (playerToRecYdsDataPoints.has(name)) {
                 newRecYdsList = playerToRecYdsDataPoints.get(name);
               }
-  
+
               newRecYdsList.push(
                 playerOdds.over.consensus_line / 10
               );
@@ -1483,9 +1487,9 @@ function TotalContainer() {
             <option value="2024">2024</option>
             <option value="2023">2023</option>
           </select>
-          
+
         </div>
-        <div style={{ display: "flex", flexWrap: 'wrap'  }}>
+        <div style={{ display: "flex", flexWrap: 'wrap' }}>
           <select
             className="select select-bordered"
             id="weekSelect"
@@ -1493,7 +1497,7 @@ function TotalContainer() {
             onChange={(e) => {
               setSelectedWeek(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "5px", marginTop:"10px" }}
+            style={{ display: "flex", marginLeft: "5px", marginTop: "10px" }}
           >
             <option disabled={selectedYear == 2024} value="18">
               Week 18
@@ -1672,7 +1676,7 @@ function TotalContainer() {
       />
 
       <div class="patreonSection">
-        <div style={{fontWeight: 600, marginTop: "1rem"}}>
+        <div style={{ fontWeight: 600, marginTop: "1rem" }}>
           Support future functionality by subscribing to my Patreon link below.
         </div>
         <button
