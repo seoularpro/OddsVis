@@ -35,6 +35,8 @@ function TotalContainer() {
     //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
     const getUrl =
       "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/latestHppr";
+    // const getUrl = "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mBoxscore&view=mMatchupScore&view=mRoster&view=mSettings&view=mStatus&view=mTeam&view=modular&view=mNav"
+    
     // we may need to return to this but currently just use the latest one as it has past history as well
     //  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
 
