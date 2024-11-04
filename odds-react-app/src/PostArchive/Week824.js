@@ -17,8 +17,8 @@ export default function Week824(props) {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
-                    <h2 class=" text-sm pr-8 pl-8">October 19, 2024</h2>
-                    <button class="btn  btn-disabled" id="nextBtn" onClick={props.moveNextWeek}>
+                    <h2 class=" text-sm pr-8 pl-8">October 26, 2024</h2>
+                    <button class="btn  btn-primary" id="nextBtn" onClick={props.moveNextWeek}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
@@ -36,7 +36,7 @@ export default function Week824(props) {
                     Transparency is a precious ideal.  Honesty only stands when surrounded by honesty.  Yet within a world of deceit, playing along is almost in your best interest.  Should tanking a matchup for playoff seeding purposes be legal?  Professional sport teams do it all the time; albeit, they at least try to appear competitive.  What is "right" versus what is "wrong".  It can't be more than opinion, whatever this word morality means.  The trolley problem is contingent upon some "utility" aspect, yet utility is subjective.  From my personal perspective, it's a disservice to yourself and your own "greatness" to accomplish anything through deception, yet The Art of War encourages it.  Mental warfare is the bread and butter of Kobe Bryant.
                 </p>
                 <p class="text-lg">
-                    Well forget all of the predatory human traits that you need to be wary of.  VegasProjections.com removes the human element from fantasy player analysis, with a purely market driven calculation of fantasy value.  All figures are drawn from Vegas / sportsbook player prop odds, which are determined by mathematicians that have dedicated their careers to quantitative analysis.  Every entity within this domain has the strongest incentive to be correct: money.  Leading to these math models being essentially the best predictor of reality that we have.                  </p>
+                    Well forget all of the predatory human traits that you need to be wary of.  <a class="underline" href="https://www.VegasProjections.com">VegasProjections.com</a> removes the human element from fantasy player analysis, with a purely market driven calculation of fantasy value.  All figures are drawn from Vegas / sportsbook player prop odds, which are determined by mathematicians that have dedicated their careers to quantitative analysis.  Every entity within this domain has the strongest incentive to be correct: money.  Leading to these math models being essentially the best predictor of reality that we have.                  </p>
                 <h3 class="text-xl font-bold mt-4">Top rated skill players this week include:</h3>
                 <ul class="list-disc list-inside text-lg">
                     <li>Breece Hall 16.14</li>
