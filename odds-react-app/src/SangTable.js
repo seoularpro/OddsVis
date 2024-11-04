@@ -376,9 +376,7 @@ export default function SangTable(props) {
         Sat: 12pm, 12am<br></br>
       </div>
 
-      <div style={{ display: "flex"}}>
-        <img style={{cursor: "pointer" }} onClick={handleLicenseFrameClick} class="object-cover h-[188px] w-[373px] " src="https://i.imgur.com/qZjDXP3.png" />
-      </div>
+
 
       <div style={{ display: "flex" }}>
         <div className="bovada-section">
