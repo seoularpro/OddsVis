@@ -12,6 +12,7 @@ import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringVa
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
+
 function TotalContainer() {
   const [selectedPosition, setSelectedPosition] = useState(1);
   const [playerList, setPlayerList] = useState([]);
@@ -23,6 +24,10 @@ function TotalContainer() {
   const [playerMissingList, setPlayerMissingList] = useState([]);
   const [apiSource, setApiSource] = useState(0);
 
+  // var skewness = require('compute-skewness');
+  // console.log(skewness([24.5, 15.2, 5.4, 14.9, 9.6, 21.4, 14.2, 43, 19.5]))
+
+
   const handleClick = () => {
     window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
   };
@@ -30,6 +35,87 @@ function TotalContainer() {
   const handleTradeClick = () => {
     window.location.href = '/tradeValues';
   };
+
+  const scrapeAllActualEspnStats = async (week) => {
+    let otherMap = new Map();
+    let weekIndex = 1;
+    while (weekIndex < 3) {
+
+      await (fetch(`./week${weekIndex}hppr`)).then((response) => {
+        return response.json();
+      })
+        .then((r) => {
+          let data = [];
+          const d = r;
+          console.log(d);
+          for (const week of d.schedule) {
+            // console.log(week);
+            if (weekIndex == week.matchupPeriodId) {
+              let allPlayers = week.away.rosterForMatchupPeriod.entries.slice().concat(week.home.rosterForMatchupPeriod.entries.slice());
+
+
+              // const tmid = tm.id;
+              for (const p of allPlayers) {
+                let name = p.playerPoolEntry.player.fullName;
+                const slot = p.lineupSlotId;
+                const pos = slotcodes[slot];
+
+                // Injured status (need try/catch because of D/ST)
+                let inj = "NA";
+                try {
+                  inj = p.playerPoolEntry.player.injuryStatus;
+                } catch (error) {
+                  // Do nothing, leave 'NA' as the default value for injured status
+                }
+
+                // Projected/actual points
+                let proj = null,
+                  act = null;
+
+                for (const stat of p.playerPoolEntry.player.stats) {
+                  // if (stat.scoringPeriodId !== weekIndex-1) {
+                  //   continue;
+                  // }
+                  if (stat.statSourceId === 0) {
+                    act = stat.appliedTotal;
+                  } else if (stat.statSourceId === 1) {
+                    proj = stat.appliedTotal;
+                  }
+                }
+
+                name = name.replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "")
+                  .replace(/ Jr/i, "")
+                data.push([week, name, slot, pos, inj, proj, act]);
+                // console.log([week, name, slot, pos, inj, proj, act])
+                if (otherMap.has(name)) {
+                  let tempPlayer = otherMap.get(name);
+                  otherMap.set(name, {
+                    proj: tempPlayer.proj.slice().concat([proj?.toFixed(2)]),
+                    act: tempPlayer.act.slice().concat([act?.toFixed(2)]),
+                  });
+                } else {
+                  otherMap.set(name, {
+                    proj: [proj?.toFixed(2)],
+                    act: [act?.toFixed(2)],
+                  });
+                }
+
+              }
+            }
+
+          }
+        })
+        .catch((e) => {
+          console.log(e)
+          otherMap.clear();
+          weekIndex = weekIndex + 1;
+        });
+      weekIndex = weekIndex + 1;
+    }
+    console.log(otherMap);
+  }
 
   const scrapeEspnStats = async (week) => {
     //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
@@ -39,6 +125,9 @@ function TotalContainer() {
 
     // we may need to return to this but currently just use the latest one as it has past history as well
     //  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
+
+
+
 
     await fetch(getUrl)
       .then((response) => {
@@ -76,7 +165,7 @@ function TotalContainer() {
                 proj = stat.appliedTotal;
               }
             }
-            
+
             name = name.replace(/\./g, "")
               .replace(/ jr/i, "")
               .replace(/ sr/i, "")
@@ -86,10 +175,12 @@ function TotalContainer() {
               proj: proj?.toFixed(2),
               act: act?.toFixed(2),
             });
+            console.log(playerMap)
           }
         }
       })
       .catch((e) => {
+        console.log(e)
         playerMap.clear();
       });
     setPlayerMap(playerMap);
