@@ -1,4 +1,4 @@
-export function calculateMeanAllGames2(actMap, name, median) {
+export function calculateMeanAllGames(actMap, name, median) {
 
   var skewness = require('compute-skewness');
 
@@ -20,7 +20,7 @@ export function calculateMeanAllGames2(actMap, name, median) {
   return alpha * beta
 
 }
-export function calculateMeanRecentGames2(actMap, name, median) {
+export function calculateMeanRecentGames(actMap, name, median) {
   var skewness = require('compute-skewness');
   let actTemp = actMap.get(name);
   let medianProj = median.ev;
@@ -44,61 +44,6 @@ export function calculateMeanRecentGames2(actMap, name, median) {
   return alpha * beta;
 }
 
-export function calculateMeanAllGames(actMap, playerList) {
-
-  let finalAllMap = new Map();
-  var skewness = require('compute-skewness');
-  // console.log(playerList)
-  for (const [key, value] of actMap.entries()) {
-    let medianElem = playerList.slice().find((elem) => elem[0] == key);
-
-    if (typeof medianElem == 'undefined') {
-      continue;
-    }
-    let medianProj = medianElem[1].ev
-    let tempSkewness = skewness(value.act.filter(item => item != null && item !== 0))
-
-    let alpha = 4 / (tempSkewness * tempSkewness);
-
-    let beta = (medianProj / (alpha - (1 / 3) + (.02 / alpha)));
-
-    if (!(alpha * beta)) {
-      continue;
-    }
-    finalAllMap.set(key, alpha * beta)
-  }
-  // console.log(finalAllMap)
-  return finalAllMap;
-}
-export function calculateMeanRecentGames(actMap, playerList) {
-
-  let finalAllMap = new Map();
-  var skewness = require('compute-skewness');
-  for (const [key, value] of actMap.entries()) {
-    let medianElem = playerList.find((elem) => elem[0] == key);
-    if (typeof medianElem == 'undefined') {
-      continue;
-    }
-    let medianProj = medianElem[1].ev;
-    let recentActs = value.act.filter((item, ii) => {
-      return item !== null && item != 0 && ii > value.act.length - 7
-    })
-
-    if (recentActs.length < 3) {
-      continue;
-    }
-    // console.log(recentActs);
-    let tempSkewness = skewness(recentActs.length > 4 ? recentActs.slice(recentActs.length - 4) : recentActs)
-    let alpha = 4 / (tempSkewness * tempSkewness);
-    let beta = (medianProj / (alpha - (1 / 3) + (.02 / alpha)));
-    if (!(alpha * beta)) {
-      continue;
-    }
-    finalAllMap.set(key, alpha * beta)
-  }
-  console.log(finalAllMap)
-  return finalAllMap;
-}
 
 export function calculateMeanAndStdDev(data) {
   // Extract the values in the 1st index of each list

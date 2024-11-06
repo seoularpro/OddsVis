@@ -2,9 +2,8 @@ import "./styles.css";
 import React, { useState, useEffect } from "react";
 import {
   calculateMeanAllGames,
-  calculateMeanAllGames2,
   calculateMeanAndStdDev,
-  calculateMeanRecentGames2,
+  calculateMeanRecentGames,
   calculatePercentile,
   getQueryStringValue,
   rainbow,
@@ -82,8 +81,8 @@ export default function SangTable(props) {
           playerEV: d[1].ev,
           playerChange: d[1].change,
           calculatedColor: rainbow(100 - percentile),
-          recentProjections: calculateMeanRecentGames2(allMap, d[0], d[1]),
-          allProjections: calculateMeanAllGames2(allMap, d[0], d[1]),
+          recentProjections: calculateMeanRecentGames(allMap, d[0], d[1]),
+          allProjections: calculateMeanAllGames(allMap, d[0], d[1]),
           espnValues: espnPlayerMap.get(d[0]),
           percentile: percentile,
         };
@@ -435,10 +434,10 @@ export default function SangTable(props) {
             ) : (
               <> </>
             )}
-            {props.selectedProvider == 0 ? (
+            {props.selectedProvider == 0  && !window.mobileCheck() ? (
               <>
-                <td
-                  class="invis-mobile"
+                <td            
+                    
                   style={
                     props.selectedTheme == 0
                       ? {
@@ -499,7 +498,6 @@ export default function SangTable(props) {
                   {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
                 </td> */}
                 <td
-                  class="invis-mobile"
                   style={
                     props.selectedTheme == 0
                       ? {

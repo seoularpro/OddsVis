@@ -8,7 +8,7 @@ import {
   UNIVERSAL_VIG,
 } from "./constants";
 import SangTable from "./SangTable";
-import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue, americanToDecimal, calculateMeanAllGames, calculateMeanRecentGames } from "./util";
+import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue, americanToDecimal} from "./util";
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
@@ -149,10 +149,6 @@ function TotalContainer() {
 
 
     setAllMap(otherMap)
-    // setRecentMap(calculateMeanRecentGames(otherMap, playerList))
-
-    // console.log(calculateMeanAllGames(otherMap, playerMap))
-    // console.log(calculateMeanRecentGames(otherMap, playerMap))
 
   }
 
