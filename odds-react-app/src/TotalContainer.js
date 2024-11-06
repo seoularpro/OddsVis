@@ -8,7 +8,7 @@ import {
   UNIVERSAL_VIG,
 } from "./constants";
 import SangTable from "./SangTable";
-import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue, americanToDecimal } from "./util";
+import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue, americanToDecimal, calculateMeanAllGames, calculateMeanRecentGames } from "./util";
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
@@ -17,6 +17,8 @@ function TotalContainer() {
   const [selectedPosition, setSelectedPosition] = useState(1);
   const [playerList, setPlayerList] = useState([]);
   const [playerMap, setPlayerMap] = useState(new Map());
+  const [allMap, setAllMap] = useState(new Map());
+  const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
   const [selectedWeek, setSelectedWeek] = useState(10);
   const [selectedYear, setSelectedYear] = useState(2024);
@@ -36,7 +38,7 @@ function TotalContainer() {
     window.location.href = '/tradeValues';
   };
 
-  const scrapeAllActualEspnStats = async (week) => {
+  const scrapeAllActualEspnStats = async () => {
     let otherMap = new Map();
     let weekIndex = 1;
     while (weekIndex < 10) {
@@ -47,7 +49,7 @@ function TotalContainer() {
         .then((r) => {
           let data = [];
           const d = r;
-          console.log(d);
+          // console.log(d);
           for (const week of d.schedule) {
             // console.log(week);
             if (weekIndex == week.matchupPeriodId) {
@@ -91,22 +93,34 @@ function TotalContainer() {
                 // console.log([weekIndex, name, slot, pos, inj, proj, act])
                 if (otherMap.has(name)) {
                   let tempPlayer = otherMap.get(name);
-                  while(tempPlayer.act.length < weekIndex-1){
-                    tempPlayer = {act: tempPlayer.act.slice().concat([null])};
+                  while (tempPlayer.act.length < weekIndex - 1) {
+                    tempPlayer = { act: tempPlayer.act.slice().concat([null]) };
                   }
-                  otherMap.set(name, {
-                    // proj: tempPlayer.proj.slice().concat([proj?.toFixed(2)]),
-                    act: tempPlayer.act.slice().concat([act?.toFixed(2)]),
-                  });
+                  if (typeof act?.toFixed(2) == 'undefined') {
+                    otherMap.set(name, {
+                      // proj: tempPlayer.proj.slice().concat([proj?.toFixed(2)]),
+                      act: tempPlayer.act.slice().concat([null]),
+                    });
+                  } else {
+                    otherMap.set(name, {
+                      // proj: tempPlayer.proj.slice().concat([proj?.toFixed(2)]),
+                      act: tempPlayer.act.slice().concat([act?.toFixed(2)]),
+                    });
+                  }
+
                 } else {
                   let tempPlayer = {
                     // proj: [],
                     act: [],
                   }
-                  while(tempPlayer.act.length < weekIndex-1){
-                    tempPlayer = {act: tempPlayer.act.slice().concat([null])};
+                  while (tempPlayer.act.length < weekIndex - 1) {
+                    tempPlayer = { act: tempPlayer.act.slice().concat([null]) };
                   }
-                  tempPlayer = {act: tempPlayer.act.concat([act?.toFixed(2)])};
+                  if (typeof act?.toFixed(2) == 'undefined') {
+                    tempPlayer = { act: tempPlayer.act.concat([null]) };
+                  } else {
+                    tempPlayer = { act: tempPlayer.act.concat([act?.toFixed(2)]) };
+                  }
                   otherMap.set(name, tempPlayer);
                 }
 
@@ -123,15 +137,23 @@ function TotalContainer() {
           return;
         });
       for (const [key, value] of otherMap.entries()) {
-        if(value.act.length < weekIndex){
+        if (value.act.length < weekIndex) {
           let valCopy = otherMap.get(key);
-          valCopy = {act: valCopy.act.slice().concat([null])};
+          valCopy = { act: valCopy.act.slice().concat([null]) };
           otherMap.set(key, valCopy)
         }
       }
       weekIndex = weekIndex + 1;
     }
-    console.log(otherMap);
+    // console.log(otherMap)
+
+
+    setAllMap(otherMap)
+    // setRecentMap(calculateMeanRecentGames(otherMap, playerList))
+
+    // console.log(calculateMeanAllGames(otherMap, playerMap))
+    // console.log(calculateMeanRecentGames(otherMap, playerMap))
+
   }
 
   const scrapeEspnStats = async (week) => {
@@ -1503,11 +1525,6 @@ function TotalContainer() {
     setPlayerList(finalList);
 
   };
-
-  useEffect(() => {
-    scrapeEspnStats(selectedWeek);
-    // scrapeAllActualEspnStats(selectedWeek)
-  }, [selectedWeek]);
   useEffect(() => {
     if (apiSource == 0) {
       scrapeBPData(selectedPosition, selectedMode, selectedWeek).catch(
@@ -1520,9 +1537,24 @@ function TotalContainer() {
     }
 
 
-
+    // scrapeAllActualEspnStats(selectedWeek)
 
   }, [selectedPosition, selectedMode, selectedWeek, apiSource]);
+
+  useEffect(() => {
+    scrapeBPData(selectedPosition, selectedMode, selectedWeek).catch(
+      console.error
+    );
+    scrapeAllActualEspnStats(selectedWeek)
+  }, []);
+
+  useEffect(() => {
+    scrapeEspnStats(selectedWeek);
+  }, [selectedWeek]);
+
+  
+  
+
 
   const redirectToPatreon = () => {
     window.location.href = "https://www.patreon.com/VegasProjections";
@@ -1760,9 +1792,13 @@ function TotalContainer() {
           If your player is not present in the table below, please toggle the Bovada/consensus odds dropdown, or check the Missing Prop table at the bottom of the page.  You can generally assume players in the main table are playing and not injured.
         </div>
         <SangTable
+          selectedWeek={selectedWeek}
           evList={playerList}
+          selectedProvider={apiSource}
           espnPlayerMap={playerMap}
           selectedTheme={selectedTheme}
+          allMap={allMap}
+          recentMap={recentMap}
         />
       </div>
       <div

@@ -1,7 +1,10 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
 import {
+  calculateMeanAllGames,
+  calculateMeanAllGames2,
   calculateMeanAndStdDev,
+  calculateMeanRecentGames2,
   calculatePercentile,
   getQueryStringValue,
   rainbow,
@@ -61,21 +64,26 @@ export default function SangTable(props) {
     setClickedList(newList);
   };
 
-  const mapNewVisList = (list, espnPlayerMap) => {
+  const mapNewVisList = (list, espnPlayerMap, recentMap, allMap) => {
     let meanAndStdDev;
     meanAndStdDev = calculateMeanAndStdDev(list);
 
     let mean = meanAndStdDev.meanValue;
     let stdDev = meanAndStdDev.stddevValue;
 
+
+
     setVisList(
       list.map((d) => {
+
         let percentile = calculatePercentile(mean, stdDev, d[1].ev) * 100;
         return {
           playerName: d[0],
           playerEV: d[1].ev,
           playerChange: d[1].change,
           calculatedColor: rainbow(100 - percentile),
+          recentProjections: calculateMeanRecentGames2(allMap, d[0], d[1]),
+          allProjections: calculateMeanAllGames2(allMap, d[0], d[1]),
           espnValues: espnPlayerMap.get(d[0]),
           percentile: percentile,
         };
@@ -83,8 +91,8 @@ export default function SangTable(props) {
     );
   };
   useEffect(() => {
-    mapNewVisList(props.evList, props.espnPlayerMap);
-  }, [props.evList]);
+    mapNewVisList(props.evList, props.espnPlayerMap, props.recentMap, props.allMap);
+  }, [props.evList, props.allMap]);
   return (
     <div className="SangTable">
       <table style={{}}>
@@ -123,12 +131,40 @@ export default function SangTable(props) {
             Δ
           </th>
           {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
-          {true ? (
+          {props.selectedWeek == 10 && props.selectedProvider == 0 ? (
             <>
               <th
                 style={{
                   width: "46px",
                 }}
+              >
+                Projection using All Season Data
+              </th>
+              {/* <th
+                style={{
+                  width: "46px",
+                }}
+              >
+                Accuracy
+              </th> */}
+              <th
+                style={{
+                  width: "46px",
+                }}
+              >
+                Projection using Recent Data
+              </th>
+            </>
+          ) : (
+            <> </>
+          )}
+          {props.selectedProvider == 0 ? (
+            <>
+              <th
+                style={{
+                  width: "46px",
+                }}
+                class="invis-mobile-header"
               >
                 ESPN actual
               </th>
@@ -143,6 +179,7 @@ export default function SangTable(props) {
                 style={{
                   width: "46px",
                 }}
+                class="invis-mobile-header"
               >
                 ESPN proj
               </th>
@@ -303,9 +340,105 @@ export default function SangTable(props) {
             </td>
             {/* {true ?  */}
             {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
-            {true ? (
+            {props.selectedWeek == 10 && props.selectedProvider == 0 ? (
               <>
                 <td
+                  style={
+                    props.selectedTheme == 0
+                      ? {
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 75.3 && x.percentile < 82.5
+                            ? "lightgray"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid silver", //+ x.calculatedColor,
+                        width: "100px",
+                      }
+                        : {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid " + x.calculatedColor,
+                          width: "100px",
+                        }
+
+                  }
+                >
+                  {<div>{x.allProjections ? Math.round(x.allProjections * 100) / 100 : ''}</div>}
+                </td>
+                {/* <td
+                  style={
+                    props.selectedTheme == 0
+                      ? {
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 75.3 && x.percentile < 82.5
+                            ? "lightgray"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid silver", //+ x.calculatedColor,
+                        width: "100px",
+                      }
+                        : {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid " + x.calculatedColor,
+                          width: "100px",
+                        }
+
+                  }
+                >
+                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
+                </td> */}
+                <td
+                  style={
+                    props.selectedTheme == 0
+                      ? {
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 75.3 && x.percentile < 82.5
+                            ? "lightgray"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid silver", // + x.calculatedColor,
+                        width: "100px",
+                      } :
+                        {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid " + x.calculatedColor,
+                          width: "100px",
+                        }
+                  }
+                >
+                  {<div>{x.recentProjections ? Math.round(x.recentProjections * 100) / 100 : ''}</div>}
+                </td>
+              </>
+            ) : (
+              <> </>
+            )}
+            {props.selectedProvider == 0 ? (
+              <>
+                <td
+                  class="invis-mobile"
                   style={
                     props.selectedTheme == 0
                       ? {
@@ -366,6 +499,7 @@ export default function SangTable(props) {
                   {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
                 </td> */}
                 <td
+                  class="invis-mobile"
                   style={
                     props.selectedTheme == 0
                       ? {
