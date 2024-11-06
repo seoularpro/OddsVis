@@ -175,7 +175,6 @@ function TotalContainer() {
               proj: proj?.toFixed(2),
               act: act?.toFixed(2),
             });
-            console.log(playerMap)
           }
         }
       })
