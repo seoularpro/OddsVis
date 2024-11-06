@@ -39,7 +39,7 @@ function TotalContainer() {
   const scrapeAllActualEspnStats = async (week) => {
     let otherMap = new Map();
     let weekIndex = 1;
-    while (weekIndex < 3) {
+    while (weekIndex < 10) {
 
       await (fetch(`./week${weekIndex}hppr`)).then((response) => {
         return response.json();
@@ -51,7 +51,7 @@ function TotalContainer() {
           for (const week of d.schedule) {
             // console.log(week);
             if (weekIndex == week.matchupPeriodId) {
-              let allPlayers = week.away.rosterForMatchupPeriod.entries.slice().concat(week.home.rosterForMatchupPeriod.entries.slice());
+              let allPlayers = week.away.rosterForCurrentScoringPeriod.entries.slice().concat(week.home.rosterForMatchupPeriod.entries.slice());
 
 
               // const tmid = tm.id;
@@ -87,19 +87,27 @@ function TotalContainer() {
                   .replace(/ jr/i, "")
                   .replace(/ sr/i, "")
                   .replace(/ Jr/i, "")
-                data.push([week, name, slot, pos, inj, proj, act]);
-                // console.log([week, name, slot, pos, inj, proj, act])
+                data.push([weekIndex, name, slot, pos, inj, proj, act]);
+                // console.log([weekIndex, name, slot, pos, inj, proj, act])
                 if (otherMap.has(name)) {
                   let tempPlayer = otherMap.get(name);
+                  while(tempPlayer.act.length < weekIndex-1){
+                    tempPlayer = {act: tempPlayer.act.slice().concat([null])};
+                  }
                   otherMap.set(name, {
-                    proj: tempPlayer.proj.slice().concat([proj?.toFixed(2)]),
+                    // proj: tempPlayer.proj.slice().concat([proj?.toFixed(2)]),
                     act: tempPlayer.act.slice().concat([act?.toFixed(2)]),
                   });
                 } else {
-                  otherMap.set(name, {
-                    proj: [proj?.toFixed(2)],
-                    act: [act?.toFixed(2)],
-                  });
+                  let tempPlayer = {
+                    // proj: [],
+                    act: [],
+                  }
+                  while(tempPlayer.act.length < weekIndex-1){
+                    tempPlayer = {act: tempPlayer.act.slice().concat([null])};
+                  }
+                  tempPlayer = {act: tempPlayer.act.concat([act?.toFixed(2)])};
+                  otherMap.set(name, tempPlayer);
                 }
 
               }
@@ -110,8 +118,17 @@ function TotalContainer() {
         .catch((e) => {
           console.log(e)
           otherMap.clear();
+          // increment here just in case return doesnt break out
           weekIndex = weekIndex + 1;
+          return;
         });
+      for (const [key, value] of otherMap.entries()) {
+        if(value.act.length < weekIndex){
+          let valCopy = otherMap.get(key);
+          valCopy = {act: valCopy.act.slice().concat([null])};
+          otherMap.set(key, valCopy)
+        }
+      }
       weekIndex = weekIndex + 1;
     }
     console.log(otherMap);
@@ -1489,6 +1506,7 @@ function TotalContainer() {
 
   useEffect(() => {
     scrapeEspnStats(selectedWeek);
+    // scrapeAllActualEspnStats(selectedWeek)
   }, [selectedWeek]);
   useEffect(() => {
     if (apiSource == 0) {
