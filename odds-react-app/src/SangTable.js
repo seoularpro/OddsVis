@@ -132,7 +132,7 @@ export default function SangTable(props) {
               Δ
             </th>
             {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
-            {props.selectedWeek == 10 && props.selectedProvider == 0 ? (
+            {props.selectedProvider == 0 ? (
               <>
                 <th
                   style={{
@@ -341,7 +341,7 @@ export default function SangTable(props) {
               </td>
               {/* {true ?  */}
               {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
-              {props.selectedWeek == 10 && props.selectedProvider == 0 ? (
+              {props.selectedProvider == 0 ? (
                 <>
                   <td
                     style={

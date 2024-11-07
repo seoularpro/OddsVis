@@ -38,10 +38,10 @@ function TotalContainer() {
     window.location.href = '/tradeValues';
   };
 
-  const scrapeAllActualEspnStats = async () => {
+  const scrapeAllActualEspnStats = async (tempWeek) => {
     let otherMap = new Map();
     let weekIndex = 1;
-    while (weekIndex < 10) {
+    while (weekIndex < tempWeek) {
 
       await (fetch(`./week${weekIndex}hppr`)).then((response) => {
         return response.json();
