@@ -5,8 +5,8 @@ const ThemeContext = createContext();
 
 // Create a Theme Provider component
 export const ThemeProvider = ({ children }) => {
-  // State to manage the current theme, defaulting to 'autumn'
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'autumn');
+  // State to manage the current theme, defaulting to 'sunset'
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'sunset');
 
   // Apply the theme to the `html` or `body` element
   useEffect(() => {

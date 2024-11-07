@@ -1714,7 +1714,7 @@ function TotalContainer() {
               Week 1
             </option>
           </select>
-          <ThemeToggleDropdown />
+          <ThemeToggleDropdown  />
           <select
             className="select select-bordered"
             defaultValue={selectedTheme}

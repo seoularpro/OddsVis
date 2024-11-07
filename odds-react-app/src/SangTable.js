@@ -93,458 +93,461 @@ export default function SangTable(props) {
     mapNewVisList(props.evList, props.espnPlayerMap, props.recentMap, props.allMap);
   }, [props.evList, props.allMap]);
   return (
-    <div className="SangTable">
-      <table style={{}}>
-        <tr>
-          <th
-            style={{
-              width: "20px",
-            }}
-          ></th>
-          <th
-            style={
-              window.mobileCheck()
-                ? {
-                  width: "300px",
-                }
-                : {
-                  width: "450px",
-                }
-            }
-          >
-            Player {props.position}
-          </th>
-          <th
-            style={{
-              width: "46px",
-            }}
-          >
-            Median
-          </th>
-          <th
-            class="invis-mobile-header"
-            style={{
-              width: "16px",
-            }}
-          >
-            Δ
-          </th>
-          {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
-          {props.selectedWeek == 10 && props.selectedProvider == 0 ? (
-            <>
-              <th
-                style={{
-                  width: "46px",
-                }}
-              >
-                Projection using All Season Data
-              </th>
-              {/* <th
-                style={{
-                  width: "46px",
-                }}
-              >
-                Accuracy
-              </th> */}
-              <th
-                style={{
-                  width: "46px",
-                }}
-              >
-                Projection using Recent Data
-              </th>
-            </>
-          ) : (
-            <> </>
-          )}
-          {props.selectedProvider == 0 ? (
-            <>
-              <th
-                style={{
-                  width: "46px",
-                }}
-                class="invis-mobile-header"
-              >
-                ESPN actual
-              </th>
-              {/* <th
-                style={{
-                  width: "46px",
-                }}
-              >
-                Accuracy
-              </th> */}
-              <th
-                style={{
-                  width: "46px",
-                }}
-                class="invis-mobile-header"
-              >
-                ESPN proj
-              </th>
-            </>
-          ) : (
-            <> </>
-          )}
-        </tr>
-        {visList.map((x, ix) => (
-          <tr>
-            <td
-              style={
-                props.selectedTheme == 0
-                  ? {
-                    backgroundColor: x.calculatedColor,
-                    color:
-                      x.percentile > 75.3 && x.percentile < 82.5
-                        ? "lightgray"
-                        : "white",
-                    // border: "1px solid " + x.calculatedColor,
-                    borderRadius: "10px",
-                    whiteSpace: "nowrap",
-                    fontSize: ".5rem",
-                  }
-                  :
-                  props.selectedTheme == 1 ? {
-                    backgroundColor: x.calculatedColor,
-                    color: "black",
-                    border: "1px solid silver", // + x.calculatedColor,
-                    whiteSpace: "nowrap",
-                    fontSize: ".5rem",
-                    //   borderRadius: "10px",
-                  }
-                    : {
-                      // backgroundColor: "white",
-                      // color: "black",
-                      border: "1px solid " + x.calculatedColor,
-                      whiteSpace: "nowrap",
-                      fontSize: ".5rem",
-                      //   borderRadius: "10px",
-                    }
-              }
-            >
-              {ix + 1}
-            </td>
-            <td
-              style={
-                props.selectedTheme == 0
-                  ? {
-                    backgroundColor: x.calculatedColor,
-                    color:
-                      x.percentile > 75.3 && x.percentile < 82.5
-                        ? "lightgray"
-                        : "white",
-                    // border: "1px solid " + x.calculatedColor,
-                    borderRadius: "10px",
-                    whiteSpace: "nowrap",
-                    textAlign: "left",
-                  }
-                  :
-                  props.selectedTheme == 1 ? {
-                    // backgroundColor: "white",
-                    // color: "black",
-                    border: "1px solid  silver", // + x.calculatedColor,
-                    //   borderRadius: "10px",
-                    whiteSpace: "nowrap",
-                    textAlign: "left",
-                  }
-                    :
-                    {
-                      // backgroundColor: "white",
-                      // color: "black",
-                      border: "1px solid " + x.calculatedColor,
-                      //   borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      textAlign: "left",
-                    }
-              }
-              onClick={() => handlePlayerClick(x)}
-            >
-              {
-                <div
-                  style={{
-                    marginLeft: window.mobileCheck()
-                      ? " 5px"
-                      : 1 * ((1 / x.playerEV.toFixed(2)) * 2000 - 80) + "px",
-                  }}
-                >
-                  {x.playerName}
-                </div>
-              }
-            </td>
-            <td
-              style={
-                props.selectedTheme == 0
-                  ? {
-                    backgroundColor: x.calculatedColor,
-                    color:
-                      x.percentile > 75.3 && x.percentile < 82.5
-                        ? "lightgray"
-                        : "white",
-                    // border: "1px solid " + x.calculatedColor,
-                    borderRadius: "10px",
-                    width: "100px",
-                  }
-                  : props.selectedTheme == 1 ? {
-                    // backgroundColor: "white",
-                    // color: "black",
-                    border: "1px solid silver", // + x.calculatedColor,
-                    width: "100px",
-                    //   borderRadius: "10px",
-                  }
-                    : {
-                      // backgroundColor: "white",
-                      // color: "black",
-                      border: "1px solid " + x.calculatedColor,
-                      width: "100px",
-                      //   borderRadius: "10px",
-                    }
-              }
-            >
-              {<div>{x.playerEV.toFixed(2)}</div>}
-            </td>
-            <td
-              class="invis-mobile"
+    <div className="SangTable" class="overflow-hidden ">
+      <div class="min-w-full  border border-gray-200 dark:border-gray-700 rounded-lg glass">
+        <table style={{}} >
+          <tr >
+            <th
+
               style={{
-                backgroundColor: "white",
-                color:
-                  x.playerChange > 0
-                    ? "limegreen"
-                    : x.playerChange == 0
-                      ? "black"
-                      : "red",
-                border: "none",
-                borderRadius: "10px",
-                width: "60px",
+                width: "20px",
+              }}
+            ></th>
+            <th
+              style={
+                window.mobileCheck()
+                  ? {
+                    width: "300px",
+                  }
+                  : {
+                    width: "450px",
+                  }
+              }
+            >
+              Player {props.position}
+            </th>
+            <th
+              style={{
+                width: "46px",
               }}
             >
-              {x.playerChange !== 0 ? (
-                <div
-                  style={{
-                    marginTop: "3px",
-                    fontSize: "small",
-                  }}
-                >
-                  {((x.playerChange / x.playerEV) * 100).toFixed(1)}%
-                </div>
-              ) : (
-                <div
-                  style={{
-                    marginTop: "3px",
-                    fontSize: "small",
-                  }}
-                >
-                  {"0"}
-                </div>
-              )}
-            </td>
-            {/* {true ?  */}
+              Median
+            </th>
+            <th
+              class="invis-mobile-header"
+              style={{
+                width: "16px",
+              }}
+            >
+              Δ
+            </th>
             {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
             {props.selectedWeek == 10 && props.selectedProvider == 0 ? (
               <>
-                <td
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", //+ x.calculatedColor,
-                        width: "100px",
-                      }
-                        : {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-
-                  }
+                <th
+                  style={{
+                    width: "46px",
+                  }}
                 >
-                  {<div>{x.allProjections ? Math.round(x.allProjections * 100) / 100 : ''}</div>}
-                </td>
-                {/* <td
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", //+ x.calculatedColor,
-                        width: "100px",
-                      }
-                        : {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-
-                  }
+                  Projection using All Season Data
+                </th>
+                {/* <th
+                style={{
+                  width: "46px",
+                }}
+              >
+                Accuracy
+              </th> */}
+                <th
+                  style={{
+                    width: "46px",
+                  }}
                 >
-                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
-                </td> */}
-                <td
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", // + x.calculatedColor,
-                        width: "100px",
-                      } :
-                        {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-                  }
-                >
-                  {<div>{x.recentProjections ? Math.round(x.recentProjections * 100) / 100 : ''}</div>}
-                </td>
+                  Projection using Recent Data
+                </th>
               </>
             ) : (
               <> </>
             )}
-            {props.selectedProvider == 0  && !window.mobileCheck() ? (
+            {props.selectedProvider == 0 ? (
               <>
-                <td            
-                    
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", //+ x.calculatedColor,
-                        width: "100px",
-                      }
-                        : {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-
-                  }
+                <th
+                  style={{
+                    width: "46px",
+                  }}
+                  class="invis-mobile-header"
                 >
-                  {<div>{x.espnValues?.act}</div>}
-                </td>
-                {/* <td
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", //+ x.calculatedColor,
-                        width: "100px",
-                      }
-                        : {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-
-                  }
+                  ESPN actual
+                </th>
+                {/* <th
+                style={{
+                  width: "46px",
+                }}
+              >
+                Accuracy
+              </th> */}
+                <th
+                  style={{
+                    width: "46px",
+                  }}
+                  class="invis-mobile-header"
                 >
-                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
-                </td> */}
-                <td
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", // + x.calculatedColor,
-                        width: "100px",
-                      } :
-                        {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-                  }
-                >
-                  {<div>{x.espnValues?.proj}</div>}
-                </td>
+                  ESPN proj
+                </th>
               </>
             ) : (
               <> </>
             )}
           </tr>
-        ))}
-      </table>
-      <div class="updateTimeSection">
-        Update schedule (ET):<br></br>
+          {visList.map((x, ix) => (
+            <tr>
+              <td
+                style={
+                  props.selectedTheme == 0
+                    ? {
+                      backgroundColor: x.calculatedColor,
+                      color:
+                        x.percentile > 75.3 && x.percentile < 82.5
+                          ? "lightgray"
+                          : "white",
+                      // border: "1px solid " + x.calculatedColor,
+                      borderRadius: "10px",
+                      whiteSpace: "nowrap",
+                      fontSize: ".5rem",
+                    }
+                    :
+                    props.selectedTheme == 1 ? {
+                      backgroundColor: x.calculatedColor,
+                      color: "black",
+                      border: "1px solid silver", // + x.calculatedColor,
+                      whiteSpace: "nowrap",
+                      fontSize: ".5rem",
+                      //   borderRadius: "10px",
+                    }
+                      : {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid " + x.calculatedColor,
+                        whiteSpace: "nowrap",
+                        fontSize: ".5rem",
+                        //   borderRadius: "10px",
+                      }
+                }
+              >
+                {ix + 1}
+              </td>
+              <td
+                style={
+                  props.selectedTheme == 0
+                    ? {
+                      backgroundColor: x.calculatedColor,
+                      color:
+                        x.percentile > 75.3 && x.percentile < 82.5
+                          ? "lightgray"
+                          : "white",
+                      // border: "1px solid " + x.calculatedColor,
+                      borderRadius: "10px",
+                      whiteSpace: "nowrap",
+                      textAlign: "left",
+                    }
+                    :
+                    props.selectedTheme == 1 ? {
+                      // backgroundColor: "white",
+                      // color: "black",
+                      border: "1px solid  silver", // + x.calculatedColor,
+                      //   borderRadius: "10px",
+                      whiteSpace: "nowrap",
+                      textAlign: "left",
+                    }
+                      :
+                      {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid " + x.calculatedColor,
+                        //   borderRadius: "10px",
+                        whiteSpace: "nowrap",
+                        textAlign: "left",
+                      }
+                }
+                onClick={() => handlePlayerClick(x)}
+              >
+                {
+                  <div
+                    style={{
+                      marginLeft: window.mobileCheck()
+                        ? " 5px"
+                        : 1 * ((1 / x.playerEV.toFixed(2)) * 2000 - 80) + "px",
+                    }}
+                  >
+                    {x.playerName}
+                  </div>
+                }
+              </td>
+              <td
+                style={
+                  props.selectedTheme == 0
+                    ? {
+                      backgroundColor: x.calculatedColor,
+                      color:
+                        x.percentile > 75.3 && x.percentile < 82.5
+                          ? "lightgray"
+                          : "white",
+                      // border: "1px solid " + x.calculatedColor,
+                      borderRadius: "10px",
+                      width: "100px",
+                    }
+                    : props.selectedTheme == 1 ? {
+                      // backgroundColor: "white",
+                      // color: "black",
+                      border: "1px solid silver", // + x.calculatedColor,
+                      width: "100px",
+                      //   borderRadius: "10px",
+                    }
+                      : {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid " + x.calculatedColor,
+                        width: "100px",
+                        //   borderRadius: "10px",
+                      }
+                }
+              >
+                {<div>{x.playerEV.toFixed(2)}</div>}
+              </td>
+              <td
+                class="invis-mobile"
+                style={{
+                  backgroundColor: "white",
+                  color:
+                    x.playerChange > 0
+                      ? "limegreen"
+                      : x.playerChange == 0
+                        ? "black"
+                        : "red",
+                  border: "none",
+                  borderRadius: "10px",
+                  width: "60px",
+                }}
+              >
+                {x.playerChange !== 0 ? (
+                  <div
+                    style={{
+                      marginTop: "3px",
+                      fontSize: "small",
+                    }}
+                  >
+                    {((x.playerChange / x.playerEV) * 100).toFixed(1)}%
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      marginTop: "3px",
+                      fontSize: "small",
+                    }}
+                  >
+                    {"0"}
+                  </div>
+                )}
+              </td>
+              {/* {true ?  */}
+              {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
+              {props.selectedWeek == 10 && props.selectedProvider == 0 ? (
+                <>
+                  <td
+                    style={
+                      props.selectedTheme == 0
+                        ? {
+                          backgroundColor: x.calculatedColor,
+                          color:
+                            x.percentile > 75.3 && x.percentile < 82.5
+                              ? "lightgray"
+                              : "white",
+                          border: "1px solid " + x.calculatedColor,
+                          borderRadius: "10px",
+                          width: "100px",
+                        }
+                        : props.selectedTheme == 1 ? {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid silver", //+ x.calculatedColor,
+                          width: "100px",
+                        }
+                          : {
+                            // backgroundColor: "white",
+                            // color: "black",
+                            border: "1px solid " + x.calculatedColor,
+                            width: "100px",
+                          }
 
-      </div>
-      <div class="updateTimeSection2">
-        Sun: 8am, 12pm, 12am<br></br>
-        Mon: 12pm, 6pm, 12am<br></br>
-        Tues: 12pm, 12am<br></br>
-        Wed: 12pm, 12am<br></br>
-        Thurs: 12pm, 6pm, 12am<br></br>
-        Fri: 12pm, 12am<br></br>
-        Sat: 12pm, 12am<br></br>
+                    }
+                  >
+                    {<div>{x.allProjections ? Math.round(x.allProjections * 100) / 100 : ''}</div>}
+                  </td>
+                  {/* <td
+                  style={
+                    props.selectedTheme == 0
+                      ? {
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 75.3 && x.percentile < 82.5
+                            ? "lightgray"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid silver", //+ x.calculatedColor,
+                        width: "100px",
+                      }
+                        : {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid " + x.calculatedColor,
+                          width: "100px",
+                        }
+
+                  }
+                >
+                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
+                </td> */}
+                  <td
+                    style={
+                      props.selectedTheme == 0
+                        ? {
+                          backgroundColor: x.calculatedColor,
+                          color:
+                            x.percentile > 75.3 && x.percentile < 82.5
+                              ? "lightgray"
+                              : "white",
+                          border: "1px solid " + x.calculatedColor,
+                          borderRadius: "10px",
+                          width: "100px",
+                        }
+                        : props.selectedTheme == 1 ? {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid silver", // + x.calculatedColor,
+                          width: "100px",
+                        } :
+                          {
+                            // backgroundColor: "white",
+                            // color: "black",
+                            border: "1px solid " + x.calculatedColor,
+                            width: "100px",
+                          }
+                    }
+                  >
+                    {<div>{x.recentProjections ? Math.round(x.recentProjections * 100) / 100 : ''}</div>}
+                  </td>
+                </>
+              ) : (
+                <> </>
+              )}
+              {props.selectedProvider == 0 && !window.mobileCheck() ? (
+                <>
+                  <td
+
+                    style={
+                      props.selectedTheme == 0
+                        ? {
+                          backgroundColor: x.calculatedColor,
+                          color:
+                            x.percentile > 75.3 && x.percentile < 82.5
+                              ? "lightgray"
+                              : "white",
+                          border: "1px solid " + x.calculatedColor,
+                          borderRadius: "10px",
+                          width: "100px",
+                        }
+                        : props.selectedTheme == 1 ? {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid silver", //+ x.calculatedColor,
+                          width: "100px",
+                        }
+                          : {
+                            // backgroundColor: "white",
+                            // color: "black",
+                            border: "1px solid " + x.calculatedColor,
+                            width: "100px",
+                          }
+
+                    }
+                  >
+                    {<div>{x.espnValues?.act}</div>}
+                  </td>
+                  {/* <td
+                  style={
+                    props.selectedTheme == 0
+                      ? {
+                        backgroundColor: x.calculatedColor,
+                        color:
+                          x.percentile > 75.3 && x.percentile < 82.5
+                            ? "lightgray"
+                            : "white",
+                        border: "1px solid " + x.calculatedColor,
+                        borderRadius: "10px",
+                        width: "100px",
+                      }
+                      : props.selectedTheme == 1 ? {
+                        // backgroundColor: "white",
+                        // color: "black",
+                        border: "1px solid silver", //+ x.calculatedColor,
+                        width: "100px",
+                      }
+                        : {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid " + x.calculatedColor,
+                          width: "100px",
+                        }
+
+                  }
+                >
+                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
+                </td> */}
+                  <td
+                    style={
+                      props.selectedTheme == 0
+                        ? {
+                          backgroundColor: x.calculatedColor,
+                          color:
+                            x.percentile > 75.3 && x.percentile < 82.5
+                              ? "lightgray"
+                              : "white",
+                          border: "1px solid " + x.calculatedColor,
+                          borderRadius: "10px",
+                          width: "100px",
+                        }
+                        : props.selectedTheme == 1 ? {
+                          // backgroundColor: "white",
+                          // color: "black",
+                          border: "1px solid silver", // + x.calculatedColor,
+                          width: "100px",
+                        } :
+                          {
+                            // backgroundColor: "white",
+                            // color: "black",
+                            border: "1px solid " + x.calculatedColor,
+                            width: "100px",
+                          }
+                    }
+                  >
+                    {<div>{x.espnValues?.proj}</div>}
+                  </td>
+                </>
+              ) : (
+                <> </>
+              )}
+            </tr>
+          ))}
+        </table>
+        <div class="updateTimeSection">
+          Update schedule (ET):<br></br>
+
+        </div>
+        <div class="updateTimeSection2">
+          Sun: 8am, 12pm, 12am<br></br>
+          Mon: 12pm, 6pm, 12am<br></br>
+          Tues: 12pm, 12am<br></br>
+          Wed: 12pm, 12am<br></br>
+          Thurs: 12pm, 6pm, 12am<br></br>
+          Fri: 12pm, 12am<br></br>
+          Sat: 12pm, 12am<br></br>
+        </div>
       </div>
 
 
