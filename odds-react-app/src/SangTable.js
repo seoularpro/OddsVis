@@ -136,10 +136,10 @@ export default function SangTable(props) {
               <>
                 <th
                   style={{
-                    width: "46px",
+                    width: "34px",
                   }}
                 >
-                  Projection using All Season Data
+                  Mean Projection using All Season Data
                 </th>
                 {/* <th
                 style={{
@@ -150,10 +150,10 @@ export default function SangTable(props) {
               </th> */}
                 <th
                   style={{
-                    width: "46px",
+                    width: "34px",
                   }}
                 >
-                  Projection using Recent Data
+                  Mean Projection using Recent Data
                 </th>
               </>
             ) : (
@@ -436,7 +436,7 @@ export default function SangTable(props) {
               ) : (
                 <> </>
               )}
-              {props.selectedProvider == 0 && !window.mobileCheck() ? (
+              {props.selectedProvider == 0  ? (
                 <>
                   <td
 
