@@ -28,7 +28,7 @@ export function calculateMeanRecentGames(actMap, name, median) {
     return null;
   }
   let recentActs = actTemp.act.filter((item, ii) => {
-    return item !== null && item != 0 && ii > actTemp.act.length - 7
+    return item !== null && item != 0 && ii > actTemp.act.length - 6
   })
 
   if (recentActs.length < 3) {
