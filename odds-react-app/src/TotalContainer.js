@@ -8,7 +8,7 @@ import {
   UNIVERSAL_VIG,
 } from "./constants";
 import SangTable from "./SangTable";
-import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue, americanToDecimal} from "./util";
+import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue, americanToDecimal } from "./util";
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
@@ -244,6 +244,7 @@ function TotalContainer() {
     let playerToPassYdsDataPoints = new Map();
     let playerToIntsDataPoints = new Map();
     let yearPrefix = selectedYear == 2024 ? selectedYear : "";
+    let playerToPosition = new Map();
 
     // const url = 'https://api.bettingpros.com/v3/props?limit=10000&sport=NFL&market_id=73:74:102:103:101:107:76:105:75:104:66:71:78&event_id=21371:21372:21375:21376:21377:21378:21379:21380:21381:21382:21383:21393:21394:21395:21396:21397&include_selections=false&include_markets=true&include_counts=true'
 
@@ -316,7 +317,20 @@ function TotalContainer() {
               let playerOdds = allTDMarket[j];
 
               let name = playerOdds.participant.name.slice();
-              // console.log(name);
+
+
+
+              let position = playerOdds.participant.player.position.slice();
+              if(position == "QB"){
+                playerToPosition.set(name, 0);
+              }else if(position == "RB"){
+                playerToPosition.set(name, 1);
+              }else if(position == "WR"){
+                playerToPosition.set(name, 2);
+              }else if(position == "TE"){
+                playerToPosition.set(name, 3);
+              }
+
 
               // if (
               //   name == "Amon-Ra St.Brown" ||
@@ -693,6 +707,8 @@ function TotalContainer() {
     const mapEntries = Array.from(finalPlayerToEV.entries());
     // Sort the array based on the numeric value (assuming values are numbers)
     mapEntries.sort((a, b) => b[1] - a[1]);
+
+
     // Create a new Map from the sorted array
     const sortedMap = new Map(mapEntries);
     let finalList;
@@ -708,11 +724,13 @@ function TotalContainer() {
     } else {
       finalList = Array.from(sortedMap.entries()).filter(
         (x) =>
-          typeof PlayerPosMapNoPos.get(x[0]) !== "undefined" &&
-          (PlayerPosMapNoPos.get(x[0]) == pos ||
-            pos == 99 ||
-            (pos == 98 && PlayerPosMapNoPos.get(x[0]) !== 0)) &&
-          x[1] > 1
+          playerToPosition.get(x[0]) == pos || pos == 99 || (pos == 98 && playerToPosition.get(x[0]) != 0 ) && x[1] > 1
+          // playerToPosition.get(x[0])
+          // typeof PlayerPosMapNoPos.get(x[0]) !== "undefined" &&
+          // (PlayerPosMapNoPos.get(x[0]) == pos ||
+          //   pos == 99 ||
+          //   (pos == 98 && PlayerPosMapNoPos.get(x[0]) !== 0)) &&
+          
       );
     }
     let replacedRushRecFlag = false;
@@ -861,6 +879,8 @@ function TotalContainer() {
       ];
     });
     setPlayerMissingList(missingList);
+
+
     setPlayerList(finalList);
 
   };
@@ -1548,8 +1568,8 @@ function TotalContainer() {
     scrapeEspnStats(selectedWeek);
   }, [selectedWeek]);
 
-  
-  
+
+
 
 
   const redirectToPatreon = () => {
@@ -1714,7 +1734,7 @@ function TotalContainer() {
               Week 1
             </option>
           </select>
-          <ThemeToggleDropdown  />
+          <ThemeToggleDropdown />
           <select
             className="select select-bordered"
             defaultValue={selectedTheme}

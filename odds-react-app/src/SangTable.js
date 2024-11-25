@@ -71,7 +71,6 @@ export default function SangTable(props) {
     let stdDev = meanAndStdDev.stddevValue;
 
 
-
     setVisList(
       list.map((d) => {
 
