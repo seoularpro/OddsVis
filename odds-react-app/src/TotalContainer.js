@@ -712,16 +712,16 @@ function TotalContainer() {
     // Create a new Map from the sorted array
     const sortedMap = new Map(mapEntries);
     let finalList;
-    if (selectedYear == 2023) {
-      finalList = Array.from(sortedMap.entries()).filter(
-        (x) =>
-          typeof PlayerPosMap23.get(x[0]) !== "undefined" &&
-          (PlayerPosMap23.get(x[0]) == pos ||
-            pos == 99 ||
-            (pos == 98 && PlayerPosMap23.get(x[0]) !== 0)) &&
-          x[1] > 1
-      );
-    } else {
+    // if (selectedYear == 2023) {
+    //   finalList = Array.from(sortedMap.entries()).filter(
+    //     (x) =>
+    //       typeof PlayerPosMap23.get(x[0]) !== "undefined" &&
+    //       (PlayerPosMap23.get(x[0]) == pos ||
+    //         pos == 99 ||
+    //         (pos == 98 && PlayerPosMap23.get(x[0]) !== 0)) &&
+    //       x[1] > 1
+    //   );
+    // } else {
       finalList = Array.from(sortedMap.entries()).filter(
         (x) =>
           playerToPosition.get(x[0]) == pos || pos == 99 || (pos == 98 && playerToPosition.get(x[0]) != 0 ) && x[1] > 1
@@ -732,7 +732,7 @@ function TotalContainer() {
           //   (pos == 98 && PlayerPosMapNoPos.get(x[0]) !== 0)) &&
           
       );
-    }
+    // }
     let replacedRushRecFlag = false;
     let missingList = [];
     if (pos == 0) {
@@ -1641,7 +1641,7 @@ function TotalContainer() {
             style={{ display: "flex", marginLeft: "5px" }}
           >
             <option value="2024">2024</option>
-            <option value="2023">2023</option>
+            <option disabled={apiSource == 0} value="2023">2023</option>
           </select>
 
         </div>
