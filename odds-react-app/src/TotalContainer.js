@@ -321,13 +321,20 @@ function TotalContainer() {
 
 
               let position = playerOdds.participant.player.position.slice();
-              if(position == "QB"){
+              name = name
+                .replace(/\./g, "")
+                .replace(/ jr/i, "")
+                .replace(/ sr/i, "")
+                .replace(/ Jr/i, "")
+                
+
+              if (position == "QB") {
                 playerToPosition.set(name, 0);
-              }else if(position == "RB"){
+              } else if (position == "RB") {
                 playerToPosition.set(name, 1);
-              }else if(position == "WR"){
+              } else if (position == "WR") {
                 playerToPosition.set(name, 2);
-              }else if(position == "TE"){
+              } else if (position == "TE") {
                 playerToPosition.set(name, 3);
               }
 
@@ -338,11 +345,7 @@ function TotalContainer() {
               // ) {
               //   name = "Amon-Ra St. Brown";
               // }
-              name = name
-                .replace(/\./g, "")
-                .replace(/ jr/i, "")
-                .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+
 
               // if (playerOdds.description == "AJ Brown ") {
               //   playerOdds.description = playerOdds.description.slice(0, -1);
@@ -435,7 +438,6 @@ function TotalContainer() {
               // if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
               //   name = "Amon-Ra St. Brown";
               // }
-
               name = name
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
@@ -708,7 +710,7 @@ function TotalContainer() {
     // Sort the array based on the numeric value (assuming values are numbers)
     mapEntries.sort((a, b) => b[1] - a[1]);
 
-
+ 
     // Create a new Map from the sorted array
     const sortedMap = new Map(mapEntries);
     let finalList;
@@ -722,16 +724,18 @@ function TotalContainer() {
     //       x[1] > 1
     //   );
     // } else {
-      finalList = Array.from(sortedMap.entries()).filter(
-        (x) =>
-          playerToPosition.get(x[0]) == pos || pos == 99 || (pos == 98 && playerToPosition.get(x[0]) != 0 ) && x[1] > 1
-          // playerToPosition.get(x[0])
-          // typeof PlayerPosMapNoPos.get(x[0]) !== "undefined" &&
-          // (PlayerPosMapNoPos.get(x[0]) == pos ||
-          //   pos == 99 ||
-          //   (pos == 98 && PlayerPosMapNoPos.get(x[0]) !== 0)) &&
-          
-      );
+    finalList = Array.from(sortedMap.entries()).filter(
+      (x) =>
+        playerToPosition.get(x[0]) == pos || pos == 99 || (pos == 98 && playerToPosition.get(x[0]) != 0) && x[1] > 1
+      // playerToPosition.get(x[0])
+      // typeof PlayerPosMapNoPos.get(x[0]) !== "undefined" &&
+      // (PlayerPosMapNoPos.get(x[0]) == pos ||
+      //   pos == 99 ||
+      //   (pos == 98 && PlayerPosMapNoPos.get(x[0]) !== 0)) &&
+
+    );
+
+
     // }
     let replacedRushRecFlag = false;
     let missingList = [];
@@ -808,6 +812,7 @@ function TotalContainer() {
         return rbHasAllValues;
       });
     } else if (pos == 2 || pos == 3) {
+      
       finalList = finalList.filter((d) => {
         let WRHasAllValues =
           playerToAnyTD.has(d[0]) &&
@@ -863,6 +868,7 @@ function TotalContainer() {
 
     finalList = finalList.slice();
     finalList = finalList.sort((a, b) => b[1] - a[1])
+
 
 
     finalList = finalList.filter((elem) => {
