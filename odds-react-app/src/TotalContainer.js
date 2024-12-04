@@ -320,14 +320,14 @@ function TotalContainer() {
 
 
 
-              let position = playerOdds.participant.player.position.slice();
+
               name = name
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
                 .replace(/ Jr/i, "")
-                
 
+              let position = playerOdds.participant.player.position.slice();
               if (position == "QB") {
                 playerToPosition.set(name, 0);
               } else if (position == "RB") {
@@ -413,6 +413,20 @@ function TotalContainer() {
               //   name = "Deebo Samuel (SF)"
               // }
 
+              let position = playerOdds.participant.player.position.slice();
+              if (!playerToPosition.has(name)) {
+                if (position == "QB") {
+                  playerToPosition.set(name, 0);
+                } else if (position == "RB") {
+                  playerToPosition.set(name, 1);
+                } else if (position == "WR") {
+                  playerToPosition.set(name, 2);
+                } else if (position == "TE") {
+                  playerToPosition.set(name, 3);
+                }
+              }
+
+
 
 
               // if (!amonRaFlag) {
@@ -451,6 +465,18 @@ function TotalContainer() {
               // }
 
 
+              let position = playerOdds.participant.player.position.slice();
+              if (!playerToPosition.has(name)) {
+                if (position == "QB") {
+                  playerToPosition.set(name, 0);
+                } else if (position == "RB") {
+                  playerToPosition.set(name, 1);
+                } else if (position == "WR") {
+                  playerToPosition.set(name, 2);
+                } else if (position == "TE") {
+                  playerToPosition.set(name, 3);
+                }
+              }
 
 
               // if (!amonRaFlag) {
@@ -483,6 +509,19 @@ function TotalContainer() {
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
                 .replace(/ Jr/i, "")
+
+              let position = playerOdds.participant.player.position.slice();
+              if (!playerToPosition.has(name)) {
+                if (position == "QB") {
+                  playerToPosition.set(name, 0);
+                } else if (position == "RB") {
+                  playerToPosition.set(name, 1);
+                } else if (position == "WR") {
+                  playerToPosition.set(name, 2);
+                } else if (position == "TE") {
+                  playerToPosition.set(name, 3);
+                }
+              }
               // if (name == "Deebo Samuel") {
               //   name = "Deebo Samuel (SF)"
               // }
@@ -517,6 +556,18 @@ function TotalContainer() {
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
                 .replace(/ Jr/i, "")
+              let position = playerOdds.participant.player.position.slice();
+              if (!playerToPosition.has(name)) {
+                if (position == "QB") {
+                  playerToPosition.set(name, 0);
+                } else if (position == "RB") {
+                  playerToPosition.set(name, 1);
+                } else if (position == "WR") {
+                  playerToPosition.set(name, 2);
+                } else if (position == "TE") {
+                  playerToPosition.set(name, 3);
+                }
+              }
               // if (name == "AJ Brown ") {
               //   name = name.slice(0, -1);
               // }
@@ -538,6 +589,18 @@ function TotalContainer() {
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
                 .replace(/ Jr/i, "")
+              let position = playerOdds.participant.player.position.slice();
+              if (!playerToPosition.has(name)) {
+                if (position == "QB") {
+                  playerToPosition.set(name, 0);
+                } else if (position == "RB") {
+                  playerToPosition.set(name, 1);
+                } else if (position == "WR") {
+                  playerToPosition.set(name, 2);
+                } else if (position == "TE") {
+                  playerToPosition.set(name, 3);
+                }
+              }
               // if (name == "AJ Brown ") {
               //   name = name.slice(0, -1);
               // }
@@ -567,6 +630,18 @@ function TotalContainer() {
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
                 .replace(/ Jr/i, "")
+              let position = playerOdds.participant.player.position.slice();
+              if (!playerToPosition.has(name)) {
+                if (position == "QB") {
+                  playerToPosition.set(name, 0);
+                } else if (position == "RB") {
+                  playerToPosition.set(name, 1);
+                } else if (position == "WR") {
+                  playerToPosition.set(name, 2);
+                } else if (position == "TE") {
+                  playerToPosition.set(name, 3);
+                }
+              }
               // if (name == "AJ Brown ") {
               //   name = name.slice(0, -1);
               // }
@@ -710,7 +785,7 @@ function TotalContainer() {
     // Sort the array based on the numeric value (assuming values are numbers)
     mapEntries.sort((a, b) => b[1] - a[1]);
 
- 
+
     // Create a new Map from the sorted array
     const sortedMap = new Map(mapEntries);
     let finalList;
@@ -812,7 +887,7 @@ function TotalContainer() {
         return rbHasAllValues;
       });
     } else if (pos == 2 || pos == 3) {
-      
+
       finalList = finalList.filter((d) => {
         let WRHasAllValues =
           playerToAnyTD.has(d[0]) &&
