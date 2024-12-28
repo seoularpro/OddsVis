@@ -20,7 +20,7 @@ function TotalContainer() {
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
-  const [selectedWeek, setSelectedWeek] = useState(16);
+  const [selectedWeek, setSelectedWeek] = useState(17);
   const [selectedYear, setSelectedYear] = useState(2024);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
@@ -1739,7 +1739,7 @@ function TotalContainer() {
             <option disabled={selectedYear == 2024} value="18">
               Week 18
             </option>
-            <option disabled={selectedYear == 2024} value="17">
+            <option value="17">
               Week 17
             </option>
             <option value="16">
