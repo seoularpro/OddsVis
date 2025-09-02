@@ -1866,7 +1866,9 @@ function TotalContainer() {
             }}
           >
             <option value="0">Consensus</option>
-            <option value="1">Bovada</option>
+            <option disabled={selectedYear == 2025} value="1">
+              Bovada
+            </option>
           </select>
         </div>
         <div
