@@ -14,56 +14,115 @@ import Week624 from "./PostArchive/Week624";
 import Week724 from "./PostArchive/Week724";
 import React, { useState, useEffect } from "react";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
-import { BrowserRouter as Router, Route, Routes, useParams, useNavigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
 import Week824 from "./PostArchive/Week824";
 import Week924 from "./PostArchive/Week924";
-
+import Week1024 from "./PostArchive/Week1024";
+import Week1124 from "./PostArchive/Week1124";
+import Week1224 from "./PostArchive/Week1224";
+import Week1324 from "./PostArchive/Week1324";
+import Week1424 from "./PostArchive/Week1424";
+import Week1524 from "./PostArchive/Week1524";
+import Week1624 from "./PostArchive/Week1624";
+import Week1724 from "./PostArchive/Week1724";
 
 export default function RedditPosts(props) {
-    document.title = "Reddit Posts"
-    const [postIndex, setPostIndex] = useState(0);
-    const params = useParams();
-    const navigate = useNavigate();
-    const postIndices = [
-        '924', '824', '724', '624', '524', '424', '324', '224', '124', '1723', '1623', '1523', '1423', '1323', '1223', '1123'
-    ]
-    const WeeklyPostComponents = {
-        Week924, Week824, Week724, Week624, Week524, Week424, Week324, Week224, Week124, Week1723, Week1623, Week1523,
-        Week1423, Week1323, Week1223, Week1123
+  document.title = "Reddit Posts";
+  const [postIndex, setPostIndex] = useState(0);
+  const params = useParams();
+  const navigate = useNavigate();
+  const postIndices = [
+    "1724",
+    "1624",
+    "1524",
+    "1424",
+    "1324",
+    "1224",
+    "1124",
+    "1024",
+    "924",
+    "824",
+    "724",
+    "624",
+    "524",
+    "424",
+    "324",
+    "224",
+    "124",
+    "1723",
+    "1623",
+    "1523",
+    "1423",
+    "1323",
+    "1223",
+    "1123",
+  ];
+  const WeeklyPostComponents = {
+    Week1724,
+    Week1624,
+    Week1524,
+    Week1424,
+    Week1324,
+    Week1224,
+    Week1124,
+    Week1024,
+    Week924,
+    Week824,
+    Week724,
+    Week624,
+    Week524,
+    Week424,
+    Week324,
+    Week224,
+    Week124,
+    Week1723,
+    Week1623,
+    Week1523,
+    Week1423,
+    Week1323,
+    Week1223,
+    Week1123,
+  };
+  const movePastWeek = () => {
+    const { week } = params;
+    let tempSt = week.slice(4);
+    let tempIndex = postIndices.findIndex((elem) => elem == tempSt);
 
-    }
-    const movePastWeek = () => {
+    navigate(`/redditPosts/Week${postIndices[tempIndex + 1]}`);
+  };
+  const moveNextWeek = () => {
+    const { week } = params;
+    let tempSt = week.slice(4);
+    let tempIndex = postIndices.findIndex((elem) => elem == tempSt);
 
-        const { week } = params;
-        let tempSt = week.slice(4);
-        let tempIndex = postIndices.findIndex((elem) => elem == tempSt);
+    navigate(`/redditPosts/Week${postIndices[tempIndex - 1]}`);
+  };
 
-        navigate(`/redditPosts/Week${postIndices[tempIndex + 1]}`);
-    }
-    const moveNextWeek = () => {
-        const { week } = params;
-        let tempSt = week.slice(4);
-        let tempIndex = postIndices.findIndex((elem) => elem == tempSt);
+  const DynamicComponent = () => {
+    const { week } = useParams();
+    const Component = WeeklyPostComponents[`${week}`]; // dynamically choose the component
 
-        navigate(`/redditPosts/Week${postIndices[tempIndex - 1]}`);
-    }
-
-    const DynamicComponent = () => {
-        const { week } = useParams();
-        const Component = WeeklyPostComponents[`${week}`]; // dynamically choose the component
-
-        return Component ? <Component movePastWeek={movePastWeek} moveNextWeek={moveNextWeek} /> : <div>Not found</div>;
-    };
-
-    
-    // useEffect(() => document.title = "Reddit Posts" , [])
-
-    return (
-        <div>
-            <div className="trade-value-theme">
-                <ThemeToggleDropdown />
-            </div>
-            <DynamicComponent />
-        </div>
+    return Component ? (
+      <Component movePastWeek={movePastWeek} moveNextWeek={moveNextWeek} />
+    ) : (
+      <div>Not found</div>
     );
+  };
+
+  // useEffect(() => document.title = "Reddit Posts" , [])
+
+  return (
+    <div>
+      <div className="trade-value-theme">
+        <ThemeToggleDropdown />
+      </div>
+      <DynamicComponent />
+    </div>
+  );
 }
