@@ -1,0 +1,9 @@
+  node reddit2component.js \
+  --in 2024week17.md \
+  --out Week1724.js \
+  --name Week1724 \
+  --title "Player Projections Powered by Vegas Player Props - Championship Edition" \
+  --author "Sang Han" \
+  --date "January 4, 2024" \
+  --reddit "https://www.reddit.com/r/fantasyfootball/comments/1hoisvj/vegas_projections_powered_by_vegas_player_props/" \
+  --image "https://dknetwork.draftkings.com/wp-content/uploads/USATSI_25125373.jpg"
