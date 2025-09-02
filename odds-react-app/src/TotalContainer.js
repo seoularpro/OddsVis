@@ -8,10 +8,15 @@ import {
   UNIVERSAL_VIG,
 } from "./constants";
 import SangTable from "./SangTable";
-import { isFetchable, getLastElementMap, calculateLatestChange, getQueryStringValue, americanToDecimal } from "./util";
+import {
+  isFetchable,
+  getLastElementMap,
+  calculateLatestChange,
+  getQueryStringValue,
+  americanToDecimal,
+} from "./util";
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
-
 
 function TotalContainer() {
   const [selectedPosition, setSelectedPosition] = useState(2);
@@ -20,8 +25,8 @@ function TotalContainer() {
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
-  const [selectedWeek, setSelectedWeek] = useState(17);
-  const [selectedYear, setSelectedYear] = useState(2024);
+  const [selectedWeek, setSelectedWeek] = useState(1);
+  const [selectedYear, setSelectedYear] = useState(2025);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
   const [apiSource, setApiSource] = useState(0);
@@ -29,23 +34,22 @@ function TotalContainer() {
   // var skewness = require('compute-skewness');
   // console.log(skewness([24.5, 15.2, 5.4, 14.9, 9.6, 21.4, 14.2, 43, 19.5]))
 
-
   const handleClick = () => {
     window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
   };
 
   const handleTradeClick = () => {
-    window.location.href = '/tradeValues';
+    window.location.href = "/tradeValues";
   };
 
   const scrapeAllActualEspnStats = async (tempWeek) => {
     let otherMap = new Map();
     let weekIndex = 1;
     while (weekIndex < tempWeek) {
-
-      await (fetch(`./week${weekIndex}hppr`)).then((response) => {
-        return response.json();
-      })
+      await fetch(`./week${weekIndex}hppr`)
+        .then((response) => {
+          return response.json();
+        })
         .then((r) => {
           let data = [];
           const d = r;
@@ -53,8 +57,9 @@ function TotalContainer() {
           for (const week of d.schedule) {
             // console.log(week);
             if (weekIndex == week.matchupPeriodId) {
-              let allPlayers = week.away.rosterForCurrentScoringPeriod.entries.slice().concat(week.home.rosterForMatchupPeriod.entries.slice());
-
+              let allPlayers = week.away.rosterForCurrentScoringPeriod.entries
+                .slice()
+                .concat(week.home.rosterForMatchupPeriod.entries.slice());
 
               // const tmid = tm.id;
               for (const p of allPlayers) {
@@ -85,10 +90,11 @@ function TotalContainer() {
                   }
                 }
 
-                name = name.replace(/\./g, "")
+                name = name
+                  .replace(/\./g, "")
                   .replace(/ jr/i, "")
                   .replace(/ sr/i, "")
-                  .replace(/ Jr/i, "")
+                  .replace(/ Jr/i, "");
                 data.push([weekIndex, name, slot, pos, inj, proj, act]);
                 // console.log([weekIndex, name, slot, pos, inj, proj, act])
                 if (otherMap.has(name)) {
@@ -96,7 +102,7 @@ function TotalContainer() {
                   while (tempPlayer.act.length < weekIndex - 1) {
                     tempPlayer = { act: tempPlayer.act.slice().concat([null]) };
                   }
-                  if (typeof act?.toFixed(2) == 'undefined') {
+                  if (typeof act?.toFixed(2) == "undefined") {
                     otherMap.set(name, {
                       // proj: tempPlayer.proj.slice().concat([proj?.toFixed(2)]),
                       act: tempPlayer.act.slice().concat([null]),
@@ -107,30 +113,29 @@ function TotalContainer() {
                       act: tempPlayer.act.slice().concat([act?.toFixed(2)]),
                     });
                   }
-
                 } else {
                   let tempPlayer = {
                     // proj: [],
                     act: [],
-                  }
+                  };
                   while (tempPlayer.act.length < weekIndex - 1) {
                     tempPlayer = { act: tempPlayer.act.slice().concat([null]) };
                   }
-                  if (typeof act?.toFixed(2) == 'undefined') {
+                  if (typeof act?.toFixed(2) == "undefined") {
                     tempPlayer = { act: tempPlayer.act.concat([null]) };
                   } else {
-                    tempPlayer = { act: tempPlayer.act.concat([act?.toFixed(2)]) };
+                    tempPlayer = {
+                      act: tempPlayer.act.concat([act?.toFixed(2)]),
+                    };
                   }
                   otherMap.set(name, tempPlayer);
                 }
-
               }
             }
-
           }
         })
         .catch((e) => {
-          console.log(e)
+          console.log(e);
           otherMap.clear();
           // increment here just in case return doesnt break out
           weekIndex = weekIndex + 1;
@@ -140,17 +145,15 @@ function TotalContainer() {
         if (value.act.length < weekIndex) {
           let valCopy = otherMap.get(key);
           valCopy = { act: valCopy.act.slice().concat([null]) };
-          otherMap.set(key, valCopy)
+          otherMap.set(key, valCopy);
         }
       }
       weekIndex = weekIndex + 1;
     }
     // console.log(otherMap)
 
-
-    setAllMap(otherMap)
-
-  }
+    setAllMap(otherMap);
+  };
 
   const scrapeEspnStats = async (week) => {
     //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
@@ -160,9 +163,6 @@ function TotalContainer() {
     // weekly url https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?scoringPeriodId=11&view=modular&view=mNav&view=mMatchupScore&view=mScoreboard&view=mSettings&view=mTopPerformers&view=mTeam
     // we may need to return to this but currently just use the latest one as it has past history as well
     //  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
-
-
-
 
     await fetch(getUrl)
       .then((response) => {
@@ -201,10 +201,11 @@ function TotalContainer() {
               }
             }
 
-            name = name.replace(/\./g, "")
+            name = name
+              .replace(/\./g, "")
               .replace(/ jr/i, "")
               .replace(/ sr/i, "")
-              .replace(/ Jr/i, "")
+              .replace(/ Jr/i, "");
             data.push([week, tmid, name, slot, pos, inj, proj, act]);
             playerMap.set(name, {
               proj: proj?.toFixed(2),
@@ -214,7 +215,7 @@ function TotalContainer() {
         }
       })
       .catch((e) => {
-        console.log(e)
+        console.log(e);
         playerMap.clear();
       });
     setPlayerMap(playerMap);
@@ -263,7 +264,6 @@ function TotalContainer() {
 
     // return;
 
-
     while (bovadaFileLoopFlag) {
       if (testedInts > lastTestedInt) {
         isNewBovadaFileCheck = true;
@@ -285,29 +285,40 @@ function TotalContainer() {
 
       await fetch(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BettingProsFiles/" +
-        yearPrefix +
-        "week" +
-        week +
-        "" +
-        testedInts
+          yearPrefix +
+          "week" +
+          week +
+          "" +
+          testedInts
       )
         .then((response) => {
           return response.json();
         })
         .then((data) => {
-
-
-
           // console.log(data);
           let allMarkets = data.props.slice();
 
-          let allTDMarket = allMarkets.filter((market) => market.market_id == 78)
-          let rushYdsMarket = allMarkets.filter((market) => market.market_id == 107)
-          let recYdsMarket = allMarkets.filter((market) => market.market_id == 105)
-          let recsMarket = allMarkets.filter((market) => market.market_id == 104)
-          let passTDMarket = allMarkets.filter((market) => market.market_id == 102)
-          let passYdsMarket = allMarkets.filter((market) => market.market_id == 103)
-          let intMarket = allMarkets.filter((market) => market.market_id == 101)
+          let allTDMarket = allMarkets.filter(
+            (market) => market.market_id == 78
+          );
+          let rushYdsMarket = allMarkets.filter(
+            (market) => market.market_id == 107
+          );
+          let recYdsMarket = allMarkets.filter(
+            (market) => market.market_id == 105
+          );
+          let recsMarket = allMarkets.filter(
+            (market) => market.market_id == 104
+          );
+          let passTDMarket = allMarkets.filter(
+            (market) => market.market_id == 102
+          );
+          let passYdsMarket = allMarkets.filter(
+            (market) => market.market_id == 103
+          );
+          let intMarket = allMarkets.filter(
+            (market) => market.market_id == 101
+          );
 
           // console.log(recYdsMarket)
 
@@ -318,14 +329,11 @@ function TotalContainer() {
 
               let name = playerOdds.participant.name.slice();
 
-
-
-
               name = name
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+                .replace(/ Jr/i, "");
 
               let position = playerOdds.participant.player.position.slice();
               if (position == "QB") {
@@ -338,14 +346,12 @@ function TotalContainer() {
                 playerToPosition.set(name, 3);
               }
 
-
               // if (
               //   name == "Amon-Ra St.Brown" ||
               //   name == "Amon-Ra St. Brown"
               // ) {
               //   name = "Amon-Ra St. Brown";
               // }
-
 
               // if (playerOdds.description == "AJ Brown ") {
               //   playerOdds.description = playerOdds.description.slice(0, -1);
@@ -374,17 +380,15 @@ function TotalContainer() {
               // if (!amonRaFlag) {
               let newAnyTDList = [];
               if (playerToAnyTDDataPoints.has(name)) {
-                newAnyTDList = playerToAnyTDDataPoints
-                  .get(name)
-                  .slice();
+                newAnyTDList = playerToAnyTDDataPoints.get(name).slice();
               }
               newAnyTDList.push(
-                (1 / (americanToDecimal(playerOdds.over.consensus_odds) / UNIVERSAL_VIG)) * 6
+                (1 /
+                  (americanToDecimal(playerOdds.over.consensus_odds) /
+                    UNIVERSAL_VIG)) *
+                  6
               );
-              playerToAnyTDDataPoints.set(
-                name,
-                newAnyTDList
-              );
+              playerToAnyTDDataPoints.set(name, newAnyTDList);
             }
 
             // if (name == "Amon-Ra St. Brown") {
@@ -397,7 +401,7 @@ function TotalContainer() {
             // let amonRaFlag = false;
             for (let j = 0; j < rushYdsMarket.length; j++) {
               let playerOdds = rushYdsMarket[j];
-              let name = playerOdds.participant.name.slice()
+              let name = playerOdds.participant.name.slice();
               // if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
               //   name = "Amon-Ra St. Brown";
               // }
@@ -405,7 +409,7 @@ function TotalContainer() {
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+                .replace(/ Jr/i, "");
               // if (name == "AJ Brown ") {
               //   name = name.slice(0, -1);
               // }
@@ -426,17 +430,12 @@ function TotalContainer() {
                 }
               }
 
-
-
-
               // if (!amonRaFlag) {
               let newRushYdsList = [];
               if (playerToRushYdsDataPoints.has(name)) {
                 newRushYdsList = playerToRushYdsDataPoints.get(name);
               }
-              newRushYdsList.push(
-                playerOdds.over.consensus_line / 10
-              );
+              newRushYdsList.push(playerOdds.over.consensus_line / 10);
               playerToRushYdsDataPoints.set(name, newRushYdsList);
               // }
               // if (name == "Amon-Ra St. Brown") {
@@ -448,7 +447,7 @@ function TotalContainer() {
             // let amonRaFlag = false;
             for (let j = 0; j < recYdsMarket.length; j++) {
               let playerOdds = recYdsMarket[j];
-              let name = playerOdds.participant.name.slice()
+              let name = playerOdds.participant.name.slice();
               // if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
               //   name = "Amon-Ra St. Brown";
               // }
@@ -456,14 +455,13 @@ function TotalContainer() {
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+                .replace(/ Jr/i, "");
               // if (name == "AJ Brown ") {
               //   name = name.slice(0, -1);
               // }
               // if (name == "Deebo Samuel") {
               //   name = "Deebo Samuel (SF)"
               // }
-
 
               let position = playerOdds.participant.player.position.slice();
               if (!playerToPosition.has(name)) {
@@ -478,16 +476,13 @@ function TotalContainer() {
                 }
               }
 
-
               // if (!amonRaFlag) {
               let newRecYdsList = [];
               if (playerToRecYdsDataPoints.has(name)) {
                 newRecYdsList = playerToRecYdsDataPoints.get(name);
               }
 
-              newRecYdsList.push(
-                playerOdds.over.consensus_line / 10
-              );
+              newRecYdsList.push(playerOdds.over.consensus_line / 10);
               playerToRecYdsDataPoints.set(name, newRecYdsList);
               // }
               // if (name == "Amon-Ra St. Brown") {
@@ -500,7 +495,7 @@ function TotalContainer() {
 
             for (let j = 0; j < recsMarket.length; j++) {
               let playerOdds = recsMarket[j];
-              let name = playerOdds.participant.name.slice()
+              let name = playerOdds.participant.name.slice();
               // if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
               //   name = "Amon-Ra St. Brown";
               // }
@@ -508,7 +503,7 @@ function TotalContainer() {
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+                .replace(/ Jr/i, "");
 
               let position = playerOdds.participant.player.position.slice();
               if (!playerToPosition.has(name)) {
@@ -537,7 +532,9 @@ function TotalContainer() {
               handicap =
                 handicap -
                 0.5 +
-                (1 / (americanToDecimal(playerOdds.over.consensus_odds) / UNIVERSAL_VIG));
+                1 /
+                  (americanToDecimal(playerOdds.over.consensus_odds) /
+                    UNIVERSAL_VIG);
               newRecsList.push(handicap * receptionMultiplier);
               playerToRecsDataPoints.set(name, newRecsList);
               // }
@@ -555,7 +552,7 @@ function TotalContainer() {
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+                .replace(/ Jr/i, "");
               let position = playerOdds.participant.player.position.slice();
               if (!playerToPosition.has(name)) {
                 if (position == "QB") {
@@ -588,7 +585,7 @@ function TotalContainer() {
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+                .replace(/ Jr/i, "");
               let position = playerOdds.participant.player.position.slice();
               if (!playerToPosition.has(name)) {
                 if (position == "QB") {
@@ -629,7 +626,7 @@ function TotalContainer() {
                 .replace(/\./g, "")
                 .replace(/ jr/i, "")
                 .replace(/ sr/i, "")
-                .replace(/ Jr/i, "")
+                .replace(/ Jr/i, "");
               let position = playerOdds.participant.player.position.slice();
               if (!playerToPosition.has(name)) {
                 if (position == "QB") {
@@ -655,24 +652,25 @@ function TotalContainer() {
               handicap =
                 handicap -
                 0.5 +
-                (1 / (americanToDecimal(playerOdds.over.consensus_odds) / UNIVERSAL_VIG));
+                1 /
+                  (americanToDecimal(playerOdds.over.consensus_odds) /
+                    UNIVERSAL_VIG);
               newIntsList.push(handicap * -2);
               playerToIntsDataPoints.set(name, newIntsList);
             }
           }
-
         })
-        .catch((e) => { });
+        .catch((e) => {});
 
       testedInts++;
       isNewBovadaFileCheck = false;
       bovadaFileLoopFlag = await isFetchable(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BettingProsFiles/" +
-        yearPrefix +
-        "week" +
-        week +
-        "" +
-        testedInts
+          yearPrefix +
+          "week" +
+          week +
+          "" +
+          testedInts
       );
     }
 
@@ -785,7 +783,6 @@ function TotalContainer() {
     // Sort the array based on the numeric value (assuming values are numbers)
     mapEntries.sort((a, b) => b[1] - a[1]);
 
-
     // Create a new Map from the sorted array
     const sortedMap = new Map(mapEntries);
     let finalList;
@@ -801,15 +798,15 @@ function TotalContainer() {
     // } else {
     finalList = Array.from(sortedMap.entries()).filter(
       (x) =>
-        playerToPosition.get(x[0]) == pos || pos == 99 || (pos == 98 && playerToPosition.get(x[0]) != 0) && x[1] > 1
+        playerToPosition.get(x[0]) == pos ||
+        pos == 99 ||
+        (pos == 98 && playerToPosition.get(x[0]) != 0 && x[1] > 1)
       // playerToPosition.get(x[0])
       // typeof PlayerPosMapNoPos.get(x[0]) !== "undefined" &&
       // (PlayerPosMapNoPos.get(x[0]) == pos ||
       //   pos == 99 ||
       //   (pos == 98 && PlayerPosMapNoPos.get(x[0]) !== 0)) &&
-
     );
-
 
     // }
     let replacedRushRecFlag = false;
@@ -852,19 +849,29 @@ function TotalContainer() {
           playerToRecYds.has(d[0]) &&
           playerToRecs.has(d[0]);
         if (!rbHasAllValues) {
-          if (playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
-            || playerToAnyTD.has(d[0]) && playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
-            || playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])) {
-
+          if (
+            (playerToAnyTD.has(d[0]) &&
+              !playerToRushYds.has(d[0]) &&
+              playerToRecYds.has(d[0]) &&
+              playerToRecs.has(d[0])) ||
+            (playerToAnyTD.has(d[0]) &&
+              playerToRushYds.has(d[0]) &&
+              !playerToRecYds.has(d[0]) &&
+              playerToRecs.has(d[0])) ||
+            (playerToAnyTD.has(d[0]) &&
+              !playerToRushYds.has(d[0]) &&
+              !playerToRecYds.has(d[0]) &&
+              playerToRecs.has(d[0]))
+          ) {
             if (playerToRushRecYdsDataPoints.has(d[0])) {
               if (playerToRushYds.has(d[0])) {
-
-                finalList[di][1] = finalList[di][1] - playerToRushYds.get(d[0])
+                finalList[di][1] = finalList[di][1] - playerToRushYds.get(d[0]);
               }
               if (playerToRecYds.has(d[0])) {
-                finalList[di][1] = finalList[di][1] - playerToRecYds.get(d[0])
+                finalList[di][1] = finalList[di][1] - playerToRecYds.get(d[0]);
               }
-              finalList[di][1] = finalList[di][1] + playerToRushRecYds.get(d[0])
+              finalList[di][1] =
+                finalList[di][1] + playerToRushRecYds.get(d[0]);
               replacedRushRecFlag = true;
               return true;
             }
@@ -887,7 +894,6 @@ function TotalContainer() {
         return rbHasAllValues;
       });
     } else if (pos == 2 || pos == 3) {
-
       finalList = finalList.filter((d) => {
         let WRHasAllValues =
           playerToAnyTD.has(d[0]) &&
@@ -942,9 +948,7 @@ function TotalContainer() {
     }
 
     finalList = finalList.slice();
-    finalList = finalList.sort((a, b) => b[1] - a[1])
-
-
+    finalList = finalList.sort((a, b) => b[1] - a[1]);
 
     finalList = finalList.filter((elem) => {
       return elem[1] > 5;
@@ -961,9 +965,7 @@ function TotalContainer() {
     });
     setPlayerMissingList(missingList);
 
-
     setPlayerList(finalList);
-
   };
 
   const scrapeData = async (pos, mode, week) => {
@@ -991,9 +993,6 @@ function TotalContainer() {
     let playerToIntsDataPoints = new Map();
     let yearPrefix = selectedYear == 2024 ? selectedYear : "";
 
-
-
-
     while (bovadaFileLoopFlag) {
       if (testedInts > lastTestedInt) {
         isNewBovadaFileCheck = true;
@@ -1015,20 +1014,17 @@ function TotalContainer() {
 
       await fetch(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" +
-        yearPrefix +
-        "week" +
-        week +
-        "" +
-        testedInts
+          yearPrefix +
+          "week" +
+          week +
+          "" +
+          testedInts
       )
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           let allNflGames = data[0].events.slice();
-
-
-
 
           for (let i = 0; i < allNflGames.length; i++) {
             let eachGameTDOutcomes = allNflGames[i].displayGroups
@@ -1041,7 +1037,9 @@ function TotalContainer() {
             let eachGameRushingOutcomes = allNflGames[i].displayGroups
               .find((x) => x.id == "100-93")
               ?.markets.filter((y) => y.marketTypeId == "121337");
-            let eachGameRushingAndReceivingOutcomes = allNflGames[i].displayGroups
+            let eachGameRushingAndReceivingOutcomes = allNflGames[
+              i
+            ].displayGroups
               .find((x) => x.id == "100-93")
               ?.markets.filter((y) => y.marketTypeId == "121328");
             let eachGameReceivingOutcomes = allNflGames[i].displayGroups
@@ -1090,7 +1088,7 @@ function TotalContainer() {
                   .replace(/\./g, "")
                   .replace(/ jr/i, "")
                   .replace(/ sr/i, "")
-                  .replace(/ Jr/i, "")
+                  .replace(/ Jr/i, "");
 
                 if (playerOdds.description == "AJ Brown ") {
                   playerOdds.description = playerOdds.description.slice(0, -1);
@@ -1112,7 +1110,8 @@ function TotalContainer() {
                 }
                 if (playerOdds.description == "Rome Odunze (CHI) ") {
                   playerOdds.description = playerOdds.description.slice(0, -1);
-                } if (playerOdds.description == "Chigoziem Okonkwo (TEN)") {
+                }
+                if (playerOdds.description == "Chigoziem Okonkwo (TEN)") {
                   playerOdds.description = "Chig Okonkwo (TEN)";
                 }
 
@@ -1139,21 +1138,26 @@ function TotalContainer() {
             }
             if (typeof eachGameRushingAndReceivingOutcomes !== "undefined") {
               let amonRaFlag = false;
-              for (let j = 0; j < eachGameRushingAndReceivingOutcomes.length; j++) {
+              for (
+                let j = 0;
+                j < eachGameRushingAndReceivingOutcomes.length;
+                j++
+              ) {
                 let playerOdds = eachGameRushingAndReceivingOutcomes[j];
                 let name = playerOdds.description.slice(34);
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
-                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                name = name
+                  .replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
                 if (name == "Deebo Samuel") {
-                  name = "Deebo Samuel (SF)"
+                  name = "Deebo Samuel (SF)";
                 }
-
-
 
                 if (!amonRaFlag) {
                   let newRushRecYdsList = [];
@@ -1178,15 +1182,16 @@ function TotalContainer() {
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
-                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                name = name
+                  .replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
                 if (name == "Deebo Samuel") {
-                  name = "Deebo Samuel (SF)"
+                  name = "Deebo Samuel (SF)";
                 }
-
-
 
                 if (!amonRaFlag) {
                   let newRushYdsList = [];
@@ -1212,16 +1217,16 @@ function TotalContainer() {
                   name = "Amon-Ra St. Brown";
                 }
 
-                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                name = name
+                  .replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
                 if (name == "Deebo Samuel") {
-                  name = "Deebo Samuel (SF)"
+                  name = "Deebo Samuel (SF)";
                 }
-
-
-
 
                 if (!amonRaFlag) {
                   let newRecYdsList = [];
@@ -1247,9 +1252,12 @@ function TotalContainer() {
                 if (name == "Amon-Ra St.Brown" || name == "Amon-Ra St. Brown") {
                   name = "Amon-Ra St. Brown";
                 }
-                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                name = name
+                  .replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
                 if (name == "Deebo Samuel") {
-                  name = "Deebo Samuel (SF)"
+                  name = "Deebo Samuel (SF)";
                 }
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
@@ -1277,7 +1285,10 @@ function TotalContainer() {
               for (let j = 0; j < eachGamePassingYdOutcomes.length; j++) {
                 let playerOdds = eachGamePassingYdOutcomes[j];
                 let name = playerOdds.description.slice(22);
-                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                name = name
+                  .replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -1294,7 +1305,10 @@ function TotalContainer() {
               for (let j = 0; j < eachGamePassingTDOutcomes.length; j++) {
                 let playerOdds = eachGamePassingTDOutcomes[j];
                 let name = playerOdds.description.slice(27);
-                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                name = name
+                  .replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -1316,7 +1330,10 @@ function TotalContainer() {
               for (let j = 0; j < eachGameIntOutcomes.length; j++) {
                 let playerOdds = eachGameIntOutcomes[j];
                 let name = playerOdds.description.slice(29);
-                name = name.replace(/\./g, "").replace(/ jr/i, "").replace(/ sr/i, "");
+                name = name
+                  .replace(/\./g, "")
+                  .replace(/ jr/i, "")
+                  .replace(/ sr/i, "");
                 if (name == "AJ Brown ") {
                   name = name.slice(0, -1);
                 }
@@ -1337,17 +1354,17 @@ function TotalContainer() {
             }
           }
         })
-        .catch((e) => { });
+        .catch((e) => {});
 
       testedInts++;
       isNewBovadaFileCheck = false;
       bovadaFileLoopFlag = await isFetchable(
         "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BovadaAPIFiles/" +
-        yearPrefix +
-        "week" +
-        week +
-        "" +
-        testedInts
+          yearPrefix +
+          "week" +
+          week +
+          "" +
+          testedInts
       );
     }
 
@@ -1513,19 +1530,29 @@ function TotalContainer() {
           playerToRecYds.has(d[0]) &&
           playerToRecs.has(d[0]);
         if (!rbHasAllValues) {
-          if (playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
-            || playerToAnyTD.has(d[0]) && playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])
-            || playerToAnyTD.has(d[0]) && !playerToRushYds.has(d[0]) && !playerToRecYds.has(d[0]) && playerToRecs.has(d[0])) {
-
+          if (
+            (playerToAnyTD.has(d[0]) &&
+              !playerToRushYds.has(d[0]) &&
+              playerToRecYds.has(d[0]) &&
+              playerToRecs.has(d[0])) ||
+            (playerToAnyTD.has(d[0]) &&
+              playerToRushYds.has(d[0]) &&
+              !playerToRecYds.has(d[0]) &&
+              playerToRecs.has(d[0])) ||
+            (playerToAnyTD.has(d[0]) &&
+              !playerToRushYds.has(d[0]) &&
+              !playerToRecYds.has(d[0]) &&
+              playerToRecs.has(d[0]))
+          ) {
             if (playerToRushRecYdsDataPoints.has(d[0])) {
               if (playerToRushYds.has(d[0])) {
-
-                finalList[di][1] = finalList[di][1] - playerToRushYds.get(d[0])
+                finalList[di][1] = finalList[di][1] - playerToRushYds.get(d[0]);
               }
               if (playerToRecYds.has(d[0])) {
-                finalList[di][1] = finalList[di][1] - playerToRecYds.get(d[0])
+                finalList[di][1] = finalList[di][1] - playerToRecYds.get(d[0]);
               }
-              finalList[di][1] = finalList[di][1] + playerToRushRecYds.get(d[0])
+              finalList[di][1] =
+                finalList[di][1] + playerToRushRecYds.get(d[0]);
               replacedRushRecFlag = true;
               return true;
             }
@@ -1602,8 +1629,7 @@ function TotalContainer() {
     }
 
     finalList = finalList.slice();
-    finalList = finalList.sort((a, b) => b[1] - a[1])
-
+    finalList = finalList.sort((a, b) => b[1] - a[1]);
 
     finalList = finalList.filter((elem) => {
       return elem[1] > 5;
@@ -1620,7 +1646,6 @@ function TotalContainer() {
     });
     setPlayerMissingList(missingList);
     setPlayerList(finalList);
-
   };
   useEffect(() => {
     if (apiSource == 0) {
@@ -1633,25 +1658,19 @@ function TotalContainer() {
       );
     }
 
-
     // scrapeAllActualEspnStats(selectedWeek)
-
   }, [selectedPosition, selectedMode, selectedWeek, apiSource]);
 
   useEffect(() => {
     scrapeBPData(selectedPosition, selectedMode, selectedWeek).catch(
       console.error
     );
-    scrapeAllActualEspnStats(selectedWeek)
+    scrapeAllActualEspnStats(selectedWeek);
   }, []);
 
   useEffect(() => {
     scrapeEspnStats(selectedWeek);
   }, [selectedWeek]);
-
-
-
-
 
   const redirectToPatreon = () => {
     window.location.href = "https://www.patreon.com/VegasProjections";
@@ -1671,7 +1690,7 @@ function TotalContainer() {
           Fantasy Football Projections Powered by Vegas Player Props
         </div> */}
 
-        <div style={{ display: "flex", flexWrap: 'wrap' }}>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
           <select
             className="select select-bordered "
             defaultValue={selectedPosition}
@@ -1721,12 +1740,14 @@ function TotalContainer() {
             }}
             style={{ display: "flex", marginLeft: "5px" }}
           >
+            <option value="2025">2025</option>
             <option value="2024">2024</option>
-            <option disabled={apiSource == 0} value="2023">2023</option>
+            <option disabled={apiSource == 0} value="2023">
+              2023
+            </option>
           </select>
-
         </div>
-        <div style={{ display: "flex", flexWrap: 'wrap' }}>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
           <select
             className="select select-bordered"
             id="weekSelect"
@@ -1736,77 +1757,77 @@ function TotalContainer() {
             }}
             style={{ display: "flex", marginLeft: "5px", marginTop: "10px" }}
           >
-            <option disabled={selectedYear == 2024} value="18">
+            <option disabled={selectedYear == 2025} value="18">
               Week 18
             </option>
-            <option value="17">
+            <option disabled={selectedYear == 2025} value="17">
               Week 17
             </option>
-            <option value="16">
+            <option disabled={selectedYear == 2025} value="16">
               Week 16
             </option>
-            <option value="15">
+            <option disabled={selectedYear == 2025} value="15">
               Week 15
             </option>
-            <option value="14">
+            <option disabled={selectedYear == 2025} value="14">
               Week 14
             </option>
-            <option value="13">
+            <option disabled={selectedYear == 2025} value="13">
               Week 13
             </option>
-            <option value="12">
+            <option disabled={selectedYear == 2025} value="12">
               Week 12
             </option>
-            <option value="11">
+            <option disabled={selectedYear == 2025} value="11">
               Week 11
             </option>
-            <option value="10">
+            <option disabled={selectedYear == 2025} value="10">
               Week 10
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="9"
             >
               Week 9
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="8"
             >
               Week 8
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="7"
             >
               Week 7
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="6"
             >
               Week 6
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="5"
             >
               Week 5
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="4"
             >
               Week 4
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="3"
             >
               Week 3
             </option>
             <option
-              disabled={selectedYear == 2023}
+              disabled={selectedYear == 2023 || selectedYear == 2025}
               value="2"
             >
               Week 2
@@ -1822,7 +1843,11 @@ function TotalContainer() {
             onChange={(e) => {
               setSelectedTheme(parseInt(e.target.value));
             }}
-            style={{ display: "inline-flex", marginLeft: "5px", marginTop: "10px" }}
+            style={{
+              display: "inline-flex",
+              marginLeft: "5px",
+              marginTop: "10px",
+            }}
           >
             <option value="0">Color</option>
             <option value="2">Color Outline</option>
@@ -1834,7 +1859,11 @@ function TotalContainer() {
             onChange={(e) => {
               setApiSource(parseInt(e.target.value));
             }}
-            style={{ display: "inline-flex", marginLeft: "5px", marginTop: "10px" }}
+            style={{
+              display: "inline-flex",
+              marginLeft: "5px",
+              marginTop: "10px",
+            }}
           >
             <option value="0">Consensus</option>
             <option value="1">Bovada</option>
@@ -1846,17 +1875,13 @@ function TotalContainer() {
             marginLeft: "5px",
             marginBottom: "15px",
             marginTop: "15px",
-            fontSize: "12px"
+            fontSize: "12px",
           }}
         >
           <button class="trade-button" onClick={handleTradeClick}>
             10 man .5 PPR Trade Value Chart
           </button>
-          <div style={{ marginTop: "3px", marginLeft: "15px" }}>
-
-            Tips:
-
-          </div>
+          <div style={{ marginTop: "3px", marginLeft: "15px" }}>Tips:</div>
           <button class="button2" onClick={handleClick}>
             Venmo
           </button>
@@ -1870,11 +1895,9 @@ function TotalContainer() {
             marginTop: "15px",
             fontWeight: 600,
             // fontSize: "18px",
-            textAlign: "left"
+            textAlign: "left",
           }}
-        >
-
-        </div>
+        ></div>
         <div
           style={{
             display: "flex",
@@ -1883,10 +1906,13 @@ function TotalContainer() {
             marginTop: "30px",
             fontWeight: 600,
             fontSize: "13px",
-            textAlign: "left"
+            textAlign: "left",
           }}
         >
-          If your player is not present in the table below, please toggle the Bovada/consensus odds dropdown, or check the Missing Prop table at the bottom of the page.  You can generally assume players in the main table are playing and not injured.
+          If your player is not present in the table below, please toggle the
+          Bovada/consensus odds dropdown, or check the Missing Prop table at the
+          bottom of the page. You can generally assume players in the main table
+          are playing and not injured.
         </div>
         <SangTable
           selectedWeek={selectedWeek}
@@ -1906,10 +1932,13 @@ function TotalContainer() {
           marginTop: "30px",
           fontWeight: 600,
           fontSize: "13px",
-          textAlign: "left"
+          textAlign: "left",
         }}
       >
-        Players below do not have all their required props.  They will be added to the primary table when their props are available.  Players here may be under injury risk, as Christian McCaffrey was stuck down here throughout week 1.
+        Players below do not have all their required props. They will be added
+        to the primary table when their props are available. Players here may be
+        under injury risk, as Christian McCaffrey was stuck down here throughout
+        week 1.
       </div>
       <MissingTable
         selectedPosition={selectedPosition}
