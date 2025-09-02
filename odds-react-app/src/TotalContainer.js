@@ -1924,6 +1924,7 @@ function TotalContainer() {
           selectedTheme={selectedTheme}
           allMap={allMap}
           recentMap={recentMap}
+          mode={selectedMode}
         />
       </div>
       <div

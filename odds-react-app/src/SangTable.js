@@ -158,7 +158,7 @@ export default function SangTable(props) {
             ) : (
               <> </>
             )}
-            {props.selectedProvider == 0 ? (
+            {props.selectedProvider == 0 && props.mode == 0 ? (
               <>
                 <th
                   style={{
@@ -435,7 +435,7 @@ export default function SangTable(props) {
               ) : (
                 <> </>
               )}
-              {props.selectedProvider == 0  ? (
+              {props.selectedProvider == 0  && props.mode == 0  ? (
                 <>
                   <td
 
