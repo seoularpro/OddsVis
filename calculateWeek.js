@@ -1,6 +1,6 @@
 
 function getWeekNumber() {
-    const startDate = new Date("2025-09-02");
+    const startDate = new Date("2024-09-03");
     const currentDate = new Date();
     const diffTime = currentDate - startDate;
     const diffWeeks = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
