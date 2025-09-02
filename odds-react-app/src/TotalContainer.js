@@ -19,7 +19,7 @@ import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
 function TotalContainer() {
-  const [selectedPosition, setSelectedPosition] = useState(2);
+  const [selectedPosition, setSelectedPosition] = useState(0);
   const [playerList, setPlayerList] = useState([]);
   const [playerMap, setPlayerMap] = useState(new Map());
   const [allMap, setAllMap] = useState(new Map());
