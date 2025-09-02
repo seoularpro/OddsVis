@@ -244,7 +244,7 @@ function TotalContainer() {
     let playerToPassTDDataPoints = new Map();
     let playerToPassYdsDataPoints = new Map();
     let playerToIntsDataPoints = new Map();
-    let yearPrefix = selectedYear == 2024 ? selectedYear : "";
+    let yearPrefix = selectedYear != 2023 ? selectedYear : "";
     let playerToPosition = new Map();
 
     // const url = 'https://api.bettingpros.com/v3/props?limit=10000&sport=NFL&market_id=73:74:102:103:101:107:76:105:75:104:66:71:78&event_id=21371:21372:21375:21376:21377:21378:21379:21380:21381:21382:21383:21393:21394:21395:21396:21397&include_selections=false&include_markets=true&include_counts=true'
