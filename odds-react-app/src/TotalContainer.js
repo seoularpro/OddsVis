@@ -991,7 +991,7 @@ function TotalContainer() {
     let playerToPassTDDataPoints = new Map();
     let playerToPassYdsDataPoints = new Map();
     let playerToIntsDataPoints = new Map();
-    let yearPrefix = selectedYear == 2024 ? selectedYear : "";
+    let yearPrefix = selectedYear != 2023 ? selectedYear : "";
 
     while (bovadaFileLoopFlag) {
       if (testedInts > lastTestedInt) {
