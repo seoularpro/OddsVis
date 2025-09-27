@@ -147,13 +147,13 @@ export default function SangTable(props) {
               >
                 Accuracy
               </th> */}
-                <th
+                {/* {<th
                   style={{
                     width: "34px",
                   }}
                 >
                   Mean Projection using Recent Data
-                </th>
+                </th>} */}
               </>
             ) : (
               <> </>
@@ -402,7 +402,7 @@ export default function SangTable(props) {
                 >
                   {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
                 </td> */}
-                  <td
+                  {/* <td
                     style={
                       props.selectedTheme == 0
                         ? {
@@ -430,7 +430,7 @@ export default function SangTable(props) {
                     }
                   >
                     {<div>{x.recentProjections ? Math.round(x.recentProjections * 100) / 100 : ''}</div>}
-                  </td>
+                  </td> */}
                 </>
               ) : (
                 <> </>
