@@ -46,7 +46,7 @@ function TotalContainer() {
     let otherMap = new Map();
     let weekIndex = 1;
     while (weekIndex < tempWeek) {
-      await fetch(`./week${weekIndex}hppr`)
+      await fetch(`./${selectedYear}/week${weekIndex}hppr`)
         .then((response) => {
           return response.json();
         })
@@ -56,7 +56,7 @@ function TotalContainer() {
           // console.log(d);
           for (const week of d.schedule) {
             // console.log(week);
-            if (weekIndex == week.matchupPeriodId) {
+            if (weekIndex  == week.matchupPeriodId) {
               let allPlayers = week.away.rosterForCurrentScoringPeriod.entries
                 .slice()
                 .concat(week.home.rosterForMatchupPeriod.entries.slice());
@@ -150,8 +150,6 @@ function TotalContainer() {
       }
       weekIndex = weekIndex + 1;
     }
-    // console.log(otherMap)
-
     setAllMap(otherMap);
   };
 
@@ -164,7 +162,7 @@ function TotalContainer() {
     // we may need to return to this but currently just use the latest one as it has past history as well
     //  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
 
-    await fetch(getUrl)
+    await fetch("./testHppr")
       .then((response) => {
         return response.json();
       })
@@ -1814,22 +1812,13 @@ function TotalContainer() {
             >
               Week 5
             </option>
-            <option
-              disabled={selectedYear == 2023}
-              value="4"
-            >
+            <option disabled={selectedYear == 2023} value="4">
               Week 4
             </option>
-            <option
-              disabled={selectedYear == 2023}
-              value="3"
-            >
+            <option disabled={selectedYear == 2023} value="3">
               Week 3
             </option>
-            <option
-              disabled={selectedYear == 2023}
-              value="2"
-            >
+            <option disabled={selectedYear == 2023} value="2">
               Week 2
             </option>
             <option disabled={selectedYear == 2023} value="1">
