@@ -1900,7 +1900,7 @@ function TotalContainer() {
             textAlign: "left",
           }}
         >
-          If your player is not present in the table below, please toggle the
+          Note: There are some bugs that I will fix shortly.  Please refresh your page after changing dropdown options to ensure column accuracy.  If your player is not present in the table below, please toggle the
           Bovada/consensus odds dropdown, or check the Missing Prop table at the
           bottom of the page. You can generally assume players in the main table
           are playing and not injured.
