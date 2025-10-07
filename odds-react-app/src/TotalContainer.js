@@ -19,13 +19,13 @@ import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
 function TotalContainer() {
-  const [selectedPosition, setSelectedPosition] = useState(0);
+  const [selectedPosition, setSelectedPosition] = useState(1);
   const [playerList, setPlayerList] = useState([]);
   const [playerMap, setPlayerMap] = useState(new Map());
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
-  const [selectedWeek, setSelectedWeek] = useState(5);
+  const [selectedWeek, setSelectedWeek] = useState(6);
   const [selectedYear, setSelectedYear] = useState(2025);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
@@ -56,7 +56,7 @@ function TotalContainer() {
           // console.log(d);
           for (const week of d.schedule) {
             // console.log(week);
-            if (weekIndex  == week.matchupPeriodId) {
+            if (weekIndex == week.matchupPeriodId) {
               let allPlayers = week.away.rosterForCurrentScoringPeriod.entries
                 .slice()
                 .concat(week.home.rosterForMatchupPeriod.entries.slice());
@@ -1800,16 +1800,10 @@ function TotalContainer() {
             >
               Week 7
             </option>
-            <option
-              disabled={selectedYear == 2023 || selectedYear == 2025}
-              value="6"
-            >
+            <option disabled={selectedYear == 2023} value="6">
               Week 6
             </option>
-            <option
-              disabled={selectedYear == 2023}
-              value="5"
-            >
+            <option disabled={selectedYear == 2023} value="5">
               Week 5
             </option>
             <option disabled={selectedYear == 2023} value="4">
@@ -1900,7 +1894,7 @@ function TotalContainer() {
             textAlign: "left",
           }}
         >
-          Note: There are some bugs that I will fix shortly.  Please refresh your page after changing dropdown options to ensure column accuracy.  If your player is not present in the table below, please toggle the
+          If your player is not present in the table below, please toggle the
           Bovada/consensus odds dropdown, or check the Missing Prop table at the
           bottom of the page. You can generally assume players in the main table
           are playing and not injured.
