@@ -1,49 +1,56 @@
 export function calculateMeanAllGames(actMap, name, median) {
-
-  var skewness = require('compute-skewness');
-
+  var skewness = require("compute-skewness");
 
   let actTemp = actMap.get(name);
   let medianProj = median.ev;
-  if (typeof actTemp == 'undefined') {
+  if (typeof actTemp == "undefined") {
     return null;
   }
-  let tempSkewness = skewness(actTemp.act.filter(item => item != null && item !== 0))
+  let tempSkewness = skewness(
+    actTemp.act.filter((item) => item != null && item !== 0)
+  );
+
+  // check how this does after week 8 and rewrite calculatemeanRecentGames to adjust for that.
+  //   with such a small sample size (<= 4), skewness can blow up causing some crazy Saquon projection
+  if ((tempSkewness > 1 || tempSkewness < -1) && actMap.get(name).act.length < 8) {
+    tempSkewness = 1;
+  }
 
   let alpha = 4 / (tempSkewness * tempSkewness);
 
-  let beta = (medianProj / (alpha - (1 / 3) + (.02 / alpha)));
+  let beta = medianProj / (alpha - 1 / 3 + 0.02 / alpha);
 
-  if (!(alpha * beta)) {
-    return null;
-  }
-  return alpha * beta
-
-}
-export function calculateMeanRecentGames(actMap, name, median) {
-  var skewness = require('compute-skewness');
-  let actTemp = actMap.get(name);
-  let medianProj = median.ev;
-  if (typeof actTemp == 'undefined') {
-    return null;
-  }
-  let recentActs = actTemp.act.filter((item, ii) => {
-    return item !== null && item != 0 && ii > actTemp.act.length - 6
-  })
-
-  if (recentActs.length < 3) {
-    return null;
-  }
-  // console.log(recentActs);
-  let tempSkewness = skewness(recentActs.length > 4 ? recentActs.slice(recentActs.length - 4) : recentActs)
-  let alpha = 4 / (tempSkewness * tempSkewness);
-  let beta = (medianProj / (alpha - (1 / 3) + (.02 / alpha)));
   if (!(alpha * beta)) {
     return null;
   }
   return alpha * beta;
 }
+export function calculateMeanRecentGames(actMap, name, median) {
+  var skewness = require("compute-skewness");
+  let actTemp = actMap.get(name);
+  let medianProj = median.ev;
+  if (typeof actTemp == "undefined") {
+    return null;
+  }
+  let recentActs = actTemp.act.filter((item, ii) => {
+    return item !== null && item != 0 && ii > actTemp.act.length - 6;
+  });
 
+  if (recentActs.length < 3) {
+    return null;
+  }
+  // console.log(recentActs);
+  let tempSkewness = skewness(
+    recentActs.length > 4 ? recentActs.slice(recentActs.length - 4) : recentActs
+  );
+
+  let alpha = 4 / (tempSkewness * tempSkewness);
+  let beta = medianProj / (alpha - 1 / 3 + 0.02 / alpha);
+  if (!(alpha * beta)) {
+    return null;
+  }
+  return alpha * beta;
+}
 
 export function calculateMeanAndStdDev(data) {
   // Extract the values in the 1st index of each list
@@ -66,10 +73,10 @@ export function americanToDecimal(americanOdds) {
 
   if (americanOdds > 0) {
     // For positive American odds
-    decimalOdds = (americanOdds / 100) + 1;
+    decimalOdds = americanOdds / 100 + 1;
   } else {
     // For negative American odds
-    decimalOdds = (100 / Math.abs(americanOdds)) + 1;
+    decimalOdds = 100 / Math.abs(americanOdds) + 1;
   }
 
   return decimalOdds.toFixed(2); // Return the decimal odds rounded to two decimal places
@@ -86,22 +93,22 @@ export function calculatePercentile(mean, stddev, value) {
       t *
       Math.exp(
         -z * z -
-        1.26551223 +
-        t *
-        (1.00002368 +
+          1.26551223 +
           t *
-          (0.37409196 +
-            t *
-            (0.09678418 +
+            (1.00002368 +
               t *
-              (-0.18628806 +
-                t *
-                (0.27886807 +
+                (0.37409196 +
                   t *
-                  (-1.13520398 +
-                    t *
-                    (1.48851587 +
-                      t * (-0.82215223 + t * 0.17087277))))))))
+                    (0.09678418 +
+                      t *
+                        (-0.18628806 +
+                          t *
+                            (0.27886807 +
+                              t *
+                                (-1.13520398 +
+                                  t *
+                                    (1.48851587 +
+                                      t * (-0.82215223 + t * 0.17087277))))))))
       );
     return z >= 0 ? 1 - erf : erf - 1;
   };
@@ -145,7 +152,7 @@ export function HSVtoRGB(h, s, v) {
   return {
     r: Math.round(r * 255),
     g: Math.round(g * 255),
-    b: Math.round(b * 255)
+    b: Math.round(b * 255),
   };
 }
 
