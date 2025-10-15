@@ -19,13 +19,13 @@ import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
 function TotalContainer() {
-  const [selectedPosition, setSelectedPosition] = useState(1);
+  const [selectedPosition, setSelectedPosition] = useState(2);
   const [playerList, setPlayerList] = useState([]);
   const [playerMap, setPlayerMap] = useState(new Map());
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
-  const [selectedWeek, setSelectedWeek] = useState(6);
+  const [selectedWeek, setSelectedWeek] = useState(7);
   const [selectedYear, setSelectedYear] = useState(2025);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
@@ -1794,10 +1794,7 @@ function TotalContainer() {
             >
               Week 8
             </option>
-            <option
-              disabled={selectedYear == 2023 || selectedYear == 2025}
-              value="7"
-            >
+            <option disabled={selectedYear == 2023} value="7">
               Week 7
             </option>
             <option disabled={selectedYear == 2023} value="6">
@@ -1923,8 +1920,7 @@ function TotalContainer() {
       >
         Players below do not have all their required props. They will be added
         to the primary table when their props are available. Players here may be
-        under injury risk, as Christian McCaffrey was stuck down here throughout
-        week 1.
+        under injury risk.
       </div>
       <MissingTable
         selectedPosition={selectedPosition}
