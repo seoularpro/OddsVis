@@ -19,13 +19,13 @@ import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
 function TotalContainer() {
-  const [selectedPosition, setSelectedPosition] = useState(2);
+  const [selectedPosition, setSelectedPosition] = useState(0);
   const [playerList, setPlayerList] = useState([]);
   const [playerMap, setPlayerMap] = useState(new Map());
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
-  const [selectedWeek, setSelectedWeek] = useState(7);
+  const [selectedWeek, setSelectedWeek] = useState(8);
   const [selectedYear, setSelectedYear] = useState(2025);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
@@ -1788,10 +1788,7 @@ function TotalContainer() {
             >
               Week 9
             </option>
-            <option
-              disabled={selectedYear == 2023 || selectedYear == 2025}
-              value="8"
-            >
+            <option disabled={selectedYear == 2023} value="8">
               Week 8
             </option>
             <option disabled={selectedYear == 2023} value="7">
