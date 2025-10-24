@@ -10,12 +10,6 @@ export function calculateMeanAllGames(actMap, name, median) {
     actTemp.act.filter((item) => item != null && item !== 0)
   );
 
-  // check how this does after week 8 and rewrite calculatemeanRecentGames to adjust for that.
-  //   with such a small sample size (<= 4), skewness can blow up causing some crazy Saquon projection
-  if ((tempSkewness > 1 || tempSkewness < -1) && actMap.get(name).act.length < 8) {
-    tempSkewness = 1;
-  }
-
   let alpha = 4 / (tempSkewness * tempSkewness);
 
   let beta = medianProj / (alpha - 1 / 3 + 0.02 / alpha);
