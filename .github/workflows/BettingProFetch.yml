@@ -64,7 +64,7 @@ jobs:
     - name: Fetch JSON from URL
       id: fetch_json
       run: |
-        curl -s "https://api.bettingpros.com/v3/props?limit=10000&sport=NFL&market_id=73:74:102:103:100:333:101:106:107:76:105:75:104:66:71:78:253&event_id=21593:21579:21594:21595:21613:21614:21615:21616:21617:21618:21619:21620:21621:21580&ev_threshold=false&include_selections=false&include_markets=true&include_counts=true"  -o ${{ env.filename }}
+        curl -s "https://api.bettingpros.com/v3/props?limit=10000&sport=NFL&market_id=73:74:102:103:100:333:101:106:107:76:105:75:104:66:71:78:253&event_id=21622:21581:21623:21624:21625:21645:21646:21647:21648:21649:21650:21651:21652:21653:21654&ev_threshold=false&include_selections=false&include_markets=true&include_counts=true"  -o ${{ env.filename }}
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
