@@ -45,9 +45,28 @@ const POS_META = {
 // Heatmap coloring for a data cell, driven by the selected "Cell style" mode:
 //   0 = filled color, 2 = colored outline, 1 = neutral (silver/default)
 function cellStyle(theme, color) {
-  if (theme === 0) return { backgroundColor: color, color: "#0b0b0f" };
+  if (theme === 0)
+    return {
+      backgroundColor: color,
+      color: "var(--cell-fg, #0b0b0f)",
+      borderRadius: "8px",
+    };
   if (theme === 2) return { boxShadow: `inset 0 0 0 1.5px ${color}` };
   return {};
+}
+
+// Readable text color for a filled heatmap cell. Dark text across the bright
+// yellow-green -> green-cyan band; white on the warm (red/orange) and cool
+// (blue/purple) ends. On the warm/green side the band starts at g>=200 (so
+// Jonathan Taylor stays white, Jaxon Smith-Njigba goes dark); on the cyan side
+// it needs g>=215 (so Kenny Gainwell and bluer stay white).
+function textColorFor(rgb) {
+  const m = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/.exec(rgb || "");
+  if (!m) return "#ffffff";
+  const g = +m[2];
+  const b = +m[3];
+  const inBand = b >= 250 ? g >= 215 : g >= 200;
+  return inBand ? "#0b0b0f" : "#ffffff";
 }
 
 export default function SangTable(props) {
@@ -123,7 +142,12 @@ export default function SangTable(props) {
     <div className="SangTable">
       <div className="vl-card">
         <div className="vl-table-wrap">
-          <table className="vl-table">
+          <table
+            className={
+              "vl-table" +
+              (props.selectedTheme === 0 ? " vl-table-filled" : "")
+            }
+          >
             <thead>
               <tr>
                 <th className="vl-th-rank">#</th>
@@ -156,16 +180,22 @@ export default function SangTable(props) {
                 visList.map((x, ix) => {
                   const cs = cellStyle(props.selectedTheme, x.calculatedColor);
                   const posMeta = filterPosMeta || POS_META[x.playerPos];
+                  const fg = textColorFor(x.calculatedColor);
                   const pctChange =
                     x.playerChange && x.playerEV
                       ? (x.playerChange / x.playerEV) * 100
                       : 0;
                   return (
-                    <tr key={x.playerName}>
+                    <tr
+                      key={x.playerName}
+                      style={
+                        props.selectedTheme === 0 ? { "--cell-fg": fg } : undefined
+                      }
+                    >
                       <td className="vl-td-rank">
                         <span
                           className="vl-rank"
-                          style={{ backgroundColor: x.calculatedColor }}
+                          style={{ backgroundColor: x.calculatedColor, color: fg }}
                         >
                           {ix + 1}
                         </span>
@@ -187,7 +217,7 @@ export default function SangTable(props) {
                       <td style={cs}>
                         <span className="vl-ev">{x.playerEV.toFixed(2)}</span>
                       </td>
-                      <td className="invis-mobile">
+                      <td className="invis-mobile" style={cs}>
                         {x.playerChange ? (
                           <span
                             className={`vl-delta ${

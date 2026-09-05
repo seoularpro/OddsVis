@@ -382,6 +382,39 @@ body {
   font-weight: 700;
 }
 
+/* "Color" cell style: filled rows read as rounded pills with dark, legible
+   text (the child spans set their own color, so override it here). */
+.vl-table-filled {
+  border-spacing: 3px 4px;
+}
+
+.vl-table-filled tbody td {
+  border-bottom: none;
+  height: 38px;
+}
+
+.vl-table-filled tbody tr:nth-child(even) td {
+  background: none;
+}
+
+.vl-table-filled tbody td .vl-player-name,
+.vl-table-filled tbody td .vl-ev,
+.vl-table-filled tbody td .vl-num,
+.vl-table-filled tbody td .vl-secondary,
+.vl-table-filled .vl-td-player:hover .vl-player-name,
+.vl-table-filled .vl-delta,
+.vl-table-filled .vl-delta-up,
+.vl-table-filled .vl-delta-down {
+  color: var(--cell-fg, #0b0b0f);
+}
+
+/* position tags adopt the row's readable text color */
+.vl-table-filled .vl-pos {
+  color: var(--cell-fg, #0b0b0f);
+  background: transparent;
+  border-color: var(--cell-fg, #0b0b0f);
+}
+
 .vl-td-rank {
   text-align: center !important;
   width: 44px;
