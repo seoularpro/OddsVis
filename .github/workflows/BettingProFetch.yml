@@ -44,7 +44,7 @@ jobs:
       run: |
         # Generate a unique filename based on week number and an incrementing integer
         weekNumber=${{ env.weekNumber }}
-        indexFile="BettingProsFiles/2025lastIndex${{ env.weekNumber }}.txt"
+        indexFile="BettingProsFiles/2026lastIndex${{ env.weekNumber }}.txt"
 
         # Retrieve or initialize the index
         if [ -f $indexFile ]; then
