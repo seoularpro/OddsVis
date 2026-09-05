@@ -8,6 +8,10 @@ const Positions = {
 
 export const UNIVERSAL_VIG = 1.0623;
 
+// Active fantasy season. ESPN integration reads this so moving to a new
+// season is a one-line change.
+export const CURRENT_SEASON = 2026;
+
 export const DataPoints = {
   AnyTD: 0,
   RushYds: 1,

@@ -193,6 +193,41 @@ body {
   cursor: not-allowed;
 }
 
+/* text inputs share the select's sizing */
+.vl-input {
+  height: 38px;
+  min-height: 38px;
+  min-width: 200px;
+  padding: 0 12px;
+  border-radius: var(--vl-radius);
+  border: 1px solid var(--vl-border-strong);
+  background-color: var(--vl-bg);
+  color: var(--vl-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  transition: border-color var(--vl-transition), box-shadow var(--vl-transition);
+}
+
+.vl-input:focus-visible,
+.vl-input:focus {
+  outline: none;
+  border-color: var(--vl-accent);
+  box-shadow: 0 0 0 3px oklch(var(--p) / 0.25);
+}
+
+.vl-input::placeholder {
+  color: var(--vl-faint);
+  font-weight: 500;
+}
+
+/* ESPN lineup import: one card per fantasy team */
+.vl-lineups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--vl-space-4);
+}
+
 .vl-toolbar-actions {
   display: flex;
   flex-wrap: wrap;
@@ -674,6 +709,34 @@ body {
   margin-bottom: var(--vl-space-4);
 }
 
+/* Tools page: one card per tool */
+.vl-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--vl-space-4);
+}
+.vl-tool-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--vl-space-3);
+  padding: 0 var(--vl-space-4) var(--vl-space-4);
+}
+.vl-tool-desc {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--vl-muted);
+}
+
+.vl-after-table {
+  margin-top: var(--vl-space-4);
+}
+.vl-support-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
 .vl-support-msg {
   font-size: 0.85rem;
   font-weight: 600;

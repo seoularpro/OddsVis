@@ -1,0 +1,319 @@
+import "../styles.css";
+import React, { useEffect, useState } from "react";
+import ThemeToggleDropdown from "../ThemeToggleDropdown";
+import { CURRENT_SEASON } from "../constants";
+import { EspnApiError, fetchEspnLeagueLineups } from "../espn/espnClient";
+import { computeBPProjections, normalizePlayerName } from "../bpProjections";
+
+// CSS class for the existing position badge palette (QB/RB/WR/TE/K/D/ST).
+const positionBadgeClass = (position) =>
+  position ? `vl-pos vl-pos-${position.toLowerCase().replace(/[^a-z]/g, "")}` : "vl-pos";
+
+// Only the positions this app projects are shown; kickers, defenses, and any
+// IDP slots are left out of the lineup view.
+const SHOWN_POSITIONS = new Set(["QB", "RB", "WR", "TE"]);
+const isShownStarter = (s) => s.position === undefined || SHOWN_POSITIONS.has(s.position);
+
+const SCORING_LABELS = { 0: "Half PPR", 1: "Standard", 2: "Full PPR" };
+// SUPERFLEX position mode returns every projected QB/RB/WR/TE.
+const ALL_POSITIONS = 99;
+
+export default function EspnLineups() {
+  const [leagueId, setLeagueId] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [result, setResult] = useState(null);
+  const [needsCredentials, setNeedsCredentials] = useState(false);
+  // ESPN cookies stay in component memory only; never persisted or logged.
+  const [swid, setSwid] = useState("");
+  const [espnS2, setEspnS2] = useState("");
+
+  const [scoringMode, setScoringMode] = useState(0);
+  // normalized player name -> { ev, change, pos } for the imported week
+  const [projections, setProjections] = useState(new Map());
+  const [projectionsLoading, setProjectionsLoading] = useState(false);
+
+  useEffect(() => {
+    document.title = "ESPN Lineups";
+  }, []);
+
+  // Pull this app's median projections for the imported week whenever the
+  // league result or scoring format changes.
+  useEffect(() => {
+    if (!result) return undefined;
+    let cancelled = false;
+    setProjectionsLoading(true);
+    computeBPProjections({
+      pos: ALL_POSITIONS,
+      mode: scoringMode,
+      week: result.scoringPeriodId,
+      year: result.season,
+    })
+      .then(({ finalList }) => {
+        if (!cancelled) setProjections(new Map(finalList));
+      })
+      .catch(() => {
+        if (!cancelled) setProjections(new Map());
+      })
+      .finally(() => {
+        if (!cancelled) setProjectionsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [result, scoringMode]);
+
+  const runImport = async (credentials) => {
+    setLoading(true);
+    setError(null);
+    setResult(null);
+    setProjections(new Map());
+    try {
+      const lineups = await fetchEspnLeagueLineups({
+        leagueId,
+        season: CURRENT_SEASON,
+        credentials,
+      });
+      setResult(lineups);
+      setNeedsCredentials(false);
+    } catch (e) {
+      const err =
+        e instanceof EspnApiError
+          ? e
+          : new EspnApiError("ESPN_API_ERROR", "Something went wrong importing this league.");
+      setError(err);
+      if (err.code === "ESPN_PRIVATE_LEAGUE" || err.code === "ESPN_AUTH_FAILED") {
+        setNeedsCredentials(true);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleImport = (e) => {
+    e.preventDefault();
+    setNeedsCredentials(false);
+    runImport(undefined);
+  };
+
+  const handleImportWithCredentials = (e) => {
+    e.preventDefault();
+    runImport({ swid: swid.trim(), espnS2: espnS2.trim() });
+  };
+
+  const projectionFor = (starter) => projections.get(normalizePlayerName(starter.name))?.ev;
+
+  return (
+    <div className="vl-page">
+      <div className="vl-page-head">
+        <h1 className="vl-title">ESPN Lineup Import</h1>
+        <div className="vl-subtitle">
+          <span>
+            Current starting lineups for every team in an ESPN Fantasy Football league, with
+            this week's median projections.
+          </span>
+        </div>
+      </div>
+
+      <form className="vl-toolbar" onSubmit={handleImport}>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="espnLeagueId">ESPN League ID</label>
+          <input
+            id="espnLeagueId"
+            className="vl-input"
+            inputMode="numeric"
+            autoComplete="off"
+            placeholder="e.g. 48347143"
+            value={leagueId}
+            onChange={(e) => setLeagueId(e.target.value)}
+          />
+        </div>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="espnScoringSelect">Scoring</label>
+          <select
+            id="espnScoringSelect"
+            className="vl-select"
+            value={scoringMode}
+            onChange={(e) => setScoringMode(parseInt(e.target.value))}
+          >
+            <option value="0">Half PPR</option>
+            <option value="1">Standard</option>
+            <option value="2">Full PPR</option>
+          </select>
+        </div>
+        <div className="vl-field">
+          <label className="vl-label">Theme</label>
+          <ThemeToggleDropdown />
+        </div>
+        <div className="vl-toolbar-actions">
+          <button
+            type="button"
+            className="vl-btn vl-btn-ghost"
+            onClick={() => {
+              window.location.href = "/";
+            }}
+          >
+            Back to Projections
+          </button>
+          <button
+            type="submit"
+            className="vl-btn vl-btn-primary"
+            disabled={loading || leagueId.trim() === ""}
+          >
+            {loading ? "Importing…" : "Import ESPN Lineups"}
+          </button>
+        </div>
+      </form>
+
+      {error ? (
+        <div className="vl-note">
+          <span className="vl-note-icon">!</span>
+          <span>{error.message}</span>
+        </div>
+      ) : null}
+
+      {needsCredentials ? (
+        <form className="vl-toolbar" onSubmit={handleImportWithCredentials} autoComplete="off">
+          <div className="vl-note" style={{ flexBasis: "100%", marginBottom: 0 }}>
+            <span className="vl-note-icon">i</span>
+            <span>
+              Private league. In a browser where you're signed in to ESPN, copy the
+              <b> SWID</b> and <b>espn_s2</b> cookie values for espn.com and paste them
+              here. They're sent once to this site's server to read the league and are
+              not stored.
+            </span>
+          </div>
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="espnSwid">SWID</label>
+            <input
+              id="espnSwid"
+              className="vl-input"
+              type="password"
+              autoComplete="off"
+              placeholder="{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}"
+              value={swid}
+              onChange={(e) => setSwid(e.target.value)}
+            />
+          </div>
+          <div className="vl-field" style={{ flex: 1, minWidth: 220 }}>
+            <label className="vl-label" htmlFor="espnS2">espn_s2</label>
+            <input
+              id="espnS2"
+              className="vl-input"
+              type="password"
+              autoComplete="off"
+              value={espnS2}
+              onChange={(e) => setEspnS2(e.target.value)}
+            />
+          </div>
+          <div className="vl-toolbar-actions">
+            <button
+              type="submit"
+              className="vl-btn vl-btn-primary"
+              disabled={loading || swid.trim() === "" || espnS2.trim() === ""}
+            >
+              {loading ? "Importing…" : "Import with ESPN cookies"}
+            </button>
+          </div>
+        </form>
+      ) : null}
+
+      {result ? (
+        <>
+          <div className="vl-chips">
+            {result.leagueName ? <span className="vl-chip">{result.leagueName}</span> : null}
+            <span className="vl-chip">{result.season}</span>
+            <span className="vl-chip">Week&nbsp;<b>{result.scoringPeriodId}</b></span>
+            <span className="vl-chip">{SCORING_LABELS[scoringMode]}</span>
+            <span className="vl-chip">{result.teams.length} teams</span>
+            {projectionsLoading ? <span className="vl-chip">Loading projections…</span> : null}
+          </div>
+
+          <div className="vl-lineups">
+            {result.teams.map((team) => {
+              const starters = team.starters.filter(isShownStarter);
+              const projected = starters
+                .map(projectionFor)
+                .filter((ev) => typeof ev === "number");
+              const total = projected.reduce((sum, ev) => sum + ev, 0);
+              return (
+                <div className="vl-card" key={team.teamId}>
+                  <div className="vl-card-head">
+                    <h3 className="vl-card-title">{team.teamName}</h3>
+                    <span className="vl-card-sub">{starters.length} starters</span>
+                  </div>
+                  {starters.length === 0 ? (
+                    <div className="vl-empty">
+                      <div className="vl-empty-title">No starters set</div>
+                      <div>This team has no QB, RB, WR, or TE in active lineup slots.</div>
+                    </div>
+                  ) : (
+                    <div className="vl-table-wrap">
+                      <table className="vl-table">
+                        <thead>
+                          <tr>
+                            <th className="vl-th-player">Player</th>
+                            <th>Slot</th>
+                            <th>MED</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {starters.map((s) => {
+                            const ev = projectionFor(s);
+                            return (
+                              <tr key={`${team.teamId}-${s.playerId}-${s.lineupSlotId}`}>
+                                <td className="vl-td-player">
+                                  <div className="vl-player">
+                                    <span className={positionBadgeClass(s.position)}>
+                                      {s.position ?? s.lineupSlot}
+                                    </span>
+                                    <span className="vl-player-name">{s.name}</span>
+                                  </div>
+                                </td>
+                                <td>
+                                  <span className="vl-secondary">{s.lineupSlot}</span>
+                                </td>
+                                <td>
+                                  {typeof ev === "number" ? (
+                                    <span className="vl-num vl-ev">{ev.toFixed(2)}</span>
+                                  ) : (
+                                    <span className="vl-num vl-secondary">
+                                      {projectionsLoading ? "…" : "—"}
+                                    </span>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td className="vl-td-player" style={{ textAlign: "left" }}>
+                              Total
+                              {projected.length < starters.length ? (
+                                <span className="vl-secondary" style={{ fontWeight: 400 }}>
+                                  {" "}
+                                  ({projected.length} of {starters.length} projected)
+                                </span>
+                              ) : null}
+                            </td>
+                            <td />
+                            <td>
+                              <span className="vl-num vl-ev">
+                                {projected.length > 0 ? total.toFixed(2) : "—"}
+                              </span>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+}

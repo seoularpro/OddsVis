@@ -128,9 +128,16 @@ export default function SangTable(props) {
     mapNewVisList(props.evList, props.espnPlayerMap, props.recentMap, props.allMap);
   }, [props.evList, props.allMap]);
 
-  const showSeasonMean = props.selectedProvider == 0;
-  const showEspn = props.selectedProvider == 0 && props.mode == 0;
-  let colCount = 4; // rank, player, median, delta
+  // Δ, Season Mean, ESPN Act, and ESPN Proj are temporarily disabled. To
+  // restore them, swap the flags back to their original conditions:
+  //   showDelta = true
+  //   showSeasonMean = props.selectedProvider == 0
+  //   showEspn = props.selectedProvider == 0 && props.mode == 0
+  const showDelta = false;
+  const showSeasonMean = false;
+  const showEspn = false;
+  let colCount = 3; // rank, player, median
+  if (showDelta) colCount += 1;
   if (showSeasonMean) colCount += 1;
   if (showEspn) colCount += 2;
 
@@ -153,7 +160,7 @@ export default function SangTable(props) {
                 <th className="vl-th-rank">#</th>
                 <th className="vl-th-player">Player</th>
                 <th>Median</th>
-                <th className="invis-mobile-header">Δ</th>
+                {showDelta ? <th className="invis-mobile-header">Δ</th> : null}
                 {showSeasonMean ? <th>Season Mean</th> : null}
                 {showEspn ? (
                   <>
@@ -217,6 +224,7 @@ export default function SangTable(props) {
                       <td style={cs}>
                         <span className="vl-ev">{x.playerEV.toFixed(2)}</span>
                       </td>
+                      {showDelta ? (
                       <td className="invis-mobile" style={cs}>
                         {x.playerChange ? (
                           <span
@@ -233,6 +241,7 @@ export default function SangTable(props) {
                           <span className="vl-delta vl-delta-flat">—</span>
                         )}
                       </td>
+                      ) : null}
                       {showSeasonMean ? (
                         <td style={cs}>
                           <span className="vl-num vl-secondary">

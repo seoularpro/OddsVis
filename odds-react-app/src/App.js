@@ -4,6 +4,8 @@ import TotalContainer from './TotalContainer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RedditPosts from "./RedditPosts";
 import About from "./pages/About";
+import EspnLineups from "./pages/EspnLineups";
+import Tools from "./pages/Tools";
 // import Navbar from "./Navbar";
 
 export default function App() {
@@ -16,6 +18,8 @@ export default function App() {
             <TotalContainer />}
           />
           <Route title="Trade Value Chart" path="/about" element={<About />} />
+          <Route path="/espnLineups" element={<EspnLineups />} />
+          <Route path="/tools" element={<Tools />} />
           <Route title="Trade Value Chart" path="/tradeValues" element={<GoogleSheetEmbed />} />
           <Route  path="/redditPosts/:week" element={<RedditPosts />}>
           </Route>
