@@ -14,10 +14,9 @@ const ThemeToggleDropdown = () => {
     };
 
     return (
-        <div className="m-1" style={{ display: "inline-flex", marginTop: "10px", marginLeft: "10px", height: "20px" }}>
-            {/* <label className="mr-2">Choose Theme:</label> */}
+        <div style={{ display: "inline-flex" }}>
             <select
-                className="select select-bordered w-full max-w-xs"
+                className="vl-select"
                 value={theme}
                 onChange={handleThemeChange}
             >

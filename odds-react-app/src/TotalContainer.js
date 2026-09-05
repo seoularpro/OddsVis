@@ -25,8 +25,8 @@ function TotalContainer() {
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
-  const [selectedWeek, setSelectedWeek] = useState(17);
-  const [selectedYear, setSelectedYear] = useState(2025);
+  const [selectedWeek, setSelectedWeek] = useState(1);
+  const [selectedYear, setSelectedYear] = useState(2026);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
   const [apiSource, setApiSource] = useState(0);
@@ -38,6 +38,8 @@ function TotalContainer() {
     window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
   };
 
+  // Kept for the temporarily-disabled Trade Values button (see render).
+  // eslint-disable-next-line no-unused-vars
   const handleTradeClick = () => {
     window.location.href = "/tradeValues";
   };
@@ -1674,28 +1676,41 @@ function TotalContainer() {
     window.location.href = "https://www.patreon.com/VegasProjections";
   };
 
-  return (
-    <div>
-      <div>
-        {/* <div
-          style={{
-            display: "flex",
-            marginLeft: "5px",
-            marginBottom: "5px",
-            marginTop: "15px",
-          }}
-        >
-          Fantasy Football Projections Powered by Vegas Player Props
-        </div> */}
+  const positionLabels = {
+    0: "QB",
+    1: "RB",
+    2: "WR",
+    3: "TE",
+    98: "FLEX",
+    99: "SUPERFLEX",
+  };
+  const scoringLabels = { 0: "Half PPR", 1: "Standard", 2: "Full PPR" };
+  const providerLabels = { 0: "Consensus", 1: "Bovada" };
 
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+  return (
+    <div className="vl-page">
+      <div className="vl-page-head">
+        <h1 className="vl-title">Weekly Fantasy Projections</h1>
+        <div className="vl-subtitle">
+          <span>Median fantasy points modeled from live Vegas player props.</span>
+          <span className="vl-chip">Week&nbsp;<b>{selectedWeek}</b></span>
+          <span className="vl-chip">{positionLabels[selectedPosition]}</span>
+          <span className="vl-chip">{scoringLabels[selectedMode]}</span>
+          <span className="vl-chip">{selectedYear}</span>
+          <span className="vl-chip">{providerLabels[apiSource]}</span>
+        </div>
+      </div>
+
+      <div className="vl-toolbar">
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="posSelect">Position</label>
           <select
-            className="select select-bordered "
+            id="posSelect"
+            className="vl-select"
             defaultValue={selectedPosition}
             onChange={(e) => {
               setSelectedPosition(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "5px" }}
           >
             <option value="0">QB</option>
             <option value="1">RB</option>
@@ -1704,20 +1719,27 @@ function TotalContainer() {
             <option value="98">FLEX</option>
             <option value="99">SUPERFLEX</option>
           </select>
+        </div>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="scoringSelect">Scoring</label>
           <select
-            className="select select-bordered "
+            id="scoringSelect"
+            className="vl-select"
             defaultValue={selectedMode}
             onChange={(e) => {
               setSelectedMode(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "5px" }}
           >
             <option value="0">Half PPR</option>
             <option value="1">Standard</option>
             <option value="2">Full PPR</option>
           </select>
+        </div>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="yearSelect">Season</label>
           <select
-            className="select select-bordered"
+            id="yearSelect"
+            className="vl-select"
             defaultValue={selectedYear}
             onChange={(e) => {
               if (parseInt(e.target.value) == 2023) {
@@ -1736,8 +1758,8 @@ function TotalContainer() {
               }
               setSelectedYear(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "5px" }}
           >
+            <option value="2026">2026</option>
             <option value="2025">2025</option>
             <option value="2024">2024</option>
             <option disabled={apiSource == 0} value="2023">
@@ -1745,181 +1767,149 @@ function TotalContainer() {
             </option>
           </select>
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap" }}>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="weekSelect">Week</label>
           <select
-            className="select select-bordered"
+            className="vl-select"
             id="weekSelect"
             defaultValue={selectedWeek}
             onChange={(e) => {
               setSelectedWeek(parseInt(e.target.value));
             }}
-            style={{ display: "flex", marginLeft: "5px", marginTop: "10px" }}
           >
-            <option disabled={selectedYear == 2025} value="18">
+            <option disabled={selectedYear == 2025 || selectedYear == 2026} value="18">
               Week 18
             </option>
-            <option value="17">
+            <option disabled={selectedYear == 2026} value="17">
               Week 17
             </option>
-            <option value="16">Week 16</option>
-            <option value="15">Week 15</option>
-            <option value="14">Week 14</option>
-            <option value="13">Week 13</option>
-            <option value="12">Week 12</option>
-            <option value="11">Week 11</option>
-            <option value="10">Week 10</option>
-            <option disabled={selectedYear == 2023} value="9">
+            <option disabled={selectedYear == 2026} value="16">Week 16</option>
+            <option disabled={selectedYear == 2026} value="15">Week 15</option>
+            <option disabled={selectedYear == 2026} value="14">Week 14</option>
+            <option disabled={selectedYear == 2026} value="13">Week 13</option>
+            <option disabled={selectedYear == 2026} value="12">Week 12</option>
+            <option disabled={selectedYear == 2026} value="11">Week 11</option>
+            <option disabled={selectedYear == 2026} value="10">Week 10</option>
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="9">
               Week 9
             </option>
-            <option disabled={selectedYear == 2023} value="8">
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="8">
               Week 8
             </option>
-            <option disabled={selectedYear == 2023} value="7">
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="7">
               Week 7
             </option>
-            <option disabled={selectedYear == 2023} value="6">
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="6">
               Week 6
             </option>
-            <option disabled={selectedYear == 2023} value="5">
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="5">
               Week 5
             </option>
-            <option disabled={selectedYear == 2023} value="4">
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="4">
               Week 4
             </option>
-            <option disabled={selectedYear == 2023} value="3">
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="3">
               Week 3
             </option>
-            <option disabled={selectedYear == 2023} value="2">
+            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="2">
               Week 2
             </option>
             <option disabled={selectedYear == 2023} value="1">
               Week 1
             </option>
           </select>
-          <ThemeToggleDropdown />
+        </div>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="providerSelect">Odds source</label>
           <select
-            className="select select-bordered"
+            id="providerSelect"
+            className="vl-select"
+            defaultValue={apiSource}
+            onChange={(e) => {
+              setApiSource(parseInt(e.target.value));
+            }}
+          >
+            <option value="0">Consensus</option>
+            <option disabled={selectedYear == 2025 || selectedYear == 2026} value="1">
+              Bovada
+            </option>
+          </select>
+        </div>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="cellSelect">Cell style</label>
+          <select
+            id="cellSelect"
+            className="vl-select"
             defaultValue={selectedTheme}
             onChange={(e) => {
               setSelectedTheme(parseInt(e.target.value));
-            }}
-            style={{
-              display: "inline-flex",
-              marginLeft: "5px",
-              marginTop: "10px",
             }}
           >
             <option value="0">Color</option>
             <option value="2">Color Outline</option>
             <option value="1">Silver Outline</option>
           </select>
-          <select
-            className="select select-bordered"
-            defaultValue={apiSource}
-            onChange={(e) => {
-              setApiSource(parseInt(e.target.value));
-            }}
-            style={{
-              display: "inline-flex",
-              marginLeft: "5px",
-              marginTop: "10px",
-            }}
-          >
-            <option value="0">Consensus</option>
-            <option disabled={selectedYear == 2025} value="1">
-              Bovada
-            </option>
-          </select>
         </div>
-        <div
-          style={{
-            display: "flex",
-            marginLeft: "5px",
-            marginBottom: "15px",
-            marginTop: "15px",
-            fontSize: "12px",
-          }}
-        >
-          <button class="trade-button" onClick={handleTradeClick}>
-            10 man .5 PPR Trade Value Chart
+        <div className="vl-field">
+          <label className="vl-label">Theme</label>
+          <ThemeToggleDropdown />
+        </div>
+        <div className="vl-toolbar-actions">
+          {/* Trade Values temporarily disabled — re-enable by uncommenting.
+          <button className="vl-btn vl-btn-success" onClick={handleTradeClick}>
+            Trade Value Chart
           </button>
-          <div style={{ marginTop: "3px", marginLeft: "15px" }}>Tips:</div>
-          <button class="button2" onClick={handleClick}>
-            Venmo
-          </button>
+          */}
         </div>
-        <div
-          className="hero-message"
-          style={{
-            display: "flex",
-            marginLeft: "5px",
-            marginBottom: "15px",
-            marginTop: "15px",
-            fontWeight: 600,
-            // fontSize: "18px",
-            textAlign: "left",
-          }}
-        ></div>
-        <div
-          style={{
-            display: "flex",
-            marginLeft: "5px",
-            marginBottom: "15px",
-            marginTop: "30px",
-            fontWeight: 600,
-            fontSize: "13px",
-            textAlign: "left",
-          }}
-        >
-          If your player is not present in the table below, please toggle the
-          Bovada/consensus odds dropdown, or check the Missing Prop table at the
-          bottom of the page. You can generally assume players in the main table
-          are playing and not injured.
-        </div>
-        <SangTable
-          selectedWeek={selectedWeek}
-          evList={playerList}
-          selectedProvider={apiSource}
-          espnPlayerMap={playerMap}
-          selectedTheme={selectedTheme}
-          allMap={allMap}
-          recentMap={recentMap}
-          mode={selectedMode}
-        />
       </div>
-      <div
-        style={{
-          display: "flex",
-          marginLeft: "0px",
-          marginBottom: "15px",
-          marginTop: "30px",
-          fontWeight: 600,
-          fontSize: "13px",
-          textAlign: "left",
-        }}
-      >
-        Players below do not have all their required props. They will be added
-        to the primary table when their props are available. Players here may be
-        under injury risk.
+
+      <div className="vl-support">
+        <div className="vl-support-msg">
+          Support future functionality by subscribing below.
+        </div>
+        <div className="vl-support-actions">
+          <button className="vl-btn vl-btn-primary" onClick={redirectToPatreon}>
+            Join vpPro+
+          </button>
+          <button className="vl-btn vl-btn-ghost" onClick={handleClick}>
+            Tip via Venmo
+          </button>
+        </div>
+      </div>
+
+      <div className="vl-note">
+        <span className="vl-note-icon">i</span>
+        <span>
+          Not seeing a player? Toggle the odds source, or check the missing-props
+          table below. Players in the main table can generally be assumed active
+          and healthy.
+        </span>
+      </div>
+
+      <SangTable
+        selectedWeek={selectedWeek}
+        evList={playerList}
+        selectedProvider={apiSource}
+        espnPlayerMap={playerMap}
+        selectedTheme={selectedTheme}
+        selectedPosition={selectedPosition}
+        allMap={allMap}
+        recentMap={recentMap}
+        mode={selectedMode}
+      />
+
+      <div className="vl-section-label">Awaiting complete props</div>
+      <div className="vl-note">
+        <span className="vl-note-icon">!</span>
+        <span>
+          These players don't yet have all required props. They'll move to the
+          main table once their odds post, and may carry injury risk.
+        </span>
       </div>
       <MissingTable
         selectedPosition={selectedPosition}
         missingList={playerMissingList}
       />
-
-      <div class="patreonSection">
-        <div style={{ fontWeight: 600, marginTop: "1rem" }}>
-          Support future functionality by subscribing to my Patreon link below.
-        </div>
-        <button
-          class="button"
-          onClick={(e) => {
-            redirectToPatreon();
-          }}
-        >
-          <span>vpPro+</span>
-        </button>
-      </div>
     </div>
   );
 }

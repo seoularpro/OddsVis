@@ -1,6 +1,13 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
-import { } from "./util.js";
+
+// Heatmap coloring for a data cell, matching SangTable's "Cell style" modes:
+//   0 = filled color, 2 = colored outline, 1 = neutral
+function cellStyle(theme, color) {
+  if (theme === 0) return { backgroundColor: color, color: "#0b0b0f" };
+  if (theme === 2) return { boxShadow: `inset 0 0 0 1.5px ${color}` };
+  return {};
+}
 
 export default function ClickedPlayerTotalTable(props) {
   const [visList, setVisList] = useState([]);
@@ -10,108 +17,59 @@ export default function ClickedPlayerTotalTable(props) {
   }, [props.clickedPlayers]);
 
   return (
-    <div className="ClickedPlayerTotalTable">
-      <table style={{}}>
-        <tr>
-          <th
-            style={{
-              width: "200px",
-            }}
-          >
-            Selected Players
-          </th>
-          <th
-            style={{
-              width: "46px",
-            }}
-          >
-            Median
-          </th>
-        </tr>
-        {visList.map((player) => (
-          <tr>
-            <td
-              style={
-                props.selectedTheme == 0
-                  ? {
-                    backgroundColor: player.calculatedColor,
-                    color:
-                      player.percentile > 76 && player.percentile < 82
-                        ? "lightgray"
-                        : "white",
-                    // border: "1px solid " + player.calculatedColor,
-                    borderRadius: "10px",
-                    whiteSpace: "nowrap",
-                    textAlign: "left",
-                  }
-                  :
-                  props.selectedTheme == 1 ? {
-                    // backgroundColor: "white",
-                    // color: "black",
-                    border: "1px solid  silver", // + x.calculatedColor,
-                    //   borderRadius: "10px",
-                    whiteSpace: "nowrap",
-                    textAlign: "left",
-                  }
-                    : {
-                      // backgroundColor: "white",
-                      // color: "black",
-                      border: "1px solid  " + player.calculatedColor,
-                      //   borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      textAlign: "left",
-                    }
-              }
-              onClick={() => props.handlePlayerClick(player)}
-            >
-              <div
-                style={{
-                  marginLeft: "5px",
-                }}
-              >
-                {player.playerName}
-              </div>
-            </td>
-            <td
-              style={
-                props.selectedTheme == 0
-                  ? {
-                    backgroundColor: player.calculatedColor,
-                    color:
-                      player.percentile > 76 && player.percentile < 82
-                        ? "lightgray"
-                        : "white",
-                    // border: "1px solid " + player.calculatedColor,
-                    borderRadius: "10px",
-                    width: "46px",
-                  }
-                  :
-                  props.selectedTheme == 1 ? {
-                    // backgroundColor: "white",
-                    // color: "black",
-                    border: "1px solid silver", // + x.calculatedColor,
-                    width: "46px",
-                    //   borderRadius: "10px",
-                  }
-                    : {
-                      // backgroundColor: "white",
-                      // color: "black",
-                      border: "1px solid " + player.calculatedColor,
-                      width: "46px",
-                      //   borderRadius: "10px",
-                    }
-              }
-            >
-              {<div>{player.playerEV.toFixed(2)}</div>}
-            </td>
-          </tr>
-        ))}
-        <tr>
-          <td>Total</td>
-          <td>{props.playerTotal}</td>
-        </tr>
-      </table>
-      {/* <div className="clicked-player-sum">150</div> */}
+    <div className="ClickedPlayerTotalTable vl-card">
+      <div className="vl-table-wrap">
+        <table className="vl-table">
+          <thead>
+            <tr>
+              <th className="vl-th-player">Selected players</th>
+              <th>Median</th>
+            </tr>
+          </thead>
+          <tbody>
+            {visList.length === 0 ? (
+              <tr>
+                <td colSpan={2} style={{ textAlign: "center" }}>
+                  <div className="vl-empty">
+                    <div className="vl-empty-title">No players selected</div>
+                    <div>Click a player above to build a comparison set.</div>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              visList.map((player) => {
+                const cs = cellStyle(props.selectedTheme, player.calculatedColor);
+                return (
+                  <tr key={player.playerName}>
+                    <td
+                      className="vl-td-player"
+                      style={cs}
+                      onClick={() => props.handlePlayerClick(player)}
+                    >
+                      <span className="vl-player-name">{player.playerName}</span>
+                    </td>
+                    <td style={cs}>
+                      <span className="vl-ev">{player.playerEV.toFixed(2)}</span>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
+          {visList.length > 0 ? (
+            <tfoot>
+              <tr>
+                <td className="vl-td-player" style={{ fontWeight: 700 }}>
+                  Total
+                </td>
+                <td>
+                  <span className="vl-ev">{props.playerTotal}</span>
+                </td>
+              </tr>
+            </tfoot>
+          ) : null}
+        </table>
+      </div>
     </div>
   );
 }

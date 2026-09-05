@@ -34,6 +34,22 @@ function calculateTotalEV(players) {
   return totalEV;
 }
 
+// Position badge metadata (used when a single position is selected).
+const POS_META = {
+  0: { label: "QB", cls: "vl-pos-qb" },
+  1: { label: "RB", cls: "vl-pos-rb" },
+  2: { label: "WR", cls: "vl-pos-wr" },
+  3: { label: "TE", cls: "vl-pos-te" },
+};
+
+// Heatmap coloring for a data cell, driven by the selected "Cell style" mode:
+//   0 = filled color, 2 = colored outline, 1 = neutral (silver/default)
+function cellStyle(theme, color) {
+  if (theme === 0) return { backgroundColor: color, color: "#0b0b0f" };
+  if (theme === 2) return { boxShadow: `inset 0 0 0 1.5px ${color}` };
+  return {};
+}
+
 export default function SangTable(props) {
   const [visList, setVisList] = useState([]);
   const [clickedList, setClickedList] = useState([]);
@@ -91,481 +107,162 @@ export default function SangTable(props) {
   useEffect(() => {
     mapNewVisList(props.evList, props.espnPlayerMap, props.recentMap, props.allMap);
   }, [props.evList, props.allMap]);
+
+  const showSeasonMean = props.selectedProvider == 0;
+  const showEspn = props.selectedProvider == 0 && props.mode == 0;
+  let colCount = 4; // rank, player, median, delta
+  if (showSeasonMean) colCount += 1;
+  if (showEspn) colCount += 2;
+
+  const posMeta = POS_META[props.selectedPosition];
+
   return (
-    <div className="SangTable" class="overflow-hidden ">
-      <div class="min-w-full  border border-gray-200 dark:border-gray-700 rounded-lg glass">
-        <table style={{}} >
-          <tr >
-            <th
-
-              style={{
-                width: "20px",
-              }}
-            ></th>
-            <th
-              style={
-                window.mobileCheck()
-                  ? {
-                    width: "300px",
-                  }
-                  : {
-                    width: "450px",
-                  }
-              }
-            >
-              Player {props.position}
-            </th>
-            <th
-              style={{
-                width: "46px",
-              }}
-            >
-              Median
-            </th>
-            <th
-              class="invis-mobile-header"
-              style={{
-                width: "16px",
-              }}
-            >
-              Δ
-            </th>
-            {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
-            {props.selectedProvider == 0 ? (
-              <>
-                <th
-                  style={{
-                    width: "34px",
-                  }}
-                >
-                  Mean Projection using All Season Data
-                </th>
-                {/* <th
-                style={{
-                  width: "46px",
-                }}
-              >
-                Accuracy
-              </th> */}
-                {/* {<th
-                  style={{
-                    width: "34px",
-                  }}
-                >
-                  Mean Projection using Recent Data
-                </th>} */}
-              </>
-            ) : (
-              <> </>
-            )}
-            {props.selectedProvider == 0 && props.mode == 0 ? (
-              <>
-                <th
-                  style={{
-                    width: "46px",
-                  }}
-                  class="invis-mobile-header"
-                >
-                  ESPN actual
-                </th>
-                {/* <th
-                style={{
-                  width: "46px",
-                }}
-              >
-                Accuracy
-              </th> */}
-                <th
-                  style={{
-                    width: "46px",
-                  }}
-                  class="invis-mobile-header"
-                >
-                  ESPN proj
-                </th>
-              </>
-            ) : (
-              <> </>
-            )}
-          </tr>
-          {visList.map((x, ix) => (
-            <tr>
-              <td
-                style={
-                  props.selectedTheme == 0
-                    ? {
-                      backgroundColor: x.calculatedColor,
-                      color:
-                        x.percentile > 75.3 && x.percentile < 82.5
-                          ? "lightgray"
-                          : "white",
-                      // border: "1px solid " + x.calculatedColor,
-                      borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      fontSize: ".5rem",
-                    }
-                    :
-                    props.selectedTheme == 1 ? {
-                      backgroundColor: x.calculatedColor,
-                      color: "black",
-                      border: "1px solid silver", // + x.calculatedColor,
-                      whiteSpace: "nowrap",
-                      fontSize: ".5rem",
-                      //   borderRadius: "10px",
-                    }
-                      : {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid " + x.calculatedColor,
-                        whiteSpace: "nowrap",
-                        fontSize: ".5rem",
-                        //   borderRadius: "10px",
-                      }
-                }
-              >
-                {ix + 1}
-              </td>
-              <td
-                style={
-                  props.selectedTheme == 0
-                    ? {
-                      backgroundColor: x.calculatedColor,
-                      color:
-                        x.percentile > 75.3 && x.percentile < 82.5
-                          ? "lightgray"
-                          : "white",
-                      // border: "1px solid " + x.calculatedColor,
-                      borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      textAlign: "left",
-                    }
-                    :
-                    props.selectedTheme == 1 ? {
-                      // backgroundColor: "white",
-                      // color: "black",
-                      border: "1px solid  silver", // + x.calculatedColor,
-                      //   borderRadius: "10px",
-                      whiteSpace: "nowrap",
-                      textAlign: "left",
-                    }
-                      :
-                      {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid " + x.calculatedColor,
-                        //   borderRadius: "10px",
-                        whiteSpace: "nowrap",
-                        textAlign: "left",
-                      }
-                }
-                onClick={() => handlePlayerClick(x)}
-              >
-                {
-                  <div
-                    style={{
-                      marginLeft: window.mobileCheck()
-                        ? " 5px"
-                        : 1 * ((1 / x.playerEV.toFixed(2)) * 2000 - 80) + "px",
-                    }}
-                  >
-                    {x.playerName}
-                  </div>
-                }
-              </td>
-              <td
-                style={
-                  props.selectedTheme == 0
-                    ? {
-                      backgroundColor: x.calculatedColor,
-                      color:
-                        x.percentile > 75.3 && x.percentile < 82.5
-                          ? "lightgray"
-                          : "white",
-                      // border: "1px solid " + x.calculatedColor,
-                      borderRadius: "10px",
-                      width: "100px",
-                    }
-                    : props.selectedTheme == 1 ? {
-                      // backgroundColor: "white",
-                      // color: "black",
-                      border: "1px solid silver", // + x.calculatedColor,
-                      width: "100px",
-                      //   borderRadius: "10px",
-                    }
-                      : {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid " + x.calculatedColor,
-                        width: "100px",
-                        //   borderRadius: "10px",
-                      }
-                }
-              >
-                {<div>{x.playerEV.toFixed(2)}</div>}
-              </td>
-              <td
-                class="invis-mobile"
-                style={{
-                  backgroundColor: "white",
-                  color:
-                    x.playerChange > 0
-                      ? "limegreen"
-                      : x.playerChange == 0
-                        ? "black"
-                        : "red",
-                  border: "none",
-                  borderRadius: "10px",
-                  width: "60px",
-                }}
-              >
-                {x.playerChange !== 0 ? (
-                  <div
-                    style={{
-                      marginTop: "3px",
-                      fontSize: "small",
-                    }}
-                  >
-                    {((x.playerChange / x.playerEV) * 100).toFixed(1)}%
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      marginTop: "3px",
-                      fontSize: "small",
-                    }}
-                  >
-                    {"0"}
-                  </div>
-                )}
-              </td>
-              {/* {true ?  */}
-              {/* {getQueryStringValue("isPro") == "thanksdudes" ? ( */}
-              {props.selectedProvider == 0 ? (
-                <>
-                  <td
-                    style={
-                      props.selectedTheme == 0
-                        ? {
-                          backgroundColor: x.calculatedColor,
-                          color:
-                            x.percentile > 75.3 && x.percentile < 82.5
-                              ? "lightgray"
-                              : "white",
-                          // border: "1px solid " + x.calculatedColor,
-                          borderRadius: "10px",
-                          width: "100px",
-                        }
-                        : props.selectedTheme == 1 ? {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid silver", //+ x.calculatedColor,
-                          width: "100px",
-                        }
-                          : {
-                            // backgroundColor: "white",
-                            // color: "black",
-                            border: "1px solid " + x.calculatedColor,
-                            width: "100px",
-                          }
-
-                    }
-                  >
-                    {<div>{x.allProjections ? Math.round(x.allProjections * 100) / 100 : ''}</div>}
+    <div className="SangTable">
+      <div className="vl-card">
+        <div className="vl-table-wrap">
+          <table className="vl-table">
+            <thead>
+              <tr>
+                <th className="vl-th-rank">#</th>
+                <th className="vl-th-player">Player</th>
+                <th>Median</th>
+                <th className="invis-mobile-header">Δ</th>
+                {showSeasonMean ? <th>Season Mean</th> : null}
+                {showEspn ? (
+                  <>
+                    <th className="invis-mobile-header">ESPN Act</th>
+                    <th className="invis-mobile-header">ESPN Proj</th>
+                  </>
+                ) : null}
+              </tr>
+            </thead>
+            <tbody>
+              {visList.length === 0 ? (
+                <tr>
+                  <td colSpan={colCount} style={{ textAlign: "center" }}>
+                    <div className="vl-empty">
+                      <div className="vl-empty-title">Loading projections…</div>
+                      <div>
+                        Pulling the latest player props for Week{" "}
+                        {props.selectedWeek}.
+                      </div>
+                    </div>
                   </td>
-                  {/* <td
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", //+ x.calculatedColor,
-                        width: "100px",
-                      }
-                        : {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-
-                  }
-                >
-                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
-                </td> */}
-                  {/* <td
-                    style={
-                      props.selectedTheme == 0
-                        ? {
-                          backgroundColor: x.calculatedColor,
-                          color:
-                            x.percentile > 75.3 && x.percentile < 82.5
-                              ? "lightgray"
-                              : "white",
-                          // border: "1px solid " + x.calculatedColor,
-                          borderRadius: "10px",
-                          width: "100px",
-                        }
-                        : props.selectedTheme == 1 ? {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid silver", // + x.calculatedColor,
-                          width: "100px",
-                        } :
-                          {
-                            // backgroundColor: "white",
-                            // color: "black",
-                            border: "1px solid " + x.calculatedColor,
-                            width: "100px",
-                          }
-                    }
-                  >
-                    {<div>{x.recentProjections ? Math.round(x.recentProjections * 100) / 100 : ''}</div>}
-                  </td> */}
-                </>
+                </tr>
               ) : (
-                <> </>
+                visList.map((x, ix) => {
+                  const cs = cellStyle(props.selectedTheme, x.calculatedColor);
+                  const pctChange =
+                    x.playerChange && x.playerEV
+                      ? (x.playerChange / x.playerEV) * 100
+                      : 0;
+                  return (
+                    <tr key={x.playerName}>
+                      <td className="vl-td-rank">
+                        <span
+                          className="vl-rank"
+                          style={{ backgroundColor: x.calculatedColor }}
+                        >
+                          {ix + 1}
+                        </span>
+                      </td>
+                      <td
+                        className="vl-td-player"
+                        style={cs}
+                        onClick={() => handlePlayerClick(x)}
+                      >
+                        <div className="vl-player">
+                          {posMeta ? (
+                            <span className={`vl-pos ${posMeta.cls}`}>
+                              {posMeta.label}
+                            </span>
+                          ) : null}
+                          <span className="vl-player-name">{x.playerName}</span>
+                        </div>
+                      </td>
+                      <td style={cs}>
+                        <span className="vl-ev">{x.playerEV.toFixed(2)}</span>
+                      </td>
+                      <td className="invis-mobile">
+                        {x.playerChange ? (
+                          <span
+                            className={`vl-delta ${
+                              x.playerChange > 0
+                                ? "vl-delta-up"
+                                : "vl-delta-down"
+                            }`}
+                          >
+                            {x.playerChange > 0 ? "▲" : "▼"}{" "}
+                            {Math.abs(pctChange).toFixed(1)}%
+                          </span>
+                        ) : (
+                          <span className="vl-delta vl-delta-flat">—</span>
+                        )}
+                      </td>
+                      {showSeasonMean ? (
+                        <td style={cs}>
+                          <span className="vl-num vl-secondary">
+                            {x.allProjections
+                              ? Math.round(x.allProjections * 100) / 100
+                              : "—"}
+                          </span>
+                        </td>
+                      ) : null}
+                      {showEspn ? (
+                        <>
+                          <td className="invis-mobile" style={cs}>
+                            <span className="vl-num vl-secondary">
+                              {x.espnValues?.act ?? "—"}
+                            </span>
+                          </td>
+                          <td className="invis-mobile" style={cs}>
+                            <span className="vl-num vl-secondary">
+                              {x.espnValues?.proj ?? "—"}
+                            </span>
+                          </td>
+                        </>
+                      ) : null}
+                    </tr>
+                  );
+                })
               )}
-              {props.selectedProvider == 0  && props.mode == 0  ? (
-                <>
-                  <td
-
-                    style={
-                      props.selectedTheme == 0
-                        ? {
-                          backgroundColor: x.calculatedColor,
-                          color:
-                            x.percentile > 75.3 && x.percentile < 82.5
-                              ? "lightgray"
-                              : "white",
-                          border: "1px solid " + x.calculatedColor,
-                          borderRadius: "10px",
-                          width: "100px",
-                        }
-                        : props.selectedTheme == 1 ? {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid silver", //+ x.calculatedColor,
-                          width: "100px",
-                        }
-                          : {
-                            // backgroundColor: "white",
-                            // color: "black",
-                            border: "1px solid " + x.calculatedColor,
-                            width: "100px",
-                          }
-
-                    }
-                  >
-                    {<div>{x.espnValues?.act}</div>}
-                  </td>
-                  {/* <td
-                  style={
-                    props.selectedTheme == 0
-                      ? {
-                        backgroundColor: x.calculatedColor,
-                        color:
-                          x.percentile > 75.3 && x.percentile < 82.5
-                            ? "lightgray"
-                            : "white",
-                        border: "1px solid " + x.calculatedColor,
-                        borderRadius: "10px",
-                        width: "100px",
-                      }
-                      : props.selectedTheme == 1 ? {
-                        // backgroundColor: "white",
-                        // color: "black",
-                        border: "1px solid silver", //+ x.calculatedColor,
-                        width: "100px",
-                      }
-                        : {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid " + x.calculatedColor,
-                          width: "100px",
-                        }
-
-                  }
-                >
-                  {<div>{Math.round((x.playerEV - x.espnValues?.act) / x.espnValues?.act * 100)}%</div>}
-                </td> */}
-                  <td
-                    style={
-                      props.selectedTheme == 0
-                        ? {
-                          backgroundColor: x.calculatedColor,
-                          color:
-                            x.percentile > 75.3 && x.percentile < 82.5
-                              ? "lightgray"
-                              : "white",
-                          border: "1px solid " + x.calculatedColor,
-                          borderRadius: "10px",
-                          width: "100px",
-                        }
-                        : props.selectedTheme == 1 ? {
-                          // backgroundColor: "white",
-                          // color: "black",
-                          border: "1px solid silver", // + x.calculatedColor,
-                          width: "100px",
-                        } :
-                          {
-                            // backgroundColor: "white",
-                            // color: "black",
-                            border: "1px solid " + x.calculatedColor,
-                            width: "100px",
-                          }
-                    }
-                  >
-                    {<div>{x.espnValues?.proj}</div>}
-                  </td>
-                </>
-              ) : (
-                <> </>
-              )}
-            </tr>
-          ))}
-        </table>
-        <div class="updateTimeSection">
-          Update schedule (ET):<br></br>
-
+            </tbody>
+          </table>
         </div>
-        <div class="updateTimeSection2">
-          Sun: 8am, 12pm, 12am<br></br>
-          Mon: 12pm, 6pm, 12am<br></br>
-          Tues: 12pm, 12am<br></br>
-          Wed: 12pm, 12am<br></br>
-          Thurs: 12pm, 6pm, 12am<br></br>
-          Fri: 12pm, 12am<br></br>
-          Sat: 12pm, 12am<br></br>
+        <div className="vl-meta">
+          <div>
+            <div className="vl-meta-title">Update schedule (ET)</div>
+            <div className="vl-meta-grid">
+              <span>Sun — 8am, 12pm, 12am</span>
+              <span>Mon — 12pm, 6pm, 12am</span>
+              <span>Tue — 12pm, 12am</span>
+              <span>Wed — 12pm, 12am</span>
+              <span>Thu — 12pm, 6pm, 12am</span>
+              <span>Fri — 12pm, 12am</span>
+              <span>Sat — 12pm, 12am</span>
+            </div>
+          </div>
         </div>
       </div>
 
-
-
-      <div style={{ display: "flex" }}>
-        <div className="bovada-section">
-          If you disagree with any of the projections, place a wager at my crypto sportsbook that provides this data through my affiliate link:
-        </div>
-        <div>
-          <button class="bovada-button" onClick={handleBovadaClick}>
+      <div className="vl-note" style={{ marginTop: "16px" }}>
+        <span className="vl-note-icon">↗</span>
+        <span>
+          Disagree with a projection? Place a wager at the crypto sportsbook that
+          provides this data through my affiliate link.
+          <button
+            className="vl-btn vl-btn-ghost"
+            style={{ marginLeft: "12px", height: "30px", padding: "0 12px" }}
+            onClick={handleBovadaClick}
+          >
             Sportsbook
           </button>
-        </div>
+        </span>
       </div>
-      <div className="new-feature-message">
-        Player Selector Table
-      </div>
-      <div class="select-player-message">
-        Add or remove players from the table below by clicking on their name
+
+      <div className="vl-section-label">Player selector</div>
+      <div className="vl-card-sub" style={{ marginBottom: "8px" }}>
+        Click a player's name in the table above to add or remove them here.
       </div>
 
       <ClickedPlayerTotalTable
