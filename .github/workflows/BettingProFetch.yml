@@ -58,7 +58,7 @@ jobs:
         echo $nextIndex > $indexFile
 
         # Construct the filename
-        filename="BettingProsFiles/2025week${weekNumber}${nextIndex}"
+        filename="BettingProsFiles/2026week${weekNumber}${nextIndex}"
         echo "filename=$filename" >> $GITHUB_ENV
 
     - name: Fetch JSON from URL
