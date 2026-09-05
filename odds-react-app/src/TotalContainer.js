@@ -18,6 +18,13 @@ import {
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 
+// Base URL for the BettingPros data files. Defaults to the committed files on
+// GitHub; override with REACT_APP_BP_BASE (e.g. "/BettingProsFiles/" served
+// from public/) to test locally-generated files before committing them.
+const BP_BASE =
+  process.env.REACT_APP_BP_BASE ||
+  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BettingProsFiles/";
+
 function TotalContainer() {
   const [selectedPosition, setSelectedPosition] = useState(0);
   const [playerList, setPlayerList] = useState([]);
@@ -284,7 +291,7 @@ function TotalContainer() {
       // })
 
       await fetch(
-        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BettingProsFiles/" +
+        BP_BASE +
           yearPrefix +
           "week" +
           week +
@@ -297,6 +304,48 @@ function TotalContainer() {
         .then((data) => {
           // console.log(data);
           let allMarkets = data.props.slice();
+
+          // Fallback: /props is missing consensus lines for some players
+          // (e.g. QB anytime-TD / interceptions), but /offers still has them.
+          // For any (market, player) absent from /props, synthesize a
+          // props-shaped entry from the distilled /offers data so the same
+          // parsing loops below pick it up. See BettingProFetch.yml.
+          if (Array.isArray(data.offers)) {
+            const cleanName = (n) =>
+              (n || "")
+                .replace(/\./g, "")
+                .replace(/ jr/i, "")
+                .replace(/ sr/i, "")
+                .replace(/ Jr/i, "");
+            const present = new Set(
+              allMarkets.map(
+                (m) => m.market_id + "|" + cleanName(m.participant?.name)
+              )
+            );
+            for (const o of data.offers) {
+              const key = o.market_id + "|" + cleanName(o.name);
+              if (present.has(key)) continue;
+              present.add(key);
+              // /offers has no pass-TD projection, so derive it from the
+              // over line + odds (the projection.value the passTD loop reads).
+              let projValue = 0;
+              if (o.market_id == 102) {
+                projValue =
+                  o.line -
+                  0.5 +
+                  1 / (americanToDecimal(o.odds) / UNIVERSAL_VIG);
+              }
+              allMarkets.push({
+                market_id: o.market_id,
+                participant: {
+                  name: o.name,
+                  player: { position: o.position || "" },
+                },
+                over: { consensus_odds: o.odds, consensus_line: o.line },
+                projection: { value: projValue },
+              });
+            }
+          }
 
           let allTDMarket = allMarkets.filter(
             (market) => market.market_id == 78
@@ -665,7 +714,7 @@ function TotalContainer() {
       testedInts++;
       isNewBovadaFileCheck = false;
       bovadaFileLoopFlag = await isFetchable(
-        "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BettingProsFiles/" +
+        BP_BASE +
           yearPrefix +
           "week" +
           week +

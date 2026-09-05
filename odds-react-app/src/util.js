@@ -171,7 +171,12 @@ export function rainbow(p) {
 export async function isFetchable(url) {
   try {
     const response = await fetch(url);
-    return response.ok;
+    if (!response.ok) return false;
+    // A local dev server serves index.html (200) for missing paths; real data
+    // files are never HTML, so treat an HTML response as "not present" to keep
+    // the file-index loop from running forever. No-op against GitHub (404s).
+    const contentType = response.headers.get("content-type") || "";
+    return !contentType.includes("text/html");
   } catch (error) {
     return false;
   }

@@ -94,13 +94,46 @@ jobs:
           page=$((page + 1))
         done
 
-        # 4. Merge every page into one { "props": [ ... ] } document
-        #    (the same shape the app already parses).
-        jq -s '{props: .}' "${tmp}" > "${{ env.filename }}"
-        rm -f "${tmp}"
+        # 4. Offers fallback: /props is missing consensus lines for some
+        #    players (e.g. QB anytime-TD / interceptions); /offers still has
+        #    them under book id 0 (link = bettingpros.com). Pull the same 7
+        #    markets the app consumes and distill each to
+        #    {market_id, name, position, odds, line}. /offers caps limit at
+        #    10/page, so it pages more finely than /props.
+        offers_markets="78:101:102:103:104:105:107"
+        offers_tmp="${RUNNER_TEMP:-/tmp}/offers.ndjson"
+        obase="https://api.bettingpros.com/v3/offers?sport=NFL&market_id=${offers_markets}&event_id=${event_ids}&limit=10"
+        distill='.offers[] |
+          if .market_id == 78 then
+            .selections[] | . as $s | ($s.books[]|select(.id==0)|.lines[0]) as $l | select($l!=null)
+              | {market_id:78, name:$s.label, position:null, odds:$l.cost, line:$l.line}
+          else
+            . as $o | ($o.selections[]|select(.selection=="over")) as $s | ($s.books[]|select(.id==0)|.lines[0]) as $l
+              | select($l!=null and (($o.participants|length)>0))
+              | {market_id:$o.market_id, name:$o.participants[0].name, position:$o.participants[0].player.position, odds:$l.cost, line:$l.line}
+          end'
+
+        opage1=$(curl -s -H "x-api-key: ${api_key}" "${obase}&page=1")
+        offers_pages=$(echo "${opage1}" | jq -r '._pagination.total_pages // 1')
+        echo "Offers pages: ${offers_pages}"
+        echo "${opage1}" | jq -c "${distill}" > "${offers_tmp}"
+        opage=2
+        while [ "${opage}" -le "${offers_pages}" ]; do
+          curl -s -H "x-api-key: ${api_key}" "${obase}&page=${opage}" \
+            | jq -c "${distill}" >> "${offers_tmp}"
+          opage=$((opage + 1))
+        done
+
+        # 5. Merge props + offers into one document the app reads.
+        jq -n \
+          --slurpfile props "${tmp}" \
+          --slurpfile offers "${offers_tmp}" \
+          '{props: $props, offers: $offers}' > "${{ env.filename }}"
+        rm -f "${tmp}" "${offers_tmp}"
 
         count=$(jq '.props | length' "${{ env.filename }}")
-        echo "Wrote ${count} props to ${{ env.filename }}"
+        ocount=$(jq '.offers | length' "${{ env.filename }}")
+        echo "Wrote ${count} props + ${ocount} offers to ${{ env.filename }}"
         if [ "${count}" -eq 0 ]; then
           echo "::error::0 props written — aborting so no empty file is committed"
           exit 1
