@@ -63,8 +63,54 @@ jobs:
 
     - name: Fetch JSON from URL
       id: fetch_json
+      env:
+        # BettingPros requires the x-api-key header. Prefer a repo secret;
+        # fall back to the public web-app key if the secret isn't set.
+        BP_API_KEY: ${{ secrets.BP_API_KEY }}
       run: |
-        curl -s "https://api.bettingpros.com/v3/props?limit=10000&sport=NFL&market_id=73:74:102:103:100:333:101:106:107:76:105:75:104:66:71:78:253&event_id=21900:21894:21820:21780:21698:21627:21755:21719:21655:21624:21614:21830:21793:21714:21643:21783:21709:21668:21633&ev_threshold=false&include_selections=false&include_markets=true&include_counts=true"  -o ${{ env.filename }}
+        set -euo pipefail
+
+        api_key="${BP_API_KEY:-CHi8Hy5CEE4khd46XNYL23dCFX96oUdw6qOt1Dnh}"
+        markets="73:74:102:103:100:333:101:106:107:76:105:75:104:66:71:78:253"
+        tmp="${RUNNER_TEMP:-/tmp}/props.ndjson"
+
+        # 1. Pull the current week's event IDs (this endpoint returns the
+        #    active slate, so nothing needs to be hard-coded per week).
+        event_ids=$(curl -s -H "x-api-key: ${api_key}" \
+          "https://api.bettingpros.com/v3/events?sport=NFL" \
+          | jq -r '[.events[].id] | join(":")')
+        if [ -z "${event_ids}" ] || [ "${event_ids}" = "null" ]; then
+          echo "::error::No NFL events returned from /v3/events"; exit 1
+        fi
+        echo "Event IDs: ${event_ids}"
+
+        base="https://api.bettingpros.com/v3/props?limit=200&sport=NFL&market_id=${markets}&event_id=${event_ids}&ev_threshold=false&include_selections=false&include_markets=true&include_counts=true"
+
+        # 2. Fetch page 1 to learn the page count (the API caps at 200/page).
+        page1=$(curl -s -H "x-api-key: ${api_key}" "${base}&page=1")
+        total_pages=$(echo "${page1}" | jq -r '._pagination.total_pages // 1')
+        echo "Total pages: ${total_pages}"
+
+        # 3. Collect props from every page into newline-delimited JSON.
+        echo "${page1}" | jq -c '.props[]' > "${tmp}"
+        page=2
+        while [ "${page}" -le "${total_pages}" ]; do
+          curl -s -H "x-api-key: ${api_key}" "${base}&page=${page}" \
+            | jq -c '.props[]' >> "${tmp}"
+          page=$((page + 1))
+        done
+
+        # 4. Merge every page into one { "props": [ ... ] } document
+        #    (the same shape the app already parses).
+        jq -s '{props: .}' "${tmp}" > "${{ env.filename }}"
+        rm -f "${tmp}"
+
+        count=$(jq '.props | length' "${{ env.filename }}")
+        echo "Wrote ${count} props to ${{ env.filename }}"
+        if [ "${count}" -eq 0 ]; then
+          echo "::error::0 props written — aborting so no empty file is committed"
+          exit 1
+        fi
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
