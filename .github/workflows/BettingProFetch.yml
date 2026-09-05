@@ -74,14 +74,8 @@ jobs:
         markets="73:74:102:103:100:333:101:106:107:76:105:75:104:66:71:78:253"
         tmp="${RUNNER_TEMP:-/tmp}/props.ndjson"
 
-        # 1. Pull the current week's event IDs (this endpoint returns the
-        #    active slate, so nothing needs to be hard-coded per week).
-        event_ids=$(curl -s -H "x-api-key: ${api_key}" \
-          "https://api.bettingpros.com/v3/events?sport=NFL" \
-          | jq -r '[.events[].id] | join(":")')
-        if [ -z "${event_ids}" ] || [ "${event_ids}" = "null" ]; then
-          echo "::error::No NFL events returned from /v3/events"; exit 1
-        fi
+        # 1. Event IDs for the current slate (update this list each week).
+        event_ids="21920:21906:21924:21926:21922:21921:21925:22120:21927:21923:21928:21930:21931:21929:21907:21910"
         echo "Event IDs: ${event_ids}"
 
         base="https://api.bettingpros.com/v3/props?limit=200&sport=NFL&market_id=${markets}&event_id=${event_ids}&ev_threshold=false&include_selections=false&include_markets=true&include_counts=true"
