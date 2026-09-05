@@ -10,12 +10,12 @@ on:
 jobs:
   fetch-json:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.PAT_TOKEN }}
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -99,4 +99,4 @@ jobs:
         message: "Update JSON data file in BovadaAPIFiles"
         add: '.'
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

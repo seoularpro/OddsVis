@@ -10,12 +10,12 @@ on:
 jobs:
   fetch-json:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.PAT_TOKEN }}
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -26,7 +26,7 @@ jobs:
         # Create a script to calculate the week number
         echo '
         function getWeekNumber() {
-            const startDate = new Date("2025-09-02");
+            const startDate = new Date("2026-09-05");
             const currentDate = new Date();
             const diffTime = currentDate - startDate;
             const diffWeeks = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
@@ -74,4 +74,4 @@ jobs:
         message: "Update JSON data file in BettingProsFiles"
         add: '.'
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
