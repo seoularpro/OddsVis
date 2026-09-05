@@ -98,6 +98,14 @@ body {
   align-items: center;
 }
 
+.vl-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vl-space-2);
+  align-items: center;
+  margin-bottom: var(--vl-space-3);
+}
+
 .vl-chip {
   display: inline-flex;
   align-items: center;
@@ -611,10 +619,6 @@ body {
   .vl-nav-links a {
     padding: 7px 9px;
     font-size: 0.8rem;
-  }
-
-  .vl-brand-dim {
-    display: none;
   }
 }
 

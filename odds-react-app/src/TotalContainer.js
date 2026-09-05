@@ -1009,6 +1009,7 @@ function TotalContainer() {
         {
           ev: elem[1],
           change: finalCPlayer.get(elem[0]),
+          pos: playerToPosition.get(elem[0]),
         },
       ];
     });
@@ -1722,7 +1723,7 @@ function TotalContainer() {
   }, [selectedWeek]);
 
   const redirectToPatreon = () => {
-    window.location.href = "https://www.patreon.com/VegasProjections";
+    window.location.href = "https://www.patreon.com/VegasLytics";
   };
 
   const positionLabels = {
@@ -1741,12 +1742,7 @@ function TotalContainer() {
       <div className="vl-page-head">
         <h1 className="vl-title">Weekly Fantasy Projections</h1>
         <div className="vl-subtitle">
-          <span>Median fantasy points modeled from live Vegas player props.</span>
-          <span className="vl-chip">Week&nbsp;<b>{selectedWeek}</b></span>
-          <span className="vl-chip">{positionLabels[selectedPosition]}</span>
-          <span className="vl-chip">{scoringLabels[selectedMode]}</span>
-          <span className="vl-chip">{selectedYear}</span>
-          <span className="vl-chip">{providerLabels[apiSource]}</span>
+          <span>Median fantasy point projections modeled from live Vegas player props.</span>
         </div>
       </div>
 
@@ -1914,11 +1910,11 @@ function TotalContainer() {
 
       <div className="vl-support">
         <div className="vl-support-msg">
-          Support future functionality by subscribing below.
+          Support future functionality and get early access by subscribing below.
         </div>
         <div className="vl-support-actions">
           <button className="vl-btn vl-btn-primary" onClick={redirectToPatreon}>
-            Join vpPro+
+            Join VLPro+
           </button>
           <button className="vl-btn vl-btn-ghost" onClick={handleClick}>
             Tip via Venmo
@@ -1929,10 +1925,17 @@ function TotalContainer() {
       <div className="vl-note">
         <span className="vl-note-icon">i</span>
         <span>
-          Not seeing a player? Toggle the odds source, or check the missing-props
-          table below. Players in the main table can generally be assumed active
-          and healthy.
+          Not seeing a player? Check the "Awaiting Complete Props"
+          table at the bottom of the page. 
         </span>
+      </div>
+
+      <div className="vl-chips">
+        <span className="vl-chip">Week&nbsp;<b>{selectedWeek}</b></span>
+        <span className="vl-chip">{positionLabels[selectedPosition]}</span>
+        <span className="vl-chip">{scoringLabels[selectedMode]}</span>
+        <span className="vl-chip">{selectedYear}</span>
+        <span className="vl-chip">{providerLabels[apiSource]}</span>
       </div>
 
       <SangTable

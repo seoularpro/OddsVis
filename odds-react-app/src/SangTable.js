@@ -55,7 +55,7 @@ export default function SangTable(props) {
   const [clickedList, setClickedList] = useState([]);
 
   const handleBovadaClick = () => {
-    window.open("https://record.revenuenetwork.com/_Z5boJsEUQbn97H-d5Ks7MGNd7ZgqdRLk/1/", "_blank", "noopener,noreferrer");
+    window.open("https://sportsbook.draftkings.com/r/sb/seoular/US-VA-SB", "_blank", "noopener,noreferrer");
   }
 
   const handleLicenseFrameClick = () => {
@@ -95,6 +95,7 @@ export default function SangTable(props) {
           playerName: d[0],
           playerEV: d[1].ev,
           playerChange: d[1].change,
+          playerPos: d[1].pos,
           calculatedColor: rainbow(100 - percentile),
           recentProjections: calculateMeanRecentGames(allMap, d[0], d[1]),
           allProjections: calculateMeanAllGames(allMap, d[0], d[1]),
@@ -114,7 +115,9 @@ export default function SangTable(props) {
   if (showSeasonMean) colCount += 1;
   if (showEspn) colCount += 2;
 
-  const posMeta = POS_META[props.selectedPosition];
+  // Single-position views (QB/RB/WR/TE) label from the filter; FLEX/SUPERFLEX
+  // fall back to each player's own position.
+  const filterPosMeta = POS_META[props.selectedPosition];
 
   return (
     <div className="SangTable">
@@ -152,6 +155,7 @@ export default function SangTable(props) {
               ) : (
                 visList.map((x, ix) => {
                   const cs = cellStyle(props.selectedTheme, x.calculatedColor);
+                  const posMeta = filterPosMeta || POS_META[x.playerPos];
                   const pctChange =
                     x.playerChange && x.playerEV
                       ? (x.playerChange / x.playerEV) * 100
@@ -248,8 +252,7 @@ export default function SangTable(props) {
       <div className="vl-note" style={{ marginTop: "16px" }}>
         <span className="vl-note-icon">↗</span>
         <span>
-          Disagree with a projection? Place a wager at the crypto sportsbook that
-          provides this data through my affiliate link.
+          Disagree with a projection? Place a wager at a sportsbook using my referral link:
           <button
             className="vl-btn vl-btn-ghost"
             style={{ marginLeft: "12px", height: "30px", padding: "0 12px" }}
