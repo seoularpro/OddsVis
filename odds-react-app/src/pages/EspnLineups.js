@@ -106,12 +106,12 @@ export default function EspnLineups() {
   return (
     <div className="vl-page">
       <div className="vl-page-head">
-        <h1 className="vl-title">ESPN Lineup Import</h1>
-        <div className="vl-subtitle">
-          <span>
+        <div>
+          <h1 className="vl-title">ESPN Lineup Import</h1>
+          <p className="vl-subtitle">
             Current starting lineups for every team in an ESPN Fantasy Football league, with
             this week's median projections.
-          </span>
+          </p>
         </div>
       </div>
 
@@ -142,8 +142,8 @@ export default function EspnLineups() {
           </select>
         </div>
         <div className="vl-field">
-          <label className="vl-label">Theme</label>
-          <ThemeToggleDropdown />
+          <label className="vl-label" htmlFor="espnThemeSelect">Theme</label>
+          <ThemeToggleDropdown id="espnThemeSelect" />
         </div>
         <div className="vl-toolbar-actions">
           <button
@@ -166,9 +166,9 @@ export default function EspnLineups() {
       </form>
 
       {error ? (
-        <div className="vl-note">
+        <div className="vl-note vl-note-error" role="alert">
           <span className="vl-note-icon">!</span>
-          <span>{error.message}</span>
+          <span className="vl-note-body">{error.message}</span>
         </div>
       ) : null}
 
@@ -176,7 +176,7 @@ export default function EspnLineups() {
         <form className="vl-toolbar" onSubmit={handleImportWithCredentials} autoComplete="off">
           <div className="vl-note" style={{ flexBasis: "100%", marginBottom: 0 }}>
             <span className="vl-note-icon">i</span>
-            <span>
+            <span className="vl-note-body">
               Private league. In a browser where you're signed in to ESPN, copy the
               <b> SWID</b> and <b>espn_s2</b> cookie values for espn.com and paste them
               here. They're sent once to this site's server to read the league and are
@@ -254,7 +254,7 @@ export default function EspnLineups() {
                           <tr>
                             <th className="vl-th-player">Player</th>
                             <th>Slot</th>
-                            <th>MED</th>
+                            <th className="vl-th-num">Median</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -273,7 +273,7 @@ export default function EspnLineups() {
                                 <td>
                                   <span className="vl-secondary">{s.lineupSlot}</span>
                                 </td>
-                                <td>
+                                <td className="vl-td-num">
                                   {typeof ev === "number" ? (
                                     <span className="vl-num vl-ev">{ev.toFixed(2)}</span>
                                   ) : (

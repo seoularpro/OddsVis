@@ -122,7 +122,9 @@ export default function RedditPosts(props) {
       <div className="trade-value-theme">
         <ThemeToggleDropdown />
       </div>
-      <DynamicComponent />
+      <div className="vl-archive">
+        <DynamicComponent />
+      </div>
     </div>
   );
 }

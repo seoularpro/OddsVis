@@ -33,9 +33,9 @@ export default function Tools() {
       </div>
       <div className="vl-page">
         <div className="vl-page-head">
-          <h1 className="vl-title">Tools</h1>
-          <div className="vl-subtitle">
-            <span>Utilities built on top of the weekly projections.</span>
+          <div>
+            <h1 className="vl-title">Tools</h1>
+            <p className="vl-subtitle">Utilities built on top of the weekly projections.</p>
           </div>
         </div>
 
@@ -44,7 +44,7 @@ export default function Tools() {
             <div className="vl-card vl-tool" key={tool.href}>
               <div className="vl-card-head">
                 <h3 className="vl-card-title">{tool.name}</h3>
-                {tool.isNew ? <span className="vl-chip">New</span> : null}
+                {tool.isNew ? <span className="vl-badge-new">New</span> : null}
               </div>
               <div className="vl-tool-body">
                 <p className="vl-tool-desc">{tool.description}</p>

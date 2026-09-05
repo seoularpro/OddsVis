@@ -954,188 +954,179 @@ function TotalContainer() {
   return (
     <div className="vl-page">
       <div className="vl-page-head">
-        <h1 className="vl-title">Weekly Fantasy Projections</h1>
-        <div className="vl-subtitle">
-          <span>Median fantasy point projections modeled from live Vegas player props.</span>
+        <div>
+          <h1 className="vl-title">Weekly Fantasy Projections</h1>
+          <p className="vl-subtitle">
+            Median fantasy point projections modeled from live Vegas player props.
+          </p>
         </div>
       </div>
 
-      <div className="vl-toolbar">
-        <div className="vl-field">
-          <label className="vl-label" htmlFor="posSelect">Position</label>
-          <select
-            id="posSelect"
-            className="vl-select"
-            defaultValue={selectedPosition}
-            onChange={(e) => {
-              setSelectedPosition(parseInt(e.target.value));
-            }}
-          >
-            <option value="0">QB</option>
-            <option value="1">RB</option>
-            <option value="2">WR</option>
-            <option value="3">TE</option>
-            <option value="98">FLEX</option>
-            <option value="99">SUPERFLEX</option>
-          </select>
-        </div>
-        <div className="vl-field">
-          <label className="vl-label" htmlFor="scoringSelect">Scoring</label>
-          <select
-            id="scoringSelect"
-            className="vl-select"
-            defaultValue={selectedMode}
-            onChange={(e) => {
-              setSelectedMode(parseInt(e.target.value));
-            }}
-          >
-            <option value="0">Half PPR</option>
-            <option value="1">Standard</option>
-            <option value="2">Full PPR</option>
-          </select>
-        </div>
-        <div className="vl-field">
-          <label className="vl-label" htmlFor="yearSelect">Season</label>
-          <select
-            id="yearSelect"
-            className="vl-select"
-            defaultValue={selectedYear}
-            onChange={(e) => {
-              if (parseInt(e.target.value) == 2023) {
-                if (selectedWeek < 10) {
-                  setSelectedWeek(18);
-                  const selectElement = document.getElementById("weekSelect");
-                  selectElement.value = "18";
+      <div className="vl-toolbar" role="group" aria-label="Projection filters">
+        <div className="vl-toolbar-group">
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="posSelect">Position</label>
+            <select
+              id="posSelect"
+              className="vl-select"
+              defaultValue={selectedPosition}
+              onChange={(e) => {
+                setSelectedPosition(parseInt(e.target.value));
+              }}
+            >
+              <option value="0">QB</option>
+              <option value="1">RB</option>
+              <option value="2">WR</option>
+              <option value="3">TE</option>
+              <option value="98">FLEX</option>
+              <option value="99">SUPERFLEX</option>
+            </select>
+          </div>
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="scoringSelect">Scoring</label>
+            <select
+              id="scoringSelect"
+              className="vl-select"
+              defaultValue={selectedMode}
+              onChange={(e) => {
+                setSelectedMode(parseInt(e.target.value));
+              }}
+            >
+              <option value="0">Half PPR</option>
+              <option value="1">Standard</option>
+              <option value="2">Full PPR</option>
+            </select>
+          </div>
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="yearSelect">Season</label>
+            <select
+              id="yearSelect"
+              className="vl-select"
+              defaultValue={selectedYear}
+              onChange={(e) => {
+                if (parseInt(e.target.value) == 2023) {
+                  if (selectedWeek < 10) {
+                    setSelectedWeek(18);
+                    const selectElement = document.getElementById("weekSelect");
+                    selectElement.value = "18";
+                  }
+                } else {
+                  // we will need to update this for now
+                  if (selectedWeek > 1) {
+                    setSelectedWeek(1);
+                    const selectElement = document.getElementById("weekSelect");
+                    selectElement.value = "1";
+                  }
                 }
-              } else {
-                // we will need to update this for now
-                if (selectedWeek > 1) {
-                  setSelectedWeek(1);
-                  const selectElement = document.getElementById("weekSelect");
-                  selectElement.value = "1";
-                }
-              }
-              setSelectedYear(parseInt(e.target.value));
-            }}
-          >
-            <option value="2026">2026</option>
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-            <option disabled={apiSource == 0} value="2023">
-              2023
-            </option>
-          </select>
+                setSelectedYear(parseInt(e.target.value));
+              }}
+            >
+              <option value="2026">2026</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option disabled={apiSource == 0} value="2023">
+                2023
+              </option>
+            </select>
+          </div>
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="weekSelect">Week</label>
+            <select
+              className="vl-select"
+              id="weekSelect"
+              defaultValue={selectedWeek}
+              onChange={(e) => {
+                setSelectedWeek(parseInt(e.target.value));
+              }}
+            >
+              <option disabled={selectedYear == 2025 || selectedYear == 2026} value="18">
+                Week 18
+              </option>
+              <option disabled={selectedYear == 2026} value="17">
+                Week 17
+              </option>
+              <option disabled={selectedYear == 2026} value="16">Week 16</option>
+              <option disabled={selectedYear == 2026} value="15">Week 15</option>
+              <option disabled={selectedYear == 2026} value="14">Week 14</option>
+              <option disabled={selectedYear == 2026} value="13">Week 13</option>
+              <option disabled={selectedYear == 2026} value="12">Week 12</option>
+              <option disabled={selectedYear == 2026} value="11">Week 11</option>
+              <option disabled={selectedYear == 2026} value="10">Week 10</option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="9">
+                Week 9
+              </option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="8">
+                Week 8
+              </option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="7">
+                Week 7
+              </option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="6">
+                Week 6
+              </option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="5">
+                Week 5
+              </option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="4">
+                Week 4
+              </option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="3">
+                Week 3
+              </option>
+              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="2">
+                Week 2
+              </option>
+              <option disabled={selectedYear == 2023} value="1">
+                Week 1
+              </option>
+            </select>
+          </div>
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="providerSelect">Odds source</label>
+            <select
+              id="providerSelect"
+              className="vl-select"
+              defaultValue={apiSource}
+              onChange={(e) => {
+                setApiSource(parseInt(e.target.value));
+              }}
+            >
+              <option value="0">Consensus</option>
+              <option disabled={selectedYear == 2025 || selectedYear == 2026} value="1">
+                Bovada
+              </option>
+            </select>
+          </div>
         </div>
-        <div className="vl-field">
-          <label className="vl-label" htmlFor="weekSelect">Week</label>
-          <select
-            className="vl-select"
-            id="weekSelect"
-            defaultValue={selectedWeek}
-            onChange={(e) => {
-              setSelectedWeek(parseInt(e.target.value));
-            }}
-          >
-            <option disabled={selectedYear == 2025 || selectedYear == 2026} value="18">
-              Week 18
-            </option>
-            <option disabled={selectedYear == 2026} value="17">
-              Week 17
-            </option>
-            <option disabled={selectedYear == 2026} value="16">Week 16</option>
-            <option disabled={selectedYear == 2026} value="15">Week 15</option>
-            <option disabled={selectedYear == 2026} value="14">Week 14</option>
-            <option disabled={selectedYear == 2026} value="13">Week 13</option>
-            <option disabled={selectedYear == 2026} value="12">Week 12</option>
-            <option disabled={selectedYear == 2026} value="11">Week 11</option>
-            <option disabled={selectedYear == 2026} value="10">Week 10</option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="9">
-              Week 9
-            </option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="8">
-              Week 8
-            </option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="7">
-              Week 7
-            </option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="6">
-              Week 6
-            </option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="5">
-              Week 5
-            </option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="4">
-              Week 4
-            </option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="3">
-              Week 3
-            </option>
-            <option disabled={selectedYear == 2023 || selectedYear == 2026} value="2">
-              Week 2
-            </option>
-            <option disabled={selectedYear == 2023} value="1">
-              Week 1
-            </option>
-          </select>
+
+        <div className="vl-toolbar-group vl-toolbar-group--display">
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="cellSelect">Cell style</label>
+            <select
+              id="cellSelect"
+              className="vl-select"
+              defaultValue={selectedTheme}
+              onChange={(e) => {
+                setSelectedTheme(parseInt(e.target.value));
+              }}
+            >
+              <option value="0">Color</option>
+              <option value="2">Color Outline</option>
+              <option value="1">Default</option>
+            </select>
+          </div>
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="themeSelect">Theme</label>
+            <ThemeToggleDropdown id="themeSelect" />
+          </div>
         </div>
-        <div className="vl-field">
-          <label className="vl-label" htmlFor="providerSelect">Odds source</label>
-          <select
-            id="providerSelect"
-            className="vl-select"
-            defaultValue={apiSource}
-            onChange={(e) => {
-              setApiSource(parseInt(e.target.value));
-            }}
-          >
-            <option value="0">Consensus</option>
-            <option disabled={selectedYear == 2025 || selectedYear == 2026} value="1">
-              Bovada
-            </option>
-          </select>
-        </div>
-        <div className="vl-field">
-          <label className="vl-label" htmlFor="cellSelect">Cell style</label>
-          <select
-            id="cellSelect"
-            className="vl-select"
-            defaultValue={selectedTheme}
-            onChange={(e) => {
-              setSelectedTheme(parseInt(e.target.value));
-            }}
-          >
-            <option value="0">Color</option>
-            <option value="2">Color Outline</option>
-            <option value="1">Silver Outline</option>
-          </select>
-        </div>
-        <div className="vl-field">
-          <label className="vl-label">Theme</label>
-          <ThemeToggleDropdown />
-        </div>
+        {/* Trade Values temporarily disabled — re-enable by uncommenting.
         <div className="vl-toolbar-actions">
-          {/* Trade Values temporarily disabled — re-enable by uncommenting.
           <button className="vl-btn vl-btn-success" onClick={handleTradeClick}>
             Trade Value Chart
           </button>
-          */}
         </div>
-      </div>
-
-      <div className="vl-note">
-        <span className="vl-note-icon">i</span>
-        <span>
-          Not seeing a player? Check the "Awaiting Complete Props"
-          table at the bottom of the page. 
-        </span>
-      </div>
-
-      <div className="vl-chips">
-        <span className="vl-chip">Week&nbsp;<b>{selectedWeek}</b></span>
-        <span className="vl-chip">{positionLabels[selectedPosition]}</span>
-        <span className="vl-chip">{scoringLabels[selectedMode]}</span>
-        <span className="vl-chip">{selectedYear}</span>
-        <span className="vl-chip">{providerLabels[apiSource]}</span>
+        */}
       </div>
 
       <SangTable
@@ -1148,32 +1139,44 @@ function TotalContainer() {
         allMap={allMap}
         recentMap={recentMap}
         mode={selectedMode}
+        missingCount={playerMissingList.length}
+        context={{
+          position: positionLabels[selectedPosition],
+          scoring: scoringLabels[selectedMode],
+          provider: providerLabels[apiSource],
+          year: selectedYear,
+        }}
       />
 
-      <div className="vl-after-table">
-        <div className="vl-support">
-          <div className="vl-support-title">New Tools</div>
-          <div className="vl-support-msg">
-            Import your ESPN league to see every team's current starters with this
-            week's median projections.
+      <div className="vl-panel-grid vl-section">
+        <div className="vl-panel">
+          <div className="vl-panel-title">
+            ESPN lineup import
+            <span className="vl-badge-new">New</span>
           </div>
-          <div className="vl-support-actions">
+          <p className="vl-panel-msg">
+            Import your ESPN league to see every team's current starters with
+            this week's median projections.
+          </p>
+          <div className="vl-panel-actions">
             <button
               className="vl-btn vl-btn-primary"
               onClick={() => {
                 window.location.href = "/espnLineups";
               }}
             >
-              Import ESPN Lineups
+              Import ESPN lineups
             </button>
           </div>
         </div>
 
-        <div className="vl-support">
-          <div className="vl-support-msg">
-            Support future functionality and get early access by subscribing below.
-          </div>
-          <div className="vl-support-actions">
+        <div className="vl-panel">
+          <div className="vl-panel-title">Support VegasLytics</div>
+          <p className="vl-panel-msg">
+            Fund future functionality and get early access to new tools by
+            subscribing.
+          </p>
+          <div className="vl-panel-actions">
             <button className="vl-btn vl-btn-primary" onClick={redirectToPatreon}>
               Join VLPro+
             </button>
@@ -1184,18 +1187,12 @@ function TotalContainer() {
         </div>
       </div>
 
-      <div className="vl-section-label">Awaiting complete props</div>
-      <div className="vl-note">
-        <span className="vl-note-icon">!</span>
-        <span>
-          These players don't yet have all required props. They'll move to the
-          main table once their odds post, and may carry injury risk.
-        </span>
+      <div className="vl-section">
+        <MissingTable
+          selectedPosition={selectedPosition}
+          missingList={playerMissingList}
+        />
       </div>
-      <MissingTable
-        selectedPosition={selectedPosition}
-        missingList={playerMissingList}
-      />
     </div>
   );
 }

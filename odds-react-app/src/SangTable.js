@@ -56,16 +56,15 @@ function cellStyle(theme, color) {
 }
 
 // Readable text color for a filled heatmap cell. Dark text across the bright
-// yellow-green -> green-cyan band; white on the warm (red/orange) and cool
-// (blue/purple) ends. On the warm/green side the band starts at g>=200 (so
-// Jonathan Taylor stays white, Jaxon Smith-Njigba goes dark); on the cyan side
-// it needs g>=215 (so Kenny Gainwell and bluer stay white).
+// middle of the ramp (amber -> yellow -> green -> cyan -> light blue, i.e. a
+// high green channel); white on the saturated red/orange top and the deep
+// blue/purple bottom. The g>=186 cutoff puts Matthew Stafford (255,195,0) and
+// Daniel Jones (0,186,255) on the dark side.
 function textColorFor(rgb) {
   const m = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/.exec(rgb || "");
   if (!m) return "#ffffff";
   const g = +m[2];
-  const b = +m[3];
-  const inBand = b >= 250 ? g >= 215 : g >= 200;
+  const inBand = g >= 186;
   return inBand ? "#0b0b0f" : "#ffffff";
 }
 
@@ -145,21 +144,56 @@ export default function SangTable(props) {
   // fall back to each player's own position.
   const filterPosMeta = POS_META[props.selectedPosition];
 
+  // Relative-magnitude bar: full width for the top projection, anchored at
+  // half the lowest projection so tightly clustered position groups (e.g. QB)
+  // still show separation without the bottom of the list collapsing to zero.
+  const maxEV = visList.reduce((m, x) => Math.max(m, x.playerEV), 0);
+  const minEV = visList.reduce((m, x) => Math.min(m, x.playerEV), Infinity);
+  const barFloor = minEV === Infinity ? 0 : minEV * 0.5;
+  const barWidth = (ev) =>
+    maxEV > barFloor
+      ? Math.max(3, ((ev - barFloor) / (maxEV - barFloor)) * 100)
+      : 0;
+  const isSelected = (name) =>
+    clickedList.some((c) => c.playerName === name);
+  const ctx = props.context || {};
+
   return (
     <div className="SangTable">
       <div className="vl-card">
+        <div className="vl-card-head">
+          <div>
+            <h2 className="vl-card-title">
+              {ctx.position ? `${ctx.position} · ` : ""}Week {props.selectedWeek}
+            </h2>
+            <div className="vl-card-sub">
+              {ctx.year ? <>{ctx.year} season<span className="vl-sep">·</span></> : null}
+              {ctx.scoring ? <>{ctx.scoring}<span className="vl-sep">·</span></> : null}
+              {ctx.provider ? <>{ctx.provider} odds<span className="vl-sep">·</span></> : null}
+              {visList.length > 0 ? `${visList.length} players` : "Loading"}
+            </div>
+          </div>
+          {props.missingCount > 0 ? (
+            <div className="vl-card-head-aside">
+              <a className="vl-link" href="#awaiting-props">
+                {props.missingCount} awaiting props ↓
+              </a>
+            </div>
+          ) : null}
+        </div>
         <div className="vl-table-wrap">
           <table
             className={
               "vl-table" +
-              (props.selectedTheme === 0 ? " vl-table-filled" : "")
+              (props.selectedTheme === 0 ? " vl-table-filled" : "") +
+              (props.selectedTheme !== 1 ? " vl-cells-styled" : "")
             }
           >
             <thead>
               <tr>
                 <th className="vl-th-rank">#</th>
                 <th className="vl-th-player">Player</th>
-                <th>Median</th>
+                <th className="vl-th-num">Median</th>
                 {showDelta ? <th className="invis-mobile-header">Δ</th> : null}
                 {showSeasonMean ? <th>Season Mean</th> : null}
                 {showEspn ? (
@@ -172,22 +206,28 @@ export default function SangTable(props) {
             </thead>
             <tbody>
               {visList.length === 0 ? (
-                <tr>
-                  <td colSpan={colCount} style={{ textAlign: "center" }}>
-                    <div className="vl-empty">
-                      <div className="vl-empty-title">Loading projections…</div>
-                      <div>
-                        Pulling the latest player props for Week{" "}
-                        {props.selectedWeek}.
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+                Array.from({ length: 10 }).map((_, i) => (
+                  <tr key={`skel-${i}`} aria-hidden="true">
+                    <td className="vl-td-rank">
+                      <span className="vl-skel vl-skel-rank" />
+                    </td>
+                    <td className="vl-td-player">
+                      <span
+                        className="vl-skel"
+                        style={{ width: `${120 + ((i * 37) % 90)}px` }}
+                      />
+                    </td>
+                    <td className="vl-td-num" colSpan={colCount - 2}>
+                      <span className="vl-skel vl-skel-num" />
+                    </td>
+                  </tr>
+                ))
               ) : (
                 visList.map((x, ix) => {
                   const cs = cellStyle(props.selectedTheme, x.calculatedColor);
                   const posMeta = filterPosMeta || POS_META[x.playerPos];
                   const fg = textColorFor(x.calculatedColor);
+                  const selected = isSelected(x.playerName);
                   const pctChange =
                     x.playerChange && x.playerEV
                       ? (x.playerChange / x.playerEV) * 100
@@ -195,34 +235,67 @@ export default function SangTable(props) {
                   return (
                     <tr
                       key={x.playerName}
+                      className={selected ? "vl-row-selected" : undefined}
                       style={
                         props.selectedTheme === 0 ? { "--cell-fg": fg } : undefined
                       }
                     >
-                      <td className="vl-td-rank">
+                      <td className="vl-td-rank" style={cs}>
                         <span
                           className="vl-rank"
-                          style={{ backgroundColor: x.calculatedColor, color: fg }}
+                          style={
+                            props.selectedTheme === 1
+                              ? { backgroundColor: x.calculatedColor, color: fg }
+                              : {
+                                  background: "transparent",
+                                  color: "inherit",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  width: "100%",
+                                  height: "100%",
+                                  minWidth: 0,
+                                  padding: 0,
+                                }
+                          }
                         >
                           {ix + 1}
                         </span>
                       </td>
-                      <td
-                        className="vl-td-player"
-                        style={cs}
-                        onClick={() => handlePlayerClick(x)}
-                      >
-                        <div className="vl-player">
+                      <td className="vl-td-player" style={cs}>
+                        <button
+                          type="button"
+                          className="vl-player-btn"
+                          aria-pressed={selected}
+                          title={
+                            selected
+                              ? "Remove from comparison"
+                              : "Add to comparison"
+                          }
+                          onClick={() => handlePlayerClick(x)}
+                        >
                           {posMeta ? (
                             <span className={`vl-pos ${posMeta.cls}`}>
                               {posMeta.label}
                             </span>
                           ) : null}
                           <span className="vl-player-name">{x.playerName}</span>
-                        </div>
+                          {selected ? (
+                            <span className="vl-check" aria-hidden="true">
+                              ✓
+                            </span>
+                          ) : null}
+                        </button>
                       </td>
-                      <td style={cs}>
-                        <span className="vl-ev">{x.playerEV.toFixed(2)}</span>
+                      <td className="vl-td-num" style={cs}>
+                        <span className="vl-proj">
+                          <span className="vl-bar" aria-hidden="true">
+                            <i
+                              style={{ width: `${barWidth(x.playerEV)}%` }}
+                            />
+                          </span>
+                          <span className="vl-ev">{x.playerEV.toFixed(2)}</span>
+                        </span>
                       </td>
                       {showDelta ? (
                       <td className="invis-mobile" style={cs}>
@@ -273,38 +346,29 @@ export default function SangTable(props) {
           </table>
         </div>
         <div className="vl-meta">
-          <div>
-            <div className="vl-meta-title">Update schedule (ET)</div>
-            <div className="vl-meta-grid">
-              <span>Sun — 8am, 12pm, 12am</span>
-              <span>Mon — 12pm, 6pm, 12am</span>
-              <span>Tue — 12pm, 12am</span>
-              <span>Wed — 12pm, 12am</span>
-              <span>Thu — 12pm, 6pm, 12am</span>
-              <span>Fri — 12pm, 12am</span>
-              <span>Sat — 12pm, 12am</span>
-            </div>
-          </div>
+          <span className="vl-meta-title">Updates (ET)</span>
+          <span className="vl-sched"><b>Sun</b>8a · 12p · 12a</span>
+          <span className="vl-sched"><b>Mon</b>12p · 6p · 12a</span>
+          <span className="vl-sched"><b>Tue</b>12p · 12a</span>
+          <span className="vl-sched"><b>Wed</b>12p · 12a</span>
+          <span className="vl-sched"><b>Thu</b>12p · 6p · 12a</span>
+          <span className="vl-sched"><b>Fri</b>12p · 12a</span>
+          <span className="vl-sched"><b>Sat</b>12p · 12a</span>
         </div>
       </div>
 
-      <div className="vl-note" style={{ marginTop: "16px" }}>
+      <div className="vl-note vl-section">
         <span className="vl-note-icon">↗</span>
-        <span>
-          Disagree with a projection? Place a wager at a sportsbook using my referral link:
-          <button
-            className="vl-btn vl-btn-ghost"
-            style={{ marginLeft: "12px", height: "30px", padding: "0 12px" }}
-            onClick={handleBovadaClick}
-          >
-            Sportsbook
-          </button>
+        <span className="vl-note-body">
+          Disagree with a projection? Back your read at a sportsbook using my
+          referral link.
         </span>
-      </div>
-
-      <div className="vl-section-label">Player selector</div>
-      <div className="vl-card-sub" style={{ marginBottom: "8px" }}>
-        Click a player's name in the table above to add or remove them here.
+        <button
+          className="vl-btn vl-btn-ghost vl-btn-sm vl-note-action"
+          onClick={handleBovadaClick}
+        >
+          Open sportsbook
+        </button>
       </div>
 
       <ClickedPlayerTotalTable

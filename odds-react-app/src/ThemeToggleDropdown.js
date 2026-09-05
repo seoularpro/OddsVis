@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from './ThemeProvider'; // Import the custom hook
 
-const ThemeToggleDropdown = () => {
+const ThemeToggleDropdown = ({ id }) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'sunset');
 
     const themes = ["autumn", "dark", "cupcake", "night", "luxury", "sunset", "dim", "halloween", "light", "synthwave", "cyberpunk", "aqua", "forest"];
@@ -16,6 +16,8 @@ const ThemeToggleDropdown = () => {
     return (
         <div style={{ display: "inline-flex" }}>
             <select
+                id={id}
+                aria-label={id ? undefined : "Theme"}
                 className="vl-select"
                 value={theme}
                 onChange={handleThemeChange}

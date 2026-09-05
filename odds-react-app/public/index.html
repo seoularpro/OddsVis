@@ -48,7 +48,8 @@
         <span class="vl-brand-mark">V</span>
         <span>Vegas<span class="vl-brand-dim">Lytics</span></span>
       </a>
-      <nav class="vl-nav-links">
+      <nav class="vl-nav-links" aria-label="Primary">
+        <a href="/">Projections</a>
         <a href="/tools">Tools</a>
         <a href="/redditPosts/Week1724">Posts</a>
         <!-- Trade Values temporarily disabled — re-enable by uncommenting.
@@ -58,6 +59,19 @@
       </nav>
     </div>
   </header>
+  <script>
+    // Mark the current top-level page in the header nav.
+    (function () {
+      var path = window.location.pathname;
+      var links = document.querySelectorAll(".vl-nav-links a");
+      for (var i = 0; i < links.length; i++) {
+        var href = links[i].getAttribute("href");
+        var section = "/" + href.split("/")[1];
+        var active = href === "/" ? path === "/" : path.indexOf(section) === 0;
+        if (active) links[i].setAttribute("aria-current", "page");
+      }
+    })();
+  </script>
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>

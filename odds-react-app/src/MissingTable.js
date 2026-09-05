@@ -1,12 +1,27 @@
 import "./styles.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function MissingTable(props) {
   const isFlex =
     props.selectedPosition === 99 || props.selectedPosition === 98;
+  const count = props.missingList.length;
 
   return (
-    <div className="MissingTable vl-card">
+    <div className="MissingTable vl-card" id="awaiting-props">
+      <div className="vl-card-head">
+        <div>
+          <h2 className="vl-card-title">Awaiting complete props</h2>
+          <div className="vl-card-sub">
+            These players don't have every required prop posted yet. They move
+            to the main table once their odds post, and may carry injury risk.
+          </div>
+        </div>
+        {count > 0 ? (
+          <div className="vl-card-head-aside">
+            <span className="vl-card-sub">{count} players</span>
+          </div>
+        ) : null}
+      </div>
       <div className="vl-table-wrap">
         <table className="vl-table">
           <thead>
@@ -14,8 +29,8 @@ export default function MissingTable(props) {
               {!isFlex ? (
                 <>
                   <th className="vl-th-player">Player</th>
-                  <th className="vl-th-player">Missing prop(s)</th>
-                  <th>MED w/o prop(s)</th>
+                  <th className="vl-th-player">Missing props</th>
+                  <th className="vl-th-num">Median w/o props</th>
                 </>
               ) : (
                 <th className="vl-th-player">Player</th>
@@ -23,7 +38,7 @@ export default function MissingTable(props) {
             </tr>
           </thead>
           <tbody>
-            {props.missingList.length === 0 ? (
+            {count === 0 ? (
               <tr>
                 <td
                   colSpan={isFlex ? 1 : 3}
@@ -50,9 +65,16 @@ export default function MissingTable(props) {
                     <span className="vl-player-name">{player[0]}</span>
                   </td>
                   <td className="vl-td-player">
-                    <span className="vl-secondary">{player[1]}</span>
+                    {String(player[1] ?? "")
+                      .split(/\s+/)
+                      .filter(Boolean)
+                      .map((prop) => (
+                        <span className="vl-tag" key={prop}>
+                          {prop}
+                        </span>
+                      ))}
                   </td>
-                  <td>
+                  <td className="vl-td-num">
                     <span className="vl-num vl-secondary">{player[2]}</span>
                   </td>
                 </tr>
