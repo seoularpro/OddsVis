@@ -1,3 +1,5 @@
+import { UNIVERSAL_VIG, YARDAGE_CV } from "./constants";
+
 export function calculateMeanAllGames(actMap, name, median) {
   var skewness = require("compute-skewness");
 
@@ -74,6 +76,92 @@ export function americanToDecimal(americanOdds) {
   }
 
   return decimalOdds.toFixed(2); // Return the decimal odds rounded to two decimal places
+}
+
+// Inverse of the standard normal CDF (Acklam's rational approximation,
+// relative error ~1e-9). Returns the z-score whose cumulative probability is p.
+export function normInv(p) {
+  const a = [
+    -3.969683028665376e1, 2.209460984245205e2, -2.759285104469687e2,
+    1.38357751867269e2, -3.066479806614716e1, 2.506628277459239,
+  ];
+  const b = [
+    -5.447609879822406e1, 1.615858368580409e2, -1.556989798598866e2,
+    6.680131188771972e1, -1.328068155288572e1,
+  ];
+  const c = [
+    -7.784894002430293e-3, -3.223964580411365e-1, -2.400758277161838,
+    -2.549732539343734, 4.374664141464968, 2.938163982698783,
+  ];
+  const d = [
+    7.784695709041462e-3, 3.224671290700398e-1, 2.445134137142996,
+    3.754408661907416,
+  ];
+  const pLow = 0.02425;
+  const pHigh = 1 - pLow;
+  let q;
+  let r;
+  if (p < pLow) {
+    q = Math.sqrt(-2 * Math.log(p));
+    return (
+      (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
+      ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1)
+    );
+  }
+  if (p <= pHigh) {
+    q = p - 0.5;
+    r = q * q;
+    return (
+      ((((((a[0] * r + a[1]) * r + a[2]) * r + a[3]) * r + a[4]) * r + a[5]) *
+        q) /
+      (((((b[0] * r + b[1]) * r + b[2]) * r + b[3]) * r + b[4]) * r + 1)
+    );
+  }
+  q = Math.sqrt(-2 * Math.log(1 - p));
+  return -(
+    (((((c[0] * q + c[1]) * q + c[2]) * q + c[3]) * q + c[4]) * q + c[5]) /
+    ((((d[0] * q + d[1]) * q + d[2]) * q + d[3]) * q + 1)
+  );
+}
+
+/**
+ * Median yardage implied by a book's line and the American odds on the over.
+ *
+ * At even money the posted line IS the market's median (50% over / 50%
+ * under), which is why the projections read it as `line / 10`. When a book
+ * shades one side (e.g. Over 39.5 at +285, Under -300) the line is no longer
+ * the median but some higher quantile -- here the ~76th percentile -- and
+ * `line / 10` badly overstates the projection. Recover the median by mapping
+ * that quantile back to the 50th.
+ *
+ * Yardage is modeled as lognormal: non-negative and right-skewed, like real
+ * single-game totals, with the median as an explicit parameter (its mean sits
+ * above the median, so a symmetric model would land slightly high). Every
+ * lognormal quantile is `median * exp(s * z)`, and the line is the
+ * q = 1 - pOver quantile, so:
+ *
+ *   median = line / exp(s * z),   z = normInv(1 - pOver)
+ *
+ * `s` is the log-space spread derived from the coefficient of variation via
+ * the standard lognormal identity cv^2 = exp(s^2) - 1. Because exp() is always
+ * positive the mapping never degenerates, unlike a normal model's 1 + z*cv.
+ *
+ * pOver is de-vigged the standard way, (1/decimal) / overround, so a
+ * symmetric -114/-114 line yields pOver ~= 0.5, z = 0, and the line comes
+ * back unchanged. Falls back to the raw line when odds are missing/unusable.
+ */
+export function impliedYards(line, americanOdds, cv = YARDAGE_CV) {
+  const l = Number(line);
+  if (!Number.isFinite(l) || l <= 0) return l;
+  const odds = Number(americanOdds);
+  if (!Number.isFinite(odds) || odds === 0) return l;
+  const dec = Number(americanToDecimal(odds));
+  if (!Number.isFinite(dec) || dec <= 1) return l;
+  // Clamp so z stays finite for extreme prices.
+  const pOver = Math.min(0.95, Math.max(0.05, 1 / dec / UNIVERSAL_VIG));
+  const z = normInv(1 - pOver);
+  const s = Math.sqrt(Math.log(1 + cv * cv));
+  return l / Math.exp(s * z);
 }
 
 export function calculatePercentile(mean, stddev, value) {

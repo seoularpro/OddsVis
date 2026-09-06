@@ -114,6 +114,7 @@ export default function SangTable(props) {
           playerEV: d[1].ev,
           playerChange: d[1].change,
           playerPos: d[1].pos,
+          adjustedProps: d[1].adjustedProps || [],
           calculatedColor: rainbow(100 - percentile),
           recentProjections: calculateMeanRecentGames(allMap, d[0], d[1]),
           allProjections: calculateMeanAllGames(allMap, d[0], d[1]),
@@ -280,6 +281,17 @@ export default function SangTable(props) {
                             </span>
                           ) : null}
                           <span className="vl-player-name">{x.playerName}</span>
+                          {x.adjustedProps && x.adjustedProps.length ? (
+                            <span
+                              className="vl-adj"
+                              title={`Odds-weighted line: ${x.adjustedProps.join(
+                                ", "
+                              )}`}
+                              aria-label="Odds-weighted yardage line"
+                            >
+                              †
+                            </span>
+                          ) : null}
                           {selected ? (
                             <span className="vl-check" aria-hidden="true">
                               ✓
@@ -355,6 +367,19 @@ export default function SangTable(props) {
           <span className="vl-sched"><b>Fri</b>12p · 12a</span>
           <span className="vl-sched"><b>Sat</b>12p · 12a</span>
         </div>
+        {visList.some((x) => x.adjustedProps && x.adjustedProps.length) ? (
+          <div className="vl-footnote">
+            <span className="vl-adj" aria-hidden="true">
+              †
+            </span>
+            <span>
+              Odds-weighted yardage line. The book priced this player's over
+              well away from even money, so the posted line isn't his median;
+              the projection uses the median implied by the odds instead.
+              Hover the marker to see which prop.
+            </span>
+          </div>
+        ) : null}
       </div>
 
       <div className="vl-note vl-section">

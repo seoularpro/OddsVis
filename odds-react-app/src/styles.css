@@ -804,6 +804,36 @@ body {
 .vl-delta-down { color: #ef4444; }
 .vl-delta-flat { color: var(--vl-faint); }
 
+/* footnote marker on a player whose yardage line was odds-adjusted */
+.vl-adj {
+  margin-left: 3px;
+  font-size: 0.7em;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: super;
+  color: var(--vl-accent);
+  cursor: help;
+}
+
+/* explanatory footnote pinned to the bottom of a table card */
+.vl-footnote {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  padding: var(--vl-space-3) var(--vl-space-4);
+  border-top: 1px solid var(--vl-border);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--vl-muted);
+}
+
+.vl-footnote .vl-adj {
+  margin: 0;
+  vertical-align: baseline;
+  flex: none;
+  cursor: default;
+}
+
 /* small inline tag, e.g. a missing prop name */
 .vl-tag {
   display: inline-flex;

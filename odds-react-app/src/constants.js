@@ -8,6 +8,16 @@ const Positions = {
 
 export const UNIVERSAL_VIG = 1.0623;
 
+// Assumed coefficient of variation (sd / mean) of a player's single-game
+// yardage total. impliedYards() in util.js models yardage as lognormal and
+// derives the log-space spread from this (cv^2 = exp(s^2) - 1) to recover the
+// median from a book's line plus the odds on the over, so a lopsided line
+// (e.g. Over 39.5 at +285) is no longer read as if 39.5 were the median.
+// Single-game rushing/receiving yards run roughly 0.6-0.8; passing yards are
+// tighter, but their main lines are almost always near even money so the
+// shift is ~0.
+export const YARDAGE_CV = 0.7;
+
 // Active fantasy season. ESPN integration reads this so moving to a new
 // season is a one-line change.
 export const CURRENT_SEASON = 2026;

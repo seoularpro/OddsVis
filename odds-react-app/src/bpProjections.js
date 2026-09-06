@@ -9,6 +9,7 @@ import {
   americanToDecimal,
   calculateLatestChange,
   getLastElementMap,
+  impliedYards,
   isFetchable,
 } from "./util";
 
@@ -60,6 +61,19 @@ export async function computeBPProjections({ pos, mode, week, year }) {
     let playerToIntsDataPoints = new Map();
     let yearPrefix = year != 2023 ? year : "";
     let playerToPosition = new Map();
+    // Players whose yardage line was materially corrected for lopsided odds
+    // (see impliedYards). Surfaced in the table as a footnote marker.
+    const YARDAGE_ADJUST_FLAG = 0.05; // relative shift that earns a marker
+    let playerToAdjustedProps = new Map();
+    const flagAdjusted = (playerName, label, line, implied) => {
+      const l = Number(line);
+      if (!(l > 0) || !Number.isFinite(implied)) return;
+      if (Math.abs(implied - l) / l > YARDAGE_ADJUST_FLAG) {
+        const list = playerToAdjustedProps.get(playerName) || [];
+        if (!list.includes(label)) list.push(label);
+        playerToAdjustedProps.set(playerName, list);
+      }
+    };
 
     // const url = 'https://api.bettingpros.com/v3/props?limit=10000&sport=NFL&market_id=73:74:102:103:101:107:76:105:75:104:66:71:78&event_id=21371:21372:21375:21376:21377:21378:21379:21380:21381:21382:21383:21393:21394:21395:21396:21397&include_selections=false&include_markets=true&include_counts=true'
 
@@ -140,7 +154,7 @@ export async function computeBPProjections({ pos, mode, week, year }) {
                 projValue =
                   o.line -
                   0.5 +
-                  1 / (americanToDecimal(o.odds) / UNIVERSAL_VIG);
+                  1 / americanToDecimal(o.odds) / UNIVERSAL_VIG;
               }
               allMarkets.push({
                 market_id: o.market_id,
@@ -240,8 +254,8 @@ export async function computeBPProjections({ pos, mode, week, year }) {
               }
               newAnyTDList.push(
                 (1 /
-                  (americanToDecimal(playerOdds.over.consensus_odds) /
-                    UNIVERSAL_VIG)) *
+                  americanToDecimal(playerOdds.over.consensus_odds) /
+                  UNIVERSAL_VIG) *
                   6
               );
               playerToAnyTDDataPoints.set(name, newAnyTDList);
@@ -291,7 +305,17 @@ export async function computeBPProjections({ pos, mode, week, year }) {
               if (playerToRushYdsDataPoints.has(name)) {
                 newRushYdsList = playerToRushYdsDataPoints.get(name);
               }
-              newRushYdsList.push(playerOdds.over.consensus_line / 10);
+              const rushImplied = impliedYards(
+                playerOdds.over.consensus_line,
+                playerOdds.over.consensus_odds
+              );
+              flagAdjusted(
+                name,
+                "RushYds",
+                playerOdds.over.consensus_line,
+                rushImplied
+              );
+              newRushYdsList.push(rushImplied / 10);
               playerToRushYdsDataPoints.set(name, newRushYdsList);
               // }
               // if (name == "Amon-Ra St. Brown") {
@@ -338,7 +362,17 @@ export async function computeBPProjections({ pos, mode, week, year }) {
                 newRecYdsList = playerToRecYdsDataPoints.get(name);
               }
 
-              newRecYdsList.push(playerOdds.over.consensus_line / 10);
+              const recImplied = impliedYards(
+                playerOdds.over.consensus_line,
+                playerOdds.over.consensus_odds
+              );
+              flagAdjusted(
+                name,
+                "RecYds",
+                playerOdds.over.consensus_line,
+                recImplied
+              );
+              newRecYdsList.push(recImplied / 10);
               playerToRecYdsDataPoints.set(name, newRecYdsList);
               // }
               // if (name == "Amon-Ra St. Brown") {
@@ -389,8 +423,8 @@ export async function computeBPProjections({ pos, mode, week, year }) {
                 handicap -
                 0.5 +
                 1 /
-                  (americanToDecimal(playerOdds.over.consensus_odds) /
-                    UNIVERSAL_VIG);
+                  americanToDecimal(playerOdds.over.consensus_odds) /
+                  UNIVERSAL_VIG;
               newRecsList.push(handicap * receptionMultiplier);
               playerToRecsDataPoints.set(name, newRecsList);
               // }
@@ -429,7 +463,17 @@ export async function computeBPProjections({ pos, mode, week, year }) {
               if (playerToPassYdsDataPoints.has(name)) {
                 newPassYdsList = playerToPassYdsDataPoints.get(name);
               }
-              newPassYdsList.push(playerOdds.over.consensus_line / 25);
+              const passImplied = impliedYards(
+                playerOdds.over.consensus_line,
+                playerOdds.over.consensus_odds
+              );
+              flagAdjusted(
+                name,
+                "PassYds",
+                playerOdds.over.consensus_line,
+                passImplied
+              );
+              newPassYdsList.push(passImplied / 25);
               playerToPassYdsDataPoints.set(name, newPassYdsList);
             }
           }
@@ -509,8 +553,8 @@ export async function computeBPProjections({ pos, mode, week, year }) {
                 handicap -
                 0.5 +
                 1 /
-                  (americanToDecimal(playerOdds.over.consensus_odds) /
-                    UNIVERSAL_VIG);
+                  americanToDecimal(playerOdds.over.consensus_odds) /
+                  UNIVERSAL_VIG;
               newIntsList.push(handicap * -2);
               playerToIntsDataPoints.set(name, newIntsList);
             }
@@ -817,6 +861,7 @@ export async function computeBPProjections({ pos, mode, week, year }) {
           ev: elem[1],
           change: finalCPlayer.get(elem[0]),
           pos: playerToPosition.get(elem[0]),
+          adjustedProps: playerToAdjustedProps.get(elem[0]) || [],
         },
       ];
     });
