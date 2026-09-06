@@ -1141,6 +1141,37 @@ body {
   gap: var(--vl-space-3);
 }
 
+/* Lineup tables must always fit their card: fixed column widths for Slot
+   and MED, and player names wrap instead of widening the table. */
+.vl-lineups .vl-card {
+  min-width: 0;
+}
+.vl-lineups .vl-table {
+  table-layout: fixed;
+}
+.vl-lineups .vl-table th:nth-child(2),
+.vl-lineups .vl-table td:nth-child(2) {
+  width: 62px;
+}
+.vl-lineups .vl-table th:nth-child(3),
+.vl-lineups .vl-table td:nth-child(3) {
+  width: 78px;
+}
+.vl-lineups .vl-table tbody td,
+.vl-lineups .vl-table tfoot td {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  height: auto;
+  min-height: 44px;
+}
+.vl-lineups .vl-player-name {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+}
+
+
 /* long-form text (About, archived posts) */
 .vl-prose {
   padding: var(--vl-space-5) var(--vl-space-4);
