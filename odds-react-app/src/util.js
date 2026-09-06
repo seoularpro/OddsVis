@@ -256,6 +256,13 @@ export function rainbow(p) {
   return "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
 }
 
+// "rgb(r,g,b)" -> "rgba(r,g,b,alpha)". Anything else is returned untouched.
+export function withAlpha(rgb, alpha) {
+  const m = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/.exec(rgb || "");
+  if (!m) return rgb;
+  return `rgba(${m[1]},${m[2]},${m[3]},${alpha})`;
+}
+
 // `method` "HEAD" checks existence without transferring the body.
 export async function isFetchable(url, method = "GET") {
   try {

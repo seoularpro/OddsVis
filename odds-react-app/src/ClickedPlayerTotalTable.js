@@ -1,10 +1,29 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
+import { withAlpha } from "./util";
 
 // Heatmap coloring for a data cell, matching SangTable's "Cell style" modes:
-//   0 = filled color, 2 = colored outline, 1 = neutral
+//   0 = filled color, 3 = translucent fill, 4 = glass, 5 = glossy full color,
+//   2 = colored outline, 1 = neutral
 function cellStyle(theme, color) {
   if (theme === 0) return { backgroundColor: color, color: "#0b0b0f" };
+  if (theme === 3)
+    return { backgroundColor: withAlpha(color, 0.4), color: "var(--vl-text)" };
+  if (theme === 4)
+    return {
+      backgroundColor: withAlpha(color, 0.2),
+      color: "var(--vl-text)",
+      boxShadow: `inset 0 0 0 1px ${withAlpha(color, 0.5)}, inset 0 1px 0 rgba(255,255,255,0.22)`,
+    };
+  if (theme === 5)
+    return {
+      backgroundColor: color,
+      backgroundImage:
+        "linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.08) 45%, rgba(0,0,0,0.06) 55%, rgba(0,0,0,0.14) 100%)",
+      color: "#0b0b0f",
+      boxShadow:
+        "inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.18), inset 0 0 0 1px rgba(255,255,255,0.16)",
+    };
   if (theme === 2) return { boxShadow: `inset 0 0 0 1.5px ${color}` };
   return {};
 }

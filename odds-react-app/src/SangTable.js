@@ -7,6 +7,7 @@ import {
   calculatePercentile,
   getQueryStringValue,
   rainbow,
+  withAlpha,
 } from "./util.js";
 import ClickedPlayerTotalTable from "./ClickedPlayerTotalTable";
 
@@ -43,7 +44,8 @@ const POS_META = {
 };
 
 // Heatmap coloring for a data cell, driven by the selected "Cell style" mode:
-//   0 = filled color, 2 = colored outline, 1 = neutral (silver/default)
+//   0 = filled color, 3 = translucent fill, 4 = glass, 5 = glossy full color,
+//   2 = colored outline, 1 = neutral (silver/default)
 function cellStyle(theme, color) {
   if (theme === 0)
     return {
@@ -51,8 +53,44 @@ function cellStyle(theme, color) {
       color: "var(--cell-fg, #0b0b0f)",
       borderRadius: "8px",
     };
+  if (theme === 3)
+    return {
+      backgroundColor: withAlpha(color, 0.4),
+      color: "var(--cell-fg)",
+      borderRadius: "8px",
+    };
+  if (theme === 4)
+    return {
+      backgroundColor: withAlpha(color, 0.2),
+      color: "var(--cell-fg)",
+      borderRadius: "8px",
+      // No backdrop-filter: a per-cell blur costs one compositing layer per
+      // cell and made scrolling lag. Fill + tinted border + highlight is enough.
+      boxShadow: `inset 0 0 0 1px ${withAlpha(color, 0.5)}, inset 0 1px 0 rgba(255,255,255,0.22)`,
+    };
+  if (theme === 5)
+    return {
+      backgroundColor: color,
+      // glossy sheen over the opaque heatmap color: bright top, faint dark base
+      backgroundImage:
+        "linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.08) 45%, rgba(0,0,0,0.06) 55%, rgba(0,0,0,0.14) 100%)",
+      color: "var(--cell-fg, #0b0b0f)",
+      borderRadius: "8px",
+      boxShadow:
+        "inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(0,0,0,0.18), inset 0 0 0 1px rgba(255,255,255,0.16)",
+    };
   if (theme === 2) return { boxShadow: `inset 0 0 0 1.5px ${color}` };
   return {};
+}
+
+// Table-level class per cell style. 3 and 4 reuse the filled-pill layout
+// and pick up their text color from the table (see styles.css).
+function tableClassFor(theme) {
+  if (theme === 0) return " vl-table-filled";
+  if (theme === 3) return " vl-table-filled vl-table-soft";
+  if (theme === 4) return " vl-table-filled vl-table-glass";
+  if (theme === 5) return " vl-table-filled vl-table-glass vl-table-glass-solid";
+  return "";
 }
 
 // Readable text color for a filled heatmap cell. Dark text across the bright
@@ -206,7 +244,7 @@ export default function SangTable(props) {
           <table
             className={
               "vl-table" +
-              (props.selectedTheme === 0 ? " vl-table-filled" : "") +
+              tableClassFor(props.selectedTheme) +
               (props.selectedTheme !== 1 ? " vl-cells-styled" : "")
             }
           >
@@ -272,7 +310,9 @@ export default function SangTable(props) {
                       key={x.playerName}
                       className={rowClass}
                       style={
-                        props.selectedTheme === 0 ? { "--cell-fg": fg } : undefined
+                        props.selectedTheme === 0 || props.selectedTheme === 5
+                          ? { "--cell-fg": fg }
+                          : undefined
                       }
                     >
                       <td className="vl-td-rank" style={cs}>

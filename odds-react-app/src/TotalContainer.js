@@ -1135,6 +1135,9 @@ function TotalContainer() {
               }}
             >
               <option value="0">Color</option>
+              <option value="3">Color Translucent</option>
+              <option value="4">Glass</option>
+              <option value="5">Color Glass</option>
               <option value="2">Color Outline</option>
               <option value="1">Default</option>
             </select>

@@ -639,6 +639,19 @@ body {
   text-underline-offset: 3px;
 }
 
+/* "Color Translucent" and "Glass": the fill is see-through, so the theme's
+   own text color stays legible over it (no per-row dark/white switch). */
+.vl-table-soft,
+.vl-table-glass:not(.vl-table-glass-solid) {
+  --cell-fg: var(--vl-text);
+}
+
+/* Glass: translucent pills with a tinted edge and a top highlight. No
+   backdrop-filter (one blur layer per cell made the page lag). */
+.vl-table-glass {
+  border-spacing: 4px 5px;
+}
+
 /* position tags adopt the row's readable text color */
 .vl-table-filled .vl-pos {
   color: var(--cell-fg, #0b0b0f);
