@@ -30,13 +30,20 @@ export function normalizePlayerName(name) {
 }
 
 /**
- * @param {{ pos: number, mode: number, week: number, year: number }} opts
+ * @param {{ pos: number, mode: number, week: number, year: number, passTdPoints?: number }} opts
  *   pos: 0 QB, 1 RB, 2 WR, 3 TE, 98 FLEX, 99 SUPERFLEX (all positions)
  *   mode: 0 Half PPR, 1 Standard, 2 Full PPR
+ *   passTdPoints: fantasy points per passing TD (4 default, or 6)
  * @returns {Promise<{ finalList: [string, { ev: number, change: number, pos: number }][],
  *   missingList: [string, string, string][] }>}
  */
-export async function computeBPProjections({ pos, mode, week, year }) {
+export async function computeBPProjections({
+  pos,
+  mode,
+  week,
+  year,
+  passTdPoints = 4,
+}) {
     let receptionMultiplier = 0.5;
 
     if (mode == 0) receptionMultiplier = 0.5;
@@ -514,7 +521,7 @@ export async function computeBPProjections({ pos, mode, week, year }) {
 
               // temporary hack
               handicap = playerOdds.projection.value;
-              newPassTdsList.push(handicap * 4);
+              newPassTdsList.push(handicap * passTdPoints);
               playerToPassTDDataPoints.set(name, newPassTdsList);
             }
           }

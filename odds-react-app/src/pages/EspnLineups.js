@@ -29,6 +29,8 @@ export default function EspnLineups() {
   const [espnS2, setEspnS2] = useState("");
 
   const [scoringMode, setScoringMode] = useState(0);
+  // Fantasy points per passing TD: 4 (default) or 6.
+  const [passTdPoints, setPassTdPoints] = useState(4);
   // normalized player name -> { ev, change, pos } for the imported week
   const [projections, setProjections] = useState(new Map());
   const [projectionsLoading, setProjectionsLoading] = useState(false);
@@ -48,6 +50,7 @@ export default function EspnLineups() {
       mode: scoringMode,
       week: result.scoringPeriodId,
       year: result.season,
+      passTdPoints,
     })
       .then(({ finalList }) => {
         if (!cancelled) setProjections(new Map(finalList));
@@ -61,7 +64,7 @@ export default function EspnLineups() {
     return () => {
       cancelled = true;
     };
-  }, [result, scoringMode]);
+  }, [result, scoringMode, passTdPoints]);
 
   const runImport = async (credentials) => {
     setLoading(true);
@@ -139,6 +142,18 @@ export default function EspnLineups() {
             <option value="0">Half PPR</option>
             <option value="1">Standard</option>
             <option value="2">Full PPR</option>
+          </select>
+        </div>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="espnPassTdSelect">Pass TD Scoring</label>
+          <select
+            id="espnPassTdSelect"
+            className="vl-select"
+            value={passTdPoints}
+            onChange={(e) => setPassTdPoints(parseInt(e.target.value))}
+          >
+            <option value="4">4 pts</option>
+            <option value="6">6 pts</option>
           </select>
         </div>
         <div className="vl-field">
@@ -225,6 +240,9 @@ export default function EspnLineups() {
             <span className="vl-chip">{result.season}</span>
             <span className="vl-chip">Week&nbsp;<b>{result.scoringPeriodId}</b></span>
             <span className="vl-chip">{SCORING_LABELS[scoringMode]}</span>
+            {passTdPoints !== 4 ? (
+              <span className="vl-chip">{passTdPoints}pt Pass TD</span>
+            ) : null}
             <span className="vl-chip">{result.teams.length} teams</span>
             {projectionsLoading ? <span className="vl-chip">Loading projections…</span> : null}
           </div>

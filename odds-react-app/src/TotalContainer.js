@@ -30,6 +30,8 @@ function TotalContainer() {
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
   const [apiSource, setApiSource] = useState(0);
+  // Fantasy points per passing TD: 4 (default) or 6.
+  const [passTdPoints, setPassTdPoints] = useState(4);
 
   // var skewness = require('compute-skewness');
   // console.log(skewness([24.5, 15.2, 5.4, 14.9, 9.6, 21.4, 14.2, 43, 19.5]))
@@ -227,6 +229,7 @@ function TotalContainer() {
       mode,
       week,
       year: selectedYear,
+      passTdPoints,
     });
     setPlayerMissingList(missingList);
     setPlayerList(finalList);
@@ -586,7 +589,7 @@ function TotalContainer() {
                   handicap -
                   0.5 +
                   1 / playerOdds.outcomes[0].price.decimal / UNIVERSAL_VIG;
-                newPassTdsList.push(handicap * 4);
+                newPassTdsList.push(handicap * passTdPoints);
                 playerToPassTDDataPoints.set(name, newPassTdsList);
               }
             }
@@ -923,7 +926,7 @@ function TotalContainer() {
     }
 
     // scrapeAllActualEspnStats(selectedWeek)
-  }, [selectedPosition, selectedMode, selectedWeek, apiSource]);
+  }, [selectedPosition, selectedMode, selectedWeek, apiSource, passTdPoints]);
 
   useEffect(() => {
     scrapeBPData(selectedPosition, selectedMode, selectedWeek).catch(
@@ -995,6 +998,20 @@ function TotalContainer() {
               <option value="0">Half PPR</option>
               <option value="1">Standard</option>
               <option value="2">Full PPR</option>
+            </select>
+          </div>
+          <div className="vl-field">
+            <label className="vl-label" htmlFor="passTdSelect">Pass TD Scoring</label>
+            <select
+              id="passTdSelect"
+              className="vl-select"
+              defaultValue={passTdPoints}
+              onChange={(e) => {
+                setPassTdPoints(parseInt(e.target.value));
+              }}
+            >
+              <option value="4">4 pts</option>
+              <option value="6">6 pts</option>
             </select>
           </div>
           <div className="vl-field">
@@ -1142,7 +1159,9 @@ function TotalContainer() {
         missingCount={playerMissingList.length}
         context={{
           position: positionLabels[selectedPosition],
-          scoring: scoringLabels[selectedMode],
+          scoring:
+            scoringLabels[selectedMode] +
+            (passTdPoints !== 4 ? ` · ${passTdPoints}pt Pass TD` : ""),
           provider: providerLabels[apiSource],
           year: selectedYear,
         }}
