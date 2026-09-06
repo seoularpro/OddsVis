@@ -256,9 +256,10 @@ export function rainbow(p) {
   return "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
 }
 
-export async function isFetchable(url) {
+// `method` "HEAD" checks existence without transferring the body.
+export async function isFetchable(url, method = "GET") {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { method });
     if (!response.ok) return false;
     // A local dev server serves index.html (200) for missing paths; real data
     // files are never HTML, so treat an HTML response as "not present" to keep

@@ -60,6 +60,9 @@ jobs:
         # Construct the filename
         filename="BettingProsFiles/2026week${weekNumber}${nextIndex}"
         echo "filename=$filename" >> $GITHUB_ENV
+        echo "nextIndex=$nextIndex" >> $GITHUB_ENV
+        # Running union of the week's props (see scripts/merge-bp-carry.sh)
+        echo "carryfile=BettingProsFiles/2026carry${weekNumber}.json" >> $GITHUB_ENV
 
     - name: Fetch JSON from URL
       id: fetch_json
@@ -138,6 +141,10 @@ jobs:
           echo "::error::0 props written — aborting so no empty file is committed"
           exit 1
         fi
+
+        # 6. Fold this snapshot into the week's carry file so props that
+        #    later disappear keep their last posted value.
+        bash scripts/merge-bp-carry.sh "${{ env.filename }}" "${{ env.carryfile }}" "${{ env.nextIndex }}"
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9

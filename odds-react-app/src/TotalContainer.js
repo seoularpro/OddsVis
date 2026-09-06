@@ -29,6 +29,8 @@ function TotalContainer() {
   const [selectedYear, setSelectedYear] = useState(2026);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
+  // Index of the newest BettingPros snapshot loaded for the week.
+  const [bpLastIndex, setBpLastIndex] = useState(null);
   const [apiSource, setApiSource] = useState(0);
   // Fantasy points per passing TD: 4 (default) or 6.
   const [passTdPoints, setPassTdPoints] = useState(4);
@@ -224,7 +226,7 @@ function TotalContainer() {
   };
 
   const scrapeBPData = async (pos, mode, week) => {
-    const { finalList, missingList } = await computeBPProjections({
+    const { finalList, missingList, lastIndex } = await computeBPProjections({
       pos,
       mode,
       week,
@@ -232,6 +234,7 @@ function TotalContainer() {
       passTdPoints,
     });
     setPlayerMissingList(missingList);
+    setBpLastIndex(lastIndex);
     setPlayerList(finalList);
   };
 
@@ -926,7 +929,14 @@ function TotalContainer() {
     }
 
     // scrapeAllActualEspnStats(selectedWeek)
-  }, [selectedPosition, selectedMode, selectedWeek, apiSource, passTdPoints]);
+  }, [
+    selectedPosition,
+    selectedMode,
+    selectedWeek,
+    selectedYear,
+    apiSource,
+    passTdPoints,
+  ]);
 
   useEffect(() => {
     scrapeBPData(selectedPosition, selectedMode, selectedWeek).catch(
@@ -1145,6 +1155,7 @@ function TotalContainer() {
 
       <SangTable
         selectedWeek={selectedWeek}
+        lastIndex={apiSource == 0 ? bpLastIndex : null}
         evList={playerList}
         selectedProvider={apiSource}
         espnPlayerMap={playerMap}

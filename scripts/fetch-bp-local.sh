@@ -64,9 +64,14 @@ jq -n \
   --slurpfile offers "${offers_tmp}" \
   '{props: $props, offers: $offers}' > "${out}"
 
+# Same running union of the week's props the workflow maintains.
+carry="${outdir}/${year}carry${week}.json"
+bash "${root}/scripts/merge-bp-carry.sh" "${out}" "${carry}" "${index}"
+
 echo
 echo "Wrote $(jq '.props|length' "${out}") props + $(jq '.offers|length' "${out}") offers"
 echo "  file:   ${out}"
+echo "  carry:  ${carry}"
 echo "  served: http://localhost:3000/BettingProsFiles/${year}week${week}${index}"
 echo
 echo "Next: ensure odds-react-app/.env.local has REACT_APP_BP_BASE=/BettingProsFiles/"

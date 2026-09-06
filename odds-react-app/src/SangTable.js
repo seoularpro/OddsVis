@@ -115,6 +115,9 @@ export default function SangTable(props) {
           playerChange: d[1].change,
           playerPos: d[1].pos,
           adjustedProps: d[1].adjustedProps || [],
+          stale: !!d[1].stale,
+          missingLatest: d[1].missingLatest || [],
+          lastSeen: d[1].lastSeen || {},
           calculatedColor: rainbow(100 - percentile),
           recentProjections: calculateMeanRecentGames(allMap, d[0], d[1]),
           allProjections: calculateMeanAllGames(allMap, d[0], d[1]),
@@ -128,12 +131,13 @@ export default function SangTable(props) {
     mapNewVisList(props.evList, props.espnPlayerMap, props.recentMap, props.allMap);
   }, [props.evList, props.allMap]);
 
-  // Δ, Season Mean, ESPN Act, and ESPN Proj are temporarily disabled. To
+  // Season Mean, ESPN Act, and ESPN Proj are temporarily disabled. To
   // restore them, swap the flags back to their original conditions:
-  //   showDelta = true
   //   showSeasonMean = props.selectedProvider == 0
   //   showEspn = props.selectedProvider == 0 && props.mode == 0
-  const showDelta = false;
+  // Δ is the change in projection between the first and latest odds file of
+  // the week.
+  const showDelta = true;
   const showSeasonMean = false;
   const showEspn = false;
   let colCount = 3; // rank, player, median
@@ -157,6 +161,22 @@ export default function SangTable(props) {
       : 0;
   const isSelected = (name) =>
     clickedList.some((c) => c.playerName === name);
+  // "Recs (last posted in snapshot 9 of 14)" for each prop a stale player is
+  // missing from the latest odds; the count is omitted when unknown.
+  const staleTitle = (x) => {
+    const total =
+      Number.isInteger(props.lastIndex) && props.lastIndex >= 0
+        ? props.lastIndex + 1
+        : null;
+    const parts = x.missingLatest.map((label) => {
+      const idx = x.lastSeen[label];
+      if (idx === undefined) return label;
+      return `${label} (last posted in snapshot ${idx + 1}${
+        total ? ` of ${total}` : ""
+      })`;
+    });
+    return `Missing from the latest odds: ${parts.join(", ")}`;
+  };
   const ctx = props.context || {};
 
   return (
@@ -195,7 +215,14 @@ export default function SangTable(props) {
                 <th className="vl-th-rank">#</th>
                 <th className="vl-th-player">Player</th>
                 <th className="vl-th-num">Median</th>
-                {showDelta ? <th className="invis-mobile-header">Δ</th> : null}
+                {showDelta ? (
+                  <th
+                    className="invis-mobile-header"
+                    title="Change since the first odds of the week"
+                  >
+                    Δ
+                  </th>
+                ) : null}
                 {showSeasonMean ? <th>Season Mean</th> : null}
                 {showEspn ? (
                   <>
@@ -229,14 +256,21 @@ export default function SangTable(props) {
                   const posMeta = filterPosMeta || POS_META[x.playerPos];
                   const fg = textColorFor(x.calculatedColor);
                   const selected = isSelected(x.playerName);
+                  // Δ is in fantasy points; the % is relative to the
+                  // week-opening projection the delta was measured from.
+                  const firstEV = x.playerEV - (x.playerChange || 0);
                   const pctChange =
-                    x.playerChange && x.playerEV
-                      ? (x.playerChange / x.playerEV) * 100
+                    x.playerChange && firstEV > 0
+                      ? (x.playerChange / firstEV) * 100
                       : 0;
+                  const rowClass =
+                    [selected ? "vl-row-selected" : "", x.stale ? "vl-row-stale" : ""]
+                      .filter(Boolean)
+                      .join(" ") || undefined;
                   return (
                     <tr
                       key={x.playerName}
-                      className={selected ? "vl-row-selected" : undefined}
+                      className={rowClass}
                       style={
                         props.selectedTheme === 0 ? { "--cell-fg": fg } : undefined
                       }
@@ -281,6 +315,15 @@ export default function SangTable(props) {
                             </span>
                           ) : null}
                           <span className="vl-player-name">{x.playerName}</span>
+                          {x.stale ? (
+                            <span
+                              className="vl-stale"
+                              title={staleTitle(x)}
+                              aria-label="Missing from the latest odds"
+                            >
+                              !
+                            </span>
+                          ) : null}
                           {x.adjustedProps && x.adjustedProps.length ? (
                             <span
                               className="vl-adj"
@@ -311,16 +354,19 @@ export default function SangTable(props) {
                       </td>
                       {showDelta ? (
                       <td className="invis-mobile" style={cs}>
-                        {x.playerChange ? (
+                        {x.playerChange && Math.abs(x.playerChange) >= 0.005 ? (
                           <span
                             className={`vl-delta ${
                               x.playerChange > 0
                                 ? "vl-delta-up"
                                 : "vl-delta-down"
                             }`}
+                            title={`${x.playerChange > 0 ? "+" : "−"}${Math.abs(
+                              pctChange
+                            ).toFixed(1)}% vs. first odds of the week`}
                           >
                             {x.playerChange > 0 ? "▲" : "▼"}{" "}
-                            {Math.abs(pctChange).toFixed(1)}%
+                            {Math.abs(x.playerChange).toFixed(2)}
                           </span>
                         ) : (
                           <span className="vl-delta vl-delta-flat">—</span>
@@ -367,6 +413,19 @@ export default function SangTable(props) {
           <span className="vl-sched"><b>Fri</b>12p · 12a</span>
           <span className="vl-sched"><b>Sat</b>12p · 12a</span>
         </div>
+        {visList.some((x) => x.stale) ? (
+          <div className="vl-footnote">
+            <span className="vl-stale" aria-hidden="true">
+              !
+            </span>
+            <span>
+              No longer has every required prop. This player had a complete
+              set of props earlier in the week, but the latest odds are
+              missing some of them; the projection uses the last posted value
+              for those. Hover the marker to see which.
+            </span>
+          </div>
+        ) : null}
         {visList.some((x) => x.adjustedProps && x.adjustedProps.length) ? (
           <div className="vl-footnote">
             <span className="vl-adj" aria-hidden="true">

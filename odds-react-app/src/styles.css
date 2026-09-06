@@ -39,6 +39,8 @@
   --vl-accent: oklch(var(--p));
   --vl-accent-content: oklch(var(--pc));
   --vl-accent-soft: oklch(var(--p) / 0.12);
+  --vl-warn: #f59e0b;
+  --vl-warn-soft: rgba(245, 158, 11, 0.12);
   --vl-focus: 0 0 0 3px oklch(var(--p) / 0.3);
   --vl-danger: oklch(0.65 0.2 25);
 
@@ -806,6 +808,45 @@ body {
   vertical-align: super;
   color: var(--vl-accent);
   cursor: help;
+}
+
+/* a row whose player dropped a required prop in the latest odds file; the
+   projection is carrying his earlier value for it */
+.vl-table tbody tr.vl-row-stale td:first-child {
+  box-shadow: inset 3px 0 0 var(--vl-warn);
+}
+
+.vl-table:not(.vl-table-filled) tbody tr.vl-row-stale td {
+  background: var(--vl-warn-soft);
+}
+
+.vl-row-stale .vl-player-name {
+  text-decoration: underline dashed var(--vl-warn);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.vl-stale {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: var(--vl-warn);
+  color: #0b0b0f;
+  font-size: 0.62em;
+  font-weight: 800;
+  line-height: 1;
+  vertical-align: middle;
+  cursor: help;
+  flex: none;
+}
+
+.vl-footnote .vl-stale {
+  margin: 1px 0 0;
+  cursor: default;
 }
 
 /* explanatory footnote pinned to the bottom of a table card */
