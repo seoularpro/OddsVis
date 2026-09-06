@@ -176,13 +176,6 @@ body {
   align-items: flex-end;
 }
 
-/* display preferences sit apart from the projection filters */
-.vl-toolbar-group--display {
-  margin-left: auto;
-  padding-left: var(--vl-space-4);
-  border-left: 1px solid var(--vl-border);
-}
-
 .vl-field {
   display: flex;
   flex-direction: column;
@@ -1184,14 +1177,6 @@ body {
 }
 
 /* ---- responsive tweaks ------------------------------------------------- */
-@media (max-width: 900px) {
-  .vl-toolbar-group--display {
-    margin-left: 0;
-    padding-left: 0;
-    border-left: none;
-  }
-}
-
 @media (max-width: 640px) {
   .vl-title {
     font-size: 1.3rem;

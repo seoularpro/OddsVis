@@ -1114,9 +1114,6 @@ function TotalContainer() {
               </option>
             </select>
           </div>
-        </div>
-
-        <div className="vl-toolbar-group vl-toolbar-group--display">
           <div className="vl-field">
             <label className="vl-label" htmlFor="cellSelect">Cell style</label>
             <select
