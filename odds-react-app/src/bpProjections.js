@@ -26,6 +26,11 @@ export const BP_BASE =
   process.env.REACT_APP_BP_BASE ||
   "https://raw.githubusercontent.com/seoularpro/OddsVis/main/BettingProsFiles/";
 
+// The stale-player and odds-weighted-line markers only apply from this season
+// on. Earlier seasons still use the same math and keep the same players, but
+// are shown without the markers or their footnotes.
+export const MARKERS_FROM_SEASON = 2026;
+
 // Same name cleanup the projection parsers apply to BettingPros names; use it
 // on names from other sources (ESPN) before looking up a projection.
 export function normalizePlayerName(name) {
@@ -298,7 +303,8 @@ export function parseSnapshot(
  *   week. `stale` players were complete earlier in the week but lack
  *   `missingLatest` props in the last file; those props use their last
  *   posted value, and `lastSeen[label]` is the snapshot index it came from
- *   (when known).
+ *   (when known). `stale`/`missingLatest`/`lastSeen`/`adjustedProps` are only
+ *   populated for seasons from MARKERS_FROM_SEASON on.
  */
 export async function computeBPProjections({
   pos,
@@ -409,6 +415,7 @@ export async function computeBPProjections({
     return seen;
   };
 
+  const showMarkers = Number(year) >= MARKERS_FROM_SEASON;
   finalList = finalList
     .slice()
     .sort((a, b) => b[1] - a[1])
@@ -419,10 +426,10 @@ export async function computeBPProjections({
         ev: elem[1],
         change: playerToChange.get(elem[0]) || 0,
         pos: playerToPosition.get(elem[0]),
-        adjustedProps: adjustedFor(elem[0]),
-        stale: staleProps.has(elem[0]),
-        missingLatest: staleProps.get(elem[0]) || [],
-        lastSeen: lastSeenFor(elem[0]),
+        adjustedProps: showMarkers ? adjustedFor(elem[0]) : [],
+        stale: showMarkers && staleProps.has(elem[0]),
+        missingLatest: showMarkers ? staleProps.get(elem[0]) || [] : [],
+        lastSeen: showMarkers ? lastSeenFor(elem[0]) : {},
       },
     ]);
   return { finalList, missingList, lastIndex };

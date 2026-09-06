@@ -81,7 +81,7 @@ const CARRY = {
 };
 
 const week = 5;
-const year = 2025;
+const year = 2026;
 const url = (i) => `${BP_BASE}${year}week${week}${i}`;
 const idxUrl = `${BP_BASE}${year}lastIndex${week}.txt`;
 const carryUrl = `${BP_BASE}${year}carry${week}.json`;
@@ -194,6 +194,42 @@ describe("computeBPProjections (first + last file only)", () => {
     expect(byName.get("Rising Guy").change).toBeCloseTo(3.0, 1);
     expect(byName.get("Rising Guy").stale).toBe(false);
     expect(missingList.map((m) => m[0])).toEqual(["Never Complete"]);
+  });
+
+  it("keeps stale players but hides the markers for seasons before 2026", async () => {
+    // Heavily shaded over so the yardage line earns an odds-weighted marker.
+    const shaded = [
+      prop(78, "Shaded Guy", "WR", 0.5, -150),
+      prop(105, "Shaded Guy", "WR", 39.5, 285),
+      prop(104, "Shaded Guy", "WR", 3.5, -114),
+    ];
+    const files = (y) => ({
+      [`${BP_BASE}${y}week${week}0`]: { props: [...FIRST.props, ...shaded] },
+      [`${BP_BASE}${y}week${week}3`]: { props: [...LAST.props, ...shaded] },
+      [`${BP_BASE}${y}lastIndex${week}.txt`]: "3",
+      [`${BP_BASE}${y}carry${week}.json`]: CARRY,
+    });
+
+    mockFiles(files(2025));
+    const old = new Map(
+      (await computeBPProjections({ pos: 2, mode: 0, week, year: 2025 })).finalList
+    );
+    // Same rows as 2026, same values, just no markers.
+    expect(old.has("Midweek Guy")).toBe(true);
+    expect(old.has("Dropped Recs")).toBe(true);
+    old.forEach((v) => {
+      expect(v.stale).toBe(false);
+      expect(v.missingLatest).toEqual([]);
+      expect(v.adjustedProps).toEqual([]);
+    });
+
+    mockFiles(files(2026));
+    const current = new Map(
+      (await computeBPProjections({ pos: 2, mode: 0, week, year: 2026 })).finalList
+    );
+    expect(current.get("Midweek Guy").stale).toBe(true);
+    expect(current.get("Shaded Guy").adjustedProps).toEqual(["RecYds"]);
+    expect(old.get("Shaded Guy").ev).toBeCloseTo(current.get("Shaded Guy").ev, 6);
   });
 
   it("reports no Δ and no stale players when the week has a single file", async () => {
