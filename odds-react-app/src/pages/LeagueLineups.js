@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ThemeToggleDropdown from "../ThemeToggleDropdown";
 import { CURRENT_SEASON } from "../constants";
 import { EspnApiError, fetchEspnLeagueLineups } from "../espn/espnClient";
+import { fetchSleeperLeagueLineups } from "../sleeper/sleeperClient";
 import { computeBPProjections, normalizePlayerName } from "../bpProjections";
 
 // CSS class for the existing position badge palette (QB/RB/WR/TE/K/D/ST).
@@ -14,11 +15,32 @@ const positionBadgeClass = (position) =>
 const SHOWN_POSITIONS = new Set(["QB", "RB", "WR", "TE"]);
 const isShownStarter = (s) => s.position === undefined || SHOWN_POSITIONS.has(s.position);
 
+// Supported providers and the single identifier each one needs. Yahoo is not
+// listed: its API is OAuth-only (see sleeper/espn clients for the others).
+const PROVIDERS = {
+  espn: {
+    label: "ESPN",
+    idLabel: "ESPN League ID",
+    placeholder: "e.g. 48347143",
+    cta: "Import ESPN Lineups",
+    fetch: ({ leagueId, credentials }) =>
+      fetchEspnLeagueLineups({ leagueId, season: CURRENT_SEASON, credentials }),
+  },
+  sleeper: {
+    label: "Sleeper",
+    idLabel: "Sleeper League ID",
+    placeholder: "e.g. 1312563056986824704",
+    cta: "Import Sleeper Lineups",
+    fetch: ({ leagueId }) => fetchSleeperLeagueLineups({ leagueId }),
+  },
+};
+
 const SCORING_LABELS = { 0: "Half PPR", 1: "Standard", 2: "Full PPR" };
 // SUPERFLEX position mode returns every projected QB/RB/WR/TE.
 const ALL_POSITIONS = 99;
 
-export default function EspnLineups() {
+export default function LeagueLineups() {
+  const [provider, setProvider] = useState("espn");
   const [leagueId, setLeagueId] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -36,7 +58,7 @@ export default function EspnLineups() {
   const [projectionsLoading, setProjectionsLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "ESPN Lineups";
+    document.title = "Lineup Import";
   }, []);
 
   // Pull this app's median projections for the imported week whenever the
@@ -48,7 +70,7 @@ export default function EspnLineups() {
     computeBPProjections({
       pos: ALL_POSITIONS,
       mode: scoringMode,
-      week: result.scoringPeriodId,
+      week: result.week,
       year: result.season,
       passTdPoints,
     })
@@ -72,18 +94,18 @@ export default function EspnLineups() {
     setResult(null);
     setProjections(new Map());
     try {
-      const lineups = await fetchEspnLeagueLineups({
-        leagueId,
-        season: CURRENT_SEASON,
-        credentials,
-      });
+      const lineups = await PROVIDERS[provider].fetch({ leagueId, credentials });
       setResult(lineups);
       setNeedsCredentials(false);
     } catch (e) {
+      // Provider clients throw errors with a code and a human-readable message.
       const err =
-        e instanceof EspnApiError
+        e && typeof e.code === "string"
           ? e
-          : new EspnApiError("ESPN_API_ERROR", "Something went wrong importing this league.");
+          : new EspnApiError(
+              "ESPN_API_ERROR",
+              `Something went wrong importing this ${PROVIDERS[provider].label} league.`
+            );
       setError(err);
       if (err.code === "ESPN_PRIVATE_LEAGUE" || err.code === "ESPN_AUTH_FAILED") {
         setNeedsCredentials(true);
@@ -106,27 +128,52 @@ export default function EspnLineups() {
 
   const projectionFor = (starter) => projections.get(normalizePlayerName(starter.name))?.ev;
 
+  const handleProviderChange = (e) => {
+    setProvider(e.target.value);
+    setLeagueId("");
+    setResult(null);
+    setError(null);
+    setNeedsCredentials(false);
+  };
+
+  const providerMeta = PROVIDERS[provider];
+
   return (
     <div className="vl-page">
       <div className="vl-page-head">
         <div>
-          <h1 className="vl-title">ESPN Lineup Import</h1>
+          <h1 className="vl-title">Fantasy Lineup Import</h1>
           <p className="vl-subtitle">
-            Current starting lineups for every team in an ESPN Fantasy Football league, with
-            this week's median projections.
+            Current starting lineups for every team in an ESPN or Sleeper fantasy football
+            league, with this week's median projections.
           </p>
         </div>
       </div>
 
       <form className="vl-toolbar" onSubmit={handleImport}>
         <div className="vl-field">
-          <label className="vl-label" htmlFor="espnLeagueId">ESPN League ID</label>
+          <label className="vl-label" htmlFor="providerSelect">Provider</label>
+          <select
+            id="providerSelect"
+            className="vl-select"
+            value={provider}
+            onChange={handleProviderChange}
+          >
+            {Object.entries(PROVIDERS).map(([key, meta]) => (
+              <option key={key} value={key}>
+                {meta.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="vl-field">
+          <label className="vl-label" htmlFor="leagueId">{providerMeta.idLabel}</label>
           <input
-            id="espnLeagueId"
+            id="leagueId"
             className="vl-input"
             inputMode="numeric"
             autoComplete="off"
-            placeholder="e.g. 48347143"
+            placeholder={providerMeta.placeholder}
             value={leagueId}
             onChange={(e) => setLeagueId(e.target.value)}
           />
@@ -145,7 +192,7 @@ export default function EspnLineups() {
           </select>
         </div>
         <div className="vl-field">
-          <label className="vl-label" htmlFor="espnPassTdSelect">Pass TD Scoring</label>
+          <label className="vl-label" htmlFor="espnPassTdSelect">Pass TD Pts</label>
           <select
             id="espnPassTdSelect"
             className="vl-select"
@@ -175,7 +222,7 @@ export default function EspnLineups() {
             className="vl-btn vl-btn-primary"
             disabled={loading || leagueId.trim() === ""}
           >
-            {loading ? "Importing…" : "Import ESPN Lineups"}
+            {loading ? "Importing…" : providerMeta.cta}
           </button>
         </div>
       </form>
@@ -187,7 +234,7 @@ export default function EspnLineups() {
         </div>
       ) : null}
 
-      {needsCredentials ? (
+      {needsCredentials && provider === "espn" ? (
         <form className="vl-toolbar" onSubmit={handleImportWithCredentials} autoComplete="off">
           <div className="vl-note" style={{ flexBasis: "100%", marginBottom: 0 }}>
             <span className="vl-note-icon">i</span>
@@ -236,9 +283,10 @@ export default function EspnLineups() {
       {result ? (
         <>
           <div className="vl-chips">
+            <span className="vl-chip">{PROVIDERS[result.provider]?.label ?? result.provider}</span>
             {result.leagueName ? <span className="vl-chip">{result.leagueName}</span> : null}
             <span className="vl-chip">{result.season}</span>
-            <span className="vl-chip">Week&nbsp;<b>{result.scoringPeriodId}</b></span>
+            <span className="vl-chip">Week&nbsp;<b>{result.week}</b></span>
             <span className="vl-chip">{SCORING_LABELS[scoringMode]}</span>
             {passTdPoints !== 4 ? (
               <span className="vl-chip">{passTdPoints}pt Pass TD</span>

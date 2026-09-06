@@ -1011,7 +1011,7 @@ function TotalContainer() {
             </select>
           </div>
           <div className="vl-field">
-            <label className="vl-label" htmlFor="passTdSelect">Pass TD Scoring</label>
+            <label className="vl-label" htmlFor="passTdSelect">Pass TD Pts</label>
             <select
               id="passTdSelect"
               className="vl-select"
@@ -1135,7 +1135,7 @@ function TotalContainer() {
               }}
             >
               <option value="0">Color</option>
-              <option value="3">Color Translucent</option>
+              <option value="3">Translucent</option>
               <option value="4">Glass</option>
               <option value="5">Color Glass</option>
               <option value="2">Color Outline</option>
@@ -1181,21 +1181,21 @@ function TotalContainer() {
       <div className="vl-panel-grid vl-section">
         <div className="vl-panel">
           <div className="vl-panel-title">
-            ESPN lineup import
+            League lineup import
             <span className="vl-badge-new">New</span>
           </div>
           <p className="vl-panel-msg">
-            Import your ESPN league to see every team's current starters with
+            Import your ESPN or Sleeper league to see every team's current starters with
             this week's median projections.
           </p>
           <div className="vl-panel-actions">
             <button
               className="vl-btn vl-btn-primary"
               onClick={() => {
-                window.location.href = "/espnLineups";
+                window.location.href = "/leagueLineups";
               }}
             >
-              Import ESPN lineups
+              Import league lineups
             </button>
           </div>
         </div>

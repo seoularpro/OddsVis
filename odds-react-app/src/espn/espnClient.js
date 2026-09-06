@@ -179,9 +179,11 @@ function normalizeEspnLeagueLineups({ leagueId, season, scoringPeriodId, league,
     .sort((a, b) => a.teamId - b.teamId);
 
   return {
+    provider: "espn",
     leagueId,
     leagueName: league.settings?.name,
     season,
+    week: scoringPeriodId,
     scoringPeriodId,
     teams,
   };

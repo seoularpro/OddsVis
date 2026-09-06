@@ -11,11 +11,11 @@ import ThemeToggleDropdown from "../ThemeToggleDropdown";
 //   isNew       - optional "New" badge
 const TOOLS = [
   {
-    name: "ESPN Lineup Importer",
+    name: "Fantasy Lineup Importer",
     description:
-      "Enter an ESPN league ID to pull every team's current starting lineup, " +
+      "Enter an ESPN or Sleeper league ID to pull every team's current starting lineup, " +
       "see this week's median projection for each starter, and compare team totals.",
-    href: "/espnLineups",
+    href: "/leagueLineups",
     cta: "Open importer",
     isNew: true,
   },
