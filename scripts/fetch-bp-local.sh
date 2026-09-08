@@ -43,13 +43,15 @@ done
 
 echo "Fetching /offers (markets: ${offers_markets}, 10/page) ..."
 obase="https://api.bettingpros.com/v3/offers?sport=NFL&market_id=${offers_markets}&event_id=${event_ids}&limit=10"
+# Lines with is_off=true are placeholders pulled from the board (e.g.
+# a 43.5 rushing-yards line for a WR at -118/-118); skip them.
 distill='.offers[] |
   if .market_id == 78 then
-    .selections[] | . as $s | ($s.books[]|select(.id==0)|.lines[0]) as $l | select($l!=null)
+    .selections[] | . as $s | ($s.books[]|select(.id==0)|.lines[0]) as $l | select($l!=null and $l.is_off!=true)
       | {market_id:78, name:$s.label, position:null, odds:$l.cost, line:$l.line}
   else
     . as $o | ($o.selections[]|select(.selection=="over")) as $s | ($s.books[]|select(.id==0)|.lines[0]) as $l
-      | select($l!=null and (($o.participants|length)>0))
+      | select($l!=null and $l.is_off!=true and (($o.participants|length)>0))
       | {market_id:$o.market_id, name:$o.participants[0].name, position:$o.participants[0].player.position, odds:$l.cost, line:$l.line}
   end'
 op1=$(curl -s -H "x-api-key: ${api_key}" "${obase}&page=1")
