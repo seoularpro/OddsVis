@@ -1,0 +1,59 @@
+name: Build trade value sheets
+
+# Regenerates TradeValueSheets/ (nine Scoring x League-size workbooks, plus the JSON the
+# site and the Chrome extension read) from the Half PPR 10-team Google Sheet using
+# scripts/trade-values/build_trade_values.py, and commits the result when the values changed.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/trade-values/**'
+      - '.github/workflows/tradeValues.yml'
+  schedule:
+    # Hourly at :35. The Google Sheet is the source of truth, so poll it; the commit
+    # step below is a no-op when nothing changed.
+    - cron: '35 * * * *'
+
+concurrency:
+  group: trade-values
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install openpyxl
+        run: python3 -m pip install --quiet openpyxl
+
+      - name: Build workbooks and JSON from the live sheet
+        run: python3 scripts/trade-values/build_trade_values.py
+
+      - name: Commit when the values changed
+        run: |
+          set -euo pipefail
+          # generatedAt changes every run; only the values matter. The xlsx files are
+          # never byte-identical (zip timestamps), so they are judged by the JSON.
+          if git diff -I '"generatedAt"' --quiet -- TradeValueSheets/trade-values.json \
+             && [ -z "$(git ls-files --others --exclude-standard TradeValueSheets)" ]; then
+            echo "Trade values unchanged; nothing to commit."
+            git checkout -- TradeValueSheets
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add TradeValueSheets
+          git commit -m "Update trade value sheets"
+          # Another workflow may have pushed data files meanwhile; rebase onto it.
+          git pull --rebase origin main
+          git push origin HEAD:main

@@ -1,0 +1,21 @@
+{
+  "_note": "Every constant behind the Scoring x League-size trade value workbooks. Edit here, then rerun build_trade_values.py.",
+  "baseline_sheet_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeoIhwXWGaj4O8NRSQZo-sBpVFHboSPYaqic8F60xALMLbKJ5Xq6p5SOd3gnH645cRHakYimmdzQoB/pubhtml?gid=1217119222&single=true",
+  "baseline_label": "Half PPR, 10-team",
+  "scoring": {
+    "Standard": { "label": "Standard", "reception_delta": -0.5 },
+    "HalfPPR":  { "label": "Half PPR", "reception_delta": 0.0 },
+    "FullPPR":  { "label": "Full PPR", "reception_delta": 0.5 }
+  },
+  "league_sizes": {
+    "8":  { "top": 65, "exponent": 0.87 },
+    "10": { "top": 70, "exponent": 1.00 },
+    "12": { "top": 75, "exponent": 1.15 }
+  },
+  "value_points_per_fantasy_point": 2.5,
+  "significant_reception_margin": 0.5,
+  "replacement_value_cutoff": 5,
+  "peer_value_window": 10,
+  "minimum_value": 1,
+  "minimum_player_count": 50
+}
