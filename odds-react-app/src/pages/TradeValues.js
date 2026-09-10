@@ -281,7 +281,7 @@ export default function TradeValues() {
               />
             </div>
             <p className="vl-panel-msg">
-              The colored box beside each player is their median projection for
+              The colored box beside each player represents their median projection for
               the week. Its color shows how that score ranks relative to the
               startable players at the same position for your league size: red
               is the top of the position, purple the bottom.
