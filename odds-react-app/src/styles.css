@@ -1326,6 +1326,29 @@ body {
   color: var(--vl-muted);
 }
 
+/* the folded layout is only shown on phones (see the media query below) */
+.vl-tv-grid-mobile {
+  display: none;
+}
+
+.vl-tv-grid-mobile td {
+  white-space: normal;
+}
+
+.vl-tv-player-stacked {
+  display: flex;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.vl-tv-player-stacked .vl-tv-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .vl-tv-player {
   display: inline-flex;
   align-items: center;
@@ -1463,9 +1486,18 @@ body {
     display: none;
   }
 
+  /* phones: swap the eight-column grid for the folded two-column one */
+  .vl-tv-grid:not(.vl-tv-grid-mobile) {
+    display: none;
+  }
+
+  .vl-tv-grid-mobile {
+    display: table;
+  }
+
   .vl-tv-grid td,
   .vl-tv-grid th {
-    padding: 0 6px;
+    padding: 0 8px;
   }
 
   .vl-card-head {

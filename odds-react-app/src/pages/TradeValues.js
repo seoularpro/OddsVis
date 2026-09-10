@@ -402,6 +402,42 @@ export default function TradeValues() {
                 )}
               </tbody>
             </table>
+
+            {/* Phones: the same rows with every position folded into one
+                column, so nothing scrolls sideways (CSS swaps the tables). */}
+            {!sheetLoading && rows.length > 0 ? (
+              <table className="vl-tv-grid vl-tv-grid-mobile">
+                <tbody>
+                  <tr className="vl-tv-row-header">
+                    <th scope="col" className="vl-tv-col-value">Trade Value</th>
+                    <th scope="col" className="vl-tv-col-name">Player</th>
+                  </tr>
+                  {rows.slice(headerIdx + 1).map((row, r) => {
+                    const entries = columns
+                      .map((col, c) => (col.kind === "name" && row[c] ? { name: row[c], col } : null))
+                      .filter(Boolean);
+                    if (entries.length === 0) return null;
+                    const valueCol = columns.findIndex((col) => col.kind === "value");
+                    return (
+                      <tr key={`m-${r}`}>
+                        <td className="vl-tv-col-value">
+                          <span className="vl-num vl-tv-value">{row[valueCol]}</span>
+                        </td>
+                        <td className="vl-tv-col-name">
+                          {entries.map(({ name, col }) => (
+                            <span className="vl-tv-player vl-tv-player-stacked" key={`${col.posLabel}-${name}`}>
+                              <span className={`vl-pos ${POS_CLASS[col.pos] || ""}`}>{col.posLabel}</span>
+                              <span className="vl-tv-name" title={name}>{name}</span>
+                              {chipFor(name, col.posLabel)}
+                            </span>
+                          ))}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            ) : null}
           </div>
 
           <div className="vl-tv-legend" aria-hidden="true">
