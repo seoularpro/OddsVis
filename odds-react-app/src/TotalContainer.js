@@ -42,8 +42,6 @@ function TotalContainer() {
     window.open("https://venmo.com/sanghan", "_blank", "noopener,noreferrer");
   };
 
-  // Kept for the temporarily-disabled Trade Values button (see render).
-  // eslint-disable-next-line no-unused-vars
   const handleTradeClick = () => {
     window.location.href = "/tradeValues";
   };
@@ -1147,13 +1145,11 @@ function TotalContainer() {
             <ThemeToggleDropdown id="themeSelect" />
           </div>
         </div>
-        {/* Trade Values temporarily disabled — re-enable by uncommenting.
         <div className="vl-toolbar-actions">
           <button className="vl-btn vl-btn-success" onClick={handleTradeClick}>
             Trade Value Chart
           </button>
         </div>
-        */}
       </div>
 
       <SangTable

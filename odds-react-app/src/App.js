@@ -1,4 +1,3 @@
-import GoogleSheetEmbed from "./GoogleSheetEmbed";
 import "./styles.css";
 import TotalContainer from './TotalContainer'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -6,6 +5,7 @@ import RedditPosts from "./RedditPosts";
 import About from "./pages/About";
 import LeagueLineups from "./pages/LeagueLineups";
 import Tools from "./pages/Tools";
+import TradeValues from "./pages/TradeValues";
 // import Navbar from "./Navbar";
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/leagueLineups" element={<LeagueLineups />} />
           <Route path="/espnLineups" element={<LeagueLineups />} />
           <Route path="/tools" element={<Tools />} />
-          <Route title="Trade Value Chart" path="/tradeValues" element={<GoogleSheetEmbed />} />
+          <Route path="/tradeValues" element={<TradeValues />} />
           <Route  path="/redditPosts/:week" element={<RedditPosts />}>
           </Route>
 

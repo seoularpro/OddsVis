@@ -7,6 +7,7 @@ import {
   calculatePercentile,
   getQueryStringValue,
   rainbow,
+  textColorFor,
   withAlpha,
 } from "./util.js";
 import ClickedPlayerTotalTable from "./ClickedPlayerTotalTable";
@@ -91,19 +92,6 @@ function tableClassFor(theme) {
   if (theme === 4) return " vl-table-filled vl-table-glass";
   if (theme === 5) return " vl-table-filled vl-table-glass vl-table-glass-solid";
   return "";
-}
-
-// Readable text color for a filled heatmap cell. Dark text across the bright
-// middle of the ramp (amber -> yellow -> green -> cyan -> light blue, i.e. a
-// high green channel); white on the saturated red/orange top and the deep
-// blue/purple bottom. The g>=186 cutoff puts Matthew Stafford (255,195,0) and
-// Daniel Jones (0,186,255) on the dark side.
-function textColorFor(rgb) {
-  const m = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/.exec(rgb || "");
-  if (!m) return "#ffffff";
-  const g = +m[2];
-  const inBand = g >= 186;
-  return inBand ? "#0b0b0f" : "#ffffff";
 }
 
 export default function SangTable(props) {

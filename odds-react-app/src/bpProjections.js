@@ -313,15 +313,49 @@ export async function computeBPProjections({
   year,
   passTdPoints = 4,
 }) {
+  const files = await loadFirstAndLastFiles({ week, year });
+  return projectionsFromFiles(files, { pos, mode, year, passTdPoints });
+}
+
+/**
+ * Same as computeBPProjections for several position filters at once, loading
+ * the week's files a single time. Used by views that show every position
+ * together but still want each position ranked exactly as its own page
+ * would (e.g. the trade value chart).
+ * @returns {Promise<{ byPosition: Map<number, { finalList, missingList }>,
+ *   lastIndex: number }>}
+ */
+export async function computeBPProjectionsByPosition({
+  positions = [0, 1, 2, 3],
+  mode,
+  week,
+  year,
+  passTdPoints = 4,
+}) {
+  const files = await loadFirstAndLastFiles({ week, year });
+  const byPosition = new Map();
+  for (const pos of positions) {
+    const { finalList, missingList } = projectionsFromFiles(files, {
+      pos,
+      mode,
+      year,
+      passTdPoints,
+    });
+    byPosition.set(pos, { finalList, missingList });
+  }
+  return { byPosition, lastIndex: files.lastIndex };
+}
+
+// The projection pipeline for one position filter, given the week's already
+// loaded files (see loadFirstAndLastFiles).
+export function projectionsFromFiles(
+  { first, last, carry, lastIndex },
+  { pos, mode, year, passTdPoints = 4 }
+) {
   let receptionMultiplier = 0.5;
   if (mode == 0) receptionMultiplier = 0.5;
   else if (mode == 1) receptionMultiplier = 0;
   else if (mode == 2) receptionMultiplier = 1;
-
-  const { first, last, carry, lastIndex } = await loadFirstAndLastFiles({
-    week,
-    year,
-  });
 
   const playerToPosition = new Map();
   const ctx = { receptionMultiplier, passTdPoints, playerToPosition };

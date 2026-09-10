@@ -1114,8 +1114,9 @@ body {
     font-size: 0.8rem;
   }
 
-  /* the brand already links home; drop the duplicate to keep the bar on one line */
-  .vl-nav-links a[href="/"] {
+  /* Small screens only get Tools and Trade Values; the brand already links
+     home, and Posts/About are reachable from the desktop nav. */
+  .vl-nav-links a:not([href="/tools"]):not([href="/tradeValues"]) {
     display: none;
   }
 
@@ -1239,6 +1240,157 @@ body {
   margin: 0 auto;
 }
 
+/* ---- trade value chart -------------------------------------------------- */
+/* intro panels above the toolbar */
+.vl-tv-intro {
+  margin-bottom: var(--vl-space-4);
+}
+
+.vl-tv-intro .vl-panel {
+  padding: var(--vl-space-3) var(--vl-space-4);
+}
+
+.vl-tv-intro-swatch {
+  display: inline-block;
+  width: 44px;
+  height: 6px;
+  border-radius: 3px;
+  margin-left: auto;
+}
+
+/* The grid keeps the sheet's own rows and columns: Trade Value, then a
+   Player Name (+ Trend) column per position. */
+.vl-tv-grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8125rem;
+  table-layout: auto;
+}
+
+.vl-tv-grid td,
+.vl-tv-grid th {
+  height: 30px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--vl-border);
+  border-right: 1px solid var(--vl-border);
+  vertical-align: middle;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--vl-text);
+}
+
+.vl-tv-grid td:last-child,
+.vl-tv-grid th:last-child {
+  border-right: none;
+}
+
+.vl-tv-grid tr:last-child td {
+  border-bottom: none;
+}
+
+/* the sheet's header row */
+/* not sticky: the horizontally scrollable wrapper would pin it inside the
+   card instead of under the nav */
+.vl-tv-row-header th {
+  height: 34px;
+  background: var(--vl-surface-2);
+  color: var(--vl-muted);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--vl-border-strong);
+}
+
+.vl-tv-row-blank td {
+  height: 10px;
+  background: var(--vl-zebra);
+}
+
+.vl-tv-col-value {
+  width: 1%;
+  text-align: right !important;
+  background: var(--vl-zebra);
+}
+
+.vl-tv-value {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.vl-tv-col-trend {
+  width: 1%;
+  text-align: right !important;
+  color: var(--vl-muted);
+}
+
+.vl-tv-player {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+}
+
+.vl-tv-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* projection chip: heatmap color = percentile within the position group,
+   the same ramp as the rank chip on the Projections page, shrunk to sit
+   beside the name without dominating the sheet layout */
+.vl-tv-chip,
+.vl-tv-chip-skel {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 17px;
+  padding: 0 5px;
+  border-radius: 4px;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.vl-tv-chip-none {
+  background: var(--vl-surface-2);
+  color: var(--vl-faint);
+  box-shadow: inset 0 0 0 1px var(--vl-border);
+}
+
+.vl-tv-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--vl-space-2);
+  padding: 10px 16px;
+  border-top: 1px solid var(--vl-border);
+  background: var(--vl-surface-2);
+}
+
+.vl-tv-legend-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--vl-muted);
+  white-space: nowrap;
+}
+
+.vl-tv-legend-bar {
+  flex: 1 1 120px;
+  max-width: 260px;
+  height: 6px;
+  border-radius: 3px;
+}
+
 /* archived Reddit posts still use the daisyUI "card" markup */
 .vl-archive {
   max-width: var(--vl-page-w);
@@ -1309,6 +1461,11 @@ body {
 
   .vl-bar {
     display: none;
+  }
+
+  .vl-tv-grid td,
+  .vl-tv-grid th {
+    padding: 0 6px;
   }
 
   .vl-card-head {
