@@ -260,14 +260,14 @@ export default function TradeValues() {
             <div className="vl-panel-title">$200 auction budget</div>
             <p className="vl-panel-msg">
               Values are based on a $200 auction draft budget, so every player's
-              number is a share of the same budget.
+              value is a proportional share of the same budget.
             </p>
           </div>
           <div className="vl-panel">
             <div className="vl-panel-title">Combining values</div>
             <p className="vl-panel-msg">
               You can combine values to find a fair trade, assuming your waiver
-              wire is worthless. For example, Jahmyr Gibbs would be worth two
+              wire is worthless. For example, Jahmyr Gibbs at $70 would be worth two
               $35 players.
             </p>
           </div>
