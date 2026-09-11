@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   PlayerPosMap,
   PlayerPosMap23,
@@ -17,11 +17,15 @@ import {
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
 import { computeBPProjections } from "./bpProjections";
+import { fetchEspnWeekStats } from "./espn/espnActuals";
 
 function TotalContainer() {
   const [selectedPosition, setSelectedPosition] = useState(0);
   const [playerList, setPlayerList] = useState([]);
-  const [playerMap, setPlayerMap] = useState(new Map());
+  // Live ESPN actual/projected points for the selected week, keyed by
+  // normalized player name (see espn/espnActuals.js).
+  const [espnMap, setEspnMap] = useState(new Map());
+  const espnRequestId = useRef(0);
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
@@ -157,70 +161,24 @@ function TotalContainer() {
     setAllMap(otherMap);
   };
 
-  const scrapeEspnStats = async (week) => {
-    //https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2025/segments/0/leagues/995547?view=mMatchup&view=mMatchupScore
-    const getUrl =
-      "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/testHppr";
-    // const getUrl = "https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2024/segments/0/leagues/995547?view=mBoxscore&view=mMatchupScore&view=mRoster&view=mSettings&view=mStatus&view=mTeam&view=modular&view=mNav"
-    // weekly url https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/2025/segments/0/leagues/995547?scoringPeriodId=11&view=modular&view=mNav&view=mMatchupScore&view=mScoreboard&view=mSettings&view=mTopPerformers&view=mTeam
-    // we may need to return to this but currently just use the latest one as it has past history as well
-    //  "https://raw.githubusercontent.com/seoularpro/OddsVis/main/ESPNAPIFiles/week" + week + "hppr";
-
-    await fetch("./testHppr")
-      .then((response) => {
-        return response.json();
-      })
-      .then((r) => {
-        let data = [];
-        const d = r;
-        for (const tm of d.teams) {
-          const tmid = tm.id;
-          for (const p of tm.roster.entries) {
-            let name = p.playerPoolEntry.player.fullName;
-            const slot = p.lineupSlotId;
-            const pos = slotcodes[slot];
-
-            // Injured status (need try/catch because of D/ST)
-            let inj = "NA";
-            try {
-              inj = p.playerPoolEntry.player.injuryStatus;
-            } catch (error) {
-              // Do nothing, leave 'NA' as the default value for injured status
-            }
-
-            // Projected/actual points
-            let proj = null,
-              act = null;
-
-            for (const stat of p.playerPoolEntry.player.stats) {
-              if (stat.scoringPeriodId !== week) {
-                continue;
-              }
-              if (stat.statSourceId === 0) {
-                act = stat.appliedTotal;
-              } else if (stat.statSourceId === 1) {
-                proj = stat.appliedTotal;
-              }
-            }
-
-            name = name
-              .replace(/\./g, "")
-              .replace(/ jr/i, "")
-              .replace(/ sr/i, "")
-              .replace(/ Jr/i, "");
-            data.push([week, tmid, name, slot, pos, inj, proj, act]);
-            playerMap.set(name, {
-              proj: proj?.toFixed(2),
-              act: act?.toFixed(2),
-            });
-          }
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-        playerMap.clear();
+  // ESPN actuals are loaded from ESPN's API every time the projections are
+  // (same effect, same dependencies), scored with the same settings, so the
+  // "ESPN Act" column always compares like with like. A response that
+  // arrives after the settings changed again is dropped.
+  const loadEspnActuals = async (week, mode, year, ptd) => {
+    const requestId = ++espnRequestId.current;
+    let next = new Map();
+    try {
+      next = await fetchEspnWeekStats({
+        season: year,
+        week,
+        mode,
+        passTdPoints: ptd,
       });
-    setPlayerMap(playerMap);
+    } catch (e) {
+      console.log(e);
+    }
+    if (requestId === espnRequestId.current) setEspnMap(next);
   };
 
   const scrapeBPData = async (pos, mode, week) => {
@@ -925,6 +883,7 @@ function TotalContainer() {
         console.error
       );
     }
+    loadEspnActuals(selectedWeek, selectedMode, selectedYear, passTdPoints);
 
     // scrapeAllActualEspnStats(selectedWeek)
   }, [
@@ -942,10 +901,6 @@ function TotalContainer() {
     );
     scrapeAllActualEspnStats(selectedWeek);
   }, []);
-
-  useEffect(() => {
-    scrapeEspnStats(selectedWeek);
-  }, [selectedWeek]);
 
   const redirectToPatreon = () => {
     window.location.href = "https://www.patreon.com/VegasLytics";
@@ -1157,7 +1112,7 @@ function TotalContainer() {
         lastIndex={apiSource == 0 ? bpLastIndex : null}
         evList={playerList}
         selectedProvider={apiSource}
-        espnPlayerMap={playerMap}
+        espnPlayerMap={espnMap}
         selectedTheme={selectedTheme}
         selectedPosition={selectedPosition}
         allMap={allMap}

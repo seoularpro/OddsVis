@@ -155,21 +155,24 @@ export default function SangTable(props) {
   };
   useEffect(() => {
     mapNewVisList(props.evList, props.espnPlayerMap, props.recentMap, props.allMap);
-  }, [props.evList, props.allMap]);
+  }, [props.evList, props.allMap, props.espnPlayerMap]);
 
-  // Season Mean, ESPN Act, and ESPN Proj are temporarily disabled. To
-  // restore them, swap the flags back to their original conditions:
+  // Season Mean and ESPN Proj are temporarily disabled. To restore them,
+  // swap the flags back to their original conditions:
   //   showSeasonMean = props.selectedProvider == 0
-  //   showEspn = props.selectedProvider == 0 && props.mode == 0
+  //   showEspnProj = props.selectedProvider == 0 && props.mode == 0
   // Δ is the change in projection between the first and latest odds file of
-  // the week.
+  // the week. ESPN Act is the player's live ESPN result for the week, scored
+  // with the selected settings.
   const showDelta = true;
   const showSeasonMean = false;
-  const showEspn = false;
+  const showEspnAct = true;
+  const showEspnProj = false;
   let colCount = 3; // rank, player, median
   if (showDelta) colCount += 1;
   if (showSeasonMean) colCount += 1;
-  if (showEspn) colCount += 2;
+  if (showEspnAct) colCount += 1;
+  if (showEspnProj) colCount += 1;
 
   // Single-position views (QB/RB/WR/TE) label from the filter; FLEX/SUPERFLEX
   // fall back to each player's own position.
@@ -250,11 +253,16 @@ export default function SangTable(props) {
                   </th>
                 ) : null}
                 {showSeasonMean ? <th>Season Mean</th> : null}
-                {showEspn ? (
-                  <>
-                    <th className="invis-mobile-header">ESPN Act</th>
-                    <th className="invis-mobile-header">ESPN Proj</th>
-                  </>
+                {showEspnAct ? (
+                  <th
+                    className="invis-mobile-header vl-th-num"
+                    title="Actual fantasy points so far this week, live from ESPN and scored with the selected settings"
+                  >
+                    ESPN Act
+                  </th>
+                ) : null}
+                {showEspnProj ? (
+                  <th className="invis-mobile-header">ESPN Proj</th>
                 ) : null}
               </tr>
             </thead>
@@ -410,19 +418,35 @@ export default function SangTable(props) {
                           </span>
                         </td>
                       ) : null}
-                      {showEspn ? (
-                        <>
-                          <td className="invis-mobile" style={cs}>
-                            <span className="vl-num vl-secondary">
-                              {x.espnValues?.act ?? "—"}
+                      {showEspnAct ? (
+                        <td className="invis-mobile vl-td-num" style={cs}>
+                          {typeof x.espnValues?.act === "number" ? (
+                            <span
+                              className="vl-num"
+                              title={`${x.espnValues.act.toFixed(1)} actual vs ${x.playerEV.toFixed(2)} projected`}
+                            >
+                              {x.espnValues.act.toFixed(1)}
                             </span>
-                          </td>
-                          <td className="invis-mobile" style={cs}>
-                            <span className="vl-num vl-secondary">
-                              {x.espnValues?.proj ?? "—"}
+                          ) : (
+                            <span
+                              className="vl-num vl-secondary"
+                              title={
+                                x.espnValues
+                                  ? "No ESPN result yet for this week"
+                                  : "Not found in ESPN's player pool"
+                              }
+                            >
+                              —
                             </span>
-                          </td>
-                        </>
+                          )}
+                        </td>
+                      ) : null}
+                      {showEspnProj ? (
+                        <td className="invis-mobile" style={cs}>
+                          <span className="vl-num vl-secondary">
+                            {x.espnValues?.proj ?? "—"}
+                          </span>
+                        </td>
                       ) : null}
                     </tr>
                   );
