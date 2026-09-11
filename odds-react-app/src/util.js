@@ -332,3 +332,39 @@ export function getLastElementMap(inputMap) {
 
   return resultMap;
 }
+
+// How long the odds feed can go quiet before the table warns. The fetch
+// workflow runs at least every 12 hours (see the schedule under the table),
+// and GitHub's scheduler can start a run a few hours late.
+export const REFRESH_OVERDUE_MS = 16 * 60 * 60 * 1000;
+
+/**
+ * Describe when the odds were last refreshed, for the table footer.
+ * @param {string|null} iso  UTC timestamp of the newest snapshot
+ * @param {Date} [now]
+ * @returns {{ when: string, ago: string, overdue: boolean }|null}
+ *   `when` is the Eastern wall-clock time, `ago` a coarse relative age.
+ */
+export function describeRefresh(iso, now = new Date()) {
+  if (!iso) return null;
+  const t = new Date(iso);
+  if (Number.isNaN(t.getTime())) return null;
+  const when =
+    t.toLocaleString("en-US", {
+      timeZone: "America/New_York",
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    }) + " ET";
+  const mins = Math.max(0, Math.round((now - t) / 60000));
+  let ago;
+  if (mins < 1) ago = "just now";
+  else if (mins < 60) ago = `${mins} min ago`;
+  else if (mins < 48 * 60) {
+    const h = Math.round(mins / 60);
+    ago = `${h} hr${h === 1 ? "" : "s"} ago`;
+  } else ago = `${Math.round(mins / 1440)} days ago`;
+  return { when, ago, overdue: now - t > REFRESH_OVERDUE_MS };
+}

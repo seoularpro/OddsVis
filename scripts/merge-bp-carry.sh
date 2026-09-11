@@ -10,7 +10,9 @@
 # from later snapshots stays in the carry at its last posted value, so the app
 # can keep a player who was complete mid-week and flag him once the latest
 # snapshot no longer has all his props. Each entry carries `carry_index`, the
-# index of the snapshot it was last seen in.
+# index of the snapshot it was last seen in. The top level records
+# `last_index` and `fetched_at` (UTC, ISO 8601) for the newest snapshot so
+# the app can show when the odds were last refreshed.
 #
 # Used by .github/workflows/BettingProFetch.yml and scripts/fetch-bp-local.sh.
 #
@@ -32,7 +34,8 @@ trap 'rm -f "${tmp}"' EXIT
 jq -n \
   --slurpfile prev "${prev}" \
   --slurpfile new "${snapshot}" \
-  --argjson idx "${index}" '
+  --argjson idx "${index}" \
+  --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '
   def key: (.market_id | tostring) + "|" + (.participant.name // .name // "");
   # Later entries win, so the new snapshot overrides the previous carry.
   def merge($old; $add):
@@ -43,6 +46,7 @@ jq -n \
   | ($new[0]) as $n
   | {
       last_index: $idx,
+      fetched_at: $ts,
       props: merge($p.props; $n.props),
       offers: merge($p.offers; $n.offers)
     }' > "${tmp}"

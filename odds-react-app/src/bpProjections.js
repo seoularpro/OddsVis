@@ -298,7 +298,10 @@ export function parseSnapshot(
  *     adjustedProps: string[], stale: boolean, missingLatest: string[],
  *     lastSeen: Object<string, number> }][],
  *   missingList: [string, string, string][],
- *   lastIndex: number }>}
+ *   lastIndex: number, lastFetched: string|null }>}
+ *   `lastFetched` is the UTC timestamp the newest snapshot was taken (from
+ *   the carry file), or null when the week has no carry file or the carry
+ *   is out of step with the snapshot that was actually loaded.
  *   `change` is the projection delta between the first and last file of the
  *   week. `stale` players were complete earlier in the week but lack
  *   `missingLatest` props in the last file; those props use their last
@@ -323,7 +326,7 @@ export async function computeBPProjections({
  * together but still want each position ranked exactly as its own page
  * would (e.g. the trade value chart).
  * @returns {Promise<{ byPosition: Map<number, { finalList, missingList }>,
- *   lastIndex: number }>}
+ *   lastIndex: number, lastFetched: string|null }>}
  */
 export async function computeBPProjectionsByPosition({
   positions = [0, 1, 2, 3],
@@ -343,7 +346,18 @@ export async function computeBPProjectionsByPosition({
     });
     byPosition.set(pos, { finalList, missingList });
   }
-  return { byPosition, lastIndex: files.lastIndex };
+  return {
+    byPosition,
+    lastIndex: files.lastIndex,
+    lastFetched: lastFetchedFrom(files),
+  };
+}
+
+// When the carry file describes the snapshot that was actually loaded, its
+// `fetched_at` says when those odds were pulled.
+function lastFetchedFrom({ carry, lastIndex }) {
+  if (!carry || carry.last_index !== lastIndex) return null;
+  return typeof carry.fetched_at === "string" ? carry.fetched_at : null;
 }
 
 // The projection pipeline for one position filter, given the week's already
@@ -466,5 +480,10 @@ export function projectionsFromFiles(
         lastSeen: showMarkers ? lastSeenFor(elem[0]) : {},
       },
     ]);
-  return { finalList, missingList, lastIndex };
+  return {
+    finalList,
+    missingList,
+    lastIndex,
+    lastFetched: lastFetchedFrom({ carry, lastIndex }),
+  };
 }

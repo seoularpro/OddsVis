@@ -62,6 +62,7 @@ function mockFiles(files) {
 const withIndex = (entries, carry_index) => entries.map((p) => ({ ...p, carry_index }));
 const CARRY = {
   last_index: 3,
+  fetched_at: "2026-10-08T16:50:04Z",
   props: [
     ...withIndex(wr("Steady Guy", 60.5, 4.5), 3),
     ...withIndex(wr("Rising Guy", 70.5, 5.5), 3),
@@ -194,6 +195,27 @@ describe("computeBPProjections (first + last file only)", () => {
     expect(byName.get("Rising Guy").change).toBeCloseTo(3.0, 1);
     expect(byName.get("Rising Guy").stale).toBe(false);
     expect(missingList.map((m) => m[0])).toEqual(["Never Complete"]);
+  });
+
+  it("reports when the loaded snapshot was fetched, from the carry file", async () => {
+    mockFiles({ [url(0)]: FIRST, [url(3)]: LAST, [idxUrl]: "3", [carryUrl]: CARRY });
+    const { lastFetched } = await computeBPProjections({ pos: 2, mode: 0, week, year });
+    expect(lastFetched).toBe("2026-10-08T16:50:04Z");
+  });
+
+  it("omits the fetch time when the carry is out of step with the loaded file", async () => {
+    // The hint points at a newer file than the CDN serves, so the loader
+    // falls back to snapshot 2 while the carry describes snapshot 3.
+    mockFiles({ [url(0)]: FIRST, [url(2)]: LAST, [idxUrl]: "3", [carryUrl]: CARRY });
+    const { lastIndex, lastFetched } = await computeBPProjections({ pos: 2, mode: 0, week, year });
+    expect(lastIndex).toBe(2);
+    expect(lastFetched).toBeNull();
+  });
+
+  it("omits the fetch time for weeks without a carry file", async () => {
+    mockFiles({ [url(0)]: FIRST, [url(3)]: LAST, [idxUrl]: "3" });
+    const { lastFetched } = await computeBPProjections({ pos: 2, mode: 0, week, year });
+    expect(lastFetched).toBeNull();
   });
 
   it("keeps stale players but hides the markers for seasons before 2026", async () => {

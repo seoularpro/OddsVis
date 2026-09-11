@@ -941,6 +941,41 @@ body {
   100% { background-position: -200% 0; }
 }
 
+/* last-refreshed line above the update schedule */
+.vl-refresh {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 10px 16px 0;
+  border-top: 1px solid var(--vl-border);
+  font-size: 0.72rem;
+  color: var(--vl-muted);
+}
+
+.vl-refresh + .vl-meta {
+  border-top: 0;
+  padding-top: 8px;
+}
+
+.vl-refresh-ago {
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-refresh-ago::before {
+  content: "·";
+  margin-right: 6px;
+}
+
+.vl-refresh-msg {
+  flex-basis: 100%;
+}
+
+.vl-refresh-overdue .vl-refresh-msg {
+  color: var(--vl-warn);
+  font-weight: 600;
+}
+
 /* update schedule / footnotes */
 .vl-meta {
   display: flex;
@@ -1506,6 +1541,10 @@ body {
 
   .vl-meta {
     padding: 10px 14px;
+  }
+
+  .vl-refresh {
+    padding: 10px 14px 0;
   }
 }
 

@@ -358,11 +358,6 @@ export default function TradeValues() {
                 ) : null}
               </div>
             </div>
-            <div className="vl-card-head-aside">
-              <a className="vl-link" href={PUBLISHED_SHEET_URL} target="_blank" rel="noreferrer">
-                Open baseline sheet ↗
-              </a>
-            </div>
           </div>
 
           <div className="vl-table-wrap vl-table-wrap--scroll">

@@ -5,6 +5,7 @@ import {
   calculateMeanAndStdDev,
   calculateMeanRecentGames,
   calculatePercentile,
+  describeRefresh,
   getQueryStringValue,
   rainbow,
   textColorFor,
@@ -190,6 +191,8 @@ export default function SangTable(props) {
       : 0;
   const isSelected = (name) =>
     clickedList.some((c) => c.playerName === name);
+  // When the odds behind the table were last pulled (BettingPros only).
+  const refresh = describeRefresh(props.lastFetched);
   // "Recs (last posted in snapshot 9 of 14)" for each prop a stale player is
   // missing from the latest odds; the count is omitted when unknown.
   const staleTitle = (x) => {
@@ -455,6 +458,25 @@ export default function SangTable(props) {
             </tbody>
           </table>
         </div>
+        {refresh ? (
+          <div
+            className={
+              "vl-refresh" + (refresh.overdue ? " vl-refresh-overdue" : "")
+            }
+            role={refresh.overdue ? "status" : undefined}
+          >
+            <span className="vl-meta-title">Last refreshed</span>
+            <span className="vl-sched" title={props.lastFetched}>
+              {refresh.when}
+            </span>
+            <span className="vl-refresh-ago">{refresh.ago}</span>
+            <span className="vl-refresh-msg">
+              {refresh.overdue
+                ? "The odds feed hasn't updated in over 16 hours, so these projections may be behind the books."
+                : "Projections reflect the consensus odds as of this time."}
+            </span>
+          </div>
+        ) : null}
         <div className="vl-meta">
           <span className="vl-meta-title">Updates (ET)</span>
           <span className="vl-sched"><b>Sun</b>8a · 12p · 12a</span>

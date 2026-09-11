@@ -1,4 +1,4 @@
-import { impliedYards, normInv } from "./util";
+import { describeRefresh, impliedYards, normInv } from "./util";
 
 describe("normInv", () => {
   it("returns 0 at the median and the familiar 95% z-scores at the tails", () => {
@@ -51,5 +51,33 @@ describe("impliedYards", () => {
   it("passes a non-positive or non-numeric line straight through", () => {
     expect(impliedYards(0, -114)).toBe(0);
     expect(Number.isNaN(impliedYards("abc", -114))).toBe(true);
+  });
+});
+
+describe("describeRefresh", () => {
+  const now = new Date("2026-09-11T20:00:00Z"); // Fri 4:00 PM EDT
+
+  it("returns null without a usable timestamp", () => {
+    expect(describeRefresh(null, now)).toBeNull();
+    expect(describeRefresh("", now)).toBeNull();
+    expect(describeRefresh("not a date", now)).toBeNull();
+  });
+
+  it("formats the snapshot time on the Eastern clock with a relative age", () => {
+    const r = describeRefresh("2026-09-11T16:50:04Z", now);
+    expect(r.when).toBe("Fri, Sep 11, 12:50 PM ET");
+    expect(r.ago).toBe("3 hrs ago");
+    expect(r.overdue).toBe(false);
+  });
+
+  it("uses minutes and days at the extremes", () => {
+    expect(describeRefresh("2026-09-11T19:35:00Z", now).ago).toBe("25 min ago");
+    expect(describeRefresh("2026-09-11T19:59:40Z", now).ago).toBe("just now");
+    expect(describeRefresh("2026-09-08T20:00:00Z", now).ago).toBe("3 days ago");
+  });
+
+  it("flags a feed that has been quiet for more than 16 hours", () => {
+    expect(describeRefresh("2026-09-11T04:30:00Z", now).overdue).toBe(false);
+    expect(describeRefresh("2026-09-11T03:30:00Z", now).overdue).toBe(true);
   });
 });

@@ -35,6 +35,7 @@ function TotalContainer() {
   const [playerMissingList, setPlayerMissingList] = useState([]);
   // Index of the newest BettingPros snapshot loaded for the week.
   const [bpLastIndex, setBpLastIndex] = useState(null);
+  const [bpLastFetched, setBpLastFetched] = useState(null);
   const [apiSource, setApiSource] = useState(0);
   // Fantasy points per passing TD: 4 (default) or 6.
   const [passTdPoints, setPassTdPoints] = useState(4);
@@ -182,7 +183,8 @@ function TotalContainer() {
   };
 
   const scrapeBPData = async (pos, mode, week) => {
-    const { finalList, missingList, lastIndex } = await computeBPProjections({
+    const { finalList, missingList, lastIndex, lastFetched } =
+      await computeBPProjections({
       pos,
       mode,
       week,
@@ -191,6 +193,7 @@ function TotalContainer() {
     });
     setPlayerMissingList(missingList);
     setBpLastIndex(lastIndex);
+    setBpLastFetched(lastFetched);
     setPlayerList(finalList);
   };
 
@@ -1110,6 +1113,7 @@ function TotalContainer() {
       <SangTable
         selectedWeek={selectedWeek}
         lastIndex={apiSource == 0 ? bpLastIndex : null}
+        lastFetched={apiSource == 0 ? bpLastFetched : null}
         evList={playerList}
         selectedProvider={apiSource}
         espnPlayerMap={espnMap}
