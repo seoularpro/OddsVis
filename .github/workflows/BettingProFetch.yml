@@ -84,7 +84,9 @@ jobs:
         # Create a script to calculate the week number
         echo '
         function getWeekNumber() {
-            const startDate = new Date("2026-09-05");
+            // Tuesday before the first Thursday game: a week runs Tue-Mon so
+            // the Sat/Sun/Mon snapshots of a slate stay with that slate.
+            const startDate = new Date("2026-09-08");
             const currentDate = new Date();
             const diffTime = currentDate - startDate;
             const diffWeeks = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
@@ -213,5 +215,8 @@ jobs:
         author_email: sangkyun.hanpro@gmail.com
         message: "Update JSON data file in BettingProsFiles"
         add: '.'
+        # Another workflow may have pushed meanwhile (the Bovada fetch shares
+        # this schedule); rebase onto it instead of failing the push.
+        pull: '--rebase --autostash'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
