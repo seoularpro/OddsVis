@@ -1,6 +1,8 @@
 
 function getWeekNumber() {
-    const startDate = new Date("2024-09-03");
+    // Tuesday before the first Thursday game: a week runs Tue-Mon so
+    // the Sat/Sun/Mon snapshots of a slate stay with that slate.
+    const startDate = new Date("2026-09-08");
     const currentDate = new Date();
     const diffTime = currentDate - startDate;
     const diffWeeks = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 7));
