@@ -138,7 +138,7 @@ jobs:
         tmp="${RUNNER_TEMP:-/tmp}/props.ndjson"
 
         # 1. Event IDs for the current slate (update this list each week).
-        event_ids="21920:21906:21924:21926:21922:21921:21925:22120:21927:21923:21928:21930:21931:21929:21907:21910"
+        event_ids="21908:21932:21985:21986:21987:21988:21989:21990:21991:21992:21993:21994:21995:21996:21997:21998"
         echo "Event IDs: ${event_ids}"
 
         base="https://api.bettingpros.com/v3/props?limit=200&sport=NFL&market_id=${markets}&event_id=${event_ids}&ev_threshold=false&include_selections=false&include_markets=true&include_counts=true"
