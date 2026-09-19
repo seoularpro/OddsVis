@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-09T23:33:11Z",
+ "generatedAt": "2026-09-19T18:57:33Z",
  "key": "HalfPPR_10",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -99,6 +99,16 @@
   ],
   [
    60,
+   "Kenneth Walker III",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   60,
    "",
    "",
    "Jaxon Smith-Njigba",
@@ -128,17 +138,7 @@
    ""
   ],
   [
-   51,
-   "Kenneth Walker III",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   48,
+   55,
    "Ashton Jeanty",
    "",
    "",
@@ -148,10 +148,20 @@
    ""
   ],
   [
-   48,
+   55,
    "Derrick Henry",
    "",
    "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   53,
+   "",
+   "",
+   "Justin Jefferson",
    "",
    "",
    "",
@@ -178,16 +188,6 @@
    ""
   ],
   [
-   47,
-   "",
-   "",
-   "Justin Jefferson",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
    44,
    "Omarion Hampton",
    "",
@@ -200,6 +200,26 @@
   [
    41,
    "De'Von Achane",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   41,
+   "",
+   "",
+   "Chris Olave",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   40,
+   "Javonte Williams",
    "",
    "",
    "",
@@ -249,6 +269,16 @@
   ],
   [
    36,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   36,
    "Kyren Williams",
    "",
    "",
@@ -268,6 +298,16 @@
    ""
   ],
   [
+   36,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Josh Allen"
+  ],
+  [
    34,
    "",
    "",
@@ -278,7 +318,7 @@
    ""
   ],
   [
-   33,
+   30,
    "Jeremiyah Love",
    "",
    "",
@@ -288,10 +328,10 @@
    ""
   ],
   [
-   32,
+   30,
    "",
    "",
-   "Chris Olave",
+   "Malik Nabers",
    "",
    "",
    "",
@@ -299,21 +339,11 @@
   ],
   [
    30,
-   "Javonte Williams",
    "",
    "",
    "",
    "",
-   "",
-   ""
-  ],
-  [
-   28,
-   "D'Andre Swift",
-   "",
-   "",
-   "",
-   "",
+   "Trey McBride",
    "",
    ""
   ],
@@ -363,19 +393,9 @@
    "",
    "",
    "",
-   "Trey McBride",
-   "",
-   ""
-  ],
-  [
-   25,
    "",
    "",
-   "",
-   "",
-   "",
-   "",
-   "Josh Allen"
+   "Lamar Jackson"
   ],
   [
    24,
@@ -402,16 +422,6 @@
    "",
    "",
    "Ladd McConkey",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   20,
-   "",
-   "",
-   "Malik Nabers",
    "",
    "",
    "",
@@ -466,16 +476,6 @@
    "Colston Loveland",
    "",
    ""
-  ],
-  [
-   17,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Lamar Jackson"
   ],
   [
    16,
@@ -668,6 +668,16 @@
    ""
   ],
   [
+   10,
+   "",
+   "",
+   "",
+   "",
+   "Isaiah Likely",
+   "",
+   ""
+  ],
+  [
    9,
    "",
    "",
@@ -828,16 +838,6 @@
    ""
   ],
   [
-   5,
-   "",
-   "",
-   "",
-   "",
-   "Isaiah Likely",
-   "",
-   ""
-  ],
-  [
    4,
    "J.K. Dobbins",
    "",
@@ -911,16 +911,6 @@
    4,
    "",
    "",
-   "Makai Lemon",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   4,
-   "",
-   "",
    "Stefon Diggs",
    "",
    "",
@@ -958,6 +948,16 @@
    "Justin Herbert"
   ],
   [
+   4,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Trevor Lawrence"
+  ],
+  [
    3,
    "Aaron Jones Sr.",
    "",
@@ -992,16 +992,6 @@
    "Kenny Gainwell",
    "",
    "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   3,
-   "",
-   "",
-   "Wan'Dale Robinson",
    "",
    "",
    "",
@@ -1071,16 +1061,6 @@
    2,
    "",
    "",
-   "Jordan Addison",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   2,
-   "",
-   "",
    "",
    "",
    "George Kittle",
@@ -1096,16 +1076,6 @@
    "",
    "",
    "Jaxson Dart"
-  ],
-  [
-   2,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Trevor Lawrence"
   ]
  ],
  "players": [
@@ -1152,6 +1122,12 @@
    "baselineValue": 60
   },
   {
+   "name": "Kenneth Walker III",
+   "pos": "RB",
+   "value": 60,
+   "baselineValue": 60
+  },
+  {
    "name": "Jaxon Smith-Njigba",
    "pos": "WR",
    "value": 60,
@@ -1170,22 +1146,22 @@
    "baselineValue": 55
   },
   {
-   "name": "Kenneth Walker III",
-   "pos": "RB",
-   "value": 51,
-   "baselineValue": 51
-  },
-  {
    "name": "Ashton Jeanty",
    "pos": "RB",
-   "value": 48,
-   "baselineValue": 48
+   "value": 55,
+   "baselineValue": 55
   },
   {
    "name": "Derrick Henry",
    "pos": "RB",
-   "value": 48,
-   "baselineValue": 48
+   "value": 55,
+   "baselineValue": 55
+  },
+  {
+   "name": "Justin Jefferson",
+   "pos": "WR",
+   "value": 53,
+   "baselineValue": 53
   },
   {
    "name": "Chase Brown",
@@ -1195,12 +1171,6 @@
   },
   {
    "name": "CeeDee Lamb",
-   "pos": "WR",
-   "value": 47,
-   "baselineValue": 47
-  },
-  {
-   "name": "Justin Jefferson",
    "pos": "WR",
    "value": 47,
    "baselineValue": 47
@@ -1216,6 +1186,18 @@
    "pos": "RB",
    "value": 41,
    "baselineValue": 41
+  },
+  {
+   "name": "Chris Olave",
+   "pos": "WR",
+   "value": 41,
+   "baselineValue": 41
+  },
+  {
+   "name": "Javonte Williams",
+   "pos": "RB",
+   "value": 40,
+   "baselineValue": 40
   },
   {
    "name": "A.J. Brown",
@@ -1242,6 +1224,12 @@
    "baselineValue": 37
   },
   {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "value": 36,
+   "baselineValue": 36
+  },
+  {
    "name": "Kyren Williams",
    "pos": "RB",
    "value": 36,
@@ -1254,6 +1242,12 @@
    "baselineValue": 36
   },
   {
+   "name": "Josh Allen",
+   "pos": "QB",
+   "value": 36,
+   "baselineValue": 36
+  },
+  {
    "name": "George Pickens",
    "pos": "WR",
    "value": 34,
@@ -1262,26 +1256,20 @@
   {
    "name": "Jeremiyah Love",
    "pos": "RB",
-   "value": 33,
-   "baselineValue": 33
-  },
-  {
-   "name": "Chris Olave",
-   "pos": "WR",
-   "value": 32,
-   "baselineValue": 32
-  },
-  {
-   "name": "Javonte Williams",
-   "pos": "RB",
    "value": 30,
    "baselineValue": 30
   },
   {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "value": 28,
-   "baselineValue": 28
+   "name": "Malik Nabers",
+   "pos": "WR",
+   "value": 30,
+   "baselineValue": 30
+  },
+  {
+   "name": "Trey McBride",
+   "pos": "TE",
+   "value": 30,
+   "baselineValue": 30
   },
   {
    "name": "DeVonta Smith",
@@ -1308,13 +1296,7 @@
    "baselineValue": 25
   },
   {
-   "name": "Trey McBride",
-   "pos": "TE",
-   "value": 25,
-   "baselineValue": 25
-  },
-  {
-   "name": "Josh Allen",
+   "name": "Lamar Jackson",
    "pos": "QB",
    "value": 25,
    "baselineValue": 25
@@ -1336,12 +1318,6 @@
    "pos": "WR",
    "value": 23,
    "baselineValue": 23
-  },
-  {
-   "name": "Malik Nabers",
-   "pos": "WR",
-   "value": 20,
-   "baselineValue": 20
   },
   {
    "name": "Bucky Irving",
@@ -1370,12 +1346,6 @@
   {
    "name": "Colston Loveland",
    "pos": "TE",
-   "value": 17,
-   "baselineValue": 17
-  },
-  {
-   "name": "Lamar Jackson",
-   "pos": "QB",
    "value": 17,
    "baselineValue": 17
   },
@@ -1494,6 +1464,12 @@
    "baselineValue": 10
   },
   {
+   "name": "Isaiah Likely",
+   "pos": "TE",
+   "value": 10,
+   "baselineValue": 10
+  },
+  {
    "name": "Jameson Williams",
    "pos": "WR",
    "value": 9,
@@ -1590,12 +1566,6 @@
    "baselineValue": 5
   },
   {
-   "name": "Isaiah Likely",
-   "pos": "TE",
-   "value": 5,
-   "baselineValue": 5
-  },
-  {
    "name": "J.K. Dobbins",
    "pos": "RB",
    "value": 4,
@@ -1638,12 +1608,6 @@
    "baselineValue": 4
   },
   {
-   "name": "Makai Lemon",
-   "pos": "WR",
-   "value": 4,
-   "baselineValue": 4
-  },
-  {
    "name": "Stefon Diggs",
    "pos": "WR",
    "value": 4,
@@ -1663,6 +1627,12 @@
   },
   {
    "name": "Justin Herbert",
+   "pos": "QB",
+   "value": 4,
+   "baselineValue": 4
+  },
+  {
+   "name": "Trevor Lawrence",
    "pos": "QB",
    "value": 4,
    "baselineValue": 4
@@ -1688,12 +1658,6 @@
   {
    "name": "Kenny Gainwell",
    "pos": "RB",
-   "value": 3,
-   "baselineValue": 3
-  },
-  {
-   "name": "Wan'Dale Robinson",
-   "pos": "WR",
    "value": 3,
    "baselineValue": 3
   },
@@ -1734,12 +1698,6 @@
    "baselineValue": 2
   },
   {
-   "name": "Jordan Addison",
-   "pos": "WR",
-   "value": 2,
-   "baselineValue": 2
-  },
-  {
    "name": "George Kittle",
    "pos": "TE",
    "value": 2,
@@ -1747,12 +1705,6 @@
   },
   {
    "name": "Jaxson Dart",
-   "pos": "QB",
-   "value": 2,
-   "baselineValue": 2
-  },
-  {
-   "name": "Trevor Lawrence",
    "pos": "QB",
    "value": 2,
    "baselineValue": 2

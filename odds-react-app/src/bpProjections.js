@@ -202,13 +202,6 @@ export function parseSnapshot(
       const key = o.market_id + "|" + normalizePlayerName(o.name);
       if (present.has(key)) continue;
       present.add(key);
-      // /offers has no pass-TD projection, so derive it from the
-      // over line + odds (the projection.value the passTD loop reads).
-      let projValue = 0;
-      if (o.market_id == 102) {
-        projValue =
-          o.line - 0.5 + 1 / americanToDecimal(o.odds) / UNIVERSAL_VIG;
-      }
       allMarkets.push({
         market_id: o.market_id,
         participant: {
@@ -216,7 +209,6 @@ export function parseSnapshot(
           player: { position: o.position || "" },
         },
         over: { consensus_odds: o.odds, consensus_line: o.line },
-        projection: { value: projValue },
         carry_index: o.carry_index,
       });
     }
@@ -234,7 +226,7 @@ export function parseSnapshot(
   };
 
   // Line - 0.5 + implied over probability: the expected count for a
-  // count-style prop (receptions, interceptions).
+  // count-style prop (receptions, passing TDs, interceptions).
   const impliedCount = (playerOdds) =>
     playerOdds.over.consensus_line -
     0.5 +
@@ -270,8 +262,7 @@ export function parseSnapshot(
       } else if (key === "recs") {
         value = impliedCount(playerOdds) * receptionMultiplier;
       } else if (key === "passTD") {
-        // temporary hack: use BettingPros' own projection for pass TDs
-        value = playerOdds.projection.value * passTdPoints;
+        value = impliedCount(playerOdds) * passTdPoints;
       } else if (key === "ints") {
         value = impliedCount(playerOdds) * -2;
       }

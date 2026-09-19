@@ -1,11 +1,10 @@
 import { computeBPProjections, BP_BASE } from "./bpProjections";
 
 // Build a /props-shaped entry for one market.
-const prop = (market_id, name, position, line, odds, proj = 0) => ({
+const prop = (market_id, name, position, line, odds) => ({
   market_id,
   participant: { name, player: { position } },
   over: { consensus_line: line, consensus_odds: odds },
-  projection: { value: proj },
 });
 const wr = (name, recYds, recs, tdOdds = -150) => [
   prop(78, name, "WR", 0.5, tdOdds),
