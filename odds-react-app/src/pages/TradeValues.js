@@ -17,10 +17,11 @@ import {
   LEAGUE_SIZES,
   PUBLISHED_SHEET_URL,
 } from "../tradeValuesSheet";
+import { currentWeek } from "../constants";
 
-// Same defaults as the Projections page, so the number beside each player is
-// the one shown there on first load.
-const WEEK = 1;
+// The projection chips show the current week's medians (by date, see
+// constants.currentWeek); if that week's props are not posted yet the page
+// falls back to the previous week.
 const SEASON = 2026;
 
 // The toolbar's scoring and league size pick which published trade value set
@@ -92,7 +93,8 @@ export default function TradeValues() {
 
   const [scoringMode, setScoringMode] = useState(0);
   const [leagueSize, setLeagueSize] = useState(DEFAULT_LEAGUE_SIZE);
-  const week = WEEK;
+  // the week the chips are showing (one behind currentWeek() early in the week)
+  const [week, setWeek] = useState(currentWeek());
 
   useEffect(() => {
     document.title = "Trade Values";
@@ -135,10 +137,20 @@ export default function TradeValues() {
   useEffect(() => {
     let cancelled = false;
     setProjectionsLoading(true);
-    computeBPProjectionsByPosition({ mode: scoringMode, week, year: SEASON })
-      .then(({ byPosition }) => {
-        if (!cancelled) setProjections(projectionLookup(byPosition, leagueSize));
-      })
+    const hasPlayers = (byPosition) =>
+      Array.from(byPosition.values()).some(({ finalList }) => finalList.length > 0);
+    (async () => {
+      let wk = currentWeek();
+      let result = await computeBPProjectionsByPosition({ mode: scoringMode, week: wk, year: SEASON });
+      // Early in the week the new props may not be posted yet.
+      if (!hasPlayers(result.byPosition) && wk > 1) {
+        wk -= 1;
+        result = await computeBPProjectionsByPosition({ mode: scoringMode, week: wk, year: SEASON });
+      }
+      if (cancelled) return;
+      setWeek(wk);
+      setProjections(projectionLookup(result.byPosition, leagueSize));
+    })()
       .catch((err) => {
         console.error("Failed to load projections", err);
         if (!cancelled) setProjections(new Map());

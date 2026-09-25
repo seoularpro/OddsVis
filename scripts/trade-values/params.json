@@ -17,5 +17,12 @@
   "replacement_value_cutoff": 5,
   "peer_value_window": 10,
   "minimum_value": 1,
-  "minimum_player_count": 50
+  "minimum_player_count": 50,
+  "reseed": {
+    "_note": "Weekly re-seed of the baseline from the current week's Half PPR medians (dump_projections.mjs) before the nine-way split. implied = average of (A) the seed value of the player's projection-rank slot within the position and (C) the player's share of the position's points-above-replacement mapped onto the position's seed value budget; new = seed + weight x (implied - seed), then rescaled so the total equals the seed total. Players with no projection this week keep their seed value.",
+    "weight": 0.4,
+    "teams": 10,
+    "starters_per_team": { "QB": 1, "RB": 2.5, "WR": 2.5, "TE": 1 },
+    "rescale_to_seed_total": true
+  }
 }

@@ -9,6 +9,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/trade-values/**'
+      - 'odds-react-app/src/bpProjections.js'
       - '.github/workflows/tradeValues.yml'
   schedule:
     # Hourly at :35. The Google Sheet is the source of truth, so poll it; the commit
@@ -35,6 +36,14 @@ jobs:
 
       - name: Install openpyxl
         run: python3 -m pip install --quiet openpyxl
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Compute this week's medians with the site's projection code
+        run: node scripts/trade-values/dump_projections.mjs
 
       - name: Build workbooks and JSON from the live sheet
         run: python3 scripts/trade-values/build_trade_values.py

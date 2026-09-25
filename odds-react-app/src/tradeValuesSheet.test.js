@@ -59,5 +59,6 @@ test("a published set parses into the sheet layout", async () => {
   expect(columns[1]).toMatchObject({ kind: "name", pos: 1, posLabel: "RB" });
   expect(rows.length).toBe(2 + data.rows.length);
   expect(rows[2][0]).toBe(String(data.rows[0][0]));
-  expect(rows[2][1]).toBe("Bijan Robinson");
+  // the top row's first named cell is the first player in the file's sorted list
+  expect(rows[2].find((cell, i) => i > 0 && cell !== "")).toBe(data.players[0].name);
 });

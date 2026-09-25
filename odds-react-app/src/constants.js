@@ -22,6 +22,17 @@ export const YARDAGE_CV = 0.7;
 // season is a one-line change.
 export const CURRENT_SEASON = 2026;
 
+// The Saturday before the season's first Sunday; week N runs from
+// SEASON_START + 7*(N-1) days. Same anchor as the BettingPros fetch workflow.
+export const SEASON_START = "2026-09-05";
+
+// The NFL week for a date (default: now), clamped to 1..18.
+export function currentWeek(date = new Date()) {
+  const start = new Date(`${SEASON_START}T00:00:00`);
+  const weeks = Math.floor((date - start) / (7 * 24 * 60 * 60 * 1000));
+  return Math.min(Math.max(weeks + 1, 1), 18);
+}
+
 export const DataPoints = {
   AnyTD: 0,
   RushYds: 1,

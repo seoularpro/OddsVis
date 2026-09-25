@@ -122,7 +122,11 @@ export async function fetchTradeValueSet(scoringMode, leagueSize) {
     data.header.map(String),
     ...data.rows.map((row) => row.map((cell) => (cell === null || cell === undefined ? "" : String(cell)))),
   ];
-  return { ...parseTradeValueGrid(grid), generatedAt: data.generatedAt || null };
+  return {
+    ...parseTradeValueGrid(grid),
+    generatedAt: data.generatedAt || null,
+    projectionWeek: Number.isInteger(data.projectionWeek) ? data.projectionWeek : null,
+  };
 }
 
 export async function fetchTradeValues() {
