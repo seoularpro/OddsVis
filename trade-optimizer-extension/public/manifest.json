@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "OddsVis Trade Optimizer",
+  "version": "0.1.0",
+  "description": "Finds the top 5 realistic trades that raise your optimal starting lineup's median projection, using OddsVis projections and trade values.",
+  "minimum_chrome_version": "116",
+  "action": {
+    "default_title": "OddsVis Trade Optimizer (opens the side panel)"
+  },
+  "side_panel": {
+    "default_path": "src/ui/sidepanel/index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["sidePanel", "storage", "activeTab", "scripting", "cookies"],
+  "host_permissions": [
+    "https://fantasy.espn.com/*",
+    "https://*.fantasy.espn.com/*",
+    "https://sleeper.com/*",
+    "https://api.sleeper.app/*",
+    "https://football.fantasysports.yahoo.com/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://fantasy.espn.com/*",
+        "https://sleeper.com/*",
+        "https://football.fantasysports.yahoo.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
