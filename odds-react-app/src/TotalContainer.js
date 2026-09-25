@@ -996,7 +996,7 @@ function TotalContainer() {
                 } else {
                   // 2026 is in progress: clamp to its latest active week.
                   // Bump this alongside the week options below each week.
-                  const maxWeek = parseInt(e.target.value) == 2026 ? 2 : 1;
+                  const maxWeek = parseInt(e.target.value) == 2026 ? 3 : 1;
                   if (selectedWeek > maxWeek) {
                     setSelectedWeek(maxWeek);
                     const selectElement = document.getElementById("weekSelect");
