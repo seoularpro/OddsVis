@@ -36,16 +36,30 @@ function hasChromeStorage(): boolean {
 }
 
 export async function loadSettings(): Promise<ExtensionSettings> {
-  if (!hasChromeStorage()) return memory;
-  const raw = await chrome.storage.sync.get(KEY);
-  const stored = raw[KEY] as Partial<ExtensionSettings> | undefined;
+  let stored: Partial<ExtensionSettings> | undefined;
+  try {
+    if (hasChromeStorage()) {
+      stored = (await chrome.storage.sync.get(KEY))[KEY] as Partial<ExtensionSettings> | undefined;
+    } else if (typeof localStorage !== "undefined") {
+      const raw = localStorage.getItem(KEY);
+      stored = raw ? (JSON.parse(raw) as Partial<ExtensionSettings>) : undefined;
+    } else {
+      return memory;
+    }
+  } catch {
+    return memory;
+  }
   return { ...DEFAULT_SETTINGS, ...(stored ?? {}), config: { ...(stored?.config ?? {}) } };
 }
 
 export async function saveSettings(settings: ExtensionSettings): Promise<void> {
   memory = settings;
-  if (!hasChromeStorage()) return;
-  await chrome.storage.sync.set({ [KEY]: settings });
+  try {
+    if (hasChromeStorage()) await chrome.storage.sync.set({ [KEY]: settings });
+    else if (typeof localStorage !== "undefined") localStorage.setItem(KEY, JSON.stringify(settings));
+  } catch {
+    // storage unavailable
+  }
 }
 
 // Small local cache (chrome.storage.local) for large downloads such as the

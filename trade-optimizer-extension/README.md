@@ -25,6 +25,7 @@ anywhere.
 npm test               # vitest: optimizer, mapping, adapter and license tests
 npm run typecheck
 npm run package        # build + zip dist/ -> release/<name>-<version>.zip for the Web Store
+npm run build:lib      # regenerate the website bundle (odds-react-app/src/tradeOptimizer)
 ```
 
 Shipping checklist: `STORE_LISTING.md` has the listing copy, single-purpose
@@ -122,6 +123,19 @@ content script (page origin)          side panel (extension page)
 * Yahoo is detected but not extracted (OAuth-only API).
 * The user's Sleeper team is found via the page's localStorage when possible;
   otherwise pick it in the league table (remembered per league).
+
+## Website page (`/trades`)
+
+The same engine and result view run inside the OddsVis site so they work on
+phones, where Chrome has no extensions. `npm run build:lib` bundles
+`src/lib/index.ts` (engine, adapter normalizers, panel components, license
+logic, scoped CSS) into `odds-react-app/src/tradeOptimizer/engine.{js,css}`
+with React external and the site's own `bpProjections.js` referenced
+relatively. `odds-react-app/src/pages/Trades.js` feeds it with the site's
+ESPN/Sleeper importers (private ESPN leagues via the existing Netlify relay).
+Re-run `build:lib` after engine or UI changes and commit the generated files.
+The panel stylesheet is scoped under `.oto` and maps its tokens to the site's
+`--vl-*` variables, so it follows the site theme.
 
 ## Paywall (free tier that sells)
 

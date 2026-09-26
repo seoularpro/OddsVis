@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "package": "node scripts/package.mjs"
+    "package": "node scripts/package.mjs",
+    "build:lib": "vite build --config vite.lib.config.ts && node scripts/lib-banner.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

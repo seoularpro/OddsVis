@@ -215,3 +215,44 @@ export async function fetchEspnLeagueLineups({ leagueId, season = CURRENT_SEASON
 
   return normalizeEspnLeagueLineups({ leagueId: id, season, scoringPeriodId, league, rosters });
 }
+
+/**
+ * Raw ESPN league payload (settings, status, members/teams, full rosters) for
+ * the trade optimizer, plus the free-agent pool when it can be read (public
+ * leagues only: the private-league relay does not forward the filter header).
+ * Same auth path as fetchEspnLeagueLineups.
+ */
+export async function fetchEspnLeagueRaw({ leagueId, season = CURRENT_SEASON, credentials }) {
+  const id = String(leagueId ?? "").trim();
+  if (!/^\d+$/.test(id)) throw new EspnApiError("ESPN_INVALID_LEAGUE_ID");
+  const league = await requestEspn({
+    leagueId: id,
+    season,
+    credentials,
+    views: ["mSettings", "mStatus", "mTeam", "mRoster"],
+  });
+  let freeAgents = null;
+  if (!credentials) {
+    try {
+      const filter = {
+        players: {
+          filterStatus: { value: ["FREEAGENT", "WAIVERS"] },
+          filterSlotIds: { value: [0, 2, 4, 6] },
+          limit: 150,
+          sortPercOwned: { sortAsc: false, sortPriority: 1 },
+        },
+      };
+      const url = buildEspnUrl({
+        season,
+        leagueId: id,
+        views: ["kona_player_info"],
+        scoringPeriodId: resolveCurrentScoringPeriod(league),
+      });
+      const res = await fetch(url, { headers: { "X-Fantasy-Filter": JSON.stringify(filter) } });
+      if (res.ok) freeAgents = await res.json();
+    } catch (e) {
+      freeAgents = null;
+    }
+  }
+  return { league, freeAgents };
+}

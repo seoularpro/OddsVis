@@ -213,6 +213,10 @@ export async function loadLicense(): Promise<LicenseState> {
       const stored = raw[KEY] as Partial<LicenseState> | undefined;
       return { ...EMPTY_LICENSE, ...(stored ?? {}) };
     }
+    if (typeof localStorage !== "undefined") {
+      const raw = localStorage.getItem(KEY);
+      if (raw) return { ...EMPTY_LICENSE, ...(JSON.parse(raw) as Partial<LicenseState>) };
+    }
   } catch {
     // fall through to memory
   }
@@ -223,6 +227,7 @@ export async function saveLicense(state: LicenseState): Promise<void> {
   memory = state;
   try {
     if (typeof chrome !== "undefined" && chrome.storage?.sync) await chrome.storage.sync.set({ [KEY]: state });
+    else if (typeof localStorage !== "undefined") localStorage.setItem(KEY, JSON.stringify(state));
   } catch {
     // storage unavailable: memory copy still applies for this session
   }

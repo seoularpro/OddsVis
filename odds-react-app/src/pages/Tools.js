@@ -11,13 +11,22 @@ import ThemeToggleDropdown from "../ThemeToggleDropdown";
 //   isNew       - optional "New" badge
 const TOOLS = [
   {
+    name: "Trade Optimizer",
+    description:
+      "Enter an ESPN or Sleeper league ID to find the trades that most raise your optimal " +
+      "starting lineup's median projection while staying realistic for the other manager. " +
+      "Same engine as the Chrome extension, works on your phone.",
+    href: "/trades",
+    cta: "Find trades",
+    isNew: true,
+  },
+  {
     name: "Fantasy Lineup Importer",
     description:
       "Enter an ESPN or Sleeper league ID to pull every team's current starting lineup, " +
       "see this week's median projection for each starter, and compare team totals.",
     href: "/leagueLineups",
     cta: "Open importer",
-    isNew: true,
   },
 ];
 

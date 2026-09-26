@@ -2,12 +2,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import { analyzeActiveTab, analyzeDemo, analyzePublicLeague, type AnalysisOutput } from "../app/runAnalysis";
 import { runTradeOptimizer } from "../optimization/tradeOptimizer";
 import { DEFAULT_SETTINGS, loadSettings, saveSettings, type ExtensionSettings } from "../shared/storage";
-import { TeamAnalysisPanel } from "./components/TeamAnalysisPanel";
-import { TradeCard } from "./components/TradeCard";
-import { LeagueTable } from "./components/LeagueTable";
 import { SettingsPanel } from "./components/SettingsPanel";
-import { LockedTradeCard } from "./components/LockedTradeCard";
-import { LicensePanel } from "./components/LicensePanel";
+import { TradeReport } from "./TradeReport";
 import { PAYWALL_CONFIG } from "../shared/paywallConfig";
 import { EMPTY_LICENSE, activateLicense, instanceName, isEntitled, loadLicense, refreshLicense, saveLicense, validatorFor, type LicenseState } from "../shared/license";
 
@@ -131,6 +127,7 @@ export function App() {
   const settingsChanged = (next: ExtensionSettings) => updateSettings(next);
 
   return (
+    <div className="oto">
     <div className="app">
       <header className="app-head">
         <div>
@@ -180,58 +177,21 @@ export function App() {
       </form>
 
       {output ? (
-        <>
-          <div className="chips">
-            <span className="chip">{output.league.settings.platform}</span>
-            <span className="chip">{output.league.settings.leagueName}</span>
-            <span className="chip">{output.league.settings.season} · week {output.league.settings.week}</span>
-            <span className="chip">{output.league.settings.teamCount} teams</span>
-            <span className="chip">{describeScoring(output.league.settings.scoring)}</span>
-            <span className="chip">{output.league.settings.lineupSlots.map((s) => (s.count > 1 ? `${s.count}${s.label}` : s.label)).join(" ")}</span>
-            <span className="chip muted">{output.result.stats.simulated} trades simulated in {output.result.stats.elapsedMs} ms</span>
-          </div>
-          <div className="muted small datasets">
-            Projections: {output.datasetLabels.projections}. Trade values: {output.datasetLabels.tradeValues}.
-            {output.report ? ` Matched ${output.report.projectionMatched}/${output.report.rosteredPlayers} rostered players to projections, ${output.report.tradeValueMatched} to trade values (${output.report.tradeValueEstimated} estimated).` : ""}
-          </div>
-          {output.warnings.map((w, i) => (
-            <div key={i} className="note warn">{w}</div>
-          ))}
-
-          {!user && analysis ? (
-            <div className="note warn">Which team is yours? Pick it in the league table below.</div>
-          ) : null}
-
-          {analysis && user ? <TeamAnalysisPanel analysis={analysis} team={user} /> : null}
-
-          {analysis && user ? (
-            <section>
-              <div className="section-head">
-                <h2>Suggested trades</h2>
-                <span className="muted small">
-                  {output.result.stats.candidates} candidates after pruning · {output.result.stats.accepted} acceptable
-                </span>
-              </div>
-              {output.result.trades.length === 0 ? (
-                <div className="note">
-                  No trade cleared the bar (gain ≥ {output.result.analysis.config.minUserGain} pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings.
-                </div>
-              ) : (
-                output.result.trades.map((t, i) =>
-                  entitled || i < PAYWALL_CONFIG.freeTrades ? (
-                    <TradeCard key={t.rank} trade={t} analysis={analysis} />
-                  ) : (
-                    <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={openCheckout} priceLabel={PAYWALL_CONFIG.priceLabel} />
-                  )
-                )
-              )}
-            </section>
-          ) : null}
-
-          <LicensePanel license={license} config={PAYWALL_CONFIG} entitled={entitled} busy={licenseBusy} onActivate={activate} onRemove={removeLicense} onUpgrade={openCheckout} />
-
-          {analysis ? <LeagueTable analysis={analysis} onPickTeam={pickTeam} /> : null}
-        </>
+        <TradeReport
+          result={output.result}
+          league={output.league}
+          report={output.report}
+          datasetLabels={output.datasetLabels}
+          warnings={output.warnings}
+          onPickTeam={pickTeam}
+          license={license}
+          paywall={PAYWALL_CONFIG}
+          entitled={entitled}
+          licenseBusy={licenseBusy}
+          onActivate={activate}
+          onRemoveLicense={removeLicense}
+          onUpgrade={openCheckout}
+        />
       ) : null}
 
       <SettingsPanel settings={settings} onChange={settingsChanged} />
@@ -239,10 +199,6 @@ export function App() {
         K and D/ST carry no projection and are never traded. Waiver players are $0; replacement level is the best free agent projection per position.
       </footer>
     </div>
+    </div>
   );
-}
-
-function describeScoring(s: { receptionPoints: number; passTdPoints: number }): string {
-  const rec = s.receptionPoints >= 0.75 ? "Full PPR" : s.receptionPoints >= 0.25 ? "Half PPR" : "Standard";
-  return s.passTdPoints === 4 ? rec : `${rec} · ${s.passTdPoints}pt pass TD`;
 }
