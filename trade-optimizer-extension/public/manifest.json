@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "OddsVis Trade Optimizer",
   "version": "0.1.0",
-  "description": "Finds the top 5 realistic trades that raise your optimal starting lineup's median projection, using OddsVis projections and trade values.",
+  "description": "Finds the top 10 realistic trades that raise your optimal starting lineup's median projection, using OddsVis projections and trade values.",
   "minimum_chrome_version": "116",
   "action": {
     "default_title": "OddsVis Trade Optimizer (opens the side panel)",

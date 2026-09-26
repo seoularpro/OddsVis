@@ -34,8 +34,8 @@ const DEFAULT_CONFIG = {
   mutualScalePoints: 4,
   weaknessScalePoints: 8,
   depthScalePoints: 6,
-  topN: 5,
-  maxTradesPerPartner: 2,
+  topN: 10,
+  maxTradesPerPartner: 3,
   unlistedTradeValue: "estimate",
   baselineWaiverMoves: 2,
   minWaiverMoveGain: 1

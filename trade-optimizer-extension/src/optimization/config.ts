@@ -75,7 +75,7 @@ export interface OptimizerConfig {
 
   /** Number of trades to return. */
   topN: number;
-  /** Cap on results with the same partner so the top 5 are not five variants of one deal. */
+  /** Cap on results with the same partner so the list is not ten variants of one deal. */
   maxTradesPerPartner: number;
   /** Trade value used for unlisted players: estimated from projection, or zero. */
   unlistedTradeValue: "estimate" | "zero";
@@ -119,8 +119,8 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   weaknessScalePoints: 8,
   depthScalePoints: 6,
 
-  topN: 5,
-  maxTradesPerPartner: 2,
+  topN: 10,
+  maxTradesPerPartner: 3,
   unlistedTradeValue: "estimate",
   baselineWaiverMoves: 2,
   minWaiverMoveGain: 1.0,

@@ -6,7 +6,7 @@
 Finds the top trades that raise your fantasy football starting lineup's projection, using OddsVis weekly medians and trade values.
 
 **Description**
-Open your ESPN or Sleeper league and get the five trades most likely to raise your optimal starting lineup's median projection, each one realistic for the other manager too.
+Open your ESPN or Sleeper league and get the ten trades most likely to raise your optimal starting lineup's median projection, each one realistic for the other manager too.
 
 What it does
 • Reads every roster in your league from the page you're viewing (no logins, no pasting cookies).

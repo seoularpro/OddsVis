@@ -2,7 +2,7 @@
 
 A Manifest V3 Chrome extension that reads the fantasy football league open in
 the browser, matches every roster against OddsVis' weekly median projections
-and trade values, and recommends the top 5 realistic trades that most raise
+and trade values, and recommends the top 10 realistic trades that most raise
 the **user's optimal starting-lineup median projection** while giving the
 other manager a rational reason to accept.
 

@@ -190,7 +190,7 @@ describe("ranking", () => {
   it("orders trades by score with user lineup gain dominating secondary factors", () => {
     const result = runTradeOptimizer(syntheticLeague());
     expect(result.trades.length).toBeGreaterThan(0);
-    expect(result.trades.length).toBeLessThanOrEqual(5);
+    expect(result.trades.length).toBeLessThanOrEqual(10);
     const band = secondaryBand(DEFAULT_CONFIG);
     expect(band).toBeLessThan(1);
     for (let i = 1; i < result.trades.length; i++) {
