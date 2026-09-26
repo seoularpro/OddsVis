@@ -7,6 +7,8 @@ import { LineupTable } from "./LineupTable";
 
 export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis; team: TeamAnalysis }) {
   const [showLineup, setShowLineup] = useState(false);
+  // Zero-gain roster-spot fills are applied to the baseline but are not advice worth showing.
+  const adviceMoves = team.waiverMoves.filter((m) => m.gain >= 0.5);
   const weaknesses = team.weaknesses.filter((w) => OFFENSE_POSITIONS.some((p) => w.eligible.includes(p)));
   const surplusAssets = team.positionalSurplus
     .flatMap((s) => s.expendable.map((e) => ({ ...e, position: s.position, level: s.level })))
@@ -34,10 +36,10 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
         </div>
       ) : null}
 
-      {team.waiverMoves.length ? (
+      {adviceMoves.length ? (
         <div className="note warn">
           <b>Do this first (free):</b>{" "}
-          {team.waiverMoves.map((m, i) => (
+          {adviceMoves.map((m, i) => (
             <span key={i}>
               {i > 0 ? "; " : ""}add {m.add.name} ({fmt1(m.add.projection)}){m.drop ? ` and drop ${m.drop.name} (${fmt1(m.drop.projection)})` : " to an open roster spot"} for +{fmt1(m.gain)}
             </span>

@@ -21,8 +21,43 @@ export function App() {
   const [licenseBusy, setLicenseBusy] = useState(false);
   const entitled = isEntitled(license, PAYWALL_CONFIG);
 
+  // Deep links (used for screenshots and sharing):
+  //   ?demo=1[&teamId=..]                 run the demo league
+  //   ?platform=espn|sleeper&leagueId=..[&teamId=..]   load a league by id
+  //   &section=analysis|trades|league      render only that block
+  //   #analysis | #trades | #league        scroll to a section when done
   useEffect(() => {
-    loadSettings().then(setSettings).catch(() => undefined);
+    const params = new URLSearchParams(window.location.search);
+    const teamId = params.get("teamId");
+    loadSettings()
+      .then(async (stored) => {
+        let s = stored;
+        const platform = params.get("platform");
+        const leagueId = params.get("leagueId");
+        if (teamId && platform && leagueId) {
+          s = { ...stored, manualTeamIds: { ...stored.manualTeamIds, [`${platform}:${leagueId}`]: teamId } };
+        }
+        setSettings(s);
+        if (params.get("demo")) {
+          const out = analyzeDemo(s);
+          if (teamId && out.league.teams.some((t) => t.id === teamId)) {
+            const league = { ...out.league, userTeamId: teamId, userTeamDetection: "manual" as const };
+            setOutput({ ...out, league, result: runTradeOptimizer(league, s.config) });
+          } else setOutput(out);
+          setStatus({ kind: "done" });
+        } else if ((platform === "espn" || platform === "sleeper") && leagueId) {
+          setManualPlatform(platform);
+          setManualLeagueId(leagueId);
+          setStatus({ kind: "working", stage: "Starting…" });
+          try {
+            setOutput(await analyzePublicLeague(platform, leagueId, s, (stage) => setStatus({ kind: "working", stage })));
+            setStatus({ kind: "done" });
+          } catch (e) {
+            setStatus({ kind: "error", message: (e as Error).message });
+          }
+        }
+      })
+      .catch(() => undefined);
     // Load the stored license and re-check it with the provider when stale.
     loadLicense()
       .then(async (stored) => {
@@ -122,6 +157,20 @@ export function App() {
     [output, settings, updateSettings, runLive]
   );
 
+  // Scroll to the section named in the hash once results are on screen.
+  useEffect(() => {
+    if (!output || status.kind !== "done") return;
+    const id = window.location.hash.replace("#", "");
+    if (!id) return;
+    const t = window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ block: "start" }), 50);
+    return () => window.clearTimeout(t);
+  }, [output, status.kind]);
+
+  const only = (() => {
+    const v = new URLSearchParams(window.location.search).get("section");
+    return v === "analysis" || v === "trades" || v === "league" ? v : null;
+  })();
+
   const analysis = output?.result.analysis ?? null;
   const user = analysis?.user ?? null;
   const settingsChanged = (next: ExtensionSettings) => updateSettings(next);
@@ -159,7 +208,7 @@ export function App() {
         </div>
       ) : null}
 
-      <form
+      {!only ? <form
         className="manual-league"
         onSubmit={(e) => {
           e.preventDefault();
@@ -174,7 +223,7 @@ export function App() {
         <button type="submit" disabled={status.kind === "working" || !manualLeagueId.trim()}>
           Load by id
         </button>
-      </form>
+      </form> : null}
 
       {output ? (
         <TradeReport
@@ -191,13 +240,14 @@ export function App() {
           onActivate={activate}
           onRemoveLicense={removeLicense}
           onUpgrade={openCheckout}
+          only={only}
         />
       ) : null}
 
-      <SettingsPanel settings={settings} onChange={settingsChanged} />
-      <footer className="muted small">
+      {!only ? <SettingsPanel settings={settings} onChange={settingsChanged} /> : null}
+      {!only ? <footer className="muted small">
         K and D/ST carry no projection and are never traded. Waiver players are $0; replacement level is the best free agent projection per position.
-      </footer>
+      </footer> : null}
     </div>
     </div>
   );

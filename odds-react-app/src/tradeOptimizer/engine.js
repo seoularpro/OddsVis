@@ -2265,6 +2265,7 @@ function LineupTable({ lineup, highlight, title }) {
 }
 function TeamAnalysisPanel({ analysis, team }) {
   const [showLineup, setShowLineup] = useState(false);
+  const adviceMoves = team.waiverMoves.filter((m) => m.gain >= 0.5);
   const weaknesses = team.weaknesses.filter((w) => OFFENSE_POSITIONS.some((p) => w.eligible.includes(p)));
   const surplusAssets = team.positionalSurplus.flatMap((s) => s.expendable.map((e) => ({ ...e, position: s.position, level: s.level }))).filter((e) => OFFENSE_POSITIONS.includes(e.position) && e.player.tradeValue > 0).sort((a, b) => b.player.tradeValue - a.player.tradeValue).slice(0, 8);
   return /* @__PURE__ */ jsxs("section", { className: "card", children: [
@@ -2296,10 +2297,10 @@ function TeamAnalysisPanel({ analysis, team }) {
       ] })
     ] }),
     analysis.insight.length ? /* @__PURE__ */ jsx("div", { className: "insight", children: analysis.insight.map((line, i) => /* @__PURE__ */ jsx("p", { children: line }, i)) }) : null,
-    team.waiverMoves.length ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
+    adviceMoves.length ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
       /* @__PURE__ */ jsx("b", { children: "Do this first (free):" }),
       " ",
-      team.waiverMoves.map((m, i) => /* @__PURE__ */ jsxs("span", { children: [
+      adviceMoves.map((m, i) => /* @__PURE__ */ jsxs("span", { children: [
         i > 0 ? "; " : "",
         "add ",
         m.add.name,
@@ -2379,8 +2380,8 @@ function TeamAnalysisPanel({ analysis, team }) {
     ] }, s.position)) })
   ] });
 }
-function TradeCard({ trade, analysis }) {
-  const [open, setOpen] = useState(trade.rank === 1);
+function TradeCard({ trade, analysis, defaultOpen }) {
+  const [open, setOpen] = useState(defaultOpen ?? trade.rank === 1);
   const [showLineups, setShowLineups] = useState(false);
   const sim = trade.simulation;
   const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId);
@@ -2727,11 +2728,14 @@ function describeScoring(s) {
   return s.passTdPoints === 4 ? rec : `${rec} · ${s.passTdPoints}pt pass TD`;
 }
 function TradeReport(props) {
-  const { result, league, report, datasetLabels, warnings, onPickTeam, license, paywall, entitled, licenseBusy, onActivate, onRemoveLicense, onUpgrade } = props;
+  var _a;
+  const { result, league, report, datasetLabels, warnings, onPickTeam, license, paywall, entitled, licenseBusy, onActivate, onRemoveLicense, onUpgrade, only } = props;
+  const show = (block) => !only || only === block || block === "meta" && false;
   const analysis = result.analysis;
   const user = analysis.user;
+  const firstVisibleRank = ((_a = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))) == null ? void 0 : _a.rank) ?? 1;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsxs("div", { className: "chips", children: [
+    show("meta") ? /* @__PURE__ */ jsxs("div", { className: "chips", children: [
       /* @__PURE__ */ jsx("span", { className: "chip", children: league.settings.platform }),
       /* @__PURE__ */ jsx("span", { className: "chip", children: league.settings.leagueName }),
       /* @__PURE__ */ jsxs("span", { className: "chip", children: [
@@ -2751,19 +2755,19 @@ function TradeReport(props) {
         result.stats.elapsedMs,
         " ms"
       ] })
-    ] }),
-    /* @__PURE__ */ jsxs("div", { className: "muted small datasets", children: [
+    ] }) : null,
+    show("meta") ? /* @__PURE__ */ jsxs("div", { className: "muted small datasets", children: [
       "Projections: ",
       datasetLabels.projections,
       ". Trade values: ",
       datasetLabels.tradeValues,
       ".",
       report ? ` Matched ${report.projectionMatched}/${report.rosteredPlayers} rostered players to projections, ${report.tradeValueMatched} to trade values (${report.tradeValueEstimated} estimated).` : ""
-    ] }),
-    warnings.map((w, i) => /* @__PURE__ */ jsx("div", { className: "note warn", children: w }, i)),
-    !user ? /* @__PURE__ */ jsx("div", { className: "note warn", children: "Which team is yours? Pick it in the league table below." }) : null,
-    user ? /* @__PURE__ */ jsx(TeamAnalysisPanel, { analysis, team: user }) : null,
-    user ? /* @__PURE__ */ jsxs("section", { children: [
+    ] }) : null,
+    show("meta") ? warnings.map((w, i) => /* @__PURE__ */ jsx("div", { className: "note warn", children: w }, i)) : null,
+    !user && show("meta") ? /* @__PURE__ */ jsx("div", { className: "note warn", children: "Which team is yours? Pick it in the league table below." }) : null,
+    user && show("analysis") ? /* @__PURE__ */ jsx("div", { id: "analysis", children: /* @__PURE__ */ jsx(TeamAnalysisPanel, { analysis, team: user }) }) : null,
+    user && show("trades") ? /* @__PURE__ */ jsxs("section", { id: "trades", children: [
       /* @__PURE__ */ jsxs("div", { className: "section-head", children: [
         /* @__PURE__ */ jsx("h2", { children: "Suggested trades" }),
         /* @__PURE__ */ jsxs("span", { className: "muted small", children: [
@@ -2778,11 +2782,11 @@ function TradeReport(props) {
         analysis.config.minUserGain,
         " pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings."
       ] }) : result.trades.map(
-        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
+        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis, defaultOpen: t.rank === firstVisibleRank }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
       )
     ] }) : null,
-    /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }),
-    /* @__PURE__ */ jsx(LeagueTable, { analysis, onPickTeam })
+    show("license") ? /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }) : null,
+    show("league") ? /* @__PURE__ */ jsx("div", { id: "league", children: /* @__PURE__ */ jsx(LeagueTable, { analysis, onPickTeam }) }) : null
   ] });
 }
 function SettingsPanel({ settings, onChange }) {

@@ -28,6 +28,8 @@ export interface TradeReportProps {
   onActivate: (key: string) => void;
   onRemoveLicense: () => void;
   onUpgrade: (plan?: PaywallPlan) => void;
+  /** Render only one block (deep links / screenshots). */
+  only?: "analysis" | "trades" | "league" | null;
 }
 
 export function describeScoring(s: { receptionPoints: number; passTdPoints: number }): string {
@@ -36,12 +38,14 @@ export function describeScoring(s: { receptionPoints: number; passTdPoints: numb
 }
 
 export function TradeReport(props: TradeReportProps) {
-  const { result, league, report, datasetLabels, warnings, onPickTeam, license, paywall, entitled, licenseBusy, onActivate, onRemoveLicense, onUpgrade } = props;
+  const { result, league, report, datasetLabels, warnings, onPickTeam, license, paywall, entitled, licenseBusy, onActivate, onRemoveLicense, onUpgrade, only } = props;
+  const show = (block: "analysis" | "trades" | "league" | "license" | "meta") => !only || only === block || (block === "meta" && false);
   const analysis = result.analysis;
   const user = analysis.user;
+  const firstVisibleRank = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))?.rank ?? 1;
   return (
     <>
-      <div className="chips">
+      {show("meta") ? <div className="chips">
         <span className="chip">{league.settings.platform}</span>
         <span className="chip">{league.settings.leagueName}</span>
         <span className="chip">{league.settings.season} · week {league.settings.week}</span>
@@ -49,21 +53,25 @@ export function TradeReport(props: TradeReportProps) {
         <span className="chip">{describeScoring(league.settings.scoring)}</span>
         <span className="chip">{league.settings.lineupSlots.map((s) => (s.count > 1 ? `${s.count}${s.label}` : s.label)).join(" ")}</span>
         <span className="chip muted">{result.stats.simulated} trades simulated in {result.stats.elapsedMs} ms</span>
-      </div>
-      <div className="muted small datasets">
+      </div> : null}
+      {show("meta") ? <div className="muted small datasets">
         Projections: {datasetLabels.projections}. Trade values: {datasetLabels.tradeValues}.
         {report ? ` Matched ${report.projectionMatched}/${report.rosteredPlayers} rostered players to projections, ${report.tradeValueMatched} to trade values (${report.tradeValueEstimated} estimated).` : ""}
-      </div>
-      {warnings.map((w, i) => (
+      </div> : null}
+      {show("meta") ? warnings.map((w, i) => (
         <div key={i} className="note warn">{w}</div>
-      ))}
+      )) : null}
 
-      {!user ? <div className="note warn">Which team is yours? Pick it in the league table below.</div> : null}
+      {!user && show("meta") ? <div className="note warn">Which team is yours? Pick it in the league table below.</div> : null}
 
-      {user ? <TeamAnalysisPanel analysis={analysis} team={user} /> : null}
+      {user && show("analysis") ? (
+        <div id="analysis">
+          <TeamAnalysisPanel analysis={analysis} team={user} />
+        </div>
+      ) : null}
 
-      {user ? (
-        <section>
+      {user && show("trades") ? (
+        <section id="trades">
           <div className="section-head">
             <h2>Suggested trades</h2>
             <span className="muted small">
@@ -77,7 +85,7 @@ export function TradeReport(props: TradeReportProps) {
           ) : (
             result.trades.map((t) =>
               entitled || paywall.freeRanks.includes(t.rank) ? (
-                <TradeCard key={t.rank} trade={t} analysis={analysis} />
+                <TradeCard key={t.rank} trade={t} analysis={analysis} defaultOpen={t.rank === firstVisibleRank} />
               ) : (
                 <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />
               )
@@ -86,9 +94,13 @@ export function TradeReport(props: TradeReportProps) {
         </section>
       ) : null}
 
-      <LicensePanel license={license} config={paywall} entitled={entitled} busy={licenseBusy} onActivate={onActivate} onRemove={onRemoveLicense} onUpgrade={onUpgrade} />
+      {show("license") ? <LicensePanel license={license} config={paywall} entitled={entitled} busy={licenseBusy} onActivate={onActivate} onRemove={onRemoveLicense} onUpgrade={onUpgrade} /> : null}
 
-      <LeagueTable analysis={analysis} onPickTeam={onPickTeam} />
+      {show("league") ? (
+        <div id="league">
+          <LeagueTable analysis={analysis} onPickTeam={onPickTeam} />
+        </div>
+      ) : null}
     </>
   );
 }
