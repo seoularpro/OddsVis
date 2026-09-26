@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import type { LicenseState } from "../../shared/license";
 import type { PaywallConfig, PaywallPlan } from "../../shared/paywallConfig";
 
+function describeFreeRanks(ranks: number[]): string {
+  if (!ranks.length) return "the trade summaries";
+  if (ranks.length === 1) return `your #${ranks[0]} trade in full`;
+  return `trades ${ranks.map((r) => `#${r}`).join(", ")} in full`;
+}
+
 export function LicensePanel({
   license,
   config,
@@ -40,7 +46,7 @@ export function LicensePanel({
       ) : (
         <>
           <p className="small">
-            Free: full team analysis, league overview and your #1 trade. Pro: every ranked trade with lineups, explanations and rank reasons.
+            Free: full team analysis, league overview and {describeFreeRanks(config.freeRanks)}. Pro: every ranked trade with lineups, explanations and rank reasons.
           </p>
           {config.plans.length ? (
             <div className="plans">

@@ -9,7 +9,8 @@
 //   VITE_PAYWALL_CHECKOUT_<PLAN> full checkout URL override per plan (optional)
 //   VITE_PAYWALL_DEFAULT_PLAN    plan the "Unlock" buttons open (default: season)
 //   VITE_PAYWALL_VALIDATE        (remote only) endpoint that validates a key
-//   VITE_PAYWALL_FREE_TRADES     number of trades shown in full for free
+//   VITE_PAYWALL_FREE_RANKS      ranks shown in full for free, comma-separated (default "2")
+//   VITE_PAYWALL_FREE_TRADES     legacy: N means ranks 1..N
 
 export type PaywallProviderKind = "none" | "lemonsqueezy" | "remote";
 
@@ -38,8 +39,8 @@ export interface PaywallConfig {
   checkoutUrl: string;
   priceLabel: string;
   validateUrl: string;
-  /** Trades shown in full without a license; the rest are teased. */
-  freeTrades: number;
+  /** Ranks (1-based) shown in full without a license; every other trade is teased. */
+  freeRanks: number[];
   /** Days a previously valid license keeps working when re-validation fails (offline etc.). */
   graceDays: number;
   /** How often a stored license is re-checked with the provider. */
@@ -81,10 +82,18 @@ export function buildPaywallConfig(env: EnvLike): PaywallConfig {
     checkoutUrl: defaultPlan?.checkoutUrl ?? "",
     priceLabel: defaultPlan?.priceLabel ? `from ${cheapest(plans)}` : "",
     validateUrl: env.VITE_PAYWALL_VALIDATE ?? "",
-    freeTrades: Math.max(0, Number(env.VITE_PAYWALL_FREE_TRADES ?? 1) || 0),
+    freeRanks: parseFreeRanks(env),
     graceDays: 7,
     revalidateHours: 24,
   };
+}
+
+function parseFreeRanks(env: EnvLike): number[] {
+  const explicit = (env.VITE_PAYWALL_FREE_RANKS ?? "").split(",").map((x) => Number(x.trim())).filter((n) => Number.isInteger(n) && n >= 1);
+  if (explicit.length) return [...new Set(explicit)].sort((a, b) => a - b);
+  const legacy = Number(env.VITE_PAYWALL_FREE_TRADES);
+  if (Number.isInteger(legacy) && legacy >= 0) return Array.from({ length: legacy }, (_, i) => i + 1);
+  return [2];
 }
 
 /** Lowest numeric price label among plans (for "from $X"). */

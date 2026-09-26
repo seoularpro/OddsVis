@@ -15,8 +15,8 @@ What it does
 • Simulates thousands of 1-for-1, 2-for-1, 1-for-2 and 2-for-2 packages, re-optimizing both lineups after each.
 • Ranks by your lineup gain first, then mutual benefit and trade-value fairness, and explains every pick with the numbers.
 
-Free: full team analysis, league overview, and your #1 trade.
-Pro: every ranked trade with before/after lineups and explanations.
+Free: full team analysis, league overview, and your #2 trade in full.
+Pro: every ranked trade, including #1, with before/after lineups and explanations.
 
 Supports ESPN and Sleeper. Yahoo is detected but not yet supported.
 

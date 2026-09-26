@@ -28,6 +28,13 @@ describe("paywall config", () => {
     expect(buildPaywallConfig({ VITE_PAYWALL_PROVIDER: "none" }).provider).toBe("none");
   });
 
+  it("parses free ranks, defaulting to the #2 trade, with the legacy count still honoured", () => {
+    expect(buildPaywallConfig({}).freeRanks).toEqual([2]);
+    expect(buildPaywallConfig({ VITE_PAYWALL_FREE_RANKS: "2, 4,4" }).freeRanks).toEqual([2, 4]);
+    expect(buildPaywallConfig({ VITE_PAYWALL_FREE_TRADES: "3" }).freeRanks).toEqual([1, 2, 3]);
+    expect(buildPaywallConfig({ VITE_PAYWALL_FREE_RANKS: "" , VITE_PAYWALL_FREE_TRADES: "0" }).freeRanks).toEqual([]);
+  });
+
   it("has no plans without a store or variants, so Upgrade stays disabled", () => {
     const cfg = buildPaywallConfig({ VITE_PAYWALL_VARIANT_SEASON: "1" });
     expect(cfg.plans).toEqual([]);

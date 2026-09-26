@@ -43,7 +43,7 @@ export function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }: { tr
       </div>
       <div className="locked-cta">
         <span>
-          A {sends}-for-{receives} with {opp.teamName} that adds <b>{signed1(sim.user.projectionGain)}</b> to your starting lineup
+          {trade.rank === 1 ? "Your best trade: a" : "A"} {sends}-for-{receives} with {opp.teamName} that adds <b>{signed1(sim.user.projectionGain)}</b> to your starting lineup
           {sim.user.holesAfter < sim.user.holesBefore ? " and fills a roster hole" : ""}.
         </span>
         <button className="primary" onClick={onUpgrade}>

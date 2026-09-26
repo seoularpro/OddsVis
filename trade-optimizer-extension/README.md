@@ -145,9 +145,10 @@ The panel stylesheet is scoped under `.oto` and maps its tokens to the site's
 
 ## Paywall (free tier that sells)
 
-Free: team analysis, weaknesses, surplus, league overview and the #1 trade.
-Pro: every ranked trade with lineups, explanations and rank reasons. Trades
-behind the gate are teased with partner, gains and package shape only; the
+Free: team analysis, weaknesses, surplus, league overview and the **#2**
+trade in full (the #1 trade is teased, so the best deal is the reason to
+upgrade). Pro: every ranked trade with lineups, explanations and rank
+reasons. Teased trades show partner, gains and package shape only; the
 players are never rendered.
 
 Configure at build time with a `.env` (see `.env.example`):
@@ -158,7 +159,7 @@ Configure at build time with a `.env` (see `.env.example`):
 | `VITE_PAYWALL_CHECKOUT` | hosted checkout URL the Upgrade button opens in a tab |
 | `VITE_PAYWALL_VALIDATE` | `remote` only: your endpoint, `POST {key, instanceId?, instanceName?}` → `{valid, expiresAt?, email?, message?}` |
 | `VITE_PAYWALL_PRICE` | label beside Upgrade, e.g. `$4.99/mo` |
-| `VITE_PAYWALL_FREE_TRADES` | trades shown in full for free (default 1) |
+| `VITE_PAYWALL_FREE_RANKS` | ranks shown in full for free, comma-separated (default `2`) |
 
 Keys are activated once (Lemon Squeezy registers the install as an
 "instance"), stored in `chrome.storage.sync`, re-checked daily, and keep

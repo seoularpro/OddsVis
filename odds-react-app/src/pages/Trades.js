@@ -267,7 +267,7 @@ export default function Trades() {
         <div className="vl-note">
           <span className="vl-note-icon">i</span>
           <span className="vl-note-body">
-            Enter your league id and pick your team once; it's remembered on this device. Free: full team analysis and your #1 trade. Pro: every ranked trade.
+            Enter your league id and pick your team once; it's remembered on this device. Free: full team analysis and your #2 trade in full. Pro: every ranked trade, including #1.
           </span>
         </div>
       ) : null}

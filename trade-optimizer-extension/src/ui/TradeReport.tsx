@@ -75,8 +75,8 @@ export function TradeReport(props: TradeReportProps) {
               No trade cleared the bar (gain ≥ {analysis.config.minUserGain} pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings.
             </div>
           ) : (
-            result.trades.map((t, i) =>
-              entitled || i < paywall.freeTrades ? (
+            result.trades.map((t) =>
+              entitled || paywall.freeRanks.includes(t.rank) ? (
                 <TradeCard key={t.rank} trade={t} analysis={analysis} />
               ) : (
                 <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />

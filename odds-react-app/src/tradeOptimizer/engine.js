@@ -2163,7 +2163,7 @@ function instanceName() {
   const os = /Mac/.test(ua) ? "macOS" : /Windows/.test(ua) ? "Windows" : /Linux/.test(ua) ? "Linux" : "";
   return `${browser} ${os}`.trim() || "extension";
 }
-const __vite_import_meta_env__ = { "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SSR": false, "VITE_PAYWALL_DEFAULT_PLAN": "monthly", "VITE_PAYWALL_FREE_TRADES": "1", "VITE_PAYWALL_PRICE_LIFETIME": "49.99", "VITE_PAYWALL_PRICE_MONTHLY": "6.99", "VITE_PAYWALL_PRICE_SEASON": "24.99", "VITE_PAYWALL_PRICE_WEEKEND": "1", "VITE_PAYWALL_PRODUCT": "OddsVis Trade Optimizer Pro", "VITE_PAYWALL_PROVIDER": "lemonsqueezy", "VITE_PAYWALL_STORE": "", "VITE_PAYWALL_VALIDATE": "", "VITE_PAYWALL_VARIANT_LIFETIME": "2171612", "VITE_PAYWALL_VARIANT_MONTHLY": "2171604", "VITE_PAYWALL_VARIANT_SEASON": "2171607", "VITE_PAYWALL_VARIANT_WEEKEND": "2171618" };
+const __vite_import_meta_env__ = { "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SSR": false, "VITE_PAYWALL_DEFAULT_PLAN": "monthly", "VITE_PAYWALL_FREE_RANKS": "2", "VITE_PAYWALL_PRICE_LIFETIME": "49.99", "VITE_PAYWALL_PRICE_MONTHLY": "6.99", "VITE_PAYWALL_PRICE_SEASON": "24.99", "VITE_PAYWALL_PRICE_WEEKEND": "1", "VITE_PAYWALL_PRODUCT": "OddsVis Trade Optimizer Pro", "VITE_PAYWALL_PROVIDER": "lemonsqueezy", "VITE_PAYWALL_STORE": "", "VITE_PAYWALL_VALIDATE": "", "VITE_PAYWALL_VARIANT_LIFETIME": "2171612", "VITE_PAYWALL_VARIANT_MONTHLY": "2171604", "VITE_PAYWALL_VARIANT_SEASON": "2171607", "VITE_PAYWALL_VARIANT_WEEKEND": "2171618" };
 const PLAN_META = [
   { id: "weekend", label: "Weekend pass", description: "Every trade for one slate. Good through Monday night." },
   { id: "monthly", label: "Monthly", description: "Renews monthly. Cancel any time." },
@@ -2193,10 +2193,17 @@ function buildPaywallConfig(env2) {
     checkoutUrl: (defaultPlan == null ? void 0 : defaultPlan.checkoutUrl) ?? "",
     priceLabel: (defaultPlan == null ? void 0 : defaultPlan.priceLabel) ? `from ${cheapest(plans)}` : "",
     validateUrl: env2.VITE_PAYWALL_VALIDATE ?? "",
-    freeTrades: Math.max(0, Number(env2.VITE_PAYWALL_FREE_TRADES ?? 1) || 0),
+    freeRanks: parseFreeRanks(env2),
     graceDays: 7,
     revalidateHours: 24
   };
+}
+function parseFreeRanks(env2) {
+  const explicit = (env2.VITE_PAYWALL_FREE_RANKS ?? "").split(",").map((x) => Number(x.trim())).filter((n) => Number.isInteger(n) && n >= 1);
+  if (explicit.length) return [...new Set(explicit)].sort((a, b) => a - b);
+  const legacy = Number(env2.VITE_PAYWALL_FREE_TRADES);
+  if (Number.isInteger(legacy) && legacy >= 0) return Array.from({ length: legacy }, (_, i) => i + 1);
+  return [2];
 }
 function cheapest(plans) {
   var _a;
@@ -2596,7 +2603,8 @@ function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }) {
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "locked-cta", children: [
       /* @__PURE__ */ jsxs("span", { children: [
-        "A ",
+        trade.rank === 1 ? "Your best trade: a" : "A",
+        " ",
         sends,
         "-for-",
         receives,
@@ -2650,6 +2658,11 @@ function LeagueTable({ analysis, onPickTeam }) {
     ] }) })
   ] });
 }
+function describeFreeRanks(ranks) {
+  if (!ranks.length) return "the trade summaries";
+  if (ranks.length === 1) return `your #${ranks[0]} trade in full`;
+  return `trades ${ranks.map((r) => `#${r}`).join(", ")} in full`;
+}
 function LicensePanel({
   license,
   config,
@@ -2675,7 +2688,11 @@ function LicensePanel({
       ] }),
       /* @__PURE__ */ jsx("button", { className: "link small", onClick: onRemove, children: "Remove key" })
     ] }) : /* @__PURE__ */ jsxs(Fragment, { children: [
-      /* @__PURE__ */ jsx("p", { className: "small", children: "Free: full team analysis, league overview and your #1 trade. Pro: every ranked trade with lineups, explanations and rank reasons." }),
+      /* @__PURE__ */ jsxs("p", { className: "small", children: [
+        "Free: full team analysis, league overview and ",
+        describeFreeRanks(config.freeRanks),
+        ". Pro: every ranked trade with lineups, explanations and rank reasons."
+      ] }),
       config.plans.length ? /* @__PURE__ */ jsx("div", { className: "plans", children: config.plans.map((plan) => {
         var _a;
         return /* @__PURE__ */ jsxs("button", { type: "button", className: `plan${((_a = config.defaultPlan) == null ? void 0 : _a.id) === plan.id ? " plan-default" : ""}`, onClick: () => onUpgrade(plan), children: [
@@ -2761,7 +2778,7 @@ function TradeReport(props) {
         analysis.config.minUserGain,
         " pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings."
       ] }) : result.trades.map(
-        (t, i) => entitled || i < paywall.freeTrades ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
+        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
       )
     ] }) : null,
     /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }),
