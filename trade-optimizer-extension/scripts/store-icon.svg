@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Chrome Web Store icon: 96x96 artwork centered in a 128 canvas (16px padding) -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="16" width="96" height="96" rx="22" fill="url(#g)"/>
+  <!-- football silhouette, faint, behind the arrows -->
+  <ellipse cx="64" cy="64" rx="34" ry="20" fill="#ffffff" fill-opacity="0.14" transform="rotate(-25 64 64)"/>
+  <!-- two opposing arrows: a trade -->
+  <path d="M40 54 H82 l-11 -11" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M88 74 H46 l11 11" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
