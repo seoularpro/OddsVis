@@ -2089,22 +2089,48 @@ function instanceName() {
   const os = /Mac/.test(ua) ? "macOS" : /Windows/.test(ua) ? "Windows" : /Linux/.test(ua) ? "Linux" : "";
   return `${browser} ${os}`.trim() || "extension";
 }
-const __vite_import_meta_env__ = {};
-const env = __vite_import_meta_env__ ?? {};
-function providerFromEnv() {
-  const v = (env.VITE_PAYWALL_PROVIDER ?? "lemonsqueezy").toLowerCase();
-  return v === "none" || v === "remote" || v === "lemonsqueezy" ? v : "lemonsqueezy";
+const __vite_import_meta_env__ = { "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SSR": false, "VITE_PAYWALL_DEFAULT_PLAN": "season", "VITE_PAYWALL_FREE_TRADES": "1", "VITE_PAYWALL_PRICE_LIFETIME": "", "VITE_PAYWALL_PRICE_MONTHLY": "", "VITE_PAYWALL_PRICE_SEASON": "", "VITE_PAYWALL_PRICE_WEEKEND": "", "VITE_PAYWALL_PRODUCT": "OddsVis Trade Optimizer Pro", "VITE_PAYWALL_PROVIDER": "lemonsqueezy", "VITE_PAYWALL_STORE": "", "VITE_PAYWALL_VALIDATE": "", "VITE_PAYWALL_VARIANT_LIFETIME": "2171612", "VITE_PAYWALL_VARIANT_MONTHLY": "2171604", "VITE_PAYWALL_VARIANT_SEASON": "2171607", "VITE_PAYWALL_VARIANT_WEEKEND": "2171618" };
+const PLAN_META = [
+  { id: "weekend", label: "Weekend pass", description: "Every trade for one slate. Good through Monday night." },
+  { id: "monthly", label: "Monthly", description: "Renews monthly. Cancel any time." },
+  { id: "season", label: "Season pass", description: "Every week through the fantasy playoffs." },
+  { id: "lifetime", label: "Lifetime", description: "Pay once, every season." }
+];
+function buildPaywallConfig(env2) {
+  const providerRaw = (env2.VITE_PAYWALL_PROVIDER ?? "lemonsqueezy").toLowerCase();
+  const provider = providerRaw === "none" || providerRaw === "remote" || providerRaw === "lemonsqueezy" ? providerRaw : "lemonsqueezy";
+  const store = (env2.VITE_PAYWALL_STORE ?? "").trim();
+  const plans = [];
+  for (const meta of PLAN_META) {
+    const key = meta.id.toUpperCase();
+    const variantId = (env2[`VITE_PAYWALL_VARIANT_${key}`] ?? "").trim();
+    const override = (env2[`VITE_PAYWALL_CHECKOUT_${key}`] ?? "").trim();
+    const checkoutUrl = override || (store && variantId ? `https://${store}.lemonsqueezy.com/checkout/buy/${variantId}` : "");
+    if (!checkoutUrl) continue;
+    plans.push({ ...meta, variantId, checkoutUrl, priceLabel: (env2[`VITE_PAYWALL_PRICE_${key}`] ?? "").trim() });
+  }
+  const wanted = (env2.VITE_PAYWALL_DEFAULT_PLAN ?? "season").toLowerCase();
+  const defaultPlan = plans.find((p) => p.id === wanted) ?? plans[0] ?? null;
+  return {
+    provider,
+    productName: env2.VITE_PAYWALL_PRODUCT ?? "OddsVis Trade Optimizer Pro",
+    plans,
+    defaultPlan,
+    checkoutUrl: (defaultPlan == null ? void 0 : defaultPlan.checkoutUrl) ?? "",
+    priceLabel: (defaultPlan == null ? void 0 : defaultPlan.priceLabel) ? `from ${cheapest(plans)}` : "",
+    validateUrl: env2.VITE_PAYWALL_VALIDATE ?? "",
+    freeTrades: Math.max(0, Number(env2.VITE_PAYWALL_FREE_TRADES ?? 1) || 0),
+    graceDays: 7,
+    revalidateHours: 24
+  };
 }
-const PAYWALL_CONFIG = {
-  provider: providerFromEnv(),
-  productName: env.VITE_PAYWALL_PRODUCT ?? "OddsVis Trade Optimizer Pro",
-  checkoutUrl: env.VITE_PAYWALL_CHECKOUT ?? "",
-  validateUrl: env.VITE_PAYWALL_VALIDATE ?? "",
-  priceLabel: env.VITE_PAYWALL_PRICE ?? "",
-  freeTrades: Math.max(0, Number(env.VITE_PAYWALL_FREE_TRADES ?? 1) || 0),
-  graceDays: 7,
-  revalidateHours: 24
-};
+function cheapest(plans) {
+  var _a;
+  const priced = plans.map((p) => ({ p, n: Number(p.priceLabel.replace(/[^0-9.]/g, "")) })).filter((x) => Number.isFinite(x.n) && x.n > 0).sort((a, b) => a.n - b.n);
+  return ((_a = priced[0]) == null ? void 0 : _a.p.priceLabel) ?? "";
+}
+const env = __vite_import_meta_env__ ?? {};
+const PAYWALL_CONFIG = buildPaywallConfig(env);
 const fmt1 = (n) => n.toFixed(1);
 const signed1 = (n) => `${n >= 0 ? "+" : ""}${n.toFixed(1)}`;
 const money = (n) => `$${Math.round(n)}`;
@@ -2560,18 +2586,22 @@ function LicensePanel({
       /* @__PURE__ */ jsxs("span", { className: "muted small", children: [
         "Licensed",
         license.email ? ` to ${license.email}` : "",
-        license.expiresAt ? ` · renews/expires ${new Date(license.expiresAt).toLocaleDateString()}` : "",
+        license.expiresAt ? ` · renews/expires ${new Date(license.expiresAt).toLocaleDateString()}` : " · lifetime",
         license.message ? ` · ${license.message}` : ""
       ] }),
       /* @__PURE__ */ jsx("button", { className: "link small", onClick: onRemove, children: "Remove key" })
     ] }) : /* @__PURE__ */ jsxs(Fragment, { children: [
       /* @__PURE__ */ jsx("p", { className: "small", children: "Free: full team analysis, league overview and your #1 trade. Pro: every ranked trade with lineups, explanations and rank reasons." }),
-      /* @__PURE__ */ jsxs("div", { className: "license-row", children: [
-        /* @__PURE__ */ jsxs("button", { className: "primary", onClick: onUpgrade, disabled: !config.checkoutUrl, children: [
-          "Upgrade",
-          config.priceLabel ? ` · ${config.priceLabel}` : ""
-        ] }),
-        !config.checkoutUrl ? /* @__PURE__ */ jsx("span", { className: "muted small", children: "Checkout URL not configured (VITE_PAYWALL_CHECKOUT)." }) : null
+      config.plans.length ? /* @__PURE__ */ jsx("div", { className: "plans", children: config.plans.map((plan) => {
+        var _a;
+        return /* @__PURE__ */ jsxs("button", { type: "button", className: `plan${((_a = config.defaultPlan) == null ? void 0 : _a.id) === plan.id ? " plan-default" : ""}`, onClick: () => onUpgrade(plan), children: [
+          /* @__PURE__ */ jsx("span", { className: "plan-label", children: plan.label }),
+          plan.priceLabel ? /* @__PURE__ */ jsx("span", { className: "plan-price", children: plan.priceLabel }) : null,
+          /* @__PURE__ */ jsx("span", { className: "plan-desc muted small", children: plan.description })
+        ] }, plan.id);
+      }) }) : /* @__PURE__ */ jsxs("div", { className: "license-row", children: [
+        /* @__PURE__ */ jsx("button", { className: "primary", disabled: true, children: "Upgrade" }),
+        /* @__PURE__ */ jsx("span", { className: "muted small", children: "Checkout not configured (VITE_PAYWALL_STORE and VITE_PAYWALL_VARIANT_*)." })
       ] }),
       /* @__PURE__ */ jsxs(
         "form",
@@ -2582,7 +2612,7 @@ function LicensePanel({
             onActivate(key);
           },
           children: [
-            /* @__PURE__ */ jsx("input", { value: key, onChange: (e) => setKey(e.target.value), placeholder: "Paste your license key", autoComplete: "off" }),
+            /* @__PURE__ */ jsx("input", { value: key, onChange: (e) => setKey(e.target.value), placeholder: "Already bought? Paste your license key", autoComplete: "off" }),
             /* @__PURE__ */ jsx("button", { type: "submit", disabled: busy || !key.trim(), children: busy ? "Checking…" : "Activate" })
           ]
         }
@@ -2647,7 +2677,7 @@ function TradeReport(props) {
         analysis.config.minUserGain,
         " pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings."
       ] }) : result.trades.map(
-        (t, i) => entitled || i < paywall.freeTrades ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade, priceLabel: paywall.priceLabel }, t.rank)
+        (t, i) => entitled || i < paywall.freeTrades ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
       )
     ] }) : null,
     /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }),

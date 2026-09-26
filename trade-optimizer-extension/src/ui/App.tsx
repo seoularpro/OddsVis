@@ -52,9 +52,9 @@ export function App() {
     await saveLicense(EMPTY_LICENSE);
   }, []);
 
-  const openCheckout = useCallback(() => {
-    if (!PAYWALL_CONFIG.checkoutUrl) return;
-    window.open(PAYWALL_CONFIG.checkoutUrl, "_blank", "noopener");
+  const openCheckout = useCallback((plan?: { checkoutUrl: string }) => {
+    const url = plan?.checkoutUrl ?? PAYWALL_CONFIG.checkoutUrl;
+    if (url) window.open(url, "_blank", "noopener");
   }, []);
 
   const updateSettings = useCallback((next: ExtensionSettings) => {

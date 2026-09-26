@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { EMPTY_LICENSE, LemonSqueezyValidator, RemoteValidator, activateLicense, applyResult, isEntitled, needsRevalidation, refreshLicense, type LicenseState } from "../src/shared/license";
 import type { PaywallConfig } from "../src/shared/paywallConfig";
 
-const cfg: PaywallConfig = { provider: "lemonsqueezy", productName: "Pro", checkoutUrl: "https://x", validateUrl: "", priceLabel: "$5", freeTrades: 1, graceDays: 7, revalidateHours: 24 };
+const cfg: PaywallConfig = { provider: "lemonsqueezy", productName: "Pro", plans: [], defaultPlan: null, checkoutUrl: "https://x", validateUrl: "", priceLabel: "$5", freeTrades: 1, graceDays: 7, revalidateHours: 24 };
 const DAY = 24 * 60 * 60 * 1000;
 const now = Date.parse("2026-09-26T12:00:00Z");
 

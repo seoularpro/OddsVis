@@ -154,8 +154,9 @@ export default function Trades() {
     await saveLicense(EMPTY_LICENSE);
   }, []);
 
-  const openCheckout = useCallback(() => {
-    if (PAYWALL_CONFIG.checkoutUrl) window.open(PAYWALL_CONFIG.checkoutUrl, "_blank", "noopener");
+  const openCheckout = useCallback((plan) => {
+    const url = (plan && plan.checkoutUrl) || PAYWALL_CONFIG.checkoutUrl;
+    if (url) window.open(url, "_blank", "noopener");
   }, []);
 
   const providerMeta = PROVIDERS[provider];

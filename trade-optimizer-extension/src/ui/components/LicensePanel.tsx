@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { LicenseState } from "../../shared/license";
-import type { PaywallConfig } from "../../shared/paywallConfig";
+import type { PaywallConfig, PaywallPlan } from "../../shared/paywallConfig";
 
 export function LicensePanel({
   license,
@@ -17,7 +17,7 @@ export function LicensePanel({
   busy: boolean;
   onActivate: (key: string) => void;
   onRemove: () => void;
-  onUpgrade: () => void;
+  onUpgrade: (plan?: PaywallPlan) => void;
 }) {
   const [key, setKey] = useState("");
   if (config.provider === "none") return null;
@@ -32,7 +32,7 @@ export function LicensePanel({
         <div className="license-row">
           <span className="muted small">
             Licensed{license.email ? ` to ${license.email}` : ""}
-            {license.expiresAt ? ` · renews/expires ${new Date(license.expiresAt).toLocaleDateString()}` : ""}
+            {license.expiresAt ? ` · renews/expires ${new Date(license.expiresAt).toLocaleDateString()}` : " · lifetime"}
             {license.message ? ` · ${license.message}` : ""}
           </span>
           <button className="link small" onClick={onRemove}>Remove key</button>
@@ -42,12 +42,22 @@ export function LicensePanel({
           <p className="small">
             Free: full team analysis, league overview and your #1 trade. Pro: every ranked trade with lineups, explanations and rank reasons.
           </p>
-          <div className="license-row">
-            <button className="primary" onClick={onUpgrade} disabled={!config.checkoutUrl}>
-              Upgrade{config.priceLabel ? ` · ${config.priceLabel}` : ""}
-            </button>
-            {!config.checkoutUrl ? <span className="muted small">Checkout URL not configured (VITE_PAYWALL_CHECKOUT).</span> : null}
-          </div>
+          {config.plans.length ? (
+            <div className="plans">
+              {config.plans.map((plan) => (
+                <button key={plan.id} type="button" className={`plan${config.defaultPlan?.id === plan.id ? " plan-default" : ""}`} onClick={() => onUpgrade(plan)}>
+                  <span className="plan-label">{plan.label}</span>
+                  {plan.priceLabel ? <span className="plan-price">{plan.priceLabel}</span> : null}
+                  <span className="plan-desc muted small">{plan.description}</span>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="license-row">
+              <button className="primary" disabled>Upgrade</button>
+              <span className="muted small">Checkout not configured (VITE_PAYWALL_STORE and VITE_PAYWALL_VARIANT_*).</span>
+            </div>
+          )}
           <form
             className="license-row"
             onSubmit={(e) => {
@@ -55,7 +65,7 @@ export function LicensePanel({
               onActivate(key);
             }}
           >
-            <input value={key} onChange={(e) => setKey(e.target.value)} placeholder="Paste your license key" autoComplete="off" />
+            <input value={key} onChange={(e) => setKey(e.target.value)} placeholder="Already bought? Paste your license key" autoComplete="off" />
             <button type="submit" disabled={busy || !key.trim()}>
               {busy ? "Checking…" : "Activate"}
             </button>

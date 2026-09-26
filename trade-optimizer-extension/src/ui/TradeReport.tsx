@@ -7,7 +7,7 @@ import type { League } from "../domain/types";
 import type { OptimizerResult } from "../optimization/tradeOptimizer";
 import type { EnrichReport } from "../data/enrichLeague";
 import type { LicenseState } from "../shared/license";
-import type { PaywallConfig } from "../shared/paywallConfig";
+import type { PaywallConfig, PaywallPlan } from "../shared/paywallConfig";
 import { TeamAnalysisPanel } from "./components/TeamAnalysisPanel";
 import { TradeCard } from "./components/TradeCard";
 import { LockedTradeCard } from "./components/LockedTradeCard";
@@ -27,7 +27,7 @@ export interface TradeReportProps {
   licenseBusy: boolean;
   onActivate: (key: string) => void;
   onRemoveLicense: () => void;
-  onUpgrade: () => void;
+  onUpgrade: (plan?: PaywallPlan) => void;
 }
 
 export function describeScoring(s: { receptionPoints: number; passTdPoints: number }): string {
@@ -79,7 +79,7 @@ export function TradeReport(props: TradeReportProps) {
               entitled || i < paywall.freeTrades ? (
                 <TradeCard key={t.rank} trade={t} analysis={analysis} />
               ) : (
-                <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={onUpgrade} priceLabel={paywall.priceLabel} />
+                <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />
               )
             )
           )}
