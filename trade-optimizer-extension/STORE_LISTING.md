@@ -5,20 +5,29 @@
 **Summary (132 chars max)**
 Finds the top trades that raise your fantasy football starting lineup's projection, using OddsVis weekly medians and trade values.
 
-**Description**
-Open your ESPN or Sleeper league and get the ten trades most likely to raise your optimal starting lineup's median projection, each one realistic for the other manager too.
+**Description** (store limit 16,000 characters; this is ~1950)
+```
+OddsVis Trade Optimizer finds the trades in your fantasy football league that actually raise your starting lineup, and that the other manager has a real reason to accept.
 
-What it does
-• Reads every roster in your league from the page you're viewing (no logins, no pasting cookies).
-• Builds each team's optimal lineup from OddsVis weekly median projections.
-• Finds your roster holes, expendable depth, and the teams whose surplus matches your need.
-• Simulates thousands of 1-for-1, 2-for-1, 1-for-2 and 2-for-2 packages, re-optimizing both lineups after each.
-• Ranks by your lineup gain first, then mutual benefit and trade-value fairness, and explains every pick with the numbers.
+Open your ESPN or Sleeper league, click the icon, and the side panel reads every roster in the league. No pasting cookies, no separate login: it uses the page you're already signed into.
 
+WHAT IT DOES
+• Builds every team's optimal lineup from OddsVis weekly median projections, which come from sportsbook player props rather than site defaults.
+• Shows where you're actually weak: the starting slots near replacement level, how they rank across the league, and the realistic upgrades other rosters could spare.
+• Finds your expendable depth: players with real trade value who add nothing to your starting lineup.
+• Simulates thousands of 1-for-1, 2-for-1, 1-for-2 and 2-for-2 packages, refits both rosters (waiver fills and drops included), and re-optimizes both lineups after each one.
+• Ranks win/win deals first: both lineups improve and both sides fix a weakness. Then mutual-gain trades, then fair one-sided ones.
+• Explains every recommendation with numbers: lineup before and after for both teams, which slots change, trade value each way, and why the other manager says yes.
+
+WHY INSTALL IT
+Trade calculators compare the players in the deal. This compares the lineups. A $30 running back buried on someone's bench is worth nothing to them and a starter to you, and this is built to find exactly that gap. It also tells you the free waiver moves to make first, so you never trade for something you could have picked up.
+
+FREE AND PRO
 Free: full team analysis, league overview, and your #2 trade in full.
-Pro: every ranked trade, including #1, with before/after lineups and explanations.
+Pro: every ranked trade, including #1, with before/after lineups and explanations. Weekend, monthly, season and lifetime passes.
 
-Supports ESPN and Sleeper. Yahoo is detected but not yet supported.
+Supports ESPN and Sleeper. Also available on the web at vegaslytics.com/trades for your phone. Yahoo is recognized but not yet supported.
+```
 
 **Category**: Productivity (or Sports if offered)
 
