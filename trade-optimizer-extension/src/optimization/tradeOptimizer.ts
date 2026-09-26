@@ -5,7 +5,7 @@ import type { League } from "../domain/types";
 import { analyzeLeague, type LeagueAnalysis } from "./teamAnalyzer";
 import { generateCandidates, type GenerationStats, type PartnerRanking } from "./tradeGenerator";
 import { simulateTrade, type TradeSimulation } from "./tradeSimulator";
-import { evaluateAcceptance, scoreTrade, compareReason, type Acceptance, type ScoreBreakdown } from "./tradeScorer";
+import { evaluateAcceptance, scoreTrade, compareReason, compareRanked, type Acceptance, type ScoreBreakdown } from "./tradeScorer";
 import { explainTrade, type TradeExplanation } from "./tradeExplainer";
 import type { OptimizerConfig } from "./config";
 
@@ -76,7 +76,7 @@ export function runTradeOptimizer(league: League, overrides?: Partial<OptimizerC
     scored.push({ sim, score: scoreTrade(sim, config), acceptance });
   }
 
-  scored.sort((a, b) => b.score.total - a.score.total || b.score.userGain - a.score.userGain);
+  scored.sort((a, b) => compareRanked(a.score, b.score, config));
 
   // Diversity: collapse throw-in variants of the same outcome, then at most
   // maxTradesPerPartner results with the same partner.
@@ -101,7 +101,7 @@ export function runTradeOptimizer(league: League, overrides?: Partial<OptimizerC
     score: entry.score,
     acceptance: entry.acceptance,
     explanation: explainTrade(entry.sim, analysis, entry.acceptance),
-    rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score) : null,
+    rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score, config).replace("#next", `#${i + 2}`) : null,
   }));
 
   return {

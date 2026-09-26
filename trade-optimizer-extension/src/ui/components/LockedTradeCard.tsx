@@ -2,6 +2,7 @@ import React from "react";
 import type { RankedTrade } from "../../optimization/tradeOptimizer";
 import type { LeagueAnalysis } from "../../optimization/teamAnalyzer";
 import { money, signed1 } from "../format";
+import { TIER_LABEL } from "../../optimization/tradeScorer";
 
 /**
  * Teaser for a trade behind the paywall: the partner and the outcome are
@@ -18,7 +19,10 @@ export function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }: { tr
       <header className="trade-head">
         <div className="trade-rank">#{trade.rank}</div>
         <div className="trade-summary">
-          <div className="trade-title">Trade with <b>{opp.teamName}</b></div>
+          <div className="trade-title">
+            Trade with <b>{opp.teamName}</b>
+            <span className={`tag tier tier-${trade.score.tier}`}>{TIER_LABEL[trade.score.tier]}</span>
+          </div>
           <div className="trade-gains">
             <span className="gain you">You {signed1(sim.user.projectionGain)}</span>
             <span className="gain them">They {signed1(sim.opponent.projectionGain)}</span>

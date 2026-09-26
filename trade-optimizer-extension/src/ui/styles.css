@@ -163,3 +163,7 @@
 .oto .plan-default { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
 .oto .plan-label { font-weight: 700; }
 .oto .plan-price { color: var(--accent); font-weight: 700; }
+.oto .tag.tier { margin-left: 8px; font-weight: 600; }
+.oto .tier-win-win { background: var(--pos); color: #fff; }
+.oto .tier-mutual { background: var(--accent-soft); }
+.oto .tier-one-sided { background: var(--line); }

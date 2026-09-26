@@ -196,10 +196,11 @@ describe("ranking", () => {
     for (let i = 1; i < result.trades.length; i++) {
       const hi = result.trades[i - 1];
       const lo = result.trades[i];
-      expect(hi.score.total).toBeGreaterThanOrEqual(lo.score.total - 1e-9);
-      // A lower-ranked trade can never have a user gain more than the band above a higher-ranked one.
-      expect(lo.score.userGain).toBeLessThanOrEqual(hi.score.userGain + band + 1e-9);
       expect(hi.rankedAboveNextBecause).toBeTruthy();
+      if (hi.score.tier !== lo.score.tier) continue; // tiers are checked in winWin.test.ts
+      expect(hi.score.total).toBeGreaterThanOrEqual(lo.score.total - 1e-9);
+      // Within a tier, a lower-ranked trade can never have a user gain more than the band above a higher-ranked one.
+      expect(lo.score.userGain).toBeLessThanOrEqual(hi.score.userGain + band + 1e-9);
     }
     for (const t of result.trades) {
       expect(t.simulation.user.projectionGain).toBeGreaterThanOrEqual(DEFAULT_CONFIG.minUserGain);

@@ -38,6 +38,13 @@ export function SettingsPanel({ settings, onChange }: { settings: ExtensionSetti
               <input type="number" min={1} max={20} value={cfg.maxTradesPerPartner ?? DEFAULT_CONFIG.maxTradesPerPartner} onChange={(e) => setCfg({ maxTradesPerPartner: Number(e.target.value) })} />
             </label>
             <label>
+              Ranking
+              <select value={cfg.rankingMode ?? DEFAULT_CONFIG.rankingMode} onChange={(e) => setCfg({ rankingMode: e.target.value as "winWin" | "userGain" })}>
+                <option value="winWin">win/win first, then your gain</option>
+                <option value="userGain">your lineup gain only</option>
+              </select>
+            </label>
+            <label>
               Unlisted trade value
               <select value={cfg.unlistedTradeValue ?? DEFAULT_CONFIG.unlistedTradeValue} onChange={(e) => setCfg({ unlistedTradeValue: e.target.value as "estimate" | "zero" })}>
                 <option value="estimate">estimate from projection</option>

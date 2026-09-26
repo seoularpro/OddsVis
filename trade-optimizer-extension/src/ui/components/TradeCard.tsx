@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import type { RankedTrade } from "../../optimization/tradeOptimizer";
 import type { LeagueAnalysis } from "../../optimization/teamAnalyzer";
 import { fmt1, money, signed1 } from "../format";
+import { TIER_LABEL } from "../../optimization/tradeScorer";
 import { PlayerChip } from "./PlayerChip";
 import { LineupTable } from "./LineupTable";
 
@@ -19,12 +20,22 @@ export function TradeCard({ trade, analysis }: { trade: RankedTrade; analysis: L
       <header className="trade-head" onClick={() => setOpen((v) => !v)}>
         <div className="trade-rank">#{trade.rank}</div>
         <div className="trade-summary">
-          <div className="trade-title">Trade with <b>{opp.teamName}</b></div>
+          <div className="trade-title">
+            Trade with <b>{opp.teamName}</b>
+            <span className={`tag tier tier-${trade.score.tier}`}>{TIER_LABEL[trade.score.tier]}</span>
+          </div>
           <div className="trade-gains">
             <span className="gain you">You {signed1(sim.user.projectionGain)}</span>
             <span className="gain them">They {signed1(sim.opponent.projectionGain)}</span>
             <span className="muted">{money(sim.user.tradeValueSent)} ↔ {money(sim.user.tradeValueReceived)}</span>
           </div>
+          {sim.user.solvedWeaknesses.length || sim.opponent.solvedWeaknesses.length ? (
+            <div className="muted small">
+              Solves{sim.user.solvedWeaknesses.length ? ` your ${sim.user.solvedWeaknesses.join(", ")}` : ""}
+              {sim.user.solvedWeaknesses.length && sim.opponent.solvedWeaknesses.length ? " and" : ""}
+              {sim.opponent.solvedWeaknesses.length ? ` their ${sim.opponent.solvedWeaknesses.join(", ")}` : ""}
+            </div>
+          ) : null}
         </div>
         <div className="caret">{open ? "▾" : "▸"}</div>
       </header>
@@ -92,13 +103,14 @@ export function TradeCard({ trade, analysis }: { trade: RankedTrade; analysis: L
           <div className="score-row">
             <span>User gain <b className="num">{signed1(trade.score.userGain)}</b></span>
             <span>+ weakness fix <b className="num">{trade.score.weaknessBonus.toFixed(2)}</b></span>
+            <span>+ their weakness fix <b className="num">{trade.score.opponentWeaknessBonus.toFixed(2)}</b></span>
             <span>+ mutual <b className="num">{trade.score.mutualBonus.toFixed(2)}</b></span>
             <span>+ fairness <b className="num">{trade.score.fairnessBonus.toFixed(2)}</b></span>
             <span>+ depth <b className="num">{trade.score.depthBonus.toFixed(2)}</b></span>
             <span>= <b className="num">{trade.score.total.toFixed(2)}</b></span>
           </div>
           <p className="muted small">
-            Secondary bonuses are capped at {trade.score.band.toFixed(2)} points combined, so a trade that gains you more than that in starting-lineup points always ranks higher.
+            Trades are grouped by tier first (win/win, then mutual gain, then fair one-sided). Inside a tier, secondary bonuses are capped at {trade.score.band.toFixed(2)} points combined, so a trade that gains you more than that in starting-lineup points always ranks higher.
           </p>
           {trade.rankedAboveNextBecause ? <p className="muted small">Ranked above #{trade.rank + 1} because it {trade.rankedAboveNextBecause}.</p> : null}
 

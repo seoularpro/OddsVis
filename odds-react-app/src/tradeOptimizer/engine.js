@@ -26,7 +26,11 @@ const DEFAULT_CONFIG = {
   maxOpponentLossForSecondaryReasons: 0.5,
   holeMarginPoints: 1.5,
   expendableMarginalValue: 1,
-  weights: { weaknessCap: 0.4, mutualCap: 0.3, fairnessCap: 0.15, depthCap: 0.1 },
+  rankingMode: "winWin",
+  winWinMinOpponentGain: 0.5,
+  weaknessSolveMinGain: 1,
+  weaknessSolveTopN: 3,
+  weights: { weaknessCap: 0.3, opponentWeaknessCap: 0.15, mutualCap: 0.3, fairnessCap: 0.15, depthCap: 0.05 },
   mutualScalePoints: 4,
   weaknessScalePoints: 8,
   depthScalePoints: 6,
@@ -46,7 +50,7 @@ function mergeConfig(overrides) {
 }
 function secondaryBand(config) {
   const w = config.weights;
-  return w.weaknessCap + w.mutualCap + w.fairnessCap + w.depthCap;
+  return w.weaknessCap + w.opponentWeaknessCap + w.mutualCap + w.fairnessCap + w.depthCap;
 }
 const ALL_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DST"];
 const OFFENSE_POSITIONS = ["QB", "RB", "WR", "TE"];
@@ -780,6 +784,26 @@ function fitRosterToSize(roster, league, excludeIds) {
   }
   return { roster: current, adds, drops };
 }
+function rankedSlotProjections(lineup) {
+  const grouped = /* @__PURE__ */ new Map();
+  for (const a of lineup.assignments) {
+    const g = grouped.get(a.slot.slotId) ?? { label: a.slot.label, values: [] };
+    g.values.push(a.projection);
+    grouped.set(a.slot.slotId, g);
+  }
+  const out = /* @__PURE__ */ new Map();
+  for (const g of grouped.values()) {
+    const sorted = [...g.values].sort((x, y) => y - x);
+    sorted.forEach((v, i) => out.set(sorted.length > 1 ? `${g.label}${i + 1}` : g.label, v));
+  }
+  return out;
+}
+function solvedWeaknessKeys(team, before, after, config) {
+  const b = rankedSlotProjections(before);
+  const a = rankedSlotProjections(after);
+  const real = team.weaknesses.filter((w, i) => w.severity > 0 && (w.isHole || i < config.weaknessSolveTopN) && OFFENSE_POSITIONS.some((p) => w.eligible.includes(p)));
+  return real.filter((w) => (a.get(w.key) ?? 0) - (b.get(w.key) ?? 0) >= config.weaknessSolveMinGain - 1e-9).map((w) => w.key);
+}
 function diffLineups(before, after) {
   var _a, _b;
   const changes = [];
@@ -840,7 +864,8 @@ function simulateSide(team, sends, receives, analysis, config) {
     holePointsRecovered: recovered,
     depthBefore: team.depthScore,
     depthAfter: depthScoreFor(after.bench, analysis.replacement.levels),
-    rosterAfter: fitted.roster
+    rosterAfter: fitted.roster,
+    solvedWeaknesses: solvedWeaknessKeys(team, before, after, config)
   };
 }
 function simulateTrade(candidate, analysis) {
@@ -853,6 +878,21 @@ function simulateTrade(candidate, analysis) {
     user: simulateSide(user, candidate.userSends, candidate.userReceives, analysis, analysis.config),
     opponent: simulateSide(opponent, candidate.userReceives, candidate.userSends, analysis, analysis.config)
   };
+}
+const TIER_RANK = { "win-win": 0, mutual: 1, "one-sided": 2 };
+const TIER_LABEL = {
+  "win-win": "Win/win",
+  mutual: "Mutual gain",
+  "one-sided": "Fair, one-sided"
+};
+function classifyTier(sim, config) {
+  const u = sim.user;
+  const o = sim.opponent;
+  const userSolves = u.solvedWeaknesses.length > 0 || u.holesAfter < u.holesBefore;
+  const oppSolves = o.solvedWeaknesses.length > 0 || o.holesAfter < o.holesBefore;
+  if (u.projectionGain >= config.minUserGain && o.projectionGain >= config.winWinMinOpponentGain && userSolves && oppSolves) return "win-win";
+  if (u.projectionGain >= config.minUserGain && o.projectionGain >= config.clearOpponentGain) return "mutual";
+  return "one-sided";
 }
 const clamp01 = (x) => Math.max(0, Math.min(1, x));
 function evaluateAcceptance(sim, config) {
@@ -899,6 +939,7 @@ function scoreTrade(sim, config) {
   const w = config.weights;
   const userGain = sim.user.projectionGain;
   const weaknessBonus = clamp01(sim.user.holePointsRecovered / config.weaknessScalePoints) * w.weaknessCap;
+  const opponentWeaknessBonus = clamp01(sim.opponent.holePointsRecovered / config.weaknessScalePoints) * w.opponentWeaknessCap;
   const mutualBonus = clamp01(sim.opponent.projectionGain / config.mutualScalePoints) * w.mutualCap;
   const sent = sim.user.tradeValueSent;
   const received = sim.user.tradeValueReceived;
@@ -906,16 +947,29 @@ function scoreTrade(sim, config) {
   const fairnessBonus = clamp01(1 - Math.abs(sent - received) / slack) * w.fairnessCap;
   const depthDelta = sim.user.depthAfter - sim.user.depthBefore;
   const depthBonus = clamp01(0.5 + depthDelta / (2 * config.depthScalePoints)) * w.depthCap;
-  const total = userGain + weaknessBonus + mutualBonus + fairnessBonus + depthBonus;
-  return { userGain, weaknessBonus, mutualBonus, fairnessBonus, depthBonus, total, band: secondaryBand(config) };
+  const total = userGain + weaknessBonus + opponentWeaknessBonus + mutualBonus + fairnessBonus + depthBonus;
+  return { tier: classifyTier(sim, config), userGain, weaknessBonus, opponentWeaknessBonus, mutualBonus, fairnessBonus, depthBonus, total, band: secondaryBand(config) };
 }
-function compareReason(higher, lower) {
+function compareRanked(a, b, config) {
+  if (config.rankingMode === "winWin" && a.tier !== b.tier) return TIER_RANK[a.tier] - TIER_RANK[b.tier];
+  return b.total - a.total || b.userGain - a.userGain;
+}
+function compareReason(higher, lower, config) {
+  if (((config == null ? void 0 : config.rankingMode) ?? "winWin") === "winWin" && higher.tier !== lower.tier) {
+    const why = {
+      "win-win": "both lineups improve and both sides fix a starting weakness",
+      mutual: "both lineups improve",
+      "one-sided": "only your lineup improves"
+    };
+    return `is a ${TIER_LABEL[higher.tier].toLowerCase()} trade (${why[higher.tier]}) while #next is ${TIER_LABEL[lower.tier].toLowerCase()} (${why[lower.tier]})${higher.userGain < lower.userGain - 0.05 ? `, even though it gains you ${(lower.userGain - higher.userGain).toFixed(1)} fewer points` : ""}`;
+  }
   const gainDiff = higher.userGain - lower.userGain;
   if (gainDiff >= higher.band) {
     return `gains you ${gainDiff.toFixed(1)} more starting-lineup points, which outweighs every secondary factor`;
   }
   const parts = [
     ["weakness fix", higher.weaknessBonus - lower.weaknessBonus],
+    ["their weakness fix", higher.opponentWeaknessBonus - lower.opponentWeaknessBonus],
     ["mutual benefit", higher.mutualBonus - lower.mutualBonus],
     ["trade-value fairness", higher.fairnessBonus - lower.fairnessBonus],
     ["remaining depth", higher.depthBonus - lower.depthBonus]
@@ -995,6 +1049,12 @@ function explainTrade(sim, analysis, acceptance) {
     `${opp.teamName} ${sim.opponent.projectionGain >= 0 ? "gains" : "loses"} ${signed(sim.opponent.projectionGain)} (${fmt(sim.opponent.projectionBefore)} → ${fmt(sim.opponent.projectionAfter)}).`,
     `Trade value: you send ${money$1(sim.user.tradeValueSent)} and receive ${money$1(sim.user.tradeValueReceived)} (${acceptance.tradeValueDifference < 0.5 ? "even" : `differ by ${money$1(acceptance.tradeValueDifference)}`}).`
   ];
+  if (sim.user.solvedWeaknesses.length || sim.opponent.solvedWeaknesses.length) {
+    const parts = [];
+    if (sim.user.solvedWeaknesses.length) parts.push(`your ${sim.user.solvedWeaknesses.join(", ")}`);
+    if (sim.opponent.solvedWeaknesses.length) parts.push(`their ${sim.opponent.solvedWeaknesses.join(", ")}`);
+    overall.push(`Weaknesses solved: ${parts.join(" and ")}.`);
+  }
   if (acceptance.opponentReasons.length) overall.push(`Why they say yes: ${acceptance.opponentReasons.join("; ")}.`);
   return {
     headline,
@@ -1036,7 +1096,7 @@ function runTradeOptimizer(league, overrides) {
     }
     scored.push({ sim, score: scoreTrade(sim, config), acceptance });
   }
-  scored.sort((a, b) => b.score.total - a.score.total || b.score.userGain - a.score.userGain);
+  scored.sort((a, b) => compareRanked(a.score, b.score, config));
   const perPartner = /* @__PURE__ */ new Map();
   const seenOutcome = /* @__PURE__ */ new Set();
   const chosen = [];
@@ -1057,7 +1117,7 @@ function runTradeOptimizer(league, overrides) {
     score: entry.score,
     acceptance: entry.acceptance,
     explanation: explainTrade(entry.sim, analysis, entry.acceptance),
-    rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score) : null
+    rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score, config).replace("#next", `#${i + 2}`) : null
   }));
   return {
     analysis,
@@ -2329,7 +2389,8 @@ function TradeCard({ trade, analysis }) {
       /* @__PURE__ */ jsxs("div", { className: "trade-summary", children: [
         /* @__PURE__ */ jsxs("div", { className: "trade-title", children: [
           "Trade with ",
-          /* @__PURE__ */ jsx("b", { children: opp.teamName })
+          /* @__PURE__ */ jsx("b", { children: opp.teamName }),
+          /* @__PURE__ */ jsx("span", { className: `tag tier tier-${trade.score.tier}`, children: TIER_LABEL[trade.score.tier] })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "trade-gains", children: [
           /* @__PURE__ */ jsxs("span", { className: "gain you", children: [
@@ -2345,7 +2406,13 @@ function TradeCard({ trade, analysis }) {
             " ↔ ",
             money(sim.user.tradeValueReceived)
           ] })
-        ] })
+        ] }),
+        sim.user.solvedWeaknesses.length || sim.opponent.solvedWeaknesses.length ? /* @__PURE__ */ jsxs("div", { className: "muted small", children: [
+          "Solves",
+          sim.user.solvedWeaknesses.length ? ` your ${sim.user.solvedWeaknesses.join(", ")}` : "",
+          sim.user.solvedWeaknesses.length && sim.opponent.solvedWeaknesses.length ? " and" : "",
+          sim.opponent.solvedWeaknesses.length ? ` their ${sim.opponent.solvedWeaknesses.join(", ")}` : ""
+        ] }) : null
       ] }),
       /* @__PURE__ */ jsx("div", { className: "caret", children: open ? "▾" : "▸" })
     ] }),
@@ -2429,6 +2496,10 @@ function TradeCard({ trade, analysis }) {
           /* @__PURE__ */ jsx("b", { className: "num", children: trade.score.weaknessBonus.toFixed(2) })
         ] }),
         /* @__PURE__ */ jsxs("span", { children: [
+          "+ their weakness fix ",
+          /* @__PURE__ */ jsx("b", { className: "num", children: trade.score.opponentWeaknessBonus.toFixed(2) })
+        ] }),
+        /* @__PURE__ */ jsxs("span", { children: [
           "+ mutual ",
           /* @__PURE__ */ jsx("b", { className: "num", children: trade.score.mutualBonus.toFixed(2) })
         ] }),
@@ -2446,7 +2517,7 @@ function TradeCard({ trade, analysis }) {
         ] })
       ] }),
       /* @__PURE__ */ jsxs("p", { className: "muted small", children: [
-        "Secondary bonuses are capped at ",
+        "Trades are grouped by tier first (win/win, then mutual gain, then fair one-sided). Inside a tier, secondary bonuses are capped at ",
         trade.score.band.toFixed(2),
         " points combined, so a trade that gains you more than that in starting-lineup points always ranks higher."
       ] }),
@@ -2484,7 +2555,8 @@ function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }) {
       /* @__PURE__ */ jsxs("div", { className: "trade-summary", children: [
         /* @__PURE__ */ jsxs("div", { className: "trade-title", children: [
           "Trade with ",
-          /* @__PURE__ */ jsx("b", { children: opp.teamName })
+          /* @__PURE__ */ jsx("b", { children: opp.teamName }),
+          /* @__PURE__ */ jsx("span", { className: `tag tier tier-${trade.score.tier}`, children: TIER_LABEL[trade.score.tier] })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "trade-gains", children: [
           /* @__PURE__ */ jsxs("span", { className: "gain you", children: [
@@ -2730,6 +2802,13 @@ function SettingsPanel({ settings, onChange }) {
           /* @__PURE__ */ jsx("input", { type: "number", min: 1, max: 20, value: cfg.maxTradesPerPartner ?? DEFAULT_CONFIG.maxTradesPerPartner, onChange: (e) => setCfg({ maxTradesPerPartner: Number(e.target.value) }) })
         ] }),
         /* @__PURE__ */ jsxs("label", { children: [
+          "Ranking",
+          /* @__PURE__ */ jsxs("select", { value: cfg.rankingMode ?? DEFAULT_CONFIG.rankingMode, onChange: (e) => setCfg({ rankingMode: e.target.value }), children: [
+            /* @__PURE__ */ jsx("option", { value: "winWin", children: "win/win first, then your gain" }),
+            /* @__PURE__ */ jsx("option", { value: "userGain", children: "your lineup gain only" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("label", { children: [
           "Unlisted trade value",
           /* @__PURE__ */ jsxs("select", { value: cfg.unlistedTradeValue ?? DEFAULT_CONFIG.unlistedTradeValue, onChange: (e) => setCfg({ unlistedTradeValue: e.target.value }), children: [
             /* @__PURE__ */ jsx("option", { value: "estimate", children: "estimate from projection" }),
@@ -2823,6 +2902,8 @@ export {
   SettingsPanel,
   StaticProjectionSource,
   StaticTradeValueSource,
+  TIER_LABEL,
+  TIER_RANK,
   TRADE_VALUES_BASE,
   TeamAnalysisPanel,
   TradeCard,
@@ -2837,6 +2918,8 @@ export {
   applyResult,
   bruteForceOptimalTotal,
   buildInsight,
+  classifyTier,
+  compareRanked,
   compareReason,
   computeMarginalValues,
   computeReplacementLevels,
@@ -2886,6 +2969,7 @@ export {
   scoringModeFor,
   secondaryBand,
   simulateTrade,
+  solvedWeaknessKeys,
   solverFor,
   surplusLevel,
   syntheticLeague,

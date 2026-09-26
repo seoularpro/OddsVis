@@ -43,10 +43,25 @@ export interface OptimizerConfig {
   /** Players with marginal lineup value at or below this are "expendable". */
   expendableMarginalValue: number;
 
+  /**
+   * How trades are ordered.
+   *  - "winWin": tiers first (win/win > mutual gain > fair one-sided), then
+   *    the composite score inside each tier.
+   *  - "userGain": composite score only (user lineup gain dominates).
+   */
+  rankingMode: "winWin" | "userGain";
+  /** Opponent lineup gain needed for the win/win tier. */
+  winWinMinOpponentGain: number;
+  /** A weakness counts as solved when its slot improves by at least this many points. */
+  weaknessSolveMinGain: number;
+  /** How many of a team's top weaknesses (by severity) count as "real" weaknesses to solve. */
+  weaknessSolveTopN: number;
+
   /** Secondary-score caps. Their sum is the band of user gain within which
    *  secondary factors may reorder trades. Keep the sum below 1.0. */
   weights: {
     weaknessCap: number;
+    opponentWeaknessCap: number;
     mutualCap: number;
     fairnessCap: number;
     depthCap: number;
@@ -94,7 +109,12 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   holeMarginPoints: 1.5,
   expendableMarginalValue: 1.0,
 
-  weights: { weaknessCap: 0.4, mutualCap: 0.3, fairnessCap: 0.15, depthCap: 0.1 },
+  rankingMode: "winWin",
+  winWinMinOpponentGain: 0.5,
+  weaknessSolveMinGain: 1.0,
+  weaknessSolveTopN: 3,
+
+  weights: { weaknessCap: 0.3, opponentWeaknessCap: 0.15, mutualCap: 0.3, fairnessCap: 0.15, depthCap: 0.05 },
   mutualScalePoints: 4,
   weaknessScalePoints: 8,
   depthScalePoints: 6,
@@ -118,5 +138,5 @@ export function mergeConfig(overrides?: Partial<OptimizerConfig>): OptimizerConf
 /** Sum of the secondary caps: the band of user gain inside which they matter. */
 export function secondaryBand(config: OptimizerConfig): number {
   const w = config.weights;
-  return w.weaknessCap + w.mutualCap + w.fairnessCap + w.depthCap;
+  return w.weaknessCap + w.opponentWeaknessCap + w.mutualCap + w.fairnessCap + w.depthCap;
 }

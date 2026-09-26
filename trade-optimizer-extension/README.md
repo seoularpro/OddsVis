@@ -87,7 +87,13 @@ content script (page origin)          side panel (extension page)
     size (2-for-1 fills the open spot with the best waiver player, 1-for-2
     drops the least useful non-starter), re-optimizes both lineups, diffs
     slots, counts holes.
-  * `tradeScorer` – acceptance filters (min user gain, value tolerance,
+  * `tradeScorer` – every accepted trade gets a **tier**: *win/win* (both
+    lineups improve, opponent by at least 0.5, and both sides solve a real
+    weakness: a hole or one of their top-3 weaknesses improved by ≥ 1 point),
+    *mutual gain* (both lineups improve), or *fair one-sided* (only the user
+    improves; the opponent has another rational reason). Results are ordered
+    by tier first, then by the composite score below (`rankingMode: "userGain"`
+    switches to score only). Also: acceptance filters (min user gain, value tolerance,
     opponent loss cap of 1.0 pt, and the opponent must have a rational
     reason: a lineup gain ≥ 0.25, or, when their lineup is within 0.5 pt of
     neutral, a value gain ≥ max($5, 10 % of what they send), a hole filled,

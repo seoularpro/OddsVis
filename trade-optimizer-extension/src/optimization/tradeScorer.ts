@@ -14,14 +14,45 @@ import { secondaryBand } from "./config";
 import type { TradeSimulation } from "./tradeSimulator";
 import { valueWithinTolerance } from "./tradeGenerator";
 
+export type TradeTier = "win-win" | "mutual" | "one-sided";
+
+export const TIER_RANK: Record<TradeTier, number> = { "win-win": 0, mutual: 1, "one-sided": 2 };
+
+export const TIER_LABEL: Record<TradeTier, string> = {
+  "win-win": "Win/win",
+  mutual: "Mutual gain",
+  "one-sided": "Fair, one-sided",
+};
+
 export interface ScoreBreakdown {
+  tier: TradeTier;
   userGain: number;
   weaknessBonus: number;
+  opponentWeaknessBonus: number;
   mutualBonus: number;
   fairnessBonus: number;
   depthBonus: number;
   total: number;
   band: number;
+}
+
+/**
+ * Tier of a trade:
+ *  - win-win: both lineups improve (user >= minUserGain, opponent >=
+ *    winWinMinOpponentGain) and BOTH sides solve a real weakness (a hole, or
+ *    one of their top weaknesses, improved by >= weaknessSolveMinGain).
+ *  - mutual: both lineups improve.
+ *  - one-sided: the user improves; the opponent is neutral but has another
+ *    rational reason (value, hole, depth, consolidation).
+ */
+export function classifyTier(sim: TradeSimulation, config: OptimizerConfig): TradeTier {
+  const u = sim.user;
+  const o = sim.opponent;
+  const userSolves = u.solvedWeaknesses.length > 0 || u.holesAfter < u.holesBefore;
+  const oppSolves = o.solvedWeaknesses.length > 0 || o.holesAfter < o.holesBefore;
+  if (u.projectionGain >= config.minUserGain && o.projectionGain >= config.winWinMinOpponentGain && userSolves && oppSolves) return "win-win";
+  if (u.projectionGain >= config.minUserGain && o.projectionGain >= config.clearOpponentGain) return "mutual";
+  return "one-sided";
 }
 
 export interface Acceptance {
@@ -83,6 +114,7 @@ export function scoreTrade(sim: TradeSimulation, config: OptimizerConfig): Score
   const w = config.weights;
   const userGain = sim.user.projectionGain;
   const weaknessBonus = clamp01(sim.user.holePointsRecovered / config.weaknessScalePoints) * w.weaknessCap;
+  const opponentWeaknessBonus = clamp01(sim.opponent.holePointsRecovered / config.weaknessScalePoints) * w.opponentWeaknessCap;
   const mutualBonus = clamp01(sim.opponent.projectionGain / config.mutualScalePoints) * w.mutualCap;
   const sent = sim.user.tradeValueSent;
   const received = sim.user.tradeValueReceived;
@@ -90,18 +122,33 @@ export function scoreTrade(sim: TradeSimulation, config: OptimizerConfig): Score
   const fairnessBonus = clamp01(1 - Math.abs(sent - received) / slack) * w.fairnessCap;
   const depthDelta = sim.user.depthAfter - sim.user.depthBefore;
   const depthBonus = clamp01(0.5 + depthDelta / (2 * config.depthScalePoints)) * w.depthCap;
-  const total = userGain + weaknessBonus + mutualBonus + fairnessBonus + depthBonus;
-  return { userGain, weaknessBonus, mutualBonus, fairnessBonus, depthBonus, total, band: secondaryBand(config) };
+  const total = userGain + weaknessBonus + opponentWeaknessBonus + mutualBonus + fairnessBonus + depthBonus;
+  return { tier: classifyTier(sim, config), userGain, weaknessBonus, opponentWeaknessBonus, mutualBonus, fairnessBonus, depthBonus, total, band: secondaryBand(config) };
+}
+
+/** Sort comparator: tiers first in winWin mode, then the composite score. */
+export function compareRanked(a: ScoreBreakdown, b: ScoreBreakdown, config: OptimizerConfig): number {
+  if (config.rankingMode === "winWin" && a.tier !== b.tier) return TIER_RANK[a.tier] - TIER_RANK[b.tier];
+  return b.total - a.total || b.userGain - a.userGain;
 }
 
 /** Deterministic reason one trade ranks above the next. */
-export function compareReason(higher: ScoreBreakdown, lower: ScoreBreakdown): string {
+export function compareReason(higher: ScoreBreakdown, lower: ScoreBreakdown, config?: OptimizerConfig): string {
+  if ((config?.rankingMode ?? "winWin") === "winWin" && higher.tier !== lower.tier) {
+    const why: Record<TradeTier, string> = {
+      "win-win": "both lineups improve and both sides fix a starting weakness",
+      mutual: "both lineups improve",
+      "one-sided": "only your lineup improves",
+    };
+    return `is a ${TIER_LABEL[higher.tier].toLowerCase()} trade (${why[higher.tier]}) while #next is ${TIER_LABEL[lower.tier].toLowerCase()} (${why[lower.tier]})${higher.userGain < lower.userGain - 0.05 ? `, even though it gains you ${(lower.userGain - higher.userGain).toFixed(1)} fewer points` : ""}`;
+  }
   const gainDiff = higher.userGain - lower.userGain;
   if (gainDiff >= higher.band) {
     return `gains you ${gainDiff.toFixed(1)} more starting-lineup points, which outweighs every secondary factor`;
   }
   const parts: [string, number][] = [
     ["weakness fix", higher.weaknessBonus - lower.weaknessBonus],
+    ["their weakness fix", higher.opponentWeaknessBonus - lower.opponentWeaknessBonus],
     ["mutual benefit", higher.mutualBonus - lower.mutualBonus],
     ["trade-value fairness", higher.fairnessBonus - lower.fairnessBonus],
     ["remaining depth", higher.depthBonus - lower.depthBonus],

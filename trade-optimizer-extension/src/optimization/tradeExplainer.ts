@@ -82,6 +82,12 @@ export function explainTrade(sim: TradeSimulation, analysis: LeagueAnalysis, acc
     `${opp.teamName} ${sim.opponent.projectionGain >= 0 ? "gains" : "loses"} ${signed(sim.opponent.projectionGain)} (${fmt(sim.opponent.projectionBefore)} → ${fmt(sim.opponent.projectionAfter)}).`,
     `Trade value: you send ${money(sim.user.tradeValueSent)} and receive ${money(sim.user.tradeValueReceived)} (${acceptance.tradeValueDifference < 0.5 ? "even" : `differ by ${money(acceptance.tradeValueDifference)}`}).`,
   ];
+  if (sim.user.solvedWeaknesses.length || sim.opponent.solvedWeaknesses.length) {
+    const parts: string[] = [];
+    if (sim.user.solvedWeaknesses.length) parts.push(`your ${sim.user.solvedWeaknesses.join(", ")}`);
+    if (sim.opponent.solvedWeaknesses.length) parts.push(`their ${sim.opponent.solvedWeaknesses.join(", ")}`);
+    overall.push(`Weaknesses solved: ${parts.join(" and ")}.`);
+  }
   if (acceptance.opponentReasons.length) overall.push(`Why they say yes: ${acceptance.opponentReasons.join("; ")}.`);
 
   return {

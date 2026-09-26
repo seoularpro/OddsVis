@@ -50,6 +50,8 @@ export interface TeamSimulation {
   depthBefore: number;
   depthAfter: number;
   rosterAfter: Player[];
+  /** Keys of the team's real weaknesses (holes or top-N by severity) this trade improves by >= weaknessSolveMinGain. */
+  solvedWeaknesses: string[];
 }
 
 export interface TradeSimulation {
@@ -131,6 +133,29 @@ export function fitRosterToSize(
   return { roster: current, adds, drops };
 }
 
+/** Slot projections keyed the way weaknessAnalyzer keys them (RB2 = the weaker RB). */
+function rankedSlotProjections(lineup: OptimalLineup): Map<string, number> {
+  const grouped = new Map<string, { label: string; values: number[] }>();
+  for (const a of lineup.assignments) {
+    const g = grouped.get(a.slot.slotId) ?? { label: a.slot.label, values: [] };
+    g.values.push(a.projection);
+    grouped.set(a.slot.slotId, g);
+  }
+  const out = new Map<string, number>();
+  for (const g of grouped.values()) {
+    const sorted = [...g.values].sort((x, y) => y - x);
+    sorted.forEach((v, i) => out.set(sorted.length > 1 ? `${g.label}${i + 1}` : g.label, v));
+  }
+  return out;
+}
+
+export function solvedWeaknessKeys(team: TeamAnalysis, before: OptimalLineup, after: OptimalLineup, config: OptimizerConfig): string[] {
+  const b = rankedSlotProjections(before);
+  const a = rankedSlotProjections(after);
+  const real = team.weaknesses.filter((w, i) => w.severity > 0 && (w.isHole || i < config.weaknessSolveTopN) && OFFENSE_POSITIONS.some((p) => w.eligible.includes(p)));
+  return real.filter((w) => (a.get(w.key) ?? 0) - (b.get(w.key) ?? 0) >= config.weaknessSolveMinGain - 1e-9).map((w) => w.key);
+}
+
 function diffLineups(before: OptimalLineup, after: OptimalLineup): SlotChange[] {
   const changes: SlotChange[] = [];
   for (let i = 0; i < before.assignments.length; i++) {
@@ -201,6 +226,7 @@ function simulateSide(
     depthBefore: team.depthScore,
     depthAfter: depthScoreFor(after.bench, analysis.replacement.levels),
     rosterAfter: fitted.roster,
+    solvedWeaknesses: solvedWeaknessKeys(team, before, after, config),
   };
 }
 
