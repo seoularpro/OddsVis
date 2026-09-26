@@ -1,6 +1,7 @@
 import "../styles.css";
 import React, { useEffect } from "react";
 import ThemeToggleDropdown from "../ThemeToggleDropdown";
+import { TRADES_ENABLED } from "../featureFlags";
 
 // Registry of tools shown on the Tools page. Add a new tool by appending an
 // entry here; the page renders one card per entry.
@@ -10,7 +11,7 @@ import ThemeToggleDropdown from "../ThemeToggleDropdown";
 //   cta         - button label
 //   isNew       - optional "New" badge
 const TOOLS = [
-  {
+  TRADES_ENABLED && {
     name: "Trade Optimizer",
     description:
       "Enter an ESPN or Sleeper league ID to find the trades that most raise your optimal " +
@@ -20,6 +21,7 @@ const TOOLS = [
     cta: "Find trades",
     isNew: true,
   },
+].filter(Boolean).concat([
   {
     name: "Fantasy Lineup Importer",
     description:
@@ -28,7 +30,7 @@ const TOOLS = [
     href: "/leagueLineups",
     cta: "Open importer",
   },
-];
+]);
 
 export default function Tools() {
   useEffect(() => {
