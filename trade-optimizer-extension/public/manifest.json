@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "OddsVis Trade Optimizer",
+  "version": "0.1.0",
+  "description": "Top 10 realistic trades that raise your fantasy football starting lineup's projection, using OddsVis projections and values.",
+  "minimum_chrome_version": "116",
+  "action": {
+    "default_title": "OddsVis Trade Optimizer (opens the side panel)",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "src/ui/sidepanel/index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://fantasy.espn.com/*",
+    "https://*.fantasy.espn.com/*",
+    "https://sleeper.com/*",
+    "https://api.sleeper.app/*",
+    "https://football.fantasysports.yahoo.com/*",
+    "https://raw.githubusercontent.com/*",
+    "https://api.lemonsqueezy.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://fantasy.espn.com/*",
+        "https://sleeper.com/*",
+        "https://football.fantasysports.yahoo.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

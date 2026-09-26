@@ -198,3 +198,20 @@ export async function fetchSleeperLeagueLineups({ leagueId }) {
 
   return normalizeSleeperLeagueLineups({ leagueId: id, league, rosters, users, players, state });
 }
+
+/**
+ * Raw Sleeper payloads (league, rosters, users, NFL state, trimmed players)
+ * for the trade optimizer.
+ */
+export async function fetchSleeperLeagueRaw({ leagueId }) {
+  const id = String(leagueId ?? "").trim();
+  if (!/^\d+$/.test(id)) throw new SleeperApiError("SLEEPER_INVALID_LEAGUE_ID");
+  const [league, rosters, users, state, players] = await Promise.all([
+    requestSleeper(`/league/${id}`),
+    requestSleeper(`/league/${id}/rosters`),
+    requestSleeper(`/league/${id}/users`),
+    requestSleeper("/state/nfl"),
+    loadSleeperPlayers(),
+  ]);
+  return { leagueId: id, league, rosters, users, state, players };
+}

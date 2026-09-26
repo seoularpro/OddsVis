@@ -1,0 +1,24 @@
+// Public surface of the library build consumed by the OddsVis website.
+export * from "../optimization";
+export * from "../data/types";
+export * from "../data/playerMapping";
+export * from "../data/enrichLeague";
+export * from "../data/projections";
+export * from "../data/tradeValues";
+export * from "../data/fixtures/syntheticLeague";
+export { normalizeEspnLeague, normalizeEspnPlayerPool, espnTeamForSwid, espnSeasonFromDate } from "../content/adapters/espn/espnAdapter";
+export { normalizeSleeperLeague, trimSleeperPlayers } from "../content/adapters/sleeper/sleeperAdapter";
+export * from "../shared/license";
+export { PAYWALL_CONFIG } from "../shared/paywallConfig";
+export type { PaywallConfig, PaywallProviderKind } from "../shared/paywallConfig";
+export { DEFAULT_SETTINGS, loadSettings, saveSettings } from "../shared/storage";
+export type { ExtensionSettings } from "../shared/storage";
+export { TradeReport } from "../ui/TradeReport";
+export type { TradeReportProps } from "../ui/TradeReport";
+export { TeamAnalysisPanel } from "../ui/components/TeamAnalysisPanel";
+export { TradeCard } from "../ui/components/TradeCard";
+export { LockedTradeCard } from "../ui/components/LockedTradeCard";
+export { LeagueTable } from "../ui/components/LeagueTable";
+export { LicensePanel } from "../ui/components/LicensePanel";
+export { SettingsPanel } from "../ui/components/SettingsPanel";
+import "../ui/styles.css";

@@ -1,6 +1,7 @@
 import "../styles.css";
 import React, { useEffect } from "react";
 import ThemeToggleDropdown from "../ThemeToggleDropdown";
+import { TRADES_ENABLED } from "../featureFlags";
 
 // Registry of tools shown on the Tools page. Add a new tool by appending an
 // entry here; the page renders one card per entry.
@@ -10,6 +11,17 @@ import ThemeToggleDropdown from "../ThemeToggleDropdown";
 //   cta         - button label
 //   isNew       - optional "New" badge
 const TOOLS = [
+  TRADES_ENABLED && {
+    name: "Trade Optimizer",
+    description:
+      "Enter an ESPN or Sleeper league ID to find the trades that most raise your optimal " +
+      "starting lineup's median projection while staying realistic for the other manager. " +
+      "Same engine as the Chrome extension, works on your phone.",
+    href: "/trades",
+    cta: "Find trades",
+    isNew: true,
+  },
+].filter(Boolean).concat([
   {
     name: "Fantasy Lineup Importer",
     description:
@@ -17,9 +29,8 @@ const TOOLS = [
       "see this week's median projection for each starter, and compare team totals.",
     href: "/leagueLineups",
     cta: "Open importer",
-    isNew: true,
   },
-];
+]);
 
 export default function Tools() {
   useEffect(() => {

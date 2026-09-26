@@ -10,6 +10,20 @@
       "port": 3000,
       "cwd": "odds-react-app",
       "autoPort": true
+    },
+    {
+      "name": "trade-optimizer-ui",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5174",
+        "--strictPort"
+      ],
+      "port": 5174,
+      "cwd": "trade-optimizer-extension"
     }
   ]
 }
