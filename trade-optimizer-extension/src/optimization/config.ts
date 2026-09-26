@@ -66,6 +66,8 @@ export interface OptimizerConfig {
   unlistedTradeValue: "estimate" | "zero";
   /** Free waiver upgrades applied to every roster before analysis (0 disables). */
   baselineWaiverMoves: number;
+  /** Smallest lineup gain worth recommending a drop-and-add for. */
+  minWaiverMoveGain: number;
 }
 
 export const DEFAULT_CONFIG: OptimizerConfig = {
@@ -101,6 +103,7 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   maxTradesPerPartner: 2,
   unlistedTradeValue: "estimate",
   baselineWaiverMoves: 2,
+  minWaiverMoveGain: 1.0,
 };
 
 export function mergeConfig(overrides?: Partial<OptimizerConfig>): OptimizerConfig {

@@ -244,7 +244,7 @@ describe("waiver baseline", () => {
     // The scrub (not the unprojected player) is dropped for the 15-pt free agent: RB2 8 -> 15.
     expect(me.waiverMoves).toHaveLength(1);
     expect(me.waiverMoves[0].add.id).toBe(bigFa.id);
-    expect(me.waiverMoves[0].drop.id).toBe(scrub.id);
+    expect(me.waiverMoves[0].drop?.id).toBe(scrub.id);
     expect(me.waiverMoves[0].gain).toBeCloseTo(7, 5);
     expect(me.roster.some((p) => p.id === bigFa.id)).toBe(true);
     expect(me.roster.some((p) => p.name === "U unknown")).toBe(true);
@@ -255,6 +255,20 @@ describe("waiver baseline", () => {
     for (const t of result.trades) {
       expect(t.simulation.user.waiverAdds.some((p) => p.id === bigFa.id)).toBe(false);
     }
+    // Open roster spots are filled in the baseline, so a 2-for-2 never shows waiver adds.
+    const short = [P("S QB", "QB", 20, 20), P("S RB1", "RB", 17, 28), P("S RB2", "RB", 8, 3), P("S WR1", "WR", 18, 30), P("S WR2", "WR", 15, 20), P("S WR3", "WR", 13, 12), P("S TE", "TE", 10, 8), ...kd()];
+    const league3 = makeLeague({ teams: [{ id: "s", name: "S", players: short }, { id: "o", name: "O", players: opp }], userTeamId: "s", availablePlayers: [P("FA RB 15b", "RB", 15, 0), ...waivers()], rosterSize: 11 });
+    const a3 = analyzeLeague(league3);
+    expect(a3.user!.roster).toHaveLength(11);
+    expect(a3.user!.waiverMoves.filter((m) => m.drop === null)).toHaveLength(2);
+    expect(a3.user!.waiverMoves[0].add.name).toBe("FA RB 15b");
+    const r3 = runTradeOptimizer(league3);
+    for (const t of r3.trades) {
+      if (t.simulation.candidate.userSends.length === t.simulation.candidate.userReceives.length) expect(t.simulation.user.waiverAdds).toHaveLength(0);
+    }
+    // A swap below the minimum gain is not recommended.
+    const noisy = makeLeague({ teams: [{ id: "n", name: "N", players: [...user.filter((p) => p !== scrub), P("N scrub", "RB", 7.2, 1)] }, { id: "o", name: "O", players: opp }], userTeamId: "n", availablePlayers: [P("FA RB 7.6", "RB", 7.6, 0), ...waivers()], rosterSize: 11 });
+    expect(analyzeLeague(noisy).user!.waiverMoves).toHaveLength(0);
     // Disabled baseline keeps the raw roster.
     expect(analyzeLeague(league, { baselineWaiverMoves: 0 }).user!.waiverMoves).toHaveLength(0);
     // Real depth is never cut for a marginal gain: a 15-pt bench RB stays even if a 15.4 WR would start.

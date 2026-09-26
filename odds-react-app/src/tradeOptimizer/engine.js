@@ -33,7 +33,8 @@ const DEFAULT_CONFIG = {
   topN: 5,
   maxTradesPerPartner: 2,
   unlistedTradeValue: "estimate",
-  baselineWaiverMoves: 2
+  baselineWaiverMoves: 2,
+  minWaiverMoveGain: 1
 };
 function mergeConfig(overrides) {
   if (!overrides) return DEFAULT_CONFIG;
@@ -458,7 +459,7 @@ function withPlayers(roster, remove, add) {
 function dropCandidates(roster, starterIds) {
   return roster.filter((p) => !starterIds.has(p.id) && OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset").sort((a, b) => a.projection - b.projection || a.tradeValue - b.tradeValue);
 }
-function applyFreeWaiverMoves(league, maxMovesPerTeam, dropMargin = 1.5) {
+function applyFreeWaiverMoves(league, maxMovesPerTeam, dropMargin = 1.5, minSwapGain = 1) {
   const moves = {};
   if (maxMovesPerTeam <= 0) return { league, moves };
   const slots = league.settings.lineupSlots;
@@ -466,9 +467,29 @@ function applyFreeWaiverMoves(league, maxMovesPerTeam, dropMargin = 1.5) {
   const claimed = /* @__PURE__ */ new Set();
   const replacement = { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 };
   for (const p of pool2) replacement[p.position] = Math.max(replacement[p.position], p.projection);
+  const asRostered = (fa) => ({ ...fa, tradeValue: 0, tradeValueSource: "none" });
+  const bestAdd = (roster) => {
+    const base = optimalTotal(roster, slots);
+    let best = null;
+    const seen = /* @__PURE__ */ new Set();
+    for (const fa of pool2) {
+      if (claimed.has(fa.id) || seen.has(fa.position)) continue;
+      seen.add(fa.position);
+      const gain = optimalTotal([...roster, fa], slots) - base;
+      if (!best || gain > best.gain + 1e-9 || Math.abs(gain - best.gain) < 1e-9 && fa.projection > best.player.projection) best = { player: fa, gain };
+    }
+    return best;
+  };
   const teams = league.teams.map((team) => {
     let roster = [...team.players];
     const teamMoves = [];
+    while (roster.length < league.settings.rosterSize) {
+      const best = bestAdd(roster);
+      if (!best) break;
+      claimed.add(best.player.id);
+      roster.push(asRostered(best.player));
+      teamMoves.push({ add: best.player, drop: null, gain: best.gain });
+    }
     for (let i = 0; i < maxMovesPerTeam; i++) {
       const lineup = optimizeLineup(roster, slots);
       const starterIds = new Set(lineup.starters.map((p) => p.id));
@@ -476,19 +497,12 @@ function applyFreeWaiverMoves(league, maxMovesPerTeam, dropMargin = 1.5) {
       if (!drops.length) break;
       const drop = drops[0];
       const without = roster.filter((p) => p.id !== drop.id);
-      const base = lineup.total;
-      let best = null;
-      const seen = /* @__PURE__ */ new Set();
-      for (const fa of pool2) {
-        if (claimed.has(fa.id) || seen.has(fa.position)) continue;
-        seen.add(fa.position);
-        const gain = optimalTotal([...without, fa], slots) - base;
-        if (gain > 0.05 && (!best || gain > best.gain)) best = { add: fa, drop, gain };
-      }
-      if (!best) break;
-      claimed.add(best.add.id);
-      roster = [...without, { ...best.add, tradeValue: 0, tradeValueSource: "none" }];
-      teamMoves.push(best);
+      const candidate = bestAdd(without);
+      const gain = candidate ? optimalTotal([...without, candidate.player], slots) - lineup.total : 0;
+      if (!candidate || gain < minSwapGain) break;
+      claimed.add(candidate.player.id);
+      roster = [...without, asRostered(candidate.player)];
+      teamMoves.push({ add: candidate.player, drop, gain });
     }
     if (teamMoves.length) moves[team.id] = teamMoves;
     return { ...team, players: roster };
@@ -540,7 +554,7 @@ function analyzeOne(team, league, replacement, benchmarks, all, config) {
 }
 function analyzeLeague(originalLeague, overrides) {
   const config = mergeConfig(overrides);
-  const { league, moves } = applyFreeWaiverMoves(originalLeague, config.baselineWaiverMoves, config.holeMarginPoints);
+  const { league, moves } = applyFreeWaiverMoves(originalLeague, config.baselineWaiverMoves, config.holeMarginPoints, config.minWaiverMoveGain);
   const slots = league.settings.lineupSlots;
   const replacement = computeReplacementLevels(league);
   const all = league.teams.map((team) => ({
@@ -2089,7 +2103,7 @@ function instanceName() {
   const os = /Mac/.test(ua) ? "macOS" : /Windows/.test(ua) ? "Windows" : /Linux/.test(ua) ? "Linux" : "";
   return `${browser} ${os}`.trim() || "extension";
 }
-const __vite_import_meta_env__ = { "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SSR": false, "VITE_PAYWALL_DEFAULT_PLAN": "season", "VITE_PAYWALL_FREE_TRADES": "1", "VITE_PAYWALL_PRICE_LIFETIME": "", "VITE_PAYWALL_PRICE_MONTHLY": "", "VITE_PAYWALL_PRICE_SEASON": "", "VITE_PAYWALL_PRICE_WEEKEND": "", "VITE_PAYWALL_PRODUCT": "OddsVis Trade Optimizer Pro", "VITE_PAYWALL_PROVIDER": "lemonsqueezy", "VITE_PAYWALL_STORE": "", "VITE_PAYWALL_VALIDATE": "", "VITE_PAYWALL_VARIANT_LIFETIME": "2171612", "VITE_PAYWALL_VARIANT_MONTHLY": "2171604", "VITE_PAYWALL_VARIANT_SEASON": "2171607", "VITE_PAYWALL_VARIANT_WEEKEND": "2171618" };
+const __vite_import_meta_env__ = { "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SSR": false, "VITE_PAYWALL_DEFAULT_PLAN": "monthly", "VITE_PAYWALL_FREE_TRADES": "1", "VITE_PAYWALL_PRICE_LIFETIME": "49.99", "VITE_PAYWALL_PRICE_MONTHLY": "6.99", "VITE_PAYWALL_PRICE_SEASON": "24.99", "VITE_PAYWALL_PRICE_WEEKEND": "1", "VITE_PAYWALL_PRODUCT": "OddsVis Trade Optimizer Pro", "VITE_PAYWALL_PROVIDER": "lemonsqueezy", "VITE_PAYWALL_STORE": "", "VITE_PAYWALL_VALIDATE": "", "VITE_PAYWALL_VARIANT_LIFETIME": "2171612", "VITE_PAYWALL_VARIANT_MONTHLY": "2171604", "VITE_PAYWALL_VARIANT_SEASON": "2171607", "VITE_PAYWALL_VARIANT_WEEKEND": "2171618" };
 const PLAN_META = [
   { id: "weekend", label: "Weekend pass", description: "Every trade for one slate. Good through Monday night." },
   { id: "monthly", label: "Monthly", description: "Renews monthly. Cancel any time." },
@@ -2224,11 +2238,9 @@ function TeamAnalysisPanel({ analysis, team }) {
         m.add.name,
         " (",
         fmt1(m.add.projection),
-        ") and drop ",
-        m.drop.name,
-        " (",
-        fmt1(m.drop.projection),
-        ") for +",
+        ")",
+        m.drop ? ` and drop ${m.drop.name} (${fmt1(m.drop.projection)})` : " to an open roster spot",
+        " for +",
         fmt1(m.gain)
       ] }, i)),
       ". Trades below are measured after these moves."

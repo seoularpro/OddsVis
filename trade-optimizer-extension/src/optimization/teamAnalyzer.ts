@@ -104,7 +104,7 @@ function analyzeOne(
 
 export function analyzeLeague(originalLeague: League, overrides?: Partial<OptimizerConfig>): LeagueAnalysis {
   const config = mergeConfig(overrides);
-  const { league, moves } = applyFreeWaiverMoves(originalLeague, config.baselineWaiverMoves, config.holeMarginPoints);
+  const { league, moves } = applyFreeWaiverMoves(originalLeague, config.baselineWaiverMoves, config.holeMarginPoints, config.minWaiverMoveGain);
   const slots = league.settings.lineupSlots;
   const replacement = computeReplacementLevels(league);
   const all = league.teams.map((team) => ({

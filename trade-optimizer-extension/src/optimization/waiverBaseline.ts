@@ -13,7 +13,8 @@ import { optimizeLineup, optimalTotal } from "./lineupOptimizer";
 
 export interface WaiverMove {
   add: Player;
-  drop: Player;
+  /** Null when the player fills an open roster spot. */
+  drop: Player | null;
   gain: number;
 }
 
@@ -31,7 +32,12 @@ export function dropCandidates(roster: Player[], starterIds: Set<string>): Playe
  *   many points of his position's replacement level, i.e. he is himself
  *   waiver-level; real depth is never cut for a marginal lineup gain.
  */
-export function applyFreeWaiverMoves(league: League, maxMovesPerTeam: number, dropMargin = 1.5): { league: League; moves: Record<string, WaiverMove[]> } {
+export function applyFreeWaiverMoves(
+  league: League,
+  maxMovesPerTeam: number,
+  dropMargin = 1.5,
+  minSwapGain = 1.0
+): { league: League; moves: Record<string, WaiverMove[]> } {
   const moves: Record<string, WaiverMove[]> = {};
   if (maxMovesPerTeam <= 0) return { league, moves };
   const slots = league.settings.lineupSlots;
@@ -40,9 +46,32 @@ export function applyFreeWaiverMoves(league: League, maxMovesPerTeam: number, dr
   const replacement = { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 } as Record<Position, number>;
   for (const p of pool) replacement[p.position] = Math.max(replacement[p.position], p.projection);
 
+  const asRostered = (fa: Player): Player => ({ ...fa, tradeValue: 0, tradeValueSource: "none" });
+  const bestAdd = (roster: Player[]): { player: Player; gain: number } | null => {
+    const base = optimalTotal(roster, slots);
+    let best: { player: Player; gain: number } | null = null;
+    const seen = new Set<string>();
+    for (const fa of pool) {
+      if (claimed.has(fa.id) || seen.has(fa.position)) continue;
+      seen.add(fa.position); // only the best free agent per position can win
+      const gain = optimalTotal([...roster, fa], slots) - base;
+      if (!best || gain > best.gain + 1e-9 || (Math.abs(gain - best.gain) < 1e-9 && fa.projection > best.player.projection)) best = { player: fa, gain };
+    }
+    return best;
+  };
+
   const teams: Team[] = league.teams.map((team) => {
     let roster = [...team.players];
     const teamMoves: WaiverMove[] = [];
+    // Open roster spots are filled first, exactly as a post-trade refit would,
+    // so a trade is never credited with a pickup the team can make today.
+    while (roster.length < league.settings.rosterSize) {
+      const best = bestAdd(roster);
+      if (!best) break;
+      claimed.add(best.player.id);
+      roster.push(asRostered(best.player));
+      teamMoves.push({ add: best.player, drop: null, gain: best.gain });
+    }
     for (let i = 0; i < maxMovesPerTeam; i++) {
       const lineup = optimizeLineup(roster, slots);
       const starterIds = new Set(lineup.starters.map((p) => p.id));
@@ -50,19 +79,13 @@ export function applyFreeWaiverMoves(league: League, maxMovesPerTeam: number, dr
       if (!drops.length) break;
       const drop = drops[0];
       const without = roster.filter((p) => p.id !== drop.id);
-      const base = lineup.total;
-      let best: WaiverMove | null = null;
-      const seen = new Set<string>();
-      for (const fa of pool) {
-        if (claimed.has(fa.id) || seen.has(fa.position)) continue;
-        seen.add(fa.position); // only the best free agent per position can win
-        const gain = optimalTotal([...without, fa], slots) - base;
-        if (gain > 0.05 && (!best || gain > best.gain)) best = { add: fa, drop, gain };
-      }
-      if (!best) break;
-      claimed.add(best.add.id);
-      roster = [...without, { ...best.add, tradeValue: 0, tradeValueSource: "none" }];
-      teamMoves.push(best);
+      const candidate = bestAdd(without);
+      // Gain is measured against the current lineup (with `drop` still on it).
+      const gain = candidate ? optimalTotal([...without, candidate.player], slots) - lineup.total : 0;
+      if (!candidate || gain < minSwapGain) break;
+      claimed.add(candidate.player.id);
+      roster = [...without, asRostered(candidate.player)];
+      teamMoves.push({ add: candidate.player, drop, gain });
     }
     if (teamMoves.length) moves[team.id] = teamMoves;
     return { ...team, players: roster };

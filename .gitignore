@@ -23,3 +23,6 @@ temp/
 # Ignore coverage reports
 coverage/
 release/
+
+# Local env overrides
+.env.*.local

@@ -39,7 +39,7 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
           <b>Do this first (free):</b>{" "}
           {team.waiverMoves.map((m, i) => (
             <span key={i}>
-              {i > 0 ? "; " : ""}add {m.add.name} ({fmt1(m.add.projection)}) and drop {m.drop.name} ({fmt1(m.drop.projection)}) for +{fmt1(m.gain)}
+              {i > 0 ? "; " : ""}add {m.add.name} ({fmt1(m.add.projection)}){m.drop ? ` and drop ${m.drop.name} (${fmt1(m.drop.projection)})` : " to an open roster spot"} for +{fmt1(m.gain)}
             </span>
           ))}
           . Trades below are measured after these moves.
