@@ -1,22 +1,23 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-26T20:06:35Z",
+ "generatedAt": "2026-09-27T14:15:08Z",
  "baseline": {
   "label": "Half PPR, 10-team",
   "source": "the live Trade Values Google Sheet",
   "sheetUrl": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeoIhwXWGaj4O8NRSQZo-sBpVFHboSPYaqic8F60xALMLbKJ5Xq6p5SOd3gnH645cRHakYimmdzQoB/pubhtml?gid=1217119222&single=true",
   "playerCount": 105,
-  "topValue": 78
+  "topValue": 77
  },
  "reseed": {
   "week": 3,
   "season": 2026,
-  "snapshotIndex": 5,
+  "snapshotIndex": 6,
   "weight": 0.4,
-  "moved": 78,
+  "moved": 77,
   "noProjection": [
    "Puka Nacua",
    "Nico Collins",
+   "Rome Odunze",
    "Josh Jacobs",
    "De'Zhaun Stribling",
    "Jayden Daniels",
@@ -142,7 +143,7 @@
    ],
    "rows": [
     [
-     69,
+     68,
      "Jahmyr Gibbs",
      "",
      "",
@@ -152,18 +153,8 @@
      ""
     ],
     [
-     66,
+     65,
      "Bijan Robinson",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     60,
-     "Kenneth Walker III",
      "",
      "",
      "",
@@ -182,8 +173,8 @@
      ""
     ],
     [
-     58,
-     "Jonathan Taylor",
+     59,
+     "Kenneth Walker III",
      "",
      "",
      "",
@@ -192,10 +183,20 @@
      ""
     ],
     [
-     58,
+     59,
      "",
      "",
      "Jaxon Smith-Njigba",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     58,
+     "Jonathan Taylor",
+     "",
+     "",
      "",
      "",
      "",
@@ -232,20 +233,20 @@
      ""
     ],
     [
-     53,
-     "James Cook III",
+     54,
      "",
      "",
+     "Ja'Marr Chase",
      "",
      "",
      "",
      ""
     ],
     [
-     52,
+     53,
+     "James Cook III",
      "",
      "",
-     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -262,7 +263,7 @@
      ""
     ],
     [
-     49,
+     50,
      "",
      "",
      "CeeDee Lamb",
@@ -272,30 +273,10 @@
      ""
     ],
     [
-     46,
+     47,
      "Saquon Barkley",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     45,
-     "Chase Brown",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     45,
-     "",
-     "",
-     "Zay Flowers",
      "",
      "",
      "",
@@ -312,7 +293,7 @@
      ""
     ],
     [
-     43,
+     44,
      "",
      "",
      "",
@@ -322,7 +303,17 @@
      ""
     ],
     [
-     40,
+     43,
+     "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     43,
      "",
      "",
      "Chris Olave",
@@ -402,6 +393,26 @@
      ""
     ],
     [
+     32,
+     "",
+     "",
+     "Garrett Wilson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     32,
+     "",
+     "",
+     "George Pickens",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      31,
      "",
      "",
@@ -425,17 +436,7 @@
      30,
      "",
      "",
-     "Garrett Wilson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     30,
-     "",
-     "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -452,7 +453,7 @@
      ""
     ],
     [
-     29,
+     28,
      "",
      "",
      "",
@@ -462,8 +463,18 @@
      "Lamar Jackson"
     ],
     [
-     28,
+     27,
      "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     27,
+     "Jaylen Warren",
      "",
      "",
      "",
@@ -512,26 +523,6 @@
      ""
     ],
     [
-     23,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     23,
-     "Chuba Hubbard",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      22,
      "Bucky Irving",
      "",
@@ -543,9 +534,9 @@
     ],
     [
      22,
+     "Chuba Hubbard",
      "",
      "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -565,7 +556,7 @@
      21,
      "",
      "",
-     "Ladd McConkey",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -585,7 +576,7 @@
      20,
      "",
      "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -605,7 +596,7 @@
      19,
      "",
      "",
-     "Rashee Rice",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -632,10 +623,20 @@
      ""
     ],
     [
+     18,
+     "",
+     "",
+     "Rashee Rice",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      17,
-     "Cam Skattebo",
      "",
      "",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -653,6 +654,16 @@
     ],
     [
      16,
+     "Cam Skattebo",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     16,
      "Jadarian Price",
      "",
      "",
@@ -662,7 +673,7 @@
      ""
     ],
     [
-     15,
+     16,
      "David Montgomery",
      "",
      "",
@@ -670,16 +681,6 @@
      "",
      "",
      ""
-    ],
-    [
-     15,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Drake Maye"
     ],
     [
      14,
@@ -712,6 +713,16 @@
      ""
     ],
     [
+     14,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      13,
      "MarShawn Lloyd",
      "",
@@ -720,36 +731,6 @@
      "",
      "",
      ""
-    ],
-    [
-     13,
-     "",
-     "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     13,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     13,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
     ],
     [
      12,
@@ -764,6 +745,16 @@
     [
      12,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     12,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -827,6 +818,26 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     12,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     12,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
@@ -873,7 +884,7 @@
     ],
     [
      10,
-     "Jordan Mason",
+     "Aaron Jones Sr.",
      "",
      "",
      "",
@@ -883,7 +894,7 @@
     ],
     [
      10,
-     "Tony Pollard",
+     "Jordan Mason",
      "",
      "",
      "",
@@ -912,6 +923,16 @@
      ""
     ],
     [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dak Prescott"
+    ],
+    [
      9,
      "",
      "",
@@ -936,26 +957,6 @@
      "",
      "",
      "Michael Wilson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
-    ],
-    [
-     8,
-     "Aaron Jones Sr.",
-     "",
-     "",
      "",
      "",
      "",
@@ -1067,16 +1068,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -1108,6 +1099,16 @@
      "Stefon Diggs",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "Harold Fannin Jr.",
      "",
      ""
     ],
@@ -1196,20 +1197,14 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 69,
-     "baselineValue": 78
+     "value": 68,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 66,
-     "baselineValue": 74
-    },
-    {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 60,
-     "baselineValue": 65
+     "value": 65,
+     "baselineValue": 73
     },
     {
      "name": "Christian McCaffrey",
@@ -1218,16 +1213,22 @@
      "baselineValue": 66
     },
     {
-     "name": "Jonathan Taylor",
+     "name": "Kenneth Walker III",
      "pos": "RB",
-     "value": 58,
-     "baselineValue": 62
+     "value": 59,
+     "baselineValue": 64
     },
     {
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
+     "value": 59,
+     "baselineValue": 67
+    },
+    {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
      "value": 58,
-     "baselineValue": 65
+     "baselineValue": 62
     },
     {
      "name": "Puka Nacua",
@@ -1248,16 +1249,16 @@
      "baselineValue": 62
     },
     {
+     "name": "Ja'Marr Chase",
+     "pos": "WR",
+     "value": 54,
+     "baselineValue": 62
+    },
+    {
      "name": "James Cook III",
      "pos": "RB",
      "value": 53,
      "baselineValue": 56
-    },
-    {
-     "name": "Ja'Marr Chase",
-     "pos": "WR",
-     "value": 52,
-     "baselineValue": 60
     },
     {
      "name": "Ashton Jeanty",
@@ -1268,44 +1269,38 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 49,
-     "baselineValue": 54
+     "value": 50,
+     "baselineValue": 56
     },
     {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 46,
-     "baselineValue": 48
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 45,
-     "baselineValue": 48
-    },
-    {
-     "name": "Zay Flowers",
-     "pos": "WR",
-     "value": 45,
-     "baselineValue": 47
+     "value": 47,
+     "baselineValue": 49
     },
     {
      "name": "Justin Jefferson",
      "pos": "WR",
      "value": 44,
-     "baselineValue": 47
+     "baselineValue": 48
     },
     {
      "name": "Trey McBride",
      "pos": "TE",
+     "value": 44,
+     "baselineValue": 47
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
      "value": 43,
      "baselineValue": 46
     },
     {
      "name": "Chris Olave",
      "pos": "WR",
-     "value": 40,
-     "baselineValue": 44
+     "value": 43,
+     "baselineValue": 47
     },
     {
      "name": "De'Von Achane",
@@ -1317,13 +1312,13 @@
      "name": "Javonte Williams",
      "pos": "RB",
      "value": 37,
-     "baselineValue": 38
+     "baselineValue": 37
     },
     {
      "name": "Breece Hall",
      "pos": "RB",
      "value": 37,
-     "baselineValue": 38
+     "baselineValue": 37
     },
     {
      "name": "Josh Allen",
@@ -1350,6 +1345,18 @@
      "baselineValue": 29
     },
     {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 32,
+     "baselineValue": 34
+    },
+    {
+     "name": "George Pickens",
+     "pos": "WR",
+     "value": 32,
+     "baselineValue": 33
+    },
+    {
      "name": "Drake London",
      "pos": "WR",
      "value": 31,
@@ -1359,16 +1366,10 @@
      "name": "DeVonta Smith",
      "pos": "WR",
      "value": 30,
-     "baselineValue": 31
+     "baselineValue": 32
     },
     {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 30,
-     "baselineValue": 31
-    },
-    {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 30,
      "baselineValue": 30
@@ -1382,14 +1383,20 @@
     {
      "name": "Lamar Jackson",
      "pos": "QB",
-     "value": 29,
-     "baselineValue": 26
+     "value": 28,
+     "baselineValue": 25
     },
     {
      "name": "D'Andre Swift",
      "pos": "RB",
-     "value": 28,
-     "baselineValue": 27
+     "value": 27,
+     "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 27,
+     "baselineValue": 26
     },
     {
      "name": "Davante Adams",
@@ -1416,28 +1423,16 @@
      "baselineValue": 24
     },
     {
-     "name": "Jaylen Warren",
-     "pos": "RB",
-     "value": 23,
-     "baselineValue": 22
-    },
-    {
-     "name": "Chuba Hubbard",
-     "pos": "RB",
-     "value": 23,
-     "baselineValue": 19
-    },
-    {
      "name": "Bucky Irving",
      "pos": "RB",
      "value": 22,
      "baselineValue": 21
     },
     {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
+     "name": "Chuba Hubbard",
+     "pos": "RB",
      "value": 22,
-     "baselineValue": 22
+     "baselineValue": 18
     },
     {
      "name": "Jeremiyah Love",
@@ -1446,7 +1441,7 @@
      "baselineValue": 20
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 21,
      "baselineValue": 21
@@ -1458,7 +1453,7 @@
      "baselineValue": 21
     },
     {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 20,
      "baselineValue": 20
@@ -1470,10 +1465,10 @@
      "baselineValue": 20
     },
     {
-     "name": "Rashee Rice",
+     "name": "Tee Higgins",
      "pos": "WR",
      "value": 19,
-     "baselineValue": 20
+     "baselineValue": 19
     },
     {
      "name": "Tetairoa McMillan",
@@ -1488,16 +1483,28 @@
      "baselineValue": 15
     },
     {
-     "name": "Cam Skattebo",
-     "pos": "RB",
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 18,
+     "baselineValue": 19
+    },
+    {
+     "name": "Rome Odunze",
+     "pos": "WR",
      "value": 17,
-     "baselineValue": 16
+     "baselineValue": 13
     },
     {
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 17,
      "baselineValue": 13
+    },
+    {
+     "name": "Cam Skattebo",
+     "pos": "RB",
+     "value": 16,
+     "baselineValue": 15
     },
     {
      "name": "Jadarian Price",
@@ -1508,14 +1515,8 @@
     {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 15,
-     "baselineValue": 11
-    },
-    {
-     "name": "Drake Maye",
-     "pos": "QB",
-     "value": 15,
-     "baselineValue": 11
+     "value": 16,
+     "baselineValue": 12
     },
     {
      "name": "Bhayshul Tuten",
@@ -1536,26 +1537,14 @@
      "baselineValue": 10
     },
     {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "value": 14,
+     "baselineValue": 10
+    },
+    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
-     "value": 13,
-     "baselineValue": 9
-    },
-    {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 13,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 13,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
      "value": 13,
      "baselineValue": 9
     },
@@ -1567,6 +1556,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 12,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 12,
      "baselineValue": 8
@@ -1602,6 +1597,18 @@
      "baselineValue": 8
     },
     {
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 12,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
+     "pos": "QB",
+     "value": 12,
+     "baselineValue": 8
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 12,
@@ -1632,13 +1639,13 @@
      "baselineValue": 7
     },
     {
-     "name": "Jordan Mason",
+     "name": "Aaron Jones Sr.",
      "pos": "RB",
      "value": 10,
-     "baselineValue": 6
+     "baselineValue": 9
     },
     {
-     "name": "Tony Pollard",
+     "name": "Jordan Mason",
      "pos": "RB",
      "value": 10,
      "baselineValue": 6
@@ -1652,6 +1659,12 @@
     {
      "name": "Alec Pierce",
      "pos": "WR",
+     "value": 10,
+     "baselineValue": 6
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
      "value": 10,
      "baselineValue": 6
     },
@@ -1672,18 +1685,6 @@
      "pos": "WR",
      "value": 9,
      "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
-     "value": 9,
-     "baselineValue": 5
-    },
-    {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 8,
-     "baselineValue": 7
     },
     {
      "name": "J.K. Dobbins",
@@ -1746,12 +1747,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 7,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 7,
@@ -1772,6 +1767,12 @@
     {
      "name": "Stefon Diggs",
      "pos": "WR",
+     "value": 6,
+     "baselineValue": 3
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
      "value": 6,
      "baselineValue": 3
     },
@@ -1854,7 +1855,7 @@
    ],
    "rows": [
     [
-     75,
+     74,
      "Jahmyr Gibbs",
      "",
      "",
@@ -1864,18 +1865,8 @@
      ""
     ],
     [
-     71,
+     70,
      "Bijan Robinson",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     64,
-     "Kenneth Walker III",
      "",
      "",
      "",
@@ -1894,8 +1885,8 @@
      ""
     ],
     [
-     61,
-     "Jonathan Taylor",
+     63,
+     "Kenneth Walker III",
      "",
      "",
      "",
@@ -1904,10 +1895,20 @@
      ""
     ],
     [
-     61,
+     63,
      "",
      "",
      "Jaxon Smith-Njigba",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     61,
+     "Jonathan Taylor",
+     "",
+     "",
      "",
      "",
      "",
@@ -1944,10 +1945,10 @@
      ""
     ],
     [
-     55,
-     "James Cook III",
+     57,
      "",
      "",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -1955,9 +1956,9 @@
     ],
     [
      55,
+     "James Cook III",
      "",
      "",
-     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -1974,7 +1975,7 @@
      ""
     ],
     [
-     50,
+     52,
      "",
      "",
      "CeeDee Lamb",
@@ -1984,7 +1985,7 @@
      ""
     ],
     [
-     47,
+     48,
      "Saquon Barkley",
      "",
      "",
@@ -1994,20 +1995,10 @@
      ""
     ],
     [
-     46,
-     "Chase Brown",
+     45,
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     46,
-     "",
-     "",
-     "Zay Flowers",
+     "Justin Jefferson",
      "",
      "",
      "",
@@ -2015,9 +2006,9 @@
     ],
     [
      44,
+     "Chase Brown",
      "",
      "",
-     "Justin Jefferson",
      "",
      "",
      "",
@@ -2034,7 +2025,7 @@
      ""
     ],
     [
-     40,
+     43,
      "",
      "",
      "Chris Olave",
@@ -2055,6 +2046,16 @@
     ],
     [
      37,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Josh Allen"
+    ],
+    [
+     36,
      "Javonte Williams",
      "",
      "",
@@ -2064,7 +2065,7 @@
      ""
     ],
     [
-     37,
+     36,
      "Breece Hall",
      "",
      "",
@@ -2072,16 +2073,6 @@
      "",
      "",
      ""
-    ],
-    [
-     37,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Josh Allen"
     ],
     [
      33,
@@ -2104,10 +2095,30 @@
      ""
     ],
     [
+     32,
+     "",
+     "",
+     "George Pickens",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      31,
      "Kyren Williams",
      "",
      "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     31,
+     "",
+     "",
+     "Garrett Wilson",
      "",
      "",
      "",
@@ -2124,7 +2135,7 @@
      ""
     ],
     [
-     28,
+     29,
      "",
      "",
      "DeVonta Smith",
@@ -2137,17 +2148,7 @@
      28,
      "",
      "",
-     "Garrett Wilson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     28,
-     "",
-     "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -2164,7 +2165,7 @@
      ""
     ],
     [
-     28,
+     27,
      "",
      "",
      "",
@@ -2175,6 +2176,16 @@
     ],
     [
      26,
+     "",
+     "",
+     "Davante Adams",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     25,
      "D'Andre Swift",
      "",
      "",
@@ -2184,10 +2195,10 @@
      ""
     ],
     [
-     26,
+     25,
+     "Jaylen Warren",
      "",
      "",
-     "Davante Adams",
      "",
      "",
      "",
@@ -2224,18 +2235,8 @@
      ""
     ],
     [
-     21,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     21,
-     "Chuba Hubbard",
+     20,
+     "Bucky Irving",
      "",
      "",
      "",
@@ -2245,7 +2246,7 @@
     ],
     [
      20,
-     "Bucky Irving",
+     "Chuba Hubbard",
      "",
      "",
      "",
@@ -2258,16 +2259,6 @@
      "",
      "",
      "Jaylen Waddle",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     20,
-     "",
-     "",
-     "Ladd McConkey",
      "",
      "",
      "",
@@ -2297,7 +2288,7 @@
      18,
      "",
      "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -2317,17 +2308,17 @@
      18,
      "",
      "",
-     "Tetairoa McMillan",
+     "Tee Higgins",
      "",
      "",
      "",
      ""
     ],
     [
-     17,
+     18,
      "",
      "",
-     "Rashee Rice",
+     "Tetairoa McMillan",
      "",
      "",
      "",
@@ -2344,10 +2335,20 @@
      ""
     ],
     [
+     16,
+     "",
+     "",
+     "Rashee Rice",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      15,
-     "Cam Skattebo",
      "",
      "",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -2365,6 +2366,16 @@
     ],
     [
      14,
+     "Cam Skattebo",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     14,
      "Jadarian Price",
      "",
      "",
@@ -2374,7 +2385,7 @@
      ""
     ],
     [
-     13,
+     14,
      "David Montgomery",
      "",
      "",
@@ -2382,16 +2393,6 @@
      "",
      "",
      ""
-    ],
-    [
-     13,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Drake Maye"
     ],
     [
      12,
@@ -2424,6 +2425,16 @@
      ""
     ],
     [
+     12,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      11,
      "MarShawn Lloyd",
      "",
@@ -2432,36 +2443,6 @@
      "",
      "",
      ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
     ],
     [
      10,
@@ -2476,6 +2457,16 @@
     [
      10,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     10,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -2539,6 +2530,26 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     10,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
@@ -2585,7 +2596,7 @@
     ],
     [
      8,
-     "Jordan Mason",
+     "Aaron Jones Sr.",
      "",
      "",
      "",
@@ -2595,7 +2606,7 @@
     ],
     [
      8,
-     "Tony Pollard",
+     "Jordan Mason",
      "",
      "",
      "",
@@ -2624,6 +2635,16 @@
      ""
     ],
     [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dak Prescott"
+    ],
+    [
      7,
      "",
      "",
@@ -2648,26 +2669,6 @@
      "",
      "",
      "Michael Wilson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
-    ],
-    [
-     6,
-     "Aaron Jones Sr.",
-     "",
-     "",
      "",
      "",
      "",
@@ -2779,16 +2780,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     6,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -2820,6 +2811,16 @@
      "Stefon Diggs",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     5,
+     "",
+     "",
+     "",
+     "",
+     "Harold Fannin Jr.",
      "",
      ""
     ],
@@ -2908,20 +2909,14 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 75,
-     "baselineValue": 78
+     "value": 74,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 71,
-     "baselineValue": 74
-    },
-    {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 64,
-     "baselineValue": 65
+     "value": 70,
+     "baselineValue": 73
     },
     {
      "name": "Christian McCaffrey",
@@ -2930,16 +2925,22 @@
      "baselineValue": 66
     },
     {
-     "name": "Jonathan Taylor",
+     "name": "Kenneth Walker III",
      "pos": "RB",
-     "value": 61,
-     "baselineValue": 62
+     "value": 63,
+     "baselineValue": 64
     },
     {
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
+     "value": 63,
+     "baselineValue": 67
+    },
+    {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
      "value": 61,
-     "baselineValue": 65
+     "baselineValue": 62
     },
     {
      "name": "Puka Nacua",
@@ -2960,16 +2961,16 @@
      "baselineValue": 62
     },
     {
+     "name": "Ja'Marr Chase",
+     "pos": "WR",
+     "value": 57,
+     "baselineValue": 62
+    },
+    {
      "name": "James Cook III",
      "pos": "RB",
      "value": 55,
      "baselineValue": 56
-    },
-    {
-     "name": "Ja'Marr Chase",
-     "pos": "WR",
-     "value": 55,
-     "baselineValue": 60
     },
     {
      "name": "Ashton Jeanty",
@@ -2980,44 +2981,38 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 50,
-     "baselineValue": 54
+     "value": 52,
+     "baselineValue": 56
     },
     {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 47,
+     "value": 48,
+     "baselineValue": 49
+    },
+    {
+     "name": "Justin Jefferson",
+     "pos": "WR",
+     "value": 45,
      "baselineValue": 48
     },
     {
      "name": "Chase Brown",
      "pos": "RB",
-     "value": 46,
-     "baselineValue": 48
-    },
-    {
-     "name": "Zay Flowers",
-     "pos": "WR",
-     "value": 46,
-     "baselineValue": 47
-    },
-    {
-     "name": "Justin Jefferson",
-     "pos": "WR",
      "value": 44,
-     "baselineValue": 47
+     "baselineValue": 46
     },
     {
      "name": "Trey McBride",
      "pos": "TE",
      "value": 44,
-     "baselineValue": 46
+     "baselineValue": 47
     },
     {
      "name": "Chris Olave",
      "pos": "WR",
-     "value": 40,
-     "baselineValue": 44
+     "value": 43,
+     "baselineValue": 47
     },
     {
      "name": "De'Von Achane",
@@ -3026,22 +3021,22 @@
      "baselineValue": 42
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 37,
-     "baselineValue": 38
-    },
-    {
-     "name": "Breece Hall",
-     "pos": "RB",
-     "value": 37,
-     "baselineValue": 38
-    },
-    {
      "name": "Josh Allen",
      "pos": "QB",
      "value": 37,
      "baselineValue": 35
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 36,
+     "baselineValue": 37
+    },
+    {
+     "name": "Breece Hall",
+     "pos": "RB",
+     "value": 36,
+     "baselineValue": 37
     },
     {
      "name": "Nico Collins",
@@ -3056,10 +3051,22 @@
      "baselineValue": 33
     },
     {
+     "name": "George Pickens",
+     "pos": "WR",
+     "value": 32,
+     "baselineValue": 33
+    },
+    {
      "name": "Kyren Williams",
      "pos": "RB",
      "value": 31,
      "baselineValue": 29
+    },
+    {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 31,
+     "baselineValue": 34
     },
     {
      "name": "Drake London",
@@ -3070,17 +3077,11 @@
     {
      "name": "DeVonta Smith",
      "pos": "WR",
-     "value": 28,
-     "baselineValue": 31
+     "value": 29,
+     "baselineValue": 32
     },
     {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 28,
-     "baselineValue": 31
-    },
-    {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 28,
      "baselineValue": 30
@@ -3094,20 +3095,26 @@
     {
      "name": "Lamar Jackson",
      "pos": "QB",
-     "value": 28,
-     "baselineValue": 26
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 26,
-     "baselineValue": 27
+     "value": 27,
+     "baselineValue": 25
     },
     {
      "name": "Davante Adams",
      "pos": "WR",
      "value": 26,
      "baselineValue": 27
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 25,
+     "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 25,
+     "baselineValue": 26
     },
     {
      "name": "Quinshon Judkins",
@@ -3128,31 +3135,19 @@
      "baselineValue": 24
     },
     {
-     "name": "Jaylen Warren",
-     "pos": "RB",
-     "value": 21,
-     "baselineValue": 22
-    },
-    {
-     "name": "Chuba Hubbard",
-     "pos": "RB",
-     "value": 21,
-     "baselineValue": 19
-    },
-    {
      "name": "Bucky Irving",
      "pos": "RB",
      "value": 20,
      "baselineValue": 21
     },
     {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
+     "name": "Chuba Hubbard",
+     "pos": "RB",
      "value": 20,
-     "baselineValue": 22
+     "baselineValue": 18
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 20,
      "baselineValue": 21
@@ -3170,7 +3165,7 @@
      "baselineValue": 21
     },
     {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 18,
      "baselineValue": 20
@@ -3182,16 +3177,16 @@
      "baselineValue": 20
     },
     {
-     "name": "Tetairoa McMillan",
+     "name": "Tee Higgins",
      "pos": "WR",
      "value": 18,
      "baselineValue": 19
     },
     {
-     "name": "Rashee Rice",
+     "name": "Tetairoa McMillan",
      "pos": "WR",
-     "value": 17,
-     "baselineValue": 20
+     "value": 18,
+     "baselineValue": 19
     },
     {
      "name": "Mike Evans",
@@ -3200,16 +3195,28 @@
      "baselineValue": 15
     },
     {
-     "name": "Cam Skattebo",
-     "pos": "RB",
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 16,
+     "baselineValue": 19
+    },
+    {
+     "name": "Rome Odunze",
+     "pos": "WR",
      "value": 15,
-     "baselineValue": 16
+     "baselineValue": 13
     },
     {
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 15,
      "baselineValue": 13
+    },
+    {
+     "name": "Cam Skattebo",
+     "pos": "RB",
+     "value": 14,
+     "baselineValue": 15
     },
     {
      "name": "Jadarian Price",
@@ -3220,14 +3227,8 @@
     {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 13,
-     "baselineValue": 11
-    },
-    {
-     "name": "Drake Maye",
-     "pos": "QB",
-     "value": 13,
-     "baselineValue": 11
+     "value": 14,
+     "baselineValue": 12
     },
     {
      "name": "Bhayshul Tuten",
@@ -3248,26 +3249,14 @@
      "baselineValue": 10
     },
     {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "value": 12,
+     "baselineValue": 10
+    },
+    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
-     "value": 11,
-     "baselineValue": 9
-    },
-    {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 11,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 11,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
      "value": 11,
      "baselineValue": 9
     },
@@ -3279,6 +3268,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 10,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 10,
      "baselineValue": 8
@@ -3314,6 +3309,18 @@
      "baselineValue": 8
     },
     {
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 10,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
+     "pos": "QB",
+     "value": 10,
+     "baselineValue": 8
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 10,
@@ -3344,13 +3351,13 @@
      "baselineValue": 7
     },
     {
-     "name": "Jordan Mason",
+     "name": "Aaron Jones Sr.",
      "pos": "RB",
      "value": 8,
-     "baselineValue": 6
+     "baselineValue": 9
     },
     {
-     "name": "Tony Pollard",
+     "name": "Jordan Mason",
      "pos": "RB",
      "value": 8,
      "baselineValue": 6
@@ -3364,6 +3371,12 @@
     {
      "name": "Alec Pierce",
      "pos": "WR",
+     "value": 8,
+     "baselineValue": 6
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
      "value": 8,
      "baselineValue": 6
     },
@@ -3384,18 +3397,6 @@
      "pos": "WR",
      "value": 7,
      "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
-     "value": 7,
-     "baselineValue": 5
-    },
-    {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 6,
-     "baselineValue": 7
     },
     {
      "name": "J.K. Dobbins",
@@ -3458,12 +3459,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 6,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 6,
@@ -3484,6 +3479,12 @@
     {
      "name": "Stefon Diggs",
      "pos": "WR",
+     "value": 5,
+     "baselineValue": 3
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
      "value": 5,
      "baselineValue": 3
     },
@@ -3566,7 +3567,7 @@
    ],
    "rows": [
     [
-     81,
+     80,
      "Jahmyr Gibbs",
      "",
      "",
@@ -3576,7 +3577,7 @@
      ""
     ],
     [
-     76,
+     75,
      "Bijan Robinson",
      "",
      "",
@@ -3586,7 +3587,7 @@
      ""
     ],
     [
-     68,
+     67,
      "Kenneth Walker III",
      "",
      "",
@@ -3606,10 +3607,10 @@
      ""
     ],
     [
-     64,
-     "Jonathan Taylor",
+     66,
      "",
      "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -3617,9 +3618,9 @@
     ],
     [
      64,
+     "Jonathan Taylor",
      "",
      "",
-     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -3656,10 +3657,10 @@
      ""
     ],
     [
-     57,
-     "James Cook III",
+     59,
      "",
      "",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -3667,9 +3668,9 @@
     ],
     [
      57,
+     "James Cook III",
      "",
      "",
-     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -3686,7 +3687,7 @@
      ""
     ],
     [
-     51,
+     53,
      "",
      "",
      "CeeDee Lamb",
@@ -3696,7 +3697,7 @@
      ""
     ],
     [
-     48,
+     49,
      "Saquon Barkley",
      "",
      "",
@@ -3706,27 +3707,7 @@
      ""
     ],
     [
-     46,
-     "Chase Brown",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     46,
-     "",
-     "",
-     "Zay Flowers",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     44,
+     45,
      "",
      "",
      "Justin Jefferson",
@@ -3736,7 +3717,7 @@
      ""
     ],
     [
-     43,
+     45,
      "",
      "",
      "",
@@ -3746,7 +3727,17 @@
      ""
     ],
     [
-     39,
+     44,
+     "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     43,
      "",
      "",
      "Chris Olave",
@@ -3767,6 +3758,16 @@
     ],
     [
      36,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Josh Allen"
+    ],
+    [
+     35,
      "Javonte Williams",
      "",
      "",
@@ -3776,7 +3777,7 @@
      ""
     ],
     [
-     36,
+     35,
      "Breece Hall",
      "",
      "",
@@ -3784,16 +3785,6 @@
      "",
      "",
      ""
-    ],
-    [
-     36,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Josh Allen"
     ],
     [
      32,
@@ -3810,6 +3801,26 @@
      "Omarion Hampton",
      "",
      "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     30,
+     "",
+     "",
+     "Garrett Wilson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     30,
+     "",
+     "",
+     "George Pickens",
      "",
      "",
      "",
@@ -3839,16 +3850,6 @@
      27,
      "",
      "",
-     "George Pickens",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     26,
-     "",
-     "",
      "DeVonta Smith",
      "",
      "",
@@ -3856,10 +3857,10 @@
      ""
     ],
     [
-     26,
+     27,
      "",
      "",
-     "Garrett Wilson",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -3876,7 +3877,7 @@
      ""
     ],
     [
-     26,
+     25,
      "",
      "",
      "",
@@ -3886,8 +3887,18 @@
      "Lamar Jackson"
     ],
     [
-     24,
+     23,
      "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     23,
+     "Jaylen Warren",
      "",
      "",
      "",
@@ -3936,26 +3947,6 @@
      ""
     ],
     [
-     19,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     19,
-     "Chuba Hubbard",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      18,
      "Bucky Irving",
      "",
@@ -3967,9 +3958,9 @@
     ],
     [
      18,
+     "Chuba Hubbard",
      "",
      "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -3989,7 +3980,7 @@
      17,
      "",
      "",
-     "Ladd McConkey",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -4009,7 +4000,7 @@
      16,
      "",
      "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -4029,7 +4020,7 @@
      15,
      "",
      "",
-     "Rashee Rice",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -4056,10 +4047,20 @@
      ""
     ],
     [
+     14,
+     "",
+     "",
+     "Rashee Rice",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      13,
-     "Cam Skattebo",
      "",
      "",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -4077,6 +4078,16 @@
     ],
     [
      12,
+     "Cam Skattebo",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     12,
      "Jadarian Price",
      "",
      "",
@@ -4086,7 +4097,7 @@
      ""
     ],
     [
-     11,
+     12,
      "David Montgomery",
      "",
      "",
@@ -4094,16 +4105,6 @@
      "",
      "",
      ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Drake Maye"
     ],
     [
      10,
@@ -4126,6 +4127,16 @@
      ""
     ],
     [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      9,
      "MarShawn Lloyd",
      "",
@@ -4146,36 +4157,6 @@
      ""
     ],
     [
-     9,
-     "",
-     "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
-    ],
-    [
      8,
      "TreVeyon Henderson",
      "",
@@ -4188,6 +4169,16 @@
     [
      8,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -4251,6 +4242,26 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
@@ -4297,7 +4308,7 @@
     ],
     [
      6,
-     "Jordan Mason",
+     "Aaron Jones Sr.",
      "",
      "",
      "",
@@ -4307,7 +4318,7 @@
     ],
     [
      6,
-     "Tony Pollard",
+     "Jordan Mason",
      "",
      "",
      "",
@@ -4336,14 +4347,14 @@
      ""
     ],
     [
-     5,
-     "Aaron Jones Sr.",
+     6,
      "",
      "",
      "",
      "",
      "",
-     ""
+     "",
+     "Dak Prescott"
     ],
     [
      5,
@@ -4374,16 +4385,6 @@
      "",
      "",
      ""
-    ],
-    [
-     5,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
     ],
     [
      4,
@@ -4491,16 +4492,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     4,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -4571,6 +4562,16 @@
      "",
      "",
      "",
+     "Harold Fannin Jr.",
+     "",
+     ""
+    ],
+    [
+     3,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Justin Herbert"
@@ -4620,20 +4621,20 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 81,
-     "baselineValue": 78
+     "value": 80,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 76,
-     "baselineValue": 74
+     "value": 75,
+     "baselineValue": 73
     },
     {
      "name": "Kenneth Walker III",
      "pos": "RB",
-     "value": 68,
-     "baselineValue": 65
+     "value": 67,
+     "baselineValue": 64
     },
     {
      "name": "Christian McCaffrey",
@@ -4642,16 +4643,16 @@
      "baselineValue": 66
     },
     {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 66,
+     "baselineValue": 67
+    },
+    {
      "name": "Jonathan Taylor",
      "pos": "RB",
      "value": 64,
      "baselineValue": 62
-    },
-    {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 64,
-     "baselineValue": 65
     },
     {
      "name": "Puka Nacua",
@@ -4672,16 +4673,16 @@
      "baselineValue": 62
     },
     {
+     "name": "Ja'Marr Chase",
+     "pos": "WR",
+     "value": 59,
+     "baselineValue": 62
+    },
+    {
      "name": "James Cook III",
      "pos": "RB",
      "value": 57,
      "baselineValue": 56
-    },
-    {
-     "name": "Ja'Marr Chase",
-     "pos": "WR",
-     "value": 57,
-     "baselineValue": 60
     },
     {
      "name": "Ashton Jeanty",
@@ -4692,44 +4693,38 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 51,
-     "baselineValue": 54
+     "value": 53,
+     "baselineValue": 56
     },
     {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 48,
-     "baselineValue": 48
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 46,
-     "baselineValue": 48
-    },
-    {
-     "name": "Zay Flowers",
-     "pos": "WR",
-     "value": 46,
-     "baselineValue": 47
+     "value": 49,
+     "baselineValue": 49
     },
     {
      "name": "Justin Jefferson",
      "pos": "WR",
-     "value": 44,
-     "baselineValue": 47
+     "value": 45,
+     "baselineValue": 48
     },
     {
      "name": "Trey McBride",
      "pos": "TE",
-     "value": 43,
+     "value": 45,
+     "baselineValue": 47
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 44,
      "baselineValue": 46
     },
     {
      "name": "Chris Olave",
      "pos": "WR",
-     "value": 39,
-     "baselineValue": 44
+     "value": 43,
+     "baselineValue": 47
     },
     {
      "name": "De'Von Achane",
@@ -4738,22 +4733,22 @@
      "baselineValue": 42
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 36,
-     "baselineValue": 38
-    },
-    {
-     "name": "Breece Hall",
-     "pos": "RB",
-     "value": 36,
-     "baselineValue": 38
-    },
-    {
      "name": "Josh Allen",
      "pos": "QB",
      "value": 36,
      "baselineValue": 35
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 35,
+     "baselineValue": 37
+    },
+    {
+     "name": "Breece Hall",
+     "pos": "RB",
+     "value": 35,
+     "baselineValue": 37
     },
     {
      "name": "Nico Collins",
@@ -4765,6 +4760,18 @@
      "name": "Omarion Hampton",
      "pos": "RB",
      "value": 31,
+     "baselineValue": 33
+    },
+    {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 30,
+     "baselineValue": 34
+    },
+    {
+     "name": "George Pickens",
+     "pos": "WR",
+     "value": 30,
      "baselineValue": 33
     },
     {
@@ -4780,22 +4787,16 @@
      "baselineValue": 33
     },
     {
-     "name": "George Pickens",
+     "name": "DeVonta Smith",
+     "pos": "WR",
+     "value": 27,
+     "baselineValue": 32
+    },
+    {
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 27,
      "baselineValue": 30
-    },
-    {
-     "name": "DeVonta Smith",
-     "pos": "WR",
-     "value": 26,
-     "baselineValue": 31
-    },
-    {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 26,
-     "baselineValue": 31
     },
     {
      "name": "A.J. Brown",
@@ -4806,14 +4807,20 @@
     {
      "name": "Lamar Jackson",
      "pos": "QB",
-     "value": 26,
-     "baselineValue": 26
+     "value": 25,
+     "baselineValue": 25
     },
     {
      "name": "D'Andre Swift",
      "pos": "RB",
-     "value": 24,
-     "baselineValue": 27
+     "value": 23,
+     "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 23,
+     "baselineValue": 26
     },
     {
      "name": "Davante Adams",
@@ -4840,28 +4847,16 @@
      "baselineValue": 24
     },
     {
-     "name": "Jaylen Warren",
-     "pos": "RB",
-     "value": 19,
-     "baselineValue": 22
-    },
-    {
-     "name": "Chuba Hubbard",
-     "pos": "RB",
-     "value": 19,
-     "baselineValue": 19
-    },
-    {
      "name": "Bucky Irving",
      "pos": "RB",
      "value": 18,
      "baselineValue": 21
     },
     {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
+     "name": "Chuba Hubbard",
+     "pos": "RB",
      "value": 18,
-     "baselineValue": 22
+     "baselineValue": 18
     },
     {
      "name": "Jeremiyah Love",
@@ -4870,7 +4865,7 @@
      "baselineValue": 20
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 17,
      "baselineValue": 21
@@ -4882,7 +4877,7 @@
      "baselineValue": 21
     },
     {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 16,
      "baselineValue": 20
@@ -4894,10 +4889,10 @@
      "baselineValue": 20
     },
     {
-     "name": "Rashee Rice",
+     "name": "Tee Higgins",
      "pos": "WR",
      "value": 15,
-     "baselineValue": 20
+     "baselineValue": 19
     },
     {
      "name": "Tetairoa McMillan",
@@ -4912,16 +4907,28 @@
      "baselineValue": 15
     },
     {
-     "name": "Cam Skattebo",
-     "pos": "RB",
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 14,
+     "baselineValue": 19
+    },
+    {
+     "name": "Rome Odunze",
+     "pos": "WR",
      "value": 13,
-     "baselineValue": 16
+     "baselineValue": 13
     },
     {
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 13,
      "baselineValue": 13
+    },
+    {
+     "name": "Cam Skattebo",
+     "pos": "RB",
+     "value": 12,
+     "baselineValue": 15
     },
     {
      "name": "Jadarian Price",
@@ -4932,14 +4939,8 @@
     {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 11,
-     "baselineValue": 11
-    },
-    {
-     "name": "Drake Maye",
-     "pos": "QB",
-     "value": 11,
-     "baselineValue": 11
+     "value": 12,
+     "baselineValue": 12
     },
     {
      "name": "Bhayshul Tuten",
@@ -4950,6 +4951,12 @@
     {
      "name": "Colston Loveland",
      "pos": "TE",
+     "value": 10,
+     "baselineValue": 10
+    },
+    {
+     "name": "Drake Maye",
+     "pos": "QB",
      "value": 10,
      "baselineValue": 10
     },
@@ -4966,24 +4973,6 @@
      "baselineValue": 13
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
      "name": "TreVeyon Henderson",
      "pos": "RB",
      "value": 8,
@@ -4991,6 +4980,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 8,
      "baselineValue": 8
@@ -5026,6 +5021,18 @@
      "baselineValue": 8
     },
     {
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
+     "pos": "QB",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 8,
@@ -5056,13 +5063,13 @@
      "baselineValue": 7
     },
     {
-     "name": "Jordan Mason",
+     "name": "Aaron Jones Sr.",
      "pos": "RB",
      "value": 6,
-     "baselineValue": 6
+     "baselineValue": 9
     },
     {
-     "name": "Tony Pollard",
+     "name": "Jordan Mason",
      "pos": "RB",
      "value": 6,
      "baselineValue": 6
@@ -5080,10 +5087,10 @@
      "baselineValue": 6
     },
     {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 5,
-     "baselineValue": 7
+     "name": "Dak Prescott",
+     "pos": "QB",
+     "value": 6,
+     "baselineValue": 6
     },
     {
      "name": "Brian Thomas Jr.",
@@ -5100,12 +5107,6 @@
     {
      "name": "Michael Wilson",
      "pos": "WR",
-     "value": 5,
-     "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
      "value": 5,
      "baselineValue": 5
     },
@@ -5170,12 +5171,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 4,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 4,
@@ -5216,6 +5211,12 @@
      "pos": "WR",
      "value": 3,
      "baselineValue": 2
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
+     "value": 3,
+     "baselineValue": 3
     },
     {
      "name": "Justin Herbert",
@@ -5288,7 +5289,7 @@
      ""
     ],
     [
-     68,
+     67,
      "Bijan Robinson",
      "",
      "",
@@ -5298,18 +5299,18 @@
      ""
     ],
     [
-     62,
-     "Christian McCaffrey",
+     63,
      "",
      "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
      ""
     ],
     [
-     61,
-     "Kenneth Walker III",
+     62,
+     "Christian McCaffrey",
      "",
      "",
      "",
@@ -5328,10 +5329,10 @@
      ""
     ],
     [
-     61,
+     60,
+     "Kenneth Walker III",
      "",
      "",
-     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -5351,17 +5352,17 @@
      58,
      "",
      "",
-     "Amon-Ra St. Brown",
+     "Ja'Marr Chase",
      "",
      "",
      "",
      ""
     ],
     [
-     57,
+     58,
      "",
      "",
-     "Ja'Marr Chase",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -5388,6 +5389,16 @@
      ""
     ],
     [
+     54,
+     "",
+     "",
+     "CeeDee Lamb",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      52,
      "Ashton Jeanty",
      "",
@@ -5398,17 +5409,7 @@
      ""
     ],
     [
-     52,
-     "",
-     "",
-     "CeeDee Lamb",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     47,
+     48,
      "Saquon Barkley",
      "",
      "",
@@ -5419,16 +5420,6 @@
     ],
     [
      47,
-     "Chase Brown",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     46,
      "",
      "",
      "Justin Jefferson",
@@ -5441,14 +5432,14 @@
      46,
      "",
      "",
-     "Zay Flowers",
+     "Chris Olave",
      "",
      "",
      "",
      ""
     ],
     [
-     45,
+     46,
      "",
      "",
      "",
@@ -5458,10 +5449,10 @@
      ""
     ],
     [
-     43,
+     45,
+     "Chase Brown",
      "",
      "",
-     "Chris Olave",
      "",
      "",
      "",
@@ -5478,7 +5469,7 @@
      ""
     ],
     [
-     38,
+     37,
      "Javonte Williams",
      "",
      "",
@@ -5488,7 +5479,7 @@
      ""
     ],
     [
-     38,
+     37,
      "Breece Hall",
      "",
      "",
@@ -5518,6 +5509,16 @@
      "Josh Allen"
     ],
     [
+     35,
+     "",
+     "",
+     "Garrett Wilson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      34,
      "Omarion Hampton",
      "",
@@ -5538,7 +5539,17 @@
      ""
     ],
     [
-     32,
+     34,
+     "",
+     "",
+     "George Pickens",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     33,
      "",
      "",
      "DeVonta Smith",
@@ -5548,20 +5559,10 @@
      ""
     ],
     [
-     32,
-     "",
-     "",
-     "Garrett Wilson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      31,
      "",
      "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -5589,6 +5590,16 @@
     ],
     [
      28,
+     "",
+     "",
+     "Davante Adams",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     27,
      "D'Andre Swift",
      "",
      "",
@@ -5598,10 +5609,10 @@
      ""
     ],
     [
-     28,
+     27,
+     "Jaylen Warren",
      "",
      "",
-     "Davante Adams",
      "",
      "",
      "",
@@ -5624,26 +5635,6 @@
      "",
      "",
      "Brock Bowers",
-     "",
-     ""
-    ],
-    [
-     24,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     24,
-     "",
-     "",
-     "Jaylen Waddle",
-     "",
-     "",
      "",
      ""
     ],
@@ -5681,7 +5672,7 @@
      23,
      "",
      "",
-     "Ladd McConkey",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -5711,17 +5702,7 @@
      22,
      "",
      "",
-     "Rashee Rice",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     22,
-     "",
-     "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -5739,9 +5720,19 @@
     ],
     [
      21,
-     "Chuba Hubbard",
      "",
      "",
+     "Rashee Rice",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     21,
+     "",
+     "",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -5758,7 +5749,17 @@
      ""
     ],
     [
-     18,
+     20,
+     "Chuba Hubbard",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     17,
      "Cam Skattebo",
      "",
      "",
@@ -5791,6 +5792,16 @@
      15,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     15,
+     "",
+     "",
      "",
      "",
      "Tyler Warren",
@@ -5808,17 +5819,7 @@
      ""
     ],
     [
-     13,
-     "Travis Etienne Jr.",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     13,
+     14,
      "David Montgomery",
      "",
      "",
@@ -5829,13 +5830,13 @@
     ],
     [
      13,
+     "Travis Etienne Jr.",
      "",
      "",
      "",
      "",
      "",
-     "",
-     "Drake Maye"
+     ""
     ],
     [
      12,
@@ -5858,6 +5859,16 @@
      ""
     ],
     [
+     12,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      11,
      "MarShawn Lloyd",
      "",
@@ -5869,33 +5880,13 @@
     ],
     [
      11,
+     "Aaron Jones Sr.",
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
      ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
     ],
     [
      10,
@@ -5910,6 +5901,16 @@
     [
      10,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     10,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -5973,19 +5974,29 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     10,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
-    ],
-    [
-     9,
-     "Aaron Jones Sr.",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
     ],
     [
      9,
@@ -6049,16 +6060,6 @@
     ],
     [
      8,
-     "Tony Pollard",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     8,
      "",
      "",
      "Carnell Tate",
@@ -6076,6 +6077,16 @@
      "",
      "",
      ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dak Prescott"
     ],
     [
      7,
@@ -6116,16 +6127,6 @@
      "",
      "",
      ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
     ],
     [
      5,
@@ -6223,16 +6224,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     5,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -6264,6 +6255,16 @@
      "Stefon Diggs",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     4,
+     "",
+     "",
+     "",
+     "",
+     "Harold Fannin Jr.",
      "",
      ""
     ],
@@ -6333,13 +6334,19 @@
      "name": "Jahmyr Gibbs",
      "pos": "RB",
      "value": 71,
-     "baselineValue": 78
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 68,
-     "baselineValue": 74
+     "value": 67,
+     "baselineValue": 73
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 63,
+     "baselineValue": 67
     },
     {
      "name": "Christian McCaffrey",
@@ -6348,22 +6355,16 @@
      "baselineValue": 66
     },
     {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 61,
-     "baselineValue": 65
-    },
-    {
      "name": "Puka Nacua",
      "pos": "WR",
      "value": 61,
      "baselineValue": 65
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 61,
-     "baselineValue": 65
+     "name": "Kenneth Walker III",
+     "pos": "RB",
+     "value": 60,
+     "baselineValue": 64
     },
     {
      "name": "Jonathan Taylor",
@@ -6372,16 +6373,16 @@
      "baselineValue": 62
     },
     {
-     "name": "Amon-Ra St. Brown",
+     "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 58,
      "baselineValue": 62
     },
     {
-     "name": "Ja'Marr Chase",
+     "name": "Amon-Ra St. Brown",
      "pos": "WR",
-     "value": 57,
-     "baselineValue": 60
+     "value": 58,
+     "baselineValue": 62
     },
     {
      "name": "Derrick Henry",
@@ -6396,37 +6397,31 @@
      "baselineValue": 56
     },
     {
+     "name": "CeeDee Lamb",
+     "pos": "WR",
+     "value": 54,
+     "baselineValue": 56
+    },
+    {
      "name": "Ashton Jeanty",
      "pos": "RB",
      "value": 52,
      "baselineValue": 54
     },
     {
-     "name": "CeeDee Lamb",
-     "pos": "WR",
-     "value": 52,
-     "baselineValue": 54
-    },
-    {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 47,
-     "baselineValue": 48
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 47,
-     "baselineValue": 48
+     "value": 48,
+     "baselineValue": 49
     },
     {
      "name": "Justin Jefferson",
      "pos": "WR",
-     "value": 46,
-     "baselineValue": 47
+     "value": 47,
+     "baselineValue": 48
     },
     {
-     "name": "Zay Flowers",
+     "name": "Chris Olave",
      "pos": "WR",
      "value": 46,
      "baselineValue": 47
@@ -6434,14 +6429,14 @@
     {
      "name": "Trey McBride",
      "pos": "TE",
-     "value": 45,
-     "baselineValue": 46
+     "value": 46,
+     "baselineValue": 47
     },
     {
-     "name": "Chris Olave",
-     "pos": "WR",
-     "value": 43,
-     "baselineValue": 44
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 45,
+     "baselineValue": 46
     },
     {
      "name": "De'Von Achane",
@@ -6452,14 +6447,14 @@
     {
      "name": "Javonte Williams",
      "pos": "RB",
-     "value": 38,
-     "baselineValue": 38
+     "value": 37,
+     "baselineValue": 37
     },
     {
      "name": "Breece Hall",
      "pos": "RB",
-     "value": 38,
-     "baselineValue": 38
+     "value": 37,
+     "baselineValue": 37
     },
     {
      "name": "Nico Collins",
@@ -6474,6 +6469,12 @@
      "baselineValue": 35
     },
     {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 35,
+     "baselineValue": 34
+    },
+    {
      "name": "Omarion Hampton",
      "pos": "RB",
      "value": 34,
@@ -6486,19 +6487,19 @@
      "baselineValue": 33
     },
     {
+     "name": "George Pickens",
+     "pos": "WR",
+     "value": 34,
+     "baselineValue": 33
+    },
+    {
      "name": "DeVonta Smith",
      "pos": "WR",
-     "value": 32,
-     "baselineValue": 31
+     "value": 33,
+     "baselineValue": 32
     },
     {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 32,
-     "baselineValue": 31
-    },
-    {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 31,
      "baselineValue": 30
@@ -6516,40 +6517,34 @@
      "baselineValue": 29
     },
     {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 28,
-     "baselineValue": 27
-    },
-    {
      "name": "Davante Adams",
      "pos": "WR",
      "value": 28,
      "baselineValue": 27
     },
     {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 27,
+     "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 27,
+     "baselineValue": 26
+    },
+    {
      "name": "Lamar Jackson",
      "pos": "QB",
      "value": 27,
-     "baselineValue": 26
+     "baselineValue": 25
     },
     {
      "name": "Brock Bowers",
      "pos": "TE",
      "value": 26,
      "baselineValue": 24
-    },
-    {
-     "name": "Jaylen Warren",
-     "pos": "RB",
-     "value": 24,
-     "baselineValue": 22
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 24,
-     "baselineValue": 22
     },
     {
      "name": "Bucky Irving",
@@ -6570,7 +6565,7 @@
      "baselineValue": 21
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 23,
      "baselineValue": 21
@@ -6588,13 +6583,7 @@
      "baselineValue": 20
     },
     {
-     "name": "Rashee Rice",
-     "pos": "WR",
-     "value": 22,
-     "baselineValue": 20
-    },
-    {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 22,
      "baselineValue": 20
@@ -6606,8 +6595,14 @@
      "baselineValue": 20
     },
     {
-     "name": "Chuba Hubbard",
-     "pos": "RB",
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 21,
+     "baselineValue": 19
+    },
+    {
+     "name": "Tee Higgins",
+     "pos": "WR",
      "value": 21,
      "baselineValue": 19
     },
@@ -6618,10 +6613,16 @@
      "baselineValue": 19
     },
     {
+     "name": "Chuba Hubbard",
+     "pos": "RB",
+     "value": 20,
+     "baselineValue": 18
+    },
+    {
      "name": "Cam Skattebo",
      "pos": "RB",
-     "value": 18,
-     "baselineValue": 16
+     "value": 17,
+     "baselineValue": 15
     },
     {
      "name": "Mike Evans",
@@ -6631,6 +6632,12 @@
     },
     {
      "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 15,
+     "baselineValue": 13
+    },
+    {
+     "name": "Rome Odunze",
      "pos": "WR",
      "value": 15,
      "baselineValue": 13
@@ -6648,20 +6655,14 @@
      "baselineValue": 12
     },
     {
-     "name": "Travis Etienne Jr.",
-     "pos": "RB",
-     "value": 13,
-     "baselineValue": 11
-    },
-    {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 13,
-     "baselineValue": 11
+     "value": 14,
+     "baselineValue": 12
     },
     {
-     "name": "Drake Maye",
-     "pos": "QB",
+     "name": "Travis Etienne Jr.",
+     "pos": "RB",
      "value": 13,
      "baselineValue": 11
     },
@@ -6678,26 +6679,20 @@
      "baselineValue": 10
     },
     {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "value": 12,
+     "baselineValue": 10
+    },
+    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
      "value": 11,
      "baselineValue": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 11,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 11,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
+     "name": "Aaron Jones Sr.",
+     "pos": "RB",
      "value": 11,
      "baselineValue": 9
     },
@@ -6709,6 +6704,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 10,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 10,
      "baselineValue": 8
@@ -6744,16 +6745,22 @@
      "baselineValue": 8
     },
     {
-     "name": "Jayden Daniels",
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 10,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
      "pos": "QB",
      "value": 10,
      "baselineValue": 8
     },
     {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 9,
-     "baselineValue": 7
+     "name": "Jayden Daniels",
+     "pos": "QB",
+     "value": 10,
+     "baselineValue": 8
     },
     {
      "name": "Luther Burden III",
@@ -6792,12 +6799,6 @@
      "baselineValue": 6
     },
     {
-     "name": "Tony Pollard",
-     "pos": "RB",
-     "value": 8,
-     "baselineValue": 6
-    },
-    {
      "name": "Carnell Tate",
      "pos": "WR",
      "value": 8,
@@ -6806,6 +6807,12 @@
     {
      "name": "Alec Pierce",
      "pos": "WR",
+     "value": 8,
+     "baselineValue": 6
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
      "value": 8,
      "baselineValue": 6
     },
@@ -6830,12 +6837,6 @@
     {
      "name": "Michael Wilson",
      "pos": "WR",
-     "value": 7,
-     "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
      "value": 7,
      "baselineValue": 5
     },
@@ -6894,12 +6895,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 5,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 5,
@@ -6920,6 +6915,12 @@
     {
      "name": "Stefon Diggs",
      "pos": "WR",
+     "value": 4,
+     "baselineValue": 3
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
      "value": 4,
      "baselineValue": 3
     },
@@ -6990,7 +6991,7 @@
    ],
    "rows": [
     [
-     78,
+     77,
      "Jahmyr Gibbs",
      "",
      "",
@@ -7000,7 +7001,7 @@
      ""
     ],
     [
-     74,
+     73,
      "Bijan Robinson",
      "",
      "",
@@ -7010,18 +7011,18 @@
      ""
     ],
     [
-     66,
-     "Christian McCaffrey",
+     67,
      "",
      "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
      ""
     ],
     [
-     65,
-     "Kenneth Walker III",
+     66,
+     "Christian McCaffrey",
      "",
      "",
      "",
@@ -7040,10 +7041,10 @@
      ""
     ],
     [
-     65,
+     64,
+     "Kenneth Walker III",
      "",
      "",
-     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -7063,17 +7064,17 @@
      62,
      "",
      "",
-     "Amon-Ra St. Brown",
+     "Ja'Marr Chase",
      "",
      "",
      "",
      ""
     ],
     [
-     60,
+     62,
      "",
      "",
-     "Ja'Marr Chase",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -7100,6 +7101,16 @@
      ""
     ],
     [
+     56,
+     "",
+     "",
+     "CeeDee Lamb",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      54,
      "Ashton Jeanty",
      "",
@@ -7110,17 +7121,7 @@
      ""
     ],
     [
-     54,
-     "",
-     "",
-     "CeeDee Lamb",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     48,
+     49,
      "Saquon Barkley",
      "",
      "",
@@ -7131,16 +7132,6 @@
     ],
     [
      48,
-     "Chase Brown",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     47,
      "",
      "",
      "Justin Jefferson",
@@ -7153,14 +7144,14 @@
      47,
      "",
      "",
-     "Zay Flowers",
+     "Chris Olave",
      "",
      "",
      "",
      ""
     ],
     [
-     46,
+     47,
      "",
      "",
      "",
@@ -7170,10 +7161,10 @@
      ""
     ],
     [
-     44,
+     46,
+     "Chase Brown",
      "",
      "",
-     "Chris Olave",
      "",
      "",
      "",
@@ -7190,7 +7181,7 @@
      ""
     ],
     [
-     38,
+     37,
      "Javonte Williams",
      "",
      "",
@@ -7200,7 +7191,7 @@
      ""
     ],
     [
-     38,
+     37,
      "Breece Hall",
      "",
      "",
@@ -7230,6 +7221,16 @@
      "Josh Allen"
     ],
     [
+     34,
+     "",
+     "",
+     "Garrett Wilson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      33,
      "Omarion Hampton",
      "",
@@ -7250,7 +7251,17 @@
      ""
     ],
     [
-     31,
+     33,
+     "",
+     "",
+     "George Pickens",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     32,
      "",
      "",
      "DeVonta Smith",
@@ -7260,20 +7271,10 @@
      ""
     ],
     [
-     31,
-     "",
-     "",
-     "Garrett Wilson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      30,
      "",
      "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -7301,16 +7302,6 @@
     ],
     [
      27,
-     "D'Andre Swift",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     27,
      "",
      "",
      "Davante Adams",
@@ -7321,6 +7312,26 @@
     ],
     [
      26,
+     "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     26,
+     "Jaylen Warren",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     25,
      "",
      "",
      "",
@@ -7336,26 +7347,6 @@
      "",
      "",
      "Brock Bowers",
-     "",
-     ""
-    ],
-    [
-     22,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     22,
-     "",
-     "",
-     "Jaylen Waddle",
-     "",
-     "",
      "",
      ""
     ],
@@ -7393,7 +7384,7 @@
      21,
      "",
      "",
-     "Ladd McConkey",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -7423,17 +7414,7 @@
      20,
      "",
      "",
-     "Rashee Rice",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     20,
-     "",
-     "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -7451,9 +7432,19 @@
     ],
     [
      19,
-     "Chuba Hubbard",
      "",
      "",
+     "Rashee Rice",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     19,
+     "",
+     "",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -7470,7 +7461,17 @@
      ""
     ],
     [
-     16,
+     18,
+     "Chuba Hubbard",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     15,
      "Cam Skattebo",
      "",
      "",
@@ -7503,6 +7504,16 @@
      13,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     13,
+     "",
+     "",
      "",
      "",
      "Tyler Warren",
@@ -7520,17 +7531,7 @@
      ""
     ],
     [
-     11,
-     "Travis Etienne Jr.",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     11,
+     12,
      "David Montgomery",
      "",
      "",
@@ -7541,13 +7542,13 @@
     ],
     [
      11,
+     "Travis Etienne Jr.",
      "",
      "",
      "",
      "",
      "",
-     "",
-     "Drake Maye"
+     ""
     ],
     [
      10,
@@ -7570,6 +7571,16 @@
      ""
     ],
     [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      9,
      "MarShawn Lloyd",
      "",
@@ -7581,33 +7592,13 @@
     ],
     [
      9,
+     "Aaron Jones Sr.",
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
      ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
     ],
     [
      8,
@@ -7622,6 +7613,16 @@
     [
      8,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -7685,19 +7686,29 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
-    ],
-    [
-     7,
-     "Aaron Jones Sr.",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
     ],
     [
      7,
@@ -7761,16 +7772,6 @@
     ],
     [
      6,
-     "Tony Pollard",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     6,
      "",
      "",
      "Carnell Tate",
@@ -7788,6 +7789,16 @@
      "",
      "",
      ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dak Prescott"
     ],
     [
      5,
@@ -7828,16 +7839,6 @@
      "",
      "",
      ""
-    ],
-    [
-     5,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
     ],
     [
      4,
@@ -7935,16 +7936,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     4,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -7976,6 +7967,16 @@
      "Stefon Diggs",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     3,
+     "",
+     "",
+     "",
+     "",
+     "Harold Fannin Jr.",
      "",
      ""
     ],
@@ -8044,14 +8045,20 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 78,
-     "baselineValue": 78
+     "value": 77,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 74,
-     "baselineValue": 74
+     "value": 73,
+     "baselineValue": 73
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 67,
+     "baselineValue": 67
     },
     {
      "name": "Christian McCaffrey",
@@ -8060,22 +8067,16 @@
      "baselineValue": 66
     },
     {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 65,
-     "baselineValue": 65
-    },
-    {
      "name": "Puka Nacua",
      "pos": "WR",
      "value": 65,
      "baselineValue": 65
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 65,
-     "baselineValue": 65
+     "name": "Kenneth Walker III",
+     "pos": "RB",
+     "value": 64,
+     "baselineValue": 64
     },
     {
      "name": "Jonathan Taylor",
@@ -8084,16 +8085,16 @@
      "baselineValue": 62
     },
     {
-     "name": "Amon-Ra St. Brown",
+     "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 62,
      "baselineValue": 62
     },
     {
-     "name": "Ja'Marr Chase",
+     "name": "Amon-Ra St. Brown",
      "pos": "WR",
-     "value": 60,
-     "baselineValue": 60
+     "value": 62,
+     "baselineValue": 62
     },
     {
      "name": "Derrick Henry",
@@ -8108,37 +8109,31 @@
      "baselineValue": 56
     },
     {
+     "name": "CeeDee Lamb",
+     "pos": "WR",
+     "value": 56,
+     "baselineValue": 56
+    },
+    {
      "name": "Ashton Jeanty",
      "pos": "RB",
      "value": 54,
      "baselineValue": 54
     },
     {
-     "name": "CeeDee Lamb",
-     "pos": "WR",
-     "value": 54,
-     "baselineValue": 54
-    },
-    {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 48,
-     "baselineValue": 48
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 48,
-     "baselineValue": 48
+     "value": 49,
+     "baselineValue": 49
     },
     {
      "name": "Justin Jefferson",
      "pos": "WR",
-     "value": 47,
-     "baselineValue": 47
+     "value": 48,
+     "baselineValue": 48
     },
     {
-     "name": "Zay Flowers",
+     "name": "Chris Olave",
      "pos": "WR",
      "value": 47,
      "baselineValue": 47
@@ -8146,14 +8141,14 @@
     {
      "name": "Trey McBride",
      "pos": "TE",
-     "value": 46,
-     "baselineValue": 46
+     "value": 47,
+     "baselineValue": 47
     },
     {
-     "name": "Chris Olave",
-     "pos": "WR",
-     "value": 44,
-     "baselineValue": 44
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 46,
+     "baselineValue": 46
     },
     {
      "name": "De'Von Achane",
@@ -8164,14 +8159,14 @@
     {
      "name": "Javonte Williams",
      "pos": "RB",
-     "value": 38,
-     "baselineValue": 38
+     "value": 37,
+     "baselineValue": 37
     },
     {
      "name": "Breece Hall",
      "pos": "RB",
-     "value": 38,
-     "baselineValue": 38
+     "value": 37,
+     "baselineValue": 37
     },
     {
      "name": "Nico Collins",
@@ -8186,6 +8181,12 @@
      "baselineValue": 35
     },
     {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 34,
+     "baselineValue": 34
+    },
+    {
      "name": "Omarion Hampton",
      "pos": "RB",
      "value": 33,
@@ -8198,19 +8199,19 @@
      "baselineValue": 33
     },
     {
+     "name": "George Pickens",
+     "pos": "WR",
+     "value": 33,
+     "baselineValue": 33
+    },
+    {
      "name": "DeVonta Smith",
      "pos": "WR",
-     "value": 31,
-     "baselineValue": 31
+     "value": 32,
+     "baselineValue": 32
     },
     {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 31,
-     "baselineValue": 31
-    },
-    {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 30,
      "baselineValue": 30
@@ -8228,40 +8229,34 @@
      "baselineValue": 29
     },
     {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 27,
-     "baselineValue": 27
-    },
-    {
      "name": "Davante Adams",
      "pos": "WR",
      "value": 27,
      "baselineValue": 27
     },
     {
-     "name": "Lamar Jackson",
-     "pos": "QB",
+     "name": "D'Andre Swift",
+     "pos": "RB",
      "value": 26,
      "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 26,
+     "baselineValue": 26
+    },
+    {
+     "name": "Lamar Jackson",
+     "pos": "QB",
+     "value": 25,
+     "baselineValue": 25
     },
     {
      "name": "Brock Bowers",
      "pos": "TE",
      "value": 24,
      "baselineValue": 24
-    },
-    {
-     "name": "Jaylen Warren",
-     "pos": "RB",
-     "value": 22,
-     "baselineValue": 22
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 22,
-     "baselineValue": 22
     },
     {
      "name": "Bucky Irving",
@@ -8282,7 +8277,7 @@
      "baselineValue": 21
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 21,
      "baselineValue": 21
@@ -8300,13 +8295,7 @@
      "baselineValue": 20
     },
     {
-     "name": "Rashee Rice",
-     "pos": "WR",
-     "value": 20,
-     "baselineValue": 20
-    },
-    {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 20,
      "baselineValue": 20
@@ -8318,8 +8307,14 @@
      "baselineValue": 20
     },
     {
-     "name": "Chuba Hubbard",
-     "pos": "RB",
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 19,
+     "baselineValue": 19
+    },
+    {
+     "name": "Tee Higgins",
+     "pos": "WR",
      "value": 19,
      "baselineValue": 19
     },
@@ -8330,10 +8325,16 @@
      "baselineValue": 19
     },
     {
+     "name": "Chuba Hubbard",
+     "pos": "RB",
+     "value": 18,
+     "baselineValue": 18
+    },
+    {
      "name": "Cam Skattebo",
      "pos": "RB",
-     "value": 16,
-     "baselineValue": 16
+     "value": 15,
+     "baselineValue": 15
     },
     {
      "name": "Mike Evans",
@@ -8343,6 +8344,12 @@
     },
     {
      "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 13,
+     "baselineValue": 13
+    },
+    {
+     "name": "Rome Odunze",
      "pos": "WR",
      "value": 13,
      "baselineValue": 13
@@ -8360,20 +8367,14 @@
      "baselineValue": 12
     },
     {
-     "name": "Travis Etienne Jr.",
-     "pos": "RB",
-     "value": 11,
-     "baselineValue": 11
-    },
-    {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 11,
-     "baselineValue": 11
+     "value": 12,
+     "baselineValue": 12
     },
     {
-     "name": "Drake Maye",
-     "pos": "QB",
+     "name": "Travis Etienne Jr.",
+     "pos": "RB",
      "value": 11,
      "baselineValue": 11
     },
@@ -8390,26 +8391,20 @@
      "baselineValue": 10
     },
     {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "value": 10,
+     "baselineValue": 10
+    },
+    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
      "value": 9,
      "baselineValue": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
+     "name": "Aaron Jones Sr.",
+     "pos": "RB",
      "value": 9,
      "baselineValue": 9
     },
@@ -8421,6 +8416,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 8,
      "baselineValue": 8
@@ -8456,16 +8457,22 @@
      "baselineValue": 8
     },
     {
-     "name": "Jayden Daniels",
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
      "pos": "QB",
      "value": 8,
      "baselineValue": 8
     },
     {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 7,
-     "baselineValue": 7
+     "name": "Jayden Daniels",
+     "pos": "QB",
+     "value": 8,
+     "baselineValue": 8
     },
     {
      "name": "Luther Burden III",
@@ -8504,12 +8511,6 @@
      "baselineValue": 6
     },
     {
-     "name": "Tony Pollard",
-     "pos": "RB",
-     "value": 6,
-     "baselineValue": 6
-    },
-    {
      "name": "Carnell Tate",
      "pos": "WR",
      "value": 6,
@@ -8518,6 +8519,12 @@
     {
      "name": "Alec Pierce",
      "pos": "WR",
+     "value": 6,
+     "baselineValue": 6
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
      "value": 6,
      "baselineValue": 6
     },
@@ -8542,12 +8549,6 @@
     {
      "name": "Michael Wilson",
      "pos": "WR",
-     "value": 5,
-     "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
      "value": 5,
      "baselineValue": 5
     },
@@ -8606,12 +8607,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 4,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 4,
@@ -8632,6 +8627,12 @@
     {
      "name": "Stefon Diggs",
      "pos": "WR",
+     "value": 3,
+     "baselineValue": 3
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
      "value": 3,
      "baselineValue": 3
     },
@@ -8702,7 +8703,7 @@
    ],
    "rows": [
     [
-     85,
+     84,
      "Jahmyr Gibbs",
      "",
      "",
@@ -8712,7 +8713,7 @@
      ""
     ],
     [
-     80,
+     79,
      "Bijan Robinson",
      "",
      "",
@@ -8722,18 +8723,18 @@
      ""
     ],
     [
-     70,
-     "Christian McCaffrey",
+     71,
      "",
      "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
      ""
     ],
     [
-     69,
-     "Kenneth Walker III",
+     70,
+     "Christian McCaffrey",
      "",
      "",
      "",
@@ -8752,10 +8753,10 @@
      ""
     ],
     [
-     69,
+     68,
+     "Kenneth Walker III",
      "",
      "",
-     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -8775,17 +8776,17 @@
      65,
      "",
      "",
-     "Amon-Ra St. Brown",
+     "Ja'Marr Chase",
      "",
      "",
      "",
      ""
     ],
     [
-     63,
+     65,
      "",
      "",
-     "Ja'Marr Chase",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -8812,6 +8813,16 @@
      ""
     ],
     [
+     58,
+     "",
+     "",
+     "CeeDee Lamb",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      56,
      "Ashton Jeanty",
      "",
@@ -8822,17 +8833,7 @@
      ""
     ],
     [
-     56,
-     "",
-     "",
-     "CeeDee Lamb",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     49,
+     50,
      "Saquon Barkley",
      "",
      "",
@@ -8843,16 +8844,6 @@
     ],
     [
      49,
-     "Chase Brown",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     47,
      "",
      "",
      "Justin Jefferson",
@@ -8865,14 +8856,14 @@
      47,
      "",
      "",
-     "Zay Flowers",
+     "Chris Olave",
      "",
      "",
      "",
      ""
     ],
     [
-     46,
+     47,
      "",
      "",
      "",
@@ -8882,10 +8873,10 @@
      ""
     ],
     [
-     44,
+     46,
+     "Chase Brown",
      "",
      "",
-     "Chris Olave",
      "",
      "",
      "",
@@ -8902,7 +8893,7 @@
      ""
     ],
     [
-     37,
+     36,
      "Javonte Williams",
      "",
      "",
@@ -8912,7 +8903,7 @@
      ""
     ],
     [
-     37,
+     36,
      "Breece Hall",
      "",
      "",
@@ -8942,6 +8933,16 @@
      "Josh Allen"
     ],
     [
+     33,
+     "",
+     "",
+     "Garrett Wilson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      32,
      "Omarion Hampton",
      "",
@@ -8962,7 +8963,17 @@
      ""
     ],
     [
-     29,
+     32,
+     "",
+     "",
+     "George Pickens",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     30,
      "",
      "",
      "DeVonta Smith",
@@ -8972,20 +8983,10 @@
      ""
     ],
     [
-     29,
-     "",
-     "",
-     "Garrett Wilson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      28,
      "",
      "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -9013,16 +9014,6 @@
     ],
     [
      25,
-     "D'Andre Swift",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     25,
      "",
      "",
      "Davante Adams",
@@ -9033,6 +9024,26 @@
     ],
     [
      24,
+     "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     24,
+     "Jaylen Warren",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     23,
      "",
      "",
      "",
@@ -9048,26 +9059,6 @@
      "",
      "",
      "Brock Bowers",
-     "",
-     ""
-    ],
-    [
-     20,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     20,
-     "",
-     "",
-     "Jaylen Waddle",
-     "",
-     "",
      "",
      ""
     ],
@@ -9105,7 +9096,7 @@
      19,
      "",
      "",
-     "Ladd McConkey",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -9135,17 +9126,7 @@
      18,
      "",
      "",
-     "Rashee Rice",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     18,
-     "",
-     "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -9163,9 +9144,19 @@
     ],
     [
      17,
-     "Chuba Hubbard",
      "",
      "",
+     "Rashee Rice",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     17,
+     "",
+     "",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -9182,7 +9173,17 @@
      ""
     ],
     [
-     14,
+     16,
+     "Chuba Hubbard",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     13,
      "Cam Skattebo",
      "",
      "",
@@ -9215,6 +9216,16 @@
      11,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     11,
+     "",
+     "",
      "",
      "",
      "Tyler Warren",
@@ -9232,17 +9243,7 @@
      ""
     ],
     [
-     9,
-     "Travis Etienne Jr.",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     9,
+     10,
      "David Montgomery",
      "",
      "",
@@ -9253,13 +9254,13 @@
     ],
     [
      9,
+     "Travis Etienne Jr.",
      "",
      "",
      "",
      "",
      "",
-     "",
-     "Drake Maye"
+     ""
     ],
     [
      8,
@@ -9282,6 +9283,16 @@
      ""
     ],
     [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      7,
      "MarShawn Lloyd",
      "",
@@ -9293,33 +9304,13 @@
     ],
     [
      7,
+     "Aaron Jones Sr.",
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
      ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
     ],
     [
      6,
@@ -9334,6 +9325,16 @@
     [
      6,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     6,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -9397,19 +9398,29 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
-    ],
-    [
-     5,
-     "Aaron Jones Sr.",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
     ],
     [
      5,
@@ -9464,16 +9475,6 @@
     [
      4,
      "Jordan Mason",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     4,
-     "Tony Pollard",
      "",
      "",
      "",
@@ -9647,16 +9648,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     3,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -9688,6 +9679,16 @@
      "Stefon Diggs",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     2,
+     "",
+     "",
+     "",
+     "",
+     "Harold Fannin Jr.",
      "",
      ""
     ],
@@ -9756,14 +9757,20 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 85,
-     "baselineValue": 78
+     "value": 84,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 80,
-     "baselineValue": 74
+     "value": 79,
+     "baselineValue": 73
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 71,
+     "baselineValue": 67
     },
     {
      "name": "Christian McCaffrey",
@@ -9772,22 +9779,16 @@
      "baselineValue": 66
     },
     {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 69,
-     "baselineValue": 65
-    },
-    {
      "name": "Puka Nacua",
      "pos": "WR",
      "value": 69,
      "baselineValue": 65
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 69,
-     "baselineValue": 65
+     "name": "Kenneth Walker III",
+     "pos": "RB",
+     "value": 68,
+     "baselineValue": 64
     },
     {
      "name": "Jonathan Taylor",
@@ -9796,16 +9797,16 @@
      "baselineValue": 62
     },
     {
-     "name": "Amon-Ra St. Brown",
+     "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 65,
      "baselineValue": 62
     },
     {
-     "name": "Ja'Marr Chase",
+     "name": "Amon-Ra St. Brown",
      "pos": "WR",
-     "value": 63,
-     "baselineValue": 60
+     "value": 65,
+     "baselineValue": 62
     },
     {
      "name": "Derrick Henry",
@@ -9820,37 +9821,31 @@
      "baselineValue": 56
     },
     {
+     "name": "CeeDee Lamb",
+     "pos": "WR",
+     "value": 58,
+     "baselineValue": 56
+    },
+    {
      "name": "Ashton Jeanty",
      "pos": "RB",
      "value": 56,
      "baselineValue": 54
     },
     {
-     "name": "CeeDee Lamb",
-     "pos": "WR",
-     "value": 56,
-     "baselineValue": 54
-    },
-    {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 49,
-     "baselineValue": 48
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 49,
-     "baselineValue": 48
+     "value": 50,
+     "baselineValue": 49
     },
     {
      "name": "Justin Jefferson",
      "pos": "WR",
-     "value": 47,
-     "baselineValue": 47
+     "value": 49,
+     "baselineValue": 48
     },
     {
-     "name": "Zay Flowers",
+     "name": "Chris Olave",
      "pos": "WR",
      "value": 47,
      "baselineValue": 47
@@ -9858,14 +9853,14 @@
     {
      "name": "Trey McBride",
      "pos": "TE",
-     "value": 46,
-     "baselineValue": 46
+     "value": 47,
+     "baselineValue": 47
     },
     {
-     "name": "Chris Olave",
-     "pos": "WR",
-     "value": 44,
-     "baselineValue": 44
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 46,
+     "baselineValue": 46
     },
     {
      "name": "De'Von Achane",
@@ -9876,14 +9871,14 @@
     {
      "name": "Javonte Williams",
      "pos": "RB",
-     "value": 37,
-     "baselineValue": 38
+     "value": 36,
+     "baselineValue": 37
     },
     {
      "name": "Breece Hall",
      "pos": "RB",
-     "value": 37,
-     "baselineValue": 38
+     "value": 36,
+     "baselineValue": 37
     },
     {
      "name": "Nico Collins",
@@ -9898,6 +9893,12 @@
      "baselineValue": 35
     },
     {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 33,
+     "baselineValue": 34
+    },
+    {
      "name": "Omarion Hampton",
      "pos": "RB",
      "value": 32,
@@ -9910,19 +9911,19 @@
      "baselineValue": 33
     },
     {
+     "name": "George Pickens",
+     "pos": "WR",
+     "value": 32,
+     "baselineValue": 33
+    },
+    {
      "name": "DeVonta Smith",
      "pos": "WR",
-     "value": 29,
-     "baselineValue": 31
+     "value": 30,
+     "baselineValue": 32
     },
     {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 29,
-     "baselineValue": 31
-    },
-    {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 28,
      "baselineValue": 30
@@ -9940,40 +9941,34 @@
      "baselineValue": 29
     },
     {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 25,
-     "baselineValue": 27
-    },
-    {
      "name": "Davante Adams",
      "pos": "WR",
      "value": 25,
      "baselineValue": 27
     },
     {
-     "name": "Lamar Jackson",
-     "pos": "QB",
+     "name": "D'Andre Swift",
+     "pos": "RB",
      "value": 24,
      "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 24,
+     "baselineValue": 26
+    },
+    {
+     "name": "Lamar Jackson",
+     "pos": "QB",
+     "value": 23,
+     "baselineValue": 25
     },
     {
      "name": "Brock Bowers",
      "pos": "TE",
      "value": 22,
      "baselineValue": 24
-    },
-    {
-     "name": "Jaylen Warren",
-     "pos": "RB",
-     "value": 20,
-     "baselineValue": 22
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 20,
-     "baselineValue": 22
     },
     {
      "name": "Bucky Irving",
@@ -9994,7 +9989,7 @@
      "baselineValue": 21
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 19,
      "baselineValue": 21
@@ -10012,13 +10007,7 @@
      "baselineValue": 20
     },
     {
-     "name": "Rashee Rice",
-     "pos": "WR",
-     "value": 18,
-     "baselineValue": 20
-    },
-    {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 18,
      "baselineValue": 20
@@ -10030,8 +10019,14 @@
      "baselineValue": 20
     },
     {
-     "name": "Chuba Hubbard",
-     "pos": "RB",
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 17,
+     "baselineValue": 19
+    },
+    {
+     "name": "Tee Higgins",
+     "pos": "WR",
      "value": 17,
      "baselineValue": 19
     },
@@ -10042,10 +10037,16 @@
      "baselineValue": 19
     },
     {
+     "name": "Chuba Hubbard",
+     "pos": "RB",
+     "value": 16,
+     "baselineValue": 18
+    },
+    {
      "name": "Cam Skattebo",
      "pos": "RB",
-     "value": 14,
-     "baselineValue": 16
+     "value": 13,
+     "baselineValue": 15
     },
     {
      "name": "Mike Evans",
@@ -10055,6 +10056,12 @@
     },
     {
      "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 11,
+     "baselineValue": 13
+    },
+    {
+     "name": "Rome Odunze",
      "pos": "WR",
      "value": 11,
      "baselineValue": 13
@@ -10072,20 +10079,14 @@
      "baselineValue": 12
     },
     {
-     "name": "Travis Etienne Jr.",
-     "pos": "RB",
-     "value": 9,
-     "baselineValue": 11
-    },
-    {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 9,
-     "baselineValue": 11
+     "value": 10,
+     "baselineValue": 12
     },
     {
-     "name": "Drake Maye",
-     "pos": "QB",
+     "name": "Travis Etienne Jr.",
+     "pos": "RB",
      "value": 9,
      "baselineValue": 11
     },
@@ -10102,26 +10103,20 @@
      "baselineValue": 10
     },
     {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "value": 8,
+     "baselineValue": 10
+    },
+    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
      "value": 7,
      "baselineValue": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 7,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 7,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
+     "name": "Aaron Jones Sr.",
+     "pos": "RB",
      "value": 7,
      "baselineValue": 9
     },
@@ -10133,6 +10128,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 6,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 6,
      "baselineValue": 8
@@ -10168,16 +10169,22 @@
      "baselineValue": 8
     },
     {
-     "name": "Jayden Daniels",
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 6,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
      "pos": "QB",
      "value": 6,
      "baselineValue": 8
     },
     {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 5,
-     "baselineValue": 7
+     "name": "Jayden Daniels",
+     "pos": "QB",
+     "value": 6,
+     "baselineValue": 8
     },
     {
      "name": "Luther Burden III",
@@ -10211,12 +10218,6 @@
     },
     {
      "name": "Jordan Mason",
-     "pos": "RB",
-     "value": 4,
-     "baselineValue": 6
-    },
-    {
-     "name": "Tony Pollard",
      "pos": "RB",
      "value": 4,
      "baselineValue": 6
@@ -10261,7 +10262,7 @@
      "name": "Dak Prescott",
      "pos": "QB",
      "value": 4,
-     "baselineValue": 5
+     "baselineValue": 6
     },
     {
      "name": "J.K. Dobbins",
@@ -10318,12 +10319,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 3,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 3,
@@ -10344,6 +10339,12 @@
     {
      "name": "Stefon Diggs",
      "pos": "WR",
+     "value": 2,
+     "baselineValue": 3
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
      "value": 2,
      "baselineValue": 3
     },
@@ -10414,7 +10415,7 @@
    ],
    "rows": [
     [
-     74,
+     73,
      "Jahmyr Gibbs",
      "",
      "",
@@ -10424,10 +10425,20 @@
      ""
     ],
     [
-     71,
+     70,
      "Bijan Robinson",
      "",
      "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     66,
+     "",
+     "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -10454,20 +10465,10 @@
      ""
     ],
     [
-     64,
+     63,
      "",
      "",
-     "Jaxon Smith-Njigba",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     62,
-     "Kenneth Walker III",
-     "",
-     "",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -10485,9 +10486,9 @@
     ],
     [
      61,
+     "Kenneth Walker III",
      "",
      "",
-     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -10504,7 +10505,7 @@
      ""
     ],
     [
-     55,
+     57,
      "",
      "",
      "CeeDee Lamb",
@@ -10545,9 +10546,19 @@
     ],
     [
      49,
-     "Chase Brown",
      "",
      "",
+     "Justin Jefferson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     49,
+     "",
+     "",
+     "Chris Olave",
      "",
      "",
      "",
@@ -10567,39 +10578,19 @@
      48,
      "",
      "",
-     "Justin Jefferson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     47,
-     "",
-     "",
-     "Zay Flowers",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     47,
-     "",
-     "",
-     "Chris Olave",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     47,
-     "",
-     "",
      "",
      "",
      "Trey McBride",
+     "",
+     ""
+    ],
+    [
+     47,
+     "Chase Brown",
+     "",
+     "",
+     "",
+     "",
      "",
      ""
     ],
@@ -10615,6 +10606,16 @@
     ],
     [
      39,
+     "",
+     "",
+     "Nico Collins",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     38,
      "Javonte Williams",
      "",
      "",
@@ -10624,7 +10625,7 @@
      ""
     ],
     [
-     39,
+     38,
      "Breece Hall",
      "",
      "",
@@ -10634,10 +10635,10 @@
      ""
     ],
     [
-     39,
+     37,
      "",
      "",
-     "Nico Collins",
+     "Garrett Wilson",
      "",
      "",
      "",
@@ -10664,20 +10665,20 @@
      ""
     ],
     [
-     34,
+     35,
      "",
      "",
-     "DeVonta Smith",
+     "George Pickens",
      "",
      "",
      "",
      ""
     ],
     [
-     34,
+     35,
      "",
      "",
-     "Garrett Wilson",
+     "DeVonta Smith",
      "",
      "",
      "",
@@ -10697,7 +10698,7 @@
      32,
      "",
      "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -10724,7 +10725,17 @@
      ""
     ],
     [
-     29,
+     28,
+     "Kyren Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     28,
      "D'Andre Swift",
      "",
      "",
@@ -10735,7 +10746,7 @@
     ],
     [
      28,
-     "Kyren Williams",
+     "Jaylen Warren",
      "",
      "",
      "",
@@ -10754,36 +10765,6 @@
      ""
     ],
     [
-     26,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Lamar Jackson"
-    ],
-    [
-     25,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     25,
-     "",
-     "",
-     "Jaylen Waddle",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      25,
      "",
      "",
@@ -10792,6 +10773,16 @@
      "",
      "",
      ""
+    ],
+    [
+     25,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Lamar Jackson"
     ],
     [
      24,
@@ -10807,7 +10798,7 @@
      24,
      "",
      "",
-     "Ladd McConkey",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -10837,7 +10828,7 @@
      23,
      "",
      "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -10848,6 +10839,16 @@
      "",
      "",
      "Parker Washington",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     22,
+     "",
+     "",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -10884,7 +10885,7 @@
      ""
     ],
     [
-     19,
+     18,
      "Chuba Hubbard",
      "",
      "",
@@ -10894,7 +10895,7 @@
      ""
     ],
     [
-     19,
+     18,
      "Cam Skattebo",
      "",
      "",
@@ -10937,6 +10938,16 @@
      13,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     13,
+     "",
+     "",
      "",
      "",
      "Tyler Warren",
@@ -10954,7 +10965,7 @@
      ""
     ],
     [
-     11,
+     12,
      "David Montgomery",
      "",
      "",
@@ -10964,18 +10975,8 @@
      ""
     ],
     [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Drake Maye"
-    ],
-    [
-     10,
-     "Bhayshul Tuten",
+     12,
+     "Aaron Jones Sr.",
      "",
      "",
      "",
@@ -10985,7 +10986,7 @@
     ],
     [
      10,
-     "Aaron Jones Sr.",
+     "Bhayshul Tuten",
      "",
      "",
      "",
@@ -11024,6 +11025,16 @@
      ""
     ],
     [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      9,
      "MarShawn Lloyd",
      "",
@@ -11032,36 +11043,6 @@
      "",
      "",
      ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
     ],
     [
      8,
@@ -11076,6 +11057,16 @@
     [
      8,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -11149,6 +11140,26 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
@@ -11195,16 +11206,6 @@
     ],
     [
      6,
-     "Tony Pollard",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     6,
      "",
      "",
      "Carnell Tate",
@@ -11222,6 +11223,16 @@
      "",
      "",
      ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dak Prescott"
     ],
     [
      5,
@@ -11272,16 +11283,6 @@
      "",
      "",
      ""
-    ],
-    [
-     4,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
     ],
     [
      3,
@@ -11379,16 +11380,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     3,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -11449,6 +11440,16 @@
      "",
      "",
      "",
+     "Harold Fannin Jr.",
+     "",
+     ""
+    ],
+    [
+     2,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Justin Herbert"
@@ -11468,14 +11469,20 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 74,
-     "baselineValue": 78
+     "value": 73,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 71,
-     "baselineValue": 74
+     "value": 70,
+     "baselineValue": 73
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 66,
+     "baselineValue": 67
     },
     {
      "name": "Puka Nacua",
@@ -11490,16 +11497,10 @@
      "baselineValue": 66
     },
     {
-     "name": "Jaxon Smith-Njigba",
+     "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 64,
-     "baselineValue": 65
-    },
-    {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 62,
-     "baselineValue": 65
+     "value": 63,
+     "baselineValue": 62
     },
     {
      "name": "Amon-Ra St. Brown",
@@ -11508,10 +11509,10 @@
      "baselineValue": 62
     },
     {
-     "name": "Ja'Marr Chase",
-     "pos": "WR",
+     "name": "Kenneth Walker III",
+     "pos": "RB",
      "value": 61,
-     "baselineValue": 60
+     "baselineValue": 64
     },
     {
      "name": "Jonathan Taylor",
@@ -11522,8 +11523,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 55,
-     "baselineValue": 54
+     "value": 57,
+     "baselineValue": 56
     },
     {
      "name": "James Cook III",
@@ -11544,38 +11545,32 @@
      "baselineValue": 54
     },
     {
-     "name": "Chase Brown",
-     "pos": "RB",
+     "name": "Justin Jefferson",
+     "pos": "WR",
      "value": 49,
      "baselineValue": 48
+    },
+    {
+     "name": "Chris Olave",
+     "pos": "WR",
+     "value": 49,
+     "baselineValue": 47
     },
     {
      "name": "Saquon Barkley",
      "pos": "RB",
      "value": 48,
-     "baselineValue": 48
-    },
-    {
-     "name": "Justin Jefferson",
-     "pos": "WR",
-     "value": 48,
-     "baselineValue": 47
-    },
-    {
-     "name": "Zay Flowers",
-     "pos": "WR",
-     "value": 47,
-     "baselineValue": 47
-    },
-    {
-     "name": "Chris Olave",
-     "pos": "WR",
-     "value": 47,
-     "baselineValue": 44
+     "baselineValue": 49
     },
     {
      "name": "Trey McBride",
      "pos": "TE",
+     "value": 48,
+     "baselineValue": 47
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
      "value": 47,
      "baselineValue": 46
     },
@@ -11586,22 +11581,28 @@
      "baselineValue": 42
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 39,
-     "baselineValue": 38
-    },
-    {
-     "name": "Breece Hall",
-     "pos": "RB",
-     "value": 39,
-     "baselineValue": 38
-    },
-    {
      "name": "Nico Collins",
      "pos": "WR",
      "value": 39,
      "baselineValue": 36
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 38,
+     "baselineValue": 37
+    },
+    {
+     "name": "Breece Hall",
+     "pos": "RB",
+     "value": 38,
+     "baselineValue": 37
+    },
+    {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 37,
+     "baselineValue": 34
     },
     {
      "name": "Drake London",
@@ -11616,16 +11617,16 @@
      "baselineValue": 33
     },
     {
-     "name": "DeVonta Smith",
+     "name": "George Pickens",
      "pos": "WR",
-     "value": 34,
-     "baselineValue": 31
+     "value": 35,
+     "baselineValue": 33
     },
     {
-     "name": "Garrett Wilson",
+     "name": "DeVonta Smith",
      "pos": "WR",
-     "value": 34,
-     "baselineValue": 31
+     "value": 35,
+     "baselineValue": 32
     },
     {
      "name": "Josh Allen",
@@ -11634,7 +11635,7 @@
      "baselineValue": 35
     },
     {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 32,
      "baselineValue": 30
@@ -11652,16 +11653,22 @@
      "baselineValue": 27
     },
     {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 29,
-     "baselineValue": 27
-    },
-    {
      "name": "Kyren Williams",
      "pos": "RB",
      "value": 28,
      "baselineValue": 29
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 28,
+     "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 28,
+     "baselineValue": 26
     },
     {
      "name": "Brock Bowers",
@@ -11670,28 +11677,16 @@
      "baselineValue": 24
     },
     {
-     "name": "Lamar Jackson",
-     "pos": "QB",
-     "value": 26,
-     "baselineValue": 26
-    },
-    {
-     "name": "Jaylen Warren",
-     "pos": "RB",
-     "value": 25,
-     "baselineValue": 22
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 25,
-     "baselineValue": 22
-    },
-    {
      "name": "Malik Nabers",
      "pos": "WR",
      "value": 25,
      "baselineValue": 21
+    },
+    {
+     "name": "Lamar Jackson",
+     "pos": "QB",
+     "value": 25,
+     "baselineValue": 25
     },
     {
      "name": "Bucky Irving",
@@ -11700,7 +11695,7 @@
      "baselineValue": 21
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 24,
      "baselineValue": 21
@@ -11709,7 +11704,7 @@
      "name": "Rashee Rice",
      "pos": "WR",
      "value": 24,
-     "baselineValue": 20
+     "baselineValue": 19
     },
     {
      "name": "Jeremiyah Love",
@@ -11718,7 +11713,7 @@
      "baselineValue": 20
     },
     {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 23,
      "baselineValue": 20
@@ -11728,6 +11723,12 @@
      "pos": "WR",
      "value": 23,
      "baselineValue": 20
+    },
+    {
+     "name": "Tee Higgins",
+     "pos": "WR",
+     "value": 22,
+     "baselineValue": 19
     },
     {
      "name": "Tetairoa McMillan",
@@ -11750,14 +11751,14 @@
     {
      "name": "Chuba Hubbard",
      "pos": "RB",
-     "value": 19,
-     "baselineValue": 19
+     "value": 18,
+     "baselineValue": 18
     },
     {
      "name": "Cam Skattebo",
      "pos": "RB",
-     "value": 19,
-     "baselineValue": 16
+     "value": 18,
+     "baselineValue": 15
     },
     {
      "name": "Emeka Egbuka",
@@ -11778,6 +11779,12 @@
      "baselineValue": 15
     },
     {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 13,
+     "baselineValue": 13
+    },
+    {
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 13,
@@ -11792,26 +11799,20 @@
     {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 11,
-     "baselineValue": 11
+     "value": 12,
+     "baselineValue": 12
     },
     {
-     "name": "Drake Maye",
-     "pos": "QB",
-     "value": 11,
-     "baselineValue": 11
+     "name": "Aaron Jones Sr.",
+     "pos": "RB",
+     "value": 12,
+     "baselineValue": 9
     },
     {
      "name": "Bhayshul Tuten",
      "pos": "RB",
      "value": 10,
      "baselineValue": 10
-    },
-    {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 10,
-     "baselineValue": 7
     },
     {
      "name": "Rhamondre Stevenson",
@@ -11832,26 +11833,14 @@
      "baselineValue": 10
     },
     {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "value": 10,
+     "baselineValue": 10
+    },
+    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 9,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
      "value": 9,
      "baselineValue": 9
     },
@@ -11863,6 +11852,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 8,
      "baselineValue": 8
@@ -11904,6 +11899,18 @@
      "baselineValue": 5
     },
     {
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
+     "pos": "QB",
+     "value": 8,
+     "baselineValue": 8
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 8,
@@ -11934,12 +11941,6 @@
      "baselineValue": 6
     },
     {
-     "name": "Tony Pollard",
-     "pos": "RB",
-     "value": 6,
-     "baselineValue": 6
-    },
-    {
      "name": "Carnell Tate",
      "pos": "WR",
      "value": 6,
@@ -11948,6 +11949,12 @@
     {
      "name": "Alec Pierce",
      "pos": "WR",
+     "value": 6,
+     "baselineValue": 6
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
      "value": 6,
      "baselineValue": 6
     },
@@ -11978,12 +11985,6 @@
     {
      "name": "Michael Wilson",
      "pos": "WR",
-     "value": 4,
-     "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
      "value": 4,
      "baselineValue": 5
     },
@@ -12042,12 +12043,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 3,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 3,
@@ -12082,6 +12077,12 @@
      "pos": "WR",
      "value": 2,
      "baselineValue": 2
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
+     "value": 2,
+     "baselineValue": 3
     },
     {
      "name": "Justin Herbert",
@@ -12126,7 +12127,7 @@
    ],
    "rows": [
     [
-     81,
+     80,
      "Jahmyr Gibbs",
      "",
      "",
@@ -12136,10 +12137,20 @@
      ""
     ],
     [
-     77,
+     76,
      "Bijan Robinson",
      "",
      "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     71,
+     "",
+     "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -12166,20 +12177,10 @@
      ""
     ],
     [
-     69,
+     67,
      "",
      "",
-     "Jaxon Smith-Njigba",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     66,
-     "Kenneth Walker III",
-     "",
-     "",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -12197,9 +12198,9 @@
     ],
     [
      65,
+     "Kenneth Walker III",
      "",
      "",
-     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -12216,7 +12217,7 @@
      ""
     ],
     [
-     58,
+     60,
      "",
      "",
      "CeeDee Lamb",
@@ -12256,17 +12257,7 @@
      ""
     ],
     [
-     50,
-     "Chase Brown",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     50,
+     51,
      "",
      "",
      "Justin Jefferson",
@@ -12276,27 +12267,7 @@
      ""
     ],
     [
-     49,
-     "Saquon Barkley",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     48,
-     "",
-     "",
-     "Zay Flowers",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     48,
+     51,
      "",
      "",
      "Chris Olave",
@@ -12306,7 +12277,17 @@
      ""
     ],
     [
-     48,
+     50,
+     "Saquon Barkley",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     50,
      "",
      "",
      "",
@@ -12316,28 +12297,18 @@
      ""
     ],
     [
+     48,
+     "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      45,
      "De'Von Achane",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     39,
-     "Javonte Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     39,
-     "Breece Hall",
      "",
      "",
      "",
@@ -12356,10 +12327,50 @@
      ""
     ],
     [
+     38,
+     "Javonte Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     38,
+     "Breece Hall",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     37,
+     "",
+     "",
+     "Garrett Wilson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      36,
      "",
      "",
      "Drake London",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     35,
+     "",
+     "",
+     "DeVonta Smith",
      "",
      "",
      "",
@@ -12379,17 +12390,7 @@
      34,
      "",
      "",
-     "DeVonta Smith",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     34,
-     "",
-     "",
-     "Garrett Wilson",
+     "George Pickens",
      "",
      "",
      "",
@@ -12409,7 +12410,7 @@
      32,
      "",
      "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -12420,16 +12421,6 @@
      "",
      "",
      "A.J. Brown",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     28,
-     "D'Andre Swift",
-     "",
-     "",
      "",
      "",
      "",
@@ -12448,6 +12439,26 @@
     [
      27,
      "Kyren Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     27,
+     "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     27,
+     "Jaylen Warren",
      "",
      "",
      "",
@@ -12476,7 +12487,7 @@
      ""
     ],
     [
-     24,
+     23,
      "",
      "",
      "",
@@ -12486,30 +12497,10 @@
      "Lamar Jackson"
     ],
     [
-     23,
-     "Jaylen Warren",
+     22,
+     "Bucky Irving",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     23,
-     "",
-     "",
-     "Jaylen Waddle",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     23,
-     "",
-     "",
-     "Rashee Rice",
      "",
      "",
      "",
@@ -12517,9 +12508,9 @@
     ],
     [
      22,
-     "Bucky Irving",
      "",
      "",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -12539,7 +12530,7 @@
      22,
      "",
      "",
-     "Tee Higgins",
+     "Parker Washington",
      "",
      "",
      "",
@@ -12549,7 +12540,7 @@
      22,
      "",
      "",
-     "Parker Washington",
+     "Rashee Rice",
      "",
      "",
      "",
@@ -12560,6 +12551,16 @@
      "Jeremiyah Love",
      "",
      "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     20,
+     "",
+     "",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -12596,7 +12597,7 @@
      ""
     ],
     [
-     17,
+     16,
      "Chuba Hubbard",
      "",
      "",
@@ -12606,7 +12607,7 @@
      ""
     ],
     [
-     17,
+     16,
      "Cam Skattebo",
      "",
      "",
@@ -12649,6 +12650,16 @@
      11,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     11,
+     "",
+     "",
      "",
      "",
      "Tyler Warren",
@@ -12666,7 +12677,7 @@
      ""
     ],
     [
-     9,
+     10,
      "David Montgomery",
      "",
      "",
@@ -12676,18 +12687,8 @@
      ""
     ],
     [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Drake Maye"
-    ],
-    [
-     8,
-     "Bhayshul Tuten",
+     10,
+     "Aaron Jones Sr.",
      "",
      "",
      "",
@@ -12697,7 +12698,7 @@
     ],
     [
      8,
-     "Aaron Jones Sr.",
+     "Bhayshul Tuten",
      "",
      "",
      "",
@@ -12736,6 +12737,16 @@
      ""
     ],
     [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
+    ],
+    [
      7,
      "MarShawn Lloyd",
      "",
@@ -12744,36 +12755,6 @@
      "",
      "",
      ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "George Kittle",
-     "",
-     ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Joe Burrow"
     ],
     [
      6,
@@ -12788,6 +12769,16 @@
     [
      6,
      "Josh Jacobs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     6,
+     "Tony Pollard",
      "",
      "",
      "",
@@ -12861,6 +12852,26 @@
      "",
      "",
      "",
+     "George Kittle",
+     "",
+     ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Joe Burrow"
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Jayden Daniels"
@@ -12907,16 +12918,6 @@
     ],
     [
      4,
-     "Tony Pollard",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     4,
      "Kenny Gainwell",
      "",
      "",
@@ -12944,6 +12945,16 @@
      "",
      "",
      ""
+    ],
+    [
+     4,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dak Prescott"
     ],
     [
      3,
@@ -12984,16 +12995,6 @@
      "",
      "",
      ""
-    ],
-    [
-     3,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
     ],
     [
      2,
@@ -13091,16 +13092,6 @@
      "",
      "",
      "",
-     "Harold Fannin Jr.",
-     "",
-     ""
-    ],
-    [
-     2,
-     "",
-     "",
-     "",
-     "",
      "",
      "",
      "Trevor Lawrence"
@@ -13161,6 +13152,16 @@
      "",
      "",
      "",
+     "Harold Fannin Jr.",
+     "",
+     ""
+    ],
+    [
+     1,
+     "",
+     "",
+     "",
+     "",
      "",
      "",
      "Justin Herbert"
@@ -13180,14 +13181,20 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 81,
-     "baselineValue": 78
+     "value": 80,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 77,
-     "baselineValue": 74
+     "value": 76,
+     "baselineValue": 73
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 71,
+     "baselineValue": 67
     },
     {
      "name": "Puka Nacua",
@@ -13202,16 +13209,10 @@
      "baselineValue": 66
     },
     {
-     "name": "Jaxon Smith-Njigba",
+     "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 69,
-     "baselineValue": 65
-    },
-    {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 66,
-     "baselineValue": 65
+     "value": 67,
+     "baselineValue": 62
     },
     {
      "name": "Amon-Ra St. Brown",
@@ -13220,10 +13221,10 @@
      "baselineValue": 62
     },
     {
-     "name": "Ja'Marr Chase",
-     "pos": "WR",
+     "name": "Kenneth Walker III",
+     "pos": "RB",
      "value": 65,
-     "baselineValue": 60
+     "baselineValue": 64
     },
     {
      "name": "Jonathan Taylor",
@@ -13234,8 +13235,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 58,
-     "baselineValue": 54
+     "value": 60,
+     "baselineValue": 56
     },
     {
      "name": "James Cook III",
@@ -13256,38 +13257,32 @@
      "baselineValue": 54
     },
     {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 50,
+     "name": "Justin Jefferson",
+     "pos": "WR",
+     "value": 51,
      "baselineValue": 48
     },
     {
-     "name": "Justin Jefferson",
+     "name": "Chris Olave",
      "pos": "WR",
-     "value": 50,
+     "value": 51,
      "baselineValue": 47
     },
     {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 49,
-     "baselineValue": 48
-    },
-    {
-     "name": "Zay Flowers",
-     "pos": "WR",
-     "value": 48,
-     "baselineValue": 47
-    },
-    {
-     "name": "Chris Olave",
-     "pos": "WR",
-     "value": 48,
-     "baselineValue": 44
+     "value": 50,
+     "baselineValue": 49
     },
     {
      "name": "Trey McBride",
      "pos": "TE",
+     "value": 50,
+     "baselineValue": 47
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
      "value": 48,
      "baselineValue": 46
     },
@@ -13298,22 +13293,28 @@
      "baselineValue": 42
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 39,
-     "baselineValue": 38
-    },
-    {
-     "name": "Breece Hall",
-     "pos": "RB",
-     "value": 39,
-     "baselineValue": 38
-    },
-    {
      "name": "Nico Collins",
      "pos": "WR",
      "value": 39,
      "baselineValue": 36
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 38,
+     "baselineValue": 37
+    },
+    {
+     "name": "Breece Hall",
+     "pos": "RB",
+     "value": 38,
+     "baselineValue": 37
+    },
+    {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 37,
+     "baselineValue": 34
     },
     {
      "name": "Drake London",
@@ -13322,22 +13323,22 @@
      "baselineValue": 33
     },
     {
+     "name": "DeVonta Smith",
+     "pos": "WR",
+     "value": 35,
+     "baselineValue": 32
+    },
+    {
      "name": "Omarion Hampton",
      "pos": "RB",
      "value": 34,
      "baselineValue": 33
     },
     {
-     "name": "DeVonta Smith",
+     "name": "George Pickens",
      "pos": "WR",
      "value": 34,
-     "baselineValue": 31
-    },
-    {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 34,
-     "baselineValue": 31
+     "baselineValue": 33
     },
     {
      "name": "Josh Allen",
@@ -13346,7 +13347,7 @@
      "baselineValue": 35
     },
     {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 32,
      "baselineValue": 30
@@ -13356,12 +13357,6 @@
      "pos": "WR",
      "value": 30,
      "baselineValue": 29
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 28,
-     "baselineValue": 27
     },
     {
      "name": "Davante Adams",
@@ -13374,6 +13369,18 @@
      "pos": "RB",
      "value": 27,
      "baselineValue": 29
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 27,
+     "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 27,
+     "baselineValue": 26
     },
     {
      "name": "Brock Bowers",
@@ -13390,26 +13397,8 @@
     {
      "name": "Lamar Jackson",
      "pos": "QB",
-     "value": 24,
-     "baselineValue": 26
-    },
-    {
-     "name": "Jaylen Warren",
-     "pos": "RB",
      "value": 23,
-     "baselineValue": 22
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 23,
-     "baselineValue": 22
-    },
-    {
-     "name": "Rashee Rice",
-     "pos": "WR",
-     "value": 23,
-     "baselineValue": 20
+     "baselineValue": 25
     },
     {
      "name": "Bucky Irving",
@@ -13418,13 +13407,13 @@
      "baselineValue": 21
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 22,
      "baselineValue": 21
     },
     {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 22,
      "baselineValue": 20
@@ -13436,10 +13425,22 @@
      "baselineValue": 20
     },
     {
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 22,
+     "baselineValue": 19
+    },
+    {
      "name": "Jeremiyah Love",
      "pos": "RB",
      "value": 21,
      "baselineValue": 20
+    },
+    {
+     "name": "Tee Higgins",
+     "pos": "WR",
+     "value": 20,
+     "baselineValue": 19
     },
     {
      "name": "Tetairoa McMillan",
@@ -13462,14 +13463,14 @@
     {
      "name": "Chuba Hubbard",
      "pos": "RB",
-     "value": 17,
-     "baselineValue": 19
+     "value": 16,
+     "baselineValue": 18
     },
     {
      "name": "Cam Skattebo",
      "pos": "RB",
-     "value": 17,
-     "baselineValue": 16
+     "value": 16,
+     "baselineValue": 15
     },
     {
      "name": "Emeka Egbuka",
@@ -13490,6 +13491,12 @@
      "baselineValue": 15
     },
     {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 11,
+     "baselineValue": 13
+    },
+    {
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 11,
@@ -13504,26 +13511,20 @@
     {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 9,
-     "baselineValue": 11
+     "value": 10,
+     "baselineValue": 12
     },
     {
-     "name": "Drake Maye",
-     "pos": "QB",
-     "value": 9,
-     "baselineValue": 11
+     "name": "Aaron Jones Sr.",
+     "pos": "RB",
+     "value": 10,
+     "baselineValue": 9
     },
     {
      "name": "Bhayshul Tuten",
      "pos": "RB",
      "value": 8,
      "baselineValue": 10
-    },
-    {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 8,
-     "baselineValue": 7
     },
     {
      "name": "Rhamondre Stevenson",
@@ -13544,26 +13545,14 @@
      "baselineValue": 10
     },
     {
+     "name": "Drake Maye",
+     "pos": "QB",
+     "value": 8,
+     "baselineValue": 10
+    },
+    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
-     "value": 7,
-     "baselineValue": 9
-    },
-    {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 7,
-     "baselineValue": 9
-    },
-    {
-     "name": "George Kittle",
-     "pos": "TE",
-     "value": 7,
-     "baselineValue": 9
-    },
-    {
-     "name": "Joe Burrow",
-     "pos": "QB",
      "value": 7,
      "baselineValue": 9
     },
@@ -13575,6 +13564,12 @@
     },
     {
      "name": "Josh Jacobs",
+     "pos": "RB",
+     "value": 6,
+     "baselineValue": 8
+    },
+    {
+     "name": "Tony Pollard",
      "pos": "RB",
      "value": 6,
      "baselineValue": 8
@@ -13616,6 +13611,18 @@
      "baselineValue": 5
     },
     {
+     "name": "George Kittle",
+     "pos": "TE",
+     "value": 6,
+     "baselineValue": 8
+    },
+    {
+     "name": "Joe Burrow",
+     "pos": "QB",
+     "value": 6,
+     "baselineValue": 8
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 6,
@@ -13646,12 +13653,6 @@
      "baselineValue": 6
     },
     {
-     "name": "Tony Pollard",
-     "pos": "RB",
-     "value": 4,
-     "baselineValue": 6
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 4,
@@ -13666,6 +13667,12 @@
     {
      "name": "Alec Pierce",
      "pos": "WR",
+     "value": 4,
+     "baselineValue": 6
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
      "value": 4,
      "baselineValue": 6
     },
@@ -13690,12 +13697,6 @@
     {
      "name": "Michael Wilson",
      "pos": "WR",
-     "value": 3,
-     "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
      "value": 3,
      "baselineValue": 5
     },
@@ -13754,12 +13755,6 @@
      "baselineValue": 4
     },
     {
-     "name": "Harold Fannin Jr.",
-     "pos": "TE",
-     "value": 2,
-     "baselineValue": 4
-    },
-    {
      "name": "Trevor Lawrence",
      "pos": "QB",
      "value": 2,
@@ -13794,6 +13789,12 @@
      "pos": "WR",
      "value": 1,
      "baselineValue": 2
+    },
+    {
+     "name": "Harold Fannin Jr.",
+     "pos": "TE",
+     "value": 1,
+     "baselineValue": 3
     },
     {
      "name": "Justin Herbert",
@@ -13838,7 +13839,7 @@
    ],
    "rows": [
     [
-     89,
+     88,
      "Jahmyr Gibbs",
      "",
      "",
@@ -13848,10 +13849,20 @@
      ""
     ],
     [
-     84,
+     83,
      "Bijan Robinson",
      "",
      "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     76,
+     "",
+     "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -13878,20 +13889,10 @@
      ""
     ],
     [
-     74,
+     72,
      "",
      "",
-     "Jaxon Smith-Njigba",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     70,
-     "Kenneth Walker III",
-     "",
-     "",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -13909,9 +13910,9 @@
     ],
     [
      69,
+     "Kenneth Walker III",
      "",
      "",
-     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -13928,7 +13929,7 @@
      ""
     ],
     [
-     60,
+     63,
      "",
      "",
      "CeeDee Lamb",
@@ -13968,17 +13969,7 @@
      ""
     ],
     [
-     51,
-     "Chase Brown",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     51,
+     52,
      "",
      "",
      "Justin Jefferson",
@@ -13988,27 +13979,7 @@
      ""
     ],
     [
-     50,
-     "Saquon Barkley",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     49,
-     "",
-     "",
-     "Zay Flowers",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     49,
+     52,
      "",
      "",
      "Chris Olave",
@@ -14018,7 +13989,17 @@
      ""
     ],
     [
-     49,
+     51,
+     "Saquon Barkley",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     50,
      "",
      "",
      "",
@@ -14028,28 +14009,18 @@
      ""
     ],
     [
+     49,
+     "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      46,
      "De'Von Achane",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     38,
-     "Javonte Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     38,
-     "Breece Hall",
      "",
      "",
      "",
@@ -14068,10 +14039,50 @@
      ""
     ],
     [
+     37,
+     "Javonte Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     37,
+     "Breece Hall",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     36,
+     "",
+     "",
+     "Garrett Wilson",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
      35,
      "",
      "",
      "Drake London",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     34,
+     "",
+     "",
+     "DeVonta Smith",
      "",
      "",
      "",
@@ -14088,20 +14099,10 @@
      ""
     ],
     [
-     32,
+     33,
      "",
      "",
-     "DeVonta Smith",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     32,
-     "",
-     "",
-     "Garrett Wilson",
+     "George Pickens",
      "",
      "",
      "",
@@ -14121,7 +14122,7 @@
      30,
      "",
      "",
-     "George Pickens",
+     "Zay Flowers",
      "",
      "",
      "",
@@ -14148,7 +14149,17 @@
      ""
     ],
     [
-     26,
+     25,
+     "Kyren Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     25,
      "D'Andre Swift",
      "",
      "",
@@ -14159,7 +14170,7 @@
     ],
     [
      25,
-     "Kyren Williams",
+     "Jaylen Warren",
      "",
      "",
      "",
@@ -14188,7 +14199,7 @@
      ""
     ],
     [
-     22,
+     21,
      "",
      "",
      "",
@@ -14196,36 +14207,6 @@
      "",
      "",
      "Lamar Jackson"
-    ],
-    [
-     21,
-     "Jaylen Warren",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     21,
-     "",
-     "",
-     "Jaylen Waddle",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     21,
-     "",
-     "",
-     "Rashee Rice",
-     "",
-     "",
-     "",
-     ""
     ],
     [
      20,
@@ -14241,7 +14222,17 @@
      20,
      "",
      "",
-     "Ladd McConkey",
+     "Jaylen Waddle",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     20,
+     "",
+     "",
+     "Rashee Rice",
      "",
      "",
      "",
@@ -14261,7 +14252,7 @@
      19,
      "",
      "",
-     "Tee Higgins",
+     "Ladd McConkey",
      "",
      "",
      "",
@@ -14272,6 +14263,16 @@
      "",
      "",
      "Parker Washington",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     18,
+     "",
+     "",
+     "Tee Higgins",
      "",
      "",
      "",
@@ -14308,7 +14309,7 @@
      ""
     ],
     [
-     15,
+     14,
      "Chuba Hubbard",
      "",
      "",
@@ -14318,7 +14319,7 @@
      ""
     ],
     [
-     15,
+     14,
      "Cam Skattebo",
      "",
      "",
@@ -14361,6 +14362,16 @@
      9,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     9,
+     "",
+     "",
      "",
      "",
      "Tyler Warren",
@@ -14378,8 +14389,18 @@
      ""
     ],
     [
-     7,
+     8,
      "David Montgomery",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "Aaron Jones Sr.",
      "",
      "",
      "",
@@ -14398,28 +14419,8 @@
      ""
     ],
     [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Drake Maye"
-    ],
-    [
      6,
      "Bhayshul Tuten",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     6,
-     "Aaron Jones Sr.",
      "",
      "",
      "",
@@ -14446,6 +14447,16 @@
      "Colston Loveland",
      "",
      ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Drake Maye"
     ],
     [
      5,
@@ -14479,9 +14490,9 @@
     ],
     [
      5,
+     "Tony Pollard",
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
@@ -14619,16 +14630,6 @@
     ],
     [
      3,
-     "Tony Pollard",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     3,
      "Kenny Gainwell",
      "",
      "",
@@ -14656,6 +14657,16 @@
      "",
      "",
      ""
+    ],
+    [
+     3,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dak Prescott"
     ],
     [
      2,
@@ -14696,16 +14707,6 @@
      "",
      "",
      ""
-    ],
-    [
-     2,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Dak Prescott"
     ],
     [
      1,
@@ -14892,14 +14893,20 @@
     {
      "name": "Jahmyr Gibbs",
      "pos": "RB",
-     "value": 89,
-     "baselineValue": 78
+     "value": 88,
+     "baselineValue": 77
     },
     {
      "name": "Bijan Robinson",
      "pos": "RB",
-     "value": 84,
-     "baselineValue": 74
+     "value": 83,
+     "baselineValue": 73
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 76,
+     "baselineValue": 67
     },
     {
      "name": "Puka Nacua",
@@ -14914,16 +14921,10 @@
      "baselineValue": 66
     },
     {
-     "name": "Jaxon Smith-Njigba",
+     "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 74,
-     "baselineValue": 65
-    },
-    {
-     "name": "Kenneth Walker III",
-     "pos": "RB",
-     "value": 70,
-     "baselineValue": 65
+     "value": 72,
+     "baselineValue": 62
     },
     {
      "name": "Amon-Ra St. Brown",
@@ -14932,10 +14933,10 @@
      "baselineValue": 62
     },
     {
-     "name": "Ja'Marr Chase",
-     "pos": "WR",
+     "name": "Kenneth Walker III",
+     "pos": "RB",
      "value": 69,
-     "baselineValue": 60
+     "baselineValue": 64
     },
     {
      "name": "Jonathan Taylor",
@@ -14946,8 +14947,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 60,
-     "baselineValue": 54
+     "value": 63,
+     "baselineValue": 56
     },
     {
      "name": "James Cook III",
@@ -14968,38 +14969,32 @@
      "baselineValue": 54
     },
     {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 51,
+     "name": "Justin Jefferson",
+     "pos": "WR",
+     "value": 52,
      "baselineValue": 48
     },
     {
-     "name": "Justin Jefferson",
+     "name": "Chris Olave",
      "pos": "WR",
-     "value": 51,
+     "value": 52,
      "baselineValue": 47
     },
     {
      "name": "Saquon Barkley",
      "pos": "RB",
-     "value": 50,
-     "baselineValue": 48
-    },
-    {
-     "name": "Zay Flowers",
-     "pos": "WR",
-     "value": 49,
-     "baselineValue": 47
-    },
-    {
-     "name": "Chris Olave",
-     "pos": "WR",
-     "value": 49,
-     "baselineValue": 44
+     "value": 51,
+     "baselineValue": 49
     },
     {
      "name": "Trey McBride",
      "pos": "TE",
+     "value": 50,
+     "baselineValue": 47
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
      "value": 49,
      "baselineValue": 46
     },
@@ -15010,22 +15005,28 @@
      "baselineValue": 42
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 38,
-     "baselineValue": 38
-    },
-    {
-     "name": "Breece Hall",
-     "pos": "RB",
-     "value": 38,
-     "baselineValue": 38
-    },
-    {
      "name": "Nico Collins",
      "pos": "WR",
      "value": 38,
      "baselineValue": 36
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 37,
+     "baselineValue": 37
+    },
+    {
+     "name": "Breece Hall",
+     "pos": "RB",
+     "value": 37,
+     "baselineValue": 37
+    },
+    {
+     "name": "Garrett Wilson",
+     "pos": "WR",
+     "value": 36,
+     "baselineValue": 34
     },
     {
      "name": "Drake London",
@@ -15034,22 +15035,22 @@
      "baselineValue": 33
     },
     {
+     "name": "DeVonta Smith",
+     "pos": "WR",
+     "value": 34,
+     "baselineValue": 32
+    },
+    {
      "name": "Omarion Hampton",
      "pos": "RB",
      "value": 33,
      "baselineValue": 33
     },
     {
-     "name": "DeVonta Smith",
+     "name": "George Pickens",
      "pos": "WR",
-     "value": 32,
-     "baselineValue": 31
-    },
-    {
-     "name": "Garrett Wilson",
-     "pos": "WR",
-     "value": 32,
-     "baselineValue": 31
+     "value": 33,
+     "baselineValue": 33
     },
     {
      "name": "Josh Allen",
@@ -15058,7 +15059,7 @@
      "baselineValue": 35
     },
     {
-     "name": "George Pickens",
+     "name": "Zay Flowers",
      "pos": "WR",
      "value": 30,
      "baselineValue": 30
@@ -15076,16 +15077,22 @@
      "baselineValue": 27
     },
     {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 26,
-     "baselineValue": 27
-    },
-    {
      "name": "Kyren Williams",
      "pos": "RB",
      "value": 25,
      "baselineValue": 29
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 25,
+     "baselineValue": 26
+    },
+    {
+     "name": "Jaylen Warren",
+     "pos": "RB",
+     "value": 25,
+     "baselineValue": 26
     },
     {
      "name": "Brock Bowers",
@@ -15102,26 +15109,8 @@
     {
      "name": "Lamar Jackson",
      "pos": "QB",
-     "value": 22,
-     "baselineValue": 26
-    },
-    {
-     "name": "Jaylen Warren",
-     "pos": "RB",
      "value": 21,
-     "baselineValue": 22
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 21,
-     "baselineValue": 22
-    },
-    {
-     "name": "Rashee Rice",
-     "pos": "WR",
-     "value": 21,
-     "baselineValue": 20
+     "baselineValue": 25
     },
     {
      "name": "Bucky Irving",
@@ -15130,10 +15119,16 @@
      "baselineValue": 21
     },
     {
-     "name": "Ladd McConkey",
+     "name": "Jaylen Waddle",
      "pos": "WR",
      "value": 20,
      "baselineValue": 21
+    },
+    {
+     "name": "Rashee Rice",
+     "pos": "WR",
+     "value": 20,
+     "baselineValue": 19
     },
     {
      "name": "Jeremiyah Love",
@@ -15142,7 +15137,7 @@
      "baselineValue": 20
     },
     {
-     "name": "Tee Higgins",
+     "name": "Ladd McConkey",
      "pos": "WR",
      "value": 19,
      "baselineValue": 20
@@ -15152,6 +15147,12 @@
      "pos": "WR",
      "value": 19,
      "baselineValue": 20
+    },
+    {
+     "name": "Tee Higgins",
+     "pos": "WR",
+     "value": 18,
+     "baselineValue": 19
     },
     {
      "name": "Tetairoa McMillan",
@@ -15174,14 +15175,14 @@
     {
      "name": "Chuba Hubbard",
      "pos": "RB",
-     "value": 15,
-     "baselineValue": 19
+     "value": 14,
+     "baselineValue": 18
     },
     {
      "name": "Cam Skattebo",
      "pos": "RB",
-     "value": 15,
-     "baselineValue": 16
+     "value": 14,
+     "baselineValue": 15
     },
     {
      "name": "Emeka Egbuka",
@@ -15202,6 +15203,12 @@
      "baselineValue": 15
     },
     {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 9,
+     "baselineValue": 13
+    },
+    {
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 9,
@@ -15216,8 +15223,14 @@
     {
      "name": "David Montgomery",
      "pos": "RB",
-     "value": 7,
-     "baselineValue": 11
+     "value": 8,
+     "baselineValue": 12
+    },
+    {
+     "name": "Aaron Jones Sr.",
+     "pos": "RB",
+     "value": 8,
+     "baselineValue": 9
     },
     {
      "name": "Luther Burden III",
@@ -15226,22 +15239,10 @@
      "baselineValue": 7
     },
     {
-     "name": "Drake Maye",
-     "pos": "QB",
-     "value": 7,
-     "baselineValue": 11
-    },
-    {
      "name": "Bhayshul Tuten",
      "pos": "RB",
      "value": 6,
      "baselineValue": 10
-    },
-    {
-     "name": "Aaron Jones Sr.",
-     "pos": "RB",
-     "value": 6,
-     "baselineValue": 7
     },
     {
      "name": "Rhamondre Stevenson",
@@ -15252,6 +15253,12 @@
     {
      "name": "Colston Loveland",
      "pos": "TE",
+     "value": 6,
+     "baselineValue": 10
+    },
+    {
+     "name": "Drake Maye",
+     "pos": "QB",
      "value": 6,
      "baselineValue": 10
     },
@@ -15274,10 +15281,10 @@
      "baselineValue": 8
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Tony Pollard",
+     "pos": "RB",
      "value": 5,
-     "baselineValue": 9
+     "baselineValue": 8
     },
     {
      "name": "DJ Moore",
@@ -15319,13 +15326,13 @@
      "name": "George Kittle",
      "pos": "TE",
      "value": 5,
-     "baselineValue": 9
+     "baselineValue": 8
     },
     {
      "name": "Joe Burrow",
      "pos": "QB",
      "value": 5,
-     "baselineValue": 9
+     "baselineValue": 8
     },
     {
      "name": "Jayden Daniels",
@@ -15358,12 +15365,6 @@
      "baselineValue": 6
     },
     {
-     "name": "Tony Pollard",
-     "pos": "RB",
-     "value": 3,
-     "baselineValue": 6
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 3,
@@ -15378,6 +15379,12 @@
     {
      "name": "Alec Pierce",
      "pos": "WR",
+     "value": 3,
+     "baselineValue": 6
+    },
+    {
+     "name": "Dak Prescott",
+     "pos": "QB",
      "value": 3,
      "baselineValue": 6
     },
@@ -15402,12 +15409,6 @@
     {
      "name": "Michael Wilson",
      "pos": "WR",
-     "value": 2,
-     "baselineValue": 5
-    },
-    {
-     "name": "Dak Prescott",
-     "pos": "QB",
      "value": 2,
      "baselineValue": 5
     },
@@ -15499,7 +15500,7 @@
      "name": "Harold Fannin Jr.",
      "pos": "TE",
      "value": 1,
-     "baselineValue": 4
+     "baselineValue": 3
     },
     {
      "name": "Trevor Lawrence",
@@ -15525,33 +15526,33 @@
  "byPlayer": {
   "Bijan Robinson": {
    "pos": "RB",
-   "baselineValue": 74,
+   "baselineValue": 73,
    "values": {
-    "Standard_8": 66,
-    "Standard_10": 71,
-    "Standard_12": 76,
-    "HalfPPR_8": 68,
-    "HalfPPR_10": 74,
-    "HalfPPR_12": 80,
-    "FullPPR_8": 71,
-    "FullPPR_10": 77,
-    "FullPPR_12": 84
+    "Standard_8": 65,
+    "Standard_10": 70,
+    "Standard_12": 75,
+    "HalfPPR_8": 67,
+    "HalfPPR_10": 73,
+    "HalfPPR_12": 79,
+    "FullPPR_8": 70,
+    "FullPPR_10": 76,
+    "FullPPR_12": 83
    },
    "sheetValue": 70
   },
   "Jahmyr Gibbs": {
    "pos": "RB",
-   "baselineValue": 78,
+   "baselineValue": 77,
    "values": {
-    "Standard_8": 69,
-    "Standard_10": 75,
-    "Standard_12": 81,
+    "Standard_8": 68,
+    "Standard_10": 74,
+    "Standard_12": 80,
     "HalfPPR_8": 71,
-    "HalfPPR_10": 78,
-    "HalfPPR_12": 85,
-    "FullPPR_8": 74,
-    "FullPPR_10": 81,
-    "FullPPR_12": 89
+    "HalfPPR_10": 77,
+    "HalfPPR_12": 84,
+    "FullPPR_8": 73,
+    "FullPPR_10": 80,
+    "FullPPR_12": 88
    },
    "sheetValue": 70
   },
@@ -15589,17 +15590,17 @@
   },
   "Ja'Marr Chase": {
    "pos": "WR",
-   "baselineValue": 60,
+   "baselineValue": 62,
    "values": {
-    "Standard_8": 52,
-    "Standard_10": 55,
-    "Standard_12": 57,
-    "HalfPPR_8": 57,
-    "HalfPPR_10": 60,
-    "HalfPPR_12": 63,
-    "FullPPR_8": 61,
-    "FullPPR_10": 65,
-    "FullPPR_12": 69
+    "Standard_8": 54,
+    "Standard_10": 57,
+    "Standard_12": 59,
+    "HalfPPR_8": 58,
+    "HalfPPR_10": 62,
+    "HalfPPR_12": 65,
+    "FullPPR_8": 63,
+    "FullPPR_10": 67,
+    "FullPPR_12": 72
    },
    "sheetValue": 64
   },
@@ -15621,17 +15622,17 @@
   },
   "Jaxon Smith-Njigba": {
    "pos": "WR",
-   "baselineValue": 65,
+   "baselineValue": 67,
    "values": {
-    "Standard_8": 58,
-    "Standard_10": 61,
-    "Standard_12": 64,
-    "HalfPPR_8": 61,
-    "HalfPPR_10": 65,
-    "HalfPPR_12": 69,
-    "FullPPR_8": 64,
-    "FullPPR_10": 69,
-    "FullPPR_12": 74
+    "Standard_8": 59,
+    "Standard_10": 63,
+    "Standard_12": 66,
+    "HalfPPR_8": 63,
+    "HalfPPR_10": 67,
+    "HalfPPR_12": 71,
+    "FullPPR_8": 66,
+    "FullPPR_10": 71,
+    "FullPPR_12": 76
    },
    "sheetValue": 60
   },
@@ -15669,33 +15670,33 @@
   },
   "Kenneth Walker III": {
    "pos": "RB",
-   "baselineValue": 65,
+   "baselineValue": 64,
    "values": {
-    "Standard_8": 60,
-    "Standard_10": 64,
-    "Standard_12": 68,
-    "HalfPPR_8": 61,
-    "HalfPPR_10": 65,
-    "HalfPPR_12": 69,
-    "FullPPR_8": 62,
-    "FullPPR_10": 66,
-    "FullPPR_12": 70
+    "Standard_8": 59,
+    "Standard_10": 63,
+    "Standard_12": 67,
+    "HalfPPR_8": 60,
+    "HalfPPR_10": 64,
+    "HalfPPR_12": 68,
+    "FullPPR_8": 61,
+    "FullPPR_10": 65,
+    "FullPPR_12": 69
    },
    "sheetValue": 60
   },
   "Saquon Barkley": {
    "pos": "RB",
-   "baselineValue": 48,
+   "baselineValue": 49,
    "values": {
-    "Standard_8": 46,
-    "Standard_10": 47,
-    "Standard_12": 48,
-    "HalfPPR_8": 47,
-    "HalfPPR_10": 48,
-    "HalfPPR_12": 49,
+    "Standard_8": 47,
+    "Standard_10": 48,
+    "Standard_12": 49,
+    "HalfPPR_8": 48,
+    "HalfPPR_10": 49,
+    "HalfPPR_12": 50,
     "FullPPR_8": 48,
-    "FullPPR_10": 49,
-    "FullPPR_12": 50
+    "FullPPR_10": 50,
+    "FullPPR_12": 51
    },
    "sheetValue": 55
   },
@@ -15733,49 +15734,49 @@
   },
   "Justin Jefferson": {
    "pos": "WR",
-   "baselineValue": 47,
+   "baselineValue": 48,
    "values": {
     "Standard_8": 44,
-    "Standard_10": 44,
-    "Standard_12": 44,
-    "HalfPPR_8": 46,
-    "HalfPPR_10": 47,
-    "HalfPPR_12": 47,
-    "FullPPR_8": 48,
-    "FullPPR_10": 50,
-    "FullPPR_12": 51
+    "Standard_10": 45,
+    "Standard_12": 45,
+    "HalfPPR_8": 47,
+    "HalfPPR_10": 48,
+    "HalfPPR_12": 49,
+    "FullPPR_8": 49,
+    "FullPPR_10": 51,
+    "FullPPR_12": 52
    },
    "sheetValue": 53
   },
   "Chase Brown": {
    "pos": "RB",
-   "baselineValue": 48,
+   "baselineValue": 46,
    "values": {
-    "Standard_8": 45,
-    "Standard_10": 46,
-    "Standard_12": 46,
-    "HalfPPR_8": 47,
-    "HalfPPR_10": 48,
-    "HalfPPR_12": 49,
-    "FullPPR_8": 49,
-    "FullPPR_10": 50,
-    "FullPPR_12": 51
+    "Standard_8": 43,
+    "Standard_10": 44,
+    "Standard_12": 44,
+    "HalfPPR_8": 45,
+    "HalfPPR_10": 46,
+    "HalfPPR_12": 46,
+    "FullPPR_8": 47,
+    "FullPPR_10": 48,
+    "FullPPR_12": 49
    },
    "sheetValue": 47
   },
   "CeeDee Lamb": {
    "pos": "WR",
-   "baselineValue": 54,
+   "baselineValue": 56,
    "values": {
-    "Standard_8": 49,
-    "Standard_10": 50,
-    "Standard_12": 51,
-    "HalfPPR_8": 52,
-    "HalfPPR_10": 54,
-    "HalfPPR_12": 56,
-    "FullPPR_8": 55,
-    "FullPPR_10": 58,
-    "FullPPR_12": 60
+    "Standard_8": 50,
+    "Standard_10": 52,
+    "Standard_12": 53,
+    "HalfPPR_8": 54,
+    "HalfPPR_10": 56,
+    "HalfPPR_12": 58,
+    "FullPPR_8": 57,
+    "FullPPR_10": 60,
+    "FullPPR_12": 63
    },
    "sheetValue": 47
   },
@@ -15813,33 +15814,33 @@
   },
   "Chris Olave": {
    "pos": "WR",
-   "baselineValue": 44,
+   "baselineValue": 47,
    "values": {
-    "Standard_8": 40,
-    "Standard_10": 40,
-    "Standard_12": 39,
-    "HalfPPR_8": 43,
-    "HalfPPR_10": 44,
-    "HalfPPR_12": 44,
-    "FullPPR_8": 47,
-    "FullPPR_10": 48,
-    "FullPPR_12": 49
+    "Standard_8": 43,
+    "Standard_10": 43,
+    "Standard_12": 43,
+    "HalfPPR_8": 46,
+    "HalfPPR_10": 47,
+    "HalfPPR_12": 47,
+    "FullPPR_8": 49,
+    "FullPPR_10": 51,
+    "FullPPR_12": 52
    },
    "sheetValue": 41
   },
   "Javonte Williams": {
    "pos": "RB",
-   "baselineValue": 38,
+   "baselineValue": 37,
    "values": {
     "Standard_8": 37,
-    "Standard_10": 37,
-    "Standard_12": 36,
-    "HalfPPR_8": 38,
-    "HalfPPR_10": 38,
-    "HalfPPR_12": 37,
-    "FullPPR_8": 39,
-    "FullPPR_10": 39,
-    "FullPPR_12": 38
+    "Standard_10": 36,
+    "Standard_12": 35,
+    "HalfPPR_8": 37,
+    "HalfPPR_10": 37,
+    "HalfPPR_12": 36,
+    "FullPPR_8": 38,
+    "FullPPR_10": 38,
+    "FullPPR_12": 37
    },
    "sheetValue": 40
   },
@@ -15861,17 +15862,17 @@
   },
   "Breece Hall": {
    "pos": "RB",
-   "baselineValue": 38,
+   "baselineValue": 37,
    "values": {
     "Standard_8": 37,
-    "Standard_10": 37,
-    "Standard_12": 36,
-    "HalfPPR_8": 38,
-    "HalfPPR_10": 38,
-    "HalfPPR_12": 37,
-    "FullPPR_8": 39,
-    "FullPPR_10": 39,
-    "FullPPR_12": 38
+    "Standard_10": 36,
+    "Standard_12": 35,
+    "HalfPPR_8": 37,
+    "HalfPPR_10": 37,
+    "HalfPPR_12": 36,
+    "FullPPR_8": 38,
+    "FullPPR_10": 38,
+    "FullPPR_12": 37
    },
    "sheetValue": 37
   },
@@ -15909,17 +15910,17 @@
   },
   "D'Andre Swift": {
    "pos": "RB",
-   "baselineValue": 27,
+   "baselineValue": 26,
    "values": {
-    "Standard_8": 28,
-    "Standard_10": 26,
-    "Standard_12": 24,
-    "HalfPPR_8": 28,
-    "HalfPPR_10": 27,
-    "HalfPPR_12": 25,
-    "FullPPR_8": 29,
-    "FullPPR_10": 28,
-    "FullPPR_12": 26
+    "Standard_8": 27,
+    "Standard_10": 25,
+    "Standard_12": 23,
+    "HalfPPR_8": 27,
+    "HalfPPR_10": 26,
+    "HalfPPR_12": 24,
+    "FullPPR_8": 28,
+    "FullPPR_10": 27,
+    "FullPPR_12": 25
    },
    "sheetValue": 36
   },
@@ -15973,17 +15974,17 @@
   },
   "George Pickens": {
    "pos": "WR",
-   "baselineValue": 30,
+   "baselineValue": 33,
    "values": {
-    "Standard_8": 30,
-    "Standard_10": 28,
-    "Standard_12": 27,
-    "HalfPPR_8": 31,
-    "HalfPPR_10": 30,
-    "HalfPPR_12": 28,
-    "FullPPR_8": 32,
-    "FullPPR_10": 32,
-    "FullPPR_12": 30
+    "Standard_8": 32,
+    "Standard_10": 32,
+    "Standard_12": 30,
+    "HalfPPR_8": 34,
+    "HalfPPR_10": 33,
+    "HalfPPR_12": 32,
+    "FullPPR_8": 35,
+    "FullPPR_10": 34,
+    "FullPPR_12": 33
    },
    "sheetValue": 34
   },
@@ -16021,133 +16022,101 @@
   },
   "Trey McBride": {
    "pos": "TE",
-   "baselineValue": 46,
+   "baselineValue": 47,
    "values": {
-    "Standard_8": 43,
+    "Standard_8": 44,
     "Standard_10": 44,
-    "Standard_12": 43,
-    "HalfPPR_8": 45,
-    "HalfPPR_10": 46,
-    "HalfPPR_12": 46,
-    "FullPPR_8": 47,
-    "FullPPR_10": 48,
-    "FullPPR_12": 49
+    "Standard_12": 45,
+    "HalfPPR_8": 46,
+    "HalfPPR_10": 47,
+    "HalfPPR_12": 47,
+    "FullPPR_8": 48,
+    "FullPPR_10": 50,
+    "FullPPR_12": 50
    },
    "sheetValue": 30
   },
   "DeVonta Smith": {
    "pos": "WR",
-   "baselineValue": 31,
+   "baselineValue": 32,
    "values": {
     "Standard_8": 30,
-    "Standard_10": 28,
-    "Standard_12": 26,
-    "HalfPPR_8": 32,
-    "HalfPPR_10": 31,
-    "HalfPPR_12": 29,
-    "FullPPR_8": 34,
-    "FullPPR_10": 34,
-    "FullPPR_12": 32
+    "Standard_10": 29,
+    "Standard_12": 27,
+    "HalfPPR_8": 33,
+    "HalfPPR_10": 32,
+    "HalfPPR_12": 30,
+    "FullPPR_8": 35,
+    "FullPPR_10": 35,
+    "FullPPR_12": 34
    },
    "sheetValue": 27
   },
   "Rashee Rice": {
    "pos": "WR",
-   "baselineValue": 20,
+   "baselineValue": 19,
    "values": {
-    "Standard_8": 19,
-    "Standard_10": 17,
-    "Standard_12": 15,
-    "HalfPPR_8": 22,
-    "HalfPPR_10": 20,
-    "HalfPPR_12": 18,
+    "Standard_8": 18,
+    "Standard_10": 16,
+    "Standard_12": 14,
+    "HalfPPR_8": 21,
+    "HalfPPR_10": 19,
+    "HalfPPR_12": 17,
     "FullPPR_8": 24,
-    "FullPPR_10": 23,
-    "FullPPR_12": 21
+    "FullPPR_10": 22,
+    "FullPPR_12": 20
    },
    "sheetValue": 26
   },
   "Tee Higgins": {
    "pos": "WR",
-   "baselineValue": 20,
+   "baselineValue": 19,
    "values": {
-    "Standard_8": 20,
+    "Standard_8": 19,
     "Standard_10": 18,
-    "Standard_12": 16,
-    "HalfPPR_8": 22,
-    "HalfPPR_10": 20,
-    "HalfPPR_12": 18,
-    "FullPPR_8": 23,
-    "FullPPR_10": 22,
-    "FullPPR_12": 19
+    "Standard_12": 15,
+    "HalfPPR_8": 21,
+    "HalfPPR_10": 19,
+    "HalfPPR_12": 17,
+    "FullPPR_8": 22,
+    "FullPPR_10": 20,
+    "FullPPR_12": 18
    },
    "sheetValue": 25
   },
   "Zay Flowers": {
    "pos": "WR",
-   "baselineValue": 47,
+   "baselineValue": 30,
    "values": {
-    "Standard_8": 45,
-    "Standard_10": 46,
-    "Standard_12": 46,
-    "HalfPPR_8": 46,
-    "HalfPPR_10": 47,
-    "HalfPPR_12": 47,
-    "FullPPR_8": 47,
-    "FullPPR_10": 48,
-    "FullPPR_12": 49
+    "Standard_8": 30,
+    "Standard_10": 28,
+    "Standard_12": 27,
+    "HalfPPR_8": 31,
+    "HalfPPR_10": 30,
+    "HalfPPR_12": 28,
+    "FullPPR_8": 32,
+    "FullPPR_10": 32,
+    "FullPPR_12": 30
    },
    "sheetValue": 25
   },
   "Lamar Jackson": {
    "pos": "QB",
-   "baselineValue": 26,
+   "baselineValue": 25,
    "values": {
-    "Standard_8": 29,
-    "Standard_10": 28,
-    "Standard_12": 26,
+    "Standard_8": 28,
+    "Standard_10": 27,
+    "Standard_12": 25,
     "HalfPPR_8": 27,
-    "HalfPPR_10": 26,
-    "HalfPPR_12": 24,
-    "FullPPR_8": 26,
-    "FullPPR_10": 24,
-    "FullPPR_12": 22
-   },
-   "sheetValue": 25
-  },
-  "Jaylen Waddle": {
-   "pos": "WR",
-   "baselineValue": 22,
-   "values": {
-    "Standard_8": 22,
-    "Standard_10": 20,
-    "Standard_12": 18,
-    "HalfPPR_8": 24,
-    "HalfPPR_10": 22,
-    "HalfPPR_12": 20,
+    "HalfPPR_10": 25,
+    "HalfPPR_12": 23,
     "FullPPR_8": 25,
     "FullPPR_10": 23,
     "FullPPR_12": 21
    },
-   "sheetValue": 24
+   "sheetValue": 25
   },
-  "Garrett Wilson": {
-   "pos": "WR",
-   "baselineValue": 31,
-   "values": {
-    "Standard_8": 30,
-    "Standard_10": 28,
-    "Standard_12": 26,
-    "HalfPPR_8": 32,
-    "HalfPPR_10": 31,
-    "HalfPPR_12": 29,
-    "FullPPR_8": 34,
-    "FullPPR_10": 34,
-    "FullPPR_12": 32
-   },
-   "sheetValue": 23
-  },
-  "Ladd McConkey": {
+  "Jaylen Waddle": {
    "pos": "WR",
    "baselineValue": 21,
    "values": {
@@ -16160,6 +16129,38 @@
     "FullPPR_8": 24,
     "FullPPR_10": 22,
     "FullPPR_12": 20
+   },
+   "sheetValue": 24
+  },
+  "Garrett Wilson": {
+   "pos": "WR",
+   "baselineValue": 34,
+   "values": {
+    "Standard_8": 32,
+    "Standard_10": 31,
+    "Standard_12": 30,
+    "HalfPPR_8": 35,
+    "HalfPPR_10": 34,
+    "HalfPPR_12": 33,
+    "FullPPR_8": 37,
+    "FullPPR_10": 37,
+    "FullPPR_12": 36
+   },
+   "sheetValue": 23
+  },
+  "Ladd McConkey": {
+   "pos": "WR",
+   "baselineValue": 20,
+   "values": {
+    "Standard_8": 20,
+    "Standard_10": 18,
+    "Standard_12": 16,
+    "HalfPPR_8": 22,
+    "HalfPPR_10": 20,
+    "HalfPPR_12": 18,
+    "FullPPR_8": 23,
+    "FullPPR_10": 22,
+    "FullPPR_12": 19
    },
    "sheetValue": 23
   },
@@ -16277,17 +16278,17 @@
   },
   "Cam Skattebo": {
    "pos": "RB",
-   "baselineValue": 16,
+   "baselineValue": 15,
    "values": {
-    "Standard_8": 17,
-    "Standard_10": 15,
-    "Standard_12": 13,
-    "HalfPPR_8": 18,
-    "HalfPPR_10": 16,
-    "HalfPPR_12": 14,
-    "FullPPR_8": 19,
-    "FullPPR_10": 17,
-    "FullPPR_12": 15
+    "Standard_8": 16,
+    "Standard_10": 14,
+    "Standard_12": 12,
+    "HalfPPR_8": 17,
+    "HalfPPR_10": 15,
+    "HalfPPR_12": 13,
+    "FullPPR_8": 18,
+    "FullPPR_10": 16,
+    "FullPPR_12": 14
    },
    "sheetValue": 15
   },
@@ -16373,33 +16374,33 @@
   },
   "Joe Burrow": {
    "pos": "QB",
-   "baselineValue": 9,
+   "baselineValue": 8,
    "values": {
-    "Standard_8": 13,
-    "Standard_10": 11,
-    "Standard_12": 9,
-    "HalfPPR_8": 11,
-    "HalfPPR_10": 9,
-    "HalfPPR_12": 7,
-    "FullPPR_8": 9,
-    "FullPPR_10": 7,
+    "Standard_8": 12,
+    "Standard_10": 10,
+    "Standard_12": 8,
+    "HalfPPR_8": 10,
+    "HalfPPR_10": 8,
+    "HalfPPR_12": 6,
+    "FullPPR_8": 8,
+    "FullPPR_10": 6,
     "FullPPR_12": 5
    },
    "sheetValue": 13
   },
   "David Montgomery": {
    "pos": "RB",
-   "baselineValue": 11,
+   "baselineValue": 12,
    "values": {
-    "Standard_8": 15,
-    "Standard_10": 13,
-    "Standard_12": 11,
-    "HalfPPR_8": 13,
-    "HalfPPR_10": 11,
-    "HalfPPR_12": 9,
-    "FullPPR_8": 11,
-    "FullPPR_10": 9,
-    "FullPPR_12": 7
+    "Standard_8": 16,
+    "Standard_10": 14,
+    "Standard_12": 12,
+    "HalfPPR_8": 14,
+    "HalfPPR_10": 12,
+    "HalfPPR_12": 10,
+    "FullPPR_8": 12,
+    "FullPPR_10": 10,
+    "FullPPR_12": 8
    },
    "sheetValue": 13
   },
@@ -16421,17 +16422,17 @@
   },
   "Rome Odunze": {
    "pos": "WR",
-   "baselineValue": 9,
+   "baselineValue": 13,
    "values": {
-    "Standard_8": 13,
-    "Standard_10": 11,
-    "Standard_12": 9,
-    "HalfPPR_8": 11,
-    "HalfPPR_10": 9,
-    "HalfPPR_12": 7,
-    "FullPPR_8": 9,
-    "FullPPR_10": 7,
-    "FullPPR_12": 5
+    "Standard_8": 17,
+    "Standard_10": 15,
+    "Standard_12": 13,
+    "HalfPPR_8": 15,
+    "HalfPPR_10": 13,
+    "HalfPPR_12": 11,
+    "FullPPR_8": 13,
+    "FullPPR_10": 11,
+    "FullPPR_12": 9
    },
    "sheetValue": 13
   },
@@ -16469,33 +16470,33 @@
   },
   "Drake Maye": {
    "pos": "QB",
-   "baselineValue": 11,
+   "baselineValue": 10,
    "values": {
-    "Standard_8": 15,
-    "Standard_10": 13,
-    "Standard_12": 11,
-    "HalfPPR_8": 13,
-    "HalfPPR_10": 11,
-    "HalfPPR_12": 9,
-    "FullPPR_8": 11,
-    "FullPPR_10": 9,
-    "FullPPR_12": 7
+    "Standard_8": 14,
+    "Standard_10": 12,
+    "Standard_12": 10,
+    "HalfPPR_8": 12,
+    "HalfPPR_10": 10,
+    "HalfPPR_12": 8,
+    "FullPPR_8": 10,
+    "FullPPR_10": 8,
+    "FullPPR_12": 6
    },
    "sheetValue": 11
   },
   "Jaylen Warren": {
    "pos": "RB",
-   "baselineValue": 22,
+   "baselineValue": 26,
    "values": {
-    "Standard_8": 23,
-    "Standard_10": 21,
-    "Standard_12": 19,
-    "HalfPPR_8": 24,
-    "HalfPPR_10": 22,
-    "HalfPPR_12": 20,
-    "FullPPR_8": 25,
-    "FullPPR_10": 23,
-    "FullPPR_12": 21
+    "Standard_8": 27,
+    "Standard_10": 25,
+    "Standard_12": 23,
+    "HalfPPR_8": 27,
+    "HalfPPR_10": 26,
+    "HalfPPR_12": 24,
+    "FullPPR_8": 28,
+    "FullPPR_10": 27,
+    "FullPPR_12": 25
    },
    "sheetValue": 10
   },
@@ -16709,17 +16710,17 @@
   },
   "Tony Pollard": {
    "pos": "RB",
-   "baselineValue": 6,
+   "baselineValue": 8,
    "values": {
-    "Standard_8": 10,
-    "Standard_10": 8,
-    "Standard_12": 6,
-    "HalfPPR_8": 8,
-    "HalfPPR_10": 6,
-    "HalfPPR_12": 4,
-    "FullPPR_8": 6,
-    "FullPPR_10": 4,
-    "FullPPR_12": 3
+    "Standard_8": 12,
+    "Standard_10": 10,
+    "Standard_12": 8,
+    "HalfPPR_8": 10,
+    "HalfPPR_10": 8,
+    "HalfPPR_12": 6,
+    "FullPPR_8": 8,
+    "FullPPR_10": 6,
+    "FullPPR_12": 5
    },
    "sheetValue": 6
   },
@@ -16853,16 +16854,16 @@
   },
   "Harold Fannin Jr.": {
    "pos": "TE",
-   "baselineValue": 4,
+   "baselineValue": 3,
    "values": {
-    "Standard_8": 7,
-    "Standard_10": 6,
-    "Standard_12": 4,
-    "HalfPPR_8": 5,
-    "HalfPPR_10": 4,
-    "HalfPPR_12": 3,
-    "FullPPR_8": 3,
-    "FullPPR_10": 2,
+    "Standard_8": 6,
+    "Standard_10": 5,
+    "Standard_12": 3,
+    "HalfPPR_8": 4,
+    "HalfPPR_10": 3,
+    "HalfPPR_12": 2,
+    "FullPPR_8": 2,
+    "FullPPR_10": 1,
     "FullPPR_12": 1
    },
    "sheetValue": 4
@@ -17013,33 +17014,33 @@
   },
   "Aaron Jones Sr.": {
    "pos": "RB",
-   "baselineValue": 7,
+   "baselineValue": 9,
    "values": {
-    "Standard_8": 8,
-    "Standard_10": 6,
-    "Standard_12": 5,
-    "HalfPPR_8": 9,
-    "HalfPPR_10": 7,
-    "HalfPPR_12": 5,
-    "FullPPR_8": 10,
-    "FullPPR_10": 8,
-    "FullPPR_12": 6
+    "Standard_8": 10,
+    "Standard_10": 8,
+    "Standard_12": 6,
+    "HalfPPR_8": 11,
+    "HalfPPR_10": 9,
+    "HalfPPR_12": 7,
+    "FullPPR_8": 12,
+    "FullPPR_10": 10,
+    "FullPPR_12": 8
    },
    "sheetValue": 3
   },
   "Dak Prescott": {
    "pos": "QB",
-   "baselineValue": 5,
+   "baselineValue": 6,
    "values": {
-    "Standard_8": 9,
-    "Standard_10": 7,
-    "Standard_12": 5,
-    "HalfPPR_8": 7,
-    "HalfPPR_10": 5,
+    "Standard_8": 10,
+    "Standard_10": 8,
+    "Standard_12": 6,
+    "HalfPPR_8": 8,
+    "HalfPPR_10": 6,
     "HalfPPR_12": 4,
-    "FullPPR_8": 4,
-    "FullPPR_10": 3,
-    "FullPPR_12": 2
+    "FullPPR_8": 6,
+    "FullPPR_10": 4,
+    "FullPPR_12": 3
    },
    "sheetValue": 3
   },
@@ -17093,17 +17094,17 @@
   },
   "Chuba Hubbard": {
    "pos": "RB",
-   "baselineValue": 19,
+   "baselineValue": 18,
    "values": {
-    "Standard_8": 23,
-    "Standard_10": 21,
-    "Standard_12": 19,
-    "HalfPPR_8": 21,
-    "HalfPPR_10": 19,
-    "HalfPPR_12": 17,
-    "FullPPR_8": 19,
-    "FullPPR_10": 17,
-    "FullPPR_12": 15
+    "Standard_8": 22,
+    "Standard_10": 20,
+    "Standard_12": 18,
+    "HalfPPR_8": 20,
+    "HalfPPR_10": 18,
+    "HalfPPR_12": 16,
+    "FullPPR_8": 18,
+    "FullPPR_10": 16,
+    "FullPPR_12": 14
    },
    "sheetValue": 2
   },
@@ -17125,16 +17126,16 @@
   },
   "George Kittle": {
    "pos": "TE",
-   "baselineValue": 9,
+   "baselineValue": 8,
    "values": {
-    "Standard_8": 13,
-    "Standard_10": 11,
-    "Standard_12": 9,
-    "HalfPPR_8": 11,
-    "HalfPPR_10": 9,
-    "HalfPPR_12": 7,
-    "FullPPR_8": 9,
-    "FullPPR_10": 7,
+    "Standard_8": 12,
+    "Standard_10": 10,
+    "Standard_12": 8,
+    "HalfPPR_8": 10,
+    "HalfPPR_10": 8,
+    "HalfPPR_12": 6,
+    "FullPPR_8": 8,
+    "FullPPR_10": 6,
     "FullPPR_12": 5
    },
    "sheetValue": 2
