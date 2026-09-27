@@ -1,4 +1,4 @@
-import { computeBPProjections, BP_BASE } from "./bpProjections";
+import { computeBPProjections, projectionsFromFiles, BP_BASE } from "./bpProjections";
 
 // Build a /props-shaped entry for one market.
 const prop = (market_id, name, position, line, odds) => ({
@@ -221,7 +221,7 @@ describe("computeBPProjections (first + last file only)", () => {
     // Heavily shaded over so the yardage line earns an odds-weighted marker.
     const shaded = [
       prop(78, "Shaded Guy", "WR", 0.5, -150),
-      prop(105, "Shaded Guy", "WR", 39.5, 285),
+      prop(105, "Shaded Guy", "WR", 39.5, 200),
       prop(104, "Shaded Guy", "WR", 3.5, -114),
     ];
     const files = (y) => ({
@@ -267,5 +267,47 @@ describe("computeBPProjections (first + last file only)", () => {
       expect(v.change).toBe(0);
       expect(v.stale).toBe(false);
     });
+  });
+});
+
+describe("garbled prices", () => {
+  const qb = (name, passTD, passTdOdds, book) => [
+    prop(78, name, "QB", 0.5, 400),
+    prop(107, name, "QB", 10.5, -114),
+    { ...prop(102, name, "QB", passTD, passTdOdds), ...(book && { over: { consensus_line: passTD, consensus_odds: passTdOdds, ...book } }) },
+    prop(103, name, "QB", 240.5, -114),
+    prop(101, name, "QB", 0.5, 120),
+  ];
+  const run = (files, pos) =>
+    new Map(projectionsFromFiles(files, { pos, mode: 0, year: 2026 }).finalList);
+
+  it("drops a consensus price that disagrees with the book on the same line", () => {
+    const first = { props: qb("Goff", 1.5, -185) };
+    // the 1.5 line's price posted on the 2.5 line; the book prices 2.5 at +169
+    const last = { props: qb("Goff", 2.5, -185, { line: 2.5, odds: 169 }) };
+    const goff = run({ first, last, carry: last, lastIndex: 7 }, 0).get("Goff");
+    const clean = run({ first, last: null, carry: null, lastIndex: 0 }, 0).get("Goff");
+    expect(goff.ev).toBeCloseTo(clean.ev, 6);
+    // not flagged like a prop that's missing from the latest odds
+    expect(goff.stale).toBe(false);
+    expect(goff.missingLatest).toEqual([]);
+  });
+
+  it("keeps a consensus price that roughly matches the book", () => {
+    const last = { props: qb("Goff", 1.5, -185, { line: 1.5, odds: -150 }) };
+    const goff = run({ first: last, last, carry: null, lastIndex: 1 }, 0).get("Goff");
+    expect(goff.stale).toBe(false);
+  });
+
+  it("drops alt-line prices on yardage props, including /offers-only ones", () => {
+    const first = { props: wr("Flowers", 71.5, 5.5) };
+    const last = {
+      props: [prop(78, "Flowers", "WR", 0.5, -150), prop(104, "Flowers", "WR", 5.5, -114)],
+      offers: [{ market_id: 105, name: "Flowers", position: "WR", odds: -300, line: 71 }],
+    };
+    const flowers = run({ first, last, carry: null, lastIndex: 7 }, 2).get("Flowers");
+    const clean = run({ first, last: null, carry: null, lastIndex: 0 }, 2).get("Flowers");
+    expect(flowers.ev).toBeCloseTo(clean.ev, 6);
+    expect(flowers.stale).toBe(false);
   });
 });

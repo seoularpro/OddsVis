@@ -156,6 +156,41 @@ export async function loadFirstAndLastFiles({ week, year }) {
 // (see impliedYards). Surfaced in the table as a footnote marker.
 const YARDAGE_ADJUST_FLAG = 0.05; // relative shift that earns a marker
 
+// Garbled prices. BettingPros occasionally posts a consensus price that
+// belongs to a different line (e.g. Goff's over-1.5-TD price of -185 on the
+// 2.5 line) or an alt-line price on the main line (Zay Flowers 71 rec yds at
+// -300). Either one inflates the projection badly, so such entries are
+// dropped and the prop falls back to an earlier value (see
+// projectionsFromFiles).
+//   - Consensus vs. best book on the same line: implied over-probabilities
+//     this far apart can't both describe that line.
+const BOOK_MISMATCH_PROB = 0.2;
+//   - Main yardage lines are priced near even; beyond this they're alt lines.
+const MAX_YARDAGE_ODDS = 250;
+const YARDAGE_KEYS = ["rushYds", "recYds", "passYds"];
+
+const impliedProb = (americanOdds) => 1 / americanToDecimal(americanOdds);
+
+function isGarbledPrice(playerOdds, key) {
+  const over = playerOdds.over || {};
+  const odds = Number(over.consensus_odds);
+  if (!Number.isFinite(odds) || odds === 0) return false;
+  if (YARDAGE_KEYS.includes(key) && Math.abs(odds) > MAX_YARDAGE_ODDS) {
+    return true;
+  }
+  const bookOdds = Number(over.odds);
+  if (
+    over.line != null &&
+    Number(over.line) === Number(over.consensus_line) &&
+    Number.isFinite(bookOdds) &&
+    bookOdds !== 0 &&
+    Math.abs(impliedProb(odds) - impliedProb(bookOdds)) > BOOK_MISMATCH_PROB
+  ) {
+    return true;
+  }
+  return false;
+}
+
 /**
  * @returns {{ anyTD: Map, rushYds: Map, recYds: Map, recs: Map, passTD: Map,
  *   passYds: Map, ints: Map, adjusted: Map<string, string[]>,
@@ -168,10 +203,11 @@ export function parseSnapshot(
   data,
   { receptionMultiplier, passTdPoints, playerToPosition }
 ) {
-  const snap = { adjusted: new Map(), seenIn: {} };
+  const snap = { adjusted: new Map(), seenIn: {}, garbled: {} };
   PROP_KEYS.forEach((k) => {
     snap[k] = new Map();
     snap.seenIn[k] = new Map();
+    snap.garbled[k] = new Set();
   });
   if (!data || !Array.isArray(data.props)) return snap;
 
@@ -239,6 +275,10 @@ export function parseSnapshot(
     for (const playerOdds of market) {
       const name = normalizePlayerName(playerOdds.participant.name.slice());
       recordPosition(name, playerOdds, key === "anyTD");
+      if (isGarbledPrice(playerOdds, key)) {
+        snap.garbled[key].add(name);
+        continue;
+      }
 
       let value;
       if (key === "anyTD") {
@@ -375,11 +415,13 @@ export function projectionsFromFiles(
   const baseSnap = carrySnap || firstSnap;
 
   // Current value per prop: the last file, falling back to the base for
-  // props that dropped out. Δ per prop: last - first when both exist.
+  // props that dropped out, and to the first file for props whose price was
+  // garbled everywhere since (the carry repeats the last file's garbled
+  // price). Δ per prop: last - first when both exist.
   const current = {};
   const change = {};
   for (const key of PROP_KEYS) {
-    current[key] = new Map(baseSnap[key]);
+    current[key] = new Map([...firstSnap[key], ...baseSnap[key]]);
     change[key] = new Map();
     lastSnap[key].forEach((value, name) => {
       current[key].set(name, value);
@@ -440,8 +482,11 @@ export function projectionsFromFiles(
       }
       return false;
     }
-    // Complete with carried values but not in the latest snapshot.
-    const missingLatest = missingProps(name, lastSnap, pos);
+    // Complete with carried values but not in the latest snapshot. A prop
+    // the latest snapshot did post, just at a garbled price, isn't flagged.
+    const missingLatest = missingProps(name, lastSnap, pos).filter(
+      (label) => !lastSnap.garbled[PROP_KEY_BY_LABEL[label]].has(name)
+    );
     if (missingLatest.length > 0) staleProps.set(name, missingLatest);
     return true;
   });
