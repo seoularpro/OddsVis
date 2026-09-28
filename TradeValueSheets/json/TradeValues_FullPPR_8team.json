@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-28T15:50:37Z",
+ "generatedAt": "2026-09-28T22:15:13Z",
  "key": "FullPPR_8",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
@@ -29,7 +29,7 @@
  ],
  "rows": [
   [
-   74,
+   73,
    "Jahmyr Gibbs",
    "",
    "",
@@ -270,6 +270,16 @@
   ],
   [
    35,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   35,
    "Omarion Hampton",
    "",
    "",
@@ -289,7 +299,7 @@
    ""
   ],
   [
-   35,
+   34,
    "",
    "",
    "DeVonta Smith",
@@ -313,16 +323,6 @@
    "",
    "",
    "A.J. Brown",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   30,
-   "D'Andre Swift",
-   "",
-   "",
    "",
    "",
    "",
@@ -420,16 +420,6 @@
   ],
   [
    24,
-   "Cam Skattebo",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   24,
    "",
    "",
    "Rashee Rice",
@@ -441,6 +431,16 @@
   [
    23,
    "Jeremiyah Love",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   23,
+   "Cam Skattebo",
    "",
    "",
    "",
@@ -499,8 +499,8 @@
    ""
   ],
   [
-   19,
-   "Quinshon Judkins",
+   18,
+   "Chuba Hubbard",
    "",
    "",
    "",
@@ -509,8 +509,8 @@
    ""
   ],
   [
-   18,
-   "Chuba Hubbard",
+   17,
+   "Quinshon Judkins",
    "",
    "",
    "",
@@ -1083,8 +1083,8 @@
   {
    "name": "Jahmyr Gibbs",
    "pos": "RB",
-   "value": 74,
-   "baselineValue": 78
+   "value": 73,
+   "baselineValue": 77
   },
   {
    "name": "Bijan Robinson",
@@ -1225,6 +1225,12 @@
    "baselineValue": 34
   },
   {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "value": 35,
+   "baselineValue": 34
+  },
+  {
    "name": "Omarion Hampton",
    "pos": "RB",
    "value": 35,
@@ -1239,8 +1245,8 @@
   {
    "name": "DeVonta Smith",
    "pos": "WR",
-   "value": 35,
-   "baselineValue": 32
+   "value": 34,
+   "baselineValue": 31
   },
   {
    "name": "Josh Allen",
@@ -1253,12 +1259,6 @@
    "pos": "WR",
    "value": 32,
    "baselineValue": 30
-  },
-  {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "value": 30,
-   "baselineValue": 28
   },
   {
    "name": "Kyren Williams",
@@ -1315,12 +1315,6 @@
    "baselineValue": 21
   },
   {
-   "name": "Cam Skattebo",
-   "pos": "RB",
-   "value": 24,
-   "baselineValue": 21
-  },
-  {
    "name": "Rashee Rice",
    "pos": "WR",
    "value": 24,
@@ -1328,6 +1322,12 @@
   },
   {
    "name": "Jeremiyah Love",
+   "pos": "RB",
+   "value": 23,
+   "baselineValue": 20
+  },
+  {
+   "name": "Cam Skattebo",
    "pos": "RB",
    "value": 23,
    "baselineValue": 20
@@ -1363,16 +1363,16 @@
    "baselineValue": 17
   },
   {
-   "name": "Quinshon Judkins",
-   "pos": "RB",
-   "value": 19,
-   "baselineValue": 19
-  },
-  {
    "name": "Chuba Hubbard",
    "pos": "RB",
    "value": 18,
    "baselineValue": 18
+  },
+  {
+   "name": "Quinshon Judkins",
+   "pos": "RB",
+   "value": 17,
+   "baselineValue": 17
   },
   {
    "name": "Emeka Egbuka",

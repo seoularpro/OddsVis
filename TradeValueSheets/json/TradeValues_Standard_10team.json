@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-28T15:50:37Z",
+ "generatedAt": "2026-09-28T22:15:13Z",
  "key": "Standard_10",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -29,7 +29,7 @@
  ],
  "rows": [
   [
-   75,
+   74,
    "Jahmyr Gibbs",
    "",
    "",
@@ -250,6 +250,16 @@
   ],
   [
    33,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   33,
    "",
    "",
    "Nico Collins",
@@ -309,7 +319,7 @@
    ""
   ],
   [
-   29,
+   28,
    "",
    "",
    "DeVonta Smith",
@@ -337,16 +347,6 @@
    "",
    "",
    "Lamar Jackson"
-  ],
-  [
-   27,
-   "D'Andre Swift",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
   ],
   [
    24,
@@ -409,26 +409,6 @@
    ""
   ],
   [
-   21,
-   "Quinshon Judkins",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   20,
-   "Cam Skattebo",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
    20,
    "Chuba Hubbard",
    "",
@@ -451,6 +431,26 @@
   [
    19,
    "Jeremiyah Love",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   19,
+   "Cam Skattebo",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   19,
+   "Quinshon Judkins",
    "",
    "",
    "",
@@ -1083,8 +1083,8 @@
   {
    "name": "Jahmyr Gibbs",
    "pos": "RB",
-   "value": 75,
-   "baselineValue": 78
+   "value": 74,
+   "baselineValue": 77
   },
   {
    "name": "Bijan Robinson",
@@ -1213,6 +1213,12 @@
    "baselineValue": 36
   },
   {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "value": 33,
+   "baselineValue": 34
+  },
+  {
    "name": "Nico Collins",
    "pos": "WR",
    "value": 33,
@@ -1251,8 +1257,8 @@
   {
    "name": "DeVonta Smith",
    "pos": "WR",
-   "value": 29,
-   "baselineValue": 32
+   "value": 28,
+   "baselineValue": 31
   },
   {
    "name": "A.J. Brown",
@@ -1265,12 +1271,6 @@
    "pos": "QB",
    "value": 28,
    "baselineValue": 26
-  },
-  {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "value": 27,
-   "baselineValue": 28
   },
   {
    "name": "Brock Bowers",
@@ -1309,18 +1309,6 @@
    "baselineValue": 22
   },
   {
-   "name": "Quinshon Judkins",
-   "pos": "RB",
-   "value": 21,
-   "baselineValue": 19
-  },
-  {
-   "name": "Cam Skattebo",
-   "pos": "RB",
-   "value": 20,
-   "baselineValue": 21
-  },
-  {
    "name": "Chuba Hubbard",
    "pos": "RB",
    "value": 20,
@@ -1337,6 +1325,18 @@
    "pos": "RB",
    "value": 19,
    "baselineValue": 20
+  },
+  {
+   "name": "Cam Skattebo",
+   "pos": "RB",
+   "value": 19,
+   "baselineValue": 20
+  },
+  {
+   "name": "Quinshon Judkins",
+   "pos": "RB",
+   "value": 19,
+   "baselineValue": 17
   },
   {
    "name": "Malik Nabers",

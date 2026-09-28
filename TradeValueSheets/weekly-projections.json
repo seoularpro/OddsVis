@@ -2,8 +2,8 @@
  "season": 2026,
  "week": 3,
  "mode": 0,
- "snapshotIndex": 8,
- "generatedAt": "2026-09-28T15:50:36Z",
+ "snapshotIndex": 9,
+ "generatedAt": "2026-09-28T22:15:12Z",
  "positions": {
   "QB": [
    {
@@ -22,13 +22,13 @@
     "stale": false
    },
    {
-    "name": "Jalen Hurts",
-    "ev": 18.3,
+    "name": "Brock Purdy",
+    "ev": 18.27,
     "stale": false
    },
    {
-    "name": "Brock Purdy",
-    "ev": 18.27,
+    "name": "Jalen Hurts",
+    "ev": 18.2,
     "stale": false
    },
    {
@@ -147,11 +147,6 @@
     "stale": false
    },
    {
-    "name": "Tyson Bagent",
-    "ev": 12.96,
-    "stale": false
-   },
-   {
     "name": "Marcus Mariota",
     "ev": 11.33,
     "stale": false
@@ -167,8 +162,13 @@
     "stale": false
    },
    {
+    "name": "Tyson Bagent",
+    "ev": 10.26,
+    "stale": true
+   },
+   {
     "name": "Case Keenum",
-    "ev": 9.34,
+    "ev": 8.97,
     "stale": false
    }
   ],
@@ -240,7 +240,12 @@
    },
    {
     "name": "Saquon Barkley",
-    "ev": 12.78,
+    "ev": 12.6,
+    "stale": false
+   },
+   {
+    "name": "D'Andre Swift",
+    "ev": 11.64,
     "stale": false
    },
    {
@@ -271,11 +276,6 @@
    {
     "name": "Kyren Williams",
     "ev": 10.77,
-    "stale": false
-   },
-   {
-    "name": "D'Andre Swift",
-    "ev": 10.67,
     "stale": false
    },
    {
@@ -330,7 +330,7 @@
    },
    {
     "name": "Kyle Monangai",
-    "ev": 7.05,
+    "ev": 7.4,
     "stale": false
    },
    {
@@ -441,13 +441,13 @@
     "stale": false
    },
    {
-    "name": "DeVonta Smith",
-    "ev": 12.07,
+    "name": "Parker Washington",
+    "ev": 12.03,
     "stale": false
    },
    {
-    "name": "Parker Washington",
-    "ev": 12.03,
+    "name": "DeVonta Smith",
+    "ev": 11.89,
     "stale": false
    },
    {
@@ -581,11 +581,6 @@
     "stale": false
    },
    {
-    "name": "Dontayvion Wicks",
-    "ev": 7.46,
-    "stale": false
-   },
-   {
     "name": "Romeo Doubs",
     "ev": 7.44,
     "stale": false
@@ -613,6 +608,11 @@
    {
     "name": "Tre Tucker",
     "ev": 7.2,
+    "stale": false
+   },
+   {
+    "name": "Dontayvion Wicks",
+    "ev": 7.17,
     "stale": false
    },
    {
@@ -657,7 +657,7 @@
    },
    {
     "name": "Luther Burden III",
-    "ev": 6.55,
+    "ev": 6.53,
     "stale": false
    },
    {
@@ -718,6 +718,11 @@
    {
     "name": "Michael Pittman",
     "ev": 5.12,
+    "stale": false
+   },
+   {
+    "name": "Makai Lemon",
+    "ev": 5.11,
     "stale": false
    },
    {
@@ -814,7 +819,7 @@
    },
    {
     "name": "Colston Loveland",
-    "ev": 6.57,
+    "ev": 6.41,
     "stale": false
    },
    {
