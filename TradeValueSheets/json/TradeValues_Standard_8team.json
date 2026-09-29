@@ -1,12 +1,12 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-09-28T22:15:13Z",
+ "generatedAt": "2026-09-29T16:05:56Z",
  "key": "Standard_8",
  "scoring": "Standard",
  "scoringLabel": "Standard",
  "leagueSize": 8,
  "xlsx": "TradeValues_Standard_8team.xlsx",
- "projectionWeek": 3,
+ "projectionWeek": 4,
  "positionRow": [
   "",
   "RB",
@@ -39,7 +39,7 @@
    ""
   ],
   [
-   66,
+   65,
    "Bijan Robinson",
    "",
    "",
@@ -49,7 +49,7 @@
    ""
   ],
   [
-   60,
+   59,
    "Christian McCaffrey",
    "",
    "",
@@ -119,16 +119,6 @@
    ""
   ],
   [
-   54,
-   "",
-   "",
-   "Ja'Marr Chase",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
    53,
    "James Cook III",
    "",
@@ -139,8 +129,28 @@
    ""
   ],
   [
-   52,
+   53,
+   "",
+   "",
+   "Ja'Marr Chase",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   51,
    "Ashton Jeanty",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   47,
+   "Saquon Barkley",
    "",
    "",
    "",
@@ -153,16 +163,6 @@
    "",
    "",
    "CeeDee Lamb",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   46,
-   "Saquon Barkley",
-   "",
-   "",
    "",
    "",
    "",
@@ -232,6 +232,16 @@
    37,
    "",
    "",
+   "A.J. Brown",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   37,
+   "",
+   "",
    "",
    "",
    "",
@@ -282,16 +292,6 @@
    32,
    "",
    "",
-   "Drake London",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   32,
-   "",
-   "",
    "Garrett Wilson",
    "",
    "",
@@ -319,10 +319,10 @@
    ""
   ],
   [
-   30,
+   31,
    "",
    "",
-   "DeVonta Smith",
+   "Drake London",
    "",
    "",
    "",
@@ -332,7 +332,7 @@
    30,
    "",
    "",
-   "A.J. Brown",
+   "DeVonta Smith",
    "",
    "",
    "",
@@ -390,16 +390,6 @@
   ],
   [
    23,
-   "Jaylen Warren",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   23,
    "",
    "",
    "Parker Washington",
@@ -410,7 +400,7 @@
   ],
   [
    22,
-   "Chuba Hubbard",
+   "Jaylen Warren",
    "",
    "",
    "",
@@ -420,9 +410,9 @@
   ],
   [
    22,
+   "Chuba Hubbard",
    "",
    "",
-   "Ladd McConkey",
    "",
    "",
    "",
@@ -459,17 +449,7 @@
    ""
   ],
   [
-   20,
-   "",
-   "",
-   "Malik Nabers",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   20,
+   21,
    "",
    "",
    "Tee Higgins",
@@ -479,10 +459,20 @@
    ""
   ],
   [
+   21,
+   "",
+   "",
+   "Ladd McConkey",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
    20,
    "",
    "",
-   "Tetairoa McMillan",
+   "Malik Nabers",
    "",
    "",
    "",
@@ -502,17 +492,27 @@
    19,
    "",
    "",
-   "Mike Evans",
+   "Rashee Rice",
    "",
    "",
    "",
    ""
   ],
   [
-   18,
+   19,
    "",
    "",
-   "Rashee Rice",
+   "Tetairoa McMillan",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   19,
+   "",
+   "",
+   "Mike Evans",
    "",
    "",
    "",
@@ -1089,14 +1089,14 @@
   {
    "name": "Bijan Robinson",
    "pos": "RB",
-   "value": 66,
-   "baselineValue": 74
+   "value": 65,
+   "baselineValue": 73
   },
   {
    "name": "Christian McCaffrey",
    "pos": "RB",
-   "value": 60,
-   "baselineValue": 67
+   "value": 59,
+   "baselineValue": 66
   },
   {
    "name": "Kenneth Walker III",
@@ -1135,34 +1135,34 @@
    "baselineValue": 63
   },
   {
-   "name": "Ja'Marr Chase",
-   "pos": "WR",
-   "value": 54,
-   "baselineValue": 62
-  },
-  {
    "name": "James Cook III",
    "pos": "RB",
    "value": 53,
    "baselineValue": 56
   },
   {
+   "name": "Ja'Marr Chase",
+   "pos": "WR",
+   "value": 53,
+   "baselineValue": 61
+  },
+  {
    "name": "Ashton Jeanty",
    "pos": "RB",
-   "value": 52,
-   "baselineValue": 55
+   "value": 51,
+   "baselineValue": 54
+  },
+  {
+   "name": "Saquon Barkley",
+   "pos": "RB",
+   "value": 47,
+   "baselineValue": 49
   },
   {
    "name": "CeeDee Lamb",
    "pos": "WR",
    "value": 47,
    "baselineValue": 52
-  },
-  {
-   "name": "Saquon Barkley",
-   "pos": "RB",
-   "value": 46,
-   "baselineValue": 48
   },
   {
    "name": "Chase Brown",
@@ -1201,6 +1201,12 @@
    "baselineValue": 39
   },
   {
+   "name": "A.J. Brown",
+   "pos": "WR",
+   "value": 37,
+   "baselineValue": 38
+  },
+  {
    "name": "Josh Allen",
    "pos": "QB",
    "value": 37,
@@ -1231,12 +1237,6 @@
    "baselineValue": 33
   },
   {
-   "name": "Drake London",
-   "pos": "WR",
-   "value": 32,
-   "baselineValue": 34
-  },
-  {
    "name": "Garrett Wilson",
    "pos": "WR",
    "value": 32,
@@ -1255,16 +1255,16 @@
    "baselineValue": 28
   },
   {
+   "name": "Drake London",
+   "pos": "WR",
+   "value": 31,
+   "baselineValue": 33
+  },
+  {
    "name": "DeVonta Smith",
    "pos": "WR",
    "value": 30,
    "baselineValue": 31
-  },
-  {
-   "name": "A.J. Brown",
-   "pos": "WR",
-   "value": 30,
-   "baselineValue": 30
   },
   {
    "name": "Lamar Jackson",
@@ -1297,28 +1297,22 @@
    "baselineValue": 24
   },
   {
-   "name": "Jaylen Warren",
-   "pos": "RB",
-   "value": 23,
-   "baselineValue": 22
-  },
-  {
    "name": "Parker Washington",
    "pos": "WR",
    "value": 23,
    "baselineValue": 23
   },
   {
+   "name": "Jaylen Warren",
+   "pos": "RB",
+   "value": 22,
+   "baselineValue": 21
+  },
+  {
    "name": "Chuba Hubbard",
    "pos": "RB",
    "value": 22,
    "baselineValue": 18
-  },
-  {
-   "name": "Ladd McConkey",
-   "pos": "WR",
-   "value": 22,
-   "baselineValue": 22
   },
   {
    "name": "Jeremiyah Love",
@@ -1339,22 +1333,22 @@
    "baselineValue": 17
   },
   {
+   "name": "Tee Higgins",
+   "pos": "WR",
+   "value": 21,
+   "baselineValue": 21
+  },
+  {
+   "name": "Ladd McConkey",
+   "pos": "WR",
+   "value": 21,
+   "baselineValue": 21
+  },
+  {
    "name": "Malik Nabers",
    "pos": "WR",
    "value": 20,
    "baselineValue": 21
-  },
-  {
-   "name": "Tee Higgins",
-   "pos": "WR",
-   "value": 20,
-   "baselineValue": 20
-  },
-  {
-   "name": "Tetairoa McMillan",
-   "pos": "WR",
-   "value": 20,
-   "baselineValue": 20
   },
   {
    "name": "Bucky Irving",
@@ -1363,16 +1357,22 @@
    "baselineValue": 18
   },
   {
+   "name": "Rashee Rice",
+   "pos": "WR",
+   "value": 19,
+   "baselineValue": 20
+  },
+  {
+   "name": "Tetairoa McMillan",
+   "pos": "WR",
+   "value": 19,
+   "baselineValue": 19
+  },
+  {
    "name": "Mike Evans",
    "pos": "WR",
    "value": 19,
    "baselineValue": 15
-  },
-  {
-   "name": "Rashee Rice",
-   "pos": "WR",
-   "value": 18,
-   "baselineValue": 19
   },
   {
    "name": "Zay Flowers",
