@@ -553,7 +553,8 @@ function analyzeOne(team, league, replacement, benchmarks, all, config) {
     depthScore: depthScoreFor(bench, replacement.levels),
     projectionRank: 0,
     tradeValueRank: 0,
-    waiverMoves: []
+    waiverMoves: [],
+    baselineAddedIds: []
   };
 }
 function analyzeLeague(originalLeague, overrides) {
@@ -567,7 +568,11 @@ function analyzeLeague(originalLeague, overrides) {
     marginal: computeMarginalValues(team.players, slots)
   }));
   const benchmarks = computeSlotBenchmarks(all.map((a) => a.optimal));
-  const teams = league.teams.map((team) => ({ ...analyzeOne(team, league, replacement, benchmarks, all, config), waiverMoves: moves[team.id] ?? [] }));
+  const teams = league.teams.map((team) => ({
+    ...analyzeOne(team, league, replacement, benchmarks, all, config),
+    waiverMoves: moves[team.id] ?? [],
+    baselineAddedIds: (moves[team.id] ?? []).map((m) => m.add.id)
+  }));
   const byProj = [...teams].sort((a, b) => b.optimalStartingProjection - a.optimalStartingProjection);
   byProj.forEach((t, i) => t.projectionRank = i + 1);
   const byValue = [...teams].sort((a, b) => b.totalTradeValue - a.totalTradeValue);
@@ -644,8 +649,10 @@ function rankPartners(analysis, user) {
     return { teamId: t.teamId, teamName: t.teamName, score: score + 0.01, userGets, partnerGets };
   }).sort((a, b) => b.score - a.score);
 }
-function tradeable(players) {
-  return players.filter((p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && p.projection > 0);
+function tradeable(players, excludeIds = /* @__PURE__ */ new Set()) {
+  return players.filter(
+    (p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && p.projection > 0 && p.tradeValue > 0 && !excludeIds.has(p.id)
+  );
 }
 function combinations(items, k) {
   const out = [];
@@ -686,12 +693,12 @@ function generateCandidates(analysis, config) {
   stats.partners = partners.length;
   const userWeakest = weakestStarterByPosition(user);
   expandSlots(analysis.league.settings.lineupSlots).length;
-  const outgoingPool = tradeable(user.roster).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxOutgoingCandidates);
+  const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds)).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxOutgoingCandidates);
   const candidates = [];
   for (const partner of partners) {
     const team = analysis.teams.find((t) => t.teamId === partner.teamId);
     const partnerWeakest = weakestStarterByPosition(team);
-    const incomingPool = tradeable(team.roster).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxIncomingCandidates);
+    const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds)).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxIncomingCandidates);
     const sendSets = /* @__PURE__ */ new Map();
     const recvSets = /* @__PURE__ */ new Map();
     for (const shape of config.shapes) {

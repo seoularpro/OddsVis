@@ -212,6 +212,14 @@ describe("ranking", () => {
     for (const n of partners.values()) expect(n).toBeLessThanOrEqual(DEFAULT_CONFIG.maxTradesPerPartner);
   });
 
+  it("never puts a $0 (waiver-level) player in a package", () => {
+    const result = runTradeOptimizer(syntheticLeague(), { topN: 50, maxTradesPerPartner: 50 });
+    expect(result.trades.length).toBeGreaterThan(0);
+    for (const t of result.trades) {
+      for (const p of [...t.simulation.candidate.userSends, ...t.simulation.candidate.userReceives]) expect(p.tradeValue).toBeGreaterThan(0);
+    }
+  });
+
   it("synthetic league: the user's RB surplus and weak WR2/FLEX are detected and the top trade exploits them", () => {
     const league = syntheticLeague();
     const result = runTradeOptimizer(league);
@@ -251,10 +259,13 @@ describe("waiver baseline", () => {
     expect(me.roster.some((p) => p.name === "U unknown")).toBe(true);
     expect(analysis.league.availablePlayers.some((p) => p.id === bigFa.id)).toBe(false);
     expect(analysis.originalLeague.teams[0].players.some((p) => p.id === bigFa.id)).toBe(false);
-    // With the pickup already in the baseline, no trade can be credited with it.
+    // With the pickup already in the baseline, no trade can be credited with it,
+    // and a waiver player is never offered or requested in a package.
     const result = runTradeOptimizer(league);
     for (const t of result.trades) {
       expect(t.simulation.user.waiverAdds.some((p) => p.id === bigFa.id)).toBe(false);
+      expect(t.simulation.candidate.userSends.some((p) => p.id === bigFa.id)).toBe(false);
+      expect(t.simulation.candidate.userReceives.some((p) => p.id === bigFa.id)).toBe(false);
     }
     // Open roster spots are filled in the baseline, so a 2-for-2 never shows waiver adds.
     const short = [P("S QB", "QB", 20, 20), P("S RB1", "RB", 17, 28), P("S RB2", "RB", 8, 3), P("S WR1", "WR", 18, 30), P("S WR2", "WR", 15, 20), P("S WR3", "WR", 13, 12), P("S TE", "TE", 10, 8), ...kd()];

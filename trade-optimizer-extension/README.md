@@ -83,6 +83,9 @@ content script (page origin)          side panel (extension page)
     value tolerance (15 % or $4) and by "nothing incoming could start".
     K/DST and players with no projection this week (props not posted) are
     never moved: a 0 projection would masquerade as free expendable depth.
+    Waiver-wire players are worthless by definition, so anyone the baseline
+    picked up from waivers, and any $0 rostered player, is never part of a
+    package (they still count in lineups).
   * `tradeSimulator` – applies the deal, refits both rosters to the roster
     size (2-for-1 fills the open spot with the best waiver player, 1-for-2
     drops the least useful non-starter), re-optimizes both lineups, diffs

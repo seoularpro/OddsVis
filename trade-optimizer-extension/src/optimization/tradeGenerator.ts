@@ -61,13 +61,24 @@ export function rankPartners(analysis: LeagueAnalysis, user: TeamAnalysis): Part
 }
 
 /**
- * Players the search may move. K/DST are never traded, and players without a
- * projection this week are excluded on both sides: with a 0 projection they
- * would look like free expendable assets (or worthless targets) when the
- * truth is simply unknown.
+ * Players the search may move.
+ *  - K/DST are never traded.
+ *  - Players without a projection this week are excluded on both sides: with a
+ *    0 projection they would look like free expendable assets (or worthless
+ *    targets) when the truth is simply unknown.
+ *  - Waiver-wire players are worthless by definition ($0), so anyone the
+ *    baseline pulled from waivers, and any rostered player with no trade
+ *    value, is never part of a package. They still count in lineups.
  */
-export function tradeable(players: Player[]): Player[] {
-  return players.filter((p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && p.projection > 0);
+export function tradeable(players: Player[], excludeIds: ReadonlySet<string> = new Set()): Player[] {
+  return players.filter(
+    (p) =>
+      OFFENSE_POSITIONS.includes(p.position) &&
+      p.projectionSource === "dataset" &&
+      p.projection > 0 &&
+      p.tradeValue > 0 &&
+      !excludeIds.has(p.id)
+  );
 }
 
 function combinations<T>(items: T[], k: number): T[][] {
@@ -120,7 +131,7 @@ export function generateCandidates(analysis: LeagueAnalysis, config: OptimizerCo
   const userWeakest = weakestStarterByPosition(user);
   const slotCount = expandSlots(analysis.league.settings.lineupSlots).length;
 
-  const outgoingPool = tradeable(user.roster)
+  const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds))
     .sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection)
     .slice(0, config.maxOutgoingCandidates);
 
@@ -128,7 +139,7 @@ export function generateCandidates(analysis: LeagueAnalysis, config: OptimizerCo
   for (const partner of partners) {
     const team = analysis.teams.find((t) => t.teamId === partner.teamId)!;
     const partnerWeakest = weakestStarterByPosition(team);
-    const incomingPool = tradeable(team.roster)
+    const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds))
       .sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection)
       .slice(0, config.maxIncomingCandidates);
 

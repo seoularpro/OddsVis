@@ -36,6 +36,8 @@ export interface TeamAnalysis {
   tradeValueRank: number;
   /** Free waiver upgrades assumed before analysis ("do this first"). */
   waiverMoves: WaiverMove[];
+  /** Ids of players the baseline pulled from waivers: on the effective roster, never tradeable. */
+  baselineAddedIds: string[];
 }
 
 export interface LeagueAnalysis {
@@ -99,6 +101,7 @@ function analyzeOne(
     projectionRank: 0,
     tradeValueRank: 0,
     waiverMoves: [],
+    baselineAddedIds: [],
   };
 }
 
@@ -113,7 +116,11 @@ export function analyzeLeague(originalLeague: League, overrides?: Partial<Optimi
     marginal: computeMarginalValues(team.players, slots),
   }));
   const benchmarks = computeSlotBenchmarks(all.map((a) => a.optimal));
-  const teams = league.teams.map((team) => ({ ...analyzeOne(team, league, replacement, benchmarks, all, config), waiverMoves: moves[team.id] ?? [] }));
+  const teams = league.teams.map((team) => ({
+    ...analyzeOne(team, league, replacement, benchmarks, all, config),
+    waiverMoves: moves[team.id] ?? [],
+    baselineAddedIds: (moves[team.id] ?? []).map((m) => m.add.id),
+  }));
 
   const byProj = [...teams].sort((a, b) => b.optimalStartingProjection - a.optimalStartingProjection);
   byProj.forEach((t, i) => (t.projectionRank = i + 1));
