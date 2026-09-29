@@ -29,7 +29,7 @@ function TotalContainer() {
   const [allMap, setAllMap] = useState(new Map());
   const [recentMap, setRecentMap] = useState(new Map());
   const [selectedMode, setSelectedMode] = useState(0);
-  const [selectedWeek, setSelectedWeek] = useState(3);
+  const [selectedWeek, setSelectedWeek] = useState(4);
   const [selectedYear, setSelectedYear] = useState(2026);
   const [selectedTheme, setSelectedTheme] = useState(1);
   const [playerMissingList, setPlayerMissingList] = useState([]);
@@ -996,7 +996,7 @@ function TotalContainer() {
                 } else {
                   // 2026 is in progress: clamp to its latest active week.
                   // Bump this alongside the week options below each week.
-                  const maxWeek = parseInt(e.target.value) == 2026 ? 3 : 1;
+                  const maxWeek = parseInt(e.target.value) == 2026 ? 4 : 1;
                   if (selectedWeek > maxWeek) {
                     setSelectedWeek(maxWeek);
                     const selectElement = document.getElementById("weekSelect");
@@ -1052,7 +1052,7 @@ function TotalContainer() {
               <option disabled={selectedYear == 2023 || selectedYear == 2026} value="5">
                 Week 5
               </option>
-              <option disabled={selectedYear == 2023 || selectedYear == 2026} value="4">
+              <option disabled={selectedYear == 2023} value="4">
                 Week 4
               </option>
               <option disabled={selectedYear == 2023} value="3">
