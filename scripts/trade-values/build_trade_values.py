@@ -99,8 +99,14 @@ def parse_grid(grid):
 
 
 # ----------------------------------------------------------------------------- receptions
-def refresh_receptions(year, week):
-    """Consensus receptions line (market 104) from the newest, carry, and first BettingPros files of the week."""
+def refresh_receptions(year, week, previous=None, P=None):
+    """Consensus receptions line (market 104) from the newest, carry, and first BettingPros files of the week.
+
+    Early in a week only some players have lines posted. Players missing from the new
+    files keep their line from the previous snapshot (tagged `carried`), so coverage never
+    drops below the last refresh, and the previous replacement levels are kept as a
+    fallback for attach_receptions. A refresh that finds fewer fresh lines than
+    params `reception_min_fresh_lines` is reported loudly but still applied."""
     d = os.path.join(REPO, 'BettingProsFiles'); prefix = '' if year == 2023 else str(year)
     try:
         last = int(open(os.path.join(d, f'{prefix}lastIndex{week}.txt')).read().strip())
@@ -122,8 +128,26 @@ def refresh_receptions(year, week):
             name = p['participant']['name']; line = (p.get('over') or {}).get('consensus_line') or (p.get('over') or {}).get('line')
             if line is not None and norm(name) not in out:
                 out[norm(name)] = {'name': name, 'pos': p['participant'].get('player', {}).get('position'), 'line': line, 'source': src}
-    return {'_note': f'BettingPros consensus receptions line per player (market 104) from the {year} week {week} files.',
-            'season': year, 'week': week, 'players': dict(sorted(out.items()))}
+    fresh = len(out)
+    carried = 0
+    prev_players = (previous or {}).get('players', {})
+    prev_week = (previous or {}).get('week')
+    for key, r in prev_players.items():
+        if key in out:
+            continue
+        src = r.get('source', '')
+        tag = src if src.startswith('carried') else f"carried from {(previous or {}).get('season', year)} week {prev_week}"
+        out[key] = {**r, 'source': tag}
+        carried += 1
+    min_fresh = (P or {}).get('reception_min_fresh_lines', 0)
+    if fresh < min_fresh:
+        print(f'WARNING: only {fresh} fresh reception lines in {year} week {week} (expected at least {min_fresh}); '
+              f'{carried} lines carried from the previous snapshot', file=sys.stderr)
+    return {'_note': f'BettingPros consensus receptions line per player (market 104) from the {year} week {week} files; '
+                     f'players without a line this week keep their previous line (source "carried ...").',
+            'season': year, 'week': week, 'freshLines': fresh, 'carriedLines': carried,
+            'replacementPerGame': (previous or {}).get('replacementPerGame'),
+            'players': dict(sorted(out.items()))}
 
 
 # ----------------------------------------------------------------------------- weekly re-seed
@@ -174,14 +198,35 @@ def reseed(players, weekly, R):
 
 
 # ----------------------------------------------------------------------------- the math
-def attach_receptions(players, recs, P):
+def attach_receptions(players, recs, P, fallback_repl=None):
+    """Attach reception lines and compute the per-position replacement level.
+
+    The replacement level is the mean line of baseline players valued <= the cutoff at the
+    position. When fewer than params `replacement_min_lines` of those players have a line
+    (typical mid-week, when props are still being posted), the level falls back to the
+    previous snapshot's value, then to the lowest posted line at the position, rather than
+    collapsing to 0.0 (which would make every player a "receiver" and gut the other
+    positions in the zero-sum step)."""
     for p in players:
         r = recs.get(norm(p['name']))
         p['rec'], p['est'] = (r['line'], False) if r else (None, True)
     repl = {}
+    min_lines = P.get('replacement_min_lines', 1)
+    fallback_repl = fallback_repl or {}
     for pos in POS_ORDER:
         xs = [p['rec'] for p in players if p['pos'] == pos and p['value'] <= P['replacement_value_cutoff'] and p['rec'] is not None]
-        repl[pos] = sum(xs) / len(xs) if xs else 0.0
+        if len(xs) >= min_lines:
+            repl[pos] = sum(xs) / len(xs)
+            continue
+        posted = [p['rec'] for p in players if p['pos'] == pos and p['rec'] is not None]
+        prev = fallback_repl.get(pos)
+        if prev is not None:
+            repl[pos] = float(prev); why = 'previous snapshot'
+        elif posted:
+            repl[pos] = min(posted); why = 'lowest posted line at the position'
+        else:
+            repl[pos] = 0.0; why = 'no lines at all'
+        print(f'note: {pos} replacement tier has {len(xs)} posted line(s) (< {min_lines}); using {why}: {repl[pos]:.2f}', file=sys.stderr)
     for p in players:
         if p['rec'] is None:
             peers = [q['rec'] for q in players if q['pos'] == p['pos'] and q['rec'] is not None and abs(q['value'] - p['value']) <= P['peer_value_window']] \
@@ -359,8 +404,15 @@ def main():
     rec_path = os.path.join(HERE, 'receptions.json')
     if a.refresh_receptions:
         old = json.load(open(rec_path)) if os.path.exists(rec_path) else {}
-        R = refresh_receptions(a.year or old.get('season', 2026), a.week or old.get('week', 1))
-        json.dump(R, open(rec_path, 'w'), indent=1); print(f'receptions.json refreshed: {len(R["players"])} lines from {R["season"]} week {R["week"]}')
+        if not old.get('replacementPerGame'):
+            # Snapshots written before the fallback existed: seed it from the last published build.
+            try:
+                old['replacementPerGame'] = json.load(open(os.path.join(a.out, 'trade-values.json')))['receptions']['replacementPerGame']
+            except (OSError, ValueError, KeyError):
+                pass
+        R = refresh_receptions(a.year or old.get('season', 2026), a.week or old.get('week', 1), previous=old, P=P)
+        json.dump(R, open(rec_path, 'w'), indent=1)
+        print(f'receptions.json refreshed: {R["freshLines"]} fresh lines from {R["season"]} week {R["week"]}, {R["carriedLines"]} carried')
     R = json.load(open(rec_path))
     rec_desc = f'BettingPros consensus receptions line from the {R["season"]} week {R["week"]} props'
 
@@ -379,7 +431,11 @@ def main():
         reseed_info = reseed(players, weekly, P['reseed'])
         print(f"re-seeded from {weekly['season']} week {weekly['week']} medians (snapshot {weekly.get('snapshotIndex')}): "
               f"{reseed_info['moved']} players moved; no projection for {len(reseed_info['noProjection'])}")
-    repl = attach_receptions(players, R['players'], P)
+    repl = attach_receptions(players, R['players'], P, fallback_repl=R.get('replacementPerGame'))
+    if a.refresh_receptions:
+        # Remember this run's replacement levels so the next refresh has a fallback.
+        R['replacementPerGame'] = {k: round(v, 2) for k, v in repl.items()}
+        json.dump(R, open(rec_path, 'w'), indent=1)
     # The league tops in params (65/70/75) say what the sheet's top value becomes, so anchor
     # on the sheet's own top even when the re-seed pushed a player above it.
     baseline_top = max(p.get('seed', p['value']) for p in players)
