@@ -4,6 +4,7 @@
 
 import React from "react";
 import type { League } from "../domain/types";
+import { OFFENSE_POSITIONS } from "../domain/types";
 import type { OptimizerResult } from "../optimization/tradeOptimizer";
 import type { EnrichReport } from "../data/enrichLeague";
 import type { LicenseState } from "../shared/license";
@@ -43,6 +44,15 @@ export function TradeReport(props: TradeReportProps) {
   const analysis = result.analysis;
   const user = analysis.user;
   const firstVisibleRank = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))?.rank ?? 1;
+
+  // Props coverage: only players with a posted line can be traded on, so a
+  // thin week (typically Tuesday/Wednesday) yields far fewer suggestions.
+  const offense = league.teams.flatMap((t) => t.players).filter((p) => OFFENSE_POSITIONS.includes(p.position));
+  const withProps = offense.filter((p) => p.projectionSource === "dataset").length;
+  const coverage = offense.length ? withProps / offense.length : 1;
+  const thinProps = coverage < 0.85;
+  const userOffense = user ? user.roster.filter((p) => OFFENSE_POSITIONS.includes(p.position)) : [];
+  const userWithProps = userOffense.filter((p) => p.projectionSource === "dataset").length;
   return (
     <>
       {show("meta") ? <div className="chips">
@@ -78,6 +88,13 @@ export function TradeReport(props: TradeReportProps) {
               {result.stats.candidates} candidates after pruning · {result.stats.accepted} acceptable
             </span>
           </div>
+          {thinProps ? (
+            <div className="note warn">
+              <b>Limited suggestions this week so far.</b> Props are posted for only {withProps} of {offense.length} rostered QB/RB/WR/TE ({Math.round(coverage * 100)}%)
+              {user ? `, including ${userWithProps} of ${userOffense.length} on your team` : ""}. Players without a line are never offered or requested, so fewer trades qualify
+              {result.trades.length < 5 ? ` (${result.trades.length} shown)` : ""}. Lines usually fill in by Wednesday or Thursday; re-run then for the full list.
+            </div>
+          ) : null}
           {result.trades.length === 0 ? (
             <div className="note">
               No trade cleared the bar (gain ≥ {analysis.config.minUserGain} pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings.

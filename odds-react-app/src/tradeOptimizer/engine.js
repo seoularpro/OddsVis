@@ -2771,6 +2771,12 @@ function TradeReport(props) {
   const analysis = result.analysis;
   const user = analysis.user;
   const firstVisibleRank = ((_a = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))) == null ? void 0 : _a.rank) ?? 1;
+  const offense = league.teams.flatMap((t) => t.players).filter((p) => OFFENSE_POSITIONS.includes(p.position));
+  const withProps = offense.filter((p) => p.projectionSource === "dataset").length;
+  const coverage = offense.length ? withProps / offense.length : 1;
+  const thinProps = coverage < 0.85;
+  const userOffense = user ? user.roster.filter((p) => OFFENSE_POSITIONS.includes(p.position)) : [];
+  const userWithProps = userOffense.filter((p) => p.projectionSource === "dataset").length;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     show("meta") ? /* @__PURE__ */ jsxs("div", { className: "chips", children: [
       /* @__PURE__ */ jsx("span", { className: "chip", children: league.settings.platform }),
@@ -2814,6 +2820,20 @@ function TradeReport(props) {
           " acceptable"
         ] })
       ] }),
+      thinProps ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
+        /* @__PURE__ */ jsx("b", { children: "Limited suggestions this week so far." }),
+        " Props are posted for only ",
+        withProps,
+        " of ",
+        offense.length,
+        " rostered QB/RB/WR/TE (",
+        Math.round(coverage * 100),
+        "%)",
+        user ? `, including ${userWithProps} of ${userOffense.length} on your team` : "",
+        ". Players without a line are never offered or requested, so fewer trades qualify",
+        result.trades.length < 5 ? ` (${result.trades.length} shown)` : "",
+        ". Lines usually fill in by Wednesday or Thursday; re-run then for the full list."
+      ] }) : null,
       result.trades.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
         "No trade cleared the bar (gain ≥ ",
         analysis.config.minUserGain,
