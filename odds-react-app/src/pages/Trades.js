@@ -109,7 +109,7 @@ export default function Trades() {
         const allWarnings = [...warnings];
         if (report.unmatchedProjection.length) {
           allWarnings.push(
-            `${report.unmatchedProjection.length} rostered QB/RB/WR/TE have no projection this week (props not posted yet); they count 0 in lineups and are excluded from trades.`
+            `${report.unmatchedProjection.length} rostered QB/RB/WR/TE have no props posted yet. Those with a trade value get an estimated projection (shown with ~, ${report.projectionEstimated} players); the rest count 0. None of them are offered in trades.`
           );
         }
         setOutput({ result, league, report, warnings: allWarnings, datasetLabels: { projections: projections.label, tradeValues: tradeValues.label } });

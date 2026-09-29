@@ -12,6 +12,8 @@ import type { OptimizerConfig } from "../optimization/config";
 export interface EnrichReport {
   rosteredPlayers: number;
   projectionMatched: number;
+  /** Rostered players with no props yet whose projection was inferred from trade value. */
+  projectionEstimated: number;
   tradeValueMatched: number;
   tradeValueEstimated: number;
   unmatchedProjection: { name: string; position: Position; teamName: string }[];
@@ -77,6 +79,25 @@ export function estimateTradeValue(
   return Math.max(1, Math.min(Math.round(interpolated * discount), lowerQuartile));
 }
 
+/**
+ * Projection estimate for a rostered player with a dataset trade value but no
+ * props posted yet (typical early in the week): interpolate the position's
+ * value -> projection curve from players that have both, clamped to the
+ * curve's range. Returns null when the position has too few points.
+ */
+export function estimateProjectionFromValue(tradeValue: number, curve: ListedPoint[]): number | null {
+  const pts = curve.filter((c) => c.value > 0 && c.projection > 0).sort((a, b) => a.value - b.value);
+  if (pts.length < 3 || tradeValue <= 0) return null;
+  if (tradeValue <= pts[0].value) return pts[0].projection;
+  if (tradeValue >= pts[pts.length - 1].value) return pts[pts.length - 1].projection;
+  let i = 0;
+  while (pts[i + 1].value < tradeValue) i++;
+  const a = pts[i];
+  const b = pts[i + 1];
+  const t = b.value === a.value ? 0 : (tradeValue - a.value) / (b.value - a.value);
+  return Math.round((a.projection + t * (b.projection - a.projection)) * 10) / 10;
+}
+
 export function enrichLeague(
   raw: RawLeague,
   projections: ProjectionDataset,
@@ -92,6 +113,7 @@ export function enrichLeague(
   const report: EnrichReport = {
     rosteredPlayers: 0,
     projectionMatched: 0,
+    projectionEstimated: 0,
     tradeValueMatched: 0,
     tradeValueEstimated: 0,
     unmatchedProjection: [],
@@ -161,17 +183,34 @@ export function enrichLeague(
     p.tradeValueSource = "none";
   }
 
-  // Pass 2: estimated trade values for rostered players the dataset omits,
+  // Curves of players with both a projection and a listed value, per position.
+  const curves: Record<Position, ListedPoint[]> = { QB: [], RB: [], WR: [], TE: [], K: [], DST: [] };
+  for (const t of teams) {
+    for (const p of t.players) {
+      if (p.tradeValueSource === "dataset" && p.projectionSource === "dataset") curves[p.position].push({ projection: p.projection, value: p.tradeValue });
+    }
+  }
+
+  // Pass 2a: projections for valued players with no props posted yet. A $55
+  // back without a line on Tuesday is not a 0-point player; he is benched and
+  // his slot flagged as a hole if left at 0. Estimates never enter trades.
+  for (const t of teams) {
+    for (const p of t.players) {
+      if (p.projectionSource !== "none" || p.tradeValueSource !== "dataset" || !OFFENSE_POSITIONS.includes(p.position)) continue;
+      const est = estimateProjectionFromValue(p.tradeValue, curves[p.position]);
+      if (est !== null && est > 0) {
+        p.projection = est;
+        p.projectionSource = "estimated";
+        report.projectionEstimated++;
+      }
+    }
+  }
+
+  // Pass 2b: estimated trade values for rostered players the dataset omits,
   // using the listed players' projection -> value curve at each position.
   if (unlisted === "estimate") {
     const replacement: Record<Position, number> = { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 };
     for (const p of available) replacement[p.position] = Math.max(replacement[p.position], p.projection);
-    const curves: Record<Position, ListedPoint[]> = { QB: [], RB: [], WR: [], TE: [], K: [], DST: [] };
-    for (const t of teams) {
-      for (const p of t.players) {
-        if (p.tradeValueSource === "dataset" && p.projectionSource === "dataset") curves[p.position].push({ projection: p.projection, value: p.tradeValue });
-      }
-    }
     for (const t of teams) {
       for (const p of t.players) {
         if (p.tradeValueSource === "dataset" || !OFFENSE_POSITIONS.includes(p.position) || p.projection <= 0) continue;

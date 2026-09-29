@@ -14,7 +14,8 @@ export const OFFENSE_POSITIONS: Position[] = ["QB", "RB", "WR", "TE"];
 export type Platform = "espn" | "sleeper" | "yahoo" | "fixture";
 
 export type TradeValueSource = "dataset" | "estimated" | "none";
-export type ProjectionSource = "dataset" | "none";
+/** "estimated": no props posted yet; projection inferred from trade value (never traded on). */
+export type ProjectionSource = "dataset" | "estimated" | "none";
 
 export interface Player {
   /** Engine-wide unique id, e.g. "espn:4241389" or "fixture:rb-a". */

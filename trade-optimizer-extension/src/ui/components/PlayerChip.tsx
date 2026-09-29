@@ -17,8 +17,8 @@ export function PlayerChip({ player, marginal, showValue = true }: { player: Pla
             {money(player.tradeValue)}
           </span>
           <span className="sep">·</span>
-          <span className="num" title="Median projection this week">
-            {player.projectionSource === "dataset" ? fmt1(player.projection) : "—"}
+          <span className="num" title={player.projectionSource === "estimated" ? "No props posted yet: estimated from trade value" : "Median projection this week"}>
+            {player.projectionSource === "dataset" ? fmt1(player.projection) : player.projectionSource === "estimated" ? `~${fmt1(player.projection)}` : "—"}
           </span>
           {marginal !== undefined ? (
             <>

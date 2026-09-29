@@ -1307,6 +1307,18 @@ function estimateTradeValue(projection, position, replacement, listed, slope = D
   const lowerQuartile = values[Math.floor((values.length - 1) * 0.25)];
   return Math.max(1, Math.min(Math.round(interpolated * discount), lowerQuartile));
 }
+function estimateProjectionFromValue(tradeValue, curve2) {
+  const pts = curve2.filter((c) => c.value > 0 && c.projection > 0).sort((a2, b2) => a2.value - b2.value);
+  if (pts.length < 3 || tradeValue <= 0) return null;
+  if (tradeValue <= pts[0].value) return pts[0].projection;
+  if (tradeValue >= pts[pts.length - 1].value) return pts[pts.length - 1].projection;
+  let i = 0;
+  while (pts[i + 1].value < tradeValue) i++;
+  const a = pts[i];
+  const b = pts[i + 1];
+  const t = b.value === a.value ? 0 : (tradeValue - a.value) / (b.value - a.value);
+  return Math.round((a.projection + t * (b.projection - a.projection)) * 10) / 10;
+}
 function enrichLeague(raw, projections, tradeValues, options = {}) {
   const platform = raw.settings.platform;
   const projIndex = new PlayerIndex(projections.entries, options.idNamespace);
@@ -1316,6 +1328,7 @@ function enrichLeague(raw, projections, tradeValues, options = {}) {
   const report = {
     rosteredPlayers: 0,
     projectionMatched: 0,
+    projectionEstimated: 0,
     tradeValueMatched: 0,
     tradeValueEstimated: 0,
     unmatchedProjection: [],
@@ -1376,15 +1389,26 @@ function enrichLeague(raw, projections, tradeValues, options = {}) {
     p.tradeValue = 0;
     p.tradeValueSource = "none";
   }
+  const curves = { QB: [], RB: [], WR: [], TE: [], K: [], DST: [] };
+  for (const t of teams) {
+    for (const p of t.players) {
+      if (p.tradeValueSource === "dataset" && p.projectionSource === "dataset") curves[p.position].push({ projection: p.projection, value: p.tradeValue });
+    }
+  }
+  for (const t of teams) {
+    for (const p of t.players) {
+      if (p.projectionSource !== "none" || p.tradeValueSource !== "dataset" || !OFFENSE_POSITIONS.includes(p.position)) continue;
+      const est = estimateProjectionFromValue(p.tradeValue, curves[p.position]);
+      if (est !== null && est > 0) {
+        p.projection = est;
+        p.projectionSource = "estimated";
+        report.projectionEstimated++;
+      }
+    }
+  }
   if (unlisted === "estimate") {
     const replacement = { QB: 0, RB: 0, WR: 0, TE: 0, K: 0, DST: 0 };
     for (const p of available) replacement[p.position] = Math.max(replacement[p.position], p.projection);
-    const curves = { QB: [], RB: [], WR: [], TE: [], K: [], DST: [] };
-    for (const t of teams) {
-      for (const p of t.players) {
-        if (p.tradeValueSource === "dataset" && p.projectionSource === "dataset") curves[p.position].push({ projection: p.projection, value: p.tradeValue });
-      }
-    }
     for (const t of teams) {
       for (const p of t.players) {
         if (p.tradeValueSource === "dataset" || !OFFENSE_POSITIONS.includes(p.position) || p.projection <= 0) continue;
@@ -2240,7 +2264,7 @@ function PlayerChip({ player, marginal, showValue = true }) {
         money(player.tradeValue)
       ] }),
       /* @__PURE__ */ jsx("span", { className: "sep", children: "·" }),
-      /* @__PURE__ */ jsx("span", { className: "num", title: "Median projection this week", children: player.projectionSource === "dataset" ? fmt1(player.projection) : "—" }),
+      /* @__PURE__ */ jsx("span", { className: "num", title: player.projectionSource === "estimated" ? "No props posted yet: estimated from trade value" : "Median projection this week", children: player.projectionSource === "dataset" ? fmt1(player.projection) : player.projectionSource === "estimated" ? `~${fmt1(player.projection)}` : "—" }),
       marginal !== void 0 ? /* @__PURE__ */ jsxs(Fragment, { children: [
         /* @__PURE__ */ jsx("span", { className: "sep", children: "·" }),
         /* @__PURE__ */ jsxs("span", { className: "num muted", title: "Marginal starting-lineup value", children: [
@@ -2255,14 +2279,20 @@ function LineupTable({ lineup, highlight, title }) {
   return /* @__PURE__ */ jsxs("div", { className: "table-wrap", children: [
     title ? /* @__PURE__ */ jsx("div", { className: "table-title", children: title }) : null,
     /* @__PURE__ */ jsx("table", { className: "lineup", children: /* @__PURE__ */ jsxs("tbody", { children: [
-      lineup.assignments.map((a, i) => /* @__PURE__ */ jsxs("tr", { className: a.player && (highlight == null ? void 0 : highlight.has(a.player.id)) ? "hl" : void 0, children: [
-        /* @__PURE__ */ jsx("td", { className: "slot", children: a.slot.key }),
-        /* @__PURE__ */ jsx("td", { children: a.player ? /* @__PURE__ */ jsxs("span", { className: "player", children: [
-          /* @__PURE__ */ jsx("span", { className: posClass(a.player.position), children: a.player.position }),
-          /* @__PURE__ */ jsx("span", { className: "player-name", children: a.player.name })
-        ] }) : /* @__PURE__ */ jsx("span", { className: "muted", children: "empty" }) }),
-        /* @__PURE__ */ jsx("td", { className: "num right", children: fmt1(a.projection) })
-      ] }, i)),
+      lineup.assignments.map((a, i) => {
+        var _a;
+        return /* @__PURE__ */ jsxs("tr", { className: a.player && (highlight == null ? void 0 : highlight.has(a.player.id)) ? "hl" : void 0, children: [
+          /* @__PURE__ */ jsx("td", { className: "slot", children: a.slot.key }),
+          /* @__PURE__ */ jsx("td", { children: a.player ? /* @__PURE__ */ jsxs("span", { className: "player", children: [
+            /* @__PURE__ */ jsx("span", { className: posClass(a.player.position), children: a.player.position }),
+            /* @__PURE__ */ jsx("span", { className: "player-name", children: a.player.name })
+          ] }) : /* @__PURE__ */ jsx("span", { className: "muted", children: "empty" }) }),
+          /* @__PURE__ */ jsxs("td", { className: "num right", children: [
+            ((_a = a.player) == null ? void 0 : _a.projectionSource) === "estimated" ? "~" : "",
+            fmt1(a.projection)
+          ] })
+        ] }, i);
+      }),
       /* @__PURE__ */ jsxs("tr", { className: "total", children: [
         /* @__PURE__ */ jsx("td", { colSpan: 2, children: "Total" }),
         /* @__PURE__ */ jsx("td", { className: "num right", children: fmt1(lineup.total) })
@@ -2957,6 +2987,7 @@ export {
   enrichLeague,
   espnSeasonFromDate,
   espnTeamForSwid,
+  estimateProjectionFromValue,
   estimateTradeValue,
   evaluateAcceptance,
   explainTrade,

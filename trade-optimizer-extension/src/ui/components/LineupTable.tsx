@@ -21,7 +21,7 @@ export function LineupTable({ lineup, highlight, title }: { lineup: OptimalLineu
                   <span className="muted">empty</span>
                 )}
               </td>
-              <td className="num right">{fmt1(a.projection)}</td>
+              <td className="num right">{a.player?.projectionSource === "estimated" ? "~" : ""}{fmt1(a.projection)}</td>
             </tr>
           ))}
           <tr className="total">

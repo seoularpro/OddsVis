@@ -93,7 +93,7 @@ export async function analyzeRawLeague(raw: RawLeague, settings: ExtensionSettin
   if (report.unmatchedProjection.length) {
     const mine = league.userTeamId ? report.unmatchedProjection.filter((u) => league.teams.find((t) => t.id === league.userTeamId)?.name === u.teamName) : [];
     warnings.push(
-      `${report.unmatchedProjection.length} rostered QB/RB/WR/TE have no projection this week (props not posted yet); they count 0 in lineups and are excluded from trades${mine.length ? ` — on your team: ${mine.map((u) => u.name).join(", ")}` : ""}.`
+      `${report.unmatchedProjection.length} rostered QB/RB/WR/TE have no props posted yet. Those with a trade value get an estimated projection (shown with ~, ${report.projectionEstimated} players); the rest count 0. None of them are offered in trades${mine.length ? ` — on your team: ${mine.map((u) => u.name).join(", ")}` : ""}.`
     );
   }
   return {

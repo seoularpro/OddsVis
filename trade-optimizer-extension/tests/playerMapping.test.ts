@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { PlayerIndex, normalizeDstName, normalizeName } from "../src/data/playerMapping";
-import { enrichLeague, estimateTradeValue } from "../src/data/enrichLeague";
+import { enrichLeague, estimateProjectionFromValue, estimateTradeValue } from "../src/data/enrichLeague";
 import type { RawLeague } from "../src/domain/types";
 import { standardLineup } from "../src/domain/positions";
 
@@ -86,6 +86,30 @@ describe("enrichLeague", () => {
     expect(availableNames).not.toContain("Star RB");
     expect(league.availablePlayers.every((p) => p.tradeValue === 0)).toBe(true);
     expect(report.availableFromDataset).toBe(1);
+  });
+
+  it("gives a valued player with no props an estimated projection that never enters trades", () => {
+    const rawEst: RawLeague = {
+      ...raw,
+      teams: [{ id: "a", name: "A", players: [
+        { platformId: "1", name: "Star RB", position: "RB" }, { platformId: "2", name: "Mid RB", position: "RB" }, { platformId: "3", name: "Low RB", position: "RB" },
+        { platformId: "4", name: "No Props RB", position: "RB" },
+      ] }],
+    };
+    const proj = { entries: [
+      { name: "Star RB", position: "RB" as const, medianProjection: 20 }, { name: "Mid RB", position: "RB" as const, medianProjection: 14 }, { name: "Low RB", position: "RB" as const, medianProjection: 8 },
+    ], source: "t", label: "t" };
+    const values = { entries: [
+      { name: "Star RB", position: "RB" as const, tradeValue: 60 }, { name: "Mid RB", position: "RB" as const, tradeValue: 30 }, { name: "Low RB", position: "RB" as const, tradeValue: 6 },
+      { name: "No Props RB", position: "RB" as const, tradeValue: 45 },
+    ], source: "t", label: "t" };
+    const { league, report } = enrichLeague(rawEst, proj, values);
+    const np = league.teams[0].players.find((p) => p.name === "No Props RB")!;
+    expect(np.projectionSource).toBe("estimated");
+    expect(np.projection).toBeCloseTo(17, 5); // halfway between $30 (14) and $60 (20)
+    expect(report.projectionEstimated).toBe(1);
+    expect(estimateProjectionFromValue(70, [{ projection: 20, value: 60 }, { projection: 14, value: 30 }, { projection: 8, value: 6 }])).toBe(20);
+    expect(estimateProjectionFromValue(10, [{ projection: 20, value: 60 }])).toBeNull();
   });
 
   it("estimateTradeValue interpolates the listed curve, discounts it and caps at the lower quartile", () => {
