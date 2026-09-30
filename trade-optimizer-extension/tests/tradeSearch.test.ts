@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { makeLeague, makePlayer, syntheticLeague } from "../src/data/fixtures/syntheticLeague";
 import { analyzeLeague } from "../src/optimization/teamAnalyzer";
-import { generateCandidates, valueWithinTolerance } from "../src/optimization/tradeGenerator";
+import { generateCandidates, tradeable, valueWithinTolerance } from "../src/optimization/tradeGenerator";
 import { fitRosterToSize, simulateTrade } from "../src/optimization/tradeSimulator";
 import { runTradeOptimizer } from "../src/optimization/tradeOptimizer";
 import { DEFAULT_CONFIG, mergeConfig, secondaryBand } from "../src/optimization/config";
@@ -228,12 +228,21 @@ describe("ranking", () => {
     for (const n of partners.values()) expect(n).toBeLessThanOrEqual(DEFAULT_CONFIG.maxTradesPerPartner);
   });
 
-  it("never puts a $0 (waiver-level) player in a package", () => {
+  it("never puts a $0 (waiver-level) player, or a QB worth $15 or less, in a package", () => {
     const result = runTradeOptimizer(syntheticLeague(), { topN: 50, maxTradesPerPartner: 50 });
     expect(result.trades.length).toBeGreaterThan(0);
     for (const t of result.trades) {
-      for (const p of [...t.simulation.candidate.userSends, ...t.simulation.candidate.userReceives]) expect(p.tradeValue).toBeGreaterThan(0);
+      for (const p of [...t.simulation.candidate.userSends, ...t.simulation.candidate.userReceives]) {
+        expect(p.tradeValue).toBeGreaterThan(0);
+        if (p.position === "QB") expect(p.tradeValue).toBeGreaterThan(DEFAULT_CONFIG.minQbTradeValue);
+      }
     }
+    // The threshold is configurable: at 0 cheap QBs become tradeable again.
+    const analysis = analyzeLeague(syntheticLeague());
+    const cheapQbs = analysis.user!.roster.filter((p) => p.position === "QB" && p.tradeValue > 0 && p.tradeValue <= 15 && p.projectionSource === "dataset");
+    expect(cheapQbs.length).toBeGreaterThan(0);
+    expect(tradeable(analysis.user!.roster, new Set(), 0).some((p) => p.position === "QB" && p.tradeValue <= 15)).toBe(true);
+    expect(tradeable(analysis.user!.roster, new Set(), 15).some((p) => p.position === "QB" && p.tradeValue <= 15)).toBe(false);
   });
 
   it("synthetic league: the user's RB surplus and weak WR2/FLEX are detected and the top trade exploits them", () => {

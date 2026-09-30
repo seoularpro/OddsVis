@@ -17,6 +17,7 @@ const DEFAULT_CONFIG = {
   maxOutgoingCandidates: 12,
   maxIncomingCandidates: 12,
   maxTripleCandidates: 8,
+  minQbTradeValue: 15,
   maxPartners: 20,
   enforceValueTolerance: true,
   maxTradeValueDifferencePercent: 15,
@@ -652,9 +653,9 @@ function rankPartners(analysis, user) {
     return { teamId: t.teamId, teamName: t.teamName, score: score + 0.01, userGets, partnerGets };
   }).sort((a, b) => b.score - a.score);
 }
-function tradeable(players, excludeIds = /* @__PURE__ */ new Set()) {
+function tradeable(players, excludeIds = /* @__PURE__ */ new Set(), minQbTradeValue = 0) {
   return players.filter(
-    (p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && p.projection > 0 && p.tradeValue > 0 && !excludeIds.has(p.id)
+    (p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && p.projection > 0 && p.tradeValue > 0 && (p.position !== "QB" || p.tradeValue > minQbTradeValue) && !excludeIds.has(p.id)
   );
 }
 function combinations(items, k) {
@@ -696,12 +697,12 @@ function generateCandidates(analysis, config) {
   stats.partners = partners.length;
   const userWeakest = weakestStarterByPosition(user);
   expandSlots(analysis.league.settings.lineupSlots).length;
-  const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds)).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxOutgoingCandidates);
+  const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds), config.minQbTradeValue).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxOutgoingCandidates);
   const candidates = [];
   for (const partner of partners) {
     const team = analysis.teams.find((t) => t.teamId === partner.teamId);
     const partnerWeakest = weakestStarterByPosition(team);
-    const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds)).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxIncomingCandidates);
+    const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds), config.minQbTradeValue).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxIncomingCandidates);
     const poolFor = (pool2, size) => size >= 3 ? pool2.slice(0, config.maxTripleCandidates) : pool2;
     const sendSets = /* @__PURE__ */ new Map();
     const recvSets = /* @__PURE__ */ new Map();

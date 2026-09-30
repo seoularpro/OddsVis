@@ -89,7 +89,8 @@ content script (page origin)          side panel (extension page)
     never moved: a 0 projection would masquerade as free expendable depth.
     Waiver-wire players are worthless by definition, so anyone the baseline
     picked up from waivers, and any $0 rostered player, is never part of a
-    package (they still count in lineups).
+    package (they still count in lineups). Quarterbacks are only packaged
+    when worth more than $15 (`minQbTradeValue`).
   * `tradeSimulator` – applies the deal, refits both rosters to the roster
     size (2-for-1 fills the open spot with the best waiver player, 1-for-2
     drops the least useful non-starter), re-optimizes both lineups, diffs

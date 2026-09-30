@@ -69,14 +69,16 @@ export function rankPartners(analysis: LeagueAnalysis, user: TeamAnalysis): Part
  *  - Waiver-wire players are worthless by definition ($0), so anyone the
  *    baseline pulled from waivers, and any rostered player with no trade
  *    value, is never part of a package. They still count in lineups.
+ *  - Quarterbacks are only packaged when worth more than minQbTradeValue.
  */
-export function tradeable(players: Player[], excludeIds: ReadonlySet<string> = new Set()): Player[] {
+export function tradeable(players: Player[], excludeIds: ReadonlySet<string> = new Set(), minQbTradeValue = 0): Player[] {
   return players.filter(
     (p) =>
       OFFENSE_POSITIONS.includes(p.position) &&
       p.projectionSource === "dataset" &&
       p.projection > 0 &&
       p.tradeValue > 0 &&
+      (p.position !== "QB" || p.tradeValue > minQbTradeValue) &&
       !excludeIds.has(p.id)
   );
 }
@@ -131,7 +133,7 @@ export function generateCandidates(analysis: LeagueAnalysis, config: OptimizerCo
   const userWeakest = weakestStarterByPosition(user);
   const slotCount = expandSlots(analysis.league.settings.lineupSlots).length;
 
-  const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds))
+  const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds), config.minQbTradeValue)
     .sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection)
     .slice(0, config.maxOutgoingCandidates);
 
@@ -139,7 +141,7 @@ export function generateCandidates(analysis: LeagueAnalysis, config: OptimizerCo
   for (const partner of partners) {
     const team = analysis.teams.find((t) => t.teamId === partner.teamId)!;
     const partnerWeakest = weakestStarterByPosition(team);
-    const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds))
+    const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds), config.minQbTradeValue)
       .sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection)
       .slice(0, config.maxIncomingCandidates);
 

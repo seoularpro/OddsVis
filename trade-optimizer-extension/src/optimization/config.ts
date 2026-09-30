@@ -19,6 +19,8 @@ export interface OptimizerConfig {
   maxIncomingCandidates: number;
   /** Pool size for a side that sends three or more players (C(n,3) grows fast). */
   maxTripleCandidates: number;
+  /** Quarterbacks are only packaged when their trade value exceeds this (1-QB leagues barely trade QBs). */
+  minQbTradeValue: number;
   /** Trade partners to search (all opponents if larger than the league). */
   maxPartners: number;
 
@@ -105,6 +107,7 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   maxOutgoingCandidates: 12,
   maxIncomingCandidates: 12,
   maxTripleCandidates: 8,
+  minQbTradeValue: 15,
   maxPartners: 20,
 
   enforceValueTolerance: true,
