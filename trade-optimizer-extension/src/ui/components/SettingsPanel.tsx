@@ -20,8 +20,8 @@ export function SettingsPanel({ settings, onChange }: { settings: ExtensionSetti
             <label>
               Trade value
               <select value={String(cfg.enforceValueTolerance ?? DEFAULT_CONFIG.enforceValueTolerance)} onChange={(e) => setCfg({ enforceValueTolerance: e.target.value === "true" })}>
-                <option value="false">scores fairness only</option>
                 <option value="true">require fair values (gap limit below)</option>
+                <option value="false">scores fairness only</option>
               </select>
             </label>
             <label>

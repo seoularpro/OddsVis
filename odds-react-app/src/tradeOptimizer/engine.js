@@ -18,7 +18,7 @@ const DEFAULT_CONFIG = {
   maxIncomingCandidates: 12,
   maxTripleCandidates: 8,
   maxPartners: 20,
-  enforceValueTolerance: false,
+  enforceValueTolerance: true,
   maxTradeValueDifferencePercent: 15,
   tradeValueAbsoluteSlack: 4,
   minUserGain: 0.5,
@@ -2866,8 +2866,8 @@ function SettingsPanel({ settings, onChange }) {
         /* @__PURE__ */ jsxs("label", { children: [
           "Trade value",
           /* @__PURE__ */ jsxs("select", { value: String(cfg.enforceValueTolerance ?? DEFAULT_CONFIG.enforceValueTolerance), onChange: (e) => setCfg({ enforceValueTolerance: e.target.value === "true" }), children: [
-            /* @__PURE__ */ jsx("option", { value: "false", children: "scores fairness only" }),
-            /* @__PURE__ */ jsx("option", { value: "true", children: "require fair values (gap limit below)" })
+            /* @__PURE__ */ jsx("option", { value: "true", children: "require fair values (gap limit below)" }),
+            /* @__PURE__ */ jsx("option", { value: "false", children: "scores fairness only" })
           ] })
         ] }),
         /* @__PURE__ */ jsxs("label", { children: [

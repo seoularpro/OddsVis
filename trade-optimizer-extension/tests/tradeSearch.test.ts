@@ -18,31 +18,32 @@ const CLASSIC_SHAPES = [{ send: 1, receive: 1 }, { send: 2, receive: 1 }, { send
 const RAW = { baselineWaiverMoves: 0, shapes: CLASSIC_SHAPES };
 
 describe("trade generation", () => {
-  it("enumerates 1-for-1, 2-for-1, 1-for-2 and 2-for-2 packages; value pruning only when enforced", () => {
+  it("enumerates 1-for-1, 2-for-1, 1-for-2, 2-for-2 and 3-for-2 packages within the value tolerance by default", () => {
     const league = syntheticLeague();
     const analysis = analyzeLeague(league, { baselineWaiverMoves: 0 });
-    const { candidates, stats } = generateCandidates(analysis, mergeConfig({ baselineWaiverMoves: 0 }));
+    const cfg = mergeConfig({ baselineWaiverMoves: 0 });
+    const { candidates, stats } = generateCandidates(analysis, cfg);
     const shapes = new Set(candidates.map((c) => `${c.shape.send}-${c.shape.receive}`));
     expect(shapes).toEqual(new Set(["1-1", "2-1", "1-2", "2-2", "3-2"]));
-    expect(stats.prunedByValue).toBe(0);
+    expect(stats.prunedByValue).toBeGreaterThan(0);
+    expect(stats.prunedByLineup).toBeGreaterThan(0);
+    for (const c of candidates) {
+      const sent = c.userSends.reduce((n, p) => n + p.tradeValue, 0);
+      const recv = c.userReceives.reduce((n, p) => n + p.tradeValue, 0);
+      expect(valueWithinTolerance(sent, recv, cfg)).toBe(true);
+    }
     // A 3-for-2 opens a roster spot for the user and forces a drop for the partner.
     const three = candidates.find((c) => c.shape.send === 3 && c.shape.receive === 2)!;
     const sim = simulateTrade(three, analysis);
     expect(sim.user.waiverAdds.length + sim.user.drops.length).toBeGreaterThanOrEqual(1);
     expect(sim.opponent.drops).toHaveLength(1);
     expect(sim.user.projectionAfter).toBeCloseTo(optimizeLineup(sim.user.rosterAfter, league.settings.lineupSlots).total, 6);
-    expect(stats.prunedByLineup).toBeGreaterThan(0);
+    // Turned off, value is a scoring factor only and lopsided packages survive.
+    const loose = mergeConfig({ baselineWaiverMoves: 0, enforceValueTolerance: false });
+    const open = generateCandidates(analyzeLeague(league, loose), loose);
+    expect(open.stats.prunedByValue).toBe(0);
     const gap = (c: (typeof candidates)[number]) => Math.abs(c.userSends.reduce((n, p) => n + p.tradeValue, 0) - c.userReceives.reduce((n, p) => n + p.tradeValue, 0));
-    expect(candidates.some((c) => gap(c) > 20)).toBe(true);
-
-    const strict = mergeConfig({ baselineWaiverMoves: 0, enforceValueTolerance: true });
-    const enforced = generateCandidates(analyzeLeague(league, strict), strict);
-    expect(enforced.stats.prunedByValue).toBeGreaterThan(0);
-    for (const c of enforced.candidates) {
-      const sent = c.userSends.reduce((n, p) => n + p.tradeValue, 0);
-      const recv = c.userReceives.reduce((n, p) => n + p.tradeValue, 0);
-      expect(valueWithinTolerance(sent, recv, strict)).toBe(true);
-    }
+    expect(open.candidates.some((c) => gap(c) > 20)).toBe(true);
   });
 
   it("valueWithinTolerance allows 15% or $4, whichever is larger", () => {
@@ -184,7 +185,7 @@ describe("critical scenarios", () => {
     expect(rbTrade!.simulation.user.holesAfter).toBe(0);
   });
 
-  it("rejects trades that help the user but catastrophically hurt the opponent; lopsided values only when enforced", () => {
+  it("rejects trades that help the user but catastrophically hurt the opponent, and lopsided values", () => {
     const user = [P("U QB", "QB", 20, 20), P("U RB1", "RB", 17, 28), P("U RB2", "RB", 7, 3), P("U WR1", "WR", 18, 30), P("U WR2", "WR", 15, 20), P("U TE", "TE", 10, 8), P("U WR3", "WR", 12, 10), ...kd()];
     const oppStar = P("O RB1", "RB", 22, 60);
     const opp = [P("O QB", "QB", 19, 18), oppStar, P("O RB2", "RB", 9, 4), P("O WR1", "WR", 16, 26), P("O WR2", "WR", 14, 18), P("O TE", "TE", 9, 6), P("O WR3", "WR", 10, 6), ...kd()];
@@ -194,13 +195,10 @@ describe("critical scenarios", () => {
       expect(t.simulation.opponent.projectionGain).toBeGreaterThanOrEqual(-DEFAULT_CONFIG.maxOpponentLoss);
       expect(t.acceptance.accepted).toBe(true);
       expect(t.acceptance.opponentReasons.length).toBeGreaterThan(0);
-    }
-    // With value enforced, the star for the user's $3 RB2 (+15 for the user) is never offered.
-    const strict = runTradeOptimizer(league, { ...RAW, enforceValueTolerance: true });
-    for (const t of strict.trades) {
       expect(valueWithinTolerance(t.simulation.user.tradeValueSent, t.simulation.user.tradeValueReceived, DEFAULT_CONFIG)).toBe(true);
     }
-    expect(strict.trades.some((t) => t.simulation.candidate.userReceives.some((p) => p.id === oppStar.id) && t.simulation.user.tradeValueSent < 40)).toBe(false);
+    // The star for the user's $3 RB2 would be +15 for the user but is never offered.
+    expect(result.trades.some((t) => t.simulation.candidate.userReceives.some((p) => p.id === oppStar.id) && t.simulation.user.tradeValueSent < 40)).toBe(false);
   });
 });
 

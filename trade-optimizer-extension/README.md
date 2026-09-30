@@ -81,10 +81,10 @@ content script (page origin)          side panel (extension page)
   * `tradeGenerator` – partners ranked by complementary need/surplus;
     packages (1-1, 2-1, 1-2, 2-2 and 3-2 by default; shapes are config, and
     three-player sides draw from the top 8 assets) pruned by
-    "nothing incoming could start". Trade value is not a hard constraint by
-    default (`enforceValueTolerance: false`): it feeds the fairness bonus and
-    the opponent's value-gain reason. Turn it on to prune and reject packages
-    outside 15 % or $4.
+    "nothing incoming could start" and by trade value: packages whose values
+    differ by more than 15 % or $4 are pruned before simulation and rejected
+    at acceptance (`enforceValueTolerance`, on by default; off makes value a
+    scoring factor only).
     K/DST and players with no projection this week (props not posted) are
     never moved: a 0 projection would masquerade as free expendable depth.
     Waiver-wire players are worthless by definition, so anyone the baseline

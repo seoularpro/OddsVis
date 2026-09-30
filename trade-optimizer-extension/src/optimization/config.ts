@@ -23,9 +23,10 @@ export interface OptimizerConfig {
   maxPartners: number;
 
   /**
-   * Whether trade value is a hard constraint. Off by default: value only
-   * feeds the fairness bonus and the opponent's "value gain" reason. On:
-   * packages outside the tolerance are pruned and rejected.
+   * Whether trade value is a hard constraint. On (default): packages outside
+   * the tolerance are pruned before simulation and rejected at acceptance.
+   * Off: value only feeds the fairness bonus and the opponent's "value gain"
+   * reason.
    */
   enforceValueTolerance: boolean;
   /** Fairness tolerance: |sent - received| within this share of the larger side... */
@@ -106,7 +107,7 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   maxTripleCandidates: 8,
   maxPartners: 20,
 
-  enforceValueTolerance: false,
+  enforceValueTolerance: true,
   maxTradeValueDifferencePercent: 15,
   tradeValueAbsoluteSlack: 4,
 
