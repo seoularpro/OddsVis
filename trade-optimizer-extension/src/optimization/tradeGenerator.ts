@@ -143,11 +143,14 @@ export function generateCandidates(analysis: LeagueAnalysis, config: OptimizerCo
       .sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection)
       .slice(0, config.maxIncomingCandidates);
 
+    // Sides of three or more players draw from a smaller pool (the most
+    // valuable maxTripleCandidates) to keep the combination count in check.
+    const poolFor = (pool: Player[], size: number) => (size >= 3 ? pool.slice(0, config.maxTripleCandidates) : pool);
     const sendSets = new Map<number, Player[][]>();
     const recvSets = new Map<number, Player[][]>();
     for (const shape of config.shapes) {
-      if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(outgoingPool, shape.send));
-      if (!recvSets.has(shape.receive)) recvSets.set(shape.receive, combinations(incomingPool, shape.receive));
+      if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(poolFor(outgoingPool, shape.send), shape.send));
+      if (!recvSets.has(shape.receive)) recvSets.set(shape.receive, combinations(poolFor(incomingPool, shape.receive), shape.receive));
     }
 
     for (const shape of config.shapes) {

@@ -4,6 +4,9 @@ import { runTradeOptimizer } from "../src/optimization/tradeOptimizer";
 import { TIER_RANK } from "../src/optimization/tradeScorer";
 import { DEFAULT_CONFIG, secondaryBand } from "../src/optimization/config";
 
+// Hand-built scenario: classic shapes only, no baseline moves.
+const CLASSIC = { baselineWaiverMoves: 0, shapes: [{ send: 1, receive: 1 }, { send: 2, receive: 1 }, { send: 1, receive: 2 }, { send: 2, receive: 2 }] };
+
 const P = makePlayer;
 const kd = () => [P("K", "K", 0, 0), P("DST", "DST", 0, 0)];
 const waivers = () => [P("W RB", "RB", 7.5, 0), P("W WR", "WR", 8, 0), P("W TE", "TE", 5, 0), P("W QB", "QB", 12, 0)];
@@ -30,7 +33,7 @@ function league() {
 
 describe("win/win ranking", () => {
   it("ranks a win/win trade above a larger one-sided gain, and the reverse in userGain mode", () => {
-    const win = runTradeOptimizer(league(), { topN: 500, maxTradesPerPartner: 500, baselineWaiverMoves: 0 });
+    const win = runTradeOptimizer(league(), { ...CLASSIC, topN: 500, maxTradesPerPartner: 500 });
     expect(win.trades.length).toBeGreaterThan(1);
     const top = win.trades[0];
     expect(top.score.tier).toBe("win-win");
@@ -56,7 +59,7 @@ describe("win/win ranking", () => {
     expect(boundary!.rankedAboveNextBecause).toMatch(/win\/win/);
     expect(top.explanation.overall.join(" ")).toMatch(/Weaknesses solved: your RB2 and their WR2/);
 
-    const plain = runTradeOptimizer(league(), { topN: 500, maxTradesPerPartner: 500, baselineWaiverMoves: 0, rankingMode: "userGain" });
+    const plain = runTradeOptimizer(league(), { ...CLASSIC, topN: 500, maxTradesPerPartner: 500, rankingMode: "userGain" });
     // Score-only ranking puts a one-sided +9 above the +8 win/win.
     expect(plain.trades[0].simulation.user.projectionGain).toBeGreaterThanOrEqual(9);
     expect(plain.trades[0].score.tier).toBe("one-sided");

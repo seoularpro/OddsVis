@@ -17,6 +17,8 @@ export interface OptimizerConfig {
   maxOutgoingCandidates: number;
   /** Most valuable N opponent players considered as incoming targets. */
   maxIncomingCandidates: number;
+  /** Pool size for a side that sends three or more players (C(n,3) grows fast). */
+  maxTripleCandidates: number;
   /** Trade partners to search (all opponents if larger than the league). */
   maxPartners: number;
 
@@ -97,9 +99,11 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
     { send: 2, receive: 1 },
     { send: 1, receive: 2 },
     { send: 2, receive: 2 },
+    { send: 3, receive: 2 },
   ],
   maxOutgoingCandidates: 12,
   maxIncomingCandidates: 12,
+  maxTripleCandidates: 8,
   maxPartners: 20,
 
   enforceValueTolerance: false,

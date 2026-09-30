@@ -11,10 +11,12 @@ const DEFAULT_CONFIG = {
     { send: 1, receive: 1 },
     { send: 2, receive: 1 },
     { send: 1, receive: 2 },
-    { send: 2, receive: 2 }
+    { send: 2, receive: 2 },
+    { send: 3, receive: 2 }
   ],
   maxOutgoingCandidates: 12,
   maxIncomingCandidates: 12,
+  maxTripleCandidates: 8,
   maxPartners: 20,
   enforceValueTolerance: false,
   maxTradeValueDifferencePercent: 15,
@@ -700,11 +702,12 @@ function generateCandidates(analysis, config) {
     const team = analysis.teams.find((t) => t.teamId === partner.teamId);
     const partnerWeakest = weakestStarterByPosition(team);
     const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds)).sort((a, b) => b.tradeValue - a.tradeValue || b.projection - a.projection).slice(0, config.maxIncomingCandidates);
+    const poolFor = (pool2, size) => size >= 3 ? pool2.slice(0, config.maxTripleCandidates) : pool2;
     const sendSets = /* @__PURE__ */ new Map();
     const recvSets = /* @__PURE__ */ new Map();
     for (const shape of config.shapes) {
-      if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(outgoingPool, shape.send));
-      if (!recvSets.has(shape.receive)) recvSets.set(shape.receive, combinations(incomingPool, shape.receive));
+      if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(poolFor(outgoingPool, shape.send), shape.send));
+      if (!recvSets.has(shape.receive)) recvSets.set(shape.receive, combinations(poolFor(incomingPool, shape.receive), shape.receive));
     }
     for (const shape of config.shapes) {
       for (const sends of sendSets.get(shape.send)) {

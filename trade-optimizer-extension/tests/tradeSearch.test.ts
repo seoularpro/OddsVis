@@ -12,22 +12,30 @@ import type { Player } from "../src/domain/types";
 const P = makePlayer;
 const waivers = () => [P("W RB", "RB", 7.5, 0), P("W RB2", "RB", 7, 0), P("W WR", "WR", 8, 0), P("W WR2", "WR", 7.5, 0), P("W TE", "TE", 5, 0), P("W QB", "QB", 12, 0)];
 const kd = () => [P("K", "K", 0, 0), P("DST", "DST", 0, 0)];
-// The hand-computed scenarios below assume the rosters exactly as written (no free waiver moves first).
-const RAW = { baselineWaiverMoves: 0 };
+// The hand-computed scenarios below assume the rosters exactly as written (no free
+// waiver moves first) and the four classic package shapes.
+const CLASSIC_SHAPES = [{ send: 1, receive: 1 }, { send: 2, receive: 1 }, { send: 1, receive: 2 }, { send: 2, receive: 2 }];
+const RAW = { baselineWaiverMoves: 0, shapes: CLASSIC_SHAPES };
 
 describe("trade generation", () => {
   it("enumerates 1-for-1, 2-for-1, 1-for-2 and 2-for-2 packages; value pruning only when enforced", () => {
     const league = syntheticLeague();
-    const analysis = analyzeLeague(league, RAW);
-    const { candidates, stats } = generateCandidates(analysis, mergeConfig(RAW));
+    const analysis = analyzeLeague(league, { baselineWaiverMoves: 0 });
+    const { candidates, stats } = generateCandidates(analysis, mergeConfig({ baselineWaiverMoves: 0 }));
     const shapes = new Set(candidates.map((c) => `${c.shape.send}-${c.shape.receive}`));
-    expect(shapes).toEqual(new Set(["1-1", "2-1", "1-2", "2-2"]));
+    expect(shapes).toEqual(new Set(["1-1", "2-1", "1-2", "2-2", "3-2"]));
     expect(stats.prunedByValue).toBe(0);
+    // A 3-for-2 opens a roster spot for the user and forces a drop for the partner.
+    const three = candidates.find((c) => c.shape.send === 3 && c.shape.receive === 2)!;
+    const sim = simulateTrade(three, analysis);
+    expect(sim.user.waiverAdds.length + sim.user.drops.length).toBeGreaterThanOrEqual(1);
+    expect(sim.opponent.drops).toHaveLength(1);
+    expect(sim.user.projectionAfter).toBeCloseTo(optimizeLineup(sim.user.rosterAfter, league.settings.lineupSlots).total, 6);
     expect(stats.prunedByLineup).toBeGreaterThan(0);
     const gap = (c: (typeof candidates)[number]) => Math.abs(c.userSends.reduce((n, p) => n + p.tradeValue, 0) - c.userReceives.reduce((n, p) => n + p.tradeValue, 0));
     expect(candidates.some((c) => gap(c) > 20)).toBe(true);
 
-    const strict = mergeConfig({ ...RAW, enforceValueTolerance: true });
+    const strict = mergeConfig({ baselineWaiverMoves: 0, enforceValueTolerance: true });
     const enforced = generateCandidates(analyzeLeague(league, strict), strict);
     expect(enforced.stats.prunedByValue).toBeGreaterThan(0);
     for (const c of enforced.candidates) {

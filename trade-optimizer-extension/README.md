@@ -79,7 +79,8 @@ content script (page origin)          side panel (extension page)
   * `surplusAnalyzer` – bench points above replacement per position →
     very low … very high, plus expendable assets.
   * `tradeGenerator` – partners ranked by complementary need/surplus;
-    packages (1-1, 2-1, 1-2, 2-2 by default; shapes are config) pruned by
+    packages (1-1, 2-1, 1-2, 2-2 and 3-2 by default; shapes are config, and
+    three-player sides draw from the top 8 assets) pruned by
     "nothing incoming could start". Trade value is not a hard constraint by
     default (`enforceValueTolerance: false`): it feeds the fairness bonus and
     the opponent's value-gain reason. Turn it on to prune and reject packages
