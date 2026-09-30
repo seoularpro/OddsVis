@@ -145,8 +145,8 @@ A second, separately ranked list (`optimization/unfairTrades.ts`, the
 (`unfairMinOutgoingValue`), and the deal must raise both your total trade
 value and this week's optimal lineup. The 15 %/$4 tolerance and the normal
 opponent-benefit test do not apply; instead the list is bounded to deals a
-manager might take: they get at most 40 % less value than they give
-(`unfairMaxValueGainPercent`), their lineup loses at most 3 points this week
+manager might take: they get at most 75 % less value than they give
+(`unfairMaxValueGainPercent`), their lineup loses at most 6 points this week
 (`unfairMaxOpponentLoss`), and they have an angle (a lineup gain, a filled
 hole, or the deal's single most valuable player, typically a 2-for-1
 consolidation). Cards state the angle and any pushback. Ranked by

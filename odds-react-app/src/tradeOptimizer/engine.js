@@ -42,8 +42,8 @@ const DEFAULT_CONFIG = {
   unfairMinOutgoingValue: 30,
   unfairValuePointsPerProjectionPoint: 10,
   unfairTopN: 10,
-  unfairMaxValueGainPercent: 40,
-  unfairMaxOpponentLoss: 3,
+  unfairMaxValueGainPercent: 75,
+  unfairMaxOpponentLoss: 6,
   unfairRequireOpponentAngle: true,
   maxTradesPerPartner: 3,
   unlistedTradeValue: "estimate",
@@ -1366,7 +1366,7 @@ class PlayerIndex {
     const fz = fuzzyKey(identity.name, pos);
     if (fz) {
       const list = this.byFuzzy.get(fz);
-      if (list && list.length === 1) return { entry: list[0], confidence: "fuzzy" };
+      if (list && list.length === 1 && initialsCompatible(identity.name, list[0].name)) return { entry: list[0], confidence: "fuzzy" };
     }
     return { entry: null, confidence: "unmatched" };
   }
@@ -1382,6 +1382,15 @@ function normalizedKeys(name, position) {
   const base = normalizeName(name);
   const keys = /* @__PURE__ */ new Set([base, aliasKey(base), collapseInitials(base), aliasKey(collapseInitials(base))]);
   return [...keys].filter(Boolean);
+}
+function firstToken(name) {
+  return collapseInitials(aliasKey(normalizeName(name))).split(" ")[0] ?? "";
+}
+function initialsCompatible(a, b) {
+  const fa = firstToken(a);
+  const fb = firstToken(b);
+  if (fa.length <= 2 || fb.length <= 2) return true;
+  return fa === fb;
 }
 function fuzzyKey(name, position) {
   if (position === "DST") return null;
@@ -3271,6 +3280,7 @@ export {
   findUnfairTrades,
   fitRosterToSize,
   generateCandidates,
+  initialsCompatible,
   instanceName,
   isEntitled,
   leagueSizeKeyFor,

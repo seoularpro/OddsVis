@@ -42,6 +42,15 @@ describe("player index", () => {
     expect(index.find({ name: "Buffalo Bills", position: "DST" })).toMatchObject({ confidence: "normalized", entry: entries[5] });
   });
 
+  it("never fuzzy-matches two different full first names that share an initial", () => {
+    const only = new PlayerIndex([{ playerId: "9", name: "Bijan Robinson", position: "RB" as const, tradeValue: 68 }]);
+    expect(only.find({ name: "Brian Robinson Jr.", position: "RB" }).confidence).toBe("unmatched");
+    expect(only.find({ name: "B. Robinson", position: "RB" })).toMatchObject({ confidence: "fuzzy" });
+    expect(only.find({ name: "Bijan Robinson", position: "RB" }).confidence).toBe("exact");
+    const abbreviated = new PlayerIndex([{ playerId: "10", name: "K. Walker", position: "RB" as const, tradeValue: 20 }]);
+    expect(abbreviated.find({ name: "Kenneth Walker III", position: "RB" })).toMatchObject({ confidence: "fuzzy" });
+  });
+
   it("uses position to separate duplicate names and never guesses across positions", () => {
     expect(index.find({ name: "Josh Allen", position: "WR" }).entry).toBe(entries[3]);
     expect(index.find({ name: "Josh Allen", position: "TE" }).confidence).toBe("unmatched");

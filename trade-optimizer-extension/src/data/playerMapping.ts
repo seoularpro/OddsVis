@@ -5,7 +5,10 @@
 //   2. exact     – identical name (case-insensitive) and position.
 //   3. normalized– punctuation/suffix/diacritic-insensitive name + position,
 //                  with known alias spellings and D/ST naming variants.
-//   4. fuzzy     – first initial + last name + position, only when unique.
+//   4. fuzzy     – first initial + last name + position, only when unique AND
+//                  one side's first name is actually an initial ("K. Walker").
+//                  Two full first names that merely share an initial never
+//                  match: "Brian Robinson" is not "Bijan Robinson".
 // Position is required for every name-based match so "Josh Allen (QB)" never
 // matches a same-named player at another position.
 
@@ -140,7 +143,7 @@ export class PlayerIndex<T extends { playerId?: string; name: string; position: 
     const fz = fuzzyKey(identity.name, pos);
     if (fz) {
       const list = this.byFuzzy.get(fz);
-      if (list && list.length === 1) return { entry: list[0], confidence: "fuzzy" };
+      if (list && list.length === 1 && initialsCompatible(identity.name, list[0].name)) return { entry: list[0], confidence: "fuzzy" };
     }
     return { entry: null, confidence: "unmatched" };
   }
@@ -158,6 +161,22 @@ function normalizedKeys(name: string, position: Position): string[] {
   const base = normalizeName(name);
   const keys = new Set<string>([base, aliasKey(base), collapseInitials(base), aliasKey(collapseInitials(base))]);
   return [...keys].filter(Boolean);
+}
+
+/** First token of the canonical name, after aliases and initial collapsing. */
+function firstToken(name: string): string {
+  return collapseInitials(aliasKey(normalizeName(name))).split(" ")[0] ?? "";
+}
+
+/**
+ * A fuzzy (initial + last name) match is only allowed when at least one side's
+ * first name is an initial (1-2 letters) or the full first names agree.
+ */
+export function initialsCompatible(a: string, b: string): boolean {
+  const fa = firstToken(a);
+  const fb = firstToken(b);
+  if (fa.length <= 2 || fb.length <= 2) return true;
+  return fa === fb;
 }
 
 function fuzzyKey(name: string, position: Position): string | null {
