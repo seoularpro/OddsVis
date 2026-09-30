@@ -157,22 +157,49 @@ def norm_proj(n):
 
 def reseed(players, weekly, R):
     """Move the baseline toward this week's medians (see params.json "reseed"). Mutates
-    players in place, keeping the original in p['seed']. Returns a summary dict."""
+    players in place, keeping the original in p['seed']. Returns a summary dict.
+
+    Order is meant to follow the projections: within each position the projected players
+    are ranked by median and mapped onto that group's own sorted seed values (term A), and
+    blended with their share of the group's points above replacement on the group's value
+    budget (term C). Both terms are monotone in the projection, so `implied` is too; with
+    the weight near 1 the published order tracks the projection order, and the sheet only
+    tempers the size of the gaps. Ranking within the projected group (not the whole
+    position) keeps the group's total fixed, so stars no longer fund cheap breakouts.
+    Players without a line this week use last week's median when available; a position
+    whose coverage is still below `min_coverage` is left at the sheet values."""
     w, teams = R['weight'], R['teams']
-    by_name = {norm_proj(x['name']): x['ev'] for lst in weekly['positions'].values() for x in lst}
+    current = {norm_proj(x['name']): x['ev'] for lst in weekly['positions'].values() for x in lst}
+    prev = weekly.get('previous') or {}
+    previous = {norm_proj(x['name']): x['ev'] for lst in (prev.get('positions') or {}).values() for x in lst} if R.get('use_previous_week_for_missing', True) else {}
     for p in players:
-        p['seed'] = p['value']; p['ev'] = by_name.get(norm_proj(p['name']))
-    implied = {}
+        p['seed'] = p['value']
+        key = norm_proj(p['name'])
+        if key in current:
+            p['ev'], p['evWeek'] = current[key], weekly['week']
+        elif key in previous:
+            p['ev'], p['evWeek'] = previous[key], prev.get('week')
+        else:
+            p['ev'], p['evWeek'] = None, None
+    implied, coverage, skipped = {}, {}, []
     for pos in POS_ORDER:
         grp = [p for p in players if p['pos'] == pos]
         have = sorted([p for p in grp if p['ev'] is not None], key=lambda p: -p['ev'])
+        coverage[pos] = round(len(have) / len(grp), 2) if grp else 0.0
         if not have:
             continue
-        # A: the seed value the sheet gives this week's projection rank slot
-        slots = sorted((p['seed'] for p in grp), reverse=True)
-        a = {p['name']: slots[min(i, len(slots) - 1)] for i, p in enumerate(have)}
-        # C: share of the position's points above replacement, on the position's value budget
-        allpos = sorted((x['ev'] for x in weekly['positions'].get(pos, [])), reverse=True)
+        if coverage[pos] < R.get('min_coverage', 0.0):
+            skipped.append(pos)
+            continue
+        # A: rank within the projected group -> that group's own sorted seed values
+        slots = sorted((p['seed'] for p in have), reverse=True)
+        a = {p['name']: slots[i] for i, p in enumerate(have)}
+        # C: share of the group's points above replacement, on the group's value budget.
+        # Replacement = the Nth-best median among every projected player at the position
+        # (current week, else previous), N = teams x starters per team.
+        allpos = sorted({**previous, **current}[k] for k in {**previous, **current}
+                        if any(norm_proj(x['name']) == k for x in weekly['positions'].get(pos, []) + (prev.get('positions') or {}).get(pos, [])))
+        allpos.sort(reverse=True)
         n = round(teams * R['starters_per_team'][pos])
         repl = allpos[min(n, len(allpos) - 1)] if allpos else 0.0
         par = {p['name']: max(0.0, p['ev'] - repl) for p in have}
@@ -184,17 +211,23 @@ def reseed(players, weekly, R):
     for p in moved:
         p['value'] = p['seed'] + w * (implied[p['name']] - p['seed'])
     if R.get('rescale_to_seed_total', True) and moved:
-        target = sum(p['seed'] for p in players) - sum(p['value'] for p in players if p['name'] not in implied)
-        factor = target / (sum(p['value'] for p in moved) or 1.0)
-        for p in moved:
-            p['value'] *= factor
+        # Keep each position's projected group at its own seed budget.
+        for pos in POS_ORDER:
+            grp = [p for p in moved if p['pos'] == pos]
+            if not grp:
+                continue
+            factor = sum(p['seed'] for p in grp) / (sum(p['value'] for p in grp) or 1.0)
+            for p in grp:
+                p['value'] *= factor
     floor = 1
     for p in players:
         p['value'] = float(max(floor, round(p['value'])))
     missing = [p['name'] for p in players if p['ev'] is None]
+    from_prev = sum(1 for p in players if p['ev'] is not None and p['evWeek'] != weekly['week'])
     return {'week': weekly['week'], 'season': weekly['season'], 'snapshotIndex': weekly.get('snapshotIndex'),
-            'weight': w, 'moved': sum(1 for p in players if p['value'] != p['seed']), 'noProjection': missing}
-
+            'previousWeek': prev.get('week'), 'weight': w, 'coverage': coverage, 'skippedPositions': skipped,
+            'usedPreviousWeek': from_prev,
+            'moved': sum(1 for p in players if p['value'] != p['seed']), 'noProjection': missing}
 
 
 # ----------------------------------------------------------------------------- the math
@@ -302,7 +335,8 @@ def write_readme(wb, P, label, size, delta, top, exponent, repl, rows, baseline_
         '',
     ] + ([
         f'0) Weekly re-seed. The sheet values were first moved toward the {reseed_info["season"]} week {reseed_info["week"]} Half PPR medians',
-        f'   (Projections page snapshot {reseed_info["snapshotIndex"]}): implied = average of the sheet value at the player\'s projection-rank slot',
+        f'   (Projections page snapshot {reseed_info["snapshotIndex"]}; {reseed_info.get("usedPreviousWeek", 0)} players used week {reseed_info.get("previousWeek")} medians): '
+        f'implied = average of the seed value at the player\'s projection-rank slot among the projected players at the position',
         '   within the position and the player\'s share of the position\'s points-above-replacement on the position\'s value budget;',
         f'   new = sheet + {reseed_info["weight"]} x (implied - sheet), then rescaled so the total equals the sheet total. {reseed_info["moved"]} players moved.',
         f'   No projection this week (value kept): {", ".join(reseed_info["noProjection"]) or "none"}.',
@@ -351,7 +385,8 @@ def sheet_json(base, key, size, sc, rows, reseed_week=None):
         'positionRow': [c.upper() if c else '' for c in base['posrow']],
         'header': list(base['header']),
         'rows': grid,
-        'players': [{'name': p['name'], 'pos': p['pos'], 'value': p['final'], 'baselineValue': num(p['value'])} for p in ordered],
+        'players': [{'name': p['name'], 'pos': p['pos'], 'value': p['final'], 'baselineValue': num(p['value']),
+                     'sheetValue': num(p.get('seed', p['value'])), 'projection': p.get('ev'), 'projectionWeek': p.get('evWeek')} for p in ordered],
     }
 
 
@@ -436,9 +471,9 @@ def main():
         # Remember this run's replacement levels so the next refresh has a fallback.
         R['replacementPerGame'] = {k: round(v, 2) for k, v in repl.items()}
         json.dump(R, open(rec_path, 'w'), indent=1)
-    # The league tops in params (65/70/75) say what the sheet's top value becomes, so anchor
-    # on the sheet's own top even when the re-seed pushed a player above it.
-    baseline_top = max(p.get('seed', p['value']) for p in players)
+    # The league tops in params (65/70/75) are what the #1 player is worth in each league
+    # size, so anchor on the re-seeded top: the best player this week is exactly `top`.
+    baseline_top = max(p['value'] for p in players)
     print(f'baseline: {baseline_desc}, {len(players)} players, top {baseline_top:g}; replacement rec/game', {k: round(v, 2) for k, v in repl.items()},
           '; estimated lines:', sum(p['est'] for p in players))
 

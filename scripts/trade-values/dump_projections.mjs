@@ -65,14 +65,25 @@ globalThis.fetch = async (url) => {
 const { computeBPProjectionsByPosition } = await import(
   pathToFileURL(join(REPO, "odds-react-app/src/bpProjections.js")).href
 );
-const { byPosition, lastIndex } = await computeBPProjectionsByPosition({ mode, week, year });
 const POS = { 0: "QB", 1: "RB", 2: "WR", 3: "TE" };
-const positions = {};
-byPosition.forEach(({ finalList }, pos) => {
-  positions[POS[pos]] = finalList.map(([name, d]) => ({ name, ev: Math.round(d.ev * 100) / 100, stale: !!d.stale }));
-});
+async function dump(w) {
+  const { byPosition, lastIndex } = await computeBPProjectionsByPosition({ mode, week: w, year });
+  const positions = {};
+  byPosition.forEach(({ finalList }, pos) => {
+    positions[POS[pos]] = finalList.map(([name, d]) => ({ name, ev: Math.round(d.ev * 100) / 100, stale: !!d.stale }));
+  });
+  return { week: w, snapshotIndex: lastIndex, positions };
+}
+const current = await dump(week);
+// The previous week's medians fill in for players whose props are not posted
+// yet (typically Tuesday-Wednesday), so the re-seed keeps full coverage.
+let previous = null;
+if (week > 1 && existsSync(join(REPO, "BettingProsFiles", `${prefix}lastIndex${week - 1}.txt`))) {
+  previous = await dump(week - 1);
+}
 mkdirSync(dirname(out), { recursive: true });
-writeFileSync(out, JSON.stringify({ season: year, week, mode, snapshotIndex: lastIndex,
-  generatedAt: new Date().toISOString().replace(/\.\d{3}Z$/, "Z"), positions }, null, 1));
-console.log(`wrote ${out}: ${year} week ${week} (snapshot ${lastIndex}), mode ${mode},`,
-  Object.entries(positions).map(([p, l]) => `${p} ${l.length}`).join(", "));
+writeFileSync(out, JSON.stringify({ season: year, week, mode, snapshotIndex: current.snapshotIndex,
+  generatedAt: new Date().toISOString().replace(/\.\d{3}Z$/, "Z"), positions: current.positions, previous }, null, 1));
+const count = (pos) => Object.entries(pos).map(([p, l]) => `${p} ${l.length}`).join(", ");
+console.log(`wrote ${out}: ${year} week ${week} (snapshot ${current.snapshotIndex}), mode ${mode}, ${count(current.positions)}` +
+  (previous ? ` | previous week ${previous.week}: ${count(previous.positions)}` : ""));

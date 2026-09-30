@@ -21,8 +21,10 @@
   "replacement_min_lines": 3,
   "reception_min_fresh_lines": 120,
   "reseed": {
-    "_note": "Weekly re-seed of the baseline from the current week's Half PPR medians (dump_projections.mjs) before the nine-way split. implied = average of (A) the seed value of the player's projection-rank slot within the position and (C) the player's share of the position's points-above-replacement mapped onto the position's seed value budget; new = seed + weight x (implied - seed), then rescaled so the total equals the seed total. Players with no projection this week keep their seed value.",
-    "weight": 0.4,
+    "_note": "Weekly re-seed of the baseline from the current week's Half PPR medians (dump_projections.mjs) before the nine-way split. Within each position the projected players are ranked by median: implied = average of (A) the group's own sorted seed value at the player's rank and (C) the player's share of the group's points-above-replacement on the group's seed budget; new = seed + weight x (implied - seed), rescaled so each group keeps its seed total. Both terms follow the projection order, so the published order tracks the medians and the sheet only tempers the gaps. Players with no line this week use last week's median; a position with coverage below min_coverage keeps the sheet values.",
+    "weight": 0.8,
+    "min_coverage": 0.6,
+    "use_previous_week_for_missing": true,
     "teams": 10,
     "starters_per_team": { "QB": 1, "RB": 2.5, "WR": 2.5, "TE": 1 },
     "rescale_to_seed_total": true

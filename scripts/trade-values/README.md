@@ -34,13 +34,17 @@ python3 scripts/trade-values/build_trade_values.py --baseline TradeValueSheets/T
 
 ## The math
 
-0. **Weekly re-seed.** Each sheet value moves toward this week's Half PPR medians. For a player with
-   a projection, `implied` is the average of (A) the sheet value at the player's projection-rank slot
-   within the position and (C) the player's share of the position's points above replacement (10-team:
-   10th QB, 25th RB, 25th WR, 10th TE) mapped onto the position's sheet value budget; then
-   `new = sheet + 0.4 x (implied - sheet)`, and the result is rescaled so the total equals the sheet
-   total. Players with no projection this week (bye, injured) keep their sheet value. Because the seed
-   is always the hand-maintained sheet, re-running each week does not compound.
+0. **Weekly re-seed.** Each sheet value moves toward this week's Half PPR medians so the published
+   order tracks the projections. Within each position the projected players are ranked by median;
+   `implied` is the average of (A) the *projected group's* own sorted sheet value at the player's rank
+   and (C) the player's share of the group's points above replacement (10-team: 10th QB, 25th RB,
+   25th WR, 10th TE) on the group's sheet value budget. Both terms follow the projection order, so
+   `implied` does too. Then `new = sheet + 0.8 x (implied - sheet)`, rescaled so each group keeps its
+   sheet total; the sheet therefore only tempers the size of the gaps. Ranking within the projected
+   group (not the whole position) keeps stars from funding cheap breakouts. Players with no line this
+   week use last week's median (`previous` in `weekly-projections.json`); players with neither keep
+   their sheet value, and a position with less than 60 % coverage is left at the sheet values.
+   Because the seed is always the hand-maintained sheet, re-running each week does not compound.
 1. **Scoring (zero-sum).** A player has a receiving role when their receptions line is at least
    0.5 above their position's replacement level (mean line of baseline players valued 5 or less at
    that position). Those players move by `2.5 x delta x (line - replacement)` where delta is +0.5 for
