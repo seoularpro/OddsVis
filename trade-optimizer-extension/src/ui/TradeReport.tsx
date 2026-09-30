@@ -2,7 +2,7 @@
 // chips, dataset notes, team analysis, gated trade list, license panel and
 // league table. Data fetching and settings live in the host.
 
-import React from "react";
+import React, { useState } from "react";
 import type { League } from "../domain/types";
 import { OFFENSE_POSITIONS } from "../domain/types";
 import type { OptimizerResult } from "../optimization/tradeOptimizer";
@@ -14,6 +14,7 @@ import { TradeCard } from "./components/TradeCard";
 import { LockedTradeCard } from "./components/LockedTradeCard";
 import { LeagueTable } from "./components/LeagueTable";
 import { LicensePanel } from "./components/LicensePanel";
+import { UnfairTradeCard } from "./components/UnfairTradeCard";
 
 export interface TradeReportProps {
   result: OptimizerResult;
@@ -43,7 +44,9 @@ export function TradeReport(props: TradeReportProps) {
   const show = (block: "analysis" | "trades" | "league" | "license" | "meta") => !only || only === block || (block === "meta" && false);
   const analysis = result.analysis;
   const user = analysis.user;
+  const [list, setList] = useState<"fair" | "unfair">("fair");
   const firstVisibleRank = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))?.rank ?? 1;
+  const firstVisibleUnfair = result.unfairTrades.find((t) => entitled || paywall.freeRanks.includes(t.rank))?.rank ?? 1;
 
   // Props coverage: only players with a posted line can be traded on, so a
   // thin week (typically Tuesday/Wednesday) yields far fewer suggestions.
@@ -84,9 +87,19 @@ export function TradeReport(props: TradeReportProps) {
         <section id="trades">
           <div className="section-head">
             <h2>Suggested trades</h2>
-            <span className="muted small">
-              {result.stats.candidates} candidates after pruning · {result.stats.accepted} acceptable
-            </span>
+            <div className="list-tabs" role="tablist">
+              <button type="button" role="tab" aria-selected={list === "fair"} className={`list-tab${list === "fair" ? " active" : ""}`} onClick={() => setList("fair")}>
+                Fair ({result.trades.length})
+              </button>
+              <button type="button" role="tab" aria-selected={list === "unfair"} className={`list-tab${list === "unfair" ? " active" : ""}`} onClick={() => setList("unfair")}>
+                Unfair ({result.unfairTrades.length})
+              </button>
+            </div>
+          </div>
+          <div className="muted small list-note">
+            {list === "fair"
+              ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.`
+              : `Value grabs: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, and the deal raises both your total trade value and this week's lineup. No fairness check; ${result.unfairStats.qualifying} qualified.`}
           </div>
           {thinProps ? (
             <div className="note warn">
@@ -95,16 +108,30 @@ export function TradeReport(props: TradeReportProps) {
               {result.trades.length < 5 ? ` (${result.trades.length} shown)` : ""}. Lines usually fill in by Wednesday or Thursday; re-run then for the full list.
             </div>
           ) : null}
-          {result.trades.length === 0 ? (
+          {list === "fair" ? (
+            result.trades.length === 0 ? (
+              <div className="note">
+                No trade cleared the bar (gain ≥ {analysis.config.minUserGain} pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings.
+              </div>
+            ) : (
+              result.trades.map((t) =>
+                entitled || paywall.freeRanks.includes(t.rank) ? (
+                  <TradeCard key={t.rank} trade={t} analysis={analysis} defaultOpen={t.rank === firstVisibleRank} />
+                ) : (
+                  <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />
+                )
+              )
+            )
+          ) : result.unfairTrades.length === 0 ? (
             <div className="note">
-              No trade cleared the bar (gain ≥ {analysis.config.minUserGain} pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings.
+              No unfair trade qualified: nothing that sends only players worth more than ${analysis.config.unfairMinOutgoingValue} raises both your total trade value and this week's lineup.
             </div>
           ) : (
-            result.trades.map((t) =>
+            result.unfairTrades.map((t) =>
               entitled || paywall.freeRanks.includes(t.rank) ? (
-                <TradeCard key={t.rank} trade={t} analysis={analysis} defaultOpen={t.rank === firstVisibleRank} />
+                <UnfairTradeCard key={t.rank} trade={t} analysis={analysis} defaultOpen={t.rank === firstVisibleUnfair} />
               ) : (
-                <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />
+                <LockedTradeCard key={t.rank} trade={{ rank: t.rank, simulation: t.simulation, valueGain: t.valueGain }} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />
               )
             )
           )}

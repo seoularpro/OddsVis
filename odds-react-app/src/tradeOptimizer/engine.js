@@ -39,6 +39,9 @@ const DEFAULT_CONFIG = {
   weaknessScalePoints: 8,
   depthScalePoints: 6,
   topN: 10,
+  unfairMinOutgoingValue: 30,
+  unfairValuePointsPerProjectionPoint: 10,
+  unfairTopN: 10,
   maxTradesPerPartner: 3,
   unlistedTradeValue: "estimate",
   baselineWaiverMoves: 2,
@@ -658,7 +661,7 @@ function tradeable(players, excludeIds = /* @__PURE__ */ new Set(), minQbTradeVa
     (p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && p.projection > 0 && p.tradeValue > 0 && (p.position !== "QB" || p.tradeValue > minQbTradeValue) && !excludeIds.has(p.id)
   );
 }
-function combinations(items, k) {
+function combinations$1(items, k) {
   const out = [];
   const rec = (start, acc) => {
     if (acc.length === k) {
@@ -707,8 +710,8 @@ function generateCandidates(analysis, config) {
     const sendSets = /* @__PURE__ */ new Map();
     const recvSets = /* @__PURE__ */ new Map();
     for (const shape of config.shapes) {
-      if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(poolFor(outgoingPool, shape.send), shape.send));
-      if (!recvSets.has(shape.receive)) recvSets.set(shape.receive, combinations(poolFor(incomingPool, shape.receive), shape.receive));
+      if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations$1(poolFor(outgoingPool, shape.send), shape.send));
+      if (!recvSets.has(shape.receive)) recvSets.set(shape.receive, combinations$1(poolFor(incomingPool, shape.receive), shape.receive));
     }
     for (const shape of config.shapes) {
       for (const sends of sendSets.get(shape.send)) {
@@ -1075,6 +1078,85 @@ function explainTrade(sim, analysis, acceptance) {
     overall
   };
 }
+function combinations(items, k) {
+  const out = [];
+  const rec = (start, acc) => {
+    if (acc.length === k) {
+      out.push([...acc]);
+      return;
+    }
+    for (let i = start; i < items.length; i++) {
+      acc.push(items[i]);
+      rec(i + 1, acc);
+      acc.pop();
+    }
+  };
+  rec(0, []);
+  return out;
+}
+function outcomeKey$1(sim) {
+  const r = sim.candidate.userReceives.map((p) => p.id).sort().join(",");
+  const u = sim.user.after.starters.map((p) => p.id).sort().join(",");
+  return `${sim.candidate.partnerTeamId}|${r}|${u}`;
+}
+function findUnfairTrades(analysis, config) {
+  const user = analysis.user;
+  const stats = { enumerated: 0, simulated: 0, qualifying: 0 };
+  if (!user) return { trades: [], stats };
+  const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds), config.minQbTradeValue).filter((p) => p.tradeValue > config.unfairMinOutgoingValue).sort((a, b) => b.tradeValue - a.tradeValue);
+  if (!outgoingPool.length) return { trades: [], stats };
+  const sendSets = /* @__PURE__ */ new Map();
+  for (const shape of config.shapes) {
+    if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(outgoingPool, shape.send));
+  }
+  const scored = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const team of analysis.teams) {
+    if (team.teamId === user.teamId) continue;
+    const incomingPool = tradeable(team.roster, new Set(team.baselineAddedIds), config.minQbTradeValue).sort((a, b) => b.tradeValue - a.tradeValue).slice(0, config.maxIncomingCandidates);
+    const recvSets = /* @__PURE__ */ new Map();
+    for (const shape of config.shapes) {
+      const pool2 = shape.receive >= 3 ? incomingPool.slice(0, config.maxTripleCandidates) : incomingPool;
+      if (!recvSets.has(shape.receive)) recvSets.set(shape.receive, combinations(pool2, shape.receive));
+    }
+    for (const shape of config.shapes) {
+      for (const sends of sendSets.get(shape.send) ?? []) {
+        const sentValue = sends.reduce((n, p) => n + p.tradeValue, 0);
+        for (const recvs of recvSets.get(shape.receive) ?? []) {
+          stats.enumerated++;
+          const recvValue = recvs.reduce((n, p) => n + p.tradeValue, 0);
+          if (recvValue <= sentValue) continue;
+          const candidate = { partnerTeamId: team.teamId, userSends: sends, userReceives: recvs, shape, partnerScore: 0 };
+          const sim = simulateTrade(candidate, analysis);
+          stats.simulated++;
+          if (sim.user.projectionGain <= 0) continue;
+          const key = outcomeKey$1(sim);
+          if (seen.has(key)) continue;
+          seen.add(key);
+          const valueGain = recvValue - sentValue;
+          stats.qualifying++;
+          scored.push({ sim, valueGain, score: sim.user.projectionGain + valueGain / config.unfairValuePointsPerProjectionPoint });
+        }
+      }
+    }
+  }
+  scored.sort((a, b) => b.score - a.score || b.valueGain - a.valueGain);
+  const perPartner = /* @__PURE__ */ new Map();
+  const chosen = [];
+  for (const entry of scored) {
+    const id = entry.sim.candidate.partnerTeamId;
+    const n = perPartner.get(id) ?? 0;
+    if (n >= config.maxTradesPerPartner) continue;
+    perPartner.set(id, n + 1);
+    chosen.push(entry);
+    if (chosen.length >= config.unfairTopN) break;
+  }
+  const trades = chosen.map((entry, i) => {
+    const acceptance = evaluateAcceptance(entry.sim, config);
+    return { rank: i + 1, simulation: entry.sim, valueGain: entry.valueGain, score: entry.score, acceptance, explanation: explainTrade(entry.sim, analysis, acceptance) };
+  });
+  return { trades, stats };
+}
 function tradeKey(sim) {
   const s = sim.candidate.userSends.map((p) => p.id).sort().join(",");
   const r = sim.candidate.userReceives.map((p) => p.id).sort().join(",");
@@ -1131,9 +1213,12 @@ function runTradeOptimizer(league, overrides) {
     explanation: explainTrade(entry.sim, analysis, entry.acceptance),
     rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score, config).replace("#next", `#${i + 2}`) : null
   }));
+  const unfair = findUnfairTrades(analysis, config);
   return {
     analysis,
     trades,
+    unfairTrades: unfair.trades,
+    unfairStats: unfair.stats,
     partners,
     stats: { ...stats, simulated, accepted: scored.length, elapsedMs: Date.now() - start },
     rejectedSamples
@@ -2606,13 +2691,18 @@ function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }) {
         /* @__PURE__ */ jsxs("div", { className: "trade-title", children: [
           "Trade with ",
           /* @__PURE__ */ jsx("b", { children: opp.teamName }),
-          /* @__PURE__ */ jsx("span", { className: `tag tier tier-${trade.score.tier}`, children: TIER_LABEL[trade.score.tier] })
+          trade.score ? /* @__PURE__ */ jsx("span", { className: `tag tier tier-${trade.score.tier}`, children: TIER_LABEL[trade.score.tier] }) : /* @__PURE__ */ jsx("span", { className: "tag tier tier-unfair", children: "Unfair" })
         ] }),
         /* @__PURE__ */ jsxs("div", { className: "trade-gains", children: [
           /* @__PURE__ */ jsxs("span", { className: "gain you", children: [
             "You ",
             signed1(sim.user.projectionGain)
           ] }),
+          trade.valueGain !== void 0 ? /* @__PURE__ */ jsxs("span", { className: "gain value", children: [
+            "+",
+            money(trade.valueGain),
+            " value"
+          ] }) : null,
           /* @__PURE__ */ jsxs("span", { className: "gain them", children: [
             "They ",
             signed1(sim.opponent.projectionGain)
@@ -2765,17 +2855,138 @@ function LicensePanel({
     ] })
   ] });
 }
+function UnfairTradeCard({ trade, analysis, defaultOpen }) {
+  const [open, setOpen] = useState(defaultOpen ?? trade.rank === 1);
+  const [showLineups, setShowLineups] = useState(false);
+  const sim = trade.simulation;
+  const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId);
+  const user = analysis.user;
+  const incomingIds = new Set(sim.candidate.userReceives.map((p) => p.id));
+  const outgoingIds = new Set(sim.candidate.userSends.map((p) => p.id));
+  const pushback = trade.acceptance.accepted ? "They still come out fine by the normal rules, so this one may actually go through." : `Expect pushback: ${trade.acceptance.rejections.join("; ")}.`;
+  return /* @__PURE__ */ jsxs("article", { className: "card trade unfair", children: [
+    /* @__PURE__ */ jsxs("header", { className: "trade-head", onClick: () => setOpen((v) => !v), children: [
+      /* @__PURE__ */ jsxs("div", { className: "trade-rank", children: [
+        "#",
+        trade.rank
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "trade-summary", children: [
+        /* @__PURE__ */ jsxs("div", { className: "trade-title", children: [
+          "Trade with ",
+          /* @__PURE__ */ jsx("b", { children: opp.teamName }),
+          /* @__PURE__ */ jsx("span", { className: "tag tier tier-unfair", children: "Unfair" })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "trade-gains", children: [
+          /* @__PURE__ */ jsxs("span", { className: "gain you", children: [
+            "You ",
+            signed1(sim.user.projectionGain),
+            " pts"
+          ] }),
+          /* @__PURE__ */ jsxs("span", { className: "gain value", children: [
+            "+",
+            money(trade.valueGain),
+            " value"
+          ] }),
+          /* @__PURE__ */ jsxs("span", { className: `gain ${sim.opponent.projectionGain >= 0 ? "them" : "neg"}`, children: [
+            "They ",
+            signed1(sim.opponent.projectionGain)
+          ] }),
+          /* @__PURE__ */ jsxs("span", { className: "muted", children: [
+            money(sim.user.tradeValueSent),
+            " ↔ ",
+            money(sim.user.tradeValueReceived)
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "caret", children: open ? "▾" : "▸" })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "trade-sides", children: [
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("div", { className: "side-label", children: "You send" }),
+        /* @__PURE__ */ jsx("ul", { children: sim.candidate.userSends.map((p) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(PlayerChip, { player: p, marginal: user.playerMarginalValues[p.id] ?? 0 }) }, p.id)) })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("div", { className: "side-label", children: "You receive" }),
+        /* @__PURE__ */ jsx("ul", { children: sim.candidate.userReceives.map((p) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(PlayerChip, { player: p, marginal: opp.playerMarginalValues[p.id] ?? 0 }) }, p.id)) })
+      ] })
+    ] }),
+    open ? /* @__PURE__ */ jsxs("div", { className: "trade-detail", children: [
+      /* @__PURE__ */ jsxs("div", { className: "metrics", children: [
+        /* @__PURE__ */ jsxs("div", { className: "metric", children: [
+          /* @__PURE__ */ jsx("div", { className: "metric-label", children: "Your lineup" }),
+          /* @__PURE__ */ jsxs("div", { className: "num", children: [
+            fmt1(sim.user.projectionBefore),
+            " → ",
+            fmt1(sim.user.projectionAfter)
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "num gain pos", children: signed1(sim.user.projectionGain) })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "metric", children: [
+          /* @__PURE__ */ jsx("div", { className: "metric-label", children: "Your trade value" }),
+          /* @__PURE__ */ jsxs("div", { className: "num", children: [
+            money(user.totalTradeValue),
+            " → ",
+            money(user.totalTradeValue + trade.valueGain)
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: "num gain pos", children: [
+            "+",
+            money(trade.valueGain)
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "metric", children: [
+          /* @__PURE__ */ jsx("div", { className: "metric-label", children: opp.teamName }),
+          /* @__PURE__ */ jsxs("div", { className: "num", children: [
+            fmt1(sim.opponent.projectionBefore),
+            " → ",
+            fmt1(sim.opponent.projectionAfter)
+          ] }),
+          /* @__PURE__ */ jsxs("div", { className: `num gain ${sim.opponent.projectionGain >= 0 ? "pos" : "neg"}`, children: [
+            signed1(sim.opponent.projectionGain),
+            " · ",
+            money(sim.opponent.tradeValueGain),
+            " value"
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { className: "metric", children: [
+          /* @__PURE__ */ jsx("div", { className: "metric-label", children: "Rank score" }),
+          /* @__PURE__ */ jsx("div", { className: "num", children: trade.score.toFixed(2) }),
+          /* @__PURE__ */ jsxs("div", { className: "muted small", children: [
+            "pts + $ ÷ ",
+            analysis.config.unfairValuePointsPerProjectionPoint
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("h4", { children: "Why it helps you" }),
+      /* @__PURE__ */ jsx("ul", { children: trade.explanation.userSide.map((l, i) => /* @__PURE__ */ jsx("li", { children: l }, i)) }),
+      /* @__PURE__ */ jsx("h4", { children: "Their side" }),
+      /* @__PURE__ */ jsx("ul", { children: trade.explanation.opponentSide.map((l, i) => /* @__PURE__ */ jsx("li", { children: l }, i)) }),
+      /* @__PURE__ */ jsx("p", { className: "muted small", children: pushback }),
+      /* @__PURE__ */ jsxs("button", { className: "link", onClick: () => setShowLineups((v) => !v), children: [
+        showLineups ? "Hide" : "Show",
+        " before/after lineups"
+      ] }),
+      showLineups ? /* @__PURE__ */ jsxs("div", { className: "lineups-grid", children: [
+        /* @__PURE__ */ jsx(LineupTable, { lineup: sim.user.before, title: "You · before", highlight: outgoingIds }),
+        /* @__PURE__ */ jsx(LineupTable, { lineup: sim.user.after, title: "You · after", highlight: incomingIds }),
+        /* @__PURE__ */ jsx(LineupTable, { lineup: sim.opponent.before, title: `${opp.teamName} · before`, highlight: incomingIds }),
+        /* @__PURE__ */ jsx(LineupTable, { lineup: sim.opponent.after, title: `${opp.teamName} · after`, highlight: outgoingIds })
+      ] }) : null
+    ] }) : null
+  ] });
+}
 function describeScoring(s) {
   const rec = s.receptionPoints >= 0.75 ? "Full PPR" : s.receptionPoints >= 0.25 ? "Half PPR" : "Standard";
   return s.passTdPoints === 4 ? rec : `${rec} · ${s.passTdPoints}pt pass TD`;
 }
 function TradeReport(props) {
-  var _a;
+  var _a, _b;
   const { result, league, report, datasetLabels, warnings, onPickTeam, license, paywall, entitled, licenseBusy, onActivate, onRemoveLicense, onUpgrade, only } = props;
   const show = (block) => !only || only === block || block === "meta" && false;
   const analysis = result.analysis;
   const user = analysis.user;
+  const [list, setList] = useState("fair");
   const firstVisibleRank = ((_a = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))) == null ? void 0 : _a.rank) ?? 1;
+  const firstVisibleUnfair = ((_b = result.unfairTrades.find((t) => entitled || paywall.freeRanks.includes(t.rank))) == null ? void 0 : _b.rank) ?? 1;
   const offense = league.teams.flatMap((t) => t.players).filter((p) => OFFENSE_POSITIONS.includes(p.position));
   const withProps = offense.filter((p) => p.projectionSource === "dataset").length;
   const coverage = offense.length ? withProps / offense.length : 1;
@@ -2818,13 +3029,20 @@ function TradeReport(props) {
     user && show("trades") ? /* @__PURE__ */ jsxs("section", { id: "trades", children: [
       /* @__PURE__ */ jsxs("div", { className: "section-head", children: [
         /* @__PURE__ */ jsx("h2", { children: "Suggested trades" }),
-        /* @__PURE__ */ jsxs("span", { className: "muted small", children: [
-          result.stats.candidates,
-          " candidates after pruning · ",
-          result.stats.accepted,
-          " acceptable"
+        /* @__PURE__ */ jsxs("div", { className: "list-tabs", role: "tablist", children: [
+          /* @__PURE__ */ jsxs("button", { type: "button", role: "tab", "aria-selected": list === "fair", className: `list-tab${list === "fair" ? " active" : ""}`, onClick: () => setList("fair"), children: [
+            "Fair (",
+            result.trades.length,
+            ")"
+          ] }),
+          /* @__PURE__ */ jsxs("button", { type: "button", role: "tab", "aria-selected": list === "unfair", className: `list-tab${list === "unfair" ? " active" : ""}`, onClick: () => setList("unfair"), children: [
+            "Unfair (",
+            result.unfairTrades.length,
+            ")"
+          ] })
         ] })
       ] }),
+      /* @__PURE__ */ jsx("div", { className: "muted small list-note", children: list === "fair" ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.` : `Value grabs: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, and the deal raises both your total trade value and this week's lineup. No fairness check; ${result.unfairStats.qualifying} qualified.` }),
       thinProps ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
         /* @__PURE__ */ jsx("b", { children: "Limited suggestions this week so far." }),
         " Props are posted for only ",
@@ -2839,12 +3057,18 @@ function TradeReport(props) {
         result.trades.length < 5 ? ` (${result.trades.length} shown)` : "",
         ". Lines usually fill in by Wednesday or Thursday; re-run then for the full list."
       ] }) : null,
-      result.trades.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
+      list === "fair" ? result.trades.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
         "No trade cleared the bar (gain ≥ ",
         analysis.config.minUserGain,
         " pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings."
       ] }) : result.trades.map(
         (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis, defaultOpen: t.rank === firstVisibleRank }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
+      ) : result.unfairTrades.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
+        "No unfair trade qualified: nothing that sends only players worth more than $",
+        analysis.config.unfairMinOutgoingValue,
+        " raises both your total trade value and this week's lineup."
+      ] }) : result.unfairTrades.map(
+        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(UnfairTradeCard, { trade: t, analysis, defaultOpen: t.rank === firstVisibleUnfair }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: { rank: t.rank, simulation: t.simulation, valueGain: t.valueGain }, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
       )
     ] }) : null,
     show("license") ? /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }) : null,
@@ -3023,6 +3247,7 @@ export {
   estimateTradeValue,
   evaluateAcceptance,
   explainTrade,
+  findUnfairTrades,
   fitRosterToSize,
   generateCandidates,
   instanceName,

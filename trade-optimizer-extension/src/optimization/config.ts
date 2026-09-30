@@ -86,6 +86,12 @@ export interface OptimizerConfig {
 
   /** Number of trades to return. */
   topN: number;
+  /** "Unfair" list: you send only players worth more than this... */
+  unfairMinOutgoingValue: number;
+  /** ...ranked by projection gain plus value gain at this many dollars per point... */
+  unfairValuePointsPerProjectionPoint: number;
+  /** ...returning this many. */
+  unfairTopN: number;
   /** Cap on results with the same partner so the list is not ten variants of one deal. */
   maxTradesPerPartner: number;
   /** Trade value used for unlisted players: estimated from projection, or zero. */
@@ -135,6 +141,9 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   depthScalePoints: 6,
 
   topN: 10,
+  unfairMinOutgoingValue: 30,
+  unfairValuePointsPerProjectionPoint: 10,
+  unfairTopN: 10,
   maxTradesPerPartner: 3,
   unlistedTradeValue: "estimate",
   baselineWaiverMoves: 2,

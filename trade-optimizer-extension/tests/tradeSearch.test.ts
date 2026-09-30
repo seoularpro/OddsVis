@@ -314,3 +314,22 @@ describe("waiver baseline", () => {
     expect(analyzeLeague(league2).user!.waiverMoves).toHaveLength(0);
   });
 });
+
+describe("unfair trades", () => {
+  it("lists value grabs that also raise this week's lineup, sending only players worth more than $30", () => {
+    const result = runTradeOptimizer(syntheticLeague());
+    expect(result.unfairTrades.length).toBeGreaterThan(0);
+    expect(result.unfairTrades.length).toBeLessThanOrEqual(DEFAULT_CONFIG.unfairTopN);
+    for (const t of result.unfairTrades) {
+      for (const p of t.simulation.candidate.userSends) expect(p.tradeValue).toBeGreaterThan(DEFAULT_CONFIG.unfairMinOutgoingValue);
+      expect(t.valueGain).toBeGreaterThan(0);
+      expect(t.simulation.user.tradeValueReceived - t.simulation.user.tradeValueSent).toBe(t.valueGain);
+      expect(t.simulation.user.projectionGain).toBeGreaterThan(0);
+      expect(t.score).toBeCloseTo(t.simulation.user.projectionGain + t.valueGain / DEFAULT_CONFIG.unfairValuePointsPerProjectionPoint, 6);
+      expect(t.explanation.userSide.length).toBeGreaterThan(0);
+    }
+    for (let i = 1; i < result.unfairTrades.length; i++) expect(result.unfairTrades[i - 1].score).toBeGreaterThanOrEqual(result.unfairTrades[i].score - 1e-9);
+    // Unlike the fair list, value tolerance and opponent benefit are not required.
+    expect(result.unfairTrades.some((t) => !t.acceptance.accepted)).toBe(true);
+  });
+});

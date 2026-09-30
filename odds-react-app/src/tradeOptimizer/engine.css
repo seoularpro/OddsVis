@@ -167,3 +167,11 @@
 .oto .tier-win-win { background: var(--pos); color: #fff; }
 .oto .tier-mutual { background: var(--accent-soft); }
 .oto .tier-one-sided { background: var(--line); }
+.oto .list-tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--card); }
+.oto .list-tab { border: none; background: transparent; border-radius: 999px; padding: 4px 12px; font-weight: 600; color: var(--muted); }
+.oto .list-tab.active { background: var(--accent); color: #fff; }
+.oto .list-note { margin: 2px 0 8px; }
+.oto .tier-unfair { background: var(--warn-bg); border: 1px solid var(--warn-line); }
+.oto .gain.value { color: var(--accent); font-weight: 700; }
+.oto .gain.neg { color: var(--neg); font-weight: 600; }
+.oto .trade.unfair .trade-head { background: color-mix(in srgb, var(--card) 85%, var(--warn-bg)); }

@@ -1,15 +1,22 @@
 import React from "react";
-import type { RankedTrade } from "../../optimization/tradeOptimizer";
 import type { LeagueAnalysis } from "../../optimization/teamAnalyzer";
+import type { TradeSimulation } from "../../optimization/tradeSimulator";
 import { money, signed1 } from "../format";
-import { TIER_LABEL } from "../../optimization/tradeScorer";
+import { TIER_LABEL, type TradeTier } from "../../optimization/tradeScorer";
+
+export interface LockedTradeLike {
+  rank: number;
+  simulation: TradeSimulation;
+  score?: { tier: TradeTier };
+  valueGain?: number;
+}
 
 /**
  * Teaser for a trade behind the paywall: the partner and the outcome are
  * real, the players are not rendered at all (a blurred name is still a name
  * in the DOM).
  */
-export function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }: { trade: RankedTrade; analysis: LeagueAnalysis; onUpgrade: () => void; priceLabel: string }) {
+export function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }: { trade: LockedTradeLike; analysis: LeagueAnalysis; onUpgrade: () => void; priceLabel: string }) {
   const sim = trade.simulation;
   const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId)!;
   const sends = sim.candidate.userSends.length;
@@ -21,10 +28,11 @@ export function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }: { tr
         <div className="trade-summary">
           <div className="trade-title">
             Trade with <b>{opp.teamName}</b>
-            <span className={`tag tier tier-${trade.score.tier}`}>{TIER_LABEL[trade.score.tier]}</span>
+            {trade.score ? <span className={`tag tier tier-${trade.score.tier}`}>{TIER_LABEL[trade.score.tier]}</span> : <span className="tag tier tier-unfair">Unfair</span>}
           </div>
           <div className="trade-gains">
             <span className="gain you">You {signed1(sim.user.projectionGain)}</span>
+            {trade.valueGain !== undefined ? <span className="gain value">+{money(trade.valueGain)} value</span> : null}
             <span className="gain them">They {signed1(sim.opponent.projectionGain)}</span>
             <span className="muted">{money(sim.user.tradeValueSent)} ↔ {money(sim.user.tradeValueReceived)}</span>
           </div>

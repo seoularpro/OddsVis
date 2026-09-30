@@ -138,6 +138,18 @@ content script (page origin)          side panel (extension page)
 * The user's Sleeper team is found via the page's localStorage when possible;
   otherwise pick it in the league table (remembered per league).
 
+### Unfair list
+
+A second, separately ranked list (`optimization/unfairTrades.ts`, the
+"Unfair" tab in the panel): you send only players worth more than $30
+(`unfairMinOutgoingValue`), and the deal must raise both your total trade
+value and this week's optimal lineup. There is no fairness tolerance and no
+opponent-benefit test; the other manager's outcome is shown honestly with an
+"expect pushback" note when the normal rules would reject it. Ranked by
+projection gain plus value gain at $10 per point
+(`unfairValuePointsPerProjectionPoint`), top 10 (`unfairTopN`), at most 3 per
+partner.
+
 ## Website page (`/trades`)
 
 The same engine and result view run inside the OddsVis site so they work on

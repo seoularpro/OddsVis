@@ -8,6 +8,7 @@ import { simulateTrade, type TradeSimulation } from "./tradeSimulator";
 import { evaluateAcceptance, scoreTrade, compareReason, compareRanked, type Acceptance, type ScoreBreakdown } from "./tradeScorer";
 import { explainTrade, type TradeExplanation } from "./tradeExplainer";
 import type { OptimizerConfig } from "./config";
+import { findUnfairTrades, type UnfairStats, type UnfairTrade } from "./unfairTrades";
 
 export interface RankedTrade {
   rank: number;
@@ -28,6 +29,9 @@ export interface OptimizerStats extends GenerationStats {
 export interface OptimizerResult {
   analysis: LeagueAnalysis;
   trades: RankedTrade[];
+  /** Value grabs that also help this week (see unfairTrades.ts). */
+  unfairTrades: UnfairTrade[];
+  unfairStats: UnfairStats;
   partners: PartnerRanking[];
   stats: OptimizerStats;
   /** Rejected simulations kept for debugging / "why not" questions (capped). */
@@ -104,9 +108,13 @@ export function runTradeOptimizer(league: League, overrides?: Partial<OptimizerC
     rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score, config).replace("#next", `#${i + 2}`) : null,
   }));
 
+  const unfair = findUnfairTrades(analysis, config);
+
   return {
     analysis,
     trades,
+    unfairTrades: unfair.trades,
+    unfairStats: unfair.stats,
     partners,
     stats: { ...stats, simulated, accepted: scored.length, elapsedMs: Date.now() - start },
     rejectedSamples,
