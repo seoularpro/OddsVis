@@ -143,9 +143,13 @@ content script (page origin)          side panel (extension page)
 A second, separately ranked list (`optimization/unfairTrades.ts`, the
 "Unfair" tab in the panel): you send only players worth more than $30
 (`unfairMinOutgoingValue`), and the deal must raise both your total trade
-value and this week's optimal lineup. There is no fairness tolerance and no
-opponent-benefit test; the other manager's outcome is shown honestly with an
-"expect pushback" note when the normal rules would reject it. Ranked by
+value and this week's optimal lineup. The 15 %/$4 tolerance and the normal
+opponent-benefit test do not apply; instead the list is bounded to deals a
+manager might take: they get at most 40 % less value than they give
+(`unfairMaxValueGainPercent`), their lineup loses at most 3 points this week
+(`unfairMaxOpponentLoss`), and they have an angle (a lineup gain, a filled
+hole, or the deal's single most valuable player, typically a 2-for-1
+consolidation). Cards state the angle and any pushback. Ranked by
 projection gain plus value gain at $10 per point
 (`unfairValuePointsPerProjectionPoint`), top 10 (`unfairTopN`), at most 3 per
 partner.

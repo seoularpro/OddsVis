@@ -99,7 +99,7 @@ export function TradeReport(props: TradeReportProps) {
           <div className="muted small list-note">
             {list === "fair"
               ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.`
-              : `Value grabs: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, and the deal raises both your total trade value and this week's lineup. No fairness check; ${result.unfairStats.qualifying} qualified.`}
+              : `Lopsided in your favor but still takeable: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, the deal raises both your total trade value and this week's lineup, they get at most ${analysis.config.unfairMaxValueGainPercent}% less value, lose at most ${analysis.config.unfairMaxOpponentLoss} points, and have an angle to say yes. ${result.unfairStats.plausible} of ${result.unfairStats.qualifying} value grabs made the cut.`}
           </div>
           {thinProps ? (
             <div className="note warn">

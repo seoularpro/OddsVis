@@ -92,6 +92,12 @@ export interface OptimizerConfig {
   unfairValuePointsPerProjectionPoint: number;
   /** ...returning this many. */
   unfairTopN: number;
+  /** Plausibility for the unfair list: value received at most this percent above value sent... */
+  unfairMaxValueGainPercent: number;
+  /** ...their lineup loses at most this many points this week... */
+  unfairMaxOpponentLoss: number;
+  /** ...and they must get something: a lineup gain, a filled hole, or the deal's single most valuable player. */
+  unfairRequireOpponentAngle: boolean;
   /** Cap on results with the same partner so the list is not ten variants of one deal. */
   maxTradesPerPartner: number;
   /** Trade value used for unlisted players: estimated from projection, or zero. */
@@ -144,6 +150,9 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   unfairMinOutgoingValue: 30,
   unfairValuePointsPerProjectionPoint: 10,
   unfairTopN: 10,
+  unfairMaxValueGainPercent: 40,
+  unfairMaxOpponentLoss: 3,
+  unfairRequireOpponentAngle: true,
   maxTradesPerPartner: 3,
   unlistedTradeValue: "estimate",
   baselineWaiverMoves: 2,

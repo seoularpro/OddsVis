@@ -14,8 +14,8 @@ export function UnfairTradeCard({ trade, analysis, defaultOpen }: { trade: Unfai
   const incomingIds = new Set(sim.candidate.userReceives.map((p) => p.id));
   const outgoingIds = new Set(sim.candidate.userSends.map((p) => p.id));
   const pushback = trade.acceptance.accepted
-    ? "They still come out fine by the normal rules, so this one may actually go through."
-    : `Expect pushback: ${trade.acceptance.rejections.join("; ")}.`;
+    ? `Their angle: ${trade.opponentAngle}. It also passes the normal rules, so it may well go through.`
+    : `Their angle: ${trade.opponentAngle}. Expect some pushback: ${trade.acceptance.rejections.join("; ")}.`;
 
   return (
     <article className="card trade unfair">

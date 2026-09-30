@@ -42,6 +42,9 @@ const DEFAULT_CONFIG = {
   unfairMinOutgoingValue: 30,
   unfairValuePointsPerProjectionPoint: 10,
   unfairTopN: 10,
+  unfairMaxValueGainPercent: 40,
+  unfairMaxOpponentLoss: 3,
+  unfairRequireOpponentAngle: true,
   maxTradesPerPartner: 3,
   unlistedTradeValue: "estimate",
   baselineWaiverMoves: 2,
@@ -1078,6 +1081,18 @@ function explainTrade(sim, analysis, acceptance) {
     overall
   };
 }
+function opponentAngle(sim) {
+  const o = sim.opponent;
+  if (o.projectionGain >= 0.25) return `their lineup still gains +${o.projectionGain.toFixed(1)} this week`;
+  if (o.holesAfter < o.holesBefore) return `it fills a near-replacement starting slot for them`;
+  const all = [...sim.candidate.userSends, ...sim.candidate.userReceives];
+  const best = all.reduce((a, b) => b.tradeValue > a.tradeValue ? b : a);
+  if (sim.candidate.userSends.some((p) => p.id === best.id) && sim.candidate.userSends.length < sim.candidate.userReceives.length) {
+    return `they get the best player in the deal (${best.name}) and consolidate ${sim.candidate.userReceives.length} spots into ${sim.candidate.userSends.length}`;
+  }
+  if (sim.candidate.userSends.some((p) => p.id === best.id)) return `they get the best player in the deal (${best.name})`;
+  return null;
+}
 function combinations(items, k) {
   const out = [];
   const rec = (start, acc) => {
@@ -1101,7 +1116,7 @@ function outcomeKey$1(sim) {
 }
 function findUnfairTrades(analysis, config) {
   const user = analysis.user;
-  const stats = { enumerated: 0, simulated: 0, qualifying: 0 };
+  const stats = { enumerated: 0, simulated: 0, qualifying: 0, plausible: 0 };
   if (!user) return { trades: [], stats };
   const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds), config.minQbTradeValue).filter((p) => p.tradeValue > config.unfairMinOutgoingValue).sort((a, b) => b.tradeValue - a.tradeValue);
   if (!outgoingPool.length) return { trades: [], stats };
@@ -1110,6 +1125,7 @@ function findUnfairTrades(analysis, config) {
     if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(outgoingPool, shape.send));
   }
   const scored = [];
+  const maxRatio = 1 + config.unfairMaxValueGainPercent / 100;
   const seen = /* @__PURE__ */ new Set();
   for (const team of analysis.teams) {
     if (team.teamId === user.teamId) continue;
@@ -1126,16 +1142,21 @@ function findUnfairTrades(analysis, config) {
           stats.enumerated++;
           const recvValue = recvs.reduce((n, p) => n + p.tradeValue, 0);
           if (recvValue <= sentValue) continue;
+          if (recvValue > sentValue * maxRatio) continue;
           const candidate = { partnerTeamId: team.teamId, userSends: sends, userReceives: recvs, shape, partnerScore: 0 };
           const sim = simulateTrade(candidate, analysis);
           stats.simulated++;
           if (sim.user.projectionGain <= 0) continue;
+          stats.qualifying++;
+          if (sim.opponent.projectionGain < -config.unfairMaxOpponentLoss) continue;
+          const angle = opponentAngle(sim);
+          if (config.unfairRequireOpponentAngle && !angle) continue;
           const key = outcomeKey$1(sim);
           if (seen.has(key)) continue;
           seen.add(key);
           const valueGain = recvValue - sentValue;
-          stats.qualifying++;
-          scored.push({ sim, valueGain, score: sim.user.projectionGain + valueGain / config.unfairValuePointsPerProjectionPoint });
+          stats.plausible++;
+          scored.push({ sim, valueGain, angle: angle ?? "no particular angle", score: sim.user.projectionGain + valueGain / config.unfairValuePointsPerProjectionPoint });
         }
       }
     }
@@ -1153,7 +1174,7 @@ function findUnfairTrades(analysis, config) {
   }
   const trades = chosen.map((entry, i) => {
     const acceptance = evaluateAcceptance(entry.sim, config);
-    return { rank: i + 1, simulation: entry.sim, valueGain: entry.valueGain, score: entry.score, acceptance, explanation: explainTrade(entry.sim, analysis, acceptance) };
+    return { rank: i + 1, simulation: entry.sim, opponentAngle: entry.angle, valueGain: entry.valueGain, score: entry.score, acceptance, explanation: explainTrade(entry.sim, analysis, acceptance) };
   });
   return { trades, stats };
 }
@@ -2863,7 +2884,7 @@ function UnfairTradeCard({ trade, analysis, defaultOpen }) {
   const user = analysis.user;
   const incomingIds = new Set(sim.candidate.userReceives.map((p) => p.id));
   const outgoingIds = new Set(sim.candidate.userSends.map((p) => p.id));
-  const pushback = trade.acceptance.accepted ? "They still come out fine by the normal rules, so this one may actually go through." : `Expect pushback: ${trade.acceptance.rejections.join("; ")}.`;
+  const pushback = trade.acceptance.accepted ? `Their angle: ${trade.opponentAngle}. It also passes the normal rules, so it may well go through.` : `Their angle: ${trade.opponentAngle}. Expect some pushback: ${trade.acceptance.rejections.join("; ")}.`;
   return /* @__PURE__ */ jsxs("article", { className: "card trade unfair", children: [
     /* @__PURE__ */ jsxs("header", { className: "trade-head", onClick: () => setOpen((v) => !v), children: [
       /* @__PURE__ */ jsxs("div", { className: "trade-rank", children: [
@@ -3042,7 +3063,7 @@ function TradeReport(props) {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "muted small list-note", children: list === "fair" ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.` : `Value grabs: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, and the deal raises both your total trade value and this week's lineup. No fairness check; ${result.unfairStats.qualifying} qualified.` }),
+      /* @__PURE__ */ jsx("div", { className: "muted small list-note", children: list === "fair" ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.` : `Lopsided in your favor but still takeable: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, the deal raises both your total trade value and this week's lineup, they get at most ${analysis.config.unfairMaxValueGainPercent}% less value, lose at most ${analysis.config.unfairMaxOpponentLoss} points, and have an angle to say yes. ${result.unfairStats.plausible} of ${result.unfairStats.qualifying} value grabs made the cut.` }),
       thinProps ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
         /* @__PURE__ */ jsx("b", { children: "Limited suggestions this week so far." }),
         " Props are posted for only ",
@@ -3266,6 +3287,7 @@ export {
   normalizeEspnPlayerPool,
   normalizeName,
   normalizeSleeperLeague,
+  opponentAngle,
   optimalTotal,
   optimizeLineup,
   parsePosition,

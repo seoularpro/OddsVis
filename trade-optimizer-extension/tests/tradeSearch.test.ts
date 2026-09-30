@@ -329,7 +329,14 @@ describe("unfair trades", () => {
       expect(t.explanation.userSide.length).toBeGreaterThan(0);
     }
     for (let i = 1; i < result.unfairTrades.length; i++) expect(result.unfairTrades[i - 1].score).toBeGreaterThanOrEqual(result.unfairTrades[i].score - 1e-9);
-    // Unlike the fair list, value tolerance and opponent benefit are not required.
+    // Plausibility bounds: capped value gap, capped opponent loss, and an angle for them.
+    for (const t of result.unfairTrades) {
+      expect(t.simulation.user.tradeValueReceived).toBeLessThanOrEqual(t.simulation.user.tradeValueSent * (1 + DEFAULT_CONFIG.unfairMaxValueGainPercent / 100) + 1e-9);
+      expect(t.simulation.opponent.projectionGain).toBeGreaterThanOrEqual(-DEFAULT_CONFIG.unfairMaxOpponentLoss);
+      expect(t.opponentAngle).toBeTruthy();
+    }
+    expect(result.unfairStats.plausible).toBeLessThanOrEqual(result.unfairStats.qualifying);
+    // Unlike the fair list, the 15%/$4 tolerance is not required.
     expect(result.unfairTrades.some((t) => !t.acceptance.accepted)).toBe(true);
   });
 });
