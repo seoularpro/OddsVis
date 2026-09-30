@@ -49,6 +49,14 @@ describe("player index", () => {
     expect(only.find({ name: "Bijan Robinson", position: "RB" }).confidence).toBe("exact");
     const abbreviated = new PlayerIndex([{ playerId: "10", name: "K. Walker", position: "RB" as const, tradeValue: 20 }]);
     expect(abbreviated.find({ name: "Kenneth Walker III", position: "RB" })).toMatchObject({ confidence: "fuzzy" });
+    // Two-letter first names are names, not initials, and surnames are matched whole.
+    const amonRa = new PlayerIndex([{ playerId: "11", name: "Amon-Ra St. Brown", position: "WR" as const, tradeValue: 60 }]);
+    expect(amonRa.find({ name: "A.J. Brown", position: "WR" }).confidence).toBe("unmatched");
+    expect(amonRa.find({ name: "AJ Brown", position: "WR" }).confidence).toBe("unmatched");
+    expect(amonRa.find({ name: "Amon-Ra St. Brown", position: "WR" }).confidence).toBe("exact");
+    const aj = new PlayerIndex([{ playerId: "12", name: "AJ Brown", position: "WR" as const, tradeValue: 25 }]);
+    expect(aj.find({ name: "A.J. Brown", position: "WR" })).toMatchObject({ confidence: "normalized" });
+    expect(aj.find({ name: "Amon-Ra St. Brown", position: "WR" }).confidence).toBe("unmatched");
   });
 
   it("uses position to separate duplicate names and never guesses across positions", () => {

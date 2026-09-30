@@ -5,10 +5,12 @@
 //   2. exact     – identical name (case-insensitive) and position.
 //   3. normalized– punctuation/suffix/diacritic-insensitive name + position,
 //                  with known alias spellings and D/ST naming variants.
-//   4. fuzzy     – first initial + last name + position, only when unique AND
-//                  one side's first name is actually an initial ("K. Walker").
-//                  Two full first names that merely share an initial never
-//                  match: "Brian Robinson" is not "Bijan Robinson".
+//   4. fuzzy     – first initial + full surname + position, only when unique
+//                  AND one side's first name is a single-letter initial
+//                  ("K. Walker"). Two real first names that merely share an
+//                  initial never match: "Brian Robinson" is not "Bijan
+//                  Robinson", and "AJ Brown" (a real name, not an initial) is
+//                  not "Amon-Ra St. Brown" (whose surname key is "st brown").
 // Position is required for every name-based match so "Josh Allen (QB)" never
 // matches a same-named player at another position.
 
@@ -169,13 +171,14 @@ function firstToken(name: string): string {
 }
 
 /**
- * A fuzzy (initial + last name) match is only allowed when at least one side's
- * first name is an initial (1-2 letters) or the full first names agree.
+ * A fuzzy (initial + surname) match is only allowed when at least one side's
+ * first name is a single-letter initial, or the first names agree. Two-letter
+ * first names (AJ, DJ, CJ, TJ) are real names, not initials.
  */
 export function initialsCompatible(a: string, b: string): boolean {
   const fa = firstToken(a);
   const fb = firstToken(b);
-  if (fa.length <= 2 || fb.length <= 2) return true;
+  if (fa.length === 1 || fb.length === 1) return true;
   return fa === fb;
 }
 
@@ -184,7 +187,8 @@ function fuzzyKey(name: string, position: Position): string | null {
   const key = collapseInitials(aliasKey(normalizeName(name)));
   const parts = key.split(" ");
   if (parts.length < 2) return null;
-  return `${parts[0][0]}${parts[parts.length - 1]}|${position}`;
+  // First initial + the whole surname (so "st brown" and "brown" stay apart).
+  return `${parts[0][0]} ${parts.slice(1).join(" ")}|${position}`;
 }
 
 /** Parse a position string from a dataset row, tolerant of "D/ST", "DEF", etc. */

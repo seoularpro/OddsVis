@@ -1389,7 +1389,7 @@ function firstToken(name) {
 function initialsCompatible(a, b) {
   const fa = firstToken(a);
   const fb = firstToken(b);
-  if (fa.length <= 2 || fb.length <= 2) return true;
+  if (fa.length === 1 || fb.length === 1) return true;
   return fa === fb;
 }
 function fuzzyKey(name, position) {
@@ -1397,7 +1397,7 @@ function fuzzyKey(name, position) {
   const key = collapseInitials(aliasKey(normalizeName(name)));
   const parts = key.split(" ");
   if (parts.length < 2) return null;
-  return `${parts[0][0]}${parts[parts.length - 1]}|${position}`;
+  return `${parts[0][0]} ${parts.slice(1).join(" ")}|${position}`;
 }
 function parsePosition(raw) {
   return normalizePosition(raw);
