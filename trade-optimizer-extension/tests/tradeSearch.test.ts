@@ -16,18 +16,24 @@ const kd = () => [P("K", "K", 0, 0), P("DST", "DST", 0, 0)];
 const RAW = { baselineWaiverMoves: 0 };
 
 describe("trade generation", () => {
-  it("enumerates 1-for-1, 2-for-1, 1-for-2 and 2-for-2 packages within the value tolerance", () => {
+  it("enumerates 1-for-1, 2-for-1, 1-for-2 and 2-for-2 packages; value pruning only when enforced", () => {
     const league = syntheticLeague();
     const analysis = analyzeLeague(league, RAW);
-    const { candidates, stats } = generateCandidates(analysis, DEFAULT_CONFIG);
+    const { candidates, stats } = generateCandidates(analysis, mergeConfig(RAW));
     const shapes = new Set(candidates.map((c) => `${c.shape.send}-${c.shape.receive}`));
     expect(shapes).toEqual(new Set(["1-1", "2-1", "1-2", "2-2"]));
-    expect(stats.prunedByValue).toBeGreaterThan(0);
+    expect(stats.prunedByValue).toBe(0);
     expect(stats.prunedByLineup).toBeGreaterThan(0);
-    for (const c of candidates) {
+    const gap = (c: (typeof candidates)[number]) => Math.abs(c.userSends.reduce((n, p) => n + p.tradeValue, 0) - c.userReceives.reduce((n, p) => n + p.tradeValue, 0));
+    expect(candidates.some((c) => gap(c) > 20)).toBe(true);
+
+    const strict = mergeConfig({ ...RAW, enforceValueTolerance: true });
+    const enforced = generateCandidates(analyzeLeague(league, strict), strict);
+    expect(enforced.stats.prunedByValue).toBeGreaterThan(0);
+    for (const c of enforced.candidates) {
       const sent = c.userSends.reduce((n, p) => n + p.tradeValue, 0);
       const recv = c.userReceives.reduce((n, p) => n + p.tradeValue, 0);
-      expect(valueWithinTolerance(sent, recv, DEFAULT_CONFIG)).toBe(true);
+      expect(valueWithinTolerance(sent, recv, strict)).toBe(true);
     }
   });
 
@@ -170,7 +176,7 @@ describe("critical scenarios", () => {
     expect(rbTrade!.simulation.user.holesAfter).toBe(0);
   });
 
-  it("rejects trades that help the user but catastrophically hurt the opponent, and lopsided values", () => {
+  it("rejects trades that help the user but catastrophically hurt the opponent; lopsided values only when enforced", () => {
     const user = [P("U QB", "QB", 20, 20), P("U RB1", "RB", 17, 28), P("U RB2", "RB", 7, 3), P("U WR1", "WR", 18, 30), P("U WR2", "WR", 15, 20), P("U TE", "TE", 10, 8), P("U WR3", "WR", 12, 10), ...kd()];
     const oppStar = P("O RB1", "RB", 22, 60);
     const opp = [P("O QB", "QB", 19, 18), oppStar, P("O RB2", "RB", 9, 4), P("O WR1", "WR", 16, 26), P("O WR2", "WR", 14, 18), P("O TE", "TE", 9, 6), P("O WR3", "WR", 10, 6), ...kd()];
@@ -179,10 +185,14 @@ describe("critical scenarios", () => {
     for (const t of result.trades) {
       expect(t.simulation.opponent.projectionGain).toBeGreaterThanOrEqual(-DEFAULT_CONFIG.maxOpponentLoss);
       expect(t.acceptance.accepted).toBe(true);
+      expect(t.acceptance.opponentReasons.length).toBeGreaterThan(0);
+    }
+    // With value enforced, the star for the user's $3 RB2 (+15 for the user) is never offered.
+    const strict = runTradeOptimizer(league, { ...RAW, enforceValueTolerance: true });
+    for (const t of strict.trades) {
       expect(valueWithinTolerance(t.simulation.user.tradeValueSent, t.simulation.user.tradeValueReceived, DEFAULT_CONFIG)).toBe(true);
     }
-    // The star for the user's $3 RB2 would be +15 for the user but is never offered.
-    expect(result.trades.some((t) => t.simulation.candidate.userReceives.some((p) => p.id === oppStar.id) && t.simulation.user.tradeValueSent < 40)).toBe(false);
+    expect(strict.trades.some((t) => t.simulation.candidate.userReceives.some((p) => p.id === oppStar.id) && t.simulation.user.tradeValueSent < 40)).toBe(false);
   });
 });
 

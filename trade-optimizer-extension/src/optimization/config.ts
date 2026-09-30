@@ -20,9 +20,15 @@ export interface OptimizerConfig {
   /** Trade partners to search (all opponents if larger than the league). */
   maxPartners: number;
 
-  /** Trade value fairness: |sent - received| must be within this share of the larger side... */
+  /**
+   * Whether trade value is a hard constraint. Off by default: value only
+   * feeds the fairness bonus and the opponent's "value gain" reason. On:
+   * packages outside the tolerance are pruned and rejected.
+   */
+  enforceValueTolerance: boolean;
+  /** Fairness tolerance: |sent - received| within this share of the larger side... */
   maxTradeValueDifferencePercent: number;
-  /** ...or within this absolute dollar slack, whichever is larger. */
+  /** ...or within this absolute dollar slack, whichever is larger. Scales the fairness bonus. */
   tradeValueAbsoluteSlack: number;
 
   /** Minimum user starting-lineup gain for a trade to be worth showing. */
@@ -96,6 +102,7 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   maxIncomingCandidates: 12,
   maxPartners: 20,
 
+  enforceValueTolerance: false,
   maxTradeValueDifferencePercent: 15,
   tradeValueAbsoluteSlack: 4,
 

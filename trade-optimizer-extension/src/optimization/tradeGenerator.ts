@@ -2,8 +2,8 @@
 //
 // Pipeline: rank partners by complementary surplus/need -> pick expendable
 // user assets and high-impact targets -> enumerate package shapes -> drop
-// packages that fail the trade-value tolerance or that cannot change either
-// team's starting lineup. Shapes are data, so 3-for-1 etc. only need a config
+// packages that cannot change either team's starting lineup (and, only when
+// enforceValueTolerance is on, packages outside the value tolerance). Shapes are data, so 3-for-1 etc. only need a config
 // change; draft picks / FAAB would be additional asset kinds on the package.
 
 import type { Player, Position } from "../domain/types";
@@ -159,7 +159,7 @@ export function generateCandidates(analysis: LeagueAnalysis, config: OptimizerCo
         for (const recvs of recvSets.get(shape.receive)!) {
           stats.enumerated++;
           const recvValue = recvs.reduce((n, p) => n + p.tradeValue, 0);
-          if (!valueWithinTolerance(sentValue, recvValue, config)) {
+          if (config.enforceValueTolerance && !valueWithinTolerance(sentValue, recvValue, config)) {
             stats.prunedByValue++;
             continue;
           }

@@ -13,7 +13,7 @@ export interface ExtensionSettings {
   projectionJson: string;
   tradeValueJson: string;
   /** Optimizer overrides exposed in the UI. */
-  config: Partial<Pick<OptimizerConfig, "maxTradeValueDifferencePercent" | "minUserGain" | "maxOpponentLoss" | "topN" | "maxTradesPerPartner" | "unlistedTradeValue" | "rankingMode">>;
+  config: Partial<Pick<OptimizerConfig, "maxTradeValueDifferencePercent" | "minUserGain" | "maxOpponentLoss" | "topN" | "maxTradesPerPartner" | "unlistedTradeValue" | "rankingMode" | "enforceValueTolerance">>;
   /** Scoring overrides when detection is wrong. */
   scoringOverride: { receptionPoints?: number; passTdPoints?: number } | null;
 }

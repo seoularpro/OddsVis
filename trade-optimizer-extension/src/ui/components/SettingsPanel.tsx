@@ -18,6 +18,13 @@ export function SettingsPanel({ settings, onChange }: { settings: ExtensionSetti
         <div className="settings">
           <div className="field-row">
             <label>
+              Trade value
+              <select value={String(cfg.enforceValueTolerance ?? DEFAULT_CONFIG.enforceValueTolerance)} onChange={(e) => setCfg({ enforceValueTolerance: e.target.value === "true" })}>
+                <option value="false">scores fairness only</option>
+                <option value="true">require fair values (gap limit below)</option>
+              </select>
+            </label>
+            <label>
               Max trade value gap (%)
               <input type="number" min={0} max={60} value={cfg.maxTradeValueDifferencePercent ?? DEFAULT_CONFIG.maxTradeValueDifferencePercent} onChange={(e) => setCfg({ maxTradeValueDifferencePercent: Number(e.target.value) })} />
             </label>

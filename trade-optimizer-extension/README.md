@@ -80,7 +80,10 @@ content script (page origin)          side panel (extension page)
     very low … very high, plus expendable assets.
   * `tradeGenerator` – partners ranked by complementary need/surplus;
     packages (1-1, 2-1, 1-2, 2-2 by default; shapes are config) pruned by
-    value tolerance (15 % or $4) and by "nothing incoming could start".
+    "nothing incoming could start". Trade value is not a hard constraint by
+    default (`enforceValueTolerance: false`): it feeds the fairness bonus and
+    the opponent's value-gain reason. Turn it on to prune and reject packages
+    outside 15 % or $4.
     K/DST and players with no projection this week (props not posted) are
     never moved: a 0 projection would masquerade as free expendable depth.
     Waiver-wire players are worthless by definition, so anyone the baseline

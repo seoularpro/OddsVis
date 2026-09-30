@@ -79,7 +79,7 @@ export function evaluateAcceptance(sim: TradeSimulation, config: OptimizerConfig
   if (sim.user.projectionGain < config.minUserGain) {
     rejections.push(`user lineup gain ${sim.user.projectionGain.toFixed(1)} is below the ${config.minUserGain} minimum`);
   }
-  if (!valueWithinTolerance(sent, received, config)) {
+  if (config.enforceValueTolerance && !valueWithinTolerance(sent, received, config)) {
     rejections.push(`trade value gap $${diff.toFixed(0)} exceeds the tolerance`);
   }
   if (opp.projectionGain < -config.maxOpponentLoss) {

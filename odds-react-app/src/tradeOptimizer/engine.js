@@ -16,6 +16,7 @@ const DEFAULT_CONFIG = {
   maxOutgoingCandidates: 12,
   maxIncomingCandidates: 12,
   maxPartners: 20,
+  enforceValueTolerance: false,
   maxTradeValueDifferencePercent: 15,
   tradeValueAbsoluteSlack: 4,
   minUserGain: 0.5,
@@ -712,7 +713,7 @@ function generateCandidates(analysis, config) {
         for (const recvs of recvSets.get(shape.receive)) {
           stats.enumerated++;
           const recvValue = recvs.reduce((n, p) => n + p.tradeValue, 0);
-          if (!valueWithinTolerance(sentValue, recvValue, config)) {
+          if (config.enforceValueTolerance && !valueWithinTolerance(sentValue, recvValue, config)) {
             stats.prunedByValue++;
             continue;
           }
@@ -913,7 +914,7 @@ function evaluateAcceptance(sim, config) {
   if (sim.user.projectionGain < config.minUserGain) {
     rejections.push(`user lineup gain ${sim.user.projectionGain.toFixed(1)} is below the ${config.minUserGain} minimum`);
   }
-  if (!valueWithinTolerance(sent, received, config)) {
+  if (config.enforceValueTolerance && !valueWithinTolerance(sent, received, config)) {
     rejections.push(`trade value gap $${diff.toFixed(0)} exceeds the tolerance`);
   }
   if (opp.projectionGain < -config.maxOpponentLoss) {
@@ -2859,6 +2860,13 @@ function SettingsPanel({ settings, onChange }) {
     ] }),
     open ? /* @__PURE__ */ jsxs("div", { className: "settings", children: [
       /* @__PURE__ */ jsxs("div", { className: "field-row", children: [
+        /* @__PURE__ */ jsxs("label", { children: [
+          "Trade value",
+          /* @__PURE__ */ jsxs("select", { value: String(cfg.enforceValueTolerance ?? DEFAULT_CONFIG.enforceValueTolerance), onChange: (e) => setCfg({ enforceValueTolerance: e.target.value === "true" }), children: [
+            /* @__PURE__ */ jsx("option", { value: "false", children: "scores fairness only" }),
+            /* @__PURE__ */ jsx("option", { value: "true", children: "require fair values (gap limit below)" })
+          ] })
+        ] }),
         /* @__PURE__ */ jsxs("label", { children: [
           "Max trade value gap (%)",
           /* @__PURE__ */ jsx("input", { type: "number", min: 0, max: 60, value: cfg.maxTradeValueDifferencePercent ?? DEFAULT_CONFIG.maxTradeValueDifferencePercent, onChange: (e) => setCfg({ maxTradeValueDifferencePercent: Number(e.target.value) }) })
