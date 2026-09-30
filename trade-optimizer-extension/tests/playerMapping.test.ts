@@ -31,32 +31,40 @@ describe("player index", () => {
     { playerId: "6", name: "Bills D/ST", position: "DST" as const, tradeValue: 1 },
   ];
   const index = new PlayerIndex(entries);
+  const fuzzyIndex = new PlayerIndex(entries, undefined, true);
 
-  it("matches by id, exact, normalized, alias and fuzzy with the right confidence", () => {
+  it("matches by id, exact, normalized and alias; fuzzy only when explicitly enabled", () => {
     expect(index.find({ platformId: "5", name: "K. Walker", position: "RB" }).confidence).toBe("id");
     expect(index.find({ name: "josh allen", position: "QB" })).toMatchObject({ confidence: "exact", entry: entries[2] });
     expect(index.find({ name: "Kenneth Walker", position: "RB" })).toMatchObject({ confidence: "normalized", entry: entries[4] });
     expect(index.find({ name: "Hollywood Brown", position: "WR" })).toMatchObject({ confidence: "normalized", entry: entries[0] });
     expect(index.find({ name: "DJ Moore", position: "WR" })).toMatchObject({ confidence: "normalized", entry: entries[1] });
-    expect(index.find({ name: "K. Walker", position: "RB" })).toMatchObject({ confidence: "fuzzy", entry: entries[4] });
+    expect(index.find({ name: "K. Walker", position: "RB" }).confidence).toBe("unmatched");
+    expect(fuzzyIndex.find({ name: "K. Walker", position: "RB" })).toMatchObject({ confidence: "fuzzy", entry: entries[4] });
     expect(index.find({ name: "Buffalo Bills", position: "DST" })).toMatchObject({ confidence: "normalized", entry: entries[5] });
   });
 
-  it("never fuzzy-matches two different full first names that share an initial", () => {
+  it("with fuzzy disabled (default), similar names never borrow each other's rows", () => {
     const only = new PlayerIndex([{ playerId: "9", name: "Bijan Robinson", position: "RB" as const, tradeValue: 68 }]);
     expect(only.find({ name: "Brian Robinson Jr.", position: "RB" }).confidence).toBe("unmatched");
-    expect(only.find({ name: "B. Robinson", position: "RB" })).toMatchObject({ confidence: "fuzzy" });
+    expect(only.find({ name: "B. Robinson", position: "RB" }).confidence).toBe("unmatched");
     expect(only.find({ name: "Bijan Robinson", position: "RB" }).confidence).toBe("exact");
-    const abbreviated = new PlayerIndex([{ playerId: "10", name: "K. Walker", position: "RB" as const, tradeValue: 20 }]);
-    expect(abbreviated.find({ name: "Kenneth Walker III", position: "RB" })).toMatchObject({ confidence: "fuzzy" });
-    // Two-letter first names are names, not initials, and surnames are matched whole.
     const amonRa = new PlayerIndex([{ playerId: "11", name: "Amon-Ra St. Brown", position: "WR" as const, tradeValue: 60 }]);
     expect(amonRa.find({ name: "A.J. Brown", position: "WR" }).confidence).toBe("unmatched");
-    expect(amonRa.find({ name: "AJ Brown", position: "WR" }).confidence).toBe("unmatched");
     expect(amonRa.find({ name: "Amon-Ra St. Brown", position: "WR" }).confidence).toBe("exact");
     const aj = new PlayerIndex([{ playerId: "12", name: "AJ Brown", position: "WR" as const, tradeValue: 25 }]);
     expect(aj.find({ name: "A.J. Brown", position: "WR" })).toMatchObject({ confidence: "normalized" });
-    expect(aj.find({ name: "Amon-Ra St. Brown", position: "WR" }).confidence).toBe("unmatched");
+  });
+
+  it("with fuzzy enabled, only single-letter initials and whole surnames can match", () => {
+    const only = new PlayerIndex([{ playerId: "9", name: "Bijan Robinson", position: "RB" as const, tradeValue: 68 }], undefined, true);
+    expect(only.find({ name: "Brian Robinson Jr.", position: "RB" }).confidence).toBe("unmatched");
+    expect(only.find({ name: "B. Robinson", position: "RB" })).toMatchObject({ confidence: "fuzzy" });
+    const abbreviated = new PlayerIndex([{ playerId: "10", name: "K. Walker", position: "RB" as const, tradeValue: 20 }], undefined, true);
+    expect(abbreviated.find({ name: "Kenneth Walker III", position: "RB" })).toMatchObject({ confidence: "fuzzy" });
+    const amonRa = new PlayerIndex([{ playerId: "11", name: "Amon-Ra St. Brown", position: "WR" as const, tradeValue: 60 }], undefined, true);
+    expect(amonRa.find({ name: "A.J. Brown", position: "WR" }).confidence).toBe("unmatched");
+    expect(amonRa.find({ name: "AJ Brown", position: "WR" }).confidence).toBe("unmatched");
   });
 
   it("uses position to separate duplicate names and never guesses across positions", () => {

@@ -5,12 +5,12 @@
 //   2. exact     – identical name (case-insensitive) and position.
 //   3. normalized– punctuation/suffix/diacritic-insensitive name + position,
 //                  with known alias spellings and D/ST naming variants.
-//   4. fuzzy     – first initial + full surname + position, only when unique
-//                  AND one side's first name is a single-letter initial
-//                  ("K. Walker"). Two real first names that merely share an
-//                  initial never match: "Brian Robinson" is not "Bijan
-//                  Robinson", and "AJ Brown" (a real name, not an initial) is
-//                  not "Amon-Ra St. Brown" (whose surname key is "st brown").
+//   4. fuzzy     – first initial + full surname + position. DISABLED by default
+//                  (PlayerIndex option `allowFuzzy`): no current platform or
+//                  dataset abbreviates first names, and the two mismatches it
+//                  produced in practice (Brian/Bijan Robinson, A.J. Brown /
+//                  Amon-Ra St. Brown) cost more than the matches it found.
+//                  Turn it on only for a dataset that really uses initials.
 // Position is required for every name-based match so "Josh Allen (QB)" never
 // matches a same-named player at another position.
 
@@ -118,7 +118,7 @@ export class PlayerIndex<T extends { playerId?: string; name: string; position: 
   private byFuzzy = new Map<string, T[]>();
   readonly size: number;
 
-  constructor(entries: T[], private idNamespace?: string) {
+  constructor(entries: T[], private idNamespace?: string, private allowFuzzy = false) {
     for (const e of entries) {
       if (e.playerId) this.byId.set(e.playerId, e);
       const pos = e.position;
@@ -142,10 +142,12 @@ export class PlayerIndex<T extends { playerId?: string; name: string; position: 
       const list = this.byNormalized.get(`${key}|${pos}`);
       if (list && list.length === 1) return { entry: list[0], confidence: "normalized" };
     }
-    const fz = fuzzyKey(identity.name, pos);
-    if (fz) {
-      const list = this.byFuzzy.get(fz);
-      if (list && list.length === 1 && initialsCompatible(identity.name, list[0].name)) return { entry: list[0], confidence: "fuzzy" };
+    if (this.allowFuzzy) {
+      const fz = fuzzyKey(identity.name, pos);
+      if (fz) {
+        const list = this.byFuzzy.get(fz);
+        if (list && list.length === 1 && initialsCompatible(identity.name, list[0].name)) return { entry: list[0], confidence: "fuzzy" };
+      }
     }
     return { entry: null, confidence: "unmatched" };
   }

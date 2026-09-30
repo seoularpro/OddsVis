@@ -1334,13 +1334,14 @@ function normalizeDstName(name) {
   return key;
 }
 class PlayerIndex {
-  constructor(entries, idNamespace) {
+  constructor(entries, idNamespace, allowFuzzy = false) {
     __publicField(this, "byId", /* @__PURE__ */ new Map());
     __publicField(this, "byExact", /* @__PURE__ */ new Map());
     __publicField(this, "byNormalized", /* @__PURE__ */ new Map());
     __publicField(this, "byFuzzy", /* @__PURE__ */ new Map());
     __publicField(this, "size");
     this.idNamespace = idNamespace;
+    this.allowFuzzy = allowFuzzy;
     for (const e of entries) {
       if (e.playerId) this.byId.set(e.playerId, e);
       const pos = e.position;
@@ -1363,10 +1364,12 @@ class PlayerIndex {
       const list = this.byNormalized.get(`${key}|${pos}`);
       if (list && list.length === 1) return { entry: list[0], confidence: "normalized" };
     }
-    const fz = fuzzyKey(identity.name, pos);
-    if (fz) {
-      const list = this.byFuzzy.get(fz);
-      if (list && list.length === 1 && initialsCompatible(identity.name, list[0].name)) return { entry: list[0], confidence: "fuzzy" };
+    if (this.allowFuzzy) {
+      const fz = fuzzyKey(identity.name, pos);
+      if (fz) {
+        const list = this.byFuzzy.get(fz);
+        if (list && list.length === 1 && initialsCompatible(identity.name, list[0].name)) return { entry: list[0], confidence: "fuzzy" };
+      }
     }
     return { entry: null, confidence: "unmatched" };
   }
