@@ -205,8 +205,9 @@ def reseed(players, weekly, R):
         par = {p['name']: max(0.0, p['ev'] - repl) for p in have}
         budget, tot = sum(p['seed'] for p in have), sum(par.values()) or 1.0
         c = {p['name']: budget * par[p['name']] / tot for p in have}
+        rs = R.get('rank_share', 0.5)
         for p in have:
-            implied[p['name']] = (a[p['name']] + c[p['name']]) / 2
+            implied[p['name']] = rs * a[p['name']] + (1 - rs) * c[p['name']]
     moved = [p for p in players if p['name'] in implied]
     for p in moved:
         p['value'] = p['seed'] + w * (implied[p['name']] - p['seed'])
@@ -225,7 +226,7 @@ def reseed(players, weekly, R):
     missing = [p['name'] for p in players if p['ev'] is None]
     from_prev = sum(1 for p in players if p['ev'] is not None and p['evWeek'] != weekly['week'])
     return {'week': weekly['week'], 'season': weekly['season'], 'snapshotIndex': weekly.get('snapshotIndex'),
-            'previousWeek': prev.get('week'), 'weight': w, 'coverage': coverage, 'skippedPositions': skipped,
+            'previousWeek': prev.get('week'), 'weight': w, 'rankShare': R.get('rank_share', 0.5), 'coverage': coverage, 'skippedPositions': skipped,
             'usedPreviousWeek': from_prev,
             'moved': sum(1 for p in players if p['value'] != p['seed']), 'noProjection': missing}
 
@@ -336,7 +337,7 @@ def write_readme(wb, P, label, size, delta, top, exponent, repl, rows, baseline_
     ] + ([
         f'0) Weekly re-seed. The sheet values were first moved toward the {reseed_info["season"]} week {reseed_info["week"]} Half PPR medians',
         f'   (Projections page snapshot {reseed_info["snapshotIndex"]}; {reseed_info.get("usedPreviousWeek", 0)} players used week {reseed_info.get("previousWeek")} medians): '
-        f'implied = average of the seed value at the player\'s projection-rank slot among the projected players at the position',
+        f'implied = {reseed_info.get("rankShare", 0.5):g} x the seed value at the player\'s projection-rank slot among the projected players at the position + {1 - reseed_info.get("rankShare", 0.5):g} x',
         '   within the position and the player\'s share of the position\'s points-above-replacement on the position\'s value budget;',
         f'   new = sheet + {reseed_info["weight"]} x (implied - sheet), then rescaled so the total equals the sheet total. {reseed_info["moved"]} players moved.',
         f'   No projection this week (value kept): {", ".join(reseed_info["noProjection"]) or "none"}.',

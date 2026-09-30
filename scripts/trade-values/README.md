@@ -36,11 +36,13 @@ python3 scripts/trade-values/build_trade_values.py --baseline TradeValueSheets/T
 
 0. **Weekly re-seed.** Each sheet value moves toward this week's Half PPR medians so the published
    order tracks the projections. Within each position the projected players are ranked by median;
-   `implied` is the average of (A) the *projected group's* own sorted sheet value at the player's rank
-   and (C) the player's share of the group's points above replacement (10-team: 10th QB, 25th RB,
-   25th WR, 10th TE) on the group's sheet value budget. Both terms follow the projection order, so
-   `implied` does too. Then `new = sheet + 0.8 x (implied - sheet)`, rescaled so each group keeps its
-   sheet total; the sheet therefore only tempers the size of the gaps. Ranking within the projected
+   `implied` is `0.7 x A + 0.3 x C`, where A is the *projected group's* own sorted sheet value at the
+   player's rank and C is the player's share of the group's points above replacement (10-team: 10th
+   QB, 25th RB, 25th WR, 10th TE) on the group's sheet value budget (`rank_share` in params; a higher
+   share keeps the sheet's value curve, a lower one makes the bottom collapse toward replacement).
+   Both terms follow the projection order, so `implied` does too. Then `new = sheet + 0.6 x (implied -
+   sheet)` (`weight`), rescaled so each group keeps its sheet total; the sheet therefore tempers the
+   size of the gaps. Ranking within the projected
    group (not the whole position) keeps stars from funding cheap breakouts. Players with no line this
    week use last week's median (`previous` in `weekly-projections.json`); players with neither keep
    their sheet value, and a position with less than 60 % coverage is left at the sheet values.
