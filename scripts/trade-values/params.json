@@ -22,7 +22,7 @@
   "reception_min_fresh_lines": 120,
   "reseed": {
     "_note": "Weekly re-seed of the baseline from the current week's Half PPR medians (dump_projections.mjs) before the nine-way split. Within each position the projected players are ranked by median: implied = rank_share x (A) the group's own sorted seed value at the player's rank + (1 - rank_share) x (C) the player's share of the group's points-above-replacement on the group's seed budget (a higher rank_share keeps the sheet's value curve and flattens the bottom less); new = seed + weight x (implied - seed), rescaled so each group keeps its seed total. Both terms follow the projection order, so the published order tracks the medians and the sheet only tempers the gaps. Players with no line this week use last week's median; a position with coverage below min_coverage keeps the sheet values.",
-    "weight": 0.6,
+    "weight": 0.45,
     "rank_share": 0.7,
     "min_coverage": 0.6,
     "use_previous_week_for_missing": true,

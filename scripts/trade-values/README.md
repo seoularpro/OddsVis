@@ -40,7 +40,7 @@ python3 scripts/trade-values/build_trade_values.py --baseline TradeValueSheets/T
    player's rank and C is the player's share of the group's points above replacement (10-team: 10th
    QB, 25th RB, 25th WR, 10th TE) on the group's sheet value budget (`rank_share` in params; a higher
    share keeps the sheet's value curve, a lower one makes the bottom collapse toward replacement).
-   Both terms follow the projection order, so `implied` does too. Then `new = sheet + 0.6 x (implied -
+   Both terms follow the projection order, so `implied` does too. Then `new = sheet + 0.45 x (implied -
    sheet)` (`weight`), rescaled so each group keeps its sheet total; the sheet therefore tempers the
    size of the gaps. Ranking within the projected
    group (not the whole position) keeps stars from funding cheap breakouts. Players with no line this
