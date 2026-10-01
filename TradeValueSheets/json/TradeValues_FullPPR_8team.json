@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-01T00:43:15Z",
+ "generatedAt": "2026-10-01T00:47:29Z",
  "key": "FullPPR_8",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
@@ -199,7 +199,7 @@
    ""
   ],
   [
-   41,
+   43,
    "",
    "",
    "",
@@ -219,6 +219,26 @@
    ""
   ],
   [
+   38,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Josh Allen"
+  ],
+  [
+   37,
+   "",
+   "",
+   "",
+   "",
+   "Brock Bowers",
+   "",
+   ""
+  ],
+  [
    36,
    "",
    "",
@@ -227,16 +247,6 @@
    "",
    "",
    ""
-  ],
-  [
-   36,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Josh Allen"
   ],
   [
    35,
@@ -255,16 +265,6 @@
    "Nico Collins",
    "",
    "",
-   "",
-   ""
-  ],
-  [
-   34,
-   "",
-   "",
-   "",
-   "",
-   "Brock Bowers",
    "",
    ""
   ],
@@ -829,6 +829,16 @@
    "Jayden Daniels"
   ],
   [
+   5,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Drake Maye"
+  ],
+  [
    4,
    "Rachaad White",
    "",
@@ -847,16 +857,6 @@
    "Isaiah Likely",
    "",
    ""
-  ],
-  [
-   4,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Drake Maye"
   ],
   [
    4,
@@ -1226,9 +1226,9 @@
   {
    "name": "Trey McBride",
    "pos": "TE",
-   "value": 41,
-   "baselineValue": 41,
-   "sheetValue": 40,
+   "value": 43,
+   "baselineValue": 43.42857142857143,
+   "sheetValue": 30,
    "projection": 13.14,
    "projectionWeek": 4
   },
@@ -1242,21 +1242,30 @@
    "projectionWeek": 4
   },
   {
+   "name": "Josh Allen",
+   "pos": "QB",
+   "value": 38,
+   "baselineValue": 44.51428571428571,
+   "sheetValue": 36,
+   "projection": 21.23,
+   "projectionWeek": 4
+  },
+  {
+   "name": "Brock Bowers",
+   "pos": "TE",
+   "value": 37,
+   "baselineValue": 38,
+   "sheetValue": 37,
+   "projection": 11.58,
+   "projectionWeek": 4
+  },
+  {
    "name": "Garrett Wilson",
    "pos": "WR",
    "value": 36,
    "baselineValue": 35,
    "sheetValue": 23,
    "projection": 13.22,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Josh Allen",
-   "pos": "QB",
-   "value": 36,
-   "baselineValue": 42,
-   "sheetValue": 41,
-   "projection": 21.23,
    "projectionWeek": 4
   },
   {
@@ -1275,15 +1284,6 @@
    "baselineValue": 34,
    "sheetValue": 36,
    "projection": 12.23,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Brock Bowers",
-   "pos": "TE",
-   "value": 34,
-   "baselineValue": 35,
-   "sheetValue": 35,
-   "projection": 11.58,
    "projectionWeek": 4
   },
   {
@@ -1791,6 +1791,15 @@
    "projectionWeek": null
   },
   {
+   "name": "Drake Maye",
+   "pos": "QB",
+   "value": 5,
+   "baselineValue": 7.6,
+   "sheetValue": 11,
+   "projection": 17.43,
+   "projectionWeek": 4
+  },
+  {
    "name": "Rachaad White",
    "pos": "RB",
    "value": 4,
@@ -1806,15 +1815,6 @@
    "baselineValue": 7,
    "sheetValue": 10,
    "projection": 7.63,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Drake Maye",
-   "pos": "QB",
-   "value": 4,
-   "baselineValue": 7,
-   "sheetValue": 7,
-   "projection": 17.43,
    "projectionWeek": 4
   },
   {

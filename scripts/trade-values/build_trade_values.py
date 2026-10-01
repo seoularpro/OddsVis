@@ -151,28 +151,37 @@ def refresh_receptions(year, week, previous=None, P=None):
 
 
 # ----------------------------------------------------------------------------- manual overrides
-def apply_overrides(players, path):
-    """Apply scripts/trade-values/overrides.json to the parsed baseline: pin values and
-    remove players. Names are matched like projections (suffix-insensitive). Returns a
-    summary; unknown names are reported so a typo never silently does nothing."""
+def load_overrides(path):
     try:
-        O = json.load(open(path))
+        return json.load(open(path))
     except OSError:
         return None
+
+
+def apply_removals(players, O):
+    """`remove`: drop players before anything else, so they never affect anyone's rank."""
     by_key = {norm_proj(p['name']): p for p in players}
-    applied, missing = [], []
-    for name, value in (O.get('set') or {}).items():
-        p = by_key.get(norm_proj(name))
-        if p is None:
-            missing.append(name); continue
-        applied.append(f"{p['name']} {p['value']:g}->{value:g}"); p['value'] = float(value)
-    removed = []
-    for name in O.get('remove') or []:
+    removed, missing = [], []
+    for name in (O or {}).get('remove') or []:
         p = by_key.get(norm_proj(name))
         if p is None:
             missing.append(name); continue
         players.remove(p); removed.append(p['name'])
-    return {'set': applied, 'removed': removed, 'missing': missing, 'updated': O.get('updated')}
+    return removed, missing
+
+
+def apply_pins(players, O):
+    """`set`: pin the published Half PPR 10-team value AFTER the weekly re-seed, so the
+    number you write is the number that appears (the other formats derive from it)."""
+    by_key = {norm_proj(p['name']): p for p in players}
+    applied, missing = [], []
+    for name, value in ((O or {}).get('set') or {}).items():
+        p = by_key.get(norm_proj(name))
+        if p is None:
+            missing.append(name); continue
+        applied.append(f"{p['name']} {p['value']:g}->{value:g}")
+        p['value'] = float(value); p['pinned'] = True
+    return applied, missing
 
 
 # ----------------------------------------------------------------------------- weekly re-seed
@@ -482,12 +491,10 @@ def main():
     else:
         base, baseline_desc = parse_grid(grid_from_published_sheet(P['baseline_sheet_url'])), 'the live Trade Values Google Sheet'
     players = base['players']
-    overrides = apply_overrides(players, os.path.join(HERE, 'overrides.json'))
-    if overrides:
-        print(f"overrides ({overrides['updated']}): set {', '.join(overrides['set']) or 'none'}; removed {', '.join(overrides['removed']) or 'none'}"
-              + (f"; NOT FOUND: {', '.join(overrides['missing'])}" if overrides['missing'] else ''))
-        if overrides['missing']:
-            sys.exit('refusing to publish: overrides.json names a player the sheet does not have')
+    overrides = load_overrides(os.path.join(HERE, 'overrides.json'))
+    removed, missing = apply_removals(players, overrides)
+    if missing:
+        sys.exit(f"refusing to publish: overrides.json removes a player the sheet does not have: {', '.join(missing)}")
     if len(players) < P.get('minimum_player_count', 50):
         sys.exit(f'refusing to publish: baseline has only {len(players)} players (expected at least {P.get("minimum_player_count", 50)})')
     reseed_info = None
@@ -498,14 +505,26 @@ def main():
         reseed_info = reseed(players, weekly, P['reseed'])
         print(f"re-seeded from {weekly['season']} week {weekly['week']} medians (snapshot {weekly.get('snapshotIndex')}): "
               f"{reseed_info['moved']} players moved; no projection for {len(reseed_info['noProjection'])}")
+    # The league tops in params (65/70/75) are what the #1 player is worth in each league
+    # size, so anchor on the re-seeded top: the best player this week is exactly `top`.
+    baseline_top = max(p['value'] for p in players)
+    # Pins are written in published Half PPR 10-team dollars; convert them into the
+    # pre-anchor scale so the league step maps them back to exactly that number.
+    base_size = str(P['reseed'].get('teams', 10)) if 'reseed' in P else '10'
+    base_top = P['league_sizes'].get(base_size, P['league_sizes']['10'])['top']
+    pinned, missing = apply_pins(players, overrides)
+    if missing:
+        sys.exit(f"refusing to publish: overrides.json pins a player the sheet does not have: {', '.join(missing)}")
+    for p in players:
+        if p.get('pinned'):
+            p['value'] = p['value'] * baseline_top / base_top
+    if overrides:
+        print(f"overrides ({overrides.get('updated')}): pinned {', '.join(pinned) or 'none'}; removed {', '.join(removed) or 'none'}")
     repl = attach_receptions(players, R['players'], P, fallback_repl=R.get('replacementPerGame'))
     if a.refresh_receptions:
         # Remember this run's replacement levels so the next refresh has a fallback.
         R['replacementPerGame'] = {k: round(v, 2) for k, v in repl.items()}
         json.dump(R, open(rec_path, 'w'), indent=1)
-    # The league tops in params (65/70/75) are what the #1 player is worth in each league
-    # size, so anchor on the re-seeded top: the best player this week is exactly `top`.
-    baseline_top = max(p['value'] for p in players)
     print(f'baseline: {baseline_desc}, {len(players)} players, top {baseline_top:g}; replacement rec/game', {k: round(v, 2) for k, v in repl.items()},
           '; estimated lines:', sum(p['est'] for p in players))
 

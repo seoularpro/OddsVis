@@ -30,7 +30,7 @@ python3 scripts/trade-values/build_trade_values.py --baseline TradeValueSheets/T
 | `dump_projections.mjs` | writes this week's Half PPR medians per position for the re-seed |
 | `build_trade_values.py` | the whole process: read baseline, weekly re-seed, attach reception lines, scoring step, league step, write workbooks and JSON |
 | `params.json` | every constant (reception deltas, league tops and exponents, magnitude 2.5, thresholds). Edit here to change the math |
-| `overrides.json` | manual edits applied on top of the sheet every build: `set` pins a baseline value, `remove` drops a player (out for the season). Unknown names stop the build |
+| `overrides.json` | manual edits applied every build: `remove` drops a player before the re-seed (out for the season); `set` pins the published Half PPR 10-team value after the re-seed, so the number you write is the number shown. Unknown names stop the build |
 | `receptions.json` | snapshot of each player's BettingPros receptions line. Refresh with `--refresh-receptions --week N` to use a later week's props; players without a line that week keep their previous line (tagged `carried`), and the file remembers the replacement levels so a thin week cannot zero them out (`replacement_min_lines`, `reception_min_fresh_lines` in params) |
 
 ## The math

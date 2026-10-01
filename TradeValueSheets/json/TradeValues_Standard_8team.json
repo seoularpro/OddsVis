@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-01T00:43:15Z",
+ "generatedAt": "2026-10-01T00:47:29Z",
  "key": "Standard_8",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -169,7 +169,7 @@
    ""
   ],
   [
-   41,
+   43,
    "",
    "",
    "",
@@ -209,6 +209,16 @@
    ""
   ],
   [
+   37,
+   "",
+   "",
+   "",
+   "",
+   "Trey McBride",
+   "",
+   ""
+  ],
+  [
    35,
    "",
    "",
@@ -224,7 +234,7 @@
    "",
    "",
    "",
-   "Trey McBride",
+   "Brock Bowers",
    "",
    ""
   ],
@@ -235,16 +245,6 @@
    "",
    "",
    "",
-   "",
-   ""
-  ],
-  [
-   32,
-   "",
-   "",
-   "",
-   "",
-   "Brock Bowers",
    "",
    ""
   ],
@@ -639,6 +639,16 @@
    "Jayden Daniels"
   ],
   [
+   12,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Drake Maye"
+  ],
+  [
    11,
    "David Montgomery",
    "",
@@ -667,16 +677,6 @@
    "Isaiah Likely",
    "",
    ""
-  ],
-  [
-   11,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Drake Maye"
   ],
   [
    11,
@@ -1199,9 +1199,9 @@
   {
    "name": "Josh Allen",
    "pos": "QB",
-   "value": 41,
-   "baselineValue": 42,
-   "sheetValue": 41,
+   "value": 43,
+   "baselineValue": 44.51428571428571,
+   "sheetValue": 36,
    "projection": 21.23,
    "projectionWeek": 4
   },
@@ -1233,6 +1233,15 @@
    "projectionWeek": 4
   },
   {
+   "name": "Trey McBride",
+   "pos": "TE",
+   "value": 37,
+   "baselineValue": 43.42857142857143,
+   "sheetValue": 30,
+   "projection": 13.14,
+   "projectionWeek": 4
+  },
+  {
    "name": "Drake London",
    "pos": "WR",
    "value": 35,
@@ -1242,12 +1251,12 @@
    "projectionWeek": 4
   },
   {
-   "name": "Trey McBride",
+   "name": "Brock Bowers",
    "pos": "TE",
    "value": 35,
-   "baselineValue": 41,
-   "sheetValue": 40,
-   "projection": 13.14,
+   "baselineValue": 38,
+   "sheetValue": 37,
+   "projection": 11.58,
    "projectionWeek": 4
   },
   {
@@ -1258,15 +1267,6 @@
    "sheetValue": 37,
    "projection": 12.94,
    "projectionWeek": 3
-  },
-  {
-   "name": "Brock Bowers",
-   "pos": "TE",
-   "value": 32,
-   "baselineValue": 35,
-   "sheetValue": 35,
-   "projection": 11.58,
-   "projectionWeek": 4
   },
   {
    "name": "Nico Collins",
@@ -1620,6 +1620,15 @@
    "projectionWeek": null
   },
   {
+   "name": "Drake Maye",
+   "pos": "QB",
+   "value": 12,
+   "baselineValue": 7.6,
+   "sheetValue": 11,
+   "projection": 17.43,
+   "projectionWeek": 4
+  },
+  {
    "name": "David Montgomery",
    "pos": "RB",
    "value": 11,
@@ -1644,15 +1653,6 @@
    "baselineValue": 7,
    "sheetValue": 10,
    "projection": 7.63,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Drake Maye",
-   "pos": "QB",
-   "value": 11,
-   "baselineValue": 7,
-   "sheetValue": 7,
-   "projection": 17.43,
    "projectionWeek": 4
   },
   {

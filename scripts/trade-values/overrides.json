@@ -1,5 +1,5 @@
 {
-  "_note": "Manual edits applied to the Half PPR 10-team baseline after it is read from the Google Sheet and before the weekly re-seed. `set` pins a player's baseline value (by exact sheet name); `remove` drops a player from every output (out for the season, retired). Edit this file, commit, and the workflow rebuilds within the hour.",
+  "_note": "Manual edits applied every build. `remove` drops a player from every output before the weekly re-seed (out for the season, retired). `set` pins a player's PUBLISHED Half PPR 10-team value after the re-seed, so the number written here is the number that appears; the other scoring/league-size formats derive from it. Names must match the sheet (suffix-insensitive); an unknown name stops the build. Edit, commit, and the workflow rebuilds within the hour.",
   "updated": "2026-09-30",
   "set": {
     "Josh Allen": 41,

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-01T00:43:15Z",
+ "generatedAt": "2026-10-01T00:47:29Z",
  "key": "Standard_12",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -159,6 +159,16 @@
    ""
   ],
   [
+   44,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Josh Allen"
+  ],
+  [
    43,
    "Saquon Barkley",
    "",
@@ -167,16 +177,6 @@
    "",
    "",
    ""
-  ],
-  [
-   41,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Josh Allen"
   ],
   [
    40,
@@ -209,6 +209,16 @@
    ""
   ],
   [
+   36,
+   "",
+   "",
+   "",
+   "",
+   "Trey McBride",
+   "",
+   ""
+  ],
+  [
    33,
    "",
    "",
@@ -224,7 +234,7 @@
    "",
    "",
    "",
-   "Trey McBride",
+   "Brock Bowers",
    "",
    ""
   ],
@@ -235,16 +245,6 @@
    "",
    "",
    "",
-   "",
-   ""
-  ],
-  [
-   29,
-   "",
-   "",
-   "",
-   "",
-   "Brock Bowers",
    "",
    ""
   ],
@@ -1188,21 +1188,21 @@
    "projectionWeek": 4
   },
   {
+   "name": "Josh Allen",
+   "pos": "QB",
+   "value": 44,
+   "baselineValue": 44.51428571428571,
+   "sheetValue": 36,
+   "projection": 21.23,
+   "projectionWeek": 4
+  },
+  {
    "name": "Saquon Barkley",
    "pos": "RB",
    "value": 43,
    "baselineValue": 48,
    "sheetValue": 55,
    "projection": 13.13,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Josh Allen",
-   "pos": "QB",
-   "value": 41,
-   "baselineValue": 42,
-   "sheetValue": 41,
-   "projection": 21.23,
    "projectionWeek": 4
   },
   {
@@ -1233,6 +1233,15 @@
    "projectionWeek": 4
   },
   {
+   "name": "Trey McBride",
+   "pos": "TE",
+   "value": 36,
+   "baselineValue": 43.42857142857143,
+   "sheetValue": 30,
+   "projection": 13.14,
+   "projectionWeek": 4
+  },
+  {
    "name": "Drake London",
    "pos": "WR",
    "value": 33,
@@ -1242,12 +1251,12 @@
    "projectionWeek": 4
   },
   {
-   "name": "Trey McBride",
+   "name": "Brock Bowers",
    "pos": "TE",
    "value": 33,
-   "baselineValue": 41,
-   "sheetValue": 40,
-   "projection": 13.14,
+   "baselineValue": 38,
+   "sheetValue": 37,
+   "projection": 11.58,
    "projectionWeek": 4
   },
   {
@@ -1258,15 +1267,6 @@
    "sheetValue": 37,
    "projection": 12.94,
    "projectionWeek": 3
-  },
-  {
-   "name": "Brock Bowers",
-   "pos": "TE",
-   "value": 29,
-   "baselineValue": 35,
-   "sheetValue": 35,
-   "projection": 11.58,
-   "projectionWeek": 4
   },
   {
    "name": "Garrett Wilson",
@@ -1641,8 +1641,8 @@
    "name": "Drake Maye",
    "pos": "QB",
    "value": 8,
-   "baselineValue": 7,
-   "sheetValue": 7,
+   "baselineValue": 7.6,
+   "sheetValue": 11,
    "projection": 17.43,
    "projectionWeek": 4
   },
