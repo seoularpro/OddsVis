@@ -150,6 +150,31 @@ def refresh_receptions(year, week, previous=None, P=None):
             'players': dict(sorted(out.items()))}
 
 
+# ----------------------------------------------------------------------------- manual overrides
+def apply_overrides(players, path):
+    """Apply scripts/trade-values/overrides.json to the parsed baseline: pin values and
+    remove players. Names are matched like projections (suffix-insensitive). Returns a
+    summary; unknown names are reported so a typo never silently does nothing."""
+    try:
+        O = json.load(open(path))
+    except OSError:
+        return None
+    by_key = {norm_proj(p['name']): p for p in players}
+    applied, missing = [], []
+    for name, value in (O.get('set') or {}).items():
+        p = by_key.get(norm_proj(name))
+        if p is None:
+            missing.append(name); continue
+        applied.append(f"{p['name']} {p['value']:g}->{value:g}"); p['value'] = float(value)
+    removed = []
+    for name in O.get('remove') or []:
+        p = by_key.get(norm_proj(name))
+        if p is None:
+            missing.append(name); continue
+        players.remove(p); removed.append(p['name'])
+    return {'set': applied, 'removed': removed, 'missing': missing, 'updated': O.get('updated')}
+
+
 # ----------------------------------------------------------------------------- weekly re-seed
 def norm_proj(n):
     return re.sub(r' (Jr|Sr|II|III|IV)$', '', norm(n))
@@ -457,6 +482,12 @@ def main():
     else:
         base, baseline_desc = parse_grid(grid_from_published_sheet(P['baseline_sheet_url'])), 'the live Trade Values Google Sheet'
     players = base['players']
+    overrides = apply_overrides(players, os.path.join(HERE, 'overrides.json'))
+    if overrides:
+        print(f"overrides ({overrides['updated']}): set {', '.join(overrides['set']) or 'none'}; removed {', '.join(overrides['removed']) or 'none'}"
+              + (f"; NOT FOUND: {', '.join(overrides['missing'])}" if overrides['missing'] else ''))
+        if overrides['missing']:
+            sys.exit('refusing to publish: overrides.json names a player the sheet does not have')
     if len(players) < P.get('minimum_player_count', 50):
         sys.exit(f'refusing to publish: baseline has only {len(players)} players (expected at least {P.get("minimum_player_count", 50)})')
     reseed_info = None

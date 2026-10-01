@@ -1,0 +1,13 @@
+{
+  "_note": "Manual edits applied to the Half PPR 10-team baseline after it is read from the Google Sheet and before the weekly re-seed. `set` pins a player's baseline value (by exact sheet name); `remove` drops a player from every output (out for the season, retired). Edit this file, commit, and the workflow rebuilds within the hour.",
+  "updated": "2026-09-30",
+  "set": {
+    "Josh Allen": 41,
+    "Trey McBride": 40,
+    "Brock Bowers": 35,
+    "Drake Maye": 7
+  },
+  "remove": [
+    "De'Von Achane"
+  ]
+}

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-01T00:05:55Z",
+ "generatedAt": "2026-10-01T00:43:15Z",
  "key": "Standard_10",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -169,6 +169,16 @@
    ""
   ],
   [
+   42,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Josh Allen"
+  ],
+  [
    40,
    "Chase Brown",
    "",
@@ -199,20 +209,10 @@
    ""
   ],
   [
-   38,
+   34,
    "",
    "",
-   "",
-   "",
-   "",
-   "",
-   "Josh Allen"
-  ],
-  [
-   35,
-   "De'Von Achane",
-   "",
-   "",
+   "Drake London",
    "",
    "",
    "",
@@ -222,9 +222,9 @@
    34,
    "",
    "",
-   "Drake London",
    "",
    "",
+   "Trey McBride",
    "",
    ""
   ],
@@ -239,12 +239,12 @@
    ""
   ],
   [
-   30,
+   31,
    "",
    "",
-   "Nico Collins",
    "",
    "",
+   "Brock Bowers",
    "",
    ""
   ],
@@ -252,9 +252,9 @@
    30,
    "",
    "",
+   "Nico Collins",
    "",
    "",
-   "Brock Bowers",
    "",
    ""
   ],
@@ -295,16 +295,6 @@
    "",
    "",
    "",
-   "",
-   ""
-  ],
-  [
-   28,
-   "",
-   "",
-   "",
-   "",
-   "Trey McBride",
    "",
    ""
   ],
@@ -579,16 +569,6 @@
    ""
   ],
   [
-   12,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Drake Maye"
-  ],
-  [
    10,
    "MarShawn Lloyd",
    "",
@@ -644,16 +624,6 @@
    "",
    "",
    "",
-   "Isaiah Likely",
-   "",
-   ""
-  ],
-  [
-   10,
-   "",
-   "",
-   "",
-   "",
    "",
    "",
    "Joe Burrow"
@@ -667,16 +637,6 @@
    "",
    "",
    "Jayden Daniels"
-  ],
-  [
-   10,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Dak Prescott"
   ],
   [
    9,
@@ -727,6 +687,36 @@
    "",
    "",
    ""
+  ],
+  [
+   9,
+   "",
+   "",
+   "",
+   "",
+   "Isaiah Likely",
+   "",
+   ""
+  ],
+  [
+   9,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Drake Maye"
+  ],
+  [
+   9,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Dak Prescott"
   ],
   [
    8,
@@ -1207,6 +1197,15 @@
    "projectionWeek": 4
   },
   {
+   "name": "Josh Allen",
+   "pos": "QB",
+   "value": 42,
+   "baselineValue": 42,
+   "sheetValue": 41,
+   "projection": 21.23,
+   "projectionWeek": 4
+  },
+  {
    "name": "Chase Brown",
    "pos": "RB",
    "value": 40,
@@ -1234,30 +1233,21 @@
    "projectionWeek": 4
   },
   {
-   "name": "Josh Allen",
-   "pos": "QB",
-   "value": 38,
-   "baselineValue": 38,
-   "sheetValue": 36,
-   "projection": 21.23,
-   "projectionWeek": 4
-  },
-  {
-   "name": "De'Von Achane",
-   "pos": "RB",
-   "value": 35,
-   "baselineValue": 41,
-   "sheetValue": 41,
-   "projection": 13.24,
-   "projectionWeek": 3
-  },
-  {
    "name": "Drake London",
    "pos": "WR",
    "value": 34,
    "baselineValue": 40,
    "sheetValue": 37,
    "projection": 12.99,
+   "projectionWeek": 4
+  },
+  {
+   "name": "Trey McBride",
+   "pos": "TE",
+   "value": 34,
+   "baselineValue": 41,
+   "sheetValue": 40,
+   "projection": 13.14,
    "projectionWeek": 4
   },
   {
@@ -1270,21 +1260,21 @@
    "projectionWeek": 3
   },
   {
+   "name": "Brock Bowers",
+   "pos": "TE",
+   "value": 31,
+   "baselineValue": 35,
+   "sheetValue": 35,
+   "projection": 11.58,
+   "projectionWeek": 4
+  },
+  {
    "name": "Nico Collins",
    "pos": "WR",
    "value": 30,
    "baselineValue": 34,
    "sheetValue": 36,
    "projection": 12.23,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Brock Bowers",
-   "pos": "TE",
-   "value": 30,
-   "baselineValue": 34,
-   "sheetValue": 37,
-   "projection": 11.58,
    "projectionWeek": 4
   },
   {
@@ -1321,15 +1311,6 @@
    "baselineValue": 27,
    "sheetValue": 44,
    "projection": 8.69,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Trey McBride",
-   "pos": "TE",
-   "value": 28,
-   "baselineValue": 34,
-   "sheetValue": 30,
-   "projection": 13.14,
    "projectionWeek": 4
   },
   {
@@ -1576,15 +1557,6 @@
    "projectionWeek": 4
   },
   {
-   "name": "Drake Maye",
-   "pos": "QB",
-   "value": 12,
-   "baselineValue": 10,
-   "sheetValue": 11,
-   "projection": 17.43,
-   "projectionWeek": 4
-  },
-  {
    "name": "MarShawn Lloyd",
    "pos": "RB",
    "value": 10,
@@ -1630,15 +1602,6 @@
    "projectionWeek": 4
   },
   {
-   "name": "Isaiah Likely",
-   "pos": "TE",
-   "value": 10,
-   "baselineValue": 7,
-   "sheetValue": 10,
-   "projection": 7.63,
-   "projectionWeek": 4
-  },
-  {
    "name": "Joe Burrow",
    "pos": "QB",
    "value": 10,
@@ -1655,15 +1618,6 @@
    "sheetValue": 8,
    "projection": null,
    "projectionWeek": null
-  },
-  {
-   "name": "Dak Prescott",
-   "pos": "QB",
-   "value": 10,
-   "baselineValue": 7,
-   "sheetValue": 3,
-   "projection": 17.63,
-   "projectionWeek": 4
   },
   {
    "name": "David Montgomery",
@@ -1708,6 +1662,33 @@
    "baselineValue": 11,
    "sheetValue": 18,
    "projection": 6.82,
+   "projectionWeek": 4
+  },
+  {
+   "name": "Isaiah Likely",
+   "pos": "TE",
+   "value": 9,
+   "baselineValue": 7,
+   "sheetValue": 10,
+   "projection": 7.63,
+   "projectionWeek": 4
+  },
+  {
+   "name": "Drake Maye",
+   "pos": "QB",
+   "value": 9,
+   "baselineValue": 7,
+   "sheetValue": 7,
+   "projection": 17.43,
+   "projectionWeek": 4
+  },
+  {
+   "name": "Dak Prescott",
+   "pos": "QB",
+   "value": 9,
+   "baselineValue": 7,
+   "sheetValue": 3,
+   "projection": 17.63,
    "projectionWeek": 4
   },
   {

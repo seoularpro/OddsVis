@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-01T00:05:55Z",
+ "generatedAt": "2026-10-01T00:43:15Z",
  "key": "FullPPR_12",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
@@ -199,12 +199,12 @@
    ""
   ],
   [
-   40,
-   "De'Von Achane",
+   41,
    "",
    "",
    "",
    "",
+   "Trey McBride",
    "",
    ""
   ],
@@ -244,9 +244,9 @@
    "",
    "",
    "",
-   "Trey McBride",
    "",
-   ""
+   "",
+   "Josh Allen"
   ],
   [
    32,
@@ -259,7 +259,7 @@
    ""
   ],
   [
-   31,
+   32,
    "",
    "",
    "",
@@ -267,16 +267,6 @@
    "Brock Bowers",
    "",
    ""
-  ],
-  [
-   30,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Josh Allen"
   ],
   [
    29,
@@ -729,16 +719,6 @@
    ""
   ],
   [
-   4,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Drake Maye"
-  ],
-  [
    3,
    "MarShawn Lloyd",
    "",
@@ -867,6 +847,16 @@
    "Isaiah Likely",
    "",
    ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Drake Maye"
   ],
   [
    2,
@@ -1234,13 +1224,13 @@
    "projectionWeek": 4
   },
   {
-   "name": "De'Von Achane",
-   "pos": "RB",
-   "value": 40,
+   "name": "Trey McBride",
+   "pos": "TE",
+   "value": 41,
    "baselineValue": 41,
-   "sheetValue": 41,
-   "projection": 13.24,
-   "projectionWeek": 3
+   "sheetValue": 40,
+   "projection": 13.14,
+   "projectionWeek": 4
   },
   {
    "name": "Drake London",
@@ -1270,12 +1260,12 @@
    "projectionWeek": 4
   },
   {
-   "name": "Trey McBride",
-   "pos": "TE",
+   "name": "Josh Allen",
+   "pos": "QB",
    "value": 34,
-   "baselineValue": 34,
-   "sheetValue": 30,
-   "projection": 13.14,
+   "baselineValue": 42,
+   "sheetValue": 41,
+   "projection": 21.23,
    "projectionWeek": 4
   },
   {
@@ -1290,19 +1280,10 @@
   {
    "name": "Brock Bowers",
    "pos": "TE",
-   "value": 31,
-   "baselineValue": 34,
-   "sheetValue": 37,
+   "value": 32,
+   "baselineValue": 35,
+   "sheetValue": 35,
    "projection": 11.58,
-   "projectionWeek": 4
-  },
-  {
-   "name": "Josh Allen",
-   "pos": "QB",
-   "value": 30,
-   "baselineValue": 38,
-   "sheetValue": 36,
-   "projection": 21.23,
    "projectionWeek": 4
   },
   {
@@ -1711,15 +1692,6 @@
    "projectionWeek": 4
   },
   {
-   "name": "Drake Maye",
-   "pos": "QB",
-   "value": 4,
-   "baselineValue": 10,
-   "sheetValue": 11,
-   "projection": 17.43,
-   "projectionWeek": 4
-  },
-  {
    "name": "MarShawn Lloyd",
    "pos": "RB",
    "value": 3,
@@ -1834,6 +1806,15 @@
    "baselineValue": 7,
    "sheetValue": 10,
    "projection": 7.63,
+   "projectionWeek": 4
+  },
+  {
+   "name": "Drake Maye",
+   "pos": "QB",
+   "value": 2,
+   "baselineValue": 7,
+   "sheetValue": 7,
+   "projection": 17.43,
    "projectionWeek": 4
   },
   {
