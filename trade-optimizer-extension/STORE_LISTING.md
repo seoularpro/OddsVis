@@ -39,13 +39,13 @@ Analyze the fantasy football league open in the browser and recommend trades tha
 - storage: remembers the user's team per league, optimizer settings and license status.
 - activeTab: sends a request to the league page's content script when the user clicks Analyze.
 - scripting: injects the content script if the league page was already open when the extension was installed.
-- Host permissions: fantasy.espn.com / *.fantasy.espn.com and sleeper.com / api.sleeper.app to read league settings, rosters and free agents through the sites' own APIs; football.fantasysports.yahoo.com to recognize Yahoo pages and explain that they are unsupported; raw.githubusercontent.com to download the projection and trade-value datasets; api.lemonsqueezy.com to validate Pro license keys.
+- Host permissions: fantasy.espn.com / *.fantasy.espn.com and sleeper.com / api.sleeper.app to read league settings, rosters and free agents through the sites' own APIs; football.fantasysports.yahoo.com to recognize Yahoo pages and explain that they are unsupported; raw.githubusercontent.com to download the projection and trade-value datasets.
 
 **Remote code**: No. All code is packaged; only JSON data is downloaded.
 
 **Data use disclosure**
 - Collects: no personally identifiable information, no health/financial/auth info, no web history, no user activity, no website content beyond the league data processed locally.
-- The license key entered by the user is sent to the payment provider for validation only.
+- The license key entered by the user is verified inside the extension and is not transmitted anywhere. It contains the purchase email and expiry, stored locally to show who the license belongs to.
 - Not sold, not used for unrelated purposes, not used for creditworthiness.
 
 **Privacy policy URL**: https://<your-netlify-site>/trade-optimizer-privacy.html

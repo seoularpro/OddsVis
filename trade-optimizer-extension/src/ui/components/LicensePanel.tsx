@@ -48,7 +48,27 @@ export function LicensePanel({
           <p className="small">
             Free: full team analysis, league overview and {describeFreeRanks(config.freeRanks)}. Pro: every ranked trade with lineups, explanations and rank reasons.
           </p>
-          {config.plans.length ? (
+          {config.singleCheckout ? (
+            <>
+              <div className="plans">
+                {config.plans.map((plan) => (
+                  <div key={plan.id} className="plan plan-info">
+                    <span className="plan-label">{plan.label}</span>
+                    {plan.priceLabel ? <span className="plan-price">{plan.priceLabel}</span> : null}
+                    <span className="plan-desc muted small">{plan.description}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="license-row">
+                <button type="button" className="primary" onClick={() => onUpgrade()}>
+                  Unlock all trades{config.priceLabel ? ` · ${config.priceLabel}` : ""}
+                </button>
+                <span className="muted small">
+                  Choose your pass at checkout.{config.provider === "signed" ? " Your license key is emailed to you after payment." : ""}
+                </span>
+              </div>
+            </>
+          ) : config.plans.length ? (
             <div className="plans">
               {config.plans.map((plan) => (
                 <button key={plan.id} type="button" className={`plan${config.defaultPlan?.id === plan.id ? " plan-default" : ""}`} onClick={() => onUpgrade(plan)}>
@@ -61,7 +81,7 @@ export function LicensePanel({
           ) : (
             <div className="license-row">
               <button className="primary" disabled>Upgrade</button>
-              <span className="muted small">Checkout not configured (VITE_PAYWALL_STORE and VITE_PAYWALL_VARIANT_*).</span>
+              <span className="muted small">Checkout not configured (VITE_PAYWALL_CHECKOUT, or VITE_PAYWALL_STORE and VITE_PAYWALL_VARIANT_*).</span>
             </div>
           )}
           <form

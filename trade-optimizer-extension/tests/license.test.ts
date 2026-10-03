@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { EMPTY_LICENSE, LemonSqueezyValidator, RemoteValidator, activateLicense, applyResult, isEntitled, needsRevalidation, refreshLicense, type LicenseState } from "../src/shared/license";
+import { EMPTY_LICENSE, LemonSqueezyValidator, RemoteValidator, SignedKeyValidator, activateLicense, applyResult, isEntitled, needsRevalidation, refreshLicense, type LicenseState } from "../src/shared/license";
 import type { PaywallConfig } from "../src/shared/paywallConfig";
+import { defaultExpiry, generateKeyPair, signLicense } from "../scripts/license.mjs";
 
-const cfg: PaywallConfig = { provider: "lemonsqueezy", productName: "Pro", plans: [], defaultPlan: null, checkoutUrl: "https://x", validateUrl: "", priceLabel: "$5", freeRanks: [2], graceDays: 7, revalidateHours: 24 };
+const cfg: PaywallConfig = { provider: "lemonsqueezy", productName: "Pro", plans: [], defaultPlan: null, checkoutUrl: "https://x", singleCheckout: false, validateUrl: "", publicKey: "", priceLabel: "$5", freeRanks: [2], graceDays: 7, revalidateHours: 24 };
 const DAY = 24 * 60 * 60 * 1000;
 const now = Date.parse("2026-09-26T12:00:00Z");
 
@@ -92,5 +93,65 @@ describe("remote validator", () => {
     expect((await validator.activate("good", "x")).valid).toBe(true);
     expect((await validator.validate("bad", null)).valid).toBe(false);
     expect((await new RemoteValidator("").validate("good", null)).valid).toBe(false);
+  });
+});
+
+describe("signed key validator", () => {
+  const signedCfg: PaywallConfig = { ...cfg, provider: "signed" };
+
+  it("accepts keys issued by scripts/license.mjs and carries their email and expiry", async () => {
+    const pair = await generateKeyPair();
+    const validator = new SignedKeyValidator(pair.publicKey, () => now);
+    const key = await signLicense({ plan: "season", exp: "2027-02-01T00:00:00.000Z", email: "a@b.c", iat: "2026-09-26T12:00:00.000Z" }, pair.privateKey);
+    const state = await activateLicense(key, validator, "x", now);
+    expect(state.status).toBe("active");
+    expect(state.email).toBe("a@b.c");
+    expect(state.expiresAt).toBe("2027-02-01T00:00:00.000Z");
+    expect(isEntitled(state, signedCfg, now)).toBe(true);
+    expect(isEntitled(state, signedCfg, Date.parse("2027-02-02T00:00:00Z"))).toBe(false);
+    // A key wrapped by an email client still activates.
+    const wrapped = `  ${key.slice(0, 40)}\n${key.slice(40)} `;
+    expect((await activateLicense(wrapped, validator, "x", now)).status).toBe("active");
+    const lifetime = await signLicense({ plan: "lifetime", exp: null, email: "a@b.c" }, pair.privateKey);
+    const forever = await activateLicense(lifetime, validator, "x", now);
+    expect(forever.expiresAt).toBeNull();
+    expect(isEntitled(forever, signedCfg, now)).toBe(true);
+  });
+
+  it("re-validates locally and expires a stored key once its date passes", async () => {
+    const pair = await generateKeyPair();
+    const key = await signLicense({ plan: "weekend", exp: "2026-09-29T12:00:00.000Z", email: "a@b.c" }, pair.privateKey);
+    const state = await activateLicense(key, new SignedKeyValidator(pair.publicKey, () => now), "x", now);
+    const later = now + 5 * DAY;
+    const refreshed = await refreshLicense(state, new SignedKeyValidator(pair.publicKey, () => later), signedCfg, later);
+    expect(refreshed.status).toBe("expired");
+    expect(isEntitled(refreshed, signedCfg, later)).toBe(false);
+    const stale = await activateLicense(key, new SignedKeyValidator(pair.publicKey, () => later), "x", later);
+    expect(stale.status).toBe("expired");
+  });
+
+  it("rejects tampered, foreign and malformed keys, and fails closed when unconfigured", async () => {
+    const pair = await generateKeyPair();
+    const other = await generateKeyPair();
+    const validator = new SignedKeyValidator(pair.publicKey, () => now);
+    const key = await signLicense({ plan: "weekend", exp: "2026-09-29T12:00:00.000Z", email: "a@b.c" }, pair.privateKey);
+    const forgedPayload = Buffer.from(JSON.stringify({ plan: "lifetime", exp: null, email: "a@b.c" })).toString("base64url");
+    expect((await validator.activate(`${forgedPayload}.${key.split(".")[1]}`)).valid).toBe(false);
+    expect((await validator.activate(await signLicense({ plan: "lifetime", exp: null }, other.privateKey))).valid).toBe(false);
+    for (const junk of ["nope", "a.b", "a.b.c", `${key}.extra`, "38A0-LEMON-KEY"]) expect((await validator.validate(junk)).valid).toBe(false);
+    const unconfigured = await activateLicense(key, new SignedKeyValidator(""), "x", now);
+    expect(unconfigured.status).toBe("invalid");
+    expect(unconfigured.message).toMatch(/VITE_PAYWALL_PUBLIC_KEY/);
+  });
+
+  it("defaults each plan's expiry to what the paywall promises", () => {
+    // Saturday 26 Sep 2026: the weekend pass runs through Monday night.
+    expect(defaultExpiry("weekend", now)).toBe("2026-09-29T12:00:00.000Z");
+    expect(defaultExpiry("weekend", Date.parse("2026-09-29T09:00:00Z"))).toBe("2026-10-06T12:00:00.000Z");
+    expect(defaultExpiry("monthly", now)).toBe("2026-10-27T12:00:00.000Z");
+    expect(defaultExpiry("season", now)).toBe("2027-02-01T00:00:00.000Z");
+    expect(defaultExpiry("season", Date.parse("2027-01-10T00:00:00Z"))).toBe("2027-02-01T00:00:00.000Z");
+    expect(defaultExpiry("lifetime", now)).toBeNull();
+    expect(() => defaultExpiry("forever", now)).toThrow(/Unknown plan/);
   });
 });

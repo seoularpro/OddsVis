@@ -26,6 +26,25 @@ describe("paywall config", () => {
     expect(cfg.plans.find((p) => p.id === "monthly")?.checkoutUrl).toBe("https://buy.example/monthly");
     expect(cfg.defaultPlan?.id).toBe("monthly");
     expect(buildPaywallConfig({ VITE_PAYWALL_PROVIDER: "none" }).provider).toBe("none");
+    const signed = buildPaywallConfig({ ...env, VITE_PAYWALL_PROVIDER: "signed", VITE_PAYWALL_PUBLIC_KEY: " BPub " });
+    expect(signed.provider).toBe("signed");
+    expect(signed.publicKey).toBe("BPub");
+    expect(signed.plans.find((p) => p.id === "monthly")?.description).toMatch(/No auto-renewal/);
+    expect(buildPaywallConfig(env).plans.find((p) => p.id === "monthly")?.description).toMatch(/Renews monthly/);
+  });
+
+  it("sends every plan to one checkout link when VITE_PAYWALL_CHECKOUT is set", () => {
+    const cfg = buildPaywallConfig({ ...env, VITE_PAYWALL_CHECKOUT: " https://pay.example/all ", VITE_PAYWALL_CHECKOUT_MONTHLY: "https://buy.example/monthly" });
+    expect(cfg.singleCheckout).toBe(true);
+    expect(cfg.plans.map((p) => p.id)).toEqual(["weekend", "monthly", "season", "lifetime"]);
+    expect(new Set(cfg.plans.map((p) => p.checkoutUrl))).toEqual(new Set(["https://pay.example/all"]));
+    expect(cfg.checkoutUrl).toBe("https://pay.example/all");
+    expect(cfg.priceLabel).toBe("from $2.99");
+    // No store or variants needed.
+    const bare = buildPaywallConfig({ VITE_PAYWALL_CHECKOUT: "https://pay.example/all" });
+    expect(bare.plans).toHaveLength(4);
+    expect(bare.checkoutUrl).toBe("https://pay.example/all");
+    expect(buildPaywallConfig(env).singleCheckout).toBe(false);
   });
 
   it("parses free ranks, defaulting to the #2 trade, with the legacy count still honoured", () => {

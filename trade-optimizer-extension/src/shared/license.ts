@@ -181,6 +181,49 @@ export class RemoteValidator implements LicenseValidator {
   }
 }
 
+/**
+ * Offline keys issued by scripts/license.mjs: `<payload>.<signature>`, both
+ * base64url. The payload is JSON `{plan, exp, email, iat}` and the signature
+ * is ECDSA P-256 / SHA-256 over the payload text, checked against the public
+ * key baked in at build time. There is no server, so a key cannot be revoked
+ * before `exp`; rotating the key pair invalidates every key at once.
+ */
+export class SignedKeyValidator implements LicenseValidator {
+  constructor(private publicKey: string, private now: () => number = Date.now) {}
+
+  private async check(key: string): Promise<ValidationResult> {
+    if (!this.publicKey) return { valid: false, message: "License verification is not configured (VITE_PAYWALL_PUBLIC_KEY)." };
+    // Email clients wrap long keys, so drop any whitespace picked up on paste.
+    const [payload, signature, ...rest] = key.replace(/\s+/g, "").split(".");
+    if (!payload || !signature || rest.length) return { valid: false };
+    let claims: { exp?: string | null; email?: string | null };
+    try {
+      const publicKey = await crypto.subtle.importKey("raw", fromBase64Url(this.publicKey), { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]);
+      const ok = await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, publicKey, fromBase64Url(signature), new TextEncoder().encode(payload));
+      if (!ok) return { valid: false };
+      claims = JSON.parse(new TextDecoder().decode(fromBase64Url(payload)));
+    } catch {
+      return { valid: false };
+    }
+    const expiresAt = claims.exp ?? null;
+    const live = expiresAt === null || Date.parse(expiresAt) >= this.now();
+    return { valid: live, expiresAt, email: claims.email ?? null };
+  }
+
+  activate(key: string) {
+    return this.check(key);
+  }
+
+  validate(key: string) {
+    return this.check(key);
+  }
+}
+
+function fromBase64Url(text: string): Uint8Array<ArrayBuffer> {
+  const binary = atob(text.replace(/-/g, "+").replace(/_/g, "/"));
+  return Uint8Array.from(binary, (c) => c.charCodeAt(0));
+}
+
 export class AlwaysValidValidator implements LicenseValidator {
   async activate(): Promise<ValidationResult> {
     return { valid: true };
@@ -196,6 +239,8 @@ export function validatorFor(config: PaywallConfig): LicenseValidator {
       return new LemonSqueezyValidator();
     case "remote":
       return new RemoteValidator(config.validateUrl);
+    case "signed":
+      return new SignedKeyValidator(config.publicKey);
     default:
       return new AlwaysValidValidator();
   }

@@ -179,21 +179,47 @@ Configure at build time with a `.env` (see `.env.example`):
 
 | Variable | Meaning |
 |---|---|
-| `VITE_PAYWALL_PROVIDER` | `none` (everything free), `lemonsqueezy`, or `remote` |
-| `VITE_PAYWALL_CHECKOUT` | hosted checkout URL the Upgrade button opens in a tab |
+| `VITE_PAYWALL_PROVIDER` | `none` (everything free), `lemonsqueezy`, `remote`, or `signed` |
+| `VITE_PAYWALL_CHECKOUT` | one checkout URL for every plan (the buyer picks the plan there); when set it is the only link the UI opens |
+| `VITE_PAYWALL_CHECKOUT_<PLAN>` | per-plan checkout URL, for `WEEKEND`, `MONTHLY`, `SEASON`, `LIFETIME` |
 | `VITE_PAYWALL_VALIDATE` | `remote` only: your endpoint, `POST {key, instanceId?, instanceName?}` → `{valid, expiresAt?, email?, message?}` |
-| `VITE_PAYWALL_PRICE` | label beside Upgrade, e.g. `$4.99/mo` |
+| `VITE_PAYWALL_PUBLIC_KEY` | `signed` only: public key printed by `npm run license -- keygen` |
+| `VITE_PAYWALL_PRICE_<PLAN>` | price label per plan, e.g. `$4.99` |
 | `VITE_PAYWALL_FREE_RANKS` | ranks shown in full for free, comma-separated (default `2`) |
 
 Keys are activated once (Lemon Squeezy registers the install as an
 "instance"), stored in `chrome.storage.sync`, re-checked daily, and keep
 working for 7 days if the provider is unreachable. Logic lives in
 `src/shared/license.ts`; the UI only sees `isEntitled()`.
+The manifest does not request `api.lemonsqueezy.com`; add it back to
+`host_permissions` (and to the store listing and privacy policy) if you switch
+to the `lemonsqueezy` provider.
+
+### Signed keys (issue by hand, no billing provider)
+
+`VITE_PAYWALL_PROVIDER=signed` checks keys offline against a public key baked
+into the build, so you can sell through any payment link before a billing
+provider is set up.
+
+```bash
+npm run license -- keygen                                        # once; prints VITE_PAYWALL_PUBLIC_KEY for .env
+npm run license -- issue --plan season --email buyer@example.com # prints the key to send
+```
+
+Set `VITE_PAYWALL_CHECKOUT` to your payment link (or
+`VITE_PAYWALL_CHECKOUT_<PLAN>` for a separate link per plan). Default expiries follow the plan descriptions (weekend: next Tuesday
+noon UTC, monthly: 31 days, season: next 1 February, lifetime: never);
+`--expires <date>` overrides. The signing key and an `issued.jsonl` ledger
+live in `~/.oddsvis/` (override with `ODDSVIS_LICENSE_KEY_FILE`), never in
+the repo. A signed key cannot be revoked before it expires; `keygen --force`
+plus a new build invalidates all of them at once, which is also how to retire
+them when moving to another provider.
 
 Provider options:
 
 | Provider | Fit | Notes |
 |---|---|---|
+| **Signed keys** (built in) | validating demand before billing is approved | you take payment anywhere and email a key from `npm run license`; no backend, no revocation before expiry |
 | **Lemon Squeezy** (built in) | fastest, no backend | merchant of record (handles VAT/sales tax), subscriptions or one-off, license keys with a public validate/activate API usable straight from the extension |
 | **ExtensionPay** | fastest with sign-in-by-email | Stripe under the hood, made for extensions; needs its library in the background script and an extensionpay.com content script. Use `remote` with a tiny endpoint that checks `user.paid`, or wire its client library directly |
 | **Stripe + Netlify function** | most control | you are merchant of record; issue your own keys/JWT on `checkout.session.completed`, validate in a function next to `odds-react-app/netlify/functions`; `remote` provider |

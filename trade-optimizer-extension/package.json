@@ -14,6 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "package": "node scripts/package.mjs",
+    "license": "node scripts/license.mjs",
     "build:lib": "vite build --config vite.lib.config.ts && node scripts/lib-banner.mjs"
   },
   "dependencies": {

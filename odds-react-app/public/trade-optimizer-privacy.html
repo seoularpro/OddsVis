@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>OddsVis Trade Optimizer – Privacy Policy</h1>
-<p><em>Last updated: September 26, 2026</em></p>
+<p><em>Last updated: October 3, 2026</em></p>
 
 <p>OddsVis Trade Optimizer is a Chrome extension that analyzes the fantasy football league you have open and suggests trades. This page explains what data it touches and where it goes.</p>
 
@@ -25,13 +25,14 @@
 <h2>What leaves your browser</h2>
 <ul>
   <li><b>Nothing about your league or rosters is sent to OddsVis or any other server.</b> All analysis runs locally in the extension.</li>
-  <li><b>License key only.</b> If you purchase the Pro tier and enter a license key, the key and a short device label (for example "Chrome macOS") are sent to Lemon Squeezy, the payment provider, to confirm the key is valid. Lemon Squeezy's handling of that data is covered by its own privacy policy.</li>
-  <li>Purchases happen on Lemon Squeezy's checkout page in a normal browser tab. The extension never sees payment details.</li>
+  <li><b>License keys stay in your browser.</b> If you purchase the Pro tier and enter a license key, the extension checks the key's signature locally. The key is not sent to OddsVis or anyone else.</li>
+  <li>Purchases happen on PayPal's checkout page in a normal browser tab, covered by PayPal's own privacy policy. The extension never sees payment details. OddsVis keeps the email address you paid with and the plan you bought so it can send, and if needed re-send, your license key.</li>
 </ul>
 
 <h2>What is stored</h2>
 <ul>
-  <li>Your settings (chosen team per league, optimizer tolerances, optional custom dataset URLs) and your license status are stored with Chrome's extension storage and may sync across your Chrome profile.</li>
+  <li>Your settings (chosen team per league, optimizer tolerances, optional custom dataset URLs), your license key and its status are stored with Chrome's extension storage and may sync across your Chrome profile.</li>
+  <li>The license key contains the email address it was issued to and its expiry date, so the panel can show who it is licensed to.</li>
   <li>A trimmed copy of Sleeper's public player list may be cached locally for up to 24 hours to avoid re-downloading it.</li>
   <li>No analytics, tracking, or advertising identifiers are collected.</li>
 </ul>
@@ -41,11 +42,11 @@
   <li><code>sidePanel</code>: shows the analysis panel.</li>
   <li><code>storage</code>: saves settings and license status.</li>
   <li><code>activeTab</code> and <code>scripting</code>: talk to the league page you are viewing, and inject the reader if the page was opened before the extension was installed.</li>
-  <li>Host access to <code>fantasy.espn.com</code>, <code>sleeper.com</code>, <code>api.sleeper.app</code>, <code>raw.githubusercontent.com</code>, and <code>api.lemonsqueezy.com</code>: read league data, download the datasets, and validate license keys. Yahoo is recognized but not read.</li>
+  <li>Host access to <code>fantasy.espn.com</code>, <code>sleeper.com</code>, <code>api.sleeper.app</code>, and <code>raw.githubusercontent.com</code>: read league data and download the datasets. Yahoo is recognized but not read.</li>
 </ul>
 
 <h2>Your choices</h2>
-<p>Removing the extension deletes its stored settings and license status from Chrome. To deactivate a license on a device, use "Remove key" in the panel.</p>
+<p>Removing the extension deletes its stored settings and license status from Chrome. To remove a license from a device, use "Remove key" in the panel.</p>
 
 <h2>Contact</h2>
 <p>Questions about this policy: <a href="mailto:sangkyun.han@gmail.com">sangkyun.han@gmail.com</a>.</p>
