@@ -117,6 +117,10 @@
 .oto .trade-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); }
 .oto .trade-sides ul { list-style: none; padding: 0; margin: 0; }
 .oto .side-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 4px; }
+.oto .trade-actions { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.oto .site-link { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; }
+.oto .site-link:hover { filter: brightness(1.1); }
+.oto .trade-actions .muted { flex: 1 1 180px; }
 .oto .trade-detail { padding: 8px 12px 12px; border-top: 1px solid var(--line); }
 .oto .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
 .oto .metric { border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; }
