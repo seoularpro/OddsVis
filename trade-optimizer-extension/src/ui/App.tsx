@@ -127,19 +127,6 @@ export function App() {
     [settings, manualPlatform, manualLeagueId]
   );
 
-  const runDemo = useCallback(
-    (override?: ExtensionSettings) => {
-      setStatus({ kind: "working", stage: "Analyzing demo league…" });
-      try {
-        setOutput(analyzeDemo(override ?? settings));
-        setStatus({ kind: "done" });
-      } catch (e) {
-        setStatus({ kind: "error", message: (e as Error).message });
-      }
-    },
-    [settings]
-  );
-
   const pickTeam = useCallback(
     (teamId: string) => {
       if (!output) return;
@@ -180,7 +167,7 @@ export function App() {
     <div className="app">
       <header className="app-head">
         <div>
-          <h1>OddsVis Trade Optimizer</h1>
+          <h1>VegasLytics Trade Optimizer</h1>
           <p className="muted small">Top trades that raise your optimal starting lineup's median projection.</p>
         </div>
         <div className="actions">
@@ -189,9 +176,6 @@ export function App() {
               {status.kind === "working" ? "Working…" : output?.mode === "live" ? "Re-analyze this league" : "Analyze this league"}
             </button>
           ) : null}
-          <button className="ghost" disabled={status.kind === "working"} onClick={() => runDemo()}>
-            Demo league
-          </button>
         </div>
       </header>
 
@@ -204,7 +188,7 @@ export function App() {
       ) : null}
       {status.kind === "idle" && !output ? (
         <div className="note">
-          Open your ESPN or Sleeper league in the active tab and click <b>Analyze this league</b>. Not on a league page? Load a public league by id below, or try the demo league.
+          Open your ESPN or Sleeper league in the active tab and click <b>Analyze this league</b>. Not on a league page? Load a public league by id below.
         </div>
       ) : null}
 

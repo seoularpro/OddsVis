@@ -148,7 +148,7 @@ describe("signed key validator", () => {
     // Saturday 26 Sep 2026: the weekend pass runs through Monday night.
     expect(defaultExpiry("weekend", now)).toBe("2026-09-29T12:00:00.000Z");
     expect(defaultExpiry("weekend", Date.parse("2026-09-29T09:00:00Z"))).toBe("2026-10-06T12:00:00.000Z");
-    expect(defaultExpiry("monthly", now)).toBe("2026-10-27T12:00:00.000Z");
+    expect(defaultExpiry("monthly", now)).toBe("2026-10-26T12:00:00.000Z");
     expect(defaultExpiry("season", now)).toBe("2027-02-01T00:00:00.000Z");
     expect(defaultExpiry("season", Date.parse("2027-01-10T00:00:00Z"))).toBe("2027-02-01T00:00:00.000Z");
     expect(defaultExpiry("lifetime", now)).toBeNull();

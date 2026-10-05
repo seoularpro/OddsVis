@@ -12,3 +12,4 @@ export * from "./tradeExplainer";
 export * from "./tradeOptimizer";
 export * from "./waiverBaseline";
 export * from "./unfairTrades";
+export * from "./pagination";

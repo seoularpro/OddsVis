@@ -144,6 +144,7 @@ export function enrichLeague(
       injuryStatus: rp.injuryStatus,
       projection: proj.entry ? proj.entry.medianProjection : 0,
       projectionSource: proj.entry ? "dataset" : "none",
+      projectionStale: proj.entry?.stale === true,
       tradeValue: val.entry ? val.entry.tradeValue : 0,
       tradeValueSource: val.entry ? "dataset" : "none",
       matchConfidence: proj.entry ? proj.confidence : val.entry ? val.confidence : "unmatched",

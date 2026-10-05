@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "OddsVis Trade Optimizer",
-  "version": "0.1.0",
-  "description": "Top 10 realistic trades that raise your fantasy football starting lineup's projection, using OddsVis projections and values.",
+  "name": "VegasLytics Trade Optimizer",
+  "version": "1.0.3",
+  "description": "Top 10 realistic trades that raise your fantasy football starting lineup's projection, using VegasLytics projections and values.",
   "minimum_chrome_version": "116",
   "action": {
-    "default_title": "OddsVis Trade Optimizer (opens the side panel)",
+    "default_title": "VegasLytics Trade Optimizer (opens the side panel)",
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png"

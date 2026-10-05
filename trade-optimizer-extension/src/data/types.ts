@@ -11,6 +11,8 @@ export interface ProjectionEntry {
   position: Position;
   nflTeam?: string;
   medianProjection: number;
+  /** Had every required prop earlier in the week but the latest odds are missing some; the projection uses last posted values. */
+  stale?: boolean;
 }
 
 export interface TradeValueEntry {

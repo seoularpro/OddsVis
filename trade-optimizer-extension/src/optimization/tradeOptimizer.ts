@@ -9,9 +9,12 @@ import { evaluateAcceptance, scoreTrade, compareReason, compareRanked, type Acce
 import { explainTrade, type TradeExplanation } from "./tradeExplainer";
 import type { OptimizerConfig } from "./config";
 import { findUnfairTrades, type UnfairStats, type UnfairTrade } from "./unfairTrades";
+import { paginateByPartner } from "./pagination";
 
 export interface RankedTrade {
   rank: number;
+  /** 1-based page this trade appears on (pages of config.topN). */
+  page: number;
   simulation: TradeSimulation;
   score: ScoreBreakdown;
   acceptance: Acceptance;
@@ -28,9 +31,15 @@ export interface OptimizerStats extends GenerationStats {
 
 export interface OptimizerResult {
   analysis: LeagueAnalysis;
+  /** First page of ranked trades (the top N). */
   trades: RankedTrade[];
-  /** Value grabs that also help this week (see unfairTrades.ts). */
+  /** Every page, ranks continuous; `page` says where each trade sits. */
+  allTrades: RankedTrade[];
+  tradePageCount: number;
+  /** Value grabs that also help this week (see unfairTrades.ts): first page. */
   unfairTrades: UnfairTrade[];
+  allUnfairTrades: UnfairTrade[];
+  unfairPageCount: number;
   unfairStats: UnfairStats;
   partners: PartnerRanking[];
   stats: OptimizerStats;
@@ -82,38 +91,39 @@ export function runTradeOptimizer(league: League, overrides?: Partial<OptimizerC
 
   scored.sort((a, b) => compareRanked(a.score, b.score, config));
 
-  // Diversity: collapse throw-in variants of the same outcome, then at most
-  // maxTradesPerPartner results with the same partner.
-  const perPartner = new Map<string, number>();
+  // Diversity: collapse throw-in variants of the same outcome, then page the
+  // list with at most maxTradesPerPartner results per partner on each page.
   const seenOutcome = new Set<string>();
-  const chosen: typeof scored = [];
+  const distinct: typeof scored = [];
   for (const entry of scored) {
     const ok = outcomeKey(entry.sim);
     if (seenOutcome.has(ok)) continue;
     seenOutcome.add(ok);
-    const id = entry.sim.candidate.partnerTeamId;
-    const n = perPartner.get(id) ?? 0;
-    if (n >= config.maxTradesPerPartner) continue;
-    perPartner.set(id, n + 1);
-    chosen.push(entry);
-    if (chosen.length >= config.topN) break;
+    distinct.push(entry);
   }
+  const paged = paginateByPartner(distinct, (e) => e.sim.candidate.partnerTeamId, config.topN, config.maxTradesPerPartner, config.maxPages);
 
-  const trades: RankedTrade[] = chosen.map((entry, i) => ({
+  const allTrades: RankedTrade[] = paged.entries.map(({ item: entry, page }, i) => ({
     rank: i + 1,
+    page,
     simulation: entry.sim,
     score: entry.score,
     acceptance: entry.acceptance,
     explanation: explainTrade(entry.sim, analysis, entry.acceptance),
-    rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score, config).replace("#next", `#${i + 2}`) : null,
+    rankedAboveNextBecause: i + 1 < paged.entries.length ? compareReason(entry.score, paged.entries[i + 1].item.score, config).replace("#next", `#${i + 2}`) : null,
   }));
+  const trades = allTrades.filter((t) => t.page === 1);
 
   const unfair = findUnfairTrades(analysis, config);
 
   return {
     analysis,
     trades,
+    allTrades,
+    tradePageCount: paged.pageCount,
     unfairTrades: unfair.trades,
+    allUnfairTrades: unfair.allTrades,
+    unfairPageCount: unfair.pageCount,
     unfairStats: unfair.stats,
     partners,
     stats: { ...stats, simulated, accepted: scored.length, elapsedMs: Date.now() - start },

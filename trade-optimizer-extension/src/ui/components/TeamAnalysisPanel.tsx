@@ -4,8 +4,11 @@ import { OFFENSE_POSITIONS } from "../../domain/types";
 import { fmt1, money, ordinal, signed1 } from "../format";
 import { PlayerChip } from "./PlayerChip";
 import { LineupTable } from "./LineupTable";
+import { ExpandToggle } from "./ExpandToggle";
 
 export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis; team: TeamAnalysis }) {
+  // Collapsed, the card shows only the largest weaknesses.
+  const [open, setOpen] = useState(false);
   const [showLineup, setShowLineup] = useState(false);
   // Zero-gain roster-spot fills are applied to the baseline but are not advice worth showing.
   const adviceMoves = team.waiverMoves.filter((m) => m.gain >= 0.5);
@@ -18,17 +21,21 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
 
   return (
     <section className="card">
-      <div className="card-head">
+      <div className="card-head clickable" onClick={() => setOpen((v) => !v)}>
         <h2>Team analysis · {team.teamName}</h2>
+        <ExpandToggle open={open} more="Full analysis" />
+      </div>
+
+      {open ? (
         <div className="chips">
           <span className="chip">Optimal lineup <b>{fmt1(team.optimalStartingProjection)}</b></span>
           <span className="chip">Lineup rank <b>{ordinal(team.projectionRank)}</b></span>
           <span className="chip">Trade value <b>{money(team.totalTradeValue)}</b> ({ordinal(team.tradeValueRank)})</span>
           <span className="chip">Bench value <b>{money(team.benchTradeValue)}</b></span>
         </div>
-      </div>
+      ) : null}
 
-      {analysis.insight.length ? (
+      {open && analysis.insight.length ? (
         <div className="insight">
           {analysis.insight.map((line, i) => (
             <p key={i}>{line}</p>
@@ -36,7 +43,7 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
         </div>
       ) : null}
 
-      {adviceMoves.length ? (
+      {open && adviceMoves.length ? (
         <div className="note warn">
           <b>Do this first (free):</b>{" "}
           {adviceMoves.map((m, i) => (
@@ -48,10 +55,12 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
         </div>
       ) : null}
 
-      <button className="link" onClick={() => setShowLineup((v) => !v)}>
-        {showLineup ? "Hide" : "Show"} optimal lineup
-      </button>
-      {showLineup ? <LineupTable lineup={team.optimal} /> : null}
+      {open ? (
+        <button className="link" onClick={() => setShowLineup((v) => !v)}>
+          {showLineup ? "Hide" : "Show"} optimal lineup
+        </button>
+      ) : null}
+      {open && showLineup ? <LineupTable lineup={team.optimal} /> : null}
 
       <h3>Largest weaknesses</h3>
       <ol className="weakness-list">
@@ -81,6 +90,8 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
         ))}
       </ol>
 
+      {open ? (
+        <>
       <h3>Surplus / expendable assets</h3>
       {surplusAssets.length === 0 ? (
         <p className="muted">No expendable players with trade value: every valued player is in your optimal lineup.</p>
@@ -107,6 +118,8 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
             </div>
           ))}
       </div>
+        </>
+      ) : null}
     </section>
   );
 }

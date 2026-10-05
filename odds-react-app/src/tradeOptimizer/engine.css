@@ -110,6 +110,10 @@
 .oto .gain.you { color: var(--pos); font-weight: 700; }
 .oto .gain.them { color: var(--text); font-weight: 600; }
 .oto .caret { color: var(--muted); }
+.oto .toggle { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px 4px 12px; border-radius: 999px; border: 1.5px solid var(--accent); background: var(--card); color: var(--accent); font-size: 12px; font-weight: 700; }
+.oto .toggle:hover { background: var(--accent); color: #fff; }
+.oto .toggle-chevron { transition: transform 0.15s; }
+.oto .toggle[aria-expanded="true"] .toggle-chevron { transform: rotate(180deg); }
 .oto .trade-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); }
 .oto .trade-sides ul { list-style: none; padding: 0; margin: 0; }
 .oto .side-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 4px; }
@@ -156,6 +160,9 @@
 .oto .license-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
 .oto .license-row input { flex: 1; min-width: 160px; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 5px 6px; }
 .oto .tag-ok { background: var(--pos); color: #fff; }
+.oto #license { scroll-margin-top: 8px; }
+.oto .license-flash .license { animation: oto-license-flash 1.6s ease-out; }
+@keyframes oto-license-flash { 0%, 40% { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); } 100% { border-color: var(--line); box-shadow: 0 0 0 0 transparent; } }
 
 .oto .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 8px 0; }
 .oto .plan { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); }
@@ -168,11 +175,19 @@
 .oto .tier-win-win { background: var(--pos); color: #fff; }
 .oto .tier-mutual { background: var(--accent-soft); }
 .oto .tier-one-sided { background: var(--line); }
-.oto .list-tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--card); }
-.oto .list-tab { border: none; background: transparent; border-radius: 999px; padding: 4px 12px; font-weight: 600; color: var(--muted); }
+.oto .list-tabs { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--accent); border-radius: 10px; overflow: hidden; background: var(--card); margin: 6px 0 8px; }
+.oto .list-tab { display: flex; flex-direction: column; align-items: center; gap: 1px; border: none; border-radius: 0; background: transparent; padding: 9px 10px; color: var(--accent); }
+.oto .list-tab + .list-tab { border-left: 2px solid var(--accent); }
+.oto .list-tab-label { font-size: 14px; font-weight: 800; }
+.oto .list-tab-sub { font-size: 11px; font-weight: 500; }
+.oto .list-tab:not(.active):hover { background: var(--accent-soft); }
 .oto .list-tab.active { background: var(--accent); color: #fff; }
 .oto .list-note { margin: 2px 0 8px; }
 .oto .tier-unfair { background: var(--warn-bg); border: 1px solid var(--warn-line); }
 .oto .gain.value { color: var(--accent); font-weight: 700; }
 .oto .gain.neg { color: var(--neg); font-weight: 600; }
 .oto .trade.unfair .trade-head { background: color-mix(in srgb, var(--card) 85%, var(--warn-bg)); }
+.oto .pager { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0; }
+.oto .pager-btn { border-radius: 999px; padding: 5px 12px; font-weight: 600; }
+.oto .pager-btn:disabled { opacity: 0.4; cursor: default; }
+.oto .pager-status { font-size: 12px; text-align: center; }

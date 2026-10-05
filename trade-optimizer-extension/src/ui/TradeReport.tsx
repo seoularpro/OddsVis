@@ -1,8 +1,8 @@
-// The results block shared by the extension panel and the website: league
-// chips, dataset notes, team analysis, gated trade list, license panel and
+// The results block shared by the extension panel and the website: license
+// panel, league chips, dataset notes, team analysis, gated trade list and
 // league table. Data fetching and settings live in the host.
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { League } from "../domain/types";
 import { OFFENSE_POSITIONS } from "../domain/types";
 import type { OptimizerResult } from "../optimization/tradeOptimizer";
@@ -39,23 +39,65 @@ export function describeScoring(s: { receptionPoints: number; passTdPoints: numb
   return s.passTdPoints === 4 ? rec : `${rec} · ${s.passTdPoints}pt pass TD`;
 }
 
+/** Show the "limited suggestions" note only when fewer than this share of rostered QB/RB/WR/TE have posted props. */
+const THIN_PROPS_COVERAGE = 0.5;
+
 export function TradeReport(props: TradeReportProps) {
   const { result, league, report, datasetLabels, warnings, onPickTeam, license, paywall, entitled, licenseBusy, onActivate, onRemoveLicense, onUpgrade, only } = props;
   const show = (block: "analysis" | "trades" | "league" | "license" | "meta") => !only || only === block || (block === "meta" && false);
   const analysis = result.analysis;
   const user = analysis.user;
   const [list, setList] = useState<"fair" | "unfair">("fair");
-  const firstVisibleRank = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))?.rank ?? 1;
-  const firstVisibleUnfair = result.unfairTrades.find((t) => entitled || paywall.freeRanks.includes(t.rank))?.rank ?? 1;
+  // Pagination: the engine ranks every acceptable trade in pages of topN.
+  const fairAll = result.allTrades ?? result.trades;
+  const unfairAll = result.allUnfairTrades ?? result.unfairTrades;
+  const [pages, setPages] = useState({ fair: 1, unfair: 1 });
+  useEffect(() => setPages({ fair: 1, unfair: 1 }), [result]);
+  const pageCount = Math.max(1, list === "fair" ? result.tradePageCount ?? 1 : result.unfairPageCount ?? 1);
+  const page = Math.min(pages[list], pageCount);
+  const tradesRef = useRef<HTMLElement>(null);
+  const goToPage = (next: number) => {
+    setPages((p) => ({ ...p, [list]: Math.max(1, Math.min(pageCount, next)) }));
+    tradesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const fairPage = fairAll.filter((t) => (t.page ?? 1) === page);
+  const unfairPage = unfairAll.filter((t) => (t.page ?? 1) === page);
+  const shown = list === "fair" ? fairPage : unfairPage;
+  const total = list === "fair" ? fairAll.length : unfairAll.length;
+  const pager =
+    pageCount > 1 ? (
+      <nav className="pager" aria-label="Trade pages">
+        <button type="button" className="pager-btn" disabled={page <= 1} onClick={() => goToPage(page - 1)}>
+          ‹ Previous
+        </button>
+        <span className="pager-status">
+          Page <b>{page}</b> of {pageCount}
+          {shown.length ? <span className="muted"> · #{shown[0].rank}–#{shown[shown.length - 1].rank} of {total}</span> : null}
+        </span>
+        <button type="button" className="pager-btn" disabled={page >= pageCount} onClick={() => goToPage(page + 1)}>
+          Next ›
+        </button>
+      </nav>
+    ) : null;
+  // Locked cards send the user to the plans rather than straight to one plan's checkout.
+  const licenseRef = useRef<HTMLDivElement>(null);
+  const [flash, setFlash] = useState(false);
+  const showPlans = () => {
+    if (!licenseRef.current) return onUpgrade();
+    licenseRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    setFlash(true);
+  };
 
   // Props coverage: only players with a posted line can be traded on, so a
   // thin week (typically Tuesday/Wednesday) yields far fewer suggestions.
   const offense = league.teams.flatMap((t) => t.players).filter((p) => OFFENSE_POSITIONS.includes(p.position));
   const withProps = offense.filter((p) => p.projectionSource === "dataset").length;
   const coverage = offense.length ? withProps / offense.length : 1;
-  const thinProps = coverage < 0.85;
+  const thinProps = coverage < THIN_PROPS_COVERAGE;
   const userOffense = user ? user.roster.filter((p) => OFFENSE_POSITIONS.includes(p.position)) : [];
   const userWithProps = userOffense.filter((p) => p.projectionSource === "dataset").length;
+  // Complete earlier in the week, but the latest odds dropped a required prop: never offered or requested.
+  const staleNames = offense.filter((p) => p.projectionStale).map((p) => p.name);
   return (
     <>
       {show("meta") ? <div className="chips">
@@ -77,68 +119,82 @@ export function TradeReport(props: TradeReportProps) {
 
       {!user && show("meta") ? <div className="note warn">Which team is yours? Pick it in the league table below.</div> : null}
 
+      {user && show("trades") ? (
+        <section id="trades" ref={tradesRef}>
+          <div className="section-head">
+            <h2>Suggested trades</h2>
+          </div>
+          <div className="list-tabs" role="tablist" aria-label="Trade type">
+            <button type="button" role="tab" aria-selected={list === "fair"} className={`list-tab${list === "fair" ? " active" : ""}`} onClick={() => setList("fair")}>
+              <span className="list-tab-label">Fair trades ({fairAll.length})</span>
+              <span className="list-tab-sub">Both managers have a reason to say yes</span>
+            </button>
+            <button type="button" role="tab" aria-selected={list === "unfair"} className={`list-tab${list === "unfair" ? " active" : ""}`} onClick={() => setList("unfair")}>
+              <span className="list-tab-label">Unfair trades ({unfairAll.length})</span>
+              <span className="list-tab-sub">Lopsided in your favor</span>
+            </button>
+          </div>
+          <div className="muted small list-note">
+            {list === "fair"
+              ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.`
+              : `Lopsided in your favor but still takeable: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, you never get back a player worth more than the best one you send or within ${analysis.config.unfairMinValueGapPercent}% of any player you send, the deal raises both your total trade value and this week's lineup, they get at most ${analysis.config.unfairMaxValueGainPercent}% less value, lose at most ${analysis.config.unfairMaxOpponentLoss} points, and have an angle to say yes. ${result.unfairStats.plausible} of ${result.unfairStats.qualifying} value grabs made the cut.`}
+          </div>
+          {thinProps ? (
+            <div className="note warn">
+              <b>Limited suggestions this week so far.</b> Props are posted for only {withProps} of {offense.length} rostered QB/RB/WR/TE ({Math.round(coverage * 100)}%)
+              {user ? `, including ${userWithProps} of ${userOffense.length} on your team` : ""}. Players without a line are never offered or requested, so fewer trades qualify
+              {fairAll.length < 5 ? ` (${fairAll.length} shown)` : ""}. Lines usually fill in by Wednesday or Thursday; re-run then for the full list.
+            </div>
+          ) : null}
+          {staleNames.length ? (
+            <div className="note">
+              <b>Left out of trades:</b> {staleNames.slice(0, 8).join(", ")}
+              {staleNames.length > 8 ? ` and ${staleNames.length - 8} more` : ""}. The latest odds no longer post every prop needed for {staleNames.length === 1 ? "this player's" : "these players'"} projection, so {staleNames.length === 1 ? "it relies" : "they rely"} on older lines.
+            </div>
+          ) : null}
+          {pager}
+          {list === "fair" ? (
+            fairAll.length === 0 ? (
+              <div className="note">
+                No trade cleared the bar (gain ≥ {analysis.config.minUserGain} pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings.
+              </div>
+            ) : (
+              fairPage.map((t) =>
+                entitled || paywall.freeRanks.includes(t.rank) ? (
+                  <TradeCard key={t.rank} trade={t} analysis={analysis} />
+                ) : (
+                  <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={showPlans} priceLabel={paywall.priceLabel} />
+                )
+              )
+            )
+          ) : unfairAll.length === 0 ? (
+            <div className="note">
+              No unfair trade qualified: nothing that sends only players worth more than ${analysis.config.unfairMinOutgoingValue} raises both your total trade value and this week's lineup.
+            </div>
+          ) : (
+            unfairPage.map((t) =>
+              entitled || paywall.freeRanks.includes(t.rank) ? (
+                <UnfairTradeCard key={t.rank} trade={t} analysis={analysis} />
+              ) : (
+                <LockedTradeCard key={t.rank} trade={{ rank: t.rank, simulation: t.simulation, valueGain: t.valueGain }} analysis={analysis} onUpgrade={showPlans} priceLabel={paywall.priceLabel} />
+              )
+            )
+          )}
+          {pager}
+        </section>
+      ) : null}
+
       {user && show("analysis") ? (
         <div id="analysis">
           <TeamAnalysisPanel analysis={analysis} team={user} />
         </div>
       ) : null}
 
-      {user && show("trades") ? (
-        <section id="trades">
-          <div className="section-head">
-            <h2>Suggested trades</h2>
-            <div className="list-tabs" role="tablist">
-              <button type="button" role="tab" aria-selected={list === "fair"} className={`list-tab${list === "fair" ? " active" : ""}`} onClick={() => setList("fair")}>
-                Fair ({result.trades.length})
-              </button>
-              <button type="button" role="tab" aria-selected={list === "unfair"} className={`list-tab${list === "unfair" ? " active" : ""}`} onClick={() => setList("unfair")}>
-                Unfair ({result.unfairTrades.length})
-              </button>
-            </div>
-          </div>
-          <div className="muted small list-note">
-            {list === "fair"
-              ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.`
-              : `Lopsided in your favor but still takeable: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, the deal raises both your total trade value and this week's lineup, they get at most ${analysis.config.unfairMaxValueGainPercent}% less value, lose at most ${analysis.config.unfairMaxOpponentLoss} points, and have an angle to say yes. ${result.unfairStats.plausible} of ${result.unfairStats.qualifying} value grabs made the cut.`}
-          </div>
-          {thinProps ? (
-            <div className="note warn">
-              <b>Limited suggestions this week so far.</b> Props are posted for only {withProps} of {offense.length} rostered QB/RB/WR/TE ({Math.round(coverage * 100)}%)
-              {user ? `, including ${userWithProps} of ${userOffense.length} on your team` : ""}. Players without a line are never offered or requested, so fewer trades qualify
-              {result.trades.length < 5 ? ` (${result.trades.length} shown)` : ""}. Lines usually fill in by Wednesday or Thursday; re-run then for the full list.
-            </div>
-          ) : null}
-          {list === "fair" ? (
-            result.trades.length === 0 ? (
-              <div className="note">
-                No trade cleared the bar (gain ≥ {analysis.config.minUserGain} pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings.
-              </div>
-            ) : (
-              result.trades.map((t) =>
-                entitled || paywall.freeRanks.includes(t.rank) ? (
-                  <TradeCard key={t.rank} trade={t} analysis={analysis} defaultOpen={t.rank === firstVisibleRank} />
-                ) : (
-                  <LockedTradeCard key={t.rank} trade={t} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />
-                )
-              )
-            )
-          ) : result.unfairTrades.length === 0 ? (
-            <div className="note">
-              No unfair trade qualified: nothing that sends only players worth more than ${analysis.config.unfairMinOutgoingValue} raises both your total trade value and this week's lineup.
-            </div>
-          ) : (
-            result.unfairTrades.map((t) =>
-              entitled || paywall.freeRanks.includes(t.rank) ? (
-                <UnfairTradeCard key={t.rank} trade={t} analysis={analysis} defaultOpen={t.rank === firstVisibleUnfair} />
-              ) : (
-                <LockedTradeCard key={t.rank} trade={{ rank: t.rank, simulation: t.simulation, valueGain: t.valueGain }} analysis={analysis} onUpgrade={() => onUpgrade()} priceLabel={paywall.priceLabel} />
-              )
-            )
-          )}
-        </section>
+      {show("license") ? (
+        <div id="license" ref={licenseRef} className={flash ? "license-flash" : undefined} onAnimationEnd={() => setFlash(false)}>
+          <LicensePanel license={license} config={paywall} entitled={entitled} busy={licenseBusy} onActivate={onActivate} onRemove={onRemoveLicense} onUpgrade={onUpgrade} />
+        </div>
       ) : null}
-
-      {show("license") ? <LicensePanel license={license} config={paywall} entitled={entitled} busy={licenseBusy} onActivate={onActivate} onRemove={onRemoveLicense} onUpgrade={onUpgrade} /> : null}
 
       {show("league") ? (
         <div id="league">

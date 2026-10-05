@@ -1,4 +1,4 @@
-# OddsVis Trade Optimizer (Chrome extension)
+# VegasLytics Trade Optimizer (Chrome extension)
 
 A Manifest V3 Chrome extension that reads the fantasy football league open in
 the browser, matches every roster against OddsVis' weekly median projections
@@ -143,7 +143,12 @@ content script (page origin)          side panel (extension page)
 A second, separately ranked list (`optimization/unfairTrades.ts`, the
 "Unfair" tab in the panel): you send only players worth more than $30
 (`unfairMinOutgoingValue`), and the deal must raise both your total trade
-value and this week's optimal lineup. The 15 %/$4 tolerance and the normal
+value and this week's optimal lineup. No player you receive may be worth
+more than the best player you send, or within 10 % of any player you send
+(`unfairMinValueGapPercent`: a $40 player never brings back one worth $36 or
+more), so the extra value comes from the shape of the package rather than a
+near-equal swap (1-for-1 and 2-for-1 deals can never qualify). The
+15 %/$4 tolerance and the normal
 opponent-benefit test do not apply; instead the list is bounded to deals a
 manager might take: they get at most 75 % less value than they give
 (`unfairMaxValueGainPercent`), their lineup loses at most 6 points this week
@@ -169,9 +174,9 @@ The panel stylesheet is scoped under `.oto` and maps its tokens to the site's
 
 ## Paywall (free tier that sells)
 
-Free: team analysis, weaknesses, surplus, league overview and the **#2**
-trade in full (the #1 trade is teased, so the best deal is the reason to
-upgrade). Pro: every ranked trade with lineups, explanations and rank
+Free: team analysis, weaknesses, surplus, league overview and the **#1**
+trade in full (the best deal shows what the tool does; the rest are the reason
+to upgrade). Pro: every ranked trade with lineups, explanations and rank
 reasons. Teased trades show partner, gains and package shape only; the
 players are never rendered.
 
@@ -185,7 +190,7 @@ Configure at build time with a `.env` (see `.env.example`):
 | `VITE_PAYWALL_VALIDATE` | `remote` only: your endpoint, `POST {key, instanceId?, instanceName?}` → `{valid, expiresAt?, email?, message?}` |
 | `VITE_PAYWALL_PUBLIC_KEY` | `signed` only: public key printed by `npm run license -- keygen` |
 | `VITE_PAYWALL_PRICE_<PLAN>` | price label per plan, e.g. `$4.99` |
-| `VITE_PAYWALL_FREE_RANKS` | ranks shown in full for free, comma-separated (default `2`) |
+| `VITE_PAYWALL_FREE_RANKS` | ranks shown in full for free, comma-separated (default `1`) |
 
 Keys are activated once (Lemon Squeezy registers the install as an
 "instance"), stored in `chrome.storage.sync`, re-checked daily, and keep
@@ -208,7 +213,7 @@ npm run license -- issue --plan season --email buyer@example.com # prints the ke
 
 Set `VITE_PAYWALL_CHECKOUT` to your payment link (or
 `VITE_PAYWALL_CHECKOUT_<PLAN>` for a separate link per plan). Default expiries follow the plan descriptions (weekend: next Tuesday
-noon UTC, monthly: 31 days, season: next 1 February, lifetime: never);
+noon UTC, monthly: 30 days, season: next 1 February, lifetime: never);
 `--expires <date>` overrides. The signing key and an `issued.jsonl` ledger
 live in `~/.oddsvis/` (override with `ODDSVIS_LICENSE_KEY_FILE`), never in
 the repo. A signed key cannot be revoked before it expires; `keygen --force`

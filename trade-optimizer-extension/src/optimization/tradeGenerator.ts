@@ -66,6 +66,9 @@ export function rankPartners(analysis: LeagueAnalysis, user: TeamAnalysis): Part
  *  - Players without a projection this week are excluded on both sides: with a
  *    0 projection they would look like free expendable assets (or worthless
  *    targets) when the truth is simply unknown.
+ *  - Players whose latest odds no longer post every required prop are excluded
+ *    too: their projection leans on last posted values, which usually means
+ *    the books pulled a line (injury news, a role change).
  *  - Waiver-wire players are worthless by definition ($0), so anyone the
  *    baseline pulled from waivers, and any rostered player with no trade
  *    value, is never part of a package. They still count in lineups.
@@ -76,6 +79,7 @@ export function tradeable(players: Player[], excludeIds: ReadonlySet<string> = n
     (p) =>
       OFFENSE_POSITIONS.includes(p.position) &&
       p.projectionSource === "dataset" &&
+      !p.projectionStale &&
       p.projection > 0 &&
       p.tradeValue > 0 &&
       (p.position !== "QB" || p.tradeValue > minQbTradeValue) &&

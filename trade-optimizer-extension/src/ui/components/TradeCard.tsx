@@ -5,9 +5,10 @@ import { fmt1, money, signed1 } from "../format";
 import { TIER_LABEL } from "../../optimization/tradeScorer";
 import { PlayerChip } from "./PlayerChip";
 import { LineupTable } from "./LineupTable";
+import { ExpandToggle } from "./ExpandToggle";
 
-export function TradeCard({ trade, analysis, defaultOpen }: { trade: RankedTrade; analysis: LeagueAnalysis; defaultOpen?: boolean }) {
-  const [open, setOpen] = useState(defaultOpen ?? trade.rank === 1);
+export function TradeCard({ trade, analysis }: { trade: RankedTrade; analysis: LeagueAnalysis }) {
+  const [open, setOpen] = useState(false);
   const [showLineups, setShowLineups] = useState(false);
   const sim = trade.simulation;
   const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId)!;
@@ -37,7 +38,7 @@ export function TradeCard({ trade, analysis, defaultOpen }: { trade: RankedTrade
             </div>
           ) : null}
         </div>
-        <div className="caret">{open ? "▾" : "▸"}</div>
+        <ExpandToggle open={open} />
       </header>
 
       <div className="trade-sides">

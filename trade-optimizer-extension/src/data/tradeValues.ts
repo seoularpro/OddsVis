@@ -51,7 +51,7 @@ export class PublishedTradeValueSource implements TradeValueSource {
     return {
       entries,
       source: this.id,
-      label: `OddsVis trade values · ${data.scoringLabel ?? scoringKeyFor(request.scoring.receptionPoints)} · ${data.leagueSize ?? leagueSizeKeyFor(request.teamCount)}-team`,
+      label: `VegasLytics trade values · ${data.scoringLabel ?? scoringKeyFor(request.scoring.receptionPoints)} · ${data.leagueSize ?? leagueSizeKeyFor(request.teamCount)}-team`,
       generatedAt: data.generatedAt,
     };
   }

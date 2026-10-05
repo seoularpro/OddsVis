@@ -4,6 +4,7 @@ import { analyzeLeague } from "../src/optimization/teamAnalyzer";
 import { generateCandidates, tradeable, valueWithinTolerance } from "../src/optimization/tradeGenerator";
 import { fitRosterToSize, simulateTrade } from "../src/optimization/tradeSimulator";
 import { runTradeOptimizer } from "../src/optimization/tradeOptimizer";
+import { paginateByPartner } from "../src/optimization/pagination";
 import { DEFAULT_CONFIG, mergeConfig, secondaryBand } from "../src/optimization/config";
 import { evaluateAcceptance } from "../src/optimization/tradeScorer";
 import { optimizeLineup } from "../src/optimization/lineupOptimizer";
@@ -315,6 +316,25 @@ describe("waiver baseline", () => {
   });
 });
 
+describe("players missing a required prop", () => {
+  it("are never offered or requested, on either list", () => {
+    const before = runTradeOptimizer(syntheticLeague());
+    const inTrades = (r: typeof before) =>
+      new Set([...r.trades, ...r.unfairTrades].flatMap((t) => [...t.simulation.candidate.userSends, ...t.simulation.candidate.userReceives].map((p) => p.id)));
+    // Flag one player the user sends and one the user receives in the current suggestions.
+    const flagged = new Set([before.trades[0].simulation.candidate.userSends[0].id, before.trades[0].simulation.candidate.userReceives[0].id, before.unfairTrades[0].simulation.candidate.userReceives[0].id]);
+    for (const id of flagged) expect(inTrades(before).has(id)).toBe(true);
+    const league = syntheticLeague();
+    for (const team of league.teams) for (const p of team.players) if (flagged.has(p.id)) p.projectionStale = true;
+    const after = runTradeOptimizer(league);
+    expect(after.trades.length).toBeGreaterThan(0);
+    for (const id of flagged) expect(inTrades(after).has(id)).toBe(false);
+    // They still count in lineups: flagged starters stay in their team's optimal lineup.
+    const starters = new Set(after.analysis.teams.flatMap((t) => t.optimal.starters.map((p) => p.id)));
+    expect([...flagged].some((id) => starters.has(id))).toBe(true);
+  });
+});
+
 describe("unfair trades", () => {
   it("lists value grabs that also raise this week's lineup, sending only players worth more than $30", () => {
     const result = runTradeOptimizer(syntheticLeague());
@@ -334,9 +354,48 @@ describe("unfair trades", () => {
       expect(t.simulation.user.tradeValueReceived).toBeLessThanOrEqual(t.simulation.user.tradeValueSent * (1 + DEFAULT_CONFIG.unfairMaxValueGainPercent / 100) + 1e-9);
       expect(t.simulation.opponent.projectionGain).toBeGreaterThanOrEqual(-DEFAULT_CONFIG.unfairMaxOpponentLoss);
       expect(t.opponentAngle).toBeTruthy();
+      // No player received is worth more than the best player sent, or within 10% of any player sent.
+      const sends = t.simulation.candidate.userSends;
+      const bestSent = Math.max(...sends.map((p) => p.tradeValue));
+      for (const r of t.simulation.candidate.userReceives) {
+        expect(r.tradeValue).toBeLessThanOrEqual(bestSent);
+        for (const s of sends) expect(Math.abs(r.tradeValue - s.tradeValue)).toBeGreaterThan(s.tradeValue * (DEFAULT_CONFIG.unfairMinValueGapPercent / 100));
+      }
     }
     expect(result.unfairStats.plausible).toBeLessThanOrEqual(result.unfairStats.qualifying);
     // Unlike the fair list, the 15%/$4 tolerance is not required.
     expect(result.unfairTrades.some((t) => !t.acceptance.accepted)).toBe(true);
+  });
+});
+
+describe("pagination", () => {
+  it("paginateByPartner keeps every page diverse and defers the overflow in rank order", () => {
+    const items = ["a1", "a2", "a3", "a4", "b1", "a5", "b2", "c1"];
+    const { entries, pageCount } = paginateByPartner(items, (x) => x[0], 4, 2, 10);
+    expect(entries.map((e) => `${e.item}@${e.page}`)).toEqual(["a1@1", "a2@1", "b1@1", "b2@1", "a3@2", "a4@2", "c1@2", "a5@3"]);
+    expect(pageCount).toBe(3);
+    expect(paginateByPartner(items, (x) => x[0], 4, 2, 1).entries).toHaveLength(4);
+    expect(paginateByPartner([], (x: string) => x, 4, 2, 10)).toEqual({ entries: [], pageCount: 0 });
+  });
+
+  it("exposes every acceptable trade in pages, with page 1 unchanged", () => {
+    const result = runTradeOptimizer(syntheticLeague());
+    expect(result.trades).toEqual(result.allTrades.filter((t) => t.page === 1));
+    expect(result.allTrades.length).toBeGreaterThan(result.trades.length);
+    expect(result.tradePageCount).toBeGreaterThan(1);
+    expect(result.tradePageCount).toBeLessThanOrEqual(DEFAULT_CONFIG.maxPages);
+    result.allTrades.forEach((t, i) => expect(t.rank).toBe(i + 1));
+    for (let page = 1; page <= result.tradePageCount; page++) {
+      const onPage = result.allTrades.filter((t) => t.page === page);
+      expect(onPage.length).toBeGreaterThan(0);
+      expect(onPage.length).toBeLessThanOrEqual(DEFAULT_CONFIG.topN);
+      const perPartner = new Map<string, number>();
+      for (const t of onPage) perPartner.set(t.simulation.candidate.partnerTeamId, (perPartner.get(t.simulation.candidate.partnerTeamId) ?? 0) + 1);
+      for (const n of perPartner.values()) expect(n).toBeLessThanOrEqual(DEFAULT_CONFIG.maxTradesPerPartner);
+    }
+    // No trade appears twice, and the unfair list is paged the same way.
+    const keys = result.allTrades.map((t) => `${t.simulation.candidate.partnerTeamId}|${t.simulation.candidate.userSends.map((p) => p.id).sort()}|${t.simulation.candidate.userReceives.map((p) => p.id).sort()}`);
+    expect(new Set(keys).size).toBe(keys.length);
+    expect(result.unfairTrades).toEqual(result.allUnfairTrades.filter((t) => t.page === 1));
   });
 });

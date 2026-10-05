@@ -47,8 +47,8 @@ describe("paywall config", () => {
     expect(buildPaywallConfig(env).singleCheckout).toBe(false);
   });
 
-  it("parses free ranks, defaulting to the #2 trade, with the legacy count still honoured", () => {
-    expect(buildPaywallConfig({}).freeRanks).toEqual([2]);
+  it("parses free ranks, defaulting to the #1 trade, with the legacy count still honoured", () => {
+    expect(buildPaywallConfig({}).freeRanks).toEqual([1]);
     expect(buildPaywallConfig({ VITE_PAYWALL_FREE_RANKS: "2, 4,4" }).freeRanks).toEqual([2, 4]);
     expect(buildPaywallConfig({ VITE_PAYWALL_FREE_TRADES: "3" }).freeRanks).toEqual([1, 2, 3]);
     expect(buildPaywallConfig({ VITE_PAYWALL_FREE_RANKS: "" , VITE_PAYWALL_FREE_TRADES: "0" }).freeRanks).toEqual([]);

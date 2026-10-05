@@ -89,7 +89,7 @@ export function SettingsPanel({ settings, onChange }: { settings: ExtensionSetti
           <details>
             <summary>Custom datasets (optional)</summary>
             <p className="muted small">
-              Leave empty to use OddsVis weekly medians and the published trade values. Otherwise supply JSON arrays of{" "}
+              Leave empty to use VegasLytics weekly medians and the published trade values. Otherwise supply JSON arrays of{" "}
               <code>{"{ name, position, medianProjection }"}</code> and <code>{"{ name, position, tradeValue }"}</code> (a combined list with both fields works for either).
             </p>
             <label>

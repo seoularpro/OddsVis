@@ -29,6 +29,8 @@ export interface Player {
   /** Median projected fantasy points for the current week (0 when unknown). */
   projection: number;
   projectionSource: ProjectionSource;
+  /** The latest odds no longer post every required prop, so the projection leans on last posted values (never traded on). */
+  projectionStale?: boolean;
   /** Trade value on a $200 auction scale (0 when unknown / waiver level). */
   tradeValue: number;
   tradeValueSource: TradeValueSource;

@@ -5,7 +5,7 @@ var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { en
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import { computeBPProjections, BP_BASE } from "../bpProjections";
 import { jsxs, jsx, Fragment } from "react/jsx-runtime";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 const DEFAULT_CONFIG = {
   shapes: [
     { send: 1, receive: 1 },
@@ -39,9 +39,11 @@ const DEFAULT_CONFIG = {
   weaknessScalePoints: 8,
   depthScalePoints: 6,
   topN: 10,
+  maxPages: 10,
   unfairMinOutgoingValue: 30,
   unfairValuePointsPerProjectionPoint: 10,
   unfairTopN: 10,
+  unfairMinValueGapPercent: 10,
   unfairMaxValueGainPercent: 75,
   unfairMaxOpponentLoss: 6,
   unfairRequireOpponentAngle: true,
@@ -661,7 +663,7 @@ function rankPartners(analysis, user) {
 }
 function tradeable(players, excludeIds = /* @__PURE__ */ new Set(), minQbTradeValue = 0) {
   return players.filter(
-    (p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && p.projection > 0 && p.tradeValue > 0 && (p.position !== "QB" || p.tradeValue > minQbTradeValue) && !excludeIds.has(p.id)
+    (p) => OFFENSE_POSITIONS.includes(p.position) && p.projectionSource === "dataset" && !p.projectionStale && p.projection > 0 && p.tradeValue > 0 && (p.position !== "QB" || p.tradeValue > minQbTradeValue) && !excludeIds.has(p.id)
   );
 }
 function combinations$1(items, k) {
@@ -1081,6 +1083,31 @@ function explainTrade(sim, analysis, acceptance) {
     overall
   };
 }
+function paginateByPartner(ranked, partnerOf, pageSize, perPartner, maxPages) {
+  const entries = [];
+  let remaining = ranked;
+  let page = 0;
+  while (remaining.length && page < maxPages) {
+    page++;
+    const counts = /* @__PURE__ */ new Map();
+    const deferred = [];
+    let taken = 0;
+    for (const item of remaining) {
+      const id = partnerOf(item);
+      const n = counts.get(id) ?? 0;
+      if (taken >= pageSize || n >= perPartner) {
+        deferred.push(item);
+        continue;
+      }
+      counts.set(id, n + 1);
+      entries.push({ item, page });
+      taken++;
+    }
+    if (taken === 0) break;
+    remaining = deferred;
+  }
+  return { entries, pageCount: page === 0 ? 0 : entries.length ? entries[entries.length - 1].page : 0 };
+}
 function opponentAngle(sim) {
   const o = sim.opponent;
   if (o.projectionGain >= 0.25) return `their lineup still gains +${o.projectionGain.toFixed(1)} this week`;
@@ -1117,9 +1144,9 @@ function outcomeKey$1(sim) {
 function findUnfairTrades(analysis, config) {
   const user = analysis.user;
   const stats = { enumerated: 0, simulated: 0, qualifying: 0, plausible: 0 };
-  if (!user) return { trades: [], stats };
+  if (!user) return { trades: [], allTrades: [], pageCount: 0, stats };
   const outgoingPool = tradeable(user.roster, new Set(user.baselineAddedIds), config.minQbTradeValue).filter((p) => p.tradeValue > config.unfairMinOutgoingValue).sort((a, b) => b.tradeValue - a.tradeValue);
-  if (!outgoingPool.length) return { trades: [], stats };
+  if (!outgoingPool.length) return { trades: [], allTrades: [], pageCount: 0, stats };
   const sendSets = /* @__PURE__ */ new Map();
   for (const shape of config.shapes) {
     if (!sendSets.has(shape.send)) sendSets.set(shape.send, combinations(outgoingPool, shape.send));
@@ -1138,11 +1165,13 @@ function findUnfairTrades(analysis, config) {
     for (const shape of config.shapes) {
       for (const sends of sendSets.get(shape.send) ?? []) {
         const sentValue = sends.reduce((n, p) => n + p.tradeValue, 0);
+        const bestSent = Math.max(...sends.map((p) => p.tradeValue));
         for (const recvs of recvSets.get(shape.receive) ?? []) {
           stats.enumerated++;
           const recvValue = recvs.reduce((n, p) => n + p.tradeValue, 0);
           if (recvValue <= sentValue) continue;
           if (recvValue > sentValue * maxRatio) continue;
+          if (recvs.some((r) => r.tradeValue > bestSent || sends.some((s) => Math.abs(r.tradeValue - s.tradeValue) * 100 <= s.tradeValue * config.unfairMinValueGapPercent))) continue;
           const candidate = { partnerTeamId: team.teamId, userSends: sends, userReceives: recvs, shape, partnerScore: 0 };
           const sim = simulateTrade(candidate, analysis);
           stats.simulated++;
@@ -1162,21 +1191,13 @@ function findUnfairTrades(analysis, config) {
     }
   }
   scored.sort((a, b) => b.score - a.score || b.valueGain - a.valueGain);
-  const perPartner = /* @__PURE__ */ new Map();
-  const chosen = [];
-  for (const entry of scored) {
-    const id = entry.sim.candidate.partnerTeamId;
-    const n = perPartner.get(id) ?? 0;
-    if (n >= config.maxTradesPerPartner) continue;
-    perPartner.set(id, n + 1);
-    chosen.push(entry);
-    if (chosen.length >= config.unfairTopN) break;
-  }
-  const trades = chosen.map((entry, i) => {
+  const paged = paginateByPartner(scored, (e) => e.sim.candidate.partnerTeamId, config.unfairTopN, config.maxTradesPerPartner, config.maxPages);
+  const allTrades = paged.entries.map(({ item: entry, page }, i) => {
     const acceptance = evaluateAcceptance(entry.sim, config);
-    return { rank: i + 1, simulation: entry.sim, opponentAngle: entry.angle, valueGain: entry.valueGain, score: entry.score, acceptance, explanation: explainTrade(entry.sim, analysis, acceptance) };
+    return { rank: i + 1, page, simulation: entry.sim, opponentAngle: entry.angle, valueGain: entry.valueGain, score: entry.score, acceptance, explanation: explainTrade(entry.sim, analysis, acceptance) };
   });
-  return { trades, stats };
+  const trades = allTrades.filter((t) => t.page === 1);
+  return { trades, allTrades, pageCount: paged.pageCount, stats };
 }
 function tradeKey(sim) {
   const s = sim.candidate.userSends.map((p) => p.id).sort().join(",");
@@ -1212,33 +1233,34 @@ function runTradeOptimizer(league, overrides) {
     scored.push({ sim, score: scoreTrade(sim, config), acceptance });
   }
   scored.sort((a, b) => compareRanked(a.score, b.score, config));
-  const perPartner = /* @__PURE__ */ new Map();
   const seenOutcome = /* @__PURE__ */ new Set();
-  const chosen = [];
+  const distinct = [];
   for (const entry of scored) {
     const ok = outcomeKey(entry.sim);
     if (seenOutcome.has(ok)) continue;
     seenOutcome.add(ok);
-    const id = entry.sim.candidate.partnerTeamId;
-    const n = perPartner.get(id) ?? 0;
-    if (n >= config.maxTradesPerPartner) continue;
-    perPartner.set(id, n + 1);
-    chosen.push(entry);
-    if (chosen.length >= config.topN) break;
+    distinct.push(entry);
   }
-  const trades = chosen.map((entry, i) => ({
+  const paged = paginateByPartner(distinct, (e) => e.sim.candidate.partnerTeamId, config.topN, config.maxTradesPerPartner, config.maxPages);
+  const allTrades = paged.entries.map(({ item: entry, page }, i) => ({
     rank: i + 1,
+    page,
     simulation: entry.sim,
     score: entry.score,
     acceptance: entry.acceptance,
     explanation: explainTrade(entry.sim, analysis, entry.acceptance),
-    rankedAboveNextBecause: i + 1 < chosen.length ? compareReason(entry.score, chosen[i + 1].score, config).replace("#next", `#${i + 2}`) : null
+    rankedAboveNextBecause: i + 1 < paged.entries.length ? compareReason(entry.score, paged.entries[i + 1].item.score, config).replace("#next", `#${i + 2}`) : null
   }));
+  const trades = allTrades.filter((t) => t.page === 1);
   const unfair = findUnfairTrades(analysis, config);
   return {
     analysis,
     trades,
+    allTrades,
+    tradePageCount: paged.pageCount,
     unfairTrades: unfair.trades,
+    allUnfairTrades: unfair.allTrades,
+    unfairPageCount: unfair.pageCount,
     unfairStats: unfair.stats,
     partners,
     stats: { ...stats, simulated, accepted: scored.length, elapsedMs: Date.now() - start },
@@ -1460,7 +1482,7 @@ function enrichLeague(raw, projections, tradeValues, options = {}) {
   };
   const usedProjectionEntries = /* @__PURE__ */ new Set();
   const convert = (rp, teamName, rostered) => {
-    var _a;
+    var _a, _b;
     const proj = projIndex.find({ platformId: rp.platformId, name: rp.name, position: rp.position });
     const val = valueIndex.find({ platformId: rp.platformId, name: rp.name, position: rp.position });
     if (rostered) {
@@ -1480,6 +1502,7 @@ function enrichLeague(raw, projections, tradeValues, options = {}) {
       injuryStatus: rp.injuryStatus,
       projection: proj.entry ? proj.entry.medianProjection : 0,
       projectionSource: proj.entry ? "dataset" : "none",
+      projectionStale: ((_b = proj.entry) == null ? void 0 : _b.stale) === true,
       tradeValue: val.entry ? val.entry.tradeValue : 0,
       tradeValueSource: val.entry ? "dataset" : "none",
       matchConfidence: proj.entry ? proj.confidence : val.entry ? val.confidence : "unmatched"
@@ -1578,15 +1601,15 @@ class BettingProsProjectionSource {
     for (const [name, info] of result.finalList) {
       const position = POSITION_BY_CODE[info.pos];
       if (!position) continue;
-      entries.push({ name, position, medianProjection: Math.round(info.ev * 100) / 100 });
+      entries.push({ name, position, medianProjection: Math.round(info.ev * 100) / 100, stale: info.stale === true });
     }
     if (entries.length === 0) {
-      throw new Error(`No OddsVis projections found for ${request.season} week ${request.week} (${BP_BASE}).`);
+      throw new Error(`No VegasLytics projections found for ${request.season} week ${request.week} (${BP_BASE}).`);
     }
     return {
       entries,
       source: this.id,
-      label: `OddsVis medians · ${request.season} wk ${request.week} · ${["Half PPR", "Standard", "Full PPR"][mode]}${passTdPoints === 6 ? " · 6pt pass TD" : ""}`,
+      label: `VegasLytics medians · ${request.season} wk ${request.week} · ${["Half PPR", "Standard", "Full PPR"][mode]}${passTdPoints === 6 ? " · 6pt pass TD" : ""}`,
       fetchedAt: result.lastFetched ?? void 0
     };
   }
@@ -1660,7 +1683,7 @@ class PublishedTradeValueSource {
     return {
       entries,
       source: this.id,
-      label: `OddsVis trade values · ${data.scoringLabel ?? scoringKeyFor(request.scoring.receptionPoints)} · ${data.leagueSize ?? leagueSizeKeyFor(request.teamCount)}-team`,
+      label: `VegasLytics trade values · ${data.scoringLabel ?? scoringKeyFor(request.scoring.receptionPoints)} · ${data.leagueSize ?? leagueSizeKeyFor(request.teamCount)}-team`,
       generatedAt: data.generatedAt
     };
   }
@@ -2352,7 +2375,7 @@ function instanceName() {
   const os = /Mac/.test(ua) ? "macOS" : /Windows/.test(ua) ? "Windows" : /Linux/.test(ua) ? "Linux" : "";
   return `${browser} ${os}`.trim() || "extension";
 }
-const __vite_import_meta_env__ = { "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SSR": false, "VITE_PAYWALL_CHECKOUT": "https://www.paypal.com/ncp/payment/YXELK7N33T2TJ", "VITE_PAYWALL_DEFAULT_PLAN": "monthly", "VITE_PAYWALL_FREE_RANKS": "2", "VITE_PAYWALL_PRICE_LIFETIME": "$49.99", "VITE_PAYWALL_PRICE_MONTHLY": "$6.99", "VITE_PAYWALL_PRICE_SEASON": "$24.99", "VITE_PAYWALL_PRICE_WEEKEND": "$1", "VITE_PAYWALL_PRODUCT": "OddsVis Trade Optimizer Pro", "VITE_PAYWALL_PROVIDER": "signed", "VITE_PAYWALL_PUBLIC_KEY": "BPbY-eL809qpzHAKo10itTu0ck8IBd8e1ydis3XoXTZpotsEGbZvgMDX7sheq3PlIeWlNy-445Fwow4nnkEAv08", "VITE_PAYWALL_STORE": "", "VITE_PAYWALL_VALIDATE": "", "VITE_PAYWALL_VARIANT_LIFETIME": "2171612", "VITE_PAYWALL_VARIANT_MONTHLY": "2171604", "VITE_PAYWALL_VARIANT_SEASON": "2171607", "VITE_PAYWALL_VARIANT_WEEKEND": "2171618" };
+const __vite_import_meta_env__ = { "BASE_URL": "/", "DEV": false, "MODE": "production", "PROD": true, "SSR": false, "VITE_PAYWALL_CHECKOUT_LIFETIME": "https://www.paypal.com/ncp/payment/3XKKHF4XVSHWU", "VITE_PAYWALL_CHECKOUT_MONTHLY": "https://www.paypal.com/ncp/payment/AEVAXGZFK2BLC", "VITE_PAYWALL_CHECKOUT_SEASON": "https://www.paypal.com/ncp/payment/ZJAH92CFHJHGS", "VITE_PAYWALL_CHECKOUT_WEEKEND": "https://www.paypal.com/ncp/payment/K3C5YSQRPMB7E", "VITE_PAYWALL_DEFAULT_PLAN": "monthly", "VITE_PAYWALL_FREE_RANKS": "1", "VITE_PAYWALL_PRICE_LIFETIME": "$49.99", "VITE_PAYWALL_PRICE_MONTHLY": "$6.99", "VITE_PAYWALL_PRICE_SEASON": "$24.99", "VITE_PAYWALL_PRICE_WEEKEND": "$1", "VITE_PAYWALL_PRODUCT": "VegasLytics Trade Optimizer Pro", "VITE_PAYWALL_PROVIDER": "signed", "VITE_PAYWALL_PUBLIC_KEY": "BPbY-eL809qpzHAKo10itTu0ck8IBd8e1ydis3XoXTZpotsEGbZvgMDX7sheq3PlIeWlNy-445Fwow4nnkEAv08", "VITE_PAYWALL_STORE": "", "VITE_PAYWALL_VALIDATE": "", "VITE_PAYWALL_VARIANT_LIFETIME": "2171612", "VITE_PAYWALL_VARIANT_MONTHLY": "2171604", "VITE_PAYWALL_VARIANT_SEASON": "2171607", "VITE_PAYWALL_VARIANT_WEEKEND": "2171618" };
 const PLAN_META = [
   { id: "weekend", label: "Weekend pass", description: "Every trade for one slate. Good through Monday night." },
   { id: "monthly", label: "Monthly", description: "Renews monthly. Cancel any time." },
@@ -2371,14 +2394,14 @@ function buildPaywallConfig(env2) {
     const override = (env2[`VITE_PAYWALL_CHECKOUT_${key}`] ?? "").trim();
     const checkoutUrl = single || override || (store && variantId ? `https://${store}.lemonsqueezy.com/checkout/buy/${variantId}` : "");
     if (!checkoutUrl) continue;
-    const description = provider === "signed" && meta.id === "monthly" ? "Every trade for 31 days. No auto-renewal." : meta.description;
+    const description = provider === "signed" && meta.id === "monthly" ? "Every trade for 30 days. No auto-renewal." : meta.description;
     plans.push({ ...meta, description, variantId, checkoutUrl, priceLabel: (env2[`VITE_PAYWALL_PRICE_${key}`] ?? "").trim() });
   }
   const wanted = (env2.VITE_PAYWALL_DEFAULT_PLAN ?? "season").toLowerCase();
   const defaultPlan = plans.find((p) => p.id === wanted) ?? plans[0] ?? null;
   return {
     provider,
-    productName: env2.VITE_PAYWALL_PRODUCT ?? "OddsVis Trade Optimizer Pro",
+    productName: env2.VITE_PAYWALL_PRODUCT ?? "VegasLytics Trade Optimizer Pro",
     plans,
     defaultPlan,
     checkoutUrl: (defaultPlan == null ? void 0 : defaultPlan.checkoutUrl) ?? "",
@@ -2396,7 +2419,7 @@ function parseFreeRanks(env2) {
   if (explicit.length) return [...new Set(explicit)].sort((a, b) => a - b);
   const legacy = Number(env2.VITE_PAYWALL_FREE_TRADES);
   if (Number.isInteger(legacy) && legacy >= 0) return Array.from({ length: legacy }, (_, i) => i + 1);
-  return [2];
+  return [1];
 }
 function cheapest(plans) {
   var _a;
@@ -2420,6 +2443,7 @@ function PlayerChip({ player, marginal, showValue = true }) {
   return /* @__PURE__ */ jsxs("span", { className: "player", children: [
     /* @__PURE__ */ jsx("span", { className: posClass(player.position), children: player.position }),
     /* @__PURE__ */ jsx("span", { className: "player-name", title: player.nflTeam ? `${player.name} · ${player.nflTeam}` : player.name, children: player.name }),
+    player.projectionStale ? /* @__PURE__ */ jsx("span", { className: "tag tag-warn", title: "Missing a required prop in the latest odds; the projection uses the last posted value. Left out of trades.", children: "props incomplete" }) : null,
     showValue ? /* @__PURE__ */ jsxs("span", { className: "player-meta", children: [
       /* @__PURE__ */ jsxs("span", { className: "num", title: est ? "Estimated: not in the trade value dataset" : "Trade value", children: [
         est ? "~" : "",
@@ -2462,41 +2486,49 @@ function LineupTable({ lineup, highlight, title }) {
     ] }) })
   ] });
 }
+function ExpandToggle({ open, more = "More details" }) {
+  return /* @__PURE__ */ jsxs("button", { type: "button", className: "toggle", "aria-expanded": open, children: [
+    open ? "Less" : more,
+    /* @__PURE__ */ jsx("svg", { className: "toggle-chevron", viewBox: "0 0 16 16", width: "14", height: "14", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M3.5 6l4.5 4.5L12.5 6", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }) })
+  ] });
+}
 function TeamAnalysisPanel({ analysis, team }) {
+  const [open, setOpen] = useState(false);
   const [showLineup, setShowLineup] = useState(false);
   const adviceMoves = team.waiverMoves.filter((m) => m.gain >= 0.5);
   const weaknesses = team.weaknesses.filter((w) => OFFENSE_POSITIONS.some((p) => w.eligible.includes(p)));
   const surplusAssets = team.positionalSurplus.flatMap((s) => s.expendable.map((e) => ({ ...e, position: s.position, level: s.level }))).filter((e) => OFFENSE_POSITIONS.includes(e.position) && e.player.tradeValue > 0).sort((a, b) => b.player.tradeValue - a.player.tradeValue).slice(0, 8);
   return /* @__PURE__ */ jsxs("section", { className: "card", children: [
-    /* @__PURE__ */ jsxs("div", { className: "card-head", children: [
+    /* @__PURE__ */ jsxs("div", { className: "card-head clickable", onClick: () => setOpen((v) => !v), children: [
       /* @__PURE__ */ jsxs("h2", { children: [
         "Team analysis · ",
         team.teamName
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "chips", children: [
-        /* @__PURE__ */ jsxs("span", { className: "chip", children: [
-          "Optimal lineup ",
-          /* @__PURE__ */ jsx("b", { children: fmt1(team.optimalStartingProjection) })
-        ] }),
-        /* @__PURE__ */ jsxs("span", { className: "chip", children: [
-          "Lineup rank ",
-          /* @__PURE__ */ jsx("b", { children: ordinal(team.projectionRank) })
-        ] }),
-        /* @__PURE__ */ jsxs("span", { className: "chip", children: [
-          "Trade value ",
-          /* @__PURE__ */ jsx("b", { children: money(team.totalTradeValue) }),
-          " (",
-          ordinal(team.tradeValueRank),
-          ")"
-        ] }),
-        /* @__PURE__ */ jsxs("span", { className: "chip", children: [
-          "Bench value ",
-          /* @__PURE__ */ jsx("b", { children: money(team.benchTradeValue) })
-        ] })
-      ] })
+      /* @__PURE__ */ jsx(ExpandToggle, { open, more: "Full analysis" })
     ] }),
-    analysis.insight.length ? /* @__PURE__ */ jsx("div", { className: "insight", children: analysis.insight.map((line, i) => /* @__PURE__ */ jsx("p", { children: line }, i)) }) : null,
-    adviceMoves.length ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
+    open ? /* @__PURE__ */ jsxs("div", { className: "chips", children: [
+      /* @__PURE__ */ jsxs("span", { className: "chip", children: [
+        "Optimal lineup ",
+        /* @__PURE__ */ jsx("b", { children: fmt1(team.optimalStartingProjection) })
+      ] }),
+      /* @__PURE__ */ jsxs("span", { className: "chip", children: [
+        "Lineup rank ",
+        /* @__PURE__ */ jsx("b", { children: ordinal(team.projectionRank) })
+      ] }),
+      /* @__PURE__ */ jsxs("span", { className: "chip", children: [
+        "Trade value ",
+        /* @__PURE__ */ jsx("b", { children: money(team.totalTradeValue) }),
+        " (",
+        ordinal(team.tradeValueRank),
+        ")"
+      ] }),
+      /* @__PURE__ */ jsxs("span", { className: "chip", children: [
+        "Bench value ",
+        /* @__PURE__ */ jsx("b", { children: money(team.benchTradeValue) })
+      ] })
+    ] }) : null,
+    open && analysis.insight.length ? /* @__PURE__ */ jsx("div", { className: "insight", children: analysis.insight.map((line, i) => /* @__PURE__ */ jsx("p", { children: line }, i)) }) : null,
+    open && adviceMoves.length ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
       /* @__PURE__ */ jsx("b", { children: "Do this first (free):" }),
       " ",
       adviceMoves.map((m, i) => /* @__PURE__ */ jsxs("span", { children: [
@@ -2512,11 +2544,11 @@ function TeamAnalysisPanel({ analysis, team }) {
       ] }, i)),
       ". Trades below are measured after these moves."
     ] }) : null,
-    /* @__PURE__ */ jsxs("button", { className: "link", onClick: () => setShowLineup((v) => !v), children: [
+    open ? /* @__PURE__ */ jsxs("button", { className: "link", onClick: () => setShowLineup((v) => !v), children: [
       showLineup ? "Hide" : "Show",
       " optimal lineup"
-    ] }),
-    showLineup ? /* @__PURE__ */ jsx(LineupTable, { lineup: team.optimal }) : null,
+    ] }) : null,
+    open && showLineup ? /* @__PURE__ */ jsx(LineupTable, { lineup: team.optimal }) : null,
     /* @__PURE__ */ jsx("h3", { children: "Largest weaknesses" }),
     /* @__PURE__ */ jsx("ol", { className: "weakness-list", children: weaknesses.slice(0, 4).map((w) => /* @__PURE__ */ jsxs("li", { children: [
       /* @__PURE__ */ jsxs("div", { className: "weakness-head", children: [
@@ -2558,29 +2590,31 @@ function TeamAnalysisPanel({ analysis, team }) {
         ] })
       ] })
     ] }, w.key)) }),
-    /* @__PURE__ */ jsx("h3", { children: "Surplus / expendable assets" }),
-    surplusAssets.length === 0 ? /* @__PURE__ */ jsx("p", { className: "muted", children: "No expendable players with trade value: every valued player is in your optimal lineup." }) : /* @__PURE__ */ jsx("ul", { className: "asset-list", children: surplusAssets.map((a) => /* @__PURE__ */ jsxs("li", { children: [
-      /* @__PURE__ */ jsx(PlayerChip, { player: a.player, marginal: a.marginal }),
-      /* @__PURE__ */ jsxs("span", { className: "muted", children: [
-        " ",
-        a.position,
-        " surplus: ",
-        a.level
-      ] })
-    ] }, a.player.id)) }),
-    /* @__PURE__ */ jsx("h3", { children: "Positional surplus" }),
-    /* @__PURE__ */ jsx("div", { className: "surplus-grid", children: team.positionalSurplus.filter((s) => OFFENSE_POSITIONS.includes(s.position)).map((s) => /* @__PURE__ */ jsxs("div", { className: `surplus-cell level-${s.level.replace(" ", "-")}`, children: [
-      /* @__PURE__ */ jsx("div", { className: "surplus-pos", children: s.position }),
-      /* @__PURE__ */ jsx("div", { className: "surplus-level", children: s.level }),
-      /* @__PURE__ */ jsxs("div", { className: "muted small", children: [
-        fmt1(s.trappedProjection),
-        " bench pts > repl"
-      ] })
-    ] }, s.position)) })
+    open ? /* @__PURE__ */ jsxs(Fragment, { children: [
+      /* @__PURE__ */ jsx("h3", { children: "Surplus / expendable assets" }),
+      surplusAssets.length === 0 ? /* @__PURE__ */ jsx("p", { className: "muted", children: "No expendable players with trade value: every valued player is in your optimal lineup." }) : /* @__PURE__ */ jsx("ul", { className: "asset-list", children: surplusAssets.map((a) => /* @__PURE__ */ jsxs("li", { children: [
+        /* @__PURE__ */ jsx(PlayerChip, { player: a.player, marginal: a.marginal }),
+        /* @__PURE__ */ jsxs("span", { className: "muted", children: [
+          " ",
+          a.position,
+          " surplus: ",
+          a.level
+        ] })
+      ] }, a.player.id)) }),
+      /* @__PURE__ */ jsx("h3", { children: "Positional surplus" }),
+      /* @__PURE__ */ jsx("div", { className: "surplus-grid", children: team.positionalSurplus.filter((s) => OFFENSE_POSITIONS.includes(s.position)).map((s) => /* @__PURE__ */ jsxs("div", { className: `surplus-cell level-${s.level.replace(" ", "-")}`, children: [
+        /* @__PURE__ */ jsx("div", { className: "surplus-pos", children: s.position }),
+        /* @__PURE__ */ jsx("div", { className: "surplus-level", children: s.level }),
+        /* @__PURE__ */ jsxs("div", { className: "muted small", children: [
+          fmt1(s.trappedProjection),
+          " bench pts > repl"
+        ] })
+      ] }, s.position)) })
+    ] }) : null
   ] });
 }
-function TradeCard({ trade, analysis, defaultOpen }) {
-  const [open, setOpen] = useState(defaultOpen ?? trade.rank === 1);
+function TradeCard({ trade, analysis }) {
+  const [open, setOpen] = useState(false);
   const [showLineups, setShowLineups] = useState(false);
   const sim = trade.simulation;
   const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId);
@@ -2621,7 +2655,7 @@ function TradeCard({ trade, analysis, defaultOpen }) {
           sim.opponent.solvedWeaknesses.length ? ` their ${sim.opponent.solvedWeaknesses.join(", ")}` : ""
         ] }) : null
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "caret", children: open ? "▾" : "▸" })
+      /* @__PURE__ */ jsx(ExpandToggle, { open })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "trade-sides", children: [
       /* @__PURE__ */ jsxs("div", { children: [
@@ -2914,14 +2948,17 @@ function LicensePanel({
             config.provider === "signed" ? " Your license key is emailed to you after payment." : ""
           ] })
         ] })
-      ] }) : config.plans.length ? /* @__PURE__ */ jsx("div", { className: "plans", children: config.plans.map((plan) => {
-        var _a;
-        return /* @__PURE__ */ jsxs("button", { type: "button", className: `plan${((_a = config.defaultPlan) == null ? void 0 : _a.id) === plan.id ? " plan-default" : ""}`, onClick: () => onUpgrade(plan), children: [
-          /* @__PURE__ */ jsx("span", { className: "plan-label", children: plan.label }),
-          plan.priceLabel ? /* @__PURE__ */ jsx("span", { className: "plan-price", children: plan.priceLabel }) : null,
-          /* @__PURE__ */ jsx("span", { className: "plan-desc muted small", children: plan.description })
-        ] }, plan.id);
-      }) }) : /* @__PURE__ */ jsxs("div", { className: "license-row", children: [
+      ] }) : config.plans.length ? /* @__PURE__ */ jsxs(Fragment, { children: [
+        /* @__PURE__ */ jsx("div", { className: "plans", children: config.plans.map((plan) => {
+          var _a;
+          return /* @__PURE__ */ jsxs("button", { type: "button", className: `plan${((_a = config.defaultPlan) == null ? void 0 : _a.id) === plan.id ? " plan-default" : ""}`, onClick: () => onUpgrade(plan), children: [
+            /* @__PURE__ */ jsx("span", { className: "plan-label", children: plan.label }),
+            plan.priceLabel ? /* @__PURE__ */ jsx("span", { className: "plan-price", children: plan.priceLabel }) : null,
+            /* @__PURE__ */ jsx("span", { className: "plan-desc muted small", children: plan.description })
+          ] }, plan.id);
+        }) }),
+        config.provider === "signed" ? /* @__PURE__ */ jsx("p", { className: "muted small", children: "Pick a pass to pay. Your license key is emailed to you after payment." }) : null
+      ] }) : /* @__PURE__ */ jsxs("div", { className: "license-row", children: [
         /* @__PURE__ */ jsx("button", { className: "primary", disabled: true, children: "Upgrade" }),
         /* @__PURE__ */ jsx("span", { className: "muted small", children: "Checkout not configured (VITE_PAYWALL_CHECKOUT, or VITE_PAYWALL_STORE and VITE_PAYWALL_VARIANT_*)." })
       ] }),
@@ -2943,8 +2980,8 @@ function LicensePanel({
     ] })
   ] });
 }
-function UnfairTradeCard({ trade, analysis, defaultOpen }) {
-  const [open, setOpen] = useState(defaultOpen ?? trade.rank === 1);
+function UnfairTradeCard({ trade, analysis }) {
+  const [open, setOpen] = useState(false);
   const [showLineups, setShowLineups] = useState(false);
   const sim = trade.simulation;
   const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId);
@@ -2986,7 +3023,7 @@ function UnfairTradeCard({ trade, analysis, defaultOpen }) {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "caret", children: open ? "▾" : "▸" })
+      /* @__PURE__ */ jsx(ExpandToggle, { open })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "trade-sides", children: [
       /* @__PURE__ */ jsxs("div", { children: [
@@ -3066,21 +3103,61 @@ function describeScoring(s) {
   const rec = s.receptionPoints >= 0.75 ? "Full PPR" : s.receptionPoints >= 0.25 ? "Half PPR" : "Standard";
   return s.passTdPoints === 4 ? rec : `${rec} · ${s.passTdPoints}pt pass TD`;
 }
+const THIN_PROPS_COVERAGE = 0.5;
 function TradeReport(props) {
-  var _a, _b;
   const { result, league, report, datasetLabels, warnings, onPickTeam, license, paywall, entitled, licenseBusy, onActivate, onRemoveLicense, onUpgrade, only } = props;
   const show = (block) => !only || only === block || block === "meta" && false;
   const analysis = result.analysis;
   const user = analysis.user;
   const [list, setList] = useState("fair");
-  const firstVisibleRank = ((_a = result.trades.find((t) => entitled || paywall.freeRanks.includes(t.rank))) == null ? void 0 : _a.rank) ?? 1;
-  const firstVisibleUnfair = ((_b = result.unfairTrades.find((t) => entitled || paywall.freeRanks.includes(t.rank))) == null ? void 0 : _b.rank) ?? 1;
+  const fairAll = result.allTrades ?? result.trades;
+  const unfairAll = result.allUnfairTrades ?? result.unfairTrades;
+  const [pages, setPages] = useState({ fair: 1, unfair: 1 });
+  useEffect(() => setPages({ fair: 1, unfair: 1 }), [result]);
+  const pageCount = Math.max(1, list === "fair" ? result.tradePageCount ?? 1 : result.unfairPageCount ?? 1);
+  const page = Math.min(pages[list], pageCount);
+  const tradesRef = useRef(null);
+  const goToPage = (next) => {
+    var _a;
+    setPages((p) => ({ ...p, [list]: Math.max(1, Math.min(pageCount, next)) }));
+    (_a = tradesRef.current) == null ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const fairPage = fairAll.filter((t) => (t.page ?? 1) === page);
+  const unfairPage = unfairAll.filter((t) => (t.page ?? 1) === page);
+  const shown = list === "fair" ? fairPage : unfairPage;
+  const total = list === "fair" ? fairAll.length : unfairAll.length;
+  const pager = pageCount > 1 ? /* @__PURE__ */ jsxs("nav", { className: "pager", "aria-label": "Trade pages", children: [
+    /* @__PURE__ */ jsx("button", { type: "button", className: "pager-btn", disabled: page <= 1, onClick: () => goToPage(page - 1), children: "‹ Previous" }),
+    /* @__PURE__ */ jsxs("span", { className: "pager-status", children: [
+      "Page ",
+      /* @__PURE__ */ jsx("b", { children: page }),
+      " of ",
+      pageCount,
+      shown.length ? /* @__PURE__ */ jsxs("span", { className: "muted", children: [
+        " · #",
+        shown[0].rank,
+        "–#",
+        shown[shown.length - 1].rank,
+        " of ",
+        total
+      ] }) : null
+    ] }),
+    /* @__PURE__ */ jsx("button", { type: "button", className: "pager-btn", disabled: page >= pageCount, onClick: () => goToPage(page + 1), children: "Next ›" })
+  ] }) : null;
+  const licenseRef = useRef(null);
+  const [flash, setFlash] = useState(false);
+  const showPlans = () => {
+    if (!licenseRef.current) return onUpgrade();
+    licenseRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    setFlash(true);
+  };
   const offense = league.teams.flatMap((t) => t.players).filter((p) => OFFENSE_POSITIONS.includes(p.position));
   const withProps = offense.filter((p) => p.projectionSource === "dataset").length;
   const coverage = offense.length ? withProps / offense.length : 1;
-  const thinProps = coverage < 0.85;
+  const thinProps = coverage < THIN_PROPS_COVERAGE;
   const userOffense = user ? user.roster.filter((p) => OFFENSE_POSITIONS.includes(p.position)) : [];
   const userWithProps = userOffense.filter((p) => p.projectionSource === "dataset").length;
+  const staleNames = offense.filter((p) => p.projectionStale).map((p) => p.name);
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     show("meta") ? /* @__PURE__ */ jsxs("div", { className: "chips", children: [
       /* @__PURE__ */ jsx("span", { className: "chip", children: league.settings.platform }),
@@ -3113,24 +3190,27 @@ function TradeReport(props) {
     ] }) : null,
     show("meta") ? warnings.map((w, i) => /* @__PURE__ */ jsx("div", { className: "note warn", children: w }, i)) : null,
     !user && show("meta") ? /* @__PURE__ */ jsx("div", { className: "note warn", children: "Which team is yours? Pick it in the league table below." }) : null,
-    user && show("analysis") ? /* @__PURE__ */ jsx("div", { id: "analysis", children: /* @__PURE__ */ jsx(TeamAnalysisPanel, { analysis, team: user }) }) : null,
-    user && show("trades") ? /* @__PURE__ */ jsxs("section", { id: "trades", children: [
-      /* @__PURE__ */ jsxs("div", { className: "section-head", children: [
-        /* @__PURE__ */ jsx("h2", { children: "Suggested trades" }),
-        /* @__PURE__ */ jsxs("div", { className: "list-tabs", role: "tablist", children: [
-          /* @__PURE__ */ jsxs("button", { type: "button", role: "tab", "aria-selected": list === "fair", className: `list-tab${list === "fair" ? " active" : ""}`, onClick: () => setList("fair"), children: [
-            "Fair (",
-            result.trades.length,
+    user && show("trades") ? /* @__PURE__ */ jsxs("section", { id: "trades", ref: tradesRef, children: [
+      /* @__PURE__ */ jsx("div", { className: "section-head", children: /* @__PURE__ */ jsx("h2", { children: "Suggested trades" }) }),
+      /* @__PURE__ */ jsxs("div", { className: "list-tabs", role: "tablist", "aria-label": "Trade type", children: [
+        /* @__PURE__ */ jsxs("button", { type: "button", role: "tab", "aria-selected": list === "fair", className: `list-tab${list === "fair" ? " active" : ""}`, onClick: () => setList("fair"), children: [
+          /* @__PURE__ */ jsxs("span", { className: "list-tab-label", children: [
+            "Fair trades (",
+            fairAll.length,
             ")"
           ] }),
-          /* @__PURE__ */ jsxs("button", { type: "button", role: "tab", "aria-selected": list === "unfair", className: `list-tab${list === "unfair" ? " active" : ""}`, onClick: () => setList("unfair"), children: [
-            "Unfair (",
-            result.unfairTrades.length,
+          /* @__PURE__ */ jsx("span", { className: "list-tab-sub", children: "Both managers have a reason to say yes" })
+        ] }),
+        /* @__PURE__ */ jsxs("button", { type: "button", role: "tab", "aria-selected": list === "unfair", className: `list-tab${list === "unfair" ? " active" : ""}`, onClick: () => setList("unfair"), children: [
+          /* @__PURE__ */ jsxs("span", { className: "list-tab-label", children: [
+            "Unfair trades (",
+            unfairAll.length,
             ")"
-          ] })
+          ] }),
+          /* @__PURE__ */ jsx("span", { className: "list-tab-sub", children: "Lopsided in your favor" })
         ] })
       ] }),
-      /* @__PURE__ */ jsx("div", { className: "muted small list-note", children: list === "fair" ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.` : `Lopsided in your favor but still takeable: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, the deal raises both your total trade value and this week's lineup, they get at most ${analysis.config.unfairMaxValueGainPercent}% less value, lose at most ${analysis.config.unfairMaxOpponentLoss} points, and have an angle to say yes. ${result.unfairStats.plausible} of ${result.unfairStats.qualifying} value grabs made the cut.` }),
+      /* @__PURE__ */ jsx("div", { className: "muted small list-note", children: list === "fair" ? `Realistic for both managers: ${result.stats.candidates} candidates after pruning, ${result.stats.accepted} acceptable.` : `Lopsided in your favor but still takeable: you send only players worth more than $${analysis.config.unfairMinOutgoingValue}, you never get back a player worth more than the best one you send or within ${analysis.config.unfairMinValueGapPercent}% of any player you send, the deal raises both your total trade value and this week's lineup, they get at most ${analysis.config.unfairMaxValueGainPercent}% less value, lose at most ${analysis.config.unfairMaxOpponentLoss} points, and have an angle to say yes. ${result.unfairStats.plausible} of ${result.unfairStats.qualifying} value grabs made the cut.` }),
       thinProps ? /* @__PURE__ */ jsxs("div", { className: "note warn", children: [
         /* @__PURE__ */ jsx("b", { children: "Limited suggestions this week so far." }),
         " Props are posted for only ",
@@ -3142,24 +3222,38 @@ function TradeReport(props) {
         "%)",
         user ? `, including ${userWithProps} of ${userOffense.length} on your team` : "",
         ". Players without a line are never offered or requested, so fewer trades qualify",
-        result.trades.length < 5 ? ` (${result.trades.length} shown)` : "",
+        fairAll.length < 5 ? ` (${fairAll.length} shown)` : "",
         ". Lines usually fill in by Wednesday or Thursday; re-run then for the full list."
       ] }) : null,
-      list === "fair" ? result.trades.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
+      staleNames.length ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
+        /* @__PURE__ */ jsx("b", { children: "Left out of trades:" }),
+        " ",
+        staleNames.slice(0, 8).join(", "),
+        staleNames.length > 8 ? ` and ${staleNames.length - 8} more` : "",
+        ". The latest odds no longer post every prop needed for ",
+        staleNames.length === 1 ? "this player's" : "these players'",
+        " projection, so ",
+        staleNames.length === 1 ? "it relies" : "they rely",
+        " on older lines."
+      ] }) : null,
+      pager,
+      list === "fair" ? fairAll.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
         "No trade cleared the bar (gain ≥ ",
         analysis.config.minUserGain,
         " pts for you, within the value tolerance, and rational for the other manager). Loosen the tolerances in Settings or check the dataset match warnings."
-      ] }) : result.trades.map(
-        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis, defaultOpen: t.rank === firstVisibleRank }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
-      ) : result.unfairTrades.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
+      ] }) : fairPage.map(
+        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(TradeCard, { trade: t, analysis }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: t, analysis, onUpgrade: showPlans, priceLabel: paywall.priceLabel }, t.rank)
+      ) : unfairAll.length === 0 ? /* @__PURE__ */ jsxs("div", { className: "note", children: [
         "No unfair trade qualified: nothing that sends only players worth more than $",
         analysis.config.unfairMinOutgoingValue,
         " raises both your total trade value and this week's lineup."
-      ] }) : result.unfairTrades.map(
-        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(UnfairTradeCard, { trade: t, analysis, defaultOpen: t.rank === firstVisibleUnfair }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: { rank: t.rank, simulation: t.simulation, valueGain: t.valueGain }, analysis, onUpgrade: () => onUpgrade(), priceLabel: paywall.priceLabel }, t.rank)
-      )
+      ] }) : unfairPage.map(
+        (t) => entitled || paywall.freeRanks.includes(t.rank) ? /* @__PURE__ */ jsx(UnfairTradeCard, { trade: t, analysis }, t.rank) : /* @__PURE__ */ jsx(LockedTradeCard, { trade: { rank: t.rank, simulation: t.simulation, valueGain: t.valueGain }, analysis, onUpgrade: showPlans, priceLabel: paywall.priceLabel }, t.rank)
+      ),
+      pager
     ] }) : null,
-    show("license") ? /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }) : null,
+    user && show("analysis") ? /* @__PURE__ */ jsx("div", { id: "analysis", children: /* @__PURE__ */ jsx(TeamAnalysisPanel, { analysis, team: user }) }) : null,
+    show("license") ? /* @__PURE__ */ jsx("div", { id: "license", ref: licenseRef, className: flash ? "license-flash" : void 0, onAnimationEnd: () => setFlash(false), children: /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }) }) : null,
     show("league") ? /* @__PURE__ */ jsx("div", { id: "league", children: /* @__PURE__ */ jsx(LeagueTable, { analysis, onPickTeam }) }) : null
   ] });
 }
@@ -3260,7 +3354,7 @@ function SettingsPanel({ settings, onChange }) {
       /* @__PURE__ */ jsxs("details", { children: [
         /* @__PURE__ */ jsx("summary", { children: "Custom datasets (optional)" }),
         /* @__PURE__ */ jsxs("p", { className: "muted small", children: [
-          "Leave empty to use OddsVis weekly medians and the published trade values. Otherwise supply JSON arrays of",
+          "Leave empty to use VegasLytics weekly medians and the published trade values. Otherwise supply JSON arrays of",
           " ",
           /* @__PURE__ */ jsx("code", { children: "{ name, position, medianProjection }" }),
           " and ",
@@ -3359,6 +3453,7 @@ export {
   opponentAngle,
   optimalTotal,
   optimizeLineup,
+  paginateByPartner,
   parsePosition,
   parseProjectionJson,
   parseTradeValueJson,

@@ -33,18 +33,18 @@ export class BettingProsProjectionSource implements ProjectionSource {
       passTdPoints,
     });
     const entries: ProjectionEntry[] = [];
-    for (const [name, info] of result.finalList as [string, { ev: number; pos: number }][]) {
+    for (const [name, info] of result.finalList as [string, { ev: number; pos: number; stale?: boolean }][]) {
       const position = POSITION_BY_CODE[info.pos];
       if (!position) continue;
-      entries.push({ name, position, medianProjection: Math.round(info.ev * 100) / 100 });
+      entries.push({ name, position, medianProjection: Math.round(info.ev * 100) / 100, stale: info.stale === true });
     }
     if (entries.length === 0) {
-      throw new Error(`No OddsVis projections found for ${request.season} week ${request.week} (${BP_BASE}).`);
+      throw new Error(`No VegasLytics projections found for ${request.season} week ${request.week} (${BP_BASE}).`);
     }
     return {
       entries,
       source: this.id,
-      label: `OddsVis medians · ${request.season} wk ${request.week} · ${["Half PPR", "Standard", "Full PPR"][mode]}${passTdPoints === 6 ? " · 6pt pass TD" : ""}`,
+      label: `VegasLytics medians · ${request.season} wk ${request.week} · ${["Half PPR", "Standard", "Full PPR"][mode]}${passTdPoints === 6 ? " · 6pt pass TD" : ""}`,
       fetchedAt: result.lastFetched ?? undefined,
     };
   }

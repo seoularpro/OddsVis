@@ -84,14 +84,18 @@ export interface OptimizerConfig {
   /** Depth change (bench points above replacement) that earns the full depth bonus. */
   depthScalePoints: number;
 
-  /** Number of trades to return. */
+  /** Trades per page (the first page is the classic "top N"). */
   topN: number;
+  /** How many pages of ranked trades to keep for browsing (both lists). */
+  maxPages: number;
   /** "Unfair" list: you send only players worth more than this... */
   unfairMinOutgoingValue: number;
   /** ...ranked by projection gain plus value gain at this many dollars per point... */
   unfairValuePointsPerProjectionPoint: number;
   /** ...returning this many. */
   unfairTopN: number;
+  /** ...you never get back a player worth more than your best one sent, or within this percent of any player sent (no near-equal swaps)... */
+  unfairMinValueGapPercent: number;
   /** Plausibility for the unfair list: value received at most this percent above value sent... */
   unfairMaxValueGainPercent: number;
   /** ...their lineup loses at most this many points this week... */
@@ -147,9 +151,11 @@ export const DEFAULT_CONFIG: OptimizerConfig = {
   depthScalePoints: 6,
 
   topN: 10,
+  maxPages: 10,
   unfairMinOutgoingValue: 30,
   unfairValuePointsPerProjectionPoint: 10,
   unfairTopN: 10,
+  unfairMinValueGapPercent: 10,
   unfairMaxValueGainPercent: 75,
   unfairMaxOpponentLoss: 6,
   unfairRequireOpponentAngle: true,

@@ -12,7 +12,7 @@
 //   VITE_PAYWALL_DEFAULT_PLAN    plan the "Unlock" buttons open (default: season)
 //   VITE_PAYWALL_VALIDATE        (remote only) endpoint that validates a key
 //   VITE_PAYWALL_PUBLIC_KEY      (signed only) public key printed by `npm run license -- keygen`
-//   VITE_PAYWALL_FREE_RANKS      ranks shown in full for free, comma-separated (default "2")
+//   VITE_PAYWALL_FREE_RANKS      ranks shown in full for free, comma-separated (default "1")
 //   VITE_PAYWALL_FREE_TRADES     legacy: N means ranks 1..N
 
 export type PaywallProviderKind = "none" | "lemonsqueezy" | "remote" | "signed";
@@ -76,8 +76,8 @@ export function buildPaywallConfig(env: EnvLike): PaywallConfig {
     const override = (env[`VITE_PAYWALL_CHECKOUT_${key}`] ?? "").trim();
     const checkoutUrl = single || override || (store && variantId ? `https://${store}.lemonsqueezy.com/checkout/buy/${variantId}` : "");
     if (!checkoutUrl) continue;
-    // Hand-issued keys are one-off payments: a monthly key lasts 31 days and never renews.
-    const description = provider === "signed" && meta.id === "monthly" ? "Every trade for 31 days. No auto-renewal." : meta.description;
+    // Hand-issued keys are one-off payments: a monthly key lasts 30 days and never renews.
+    const description = provider === "signed" && meta.id === "monthly" ? "Every trade for 30 days. No auto-renewal." : meta.description;
     plans.push({ ...meta, description, variantId, checkoutUrl, priceLabel: (env[`VITE_PAYWALL_PRICE_${key}`] ?? "").trim() });
   }
 
@@ -86,7 +86,7 @@ export function buildPaywallConfig(env: EnvLike): PaywallConfig {
 
   return {
     provider,
-    productName: env.VITE_PAYWALL_PRODUCT ?? "OddsVis Trade Optimizer Pro",
+    productName: env.VITE_PAYWALL_PRODUCT ?? "VegasLytics Trade Optimizer Pro",
     plans,
     defaultPlan,
     checkoutUrl: defaultPlan?.checkoutUrl ?? "",
@@ -105,7 +105,7 @@ function parseFreeRanks(env: EnvLike): number[] {
   if (explicit.length) return [...new Set(explicit)].sort((a, b) => a - b);
   const legacy = Number(env.VITE_PAYWALL_FREE_TRADES);
   if (Number.isInteger(legacy) && legacy >= 0) return Array.from({ length: legacy }, (_, i) => i + 1);
-  return [2];
+  return [1];
 }
 
 /** Lowest numeric price label among plans (for "from $X"). */

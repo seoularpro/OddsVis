@@ -2,7 +2,11 @@
 //
 // The user sends only players worth more than unfairMinOutgoingValue, and the
 // deal must raise both the user's total trade value and the user's optimal
-// lineup projection. The normal fairness tolerance and opponent-benefit test
+// lineup projection. No player received may be worth more than the most
+// valuable player sent, or within unfairMinValueGapPercent of any player sent
+// (a $40 player never brings back one worth $36 or more), so the value comes
+// from the shape of the package, never from a near-equal swap or from landing
+// their best asset. The normal fairness tolerance and opponent-benefit test
 // do not apply; instead three plausibility bounds keep the list to deals a
 // manager might actually take: value received at most unfairMaxValueGainPercent
 // above value sent, their lineup down at most unfairMaxOpponentLoss this week,
@@ -18,9 +22,12 @@ import { tradeable, type TradeCandidate } from "./tradeGenerator";
 import { simulateTrade, type TradeSimulation } from "./tradeSimulator";
 import { evaluateAcceptance, type Acceptance } from "./tradeScorer";
 import { explainTrade, type TradeExplanation } from "./tradeExplainer";
+import { paginateByPartner } from "./pagination";
 
 export interface UnfairTrade {
   rank: number;
+  /** 1-based page this trade appears on (pages of config.unfairTopN). */
+  page: number;
   simulation: TradeSimulation;
   /** Why the other manager might still say yes. */
   opponentAngle: string;
@@ -79,15 +86,15 @@ function outcomeKey(sim: TradeSimulation): string {
   return `${sim.candidate.partnerTeamId}|${r}|${u}`;
 }
 
-export function findUnfairTrades(analysis: LeagueAnalysis, config: OptimizerConfig): { trades: UnfairTrade[]; stats: UnfairStats } {
+export function findUnfairTrades(analysis: LeagueAnalysis, config: OptimizerConfig): { trades: UnfairTrade[]; allTrades: UnfairTrade[]; pageCount: number; stats: UnfairStats } {
   const user = analysis.user;
   const stats: UnfairStats = { enumerated: 0, simulated: 0, qualifying: 0, plausible: 0 };
-  if (!user) return { trades: [], stats };
+  if (!user) return { trades: [], allTrades: [], pageCount: 0, stats };
 
   const outgoingPool: Player[] = tradeable(user.roster, new Set(user.baselineAddedIds), config.minQbTradeValue)
     .filter((p) => p.tradeValue > config.unfairMinOutgoingValue)
     .sort((a, b) => b.tradeValue - a.tradeValue);
-  if (!outgoingPool.length) return { trades: [], stats };
+  if (!outgoingPool.length) return { trades: [], allTrades: [], pageCount: 0, stats };
 
   const sendSets = new Map<number, Player[][]>();
   for (const shape of config.shapes) {
@@ -110,11 +117,14 @@ export function findUnfairTrades(analysis: LeagueAnalysis, config: OptimizerConf
     for (const shape of config.shapes) {
       for (const sends of sendSets.get(shape.send) ?? []) {
         const sentValue = sends.reduce((n, p) => n + p.tradeValue, 0);
+        const bestSent = Math.max(...sends.map((p) => p.tradeValue));
         for (const recvs of recvSets.get(shape.receive) ?? []) {
           stats.enumerated++;
           const recvValue = recvs.reduce((n, p) => n + p.tradeValue, 0);
           if (recvValue <= sentValue) continue; // must raise total valuation
           if (recvValue > sentValue * maxRatio) continue; // but not absurdly
+          // Never ask for a player worth more than the best one offered, or a near-equal of any offered player.
+          if (recvs.some((r) => r.tradeValue > bestSent || sends.some((s) => Math.abs(r.tradeValue - s.tradeValue) * 100 <= s.tradeValue * config.unfairMinValueGapPercent))) continue;
           const candidate: TradeCandidate = { partnerTeamId: team.teamId, userSends: sends, userReceives: recvs, shape, partnerScore: 0 };
           const sim = simulateTrade(candidate, analysis);
           stats.simulated++;
@@ -135,20 +145,11 @@ export function findUnfairTrades(analysis: LeagueAnalysis, config: OptimizerConf
   }
 
   scored.sort((a, b) => b.score - a.score || b.valueGain - a.valueGain);
-  const perPartner = new Map<string, number>();
-  const chosen: typeof scored = [];
-  for (const entry of scored) {
-    const id = entry.sim.candidate.partnerTeamId;
-    const n = perPartner.get(id) ?? 0;
-    if (n >= config.maxTradesPerPartner) continue;
-    perPartner.set(id, n + 1);
-    chosen.push(entry);
-    if (chosen.length >= config.unfairTopN) break;
-  }
-
-  const trades: UnfairTrade[] = chosen.map((entry, i) => {
+  const paged = paginateByPartner(scored, (e) => e.sim.candidate.partnerTeamId, config.unfairTopN, config.maxTradesPerPartner, config.maxPages);
+  const allTrades: UnfairTrade[] = paged.entries.map(({ item: entry, page }, i) => {
     const acceptance = evaluateAcceptance(entry.sim, config);
-    return { rank: i + 1, simulation: entry.sim, opponentAngle: entry.angle, valueGain: entry.valueGain, score: entry.score, acceptance, explanation: explainTrade(entry.sim, analysis, acceptance) };
+    return { rank: i + 1, page, simulation: entry.sim, opponentAngle: entry.angle, valueGain: entry.valueGain, score: entry.score, acceptance, explanation: explainTrade(entry.sim, analysis, acceptance) };
   });
-  return { trades, stats };
+  const trades = allTrades.filter((t) => t.page === 1);
+  return { trades, allTrades, pageCount: paged.pageCount, stats };
 }

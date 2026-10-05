@@ -4,9 +4,10 @@ import type { LeagueAnalysis } from "../../optimization/teamAnalyzer";
 import { fmt1, money, signed1 } from "../format";
 import { PlayerChip } from "./PlayerChip";
 import { LineupTable } from "./LineupTable";
+import { ExpandToggle } from "./ExpandToggle";
 
-export function UnfairTradeCard({ trade, analysis, defaultOpen }: { trade: UnfairTrade; analysis: LeagueAnalysis; defaultOpen?: boolean }) {
-  const [open, setOpen] = useState(defaultOpen ?? trade.rank === 1);
+export function UnfairTradeCard({ trade, analysis }: { trade: UnfairTrade; analysis: LeagueAnalysis }) {
+  const [open, setOpen] = useState(false);
   const [showLineups, setShowLineups] = useState(false);
   const sim = trade.simulation;
   const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId)!;
@@ -33,7 +34,7 @@ export function UnfairTradeCard({ trade, analysis, defaultOpen }: { trade: Unfai
             <span className="muted">{money(sim.user.tradeValueSent)} ↔ {money(sim.user.tradeValueReceived)}</span>
           </div>
         </div>
-        <div className="caret">{open ? "▾" : "▸"}</div>
+        <ExpandToggle open={open} />
       </header>
 
       <div className="trade-sides">

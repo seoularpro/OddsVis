@@ -47,7 +47,7 @@ export function defaultExpiry(plan, now = Date.now()) {
       return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate() + days, 12)).toISOString();
     }
     case "monthly":
-      return new Date(now + 31 * DAY).toISOString();
+      return new Date(now + 30 * DAY).toISOString();
     case "season":
       // Past the fantasy playoffs: the next 1 February.
       return new Date(Date.UTC(d.getUTCFullYear() + (d.getUTCMonth() >= 1 ? 1 : 0), 1, 1)).toISOString();

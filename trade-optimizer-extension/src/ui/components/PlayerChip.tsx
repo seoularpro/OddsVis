@@ -10,6 +10,11 @@ export function PlayerChip({ player, marginal, showValue = true }: { player: Pla
       <span className="player-name" title={player.nflTeam ? `${player.name} · ${player.nflTeam}` : player.name}>
         {player.name}
       </span>
+      {player.projectionStale ? (
+        <span className="tag tag-warn" title="Missing a required prop in the latest odds; the projection uses the last posted value. Left out of trades.">
+          props incomplete
+        </span>
+      ) : null}
       {showValue ? (
         <span className="player-meta">
           <span className="num" title={est ? "Estimated: not in the trade value dataset" : "Trade value"}>

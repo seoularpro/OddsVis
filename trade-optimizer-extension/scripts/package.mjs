@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const manifest = JSON.parse(readFileSync(path.join(root, "public/manifest.json"), "utf8"));
 const out = path.join(root, "release");
-const zip = path.join(out, `oddsvis-trade-optimizer-${manifest.version}.zip`);
+const zip = path.join(out, `vegaslytics-trade-optimizer-${manifest.version}.zip`);
 
 if (!existsSync(path.join(root, ".env"))) {
   console.warn("warning: no .env found; building with default paywall settings (no checkout URL). See .env.example.");
