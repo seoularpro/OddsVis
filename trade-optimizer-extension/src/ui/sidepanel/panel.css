@@ -1,3 +1,5 @@
 /* Extension-page-only chrome: the panel body itself. */
-html, body { margin: 0; background: #f6f7f9; }
-@media (prefers-color-scheme: dark) { html, body { background: #0f1218; } }
+html { color-scheme: dark; }
+html, body { margin: 0; background: #07070c; }
+/* The .oto root paints the background, so let it cover the panel. */
+.oto { min-height: 100vh; }

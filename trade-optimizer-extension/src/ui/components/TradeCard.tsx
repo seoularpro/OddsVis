@@ -6,6 +6,7 @@ import { TIER_LABEL } from "../../optimization/tradeScorer";
 import { PlayerChip } from "./PlayerChip";
 import { LineupTable } from "./LineupTable";
 import { ExpandToggle } from "./ExpandToggle";
+import { TradeScreenLink } from "./TradeScreenLink";
 
 export function TradeCard({ trade, analysis }: { trade: RankedTrade; analysis: LeagueAnalysis }) {
   const [open, setOpen] = useState(false);
@@ -59,6 +60,8 @@ export function TradeCard({ trade, analysis }: { trade: RankedTrade; analysis: L
           </ul>
         </div>
       </div>
+
+      <TradeScreenLink league={analysis.originalLeague} trade={sim.candidate} partnerName={opp.teamName} />
 
       {open ? (
         <div className="trade-detail">

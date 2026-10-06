@@ -5,6 +5,7 @@ import { fmt1, money, signed1 } from "../format";
 import { PlayerChip } from "./PlayerChip";
 import { LineupTable } from "./LineupTable";
 import { ExpandToggle } from "./ExpandToggle";
+import { TradeScreenLink } from "./TradeScreenLink";
 
 export function UnfairTradeCard({ trade, analysis }: { trade: UnfairTrade; analysis: LeagueAnalysis }) {
   const [open, setOpen] = useState(false);
@@ -47,6 +48,8 @@ export function UnfairTradeCard({ trade, analysis }: { trade: UnfairTrade; analy
           <ul>{sim.candidate.userReceives.map((p) => <li key={p.id}><PlayerChip player={p} marginal={opp.playerMarginalValues[p.id] ?? 0} /></li>)}</ul>
         </div>
       </div>
+
+      <TradeScreenLink league={analysis.originalLeague} trade={sim.candidate} partnerName={opp.teamName} />
 
       {open ? (
         <div className="trade-detail">
