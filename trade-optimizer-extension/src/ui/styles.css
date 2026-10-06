@@ -2,48 +2,41 @@
    inside the OddsVis website. Tokens fall back to the extension palette when
    the site's --vl-* variables are not defined. */
 .oto {
-  --bg: var(--vl-bg, #f6f7f9);
-  --card: var(--vl-surface, #ffffff);
-  --text: var(--vl-text, #1c1f26);
-  --muted: var(--vl-muted, #6b7280);
-  --line: var(--vl-border-strong, #e4e7ec);
-  --accent: var(--vl-accent, #2563eb);
-  --accent-soft: var(--vl-accent-soft, #dbeafe);
-  --pos: #15803d;
-  --neg: #b91c1c;
-  --warn-bg: #fff7ed;
-  --warn-line: #fdba74;
-  --err-bg: #fef2f2;
-  --err-line: #fca5a5;
-  --hl: #fef9c3;
-  --qb: #7c3aed;
-  --rb: #059669;
-  --wr: #2563eb;
-  --te: #d97706;
-  --k: #64748b;
-  --dst: #475569;
-}
-@media (prefers-color-scheme: dark) {
-.oto {
-    --bg: var(--vl-bg, #0f1218);
-    --card: var(--vl-surface, #171b23);
-    --text: var(--vl-text, #e6e8ee);
-    --muted: var(--vl-muted, #9aa3b2);
-    --line: var(--vl-border-strong, #2a3140);
-    --accent: var(--vl-accent, #60a5fa);
-    --accent-soft: var(--vl-accent-soft, #1e3a8a);
-    --pos: #4ade80;
-    --neg: #f87171;
-    --warn-bg: #2b1d0e;
-    --warn-line: #b45309;
-    --err-bg: #2a1215;
-    --err-line: #991b1b;
-    --hl: #3b3410;
-  }
-
+  /* Neon palette: Vegas-strip black, marquee gold accent, neon position tags.
+     Always dark; the panel does not follow the OS light/dark preference. */
+  --bg: var(--vl-bg, #07070c);
+  --card: var(--vl-surface, #121219);
+  --text: var(--vl-text, #f3f0f8);
+  --muted: var(--vl-muted, #9b94ad);
+  --line: var(--vl-border-strong, #2b2838);
+  --accent: var(--vl-accent, #f5c542);
+  --accent-soft: var(--vl-accent-soft, #3a2d0a);
+  /* text on top of the accent / positive fills and position badges */
+  --on-accent: #1b1300;
+  --on-pos: #04200f;
+  --on-badge: #0b0b10;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-head: var(--font);
+  --pos: #3ddc84;
+  --neg: #ff4d6d;
+  --warn-bg: #2a1f06;
+  --warn-line: #b8860b;
+  --err-bg: #2c0d17;
+  --err-line: #ff4d6d;
+  --hl: #2a2410;
+  --qb: #ff2e88;
+  --rb: #19e6a5;
+  --wr: #35b6ff;
+  --te: #ff8c1a;
+  --k: #8c8c9c;
+  --dst: #6b6b80;
+  /* glow used behind the accent and positive fills */
+  --glow: color-mix(in srgb, var(--accent) 35%, transparent);
+  --glow-pos: color-mix(in srgb, var(--pos) 45%, transparent);
 }
 .oto, .oto * { box-sizing: border-box; }
-.oto { background: var(--bg); color: var(--text); font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: left; }
+.oto { background: var(--bg); color: var(--text); font: 13px/1.45 var(--font); text-align: left; }
+.oto h1, .oto h2 { font-family: var(--font-head); }
 .oto .app { padding: 12px; max-width: 900px; margin: 0 auto; }
 .oto h1 { font-size: 16px; margin: 0; }
 .oto h2 { font-size: 14px; margin: 0; }
@@ -53,9 +46,9 @@
 .oto ul, .oto ol { margin: 4px 0; padding-left: 18px; }
 .oto li { margin: 2px 0; }
 .oto .app-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
-.oto .actions { display: flex; gap: 6px; flex-shrink: 0; }
+.oto .actions { display: flex; gap: 6px; flex-shrink: 0; align-items: center; }
 .oto button { font: inherit; cursor: pointer; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--text); padding: 6px 10px; }
-.oto button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.oto button.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: 0 0 12px var(--glow); }
 .oto button.ghost { background: transparent; }
 .oto button.link { border: none; background: none; color: var(--accent); padding: 4px 0; }
 .oto button.link.small { font-size: 11.5px; }
@@ -76,9 +69,9 @@
 .oto .card-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 .oto .card-head.clickable { cursor: pointer; }
 .oto .section-head { display: flex; justify-content: space-between; align-items: baseline; margin: 14px 0 4px; }
-.oto .insight { background: var(--accent-soft); border-radius: 8px; padding: 8px 10px; margin: 8px 0; }
+.oto .insight { background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--accent-soft)); border-radius: 8px; padding: 8px 10px; margin: 8px 0; }
 .oto .insight p { margin: 2px 0; }
-.oto .pos { display: inline-block; min-width: 26px; text-align: center; font-size: 10.5px; font-weight: 700; color: #fff; border-radius: 4px; padding: 1px 4px; margin-right: 6px; }
+.oto .pos { display: inline-block; min-width: 26px; text-align: center; font-size: 10.5px; font-weight: 800; color: var(--on-badge); border-radius: 4px; padding: 1px 4px; margin-right: 6px; }
 .oto .pos-qb { background: var(--qb); }
 .oto .pos-rb { background: var(--rb); }
 .oto .pos-wr { background: var(--wr); }
@@ -102,23 +95,23 @@
 .oto .level-very-high, .oto .level-high { border-color: var(--pos); }
 .oto .level-very-low { border-color: var(--neg); }
 .oto .trade { padding: 0; overflow: hidden; }
-.oto .trade-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; cursor: pointer; background: color-mix(in srgb, var(--card) 85%, var(--accent-soft)); }
-.oto .trade-rank { font-size: 18px; font-weight: 800; color: var(--accent); }
+.oto .trade-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; cursor: pointer; background: linear-gradient(90deg, color-mix(in srgb, var(--card) 80%, var(--accent-soft)), var(--card)); }
+.oto .trade-rank { font-size: 18px; font-weight: 800; color: var(--accent); text-shadow: 0 0 10px var(--glow); }
 .oto .trade-summary { flex: 1; }
 .oto .trade-title { font-size: 13.5px; }
 .oto .trade-gains { display: flex; gap: 10px; font-size: 12px; align-items: baseline; }
-.oto .gain.you { color: var(--pos); font-weight: 700; }
+.oto .gain.you { color: var(--pos); font-weight: 700; text-shadow: 0 0 8px var(--glow-pos); }
 .oto .gain.them { color: var(--text); font-weight: 600; }
 .oto .caret { color: var(--muted); }
 .oto .toggle { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px 4px 12px; border-radius: 999px; border: 1.5px solid var(--accent); background: var(--card); color: var(--accent); font-size: 12px; font-weight: 700; }
-.oto .toggle:hover { background: var(--accent); color: #fff; }
+.oto .toggle:hover { background: var(--accent); color: var(--on-accent); }
 .oto .toggle-chevron { transition: transform 0.15s; }
 .oto .toggle[aria-expanded="true"] .toggle-chevron { transform: rotate(180deg); }
 .oto .trade-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); }
 .oto .trade-sides ul { list-style: none; padding: 0; margin: 0; }
 .oto .side-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 4px; }
 .oto .trade-actions { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-top: 1px solid var(--line); flex-wrap: wrap; }
-.oto .site-link { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; }
+.oto .site-link { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 700; text-decoration: none; box-shadow: 0 0 12px var(--glow); }
 .oto .site-link:hover { filter: brightness(1.1); }
 .oto .trade-actions .muted { flex: 1 1 180px; }
 .oto .trade-detail { padding: 8px 12px 12px; border-top: 1px solid var(--line); }
@@ -163,7 +156,7 @@
 .oto .locked-cta { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 12px 12px; border-top: 1px solid var(--line); flex-wrap: wrap; }
 .oto .license-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
 .oto .license-row input { flex: 1; min-width: 160px; font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 5px 6px; }
-.oto .tag-ok { background: var(--pos); color: #fff; }
+.oto .tag-ok { background: var(--pos); color: var(--on-pos); }
 .oto #license { scroll-margin-top: 8px; }
 .oto .license-flash .license { animation: oto-license-flash 1.6s ease-out; }
 @keyframes oto-license-flash { 0%, 40% { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); } 100% { border-color: var(--line); box-shadow: 0 0 0 0 transparent; } }
@@ -176,16 +169,16 @@
 .oto .plan-label { font-weight: 700; }
 .oto .plan-price { color: var(--accent); font-weight: 700; }
 .oto .tag.tier { margin-left: 8px; font-weight: 600; }
-.oto .tier-win-win { background: var(--pos); color: #fff; }
+.oto .tier-win-win { background: var(--pos); color: var(--on-pos); }
 .oto .tier-mutual { background: var(--accent-soft); }
 .oto .tier-one-sided { background: var(--line); }
-.oto .list-tabs { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--accent); border-radius: 10px; overflow: hidden; background: var(--card); margin: 6px 0 8px; }
+.oto .list-tabs { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--accent); border-radius: 10px; overflow: hidden; background: var(--card); margin: 6px 0 8px; box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 22%, transparent); }
 .oto .list-tab { display: flex; flex-direction: column; align-items: center; gap: 1px; border: none; border-radius: 0; background: transparent; padding: 9px 10px; color: var(--accent); }
 .oto .list-tab + .list-tab { border-left: 2px solid var(--accent); }
 .oto .list-tab-label { font-size: 14px; font-weight: 800; }
 .oto .list-tab-sub { font-size: 11px; font-weight: 500; }
 .oto .list-tab:not(.active):hover { background: var(--accent-soft); }
-.oto .list-tab.active { background: var(--accent); color: #fff; }
+.oto .list-tab.active { background: var(--accent); color: var(--on-accent); }
 .oto .list-note { margin: 2px 0 8px; }
 .oto .tier-unfair { background: var(--warn-bg); border: 1px solid var(--warn-line); }
 .oto .gain.value { color: var(--accent); font-weight: 700; }
