@@ -62,9 +62,9 @@ export default function TradeOptimizerPromo() {
         </div>
         <h2 className="vl-promo-title">Find the trade that actually moves your lineup.</h2>
         <p className="vl-promo-text">
-          Paste an ESPN or Sleeper league ID and get the offers that raise your starters' median
-          projection the most, scored on the same Vegas props as this table, and still fair enough
-          for the other manager to say yes.
+          Paste an ESPN or Sleeper league ID and get win-win offers that raise both teams' median
+          projections (scored on the same weekly player props as this table), so the other manager
+          has a clear reason to say yes.
         </p>
       </div>
 
