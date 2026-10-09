@@ -3,14 +3,20 @@ import type { LeagueAnalysis } from "../../optimization/teamAnalyzer";
 import { OFFENSE_POSITIONS } from "../../domain/types";
 import { fmt1, money } from "../format";
 
-export function LeagueTable({ analysis, onPickTeam }: { analysis: LeagueAnalysis; onPickTeam?: (teamId: string) => void }) {
+/**
+ * League standings by optimal lineup. With `picking` (no user team chosen yet)
+ * the card turns into the team picker: loud heading, every row clickable, and
+ * a real button per row so it is obvious what to do next.
+ */
+export function LeagueTable({ analysis, onPickTeam, picking = false }: { analysis: LeagueAnalysis; onPickTeam?: (teamId: string) => void; picking?: boolean }) {
   const rows = [...analysis.teams].sort((a, b) => a.projectionRank - b.projectionRank);
+  const pickable = Boolean(onPickTeam) && picking;
   return (
-    <section className="card">
-      <div className="card-head">
-        <h2>League overview</h2>
+    <section className={`panel${pickable ? " picking" : ""}`}>
+      <div className="panel-head">
+        <h2>{pickable ? "Pick your team to continue" : "League overview"}</h2>
         <span className="muted small">
-          Replacement level: {OFFENSE_POSITIONS.map((p) => `${p} ${fmt1(analysis.replacement.levels[p])}`).join(" · ")}
+          {pickable ? "Click your team, or its button, in the list below." : `Replacement level: ${OFFENSE_POSITIONS.map((p) => `${p} ${fmt1(analysis.replacement.levels[p])}`).join(" · ")}`}
         </span>
       </div>
       <div className="table-wrap">
@@ -28,7 +34,11 @@ export function LeagueTable({ analysis, onPickTeam }: { analysis: LeagueAnalysis
           </thead>
           <tbody>
             {rows.map((t) => (
-              <tr key={t.teamId} className={t.isUser ? "me" : undefined}>
+              <tr
+                key={t.teamId}
+                className={t.isUser ? "me" : pickable ? "pickable" : undefined}
+                onClick={pickable ? () => onPickTeam?.(t.teamId) : undefined}
+              >
                 <td className="num">{t.projectionRank}</td>
                 <td>
                   {t.teamName}
@@ -43,8 +53,15 @@ export function LeagueTable({ analysis, onPickTeam }: { analysis: LeagueAnalysis
                 {onPickTeam ? (
                   <td>
                     {!t.isUser ? (
-                      <button className="link small" onClick={() => onPickTeam(t.teamId)}>
-                        this is me
+                      <button
+                        type="button"
+                        className={pickable ? "primary pick-btn" : "pick-btn"}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onPickTeam(t.teamId);
+                        }}
+                      >
+                        {pickable ? "This is my team" : "This is me"}
                       </button>
                     ) : null}
                   </td>

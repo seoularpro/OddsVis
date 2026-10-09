@@ -20,8 +20,8 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
     .slice(0, 8);
 
   return (
-    <section className="card">
-      <div className="card-head clickable" onClick={() => setOpen((v) => !v)}>
+    <section className="panel">
+      <div className="panel-head clickable" onClick={() => setOpen((v) => !v)}>
         <h2>Team analysis · {team.teamName}</h2>
         <ExpandToggle open={open} more="Full analysis" />
       </div>
@@ -56,7 +56,7 @@ export function TeamAnalysisPanel({ analysis, team }: { analysis: LeagueAnalysis
       ) : null}
 
       {open ? (
-        <button className="link" onClick={() => setShowLineup((v) => !v)}>
+        <button className="text-btn" onClick={() => setShowLineup((v) => !v)}>
           {showLineup ? "Hide" : "Show"} optimal lineup
         </button>
       ) : null}

@@ -81,6 +81,7 @@ export function TradeReport(props: TradeReportProps) {
     ) : null;
   // Locked cards send the user to the plans rather than straight to one plan's checkout.
   const licenseRef = useRef<HTMLDivElement>(null);
+  const leagueRef = useRef<HTMLDivElement>(null);
   const [flash, setFlash] = useState(false);
   const showPlans = () => {
     if (!licenseRef.current) return onUpgrade();
@@ -117,7 +118,18 @@ export function TradeReport(props: TradeReportProps) {
         <div key={i} className="note warn">{w}</div>
       )) : null}
 
-      {!user && show("meta") ? <div className="note warn">Which team is yours? Pick it in the league table below.</div> : null}
+      {!user && show("meta") ? (
+        <div className="pick-callout" role="status">
+          <div className="pick-callout-step">Step 1</div>
+          <div className="pick-callout-body">
+            <h2 className="pick-callout-title">Which team is yours?</h2>
+            <p>Pick it in the league table below. Your trades and team analysis appear as soon as we know which roster is yours. You only do this once per league.</p>
+          </div>
+          <button type="button" className="primary pick-callout-btn" onClick={() => leagueRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}>
+            Pick my team ↓
+          </button>
+        </div>
+      ) : null}
 
       {user && show("trades") ? (
         <section id="trades" ref={tradesRef}>
@@ -190,15 +202,15 @@ export function TradeReport(props: TradeReportProps) {
         </div>
       ) : null}
 
-      {show("license") ? (
-        <div id="license" ref={licenseRef} className={flash ? "license-flash" : undefined} onAnimationEnd={() => setFlash(false)}>
-          <LicensePanel license={license} config={paywall} entitled={entitled} busy={licenseBusy} onActivate={onActivate} onRemove={onRemoveLicense} onUpgrade={onUpgrade} />
+      {show("league") ? (
+        <div id="league" ref={leagueRef}>
+          <LeagueTable analysis={analysis} onPickTeam={onPickTeam} picking={!user} />
         </div>
       ) : null}
 
-      {show("league") ? (
-        <div id="league">
-          <LeagueTable analysis={analysis} onPickTeam={onPickTeam} />
+      {show("license") ? (
+        <div id="license" ref={licenseRef} className={flash ? "license-flash" : undefined} onAnimationEnd={() => setFlash(false)}>
+          <LicensePanel license={license} config={paywall} entitled={entitled} busy={licenseBusy} onActivate={onActivate} onRemove={onRemoveLicense} onUpgrade={onUpgrade} />
         </div>
       ) : null}
     </>

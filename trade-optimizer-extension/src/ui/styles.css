@@ -50,8 +50,8 @@
 .oto button { font: inherit; cursor: pointer; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--text); padding: 6px 10px; }
 .oto button.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: 0 0 12px var(--glow); }
 .oto button.ghost { background: transparent; }
-.oto button.link { border: none; background: none; color: var(--accent); padding: 4px 0; }
-.oto button.link.small { font-size: 11.5px; }
+.oto button.text-btn { border: none; background: none; color: var(--accent); padding: 4px 0; }
+.oto button.text-btn.small { font-size: 11.5px; }
 .oto button:disabled { opacity: 0.6; cursor: default; }
 .oto .muted { color: var(--muted); }
 .oto .small { font-size: 11.5px; }
@@ -65,9 +65,9 @@
 .oto .chip { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; font-size: 11.5px; }
 .oto .chip b { font-weight: 600; }
 .oto .datasets { margin: 2px 0 8px; }
-.oto .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin: 10px 0; }
-.oto .card-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
-.oto .card-head.clickable { cursor: pointer; }
+.oto .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin: 10px 0; }
+.oto .panel-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.oto .panel-head.clickable { cursor: pointer; }
 .oto .section-head { display: flex; justify-content: space-between; align-items: baseline; margin: 14px 0 4px; }
 .oto .insight { background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--accent-soft)); border-radius: 8px; padding: 8px 10px; margin: 8px 0; }
 .oto .insight p { margin: 2px 0; }
@@ -103,10 +103,10 @@
 .oto .gain.you { color: var(--pos); font-weight: 700; text-shadow: 0 0 8px var(--glow-pos); }
 .oto .gain.them { color: var(--text); font-weight: 600; }
 .oto .caret { color: var(--muted); }
-.oto .toggle { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px 4px 12px; border-radius: 999px; border: 1.5px solid var(--accent); background: var(--card); color: var(--accent); font-size: 12px; font-weight: 700; }
-.oto .toggle:hover { background: var(--accent); color: var(--on-accent); }
-.oto .toggle-chevron { transition: transform 0.15s; }
-.oto .toggle[aria-expanded="true"] .toggle-chevron { transform: rotate(180deg); }
+.oto .expand-toggle { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px 4px 12px; border-radius: 999px; border: 1.5px solid var(--accent); background: var(--card); color: var(--accent); font-size: 12px; font-weight: 700; }
+.oto .expand-toggle:hover { background: var(--accent); color: var(--on-accent); }
+.oto .expand-chevron { transition: transform 0.15s; }
+.oto .expand-toggle[aria-expanded="true"] .expand-chevron { transform: rotate(180deg); }
 .oto .trade-sides { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); }
 .oto .trade-sides ul { list-style: none; padding: 0; margin: 0; }
 .oto .side-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 4px; }
@@ -188,3 +188,19 @@
 .oto .pager-btn { border-radius: 999px; padding: 5px 12px; font-weight: 600; }
 .oto .pager-btn:disabled { opacity: 0.4; cursor: default; }
 .oto .pager-status { font-size: 12px; text-align: center; }
+
+/* ---- team picker ------------------------------------------------------- */
+.oto .pick-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 10px 0; padding: 12px 14px; border: 2px solid var(--accent); border-radius: 10px; background: color-mix(in srgb, var(--accent) 12%, var(--card)); box-shadow: 0 0 16px var(--glow); }
+.oto .pick-callout-step { flex-shrink: 0; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: var(--on-accent); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.oto .pick-callout-body { flex: 1 1 240px; min-width: 0; }
+.oto .pick-callout-title { font-size: 16px; font-weight: 800; margin: 0 0 2px; }
+.oto .pick-callout-body p { margin: 0; }
+.oto .pick-callout-btn { flex-shrink: 0; font-weight: 700; padding: 8px 14px; }
+.oto .panel.picking { border: 2px solid var(--accent); box-shadow: 0 0 16px var(--glow); }
+.oto .panel.picking .panel-head h2 { color: var(--accent); font-size: 15px; }
+.oto tr.pickable { cursor: pointer; }
+.oto tr.pickable:hover td { background: var(--accent-soft); }
+.oto .pick-btn { font-weight: 700; white-space: nowrap; padding: 5px 12px; border-radius: 999px; }
+.oto .pick-btn:not(.primary) { border-color: var(--accent); color: var(--accent); background: transparent; }
+.oto .pick-btn:not(.primary):hover { background: var(--accent); color: var(--on-accent); }
+.oto td:has(> .pick-btn) { text-align: right; }

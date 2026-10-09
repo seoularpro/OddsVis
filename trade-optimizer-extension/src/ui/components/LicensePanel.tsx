@@ -29,8 +29,8 @@ export function LicensePanel({
   if (config.provider === "none") return null;
 
   return (
-    <section className="card license">
-      <div className="card-head">
+    <section className="panel license">
+      <div className="panel-head">
         <h2>{config.productName}</h2>
         <span className={`tag ${entitled ? "tag-ok" : ""}`}>{entitled ? "Pro active" : "Free tier"}</span>
       </div>
@@ -41,7 +41,7 @@ export function LicensePanel({
             {license.expiresAt ? ` · renews/expires ${new Date(license.expiresAt).toLocaleDateString()}` : " · lifetime"}
             {license.message ? ` · ${license.message}` : ""}
           </span>
-          <button className="link small" onClick={onRemove}>Remove key</button>
+          <button className="text-btn small" onClick={onRemove}>Remove key</button>
         </div>
       ) : (
         <>
@@ -95,7 +95,7 @@ export function LicensePanel({
             }}
           >
             <input value={key} onChange={(e) => setKey(e.target.value)} placeholder="Already bought? Paste your license key" autoComplete="off" />
-            <button type="submit" disabled={busy || !key.trim()}>
+            <button type="submit" className="primary" disabled={busy || !key.trim()}>
               {busy ? "Checking…" : "Activate"}
             </button>
           </form>

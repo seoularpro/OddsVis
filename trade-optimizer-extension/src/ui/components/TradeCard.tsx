@@ -18,7 +18,7 @@ export function TradeCard({ trade, analysis }: { trade: RankedTrade; analysis: L
   const outgoingIds = new Set(sim.candidate.userSends.map((p) => p.id));
 
   return (
-    <article className="card trade">
+    <article className="panel trade">
       <header className="trade-head" onClick={() => setOpen((v) => !v)}>
         <div className="trade-rank">#{trade.rank}</div>
         <div className="trade-summary">
@@ -118,7 +118,7 @@ export function TradeCard({ trade, analysis }: { trade: RankedTrade; analysis: L
           </p>
           {trade.rankedAboveNextBecause ? <p className="muted small">Ranked above #{trade.rank + 1} because it {trade.rankedAboveNextBecause}.</p> : null}
 
-          <button className="link" onClick={() => setShowLineups((v) => !v)}>
+          <button className="text-btn" onClick={() => setShowLineups((v) => !v)}>
             {showLineups ? "Hide" : "Show"} before/after lineups
           </button>
           {showLineups ? (

@@ -20,7 +20,7 @@ export function UnfairTradeCard({ trade, analysis }: { trade: UnfairTrade; analy
     : `Their angle: ${trade.opponentAngle}. Expect some pushback: ${trade.acceptance.rejections.join("; ")}.`;
 
   return (
-    <article className="card trade unfair">
+    <article className="panel trade unfair">
       <header className="trade-head" onClick={() => setOpen((v) => !v)}>
         <div className="trade-rank">#{trade.rank}</div>
         <div className="trade-summary">
@@ -82,7 +82,7 @@ export function UnfairTradeCard({ trade, analysis }: { trade: UnfairTrade; analy
           <ul>{trade.explanation.opponentSide.map((l, i) => <li key={i}>{l}</li>)}</ul>
           <p className="muted small">{pushback}</p>
 
-          <button className="link" onClick={() => setShowLineups((v) => !v)}>
+          <button className="text-btn" onClick={() => setShowLineups((v) => !v)}>
             {showLineups ? "Hide" : "Show"} before/after lineups
           </button>
           {showLineups ? (

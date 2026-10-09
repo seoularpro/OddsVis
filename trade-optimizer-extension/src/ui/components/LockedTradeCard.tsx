@@ -22,7 +22,7 @@ export function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }: { tr
   const sends = sim.candidate.userSends.length;
   const receives = sim.candidate.userReceives.length;
   return (
-    <article className="card trade locked">
+    <article className="panel trade locked">
       <header className="trade-head">
         <div className="trade-rank">#{trade.rank}</div>
         <div className="trade-summary">

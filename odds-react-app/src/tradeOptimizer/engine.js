@@ -2487,9 +2487,9 @@ function LineupTable({ lineup, highlight, title }) {
   ] });
 }
 function ExpandToggle({ open, more = "More details" }) {
-  return /* @__PURE__ */ jsxs("button", { type: "button", className: "toggle", "aria-expanded": open, children: [
+  return /* @__PURE__ */ jsxs("button", { type: "button", className: "expand-toggle", "aria-expanded": open, children: [
     open ? "Less" : more,
-    /* @__PURE__ */ jsx("svg", { className: "toggle-chevron", viewBox: "0 0 16 16", width: "14", height: "14", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M3.5 6l4.5 4.5L12.5 6", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }) })
+    /* @__PURE__ */ jsx("svg", { className: "expand-chevron", viewBox: "0 0 16 16", width: "14", height: "14", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M3.5 6l4.5 4.5L12.5 6", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }) })
   ] });
 }
 function TeamAnalysisPanel({ analysis, team }) {
@@ -2498,8 +2498,8 @@ function TeamAnalysisPanel({ analysis, team }) {
   const adviceMoves = team.waiverMoves.filter((m) => m.gain >= 0.5);
   const weaknesses = team.weaknesses.filter((w) => OFFENSE_POSITIONS.some((p) => w.eligible.includes(p)));
   const surplusAssets = team.positionalSurplus.flatMap((s) => s.expendable.map((e) => ({ ...e, position: s.position, level: s.level }))).filter((e) => OFFENSE_POSITIONS.includes(e.position) && e.player.tradeValue > 0).sort((a, b) => b.player.tradeValue - a.player.tradeValue).slice(0, 8);
-  return /* @__PURE__ */ jsxs("section", { className: "card", children: [
-    /* @__PURE__ */ jsxs("div", { className: "card-head clickable", onClick: () => setOpen((v) => !v), children: [
+  return /* @__PURE__ */ jsxs("section", { className: "panel", children: [
+    /* @__PURE__ */ jsxs("div", { className: "panel-head clickable", onClick: () => setOpen((v) => !v), children: [
       /* @__PURE__ */ jsxs("h2", { children: [
         "Team analysis · ",
         team.teamName
@@ -2544,7 +2544,7 @@ function TeamAnalysisPanel({ analysis, team }) {
       ] }, i)),
       ". Trades below are measured after these moves."
     ] }) : null,
-    open ? /* @__PURE__ */ jsxs("button", { className: "link", onClick: () => setShowLineup((v) => !v), children: [
+    open ? /* @__PURE__ */ jsxs("button", { className: "text-btn", onClick: () => setShowLineup((v) => !v), children: [
       showLineup ? "Hide" : "Show",
       " optimal lineup"
     ] }) : null,
@@ -2613,6 +2613,43 @@ function TeamAnalysisPanel({ analysis, team }) {
     ] }) : null
   ] });
 }
+const isNumeric = (v) => !!v && /^\d+$/.test(v);
+function espnTradeUrl(league, partnerTeamId, userReceives) {
+  const { leagueId, season } = league.settings;
+  if (!isNumeric(leagueId) || !isNumeric(league.userTeamId) || !isNumeric(partnerTeamId)) return null;
+  const players = userReceives.map((p) => p.platformId).filter(isNumeric);
+  return `https://fantasy.espn.com/football/team/trade?leagueId=${leagueId}&seasonId=${season}&teamId=${partnerTeamId}&fromTeamId=${league.userTeamId}&step=1${players.length ? `&players=${players.join(",")}` : ""}`;
+}
+function tradeScreenLink(league, trade, partnerName) {
+  switch (league.settings.platform) {
+    case "espn": {
+      const url = espnTradeUrl(league, trade.partnerTeamId, trade.userReceives);
+      if (!url) return null;
+      return { url, label: "Open in ESPN", hint: "Opens ESPN's trade screen with the players you receive selected. Tick the players you send there." };
+    }
+    case "sleeper": {
+      if (!isNumeric(league.settings.leagueId)) return null;
+      return {
+        url: `https://sleeper.com/leagues/${league.settings.leagueId}/trades`,
+        label: "Open Sleeper trade center",
+        hint: `Sleeper can't pre-fill a trade: pick ${partnerName} and these players there.`
+      };
+    }
+    default:
+      return null;
+  }
+}
+function TradeScreenLink({ league, trade, partnerName }) {
+  const link = tradeScreenLink(league, trade, partnerName);
+  if (!link) return null;
+  return /* @__PURE__ */ jsxs("div", { className: "trade-actions", children: [
+    /* @__PURE__ */ jsxs("a", { className: "site-link", href: link.url, target: "_blank", rel: "noopener noreferrer", children: [
+      link.label,
+      /* @__PURE__ */ jsx("svg", { viewBox: "0 0 16 16", width: "12", height: "12", "aria-hidden": "true", children: /* @__PURE__ */ jsx("path", { d: "M6 3h7v7M13 3L4 12", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }) })
+    ] }),
+    /* @__PURE__ */ jsx("span", { className: "muted small", children: link.hint })
+  ] });
+}
 function TradeCard({ trade, analysis }) {
   const [open, setOpen] = useState(false);
   const [showLineups, setShowLineups] = useState(false);
@@ -2621,7 +2658,7 @@ function TradeCard({ trade, analysis }) {
   const user = analysis.user;
   const incomingIds = new Set(sim.candidate.userReceives.map((p) => p.id));
   const outgoingIds = new Set(sim.candidate.userSends.map((p) => p.id));
-  return /* @__PURE__ */ jsxs("article", { className: "card trade", children: [
+  return /* @__PURE__ */ jsxs("article", { className: "panel trade", children: [
     /* @__PURE__ */ jsxs("header", { className: "trade-head", onClick: () => setOpen((v) => !v), children: [
       /* @__PURE__ */ jsxs("div", { className: "trade-rank", children: [
         "#",
@@ -2667,6 +2704,7 @@ function TradeCard({ trade, analysis }) {
         /* @__PURE__ */ jsx("ul", { children: sim.candidate.userReceives.map((p) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(PlayerChip, { player: p, marginal: opp.playerMarginalValues[p.id] ?? 0 }) }, p.id)) })
       ] })
     ] }),
+    /* @__PURE__ */ jsx(TradeScreenLink, { league: analysis.originalLeague, trade: sim.candidate, partnerName: opp.teamName }),
     open ? /* @__PURE__ */ jsxs("div", { className: "trade-detail", children: [
       /* @__PURE__ */ jsxs("div", { className: "metrics", children: [
         /* @__PURE__ */ jsxs("div", { className: "metric", children: [
@@ -2769,7 +2807,7 @@ function TradeCard({ trade, analysis }) {
         trade.rankedAboveNextBecause,
         "."
       ] }) : null,
-      /* @__PURE__ */ jsxs("button", { className: "link", onClick: () => setShowLineups((v) => !v), children: [
+      /* @__PURE__ */ jsxs("button", { className: "text-btn", onClick: () => setShowLineups((v) => !v), children: [
         showLineups ? "Hide" : "Show",
         " before/after lineups"
       ] }),
@@ -2787,7 +2825,7 @@ function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }) {
   const opp = analysis.teams.find((t) => t.teamId === sim.candidate.partnerTeamId);
   const sends = sim.candidate.userSends.length;
   const receives = sim.candidate.userReceives.length;
-  return /* @__PURE__ */ jsxs("article", { className: "card trade locked", children: [
+  return /* @__PURE__ */ jsxs("article", { className: "panel trade locked", children: [
     /* @__PURE__ */ jsxs("header", { className: "trade-head", children: [
       /* @__PURE__ */ jsxs("div", { className: "trade-rank", children: [
         "#",
@@ -2862,15 +2900,13 @@ function LockedTradeCard({ trade, analysis, onUpgrade, priceLabel }) {
     ] })
   ] });
 }
-function LeagueTable({ analysis, onPickTeam }) {
+function LeagueTable({ analysis, onPickTeam, picking = false }) {
   const rows = [...analysis.teams].sort((a, b) => a.projectionRank - b.projectionRank);
-  return /* @__PURE__ */ jsxs("section", { className: "card", children: [
-    /* @__PURE__ */ jsxs("div", { className: "card-head", children: [
-      /* @__PURE__ */ jsx("h2", { children: "League overview" }),
-      /* @__PURE__ */ jsxs("span", { className: "muted small", children: [
-        "Replacement level: ",
-        OFFENSE_POSITIONS.map((p) => `${p} ${fmt1(analysis.replacement.levels[p])}`).join(" · ")
-      ] })
+  const pickable = Boolean(onPickTeam) && picking;
+  return /* @__PURE__ */ jsxs("section", { className: `panel${pickable ? " picking" : ""}`, children: [
+    /* @__PURE__ */ jsxs("div", { className: "panel-head", children: [
+      /* @__PURE__ */ jsx("h2", { children: pickable ? "Pick your team to continue" : "League overview" }),
+      /* @__PURE__ */ jsx("span", { className: "muted small", children: pickable ? "Click your team, or its button, in the list below." : `Replacement level: ${OFFENSE_POSITIONS.map((p) => `${p} ${fmt1(analysis.replacement.levels[p])}`).join(" · ")}` })
     ] }),
     /* @__PURE__ */ jsx("div", { className: "table-wrap", children: /* @__PURE__ */ jsxs("table", { className: "league", children: [
       /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
@@ -2882,18 +2918,37 @@ function LeagueTable({ analysis, onPickTeam }) {
         /* @__PURE__ */ jsx("th", { children: "Surplus" }),
         onPickTeam ? /* @__PURE__ */ jsx("th", {}) : null
       ] }) }),
-      /* @__PURE__ */ jsx("tbody", { children: rows.map((t) => /* @__PURE__ */ jsxs("tr", { className: t.isUser ? "me" : void 0, children: [
-        /* @__PURE__ */ jsx("td", { className: "num", children: t.projectionRank }),
-        /* @__PURE__ */ jsxs("td", { children: [
-          t.teamName,
-          t.isUser ? /* @__PURE__ */ jsx("span", { className: "tag", children: "you" }) : null
-        ] }),
-        /* @__PURE__ */ jsx("td", { className: "num right", children: fmt1(t.optimalStartingProjection) }),
-        /* @__PURE__ */ jsx("td", { className: "num right", children: money(t.totalTradeValue) }),
-        /* @__PURE__ */ jsx("td", { className: "small", children: t.holes.map((h) => h.key).join(", ") || "—" }),
-        /* @__PURE__ */ jsx("td", { className: "small", children: t.positionalSurplus.filter((s) => OFFENSE_POSITIONS.includes(s.position) && (s.level === "high" || s.level === "very high")).map((s) => s.position).join(", ") || "—" }),
-        onPickTeam ? /* @__PURE__ */ jsx("td", { children: !t.isUser ? /* @__PURE__ */ jsx("button", { className: "link small", onClick: () => onPickTeam(t.teamId), children: "this is me" }) : null }) : null
-      ] }, t.teamId)) })
+      /* @__PURE__ */ jsx("tbody", { children: rows.map((t) => /* @__PURE__ */ jsxs(
+        "tr",
+        {
+          className: t.isUser ? "me" : pickable ? "pickable" : void 0,
+          onClick: pickable ? () => onPickTeam == null ? void 0 : onPickTeam(t.teamId) : void 0,
+          children: [
+            /* @__PURE__ */ jsx("td", { className: "num", children: t.projectionRank }),
+            /* @__PURE__ */ jsxs("td", { children: [
+              t.teamName,
+              t.isUser ? /* @__PURE__ */ jsx("span", { className: "tag", children: "you" }) : null
+            ] }),
+            /* @__PURE__ */ jsx("td", { className: "num right", children: fmt1(t.optimalStartingProjection) }),
+            /* @__PURE__ */ jsx("td", { className: "num right", children: money(t.totalTradeValue) }),
+            /* @__PURE__ */ jsx("td", { className: "small", children: t.holes.map((h) => h.key).join(", ") || "—" }),
+            /* @__PURE__ */ jsx("td", { className: "small", children: t.positionalSurplus.filter((s) => OFFENSE_POSITIONS.includes(s.position) && (s.level === "high" || s.level === "very high")).map((s) => s.position).join(", ") || "—" }),
+            onPickTeam ? /* @__PURE__ */ jsx("td", { children: !t.isUser ? /* @__PURE__ */ jsx(
+              "button",
+              {
+                type: "button",
+                className: pickable ? "primary pick-btn" : "pick-btn",
+                onClick: (e) => {
+                  e.stopPropagation();
+                  onPickTeam(t.teamId);
+                },
+                children: pickable ? "This is my team" : "This is me"
+              }
+            ) : null }) : null
+          ]
+        },
+        t.teamId
+      )) })
     ] }) })
   ] });
 }
@@ -2913,8 +2968,8 @@ function LicensePanel({
 }) {
   const [key, setKey] = useState("");
   if (config.provider === "none") return null;
-  return /* @__PURE__ */ jsxs("section", { className: "card license", children: [
-    /* @__PURE__ */ jsxs("div", { className: "card-head", children: [
+  return /* @__PURE__ */ jsxs("section", { className: "panel license", children: [
+    /* @__PURE__ */ jsxs("div", { className: "panel-head", children: [
       /* @__PURE__ */ jsx("h2", { children: config.productName }),
       /* @__PURE__ */ jsx("span", { className: `tag ${entitled ? "tag-ok" : ""}`, children: entitled ? "Pro active" : "Free tier" })
     ] }),
@@ -2925,7 +2980,7 @@ function LicensePanel({
         license.expiresAt ? ` · renews/expires ${new Date(license.expiresAt).toLocaleDateString()}` : " · lifetime",
         license.message ? ` · ${license.message}` : ""
       ] }),
-      /* @__PURE__ */ jsx("button", { className: "link small", onClick: onRemove, children: "Remove key" })
+      /* @__PURE__ */ jsx("button", { className: "text-btn small", onClick: onRemove, children: "Remove key" })
     ] }) : /* @__PURE__ */ jsxs(Fragment, { children: [
       /* @__PURE__ */ jsxs("p", { className: "small", children: [
         "Free: full team analysis, league overview and ",
@@ -2972,7 +3027,7 @@ function LicensePanel({
           },
           children: [
             /* @__PURE__ */ jsx("input", { value: key, onChange: (e) => setKey(e.target.value), placeholder: "Already bought? Paste your license key", autoComplete: "off" }),
-            /* @__PURE__ */ jsx("button", { type: "submit", disabled: busy || !key.trim(), children: busy ? "Checking…" : "Activate" })
+            /* @__PURE__ */ jsx("button", { type: "submit", className: "primary", disabled: busy || !key.trim(), children: busy ? "Checking…" : "Activate" })
           ]
         }
       ),
@@ -2989,7 +3044,7 @@ function UnfairTradeCard({ trade, analysis }) {
   const incomingIds = new Set(sim.candidate.userReceives.map((p) => p.id));
   const outgoingIds = new Set(sim.candidate.userSends.map((p) => p.id));
   const pushback = trade.acceptance.accepted ? `Their angle: ${trade.opponentAngle}. It also passes the normal rules, so it may well go through.` : `Their angle: ${trade.opponentAngle}. Expect some pushback: ${trade.acceptance.rejections.join("; ")}.`;
-  return /* @__PURE__ */ jsxs("article", { className: "card trade unfair", children: [
+  return /* @__PURE__ */ jsxs("article", { className: "panel trade unfair", children: [
     /* @__PURE__ */ jsxs("header", { className: "trade-head", onClick: () => setOpen((v) => !v), children: [
       /* @__PURE__ */ jsxs("div", { className: "trade-rank", children: [
         "#",
@@ -3035,6 +3090,7 @@ function UnfairTradeCard({ trade, analysis }) {
         /* @__PURE__ */ jsx("ul", { children: sim.candidate.userReceives.map((p) => /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(PlayerChip, { player: p, marginal: opp.playerMarginalValues[p.id] ?? 0 }) }, p.id)) })
       ] })
     ] }),
+    /* @__PURE__ */ jsx(TradeScreenLink, { league: analysis.originalLeague, trade: sim.candidate, partnerName: opp.teamName }),
     open ? /* @__PURE__ */ jsxs("div", { className: "trade-detail", children: [
       /* @__PURE__ */ jsxs("div", { className: "metrics", children: [
         /* @__PURE__ */ jsxs("div", { className: "metric", children: [
@@ -3086,7 +3142,7 @@ function UnfairTradeCard({ trade, analysis }) {
       /* @__PURE__ */ jsx("h4", { children: "Their side" }),
       /* @__PURE__ */ jsx("ul", { children: trade.explanation.opponentSide.map((l, i) => /* @__PURE__ */ jsx("li", { children: l }, i)) }),
       /* @__PURE__ */ jsx("p", { className: "muted small", children: pushback }),
-      /* @__PURE__ */ jsxs("button", { className: "link", onClick: () => setShowLineups((v) => !v), children: [
+      /* @__PURE__ */ jsxs("button", { className: "text-btn", onClick: () => setShowLineups((v) => !v), children: [
         showLineups ? "Hide" : "Show",
         " before/after lineups"
       ] }),
@@ -3145,6 +3201,7 @@ function TradeReport(props) {
     /* @__PURE__ */ jsx("button", { type: "button", className: "pager-btn", disabled: page >= pageCount, onClick: () => goToPage(page + 1), children: "Next ›" })
   ] }) : null;
   const licenseRef = useRef(null);
+  const leagueRef = useRef(null);
   const [flash, setFlash] = useState(false);
   const showPlans = () => {
     if (!licenseRef.current) return onUpgrade();
@@ -3189,7 +3246,17 @@ function TradeReport(props) {
       report ? ` Matched ${report.projectionMatched}/${report.rosteredPlayers} rostered players to projections, ${report.tradeValueMatched} to trade values (${report.tradeValueEstimated} estimated).` : ""
     ] }) : null,
     show("meta") ? warnings.map((w, i) => /* @__PURE__ */ jsx("div", { className: "note warn", children: w }, i)) : null,
-    !user && show("meta") ? /* @__PURE__ */ jsx("div", { className: "note warn", children: "Which team is yours? Pick it in the league table below." }) : null,
+    !user && show("meta") ? /* @__PURE__ */ jsxs("div", { className: "pick-callout", role: "status", children: [
+      /* @__PURE__ */ jsx("div", { className: "pick-callout-step", children: "Step 1" }),
+      /* @__PURE__ */ jsxs("div", { className: "pick-callout-body", children: [
+        /* @__PURE__ */ jsx("h2", { className: "pick-callout-title", children: "Which team is yours?" }),
+        /* @__PURE__ */ jsx("p", { children: "Pick it in the league table below. Your trades and team analysis appear as soon as we know which roster is yours. You only do this once per league." })
+      ] }),
+      /* @__PURE__ */ jsx("button", { type: "button", className: "primary pick-callout-btn", onClick: () => {
+        var _a;
+        return (_a = leagueRef.current) == null ? void 0 : _a.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, children: "Pick my team ↓" })
+    ] }) : null,
     user && show("trades") ? /* @__PURE__ */ jsxs("section", { id: "trades", ref: tradesRef, children: [
       /* @__PURE__ */ jsx("div", { className: "section-head", children: /* @__PURE__ */ jsx("h2", { children: "Suggested trades" }) }),
       /* @__PURE__ */ jsxs("div", { className: "list-tabs", role: "tablist", "aria-label": "Trade type", children: [
@@ -3253,8 +3320,8 @@ function TradeReport(props) {
       pager
     ] }) : null,
     user && show("analysis") ? /* @__PURE__ */ jsx("div", { id: "analysis", children: /* @__PURE__ */ jsx(TeamAnalysisPanel, { analysis, team: user }) }) : null,
-    show("license") ? /* @__PURE__ */ jsx("div", { id: "license", ref: licenseRef, className: flash ? "license-flash" : void 0, onAnimationEnd: () => setFlash(false), children: /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }) }) : null,
-    show("league") ? /* @__PURE__ */ jsx("div", { id: "league", children: /* @__PURE__ */ jsx(LeagueTable, { analysis, onPickTeam }) }) : null
+    show("league") ? /* @__PURE__ */ jsx("div", { id: "league", ref: leagueRef, children: /* @__PURE__ */ jsx(LeagueTable, { analysis, onPickTeam, picking: !user }) }) : null,
+    show("license") ? /* @__PURE__ */ jsx("div", { id: "license", ref: licenseRef, className: flash ? "license-flash" : void 0, onAnimationEnd: () => setFlash(false), children: /* @__PURE__ */ jsx(LicensePanel, { license, config: paywall, entitled, busy: licenseBusy, onActivate, onRemove: onRemoveLicense, onUpgrade }) }) : null
   ] });
 }
 function SettingsPanel({ settings, onChange }) {
@@ -3263,8 +3330,8 @@ function SettingsPanel({ settings, onChange }) {
   const cfg = settings.config;
   const set = (patch) => onChange({ ...settings, ...patch });
   const setCfg = (patch) => onChange({ ...settings, config: { ...cfg, ...patch } });
-  return /* @__PURE__ */ jsxs("section", { className: "card", children: [
-    /* @__PURE__ */ jsxs("div", { className: "card-head clickable", onClick: () => setOpen((v) => !v), children: [
+  return /* @__PURE__ */ jsxs("section", { className: "panel", children: [
+    /* @__PURE__ */ jsxs("div", { className: "panel-head clickable", onClick: () => setOpen((v) => !v), children: [
       /* @__PURE__ */ jsx("h2", { children: "Settings" }),
       /* @__PURE__ */ jsx("span", { className: "caret", children: open ? "▾" : "▸" })
     ] }),

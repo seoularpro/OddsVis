@@ -9,8 +9,8 @@ export function SettingsPanel({ settings, onChange }: { settings: ExtensionSetti
   const setCfg = (patch: Partial<ExtensionSettings["config"]>) => onChange({ ...settings, config: { ...cfg, ...patch } });
 
   return (
-    <section className="card">
-      <div className="card-head clickable" onClick={() => setOpen((v) => !v)}>
+    <section className="panel">
+      <div className="panel-head clickable" onClick={() => setOpen((v) => !v)}>
         <h2>Settings</h2>
         <span className="caret">{open ? "▾" : "▸"}</span>
       </div>
