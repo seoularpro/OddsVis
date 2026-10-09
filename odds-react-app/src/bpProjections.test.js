@@ -311,3 +311,60 @@ describe("garbled prices", () => {
     expect(flowers.stale).toBe(false);
   });
 });
+
+describe("count props and anytime TD", () => {
+  const VIG = 1.0623;
+  const dec = (a) => (a > 0 ? a / 100 + 1 : 100 / Math.abs(a) + 1);
+  const pOver = (a) => Number(dec(a).toFixed(2)) ** -1 / VIG;
+  const qb = (name, { passTD = [1.5, -110], ints = [0.5, -110], anyTD = 400 } = {}) => [
+    prop(78, name, "QB", 0.5, anyTD),
+    prop(107, name, "QB", 10.5, -114),
+    prop(102, name, "QB", passTD[0], passTD[1]),
+    prop(103, name, "QB", 240.5, -114),
+    prop(101, name, "QB", ints[0], ints[1]),
+  ];
+  const evOf = (props) => {
+    const file = { props };
+    return new Map(
+      projectionsFromFiles({ first: file, last: null, carry: null, lastIndex: 0 }, { pos: 0, mode: 0, year: 2026 }).finalList
+    );
+  };
+  // Everything but the prop under test, so differences isolate one market.
+  const base = evOf(qb("Base")).get("Base").ev;
+
+  it("reads a count line as the Poisson rate behind the over price", () => {
+    // 1.5 pass TDs at -110: ~1.66 TDs, not 1.49.
+    const even = evOf(qb("Even", { passTD: [1.5, -110] })).get("Even").ev;
+    expect(even - base).toBeCloseTo(0, 6);
+    expect(base).toBeGreaterThan(0);
+    // The same price on the 2.5 line is a full TD more, +150 on 2.5 is not.
+    const high = evOf(qb("High", { passTD: [2.5, -110] })).get("High").ev;
+    const plus = evOf(qb("Plus", { passTD: [2.5, 150] })).get("Plus").ev;
+    expect(high - even).toBeCloseTo(4 * 1.0, 1);
+    expect(plus - even).toBeCloseTo(4 * (2.2 - 1.66), 1);
+    // A heavily favored over on 1.5 (-200) is worth ~2.13 TDs.
+    const fav = evOf(qb("Fav", { passTD: [1.5, -200] })).get("Fav").ev;
+    expect(fav - even).toBeCloseTo(4 * (2.13 - 1.66), 1);
+  });
+
+  it("scores interceptions the same way, as a negative", () => {
+    const fewer = evOf(qb("Fewer", { ints: [0.5, 150] })).get("Fewer").ev;
+    const more = evOf(qb("More", { ints: [0.5, -200] })).get("More").ev;
+    // -ln(1 - p) picks per game: ~0.47 at +150 vs ~0.99 at -200
+    expect(fewer - base).toBeCloseTo(-2 * (-Math.log(1 - pOver(150)) - -Math.log(1 - pOver(-110))), 2);
+    expect(more).toBeLessThan(fewer);
+  });
+
+  it("counts the multi-TD games behind an anytime-TD price", () => {
+    const coin = evOf(qb("Coin", { anyTD: 100 })).get("Coin").ev;
+    const long = evOf(qb("Long", { anyTD: 400 })).get("Long").ev;
+    // +100 -> p ~0.47 -> ~0.64 expected TDs (3.8 pts), not 0.47 (2.8 pts)
+    expect(coin - long).toBeCloseTo(6 * (-Math.log(1 - pOver(100)) - -Math.log(1 - pOver(400))), 2);
+  });
+
+  it("caps the anytime-TD probability where consensus prices stop being real", () => {
+    const heavy = evOf(qb("Heavy", { anyTD: -400 })).get("Heavy").ev; // p = 0.75
+    const absurd = evOf(qb("Absurd", { anyTD: -2000 })).get("Absurd").ev; // p = 0.90 -> 0.8
+    expect(absurd - heavy).toBeCloseTo(6 * (-Math.log(1 - 0.8) - -Math.log(1 - pOver(-400))), 2);
+  });
+});

@@ -17,7 +17,7 @@
 //     him. Weeks without a carry file fall back to the first file for this.
 
 import { UNIVERSAL_VIG } from "./constants";
-import { americanToDecimal, impliedYards, isFetchable } from "./util";
+import { americanToDecimal, impliedYards, isFetchable, poissonRate } from "./util";
 
 // Base URL for the BettingPros data files. Defaults to the committed files on
 // GitHub; override with REACT_APP_BP_BASE (e.g. "/BettingProsFiles/" served
@@ -261,12 +261,32 @@ export function parseSnapshot(
     }
   };
 
-  // Line - 0.5 + implied over probability: the expected count for a
-  // count-style prop (receptions, passing TDs, interceptions).
+  // De-vigged probability of the over, clamped so extreme prices stay
+  // finite (see impliedYards for the same treatment of yardage).
+  const overProbability = (playerOdds, cap = 0.95) =>
+    Math.min(
+      cap,
+      Math.max(
+        0.05,
+        1 / americanToDecimal(playerOdds.over.consensus_odds) / UNIVERSAL_VIG
+      )
+    );
+
+  // Expected count for a count-style prop (receptions, passing TDs,
+  // interceptions): the Poisson rate whose P(X >= line + 0.5) matches the
+  // de-vigged over price. See poissonRate for why not `line - 0.5 + pOver`.
   const impliedCount = (playerOdds) =>
-    playerOdds.over.consensus_line -
-    0.5 +
-    1 / americanToDecimal(playerOdds.over.consensus_odds) / UNIVERSAL_VIG;
+    poissonRate(
+      overProbability(playerOdds),
+      Number(playerOdds.over.consensus_line) + 0.5
+    );
+
+  // Expected touchdowns behind an anytime-TD price: -ln(1 - p), which counts
+  // the multi-TD games that P(>= 1) alone leaves out. Consensus prices above
+  // ~80% are usually garbled alt lines, so the probability is capped there.
+  const ANYTD_PROB_CAP = 0.8;
+  const impliedTouchdowns = (playerOdds) =>
+    poissonRate(overProbability(playerOdds, ANYTD_PROB_CAP), 1);
 
   for (const key of PROP_KEYS) {
     const market = allMarkets.filter(
@@ -282,11 +302,7 @@ export function parseSnapshot(
 
       let value;
       if (key === "anyTD") {
-        value =
-          (1 /
-            americanToDecimal(playerOdds.over.consensus_odds) /
-            UNIVERSAL_VIG) *
-          6;
+        value = impliedTouchdowns(playerOdds) * 6;
       } else if (key === "rushYds" || key === "recYds" || key === "passYds") {
         const implied = impliedYards(
           playerOdds.over.consensus_line,

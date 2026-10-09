@@ -1,4 +1,4 @@
-import { describeRefresh, impliedYards, normInv } from "./util";
+import { describeRefresh, impliedYards, normInv, poissonRate } from "./util";
 
 describe("normInv", () => {
   it("returns 0 at the median and the familiar 95% z-scores at the tails", () => {
@@ -79,5 +79,45 @@ describe("describeRefresh", () => {
   it("flags a feed that has been quiet for more than 16 hours", () => {
     expect(describeRefresh("2026-09-11T04:30:00Z", now).overdue).toBe(false);
     expect(describeRefresh("2026-09-11T03:30:00Z", now).overdue).toBe(true);
+  });
+});
+
+describe("poissonRate", () => {
+  // P(X >= k) for Poisson(lambda), to check the inversion round-trips.
+  const tail = (lambda, k) => {
+    let term = Math.exp(-lambda);
+    let cdf = 0;
+    for (let i = 0; i < k; i++) {
+      cdf += term;
+      term *= lambda / (i + 1);
+    }
+    return 1 - cdf;
+  };
+
+  it("inverts the Poisson upper tail", () => {
+    for (const [p, k] of [[0.5, 2], [0.38, 3], [0.65, 1], [0.47, 5], [0.9, 2]]) {
+      expect(tail(poissonRate(p, k), k)).toBeCloseTo(p, 6);
+    }
+  });
+
+  it("reduces to -ln(1 - p) for a single event", () => {
+    expect(poissonRate(0.5, 1)).toBeCloseTo(Math.log(2), 10);
+    expect(poissonRate(0.64, 1)).toBeCloseTo(1.0217, 3);
+  });
+
+  it("sits above the linear line - 0.5 + p read at even money and crosses it off even", () => {
+    // Even money on 1.5: mean ~1.68, not 1.5 (the count is right-skewed).
+    expect(poissonRate(0.5, 2)).toBeCloseTo(1.678, 2);
+    // 2.5 priced +150 -> ~2.2 TDs, less than the 2.37 the linear read gives.
+    expect(poissonRate(0.3765, 3)).toBeCloseTo(2.2, 1);
+    // 1.5 priced -200 -> ~2.14, more than the 1.63 the linear read gives.
+    expect(poissonRate(0.63, 2)).toBeCloseTo(2.14, 1);
+  });
+
+  it("handles the edges", () => {
+    expect(poissonRate(0, 2)).toBe(0);
+    expect(poissonRate(1, 2)).toBe(Infinity);
+    expect(Number.isNaN(poissonRate(0.5, 0))).toBe(true);
+    expect(Number.isNaN(poissonRate("x", 2))).toBe(true);
   });
 });

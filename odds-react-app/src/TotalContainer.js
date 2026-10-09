@@ -16,6 +16,7 @@ import {
 } from "./util";
 import MissingTable from "./MissingTable";
 import ThemeToggleDropdown from "./ThemeToggleDropdown";
+import TradeOptimizerPromo from "./TradeOptimizerPromo";
 import { computeBPProjections } from "./bpProjections";
 import { fetchEspnWeekStats } from "./espn/espnActuals";
 
@@ -922,6 +923,8 @@ function TotalContainer() {
 
   return (
     <div className="vl-page">
+      <TradeOptimizerPromo />
+
       <div className="vl-page-head">
         <div>
           <h1 className="vl-title">Weekly Fantasy Projections</h1>
