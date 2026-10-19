@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-19T11:10:05Z",
+ "generatedAt": "2026-10-19T22:36:00Z",
  "key": "Standard_10",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -239,7 +239,7 @@
    ""
   ],
   [
-   34,
+   35,
    "",
    "",
    "Chris Olave",
@@ -329,16 +329,6 @@
    ""
   ],
   [
-   25,
-   "",
-   "",
-   "Mike Evans",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
    23,
    "",
    "",
@@ -353,6 +343,16 @@
    "",
    "",
    "DeVonta Smith",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   22,
+   "",
+   "",
+   "Mike Evans",
    "",
    "",
    "",
@@ -832,6 +832,16 @@
    7,
    "",
    "",
+   "Terry McLaurin",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   7,
+   "",
+   "",
    "Michael Wilson",
    "",
    "",
@@ -890,26 +900,6 @@
   ],
   [
    6,
-   "Jacory Croskey-Merritt",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   6,
-   "",
-   "",
-   "Terry McLaurin",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   6,
    "",
    "",
    "Chris Godwin Jr.",
@@ -957,6 +947,16 @@
    "",
    "",
    "Trevor Lawrence"
+  ],
+  [
+   5,
+   "Jacory Croskey-Merritt",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
   ],
   [
    5,
@@ -1103,7 +1103,7 @@
    "value": 59,
    "baselineValue": 67,
    "sheetValue": 66,
-   "projection": 19.56,
+   "projection": 19.88,
    "projectionWeek": 6
   },
   {
@@ -1262,8 +1262,8 @@
   {
    "name": "Chris Olave",
    "pos": "WR",
-   "value": 34,
-   "baselineValue": 41,
+   "value": 35,
+   "baselineValue": 42,
    "sheetValue": 41,
    "projection": 13.78,
    "projectionWeek": 6
@@ -1341,15 +1341,6 @@
    "projectionWeek": 6
   },
   {
-   "name": "Mike Evans",
-   "pos": "WR",
-   "value": 25,
-   "baselineValue": 27,
-   "sheetValue": 13,
-   "projection": 14.24,
-   "projectionWeek": 6
-  },
-  {
    "name": "A.J. Brown",
    "pos": "WR",
    "value": 23,
@@ -1366,6 +1357,15 @@
    "sheetValue": 27,
    "projection": null,
    "projectionWeek": null
+  },
+  {
+   "name": "Mike Evans",
+   "pos": "WR",
+   "value": 22,
+   "baselineValue": 24,
+   "sheetValue": 13,
+   "projection": 13.26,
+   "projectionWeek": 6
   },
   {
    "name": "Rashee Rice",
@@ -1445,7 +1445,7 @@
    "value": 16,
    "baselineValue": 14,
    "sheetValue": 2,
-   "projection": 12.91,
+   "projection": 13.17,
    "projectionWeek": 6
   },
   {
@@ -1488,7 +1488,7 @@
    "name": "Isaiah Likely",
    "pos": "TE",
    "value": 15,
-   "baselineValue": 13,
+   "baselineValue": 12,
    "sheetValue": 10,
    "projection": 10.88,
    "projectionWeek": 6
@@ -1643,7 +1643,7 @@
    "value": 10,
    "baselineValue": 7,
    "sheetValue": 8,
-   "projection": 19.25,
+   "projection": 19.26,
    "projectionWeek": 6
   },
   {
@@ -1791,6 +1791,15 @@
    "projectionWeek": null
   },
   {
+   "name": "Terry McLaurin",
+   "pos": "WR",
+   "value": 7,
+   "baselineValue": 9,
+   "sheetValue": 10,
+   "projection": 9.05,
+   "projectionWeek": 6
+  },
+  {
    "name": "Michael Wilson",
    "pos": "WR",
    "value": 7,
@@ -1845,24 +1854,6 @@
    "projectionWeek": 6
   },
   {
-   "name": "Jacory Croskey-Merritt",
-   "pos": "RB",
-   "value": 6,
-   "baselineValue": 3,
-   "sheetValue": 3,
-   "projection": 8.47,
-   "projectionWeek": 6
-  },
-  {
-   "name": "Terry McLaurin",
-   "pos": "WR",
-   "value": 6,
-   "baselineValue": 8,
-   "sheetValue": 10,
-   "projection": 8.73,
-   "projectionWeek": 6
-  },
-  {
    "name": "Chris Godwin Jr.",
    "pos": "WR",
    "value": 6,
@@ -1908,6 +1899,15 @@
    "projectionWeek": 6
   },
   {
+   "name": "Jacory Croskey-Merritt",
+   "pos": "RB",
+   "value": 5,
+   "baselineValue": 2,
+   "sheetValue": 3,
+   "projection": 6.18,
+   "projectionWeek": 6
+  },
+  {
    "name": "Carnell Tate",
    "pos": "WR",
    "value": 5,
@@ -1949,7 +1949,7 @@
    "value": 4,
    "baselineValue": 6,
    "sheetValue": 2,
-   "projection": 10.68,
+   "projection": 10.66,
    "projectionWeek": 6
   },
   {
@@ -1994,7 +1994,7 @@
    "value": 2,
    "baselineValue": 4,
    "sheetValue": 4,
-   "projection": 8.38,
+   "projection": 8,
    "projectionWeek": 6
   },
   {
