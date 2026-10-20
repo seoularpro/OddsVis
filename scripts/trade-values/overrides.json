@@ -1,11 +1,24 @@
 {
   "_note": "Manual edits applied every build. `remove` drops a player from every output before the weekly re-seed (out for the season, retired). `set` pins a player's PUBLISHED Half PPR 10-team value after the re-seed, so the number written here is the number that appears; the other scoring/league-size formats derive from it. Names must match the sheet (suffix-insensitive); an unknown name stops the build. Edit, commit, and the workflow rebuilds within the hour.",
-  "updated": "2026-09-30",
+  "updated": "2026-10-20",
   "set": {
     "Josh Allen": 41,
     "Trey McBride": 40,
     "Brock Bowers": 35,
-    "Drake Maye": 7
+    "Drake Maye": 35,
+    "Kenneth Walker III": 62,
+    "Saquon Barkley": 35,
+    "Omarion Hampton": 18,
+    "Aaron Jones Sr.": 23,
+    "George Kittle": 23,
+    "Tee Higgins": 28,
+    "Tetairoa McMillan": 28,
+    "Parker Washington": 28,
+    "Chuba Hubbard": 28,
+    "Bhayshul Tuten": 28,
+    "Tony Pollard": 14,
+    "DK Metcalf": 10,
+    "J.K. Dobbins": 10
   },
   "remove": [
     "De'Von Achane"
