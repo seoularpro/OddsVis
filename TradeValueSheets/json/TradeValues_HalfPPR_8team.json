@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-19T22:36:00Z",
+ "generatedAt": "2026-10-19T11:10:05Z",
  "key": "HalfPPR_8",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -239,7 +239,7 @@
    ""
   ],
   [
-   39,
+   38,
    "",
    "",
    "Chris Olave",
@@ -319,6 +319,16 @@
    ""
   ],
   [
+   27,
+   "",
+   "",
+   "Mike Evans",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
    26,
    "",
    "",
@@ -367,16 +377,6 @@
    "",
    "",
    "Lamar Jackson"
-  ],
-  [
-   24,
-   "",
-   "",
-   "Mike Evans",
-   "",
-   "",
-   "",
-   ""
   ],
   [
    23,
@@ -579,22 +579,22 @@
    ""
   ],
   [
+   14,
+   "",
+   "",
+   "",
+   "",
+   "Isaiah Likely",
+   "",
+   ""
+  ],
+  [
    13,
    "Rhamondre Stevenson",
    "",
    "",
    "",
    "",
-   "",
-   ""
-  ],
-  [
-   13,
-   "",
-   "",
-   "",
-   "",
-   "Isaiah Likely",
    "",
    ""
   ],
@@ -682,16 +682,6 @@
    10,
    "",
    "",
-   "Terry McLaurin",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   10,
-   "",
-   "",
    "Jameson Williams",
    "",
    "",
@@ -723,6 +713,16 @@
    "Josh Jacobs",
    "",
    "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   9,
+   "",
+   "",
+   "Terry McLaurin",
    "",
    "",
    "",
@@ -980,6 +980,16 @@
   ],
   [
    4,
+   "Jacory Croskey-Merritt",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   4,
    "",
    "",
    "Chris Godwin Jr.",
@@ -1027,16 +1037,6 @@
    "",
    "",
    "Trevor Lawrence"
-  ],
-  [
-   3,
-   "Jacory Croskey-Merritt",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
   ],
   [
    3,
@@ -1103,7 +1103,7 @@
    "value": 59,
    "baselineValue": 67,
    "sheetValue": 66,
-   "projection": 19.88,
+   "projection": 19.56,
    "projectionWeek": 6
   },
   {
@@ -1262,8 +1262,8 @@
   {
    "name": "Chris Olave",
    "pos": "WR",
-   "value": 39,
-   "baselineValue": 42,
+   "value": 38,
+   "baselineValue": 41,
    "sheetValue": 41,
    "projection": 13.78,
    "projectionWeek": 6
@@ -1332,6 +1332,15 @@
    "projectionWeek": null
   },
   {
+   "name": "Mike Evans",
+   "pos": "WR",
+   "value": 27,
+   "baselineValue": 27,
+   "sheetValue": 13,
+   "projection": 14.24,
+   "projectionWeek": 6
+  },
+  {
    "name": "A.J. Brown",
    "pos": "WR",
    "value": 26,
@@ -1375,15 +1384,6 @@
    "sheetValue": 25,
    "projection": null,
    "projectionWeek": null
-  },
-  {
-   "name": "Mike Evans",
-   "pos": "WR",
-   "value": 24,
-   "baselineValue": 24,
-   "sheetValue": 13,
-   "projection": 13.26,
-   "projectionWeek": 6
   },
   {
    "name": "Christian Watson",
@@ -1535,7 +1535,7 @@
    "value": 15,
    "baselineValue": 14,
    "sheetValue": 2,
-   "projection": 13.17,
+   "projection": 12.91,
    "projectionWeek": 6
   },
   {
@@ -1566,21 +1566,21 @@
    "projectionWeek": 6
   },
   {
+   "name": "Isaiah Likely",
+   "pos": "TE",
+   "value": 14,
+   "baselineValue": 13,
+   "sheetValue": 10,
+   "projection": 10.88,
+   "projectionWeek": 6
+  },
+  {
    "name": "Rhamondre Stevenson",
    "pos": "RB",
    "value": 13,
    "baselineValue": 12,
    "sheetValue": 7,
    "projection": 13.2,
-   "projectionWeek": 6
-  },
-  {
-   "name": "Isaiah Likely",
-   "pos": "TE",
-   "value": 13,
-   "baselineValue": 12,
-   "sheetValue": 10,
-   "projection": 10.88,
    "projectionWeek": 6
   },
   {
@@ -1656,15 +1656,6 @@
    "projectionWeek": 6
   },
   {
-   "name": "Terry McLaurin",
-   "pos": "WR",
-   "value": 10,
-   "baselineValue": 9,
-   "sheetValue": 10,
-   "projection": 9.05,
-   "projectionWeek": 6
-  },
-  {
    "name": "Jameson Williams",
    "pos": "WR",
    "value": 10,
@@ -1699,6 +1690,15 @@
    "sheetValue": 8,
    "projection": null,
    "projectionWeek": null
+  },
+  {
+   "name": "Terry McLaurin",
+   "pos": "WR",
+   "value": 9,
+   "baselineValue": 8,
+   "sheetValue": 10,
+   "projection": 8.73,
+   "projectionWeek": 6
   },
   {
    "name": "De'Zhaun Stribling",
@@ -1751,7 +1751,7 @@
    "value": 8,
    "baselineValue": 7,
    "sheetValue": 8,
-   "projection": 19.26,
+   "projection": 19.25,
    "projectionWeek": 6
   },
   {
@@ -1778,7 +1778,7 @@
    "value": 7,
    "baselineValue": 6,
    "sheetValue": 2,
-   "projection": 10.66,
+   "projection": 10.68,
    "projectionWeek": 6
   },
   {
@@ -1895,7 +1895,7 @@
    "value": 5,
    "baselineValue": 4,
    "sheetValue": 4,
-   "projection": 8,
+   "projection": 8.38,
    "projectionWeek": 6
   },
   {
@@ -1923,6 +1923,15 @@
    "baselineValue": 3,
    "sheetValue": 3,
    "projection": 8.75,
+   "projectionWeek": 6
+  },
+  {
+   "name": "Jacory Croskey-Merritt",
+   "pos": "RB",
+   "value": 4,
+   "baselineValue": 3,
+   "sheetValue": 3,
+   "projection": 8.47,
    "projectionWeek": 6
   },
   {
@@ -1968,15 +1977,6 @@
    "baselineValue": 3,
    "sheetValue": 4,
    "projection": 16.38,
-   "projectionWeek": 6
-  },
-  {
-   "name": "Jacory Croskey-Merritt",
-   "pos": "RB",
-   "value": 3,
-   "baselineValue": 2,
-   "sheetValue": 3,
-   "projection": 6.18,
    "projectionWeek": 6
   },
   {
