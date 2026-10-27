@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-26T14:31:39Z",
+ "generatedAt": "2026-10-27T00:02:51Z",
  "key": "HalfPPR_10",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -79,10 +79,10 @@
    ""
   ],
   [
-   60,
+   59,
    "",
    "",
-   "Amon-Ra St. Brown",
+   "Jaxon Smith-Njigba",
    "",
    "",
    "",
@@ -92,7 +92,7 @@
    59,
    "",
    "",
-   "Jaxon Smith-Njigba",
+   "Amon-Ra St. Brown",
    "",
    "",
    "",
@@ -450,6 +450,16 @@
   ],
   [
    21,
+   "Bucky Irving",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   21,
    "",
    "",
    "Garrett Wilson",
@@ -482,6 +492,16 @@
    18,
    "",
    "",
+   "DeVonta Smith",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   18,
+   "",
+   "",
    "Davante Adams",
    "",
    "",
@@ -493,26 +513,6 @@
    "",
    "",
    "Matthew Golden",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   17,
-   "Bucky Irving",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   17,
-   "",
-   "",
-   "DeVonta Smith",
    "",
    "",
    "",
@@ -550,6 +550,16 @@
   ],
   [
    15,
+   "Woody Marks",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   15,
    "",
    "",
    "Jaylen Waddle",
@@ -561,16 +571,6 @@
   [
    14,
    "Tony Pollard",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   14,
-   "Woody Marks",
    "",
    "",
    "",
@@ -649,16 +649,6 @@
    ""
   ],
   [
-   10,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Joe Burrow"
-  ],
-  [
    9,
    "Rhamondre Stevenson",
    "",
@@ -707,6 +697,16 @@
    "Tucker Kraft",
    "",
    ""
+  ],
+  [
+   9,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Joe Burrow"
   ],
   [
    8,
@@ -1116,21 +1116,21 @@
    "projectionWeek": 7
   },
   {
-   "name": "Amon-Ra St. Brown",
-   "pos": "WR",
-   "value": 60,
-   "baselineValue": 66,
-   "sheetValue": 60,
-   "projection": 16.73,
-   "projectionWeek": 7
-  },
-  {
    "name": "Jaxon Smith-Njigba",
    "pos": "WR",
    "value": 59,
    "baselineValue": 65,
    "sheetValue": 60,
    "projection": 16.59,
+   "projectionWeek": 7
+  },
+  {
+   "name": "Amon-Ra St. Brown",
+   "pos": "WR",
+   "value": 59,
+   "baselineValue": 65,
+   "sheetValue": 60,
+   "projection": 16.73,
    "projectionWeek": 7
   },
   {
@@ -1175,7 +1175,7 @@
    "value": 46,
    "baselineValue": 51,
    "sheetValue": 47,
-   "projection": 14.75,
+   "projection": 14.66,
    "projectionWeek": 7
   },
   {
@@ -1247,7 +1247,7 @@
    "value": 36,
    "baselineValue": 40,
    "sheetValue": 40,
-   "projection": 14.16,
+   "projection": 14.12,
    "projectionWeek": 7
   },
   {
@@ -1256,7 +1256,7 @@
    "value": 35,
    "baselineValue": 38.5,
    "sheetValue": 55,
-   "projection": 13.56,
+   "projection": 12.74,
    "projectionWeek": 7
   },
   {
@@ -1382,7 +1382,7 @@
    "value": 25,
    "baselineValue": 27,
    "sheetValue": 34,
-   "projection": 11.56,
+   "projection": 11.66,
    "projectionWeek": 7
   },
   {
@@ -1449,6 +1449,15 @@
    "projectionWeek": null
   },
   {
+   "name": "Bucky Irving",
+   "pos": "RB",
+   "value": 21,
+   "baselineValue": 23,
+   "sheetValue": 18,
+   "projection": 13.21,
+   "projectionWeek": 7
+  },
+  {
    "name": "Garrett Wilson",
    "pos": "WR",
    "value": 21,
@@ -1476,6 +1485,15 @@
    "projectionWeek": 6
   },
   {
+   "name": "DeVonta Smith",
+   "pos": "WR",
+   "value": 18,
+   "baselineValue": 20,
+   "sheetValue": 27,
+   "projection": 10.8,
+   "projectionWeek": 7
+  },
+  {
    "name": "Davante Adams",
    "pos": "WR",
    "value": 18,
@@ -1491,24 +1509,6 @@
    "baselineValue": 20,
    "sheetValue": 5,
    "projection": 13.11,
-   "projectionWeek": 7
-  },
-  {
-   "name": "Bucky Irving",
-   "pos": "RB",
-   "value": 17,
-   "baselineValue": 19,
-   "sheetValue": 18,
-   "projection": 13.21,
-   "projectionWeek": 7
-  },
-  {
-   "name": "DeVonta Smith",
-   "pos": "WR",
-   "value": 17,
-   "baselineValue": 19,
-   "sheetValue": 27,
-   "projection": 10.64,
    "projectionWeek": 7
   },
   {
@@ -1539,6 +1539,15 @@
    "projectionWeek": null
   },
   {
+   "name": "Woody Marks",
+   "pos": "RB",
+   "value": 15,
+   "baselineValue": 16,
+   "sheetValue": 2,
+   "projection": 13.28,
+   "projectionWeek": 7
+  },
+  {
    "name": "Jaylen Waddle",
    "pos": "WR",
    "value": 15,
@@ -1554,15 +1563,6 @@
    "baselineValue": 15.4,
    "sheetValue": 6,
    "projection": 11.81,
-   "projectionWeek": 7
-  },
-  {
-   "name": "Woody Marks",
-   "pos": "RB",
-   "value": 14,
-   "baselineValue": 15,
-   "sheetValue": 2,
-   "projection": 13.28,
    "projectionWeek": 7
   },
   {
@@ -1629,15 +1629,6 @@
    "projectionWeek": 7
   },
   {
-   "name": "Joe Burrow",
-   "pos": "QB",
-   "value": 10,
-   "baselineValue": 11,
-   "sheetValue": 13,
-   "projection": 18.95,
-   "projectionWeek": 7
-  },
-  {
    "name": "Rhamondre Stevenson",
    "pos": "RB",
    "value": 9,
@@ -1680,6 +1671,15 @@
    "baselineValue": 10,
    "sheetValue": 6,
    "projection": 10.25,
+   "projectionWeek": 7
+  },
+  {
+   "name": "Joe Burrow",
+   "pos": "QB",
+   "value": 9,
+   "baselineValue": 10,
+   "sheetValue": 13,
+   "projection": 18.95,
    "projectionWeek": 7
   },
   {
@@ -1967,7 +1967,7 @@
    "value": 3,
    "baselineValue": 3,
    "sheetValue": 3,
-   "projection": 18.24,
+   "projection": 18.52,
    "projectionWeek": 7
   },
   {

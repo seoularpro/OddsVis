@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-26T14:31:39Z",
+ "generatedAt": "2026-10-27T00:02:51Z",
  "key": "Standard_12",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -79,10 +79,10 @@
    ""
   ],
   [
-   58,
+   57,
    "",
    "",
-   "Amon-Ra St. Brown",
+   "Puka Nacua",
    "",
    "",
    "",
@@ -92,7 +92,7 @@
    57,
    "",
    "",
-   "Puka Nacua",
+   "Amon-Ra St. Brown",
    "",
    "",
    "",
@@ -450,6 +450,16 @@
   ],
   [
    18,
+   "Bucky Irving",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   18,
    "",
    "",
    "Rashee Rice",
@@ -490,27 +500,17 @@
   ],
   [
    15,
-   "Tony Pollard",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   14,
-   "Bucky Irving",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   14,
    "Woody Marks",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   15,
+   "Tony Pollard",
    "",
    "",
    "",
@@ -552,17 +552,17 @@
    13,
    "",
    "",
-   "Davante Adams",
+   "DeVonta Smith",
    "",
    "",
    "",
    ""
   ],
   [
-   12,
+   13,
    "",
    "",
-   "DeVonta Smith",
+   "Davante Adams",
    "",
    "",
    "",
@@ -609,16 +609,6 @@
    ""
   ],
   [
-   11,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Joe Burrow"
-  ],
-  [
    10,
    "",
    "",
@@ -647,6 +637,16 @@
    "Tucker Kraft",
    "",
    ""
+  ],
+  [
+   10,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Joe Burrow"
   ],
   [
    9,
@@ -1116,21 +1116,21 @@
    "projectionWeek": 6
   },
   {
-   "name": "Amon-Ra St. Brown",
-   "pos": "WR",
-   "value": 58,
-   "baselineValue": 66,
-   "sheetValue": 60,
-   "projection": 16.73,
-   "projectionWeek": 7
-  },
-  {
    "name": "Puka Nacua",
    "pos": "WR",
    "value": 57,
    "baselineValue": 66,
    "sheetValue": 65,
    "projection": 16.35,
+   "projectionWeek": 7
+  },
+  {
+   "name": "Amon-Ra St. Brown",
+   "pos": "WR",
+   "value": 57,
+   "baselineValue": 65,
+   "sheetValue": 60,
+   "projection": 16.73,
    "projectionWeek": 7
   },
   {
@@ -1193,7 +1193,7 @@
    "value": 43,
    "baselineValue": 51,
    "sheetValue": 47,
-   "projection": 14.75,
+   "projection": 14.66,
    "projectionWeek": 7
   },
   {
@@ -1256,7 +1256,7 @@
    "value": 34,
    "baselineValue": 40,
    "sheetValue": 40,
-   "projection": 14.16,
+   "projection": 14.12,
    "projectionWeek": 7
   },
   {
@@ -1265,7 +1265,7 @@
    "value": 33,
    "baselineValue": 38.5,
    "sheetValue": 55,
-   "projection": 13.56,
+   "projection": 12.74,
    "projectionWeek": 7
   },
   {
@@ -1400,7 +1400,7 @@
    "value": 21,
    "baselineValue": 27,
    "sheetValue": 34,
-   "projection": 11.56,
+   "projection": 11.66,
    "projectionWeek": 7
   },
   {
@@ -1449,6 +1449,15 @@
    "projectionWeek": 7
   },
   {
+   "name": "Bucky Irving",
+   "pos": "RB",
+   "value": 18,
+   "baselineValue": 23,
+   "sheetValue": 18,
+   "projection": 13.21,
+   "projectionWeek": 7
+  },
+  {
    "name": "Rashee Rice",
    "pos": "WR",
    "value": 18,
@@ -1485,30 +1494,21 @@
    "projectionWeek": null
   },
   {
+   "name": "Woody Marks",
+   "pos": "RB",
+   "value": 15,
+   "baselineValue": 16,
+   "sheetValue": 2,
+   "projection": 13.28,
+   "projectionWeek": 7
+  },
+  {
    "name": "Tony Pollard",
    "pos": "RB",
    "value": 15,
    "baselineValue": 15.4,
    "sheetValue": 6,
    "projection": 11.81,
-   "projectionWeek": 7
-  },
-  {
-   "name": "Bucky Irving",
-   "pos": "RB",
-   "value": 14,
-   "baselineValue": 19,
-   "sheetValue": 18,
-   "projection": 13.21,
-   "projectionWeek": 7
-  },
-  {
-   "name": "Woody Marks",
-   "pos": "RB",
-   "value": 14,
-   "baselineValue": 15,
-   "sheetValue": 2,
-   "projection": 13.28,
    "projectionWeek": 7
   },
   {
@@ -1539,6 +1539,15 @@
    "projectionWeek": 6
   },
   {
+   "name": "DeVonta Smith",
+   "pos": "WR",
+   "value": 13,
+   "baselineValue": 20,
+   "sheetValue": 27,
+   "projection": 10.8,
+   "projectionWeek": 7
+  },
+  {
    "name": "Davante Adams",
    "pos": "WR",
    "value": 13,
@@ -1546,15 +1555,6 @@
    "sheetValue": 15,
    "projection": 12.5,
    "projectionWeek": 6
-  },
-  {
-   "name": "DeVonta Smith",
-   "pos": "WR",
-   "value": 12,
-   "baselineValue": 19,
-   "sheetValue": 27,
-   "projection": 10.64,
-   "projectionWeek": 7
   },
   {
    "name": "Colston Loveland",
@@ -1593,15 +1593,6 @@
    "projectionWeek": 7
   },
   {
-   "name": "Joe Burrow",
-   "pos": "QB",
-   "value": 11,
-   "baselineValue": 11,
-   "sheetValue": 13,
-   "projection": 18.95,
-   "projectionWeek": 7
-  },
-  {
    "name": "Ladd McConkey",
    "pos": "WR",
    "value": 10,
@@ -1626,6 +1617,15 @@
    "baselineValue": 10,
    "sheetValue": 6,
    "projection": 10.25,
+   "projectionWeek": 7
+  },
+  {
+   "name": "Joe Burrow",
+   "pos": "QB",
+   "value": 10,
+   "baselineValue": 10,
+   "sheetValue": 13,
+   "projection": 18.95,
    "projectionWeek": 7
   },
   {
@@ -1904,7 +1904,7 @@
    "value": 4,
    "baselineValue": 3,
    "sheetValue": 3,
-   "projection": 18.24,
+   "projection": 18.52,
    "projectionWeek": 7
   },
   {
