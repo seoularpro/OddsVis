@@ -2,114 +2,194 @@
  "season": 2026,
  "week": 8,
  "mode": 0,
- "snapshotIndex": 0,
- "generatedAt": "2026-10-28T00:41:36Z",
+ "snapshotIndex": 1,
+ "generatedAt": "2026-10-28T14:24:20Z",
  "positions": {
   "QB": [
    {
-    "name": "Trevor Lawrence",
-    "ev": 19.51,
+    "name": "Josh Allen",
+    "ev": 25.15,
     "stale": false
    },
    {
-    "name": "Jordan Love",
-    "ev": 17.89,
+    "name": "Drake Maye",
+    "ev": 19.71,
+    "stale": false
+   },
+   {
+    "name": "Trevor Lawrence",
+    "ev": 19.67,
+    "stale": false
+   },
+   {
+    "name": "Joe Burrow",
+    "ev": 19.42,
+    "stale": false
+   },
+   {
+    "name": "Lamar Jackson",
+    "ev": 19.08,
     "stale": false
    },
    {
     "name": "Jacoby Brissett",
-    "ev": 17.71,
+    "ev": 17.82,
+    "stale": false
+   },
+   {
+    "name": "Jordan Love",
+    "ev": 17.73,
     "stale": false
    },
    {
     "name": "Bryce Young",
-    "ev": 16.92,
+    "ev": 16.99,
+    "stale": false
+   },
+   {
+    "name": "Baker Mayfield",
+    "ev": 15.83,
+    "stale": false
+   },
+   {
+    "name": "Malik Willis",
+    "ev": 15.36,
     "stale": false
    },
    {
     "name": "Kirk Cousins",
-    "ev": 15.49,
+    "ev": 15.35,
     "stale": false
    },
    {
-    "name": "Michael Penix",
-    "ev": 14.14,
+    "name": "Patrick Mahomes II",
+    "ev": 15.04,
+    "stale": false
+   },
+   {
+    "name": "Bo Nix",
+    "ev": 14.54,
     "stale": false
    },
    {
     "name": "Deshaun Watson",
-    "ev": 14.12,
+    "ev": 14.26,
+    "stale": false
+   },
+   {
+    "name": "Michael Penix",
+    "ev": 13.84,
+    "stale": false
+   },
+   {
+    "name": "Aaron Rodgers",
+    "ev": 12.83,
+    "stale": false
+   },
+   {
+    "name": "Cam Ward",
+    "ev": 12.71,
     "stale": false
    },
    {
     "name": "Daniel Jones",
-    "ev": 12.06,
+    "ev": 11.99,
     "stale": false
    }
   ],
   "RB": [
    {
     "name": "Jahmyr Gibbs",
-    "ev": 21.41,
+    "ev": 21.33,
     "stale": false
    },
    {
     "name": "Bijan Robinson",
-    "ev": 18.25,
+    "ev": 18.3,
+    "stale": false
+   },
+   {
+    "name": "Javonte Williams",
+    "ev": 16.89,
     "stale": false
    },
    {
     "name": "Kenneth Walker III",
-    "ev": 16.5,
+    "ev": 16.8,
+    "stale": false
+   },
+   {
+    "name": "Derrick Henry",
+    "ev": 16.02,
     "stale": false
    },
    {
     "name": "Kyren Williams",
-    "ev": 15.7,
+    "ev": 15.88,
+    "stale": false
+   },
+   {
+    "name": "James Cook III",
+    "ev": 15.81,
     "stale": false
    },
    {
     "name": "Jonathan Taylor",
-    "ev": 14.7,
+    "ev": 14.77,
     "stale": false
    },
    {
     "name": "Jaylen Warren",
-    "ev": 14.5,
+    "ev": 14.48,
     "stale": false
    },
    {
     "name": "Bucky Irving",
-    "ev": 14.14,
+    "ev": 14.16,
     "stale": false
    },
    {
     "name": "Chuba Hubbard",
-    "ev": 13.9,
+    "ev": 13.87,
+    "stale": false
+   },
+   {
+    "name": "Chase Brown",
+    "ev": 13.8,
     "stale": false
    },
    {
     "name": "Josh Jacobs",
-    "ev": 13.45,
+    "ev": 13.49,
     "stale": false
    },
    {
     "name": "Bhayshul Tuten",
-    "ev": 12.76,
+    "ev": 13,
+    "stale": false
+   },
+   {
+    "name": "Rhamondre Stevenson",
+    "ev": 12.1,
     "stale": false
    },
    {
     "name": "Tony Pollard",
-    "ev": 10.93,
+    "ev": 11.96,
+    "stale": false
+   },
+   {
+    "name": "Ollie Gordon II",
+    "ev": 10.91,
     "stale": false
    },
    {
     "name": "Blake Corum",
-    "ev": 8.88,
+    "ev": 9.06,
     "stale": false
    },
    {
-    "name": "JK Dobbins",
+    "name": "Jonah Coleman",
     "ev": 7.81,
     "stale": false
    },
@@ -119,217 +199,312 @@
     "stale": false
    },
    {
+    "name": "RJ Harvey",
+    "ev": 6.13,
+    "stale": false
+   },
+   {
     "name": "Chris Rodriguez",
-    "ev": 5.9,
+    "ev": 5.95,
+    "stale": false
+   },
+   {
+    "name": "JK Dobbins",
+    "ev": 5.27,
     "stale": false
    },
    {
     "name": "Kenny Gainwell",
-    "ev": 5.37,
+    "ev": 5.24,
     "stale": false
    }
   ],
   "WR": [
    {
     "name": "Jaxon Smith-Njigba",
-    "ev": 17.91,
+    "ev": 18.02,
     "stale": false
    },
    {
     "name": "Puka Nacua",
-    "ev": 16.49,
+    "ev": 16.66,
+    "stale": false
+   },
+   {
+    "name": "CeeDee Lamb",
+    "ev": 15.2,
+    "stale": false
+   },
+   {
+    "name": "Ja'Marr Chase",
+    "ev": 14.97,
     "stale": false
    },
    {
     "name": "Amon-Ra St Brown",
-    "ev": 14.23,
+    "ev": 14.5,
     "stale": false
    },
    {
     "name": "Drake London",
-    "ev": 13.71,
+    "ev": 13.83,
     "stale": false
    },
    {
     "name": "Justin Jefferson",
-    "ev": 13.19,
+    "ev": 13.41,
     "stale": false
    },
    {
-    "name": "Parker Washington",
-    "ev": 13.13,
+    "name": "Zay Flowers",
+    "ev": 13.31,
     "stale": false
    },
    {
     "name": "Christian Watson",
-    "ev": 12.78,
+    "ev": 12.7,
     "stale": false
    },
    {
     "name": "Tetairoa McMillan",
-    "ev": 12.65,
+    "ev": 12.69,
     "stale": false
    },
    {
-    "name": "Garrett Wilson",
-    "ev": 11.4,
+    "name": "Tee Higgins",
+    "ev": 12.67,
     "stale": false
    },
    {
-    "name": "Matthew Golden",
-    "ev": 11.4,
+    "name": "Parker Washington",
+    "ev": 12.44,
+    "stale": false
+   },
+   {
+    "name": "George Pickens",
+    "ev": 11.61,
     "stale": false
    },
    {
     "name": "Jalen Coker",
-    "ev": 11.24,
+    "ev": 11.23,
     "stale": false
    },
    {
-    "name": "Carnell Tate",
-    "ev": 10.41,
+    "name": "Garrett Wilson",
+    "ev": 11.2,
     "stale": false
    },
    {
-    "name": "DK Metcalf",
-    "ev": 9.82,
+    "name": "AJ Brown",
+    "ev": 11.17,
     "stale": false
    },
    {
-    "name": "Germie Bernard",
-    "ev": 9.75,
-    "stale": false
-   },
-   {
-    "name": "Luther Burden III",
-    "ev": 9.49,
+    "name": "Matthew Golden",
+    "ev": 11.03,
     "stale": false
    },
    {
     "name": "Michael Wilson",
-    "ev": 9.46,
+    "ev": 10.37,
+    "stale": false
+   },
+   {
+    "name": "DJ Moore",
+    "ev": 9.88,
+    "stale": false
+   },
+   {
+    "name": "DK Metcalf",
+    "ev": 9.85,
+    "stale": false
+   },
+   {
+    "name": "Carnell Tate",
+    "ev": 9.61,
+    "stale": false
+   },
+   {
+    "name": "Germie Bernard",
+    "ev": 9.6,
+    "stale": false
+   },
+   {
+    "name": "Luther Burden III",
+    "ev": 9.56,
     "stale": false
    },
    {
     "name": "Jameson Williams",
-    "ev": 9.15,
+    "ev": 9.04,
     "stale": false
    },
    {
     "name": "KC Concepcion",
-    "ev": 8.41,
+    "ev": 8.34,
     "stale": false
    },
    {
     "name": "Jakobi Meyers",
-    "ev": 8.17,
+    "ev": 8.21,
     "stale": false
    },
    {
-    "name": "Wan'Dale Robinson",
-    "ev": 7.93,
+    "name": "Khalil Shakir",
+    "ev": 8.01,
     "stale": false
    },
    {
     "name": "Rome Odunze",
-    "ev": 7.8,
+    "ev": 7.81,
     "stale": false
    },
    {
     "name": "Omar Cooper",
-    "ev": 7.59,
+    "ev": 7.79,
+    "stale": false
+   },
+   {
+    "name": "Malik Washington",
+    "ev": 7.75,
     "stale": false
    },
    {
     "name": "Jordan Addison",
-    "ev": 7.16,
+    "ev": 7.42,
+    "stale": false
+   },
+   {
+    "name": "Wan'Dale Robinson",
+    "ev": 7.06,
+    "stale": false
+   },
+   {
+    "name": "Caleb Douglas",
+    "ev": 7.06,
     "stale": false
    },
    {
     "name": "Kendrick Bourne",
-    "ev": 7,
-    "stale": false
-   },
-   {
-    "name": "Keenan Allen",
-    "ev": 6.91,
+    "ev": 7.06,
     "stale": false
    },
    {
     "name": "Josh Downs",
-    "ev": 6.75,
+    "ev": 6.69,
+    "stale": false
+   },
+   {
+    "name": "Ryan Flournoy",
+    "ev": 6.64,
+    "stale": false
+   },
+   {
+    "name": "Keenan Allen",
+    "ev": 6.62,
     "stale": false
    },
    {
     "name": "Denzel Boston",
-    "ev": 6.46,
+    "ev": 6.34,
+    "stale": false
+   },
+   {
+    "name": "DeMario Douglas",
+    "ev": 6.18,
     "stale": false
    },
    {
     "name": "Savion Williams",
     "ev": 5.9,
     "stale": false
+   },
+   {
+    "name": "Keon Coleman",
+    "ev": 5.63,
+    "stale": false
+   },
+   {
+    "name": "Ja'Kobi Lane",
+    "ev": 5.52,
+    "stale": false
+   },
+   {
+    "name": "Rashod Bateman",
+    "ev": 5.37,
+    "stale": false
    }
   ],
   "TE": [
    {
     "name": "Trey McBride",
-    "ev": 15.46,
+    "ev": 15.18,
     "stale": false
    },
    {
     "name": "Sam LaPorta",
-    "ev": 9.48,
+    "ev": 9.4,
     "stale": false
    },
    {
     "name": "Tucker Kraft",
-    "ev": 9.22,
-    "stale": false
-   },
-   {
-    "name": "Colston Loveland",
-    "ev": 8.54,
+    "ev": 9.31,
     "stale": false
    },
    {
     "name": "Dalton Kincaid",
-    "ev": 8.4,
+    "ev": 8.85,
     "stale": false
    },
    {
-    "name": "Tyler Warren",
-    "ev": 8.38,
-    "stale": false
-   },
-   {
-    "name": "Kyle Pitts",
-    "ev": 8.14,
+    "name": "Colston Loveland",
+    "ev": 8.55,
     "stale": false
    },
    {
     "name": "TJ Hockenson",
-    "ev": 8.06,
+    "ev": 8.27,
+    "stale": false
+   },
+   {
+    "name": "Hunter Henry",
+    "ev": 8.2,
+    "stale": false
+   },
+   {
+    "name": "Tyler Warren",
+    "ev": 8.13,
     "stale": false
    },
    {
     "name": "Brenton Strange",
-    "ev": 7.92,
+    "ev": 7.74,
+    "stale": false
+   },
+   {
+    "name": "Kyle Pitts",
+    "ev": 7.71,
     "stale": false
    },
    {
     "name": "Harold Fannin",
-    "ev": 7.52,
+    "ev": 7.48,
     "stale": false
    },
    {
     "name": "Tyler Higbee",
-    "ev": 6.91,
+    "ev": 7.03,
     "stale": false
    },
    {
-    "name": "Colby Parkinson",
-    "ev": 5.84,
+    "name": "Mark Andrews",
+    "ev": 6.82,
+    "stale": false
+   },
+   {
+    "name": "Greg Dulcich",
+    "ev": 6.14,
     "stale": false
    },
    {
@@ -338,8 +513,18 @@
     "stale": false
    },
    {
+    "name": "Colby Parkinson",
+    "ev": 5.75,
+    "stale": false
+   },
+   {
     "name": "Mason Taylor",
-    "ev": 5.43,
+    "ev": 5.45,
+    "stale": false
+   },
+   {
+    "name": "Jake Ferguson",
+    "ev": 5.09,
     "stale": false
    }
   ]
