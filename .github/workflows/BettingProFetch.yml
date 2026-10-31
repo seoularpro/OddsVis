@@ -3,71 +3,74 @@ name: Fetch BP files
 on: 
   workflow_dispatch:
   schedule:
-    # GitHub cron is UTC only. In Eastern time these fire at (EDT / EST):
-    #   03:18 UTC daily   -> 11:18pm / 10:18pm  ("midnight" update)
-    #   15:18 UTC daily   -> 11:18am / 10:18am  ("noon" update)
-    #   11:18 UTC Sun     ->  7:18am /  6:18am  (Sunday morning update)
-    #   21:18 UTC Mon+Thu ->  5:18pm /  4:18pm  (Monday/Thursday evening update)
-    # Scheduled runs routinely start 40 minutes to 4 hours late, so the
-    # `gate` job below maps the run to a window around its slot instead of
-    # an exact hour, and skips only when a snapshot was already committed
-    # inside that window.
-    - cron: '18 3,15 * * 0,1,2,3,4,5,6'
-    - cron: '18 11 * * 0'
-    - cron: '18 21 * * 1,4'
-    
+    # Target cadence: a fresh snapshot every 3 hours.
+    #
+    # GitHub's scheduler is unreliable for this: runs start late (40 minutes
+    # is routine, and this repo has seen 4-5 hours) and some ticks are dropped
+    # outright. A plain every-3-hours cron therefore misses slots, and the old
+    # fixed-time-window gate skipped any run that arrived after its window.
+    #
+    # So this ticks every hour, and the `gate` job below only lets a run
+    # through once the newest snapshot commit is at least MIN_GAP_MINUTES
+    # (2.5h) old. On-time ticks give one run every 3rd hour; a dropped or late
+    # tick costs at most an hour, not a whole slot; a failed fetch is retried
+    # by the next tick instead of waiting for the next slot. :18 avoids the
+    # top-of-hour rush, when drops are most likely.
+    - cron: '18 * * * *'
+
+# Two late ticks can arrive together. Queue them instead of running both so
+# the second one's gate sees the first one's commit and skips.
+concurrency:
+  group: bp-fetch
+  cancel-in-progress: false
+
 jobs:
   gate:
     runs-on: ubuntu-latest
     outputs:
-      run: ${{ steps.et.outputs.run }}
+      run: ${{ steps.gap.outputs.run }}
     steps:
-    - name: Map the run to its Eastern-time window and skip if already fetched
-      id: et
+    - name: Run only if the newest snapshot is old enough
+      id: gap
       env:
         GH_TOKEN: ${{ github.token }}
+        # Minimum age of the newest snapshot before the next fetch. Hourly
+        # ticks + 150 minutes => every 3rd on-time tick runs.
+        MIN_GAP_MINUTES: 150
       run: |
         if [ "${{ github.event_name }}" != "schedule" ]; then
+          echo "Manual run -> fetching"
           echo "run=true" >> "$GITHUB_OUTPUT"
           exit 0
         fi
-        export TZ=America/New_York
-        hour=$(date +%H)
-        dow=$(date +%a)
-        today=$(date +%F)
-        # Window start (local ET) for the slot this run belongs to. The
-        # midnight slot's window straddles the day boundary (10pm-5:59am).
-        case "${hour}/${dow}" in
-          22/*|23/*)             slot="midnight"; start=$(date -d "${today} 22:00" +%s) ;;
-          0[0-5]/*)              slot="midnight"; start=$(date -d "${today} 22:00 1 day ago" +%s) ;;
-          1[0-5]/*)              slot="noon";     start=$(date -d "${today} 10:00" +%s) ;;
-          0[6-9]/Sun)            slot="sunday-am"; start=$(date -d "${today} 06:00" +%s) ;;
-          1[6-9]/Mon|1[6-9]/Thu) slot="evening";  start=$(date -d "${today} 16:00" +%s) ;;
-          *)                     slot=""; start=0 ;;
-        esac
-        echo "Eastern time now: ${dow} $(date +%H:%M) -> slot=${slot:-none}"
-        if [ -z "${slot}" ]; then
-          echo "run=false" >> "$GITHUB_OUTPUT"
-          exit 0
-        fi
-        # Newest commit that touched the data directory on this branch. If the
-        # lookup fails, assume nothing was fetched and run.
-        last=$(gh api "repos/${GITHUB_REPOSITORY}/commits?path=BettingProsFiles&sha=${GITHUB_REF_NAME}&per_page=1" \
-          --jq '.[0].commit.committer.date' 2>/dev/null || true)
-        last_epoch=$(date -d "${last:-1970-01-01T00:00:00Z}" +%s 2>/dev/null || echo 0)
-        echo "Window start: $(date -d "@${start}" '+%a %F %H:%M %Z'); last data commit: $(date -d "@${last_epoch}" '+%a %F %H:%M %Z')"
-        if [ "${last_epoch}" -ge "${start}" ]; then
-          echo "Snapshot already committed in the ${slot} window -> skipping"
-          run=false
+        # Newest snapshot commit on this branch. Only the workflow's own
+        # "Update JSON data file ..." commits count, so a manual edit or a
+        # revert inside BettingProsFiles doesn't postpone the next fetch. If
+        # the lookup fails, assume nothing was fetched and run.
+        last=$(gh api "repos/${GITHUB_REPOSITORY}/commits?path=BettingProsFiles&sha=${GITHUB_REF_NAME}&per_page=30" \
+          --jq '[.[] | select(.commit.message | startswith("Update JSON data file"))][0].commit.committer.date // empty' \
+          2>/dev/null || true)
+        now=$(date +%s)
+        if [ -n "${last}" ] && last_epoch=$(date -d "${last}" +%s 2>/dev/null); then
+          age_min=$(( (now - last_epoch) / 60 ))
+          echo "Newest snapshot: $(TZ=America/New_York date -d "@${last_epoch}" '+%a %F %H:%M %Z') (${age_min} min ago)"
         else
-          run=true
+          age_min=999999
+          echo "No snapshot commit found (or lookup failed) -> treating as never fetched"
         fi
-        echo "run=${run}" >> "$GITHUB_OUTPUT"
+        echo "Now: $(TZ=America/New_York date '+%a %F %H:%M %Z'); minimum gap: ${MIN_GAP_MINUTES} min"
+        if [ "${age_min}" -ge "${MIN_GAP_MINUTES}" ]; then
+          echo "run=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "Snapshot is fresher than ${MIN_GAP_MINUTES} min -> skipping this tick"
+          echo "run=false" >> "$GITHUB_OUTPUT"
+        fi
 
   fetch-json:
     needs: gate
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: write
 
@@ -215,8 +218,8 @@ jobs:
         author_email: sangkyun.hanpro@gmail.com
         message: "Update JSON data file in BettingProsFiles"
         add: '.'
-        # Another workflow may have pushed meanwhile (the Bovada fetch shares
-        # this schedule); rebase onto it instead of failing the push.
+        # Another workflow may have pushed meanwhile (tradeValues.yml commits
+        # hourly); rebase onto it instead of failing the push.
         pull: '--rebase --autostash'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
