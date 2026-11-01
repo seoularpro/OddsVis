@@ -334,8 +334,9 @@ export function getLastElementMap(inputMap) {
 }
 
 // How long the odds feed can go quiet before the table warns. The fetch
-// workflow runs at least every 12 hours (see the schedule under the table),
-// and GitHub's scheduler can start a run a few hours late.
+// workflow (BettingProFetch.yml) aims for a new snapshot every 3 hours, but
+// GitHub drops or delays many of its hourly ticks, so 6-8 hour gaps happen in
+// normal operation; 16 hours means the feed is genuinely stuck.
 export const REFRESH_OVERDUE_MS = 16 * 60 * 60 * 1000;
 
 /**

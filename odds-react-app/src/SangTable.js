@@ -478,14 +478,9 @@ export default function SangTable(props) {
           </div>
         ) : null}
         <div className="vl-meta">
-          <span className="vl-meta-title">Updates (ET)</span>
-          <span className="vl-sched"><b>Sun</b>8a · 12p · 12a</span>
-          <span className="vl-sched"><b>Mon</b>12p · 6p · 12a</span>
-          <span className="vl-sched"><b>Tue</b>12p · 12a</span>
-          <span className="vl-sched"><b>Wed</b>12p · 12a</span>
-          <span className="vl-sched"><b>Thu</b>12p · 6p · 12a</span>
-          <span className="vl-sched"><b>Fri</b>12p · 12a</span>
-          <span className="vl-sched"><b>Sat</b>12p · 12a</span>
+          <span className="vl-meta-title">Updates</span>
+          <span className="vl-sched">About every 3 hours, around the clock</span>
+          <span>Runs can start a few hours late.</span>
         </div>
         {visList.some((x) => x.stale) ? (
           <div className="vl-footnote">
