@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-02T02:42:50Z",
+ "generatedAt": "2026-11-02T11:37:49Z",
  "key": "FullPPR_8",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
@@ -59,7 +59,7 @@
    ""
   ],
   [
-   65,
+   64,
    "",
    "",
    "Puka Nacua",
@@ -109,7 +109,7 @@
    ""
   ],
   [
-   53,
+   52,
    "",
    "",
    "CeeDee Lamb",
@@ -362,6 +362,16 @@
    30,
    "",
    "",
+   "A.J. Brown",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   30,
+   "",
+   "",
    "Malik Nabers",
    "",
    "",
@@ -373,16 +383,6 @@
    "Bucky Irving",
    "",
    "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   29,
-   "",
-   "",
-   "A.J. Brown",
    "",
    "",
    "",
@@ -519,7 +519,7 @@
    ""
   ],
   [
-   17,
+   18,
    "",
    "",
    "Jaylen Waddle",
@@ -842,16 +842,6 @@
    6,
    "",
    "",
-   "Rome Odunze",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   6,
-   "",
-   "",
    "KC Concepcion",
    "",
    "",
@@ -873,6 +863,16 @@
    "",
    "",
    "Jordyn Tyson",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   5,
+   "",
+   "",
+   "Rome Odunze",
    "",
    "",
    "",
@@ -1100,8 +1100,8 @@
   {
    "name": "Puka Nacua",
    "pos": "WR",
-   "value": 65,
-   "baselineValue": 68,
+   "value": 64,
+   "baselineValue": 67,
    "sheetValue": 65,
    "projection": 17.72,
    "projectionWeek": 8
@@ -1110,9 +1110,9 @@
    "name": "Jaxon Smith-Njigba",
    "pos": "WR",
    "value": 62,
-   "baselineValue": 64,
+   "baselineValue": 65,
    "sheetValue": 60,
-   "projection": 17.54,
+   "projection": 18,
    "projectionWeek": 8
   },
   {
@@ -1145,8 +1145,8 @@
   {
    "name": "CeeDee Lamb",
    "pos": "WR",
-   "value": 53,
-   "baselineValue": 55,
+   "value": 52,
+   "baselineValue": 54,
    "sheetValue": 47,
    "projection": 16.46,
    "projectionWeek": 8
@@ -1328,7 +1328,7 @@
    "value": 31,
    "baselineValue": 30,
    "sheetValue": 36,
-   "projection": 13.39,
+   "projection": 13.34,
    "projectionWeek": 8
   },
   {
@@ -1368,6 +1368,15 @@
    "projectionWeek": 8
   },
   {
+   "name": "A.J. Brown",
+   "pos": "WR",
+   "value": 30,
+   "baselineValue": 28,
+   "sheetValue": 38,
+   "projection": 10.06,
+   "projectionWeek": 8
+  },
+  {
    "name": "Malik Nabers",
    "pos": "WR",
    "value": 30,
@@ -1383,15 +1392,6 @@
    "baselineValue": 28,
    "sheetValue": 18,
    "projection": 14.09,
-   "projectionWeek": 8
-  },
-  {
-   "name": "A.J. Brown",
-   "pos": "WR",
-   "value": 29,
-   "baselineValue": 27,
-   "sheetValue": 38,
-   "projection": 10.06,
    "projectionWeek": 8
   },
   {
@@ -1514,8 +1514,8 @@
   {
    "name": "Jaylen Waddle",
    "pos": "WR",
-   "value": 17,
-   "baselineValue": 14,
+   "value": 18,
+   "baselineValue": 15,
    "sheetValue": 24,
    "projection": 7.49,
    "projectionWeek": 8
@@ -1652,7 +1652,7 @@
    "value": 12,
    "baselineValue": 9,
    "sheetValue": 10,
-   "projection": 9.39,
+   "projection": 9.36,
    "projectionWeek": 8
   },
   {
@@ -1751,7 +1751,7 @@
    "value": 8,
    "baselineValue": 11,
    "sheetValue": 17,
-   "projection": 8.52,
+   "projection": 8.41,
    "projectionWeek": 8
   },
   {
@@ -1796,16 +1796,7 @@
    "value": 6,
    "baselineValue": 9,
    "sheetValue": 16,
-   "projection": 5.63,
-   "projectionWeek": 8
-  },
-  {
-   "name": "Rome Odunze",
-   "pos": "WR",
-   "value": 6,
-   "baselineValue": 9,
-   "sheetValue": 13,
-   "projection": 7.55,
+   "projection": 5.62,
    "projectionWeek": 8
   },
   {
@@ -1834,6 +1825,15 @@
    "sheetValue": 4,
    "projection": null,
    "projectionWeek": null
+  },
+  {
+   "name": "Rome Odunze",
+   "pos": "WR",
+   "value": 5,
+   "baselineValue": 8,
+   "sheetValue": 13,
+   "projection": 7.4,
+   "projectionWeek": 8
   },
   {
    "name": "TreVeyon Henderson",
