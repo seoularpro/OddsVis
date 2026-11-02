@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-01T23:00:14Z",
+ "generatedAt": "2026-11-02T02:42:50Z",
  "baseline": {
   "label": "Half PPR, 10-team",
   "source": "the live Trade Values Google Sheet",
@@ -11,7 +11,7 @@
  "reseed": {
   "week": 8,
   "season": 2026,
-  "snapshotIndex": 12,
+  "snapshotIndex": 13,
   "previousWeek": 7,
   "weight": 0.45,
   "rankShare": 0.7,
@@ -233,17 +233,17 @@
      54,
      "",
      "",
-     "Jaxon Smith-Njigba",
+     "Ja'Marr Chase",
      "",
      "",
      "",
      ""
     ],
     [
-     54,
+     53,
      "",
      "",
-     "Ja'Marr Chase",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -1265,21 +1265,21 @@
      "projectionWeek": 8
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 54,
-     "baselineValue": 65,
-     "sheetValue": 60,
-     "projection": 17.65,
-     "projectionWeek": 8
-    },
-    {
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 54,
      "baselineValue": 64,
      "sheetValue": 64,
      "projection": 16.28,
+     "projectionWeek": 8
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 53,
+     "baselineValue": 64,
+     "sheetValue": 60,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -1396,7 +1396,7 @@
      "value": 35,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -1459,7 +1459,7 @@
      "value": 29,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -1693,7 +1693,7 @@
      "value": 16,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -1747,7 +1747,7 @@
      "value": 14,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -1765,7 +1765,7 @@
      "value": 14,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -1873,7 +1873,7 @@
      "value": 11,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -2017,7 +2017,7 @@
      "value": 8,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -2080,7 +2080,7 @@
      "value": 5,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -2125,7 +2125,7 @@
      "value": 3,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -2241,17 +2241,17 @@
      56,
      "",
      "",
-     "Jaxon Smith-Njigba",
+     "Ja'Marr Chase",
      "",
      "",
      "",
      ""
     ],
     [
-     56,
+     55,
      "",
      "",
-     "Ja'Marr Chase",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -3273,21 +3273,21 @@
      "projectionWeek": 8
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 56,
-     "baselineValue": 65,
-     "sheetValue": 60,
-     "projection": 17.65,
-     "projectionWeek": 8
-    },
-    {
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 56,
      "baselineValue": 64,
      "sheetValue": 64,
      "projection": 16.28,
+     "projectionWeek": 8
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 55,
+     "baselineValue": 64,
+     "sheetValue": 60,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -3404,7 +3404,7 @@
      "value": 34,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -3467,7 +3467,7 @@
      "value": 27,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -3701,7 +3701,7 @@
      "value": 14,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -3755,7 +3755,7 @@
      "value": 12,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -3773,7 +3773,7 @@
      "value": 12,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -3881,7 +3881,7 @@
      "value": 9,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -3962,7 +3962,7 @@
      "value": 7,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -4088,7 +4088,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -4133,7 +4133,7 @@
      "value": 2,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -4249,17 +4249,17 @@
      58,
      "",
      "",
-     "Jaxon Smith-Njigba",
+     "Ja'Marr Chase",
      "",
      "",
      "",
      ""
     ],
     [
-     58,
+     57,
      "",
      "",
-     "Ja'Marr Chase",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -5281,21 +5281,21 @@
      "projectionWeek": 8
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 58,
-     "baselineValue": 65,
-     "sheetValue": 60,
-     "projection": 17.65,
-     "projectionWeek": 8
-    },
-    {
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 58,
      "baselineValue": 64,
      "sheetValue": 64,
      "projection": 16.28,
+     "projectionWeek": 8
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 57,
+     "baselineValue": 64,
+     "sheetValue": 60,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -5412,7 +5412,7 @@
      "value": 33,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -5475,7 +5475,7 @@
      "value": 25,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -5700,7 +5700,7 @@
      "value": 12,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -5745,7 +5745,7 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -5781,7 +5781,7 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -5889,7 +5889,7 @@
      "value": 7,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -5988,7 +5988,7 @@
      "value": 5,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -6096,7 +6096,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -6150,7 +6150,7 @@
      "value": 1,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     }
    ]
@@ -6234,10 +6234,10 @@
      ""
     ],
     [
-     58,
+     57,
      "",
      "",
-     "Jaxon Smith-Njigba",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -6247,7 +6247,7 @@
      57,
      "",
      "",
-     "Ja'Marr Chase",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -7271,21 +7271,21 @@
      "projectionWeek": 8
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 58,
-     "baselineValue": 65,
-     "sheetValue": 60,
-     "projection": 17.65,
-     "projectionWeek": 8
-    },
-    {
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 57,
      "baselineValue": 64,
      "sheetValue": 64,
      "projection": 16.28,
+     "projectionWeek": 8
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 57,
+     "baselineValue": 64,
+     "sheetValue": 60,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -7420,7 +7420,7 @@
      "value": 36,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -7474,7 +7474,7 @@
      "value": 30,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -7825,7 +7825,7 @@
      "value": 12,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -7870,7 +7870,7 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -7888,7 +7888,7 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -7897,7 +7897,7 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -7969,7 +7969,7 @@
      "value": 7,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -7996,7 +7996,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -8077,7 +8077,7 @@
      "value": 5,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -8245,7 +8245,7 @@
      61,
      "",
      "",
-     "Jaxon Smith-Njigba",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -8255,7 +8255,7 @@
      61,
      "",
      "",
-     "Ja'Marr Chase",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -9279,21 +9279,21 @@
      "projectionWeek": 8
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 61,
-     "baselineValue": 65,
-     "sheetValue": 60,
-     "projection": 17.65,
-     "projectionWeek": 8
-    },
-    {
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 61,
      "baselineValue": 64,
      "sheetValue": 64,
      "projection": 16.28,
+     "projectionWeek": 8
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 61,
+     "baselineValue": 64,
+     "sheetValue": 60,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -9437,7 +9437,7 @@
      "value": 35,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -9482,7 +9482,7 @@
      "value": 28,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -9833,7 +9833,7 @@
      "value": 10,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -9851,7 +9851,7 @@
      "value": 9,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -9887,7 +9887,7 @@
      "value": 9,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -9896,7 +9896,7 @@
      "value": 9,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -9977,7 +9977,7 @@
      "value": 6,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -10004,7 +10004,7 @@
      "value": 5,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -10085,7 +10085,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -10250,10 +10250,10 @@
      ""
     ],
     [
-     65,
+     63,
      "",
      "",
-     "Jaxon Smith-Njigba",
+     "Ja'Marr Chase",
      "",
      "",
      "",
@@ -10263,7 +10263,7 @@
      63,
      "",
      "",
-     "Ja'Marr Chase",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -11287,21 +11287,21 @@
      "projectionWeek": 8
     },
     {
-     "name": "Jaxon Smith-Njigba",
-     "pos": "WR",
-     "value": 65,
-     "baselineValue": 65,
-     "sheetValue": 60,
-     "projection": 17.65,
-     "projectionWeek": 8
-    },
-    {
      "name": "Ja'Marr Chase",
      "pos": "WR",
      "value": 63,
      "baselineValue": 64,
      "sheetValue": 64,
      "projection": 16.28,
+     "projectionWeek": 8
+    },
+    {
+     "name": "Jaxon Smith-Njigba",
+     "pos": "WR",
+     "value": 63,
+     "baselineValue": 64,
+     "sheetValue": 60,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -11445,7 +11445,7 @@
      "value": 34,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -11490,7 +11490,7 @@
      "value": 27,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -11868,7 +11868,7 @@
      "value": 8,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -11886,7 +11886,7 @@
      "value": 7,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -11904,7 +11904,7 @@
      "value": 7,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -11913,7 +11913,7 @@
      "value": 7,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -11985,7 +11985,7 @@
      "value": 4,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -12012,7 +12012,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -12093,7 +12093,7 @@
      "value": 3,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -13289,9 +13289,9 @@
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
      "value": 62,
-     "baselineValue": 65,
+     "baselineValue": 64,
      "sheetValue": 60,
-     "projection": 17.65,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -13462,7 +13462,7 @@
      "value": 36,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -13507,7 +13507,7 @@
      "value": 31,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -13831,7 +13831,7 @@
      "value": 12,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -13930,7 +13930,7 @@
      "value": 8,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -13948,7 +13948,7 @@
      "value": 7,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -13966,7 +13966,7 @@
      "value": 7,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -13975,7 +13975,7 @@
      "value": 6,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -13984,7 +13984,7 @@
      "value": 6,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -14047,7 +14047,7 @@
      "value": 3,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -14256,7 +14256,7 @@
      ""
     ],
     [
-     67,
+     66,
      "",
      "",
      "Jaxon Smith-Njigba",
@@ -15296,10 +15296,10 @@
     {
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
-     "value": 67,
-     "baselineValue": 65,
+     "value": 66,
+     "baselineValue": 64,
      "sheetValue": 60,
-     "projection": 17.65,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -15461,7 +15461,7 @@
      "value": 36,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -15533,7 +15533,7 @@
      "value": 29,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -15839,7 +15839,7 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -15938,7 +15938,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -15956,7 +15956,7 @@
      "value": 6,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -15965,7 +15965,7 @@
      "value": 6,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -15974,7 +15974,7 @@
      "value": 5,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -15992,7 +15992,7 @@
      "value": 5,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -16055,7 +16055,7 @@
      "value": 2,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -16264,7 +16264,7 @@
      ""
     ],
     [
-     71,
+     70,
      "",
      "",
      "Jaxon Smith-Njigba",
@@ -17304,10 +17304,10 @@
     {
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
-     "value": 71,
-     "baselineValue": 65,
+     "value": 70,
+     "baselineValue": 64,
      "sheetValue": 60,
-     "projection": 17.65,
+     "projection": 17.54,
      "projectionWeek": 8
     },
     {
@@ -17469,7 +17469,7 @@
      "value": 35,
      "baselineValue": 37,
      "sheetValue": 55,
-     "projection": 9.5,
+     "projection": 9.4,
      "projectionWeek": 8
     },
     {
@@ -17523,7 +17523,7 @@
      "value": 28,
      "baselineValue": 30,
      "sheetValue": 36,
-     "projection": 13.47,
+     "projection": 13.39,
      "projectionWeek": 8
     },
     {
@@ -17856,7 +17856,7 @@
      "value": 8,
      "baselineValue": 9,
      "sheetValue": 10,
-     "projection": 9.48,
+     "projection": 9.39,
      "projectionWeek": 8
     },
     {
@@ -17937,7 +17937,7 @@
      "value": 5,
      "baselineValue": 11,
      "sheetValue": 17,
-     "projection": 8.54,
+     "projection": 8.52,
      "projectionWeek": 8
     },
     {
@@ -17964,7 +17964,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 2,
-     "projection": 10,
+     "projection": 10.03,
      "projectionWeek": 8
     },
     {
@@ -17982,7 +17982,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 4,
-     "projection": 8.73,
+     "projection": 8.78,
      "projectionWeek": 8
     },
     {
@@ -17991,7 +17991,7 @@
      "value": 3,
      "baselineValue": 9,
      "sheetValue": 16,
-     "projection": 5.64,
+     "projection": 5.63,
      "projectionWeek": 8
     },
     {
@@ -18000,7 +18000,7 @@
      "value": 3,
      "baselineValue": 9,
      "sheetValue": 13,
-     "projection": 7.57,
+     "projection": 7.55,
      "projectionWeek": 8
     },
     {
@@ -18162,7 +18162,7 @@
      "value": 1,
      "baselineValue": 6,
      "sheetValue": 8,
-     "projection": 18.77,
+     "projection": 18.69,
      "projectionWeek": 8
     },
     {
@@ -18303,17 +18303,17 @@
   },
   "Jaxon Smith-Njigba": {
    "pos": "WR",
-   "baselineValue": 65,
+   "baselineValue": 64,
    "values": {
-    "Standard_8": 54,
-    "Standard_10": 56,
-    "Standard_12": 58,
-    "HalfPPR_8": 58,
+    "Standard_8": 53,
+    "Standard_10": 55,
+    "Standard_12": 57,
+    "HalfPPR_8": 57,
     "HalfPPR_10": 61,
-    "HalfPPR_12": 65,
+    "HalfPPR_12": 63,
     "FullPPR_8": 62,
-    "FullPPR_10": 67,
-    "FullPPR_12": 71
+    "FullPPR_10": 66,
+    "FullPPR_12": 70
    },
    "sheetValue": 60
   },
