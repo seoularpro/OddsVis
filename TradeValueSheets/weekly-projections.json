@@ -2,8 +2,8 @@
  "season": 2026,
  "week": 8,
  "mode": 0,
- "snapshotIndex": 14,
- "generatedAt": "2026-11-02T11:37:48Z",
+ "snapshotIndex": 15,
+ "generatedAt": "2026-11-02T21:54:01Z",
  "positions": {
   "QB": [
    {
@@ -67,18 +67,18 @@
     "stale": false
    },
    {
+    "name": "Caleb Williams",
+    "ev": 16.79,
+    "stale": false
+   },
+   {
     "name": "Jared Goff",
     "ev": 16.77,
     "stale": false
    },
    {
-    "name": "Caleb Williams",
-    "ev": 16.73,
-    "stale": false
-   },
-   {
     "name": "Sam Darnold",
-    "ev": 16.13,
+    "ev": 16,
     "stale": false
    },
    {
@@ -209,6 +209,11 @@
     "stale": false
    },
    {
+    "name": "D'Andre Swift",
+    "ev": 13.91,
+    "stale": false
+   },
+   {
     "name": "Chuba Hubbard",
     "ev": 13.9,
     "stale": false
@@ -226,11 +231,6 @@
    {
     "name": "Bhayshul Tuten",
     "ev": 13.53,
-    "stale": false
-   },
-   {
-    "name": "D'Andre Swift",
-    "ev": 13.34,
     "stale": false
    },
    {
@@ -289,13 +289,13 @@
     "stale": false
    },
    {
-    "name": "Zach Charbonnet",
-    "ev": 7.88,
+    "name": "Rico Dowdle",
+    "ev": 7.59,
     "stale": false
    },
    {
-    "name": "Rico Dowdle",
-    "ev": 7.59,
+    "name": "Zach Charbonnet",
+    "ev": 7.38,
     "stale": false
    },
    {
@@ -329,13 +329,13 @@
     "stale": false
    },
    {
-    "name": "Jadarian Price",
-    "ev": 5.62,
+    "name": "RJ Harvey",
+    "ev": 5.58,
     "stale": false
    },
    {
-    "name": "RJ Harvey",
-    "ev": 5.58,
+    "name": "Jadarian Price",
+    "ev": 5.55,
     "stale": false
    },
    {
@@ -356,12 +356,12 @@
   ],
   "WR": [
    {
-    "name": "Jaxon Smith-Njigba",
-    "ev": 18,
+    "name": "Puka Nacua",
+    "ev": 17.72,
     "stale": false
    },
    {
-    "name": "Puka Nacua",
+    "name": "Jaxon Smith-Njigba",
     "ev": 17.72,
     "stale": false
    },
@@ -462,7 +462,7 @@
    },
    {
     "name": "Luther Burden III",
-    "ev": 9.36,
+    "ev": 9.39,
     "stale": false
    },
    {
@@ -611,12 +611,12 @@
     "stale": false
    },
    {
-    "name": "Cooper Kupp",
-    "ev": 6.08,
+    "name": "Ted Hurst III",
+    "ev": 6.04,
     "stale": false
    },
    {
-    "name": "Ted Hurst III",
+    "name": "Cooper Kupp",
     "ev": 6.04,
     "stale": false
    },
@@ -708,13 +708,13 @@
     "stale": false
    },
    {
-    "name": "Dalton Kincaid",
-    "ev": 8.42,
+    "name": "Colston Loveland",
+    "ev": 8.52,
     "stale": false
    },
    {
-    "name": "Colston Loveland",
-    "ev": 8.41,
+    "name": "Dalton Kincaid",
+    "ev": 8.42,
     "stale": false
    },
    {
@@ -748,11 +748,6 @@
     "stale": false
    },
    {
-    "name": "AJ Barner",
-    "ev": 6.64,
-    "stale": false
-   },
-   {
     "name": "Chig Okonkwo",
     "ev": 6.64,
     "stale": false
@@ -760,6 +755,11 @@
    {
     "name": "Cade Otton",
     "ev": 6.62,
+    "stale": false
+   },
+   {
+    "name": "AJ Barner",
+    "ev": 6.54,
     "stale": false
    },
    {

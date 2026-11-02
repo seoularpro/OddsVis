@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-02T11:37:49Z",
+ "generatedAt": "2026-11-02T21:54:02Z",
  "key": "Standard_12",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -69,10 +69,10 @@
    ""
   ],
   [
-   60,
-   "James Cook III",
+   62,
    "",
    "",
+   "Puka Nacua",
    "",
    "",
    "",
@@ -80,9 +80,9 @@
   ],
   [
    60,
+   "James Cook III",
    "",
    "",
-   "Puka Nacua",
    "",
    "",
    "",
@@ -119,10 +119,10 @@
    ""
   ],
   [
-   49,
+   50,
    "",
    "",
-   "Amon-Ra St. Brown",
+   "CeeDee Lamb",
    "",
    "",
    "",
@@ -132,7 +132,7 @@
    49,
    "",
    "",
-   "CeeDee Lamb",
+   "Amon-Ra St. Brown",
    "",
    "",
    "",
@@ -179,7 +179,7 @@
    "Josh Allen"
   ],
   [
-   42,
+   40,
    "Ashton Jeanty",
    "",
    "",
@@ -260,6 +260,16 @@
   ],
   [
    32,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   32,
    "",
    "",
    "",
@@ -303,16 +313,6 @@
    "",
    "",
    "George Pickens",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   25,
-   "D'Andre Swift",
-   "",
-   "",
    "",
    "",
    "",
@@ -392,17 +392,17 @@
    23,
    "",
    "",
-   "A.J. Brown",
+   "Malik Nabers",
    "",
    "",
    "",
    ""
   ],
   [
-   23,
+   22,
    "",
    "",
-   "Malik Nabers",
+   "A.J. Brown",
    "",
    "",
    "",
@@ -1107,21 +1107,21 @@
    "projectionWeek": 8
   },
   {
+   "name": "Puka Nacua",
+   "pos": "WR",
+   "value": 62,
+   "baselineValue": 68,
+   "sheetValue": 65,
+   "projection": 17.72,
+   "projectionWeek": 8
+  },
+  {
    "name": "James Cook III",
    "pos": "RB",
    "value": 60,
    "baselineValue": 57,
    "sheetValue": 60,
    "projection": 15.35,
-   "projectionWeek": 8
-  },
-  {
-   "name": "Puka Nacua",
-   "pos": "WR",
-   "value": 60,
-   "baselineValue": 67,
-   "sheetValue": 65,
-   "projection": 17.72,
    "projectionWeek": 8
   },
   {
@@ -1139,7 +1139,7 @@
    "value": 58,
    "baselineValue": 65,
    "sheetValue": 60,
-   "projection": 18,
+   "projection": 17.72,
    "projectionWeek": 8
   },
   {
@@ -1152,21 +1152,21 @@
    "projectionWeek": 8
   },
   {
+   "name": "CeeDee Lamb",
+   "pos": "WR",
+   "value": 50,
+   "baselineValue": 55,
+   "sheetValue": 47,
+   "projection": 16.46,
+   "projectionWeek": 8
+  },
+  {
    "name": "Amon-Ra St. Brown",
    "pos": "WR",
    "value": 49,
    "baselineValue": 56,
    "sheetValue": 60,
    "projection": 15.03,
-   "projectionWeek": 8
-  },
-  {
-   "name": "CeeDee Lamb",
-   "pos": "WR",
-   "value": 49,
-   "baselineValue": 54,
-   "sheetValue": 47,
-   "projection": 16.46,
    "projectionWeek": 8
   },
   {
@@ -1208,8 +1208,8 @@
   {
    "name": "Ashton Jeanty",
    "pos": "RB",
-   "value": 42,
-   "baselineValue": 46,
+   "value": 40,
+   "baselineValue": 44,
    "sheetValue": 55,
    "projection": 13.65,
    "projectionWeek": 8
@@ -1278,6 +1278,15 @@
    "projectionWeek": 8
   },
   {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "value": 32,
+   "baselineValue": 36,
+   "sheetValue": 36,
+   "projection": 13.91,
+   "projectionWeek": 8
+  },
+  {
    "name": "Brock Bowers",
    "pos": "TE",
    "value": 32,
@@ -1320,15 +1329,6 @@
    "baselineValue": 32,
    "sheetValue": 34,
    "projection": 12.62,
-   "projectionWeek": 8
-  },
-  {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "value": 25,
-   "baselineValue": 30,
-   "sheetValue": 36,
-   "projection": 13.34,
    "projectionWeek": 8
   },
   {
@@ -1395,15 +1395,6 @@
    "projectionWeek": 8
   },
   {
-   "name": "A.J. Brown",
-   "pos": "WR",
-   "value": 23,
-   "baselineValue": 28,
-   "sheetValue": 38,
-   "projection": 10.06,
-   "projectionWeek": 8
-  },
-  {
    "name": "Malik Nabers",
    "pos": "WR",
    "value": 23,
@@ -1411,6 +1402,15 @@
    "sheetValue": 30,
    "projection": 11.77,
    "projectionWeek": 7
+  },
+  {
+   "name": "A.J. Brown",
+   "pos": "WR",
+   "value": 22,
+   "baselineValue": 27,
+   "sheetValue": 38,
+   "projection": 10.06,
+   "projectionWeek": 8
   },
   {
    "name": "Josh Jacobs",
@@ -1553,7 +1553,7 @@
    "value": 12,
    "baselineValue": 11,
    "sheetValue": 17,
-   "projection": 8.41,
+   "projection": 8.52,
    "projectionWeek": 8
   },
   {
@@ -1598,7 +1598,7 @@
    "value": 10,
    "baselineValue": 9,
    "sheetValue": 16,
-   "projection": 5.62,
+   "projection": 5.55,
    "projectionWeek": 8
   },
   {
@@ -1841,7 +1841,7 @@
    "value": 5,
    "baselineValue": 9,
    "sheetValue": 10,
-   "projection": 9.36,
+   "projection": 9.39,
    "projectionWeek": 8
   },
   {

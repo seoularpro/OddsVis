@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-02T11:37:49Z",
+ "generatedAt": "2026-11-02T21:54:02Z",
  "key": "HalfPPR_12",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -59,7 +59,7 @@
    ""
   ],
   [
-   67,
+   68,
    "",
    "",
    "Puka Nacua",
@@ -129,7 +129,7 @@
    ""
   ],
   [
-   52,
+   53,
    "",
    "",
    "CeeDee Lamb",
@@ -160,19 +160,19 @@
   ],
   [
    43,
-   "Ashton Jeanty",
    "",
    "",
+   "Justin Jefferson",
    "",
    "",
    "",
    ""
   ],
   [
-   43,
+   41,
+   "Ashton Jeanty",
    "",
    "",
-   "Justin Jefferson",
    "",
    "",
    "",
@@ -279,6 +279,16 @@
    "Drake Maye"
   ],
   [
+   33,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
    31,
    "",
    "",
@@ -293,16 +303,6 @@
    "",
    "",
    "George Pickens",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   27,
-   "D'Andre Swift",
-   "",
-   "",
    "",
    "",
    "",
@@ -382,17 +382,17 @@
    25,
    "",
    "",
-   "A.J. Brown",
+   "Malik Nabers",
    "",
    "",
    "",
    ""
   ],
   [
-   25,
+   24,
    "",
    "",
-   "Malik Nabers",
+   "A.J. Brown",
    "",
    "",
    "",
@@ -1100,8 +1100,8 @@
   {
    "name": "Puka Nacua",
    "pos": "WR",
-   "value": 67,
-   "baselineValue": 67,
+   "value": 68,
+   "baselineValue": 68,
    "sheetValue": 65,
    "projection": 17.72,
    "projectionWeek": 8
@@ -1121,7 +1121,7 @@
    "value": 65,
    "baselineValue": 65,
    "sheetValue": 60,
-   "projection": 18,
+   "projection": 17.72,
    "projectionWeek": 8
   },
   {
@@ -1163,8 +1163,8 @@
   {
    "name": "CeeDee Lamb",
    "pos": "WR",
-   "value": 52,
-   "baselineValue": 54,
+   "value": 53,
+   "baselineValue": 55,
    "sheetValue": 47,
    "projection": 16.46,
    "projectionWeek": 8
@@ -1188,21 +1188,21 @@
    "projectionWeek": 8
   },
   {
-   "name": "Ashton Jeanty",
-   "pos": "RB",
-   "value": 43,
-   "baselineValue": 46,
-   "sheetValue": 55,
-   "projection": 13.65,
-   "projectionWeek": 8
-  },
-  {
    "name": "Justin Jefferson",
    "pos": "WR",
    "value": 43,
    "baselineValue": 46,
    "sheetValue": 53,
    "projection": 13.29,
+   "projectionWeek": 8
+  },
+  {
+   "name": "Ashton Jeanty",
+   "pos": "RB",
+   "value": 41,
+   "baselineValue": 44,
+   "sheetValue": 55,
+   "projection": 13.65,
    "projectionWeek": 8
   },
   {
@@ -1296,6 +1296,15 @@
    "projectionWeek": 8
   },
   {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "value": 33,
+   "baselineValue": 36,
+   "sheetValue": 36,
+   "projection": 13.91,
+   "projectionWeek": 8
+  },
+  {
    "name": "Nico Collins",
    "pos": "WR",
    "value": 31,
@@ -1311,15 +1320,6 @@
    "baselineValue": 32,
    "sheetValue": 34,
    "projection": 12.62,
-   "projectionWeek": 8
-  },
-  {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "value": 27,
-   "baselineValue": 30,
-   "sheetValue": 36,
-   "projection": 13.34,
    "projectionWeek": 8
   },
   {
@@ -1386,15 +1386,6 @@
    "projectionWeek": 8
   },
   {
-   "name": "A.J. Brown",
-   "pos": "WR",
-   "value": 25,
-   "baselineValue": 28,
-   "sheetValue": 38,
-   "projection": 10.06,
-   "projectionWeek": 8
-  },
-  {
    "name": "Malik Nabers",
    "pos": "WR",
    "value": 25,
@@ -1402,6 +1393,15 @@
    "sheetValue": 30,
    "projection": 11.77,
    "projectionWeek": 7
+  },
+  {
+   "name": "A.J. Brown",
+   "pos": "WR",
+   "value": 24,
+   "baselineValue": 27,
+   "sheetValue": 38,
+   "projection": 10.06,
+   "projectionWeek": 8
   },
   {
    "name": "Aaron Jones Sr.",
@@ -1697,7 +1697,7 @@
    "value": 8,
    "baselineValue": 11,
    "sheetValue": 17,
-   "projection": 8.41,
+   "projection": 8.52,
    "projectionWeek": 8
   },
   {
@@ -1715,7 +1715,7 @@
    "value": 7,
    "baselineValue": 9,
    "sheetValue": 16,
-   "projection": 5.62,
+   "projection": 5.55,
    "projectionWeek": 8
   },
   {
@@ -1733,7 +1733,7 @@
    "value": 7,
    "baselineValue": 9,
    "sheetValue": 10,
-   "projection": 9.36,
+   "projection": 9.39,
    "projectionWeek": 8
   },
   {

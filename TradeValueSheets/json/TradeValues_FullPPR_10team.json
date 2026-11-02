@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-02T11:37:49Z",
+ "generatedAt": "2026-11-02T21:54:02Z",
  "key": "FullPPR_10",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
@@ -59,7 +59,7 @@
    ""
   ],
   [
-   69,
+   70,
    "",
    "",
    "Puka Nacua",
@@ -109,7 +109,7 @@
    ""
   ],
   [
-   54,
+   55,
    "",
    "",
    "CeeDee Lamb",
@@ -170,21 +170,21 @@
   ],
   [
    44,
-   "Ashton Jeanty",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   44,
    "",
    "",
    "",
    "",
    "Trey McBride",
+   "",
+   ""
+  ],
+  [
+   43,
+   "Ashton Jeanty",
+   "",
+   "",
+   "",
+   "",
    "",
    ""
   ],
@@ -269,6 +269,16 @@
    ""
   ],
   [
+   35,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
    34,
    "",
    "",
@@ -330,16 +340,6 @@
   ],
   [
    29,
-   "D'Andre Swift",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   29,
    "Chuba Hubbard",
    "",
    "",
@@ -362,16 +362,6 @@
    28,
    "",
    "",
-   "A.J. Brown",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   28,
-   "",
-   "",
    "Malik Nabers",
    "",
    "",
@@ -383,6 +373,16 @@
    "Bucky Irving",
    "",
    "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   27,
+   "",
+   "",
+   "A.J. Brown",
    "",
    "",
    "",
@@ -1100,8 +1100,8 @@
   {
    "name": "Puka Nacua",
    "pos": "WR",
-   "value": 69,
-   "baselineValue": 67,
+   "value": 70,
+   "baselineValue": 68,
    "sheetValue": 65,
    "projection": 17.72,
    "projectionWeek": 8
@@ -1112,7 +1112,7 @@
    "value": 67,
    "baselineValue": 65,
    "sheetValue": 60,
-   "projection": 18,
+   "projection": 17.72,
    "projectionWeek": 8
   },
   {
@@ -1145,8 +1145,8 @@
   {
    "name": "CeeDee Lamb",
    "pos": "WR",
-   "value": 54,
-   "baselineValue": 54,
+   "value": 55,
+   "baselineValue": 55,
    "sheetValue": 47,
    "projection": 16.46,
    "projectionWeek": 8
@@ -1197,21 +1197,21 @@
    "projectionWeek": 8
   },
   {
-   "name": "Ashton Jeanty",
-   "pos": "RB",
-   "value": 44,
-   "baselineValue": 46,
-   "sheetValue": 55,
-   "projection": 13.65,
-   "projectionWeek": 8
-  },
-  {
    "name": "Trey McBride",
    "pos": "TE",
    "value": 44,
    "baselineValue": 42.285714285714285,
    "sheetValue": 30,
    "projection": 15.22,
+   "projectionWeek": 8
+  },
+  {
+   "name": "Ashton Jeanty",
+   "pos": "RB",
+   "value": 43,
+   "baselineValue": 44,
+   "sheetValue": 55,
+   "projection": 13.65,
    "projectionWeek": 8
   },
   {
@@ -1287,6 +1287,15 @@
    "projectionWeek": 8
   },
   {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "value": 35,
+   "baselineValue": 36,
+   "sheetValue": 36,
+   "projection": 13.91,
+   "projectionWeek": 8
+  },
+  {
    "name": "Nico Collins",
    "pos": "WR",
    "value": 34,
@@ -1341,15 +1350,6 @@
    "projectionWeek": 8
   },
   {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "value": 29,
-   "baselineValue": 30,
-   "sheetValue": 36,
-   "projection": 13.34,
-   "projectionWeek": 8
-  },
-  {
    "name": "Chuba Hubbard",
    "pos": "RB",
    "value": 29,
@@ -1368,15 +1368,6 @@
    "projectionWeek": 8
   },
   {
-   "name": "A.J. Brown",
-   "pos": "WR",
-   "value": 28,
-   "baselineValue": 28,
-   "sheetValue": 38,
-   "projection": 10.06,
-   "projectionWeek": 8
-  },
-  {
    "name": "Malik Nabers",
    "pos": "WR",
    "value": 28,
@@ -1392,6 +1383,15 @@
    "baselineValue": 28,
    "sheetValue": 18,
    "projection": 14.09,
+   "projectionWeek": 8
+  },
+  {
+   "name": "A.J. Brown",
+   "pos": "WR",
+   "value": 27,
+   "baselineValue": 27,
+   "sheetValue": 38,
+   "projection": 10.06,
    "projectionWeek": 8
   },
   {
@@ -1652,7 +1652,7 @@
    "value": 10,
    "baselineValue": 9,
    "sheetValue": 10,
-   "projection": 9.36,
+   "projection": 9.39,
    "projectionWeek": 8
   },
   {
@@ -1778,7 +1778,7 @@
    "value": 6,
    "baselineValue": 11,
    "sheetValue": 17,
-   "projection": 8.41,
+   "projection": 8.52,
    "projectionWeek": 8
   },
   {
@@ -1787,7 +1787,7 @@
    "value": 5,
    "baselineValue": 9,
    "sheetValue": 16,
-   "projection": 5.62,
+   "projection": 5.55,
    "projectionWeek": 8
   },
   {
