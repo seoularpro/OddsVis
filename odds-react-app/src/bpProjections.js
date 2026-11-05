@@ -158,8 +158,10 @@ const YARDAGE_ADJUST_FLAG = 0.05; // relative shift that earns a marker
 
 // Garbled prices. BettingPros occasionally posts a consensus price that
 // belongs to a different line (e.g. Goff's over-1.5-TD price of -185 on the
-// 2.5 line) or an alt-line price on the main line (Zay Flowers 71 rec yds at
-// -300). Either one inflates the projection badly, so such entries are
+// 2.5 line), an alt-line price on the main line (Zay Flowers 71 rec yds at
+// -300), or another market's / a pulled line's price (Sam Darnold's anytime
+// TD at -3233, i.e. his odds to throw a TD; Lamar Jackson's 1.5 pass TDs at
+// -99900). Any of them inflates the projection badly, so such entries are
 // dropped and the prop falls back to an earlier value (see
 // projectionsFromFiles).
 //   - Consensus vs. best book on the same line: implied over-probabilities
@@ -168,6 +170,13 @@ const BOOK_MISMATCH_PROB = 0.2;
 //   - Main yardage lines are priced near even; beyond this they're alt lines.
 const MAX_YARDAGE_ODDS = 250;
 const YARDAGE_KEYS = ["rushYds", "recYds", "passYds"];
+//   - Count props (anytime TD, receptions, passing TDs, interceptions) sit on
+//     half-integer lines, so a main line can be shaded further (Gibbs'
+//     anytime TD runs -400 to -450) but never to a near-certainty: beyond
+//     this the over is 80%+ after the vig and the price isn't for that line.
+//     Only the short side is checked; a long price just means a small
+//     number, and /offers-only entries have no book price to compare.
+const MAX_COUNT_ODDS = 600;
 
 const impliedProb = (americanOdds) => 1 / americanToDecimal(americanOdds);
 
@@ -175,7 +184,9 @@ function isGarbledPrice(playerOdds, key) {
   const over = playerOdds.over || {};
   const odds = Number(over.consensus_odds);
   if (!Number.isFinite(odds) || odds === 0) return false;
-  if (YARDAGE_KEYS.includes(key) && Math.abs(odds) > MAX_YARDAGE_ODDS) {
+  if (YARDAGE_KEYS.includes(key)) {
+    if (Math.abs(odds) > MAX_YARDAGE_ODDS) return true;
+  } else if (odds < -MAX_COUNT_ODDS) {
     return true;
   }
   const bookOdds = Number(over.odds);
@@ -263,9 +274,9 @@ export function parseSnapshot(
 
   // De-vigged probability of the over, clamped so extreme prices stay
   // finite (see impliedYards for the same treatment of yardage).
-  const overProbability = (playerOdds, cap = 0.95) =>
+  const overProbability = (playerOdds) =>
     Math.min(
-      cap,
+      0.95,
       Math.max(
         0.05,
         1 / americanToDecimal(playerOdds.over.consensus_odds) / UNIVERSAL_VIG
@@ -282,11 +293,10 @@ export function parseSnapshot(
     );
 
   // Expected touchdowns behind an anytime-TD price: -ln(1 - p), which counts
-  // the multi-TD games that P(>= 1) alone leaves out. Consensus prices above
-  // ~80% are usually garbled alt lines, so the probability is capped there.
-  const ANYTD_PROB_CAP = 0.8;
+  // the multi-TD games that P(>= 1) alone leaves out. Prices beyond
+  // MAX_COUNT_ODDS never get here (see isGarbledPrice).
   const impliedTouchdowns = (playerOdds) =>
-    poissonRate(overProbability(playerOdds, ANYTD_PROB_CAP), 1);
+    poissonRate(overProbability(playerOdds), 1);
 
   for (const key of PROP_KEYS) {
     const market = allMarkets.filter(

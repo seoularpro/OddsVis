@@ -362,9 +362,64 @@ describe("count props and anytime TD", () => {
     expect(coin - long).toBeCloseTo(6 * (-Math.log(1 - pOver(100)) - -Math.log(1 - pOver(400))), 2);
   });
 
-  it("caps the anytime-TD probability where consensus prices stop being real", () => {
-    const heavy = evOf(qb("Heavy", { anyTD: -400 })).get("Heavy").ev; // p = 0.75
-    const absurd = evOf(qb("Absurd", { anyTD: -2000 })).get("Absurd").ev; // p = 0.90 -> 0.8
-    expect(absurd - heavy).toBeCloseTo(6 * (-Math.log(1 - 0.8) - -Math.log(1 - pOver(-400))), 2);
+  it("keeps a short but real anytime-TD price", () => {
+    // A -400 favorite (Gibbs most weeks) is p ~0.75, worth ~1.4 TDs.
+    const heavy = evOf(qb("Heavy", { anyTD: -400 })).get("Heavy").ev;
+    expect(heavy - base).toBeCloseTo(
+      6 * (-Math.log(1 - pOver(-400)) - -Math.log(1 - pOver(400))),
+      2
+    );
+  });
+
+  const run = (files) =>
+    new Map(
+      projectionsFromFiles(files, { pos: 0, mode: 0, year: 2026 }).finalList
+    );
+  const offer = (market_id, name, position, line, odds, extra = {}) => ({
+    market_id,
+    name,
+    position,
+    odds,
+    line,
+    ...extra,
+  });
+
+  it("drops an absurd anytime-TD price and falls back to the earlier one", () => {
+    // 2026 week 9: Darnold's newest snapshot held nothing but an /offers
+    // anytime-TD at -3233 (his odds to throw a TD, not to score one) and
+    // the carry repeated it. Capped at 80% that still read as 1.6 TDs and
+    // put him at 25 points, top of the QB table.
+    const others = qb("Darnold").filter((p) => p.market_id !== 78);
+    const first = { props: others, offers: [offer(78, "Darnold", null, 1, 632)] };
+    const last = { props: [], offers: [offer(78, "Darnold", null, 1, -3233)] };
+    const carry = {
+      last_index: 4,
+      props: withIndex(others, 3),
+      offers: [offer(78, "Darnold", null, 1, -3233, { carry_index: 4 })],
+    };
+    const darnold = run({ first, last, carry, lastIndex: 4 }).get("Darnold");
+    const clean = run({ first, last: null, carry: null, lastIndex: 0 }).get("Darnold");
+    expect(darnold.ev).toBeCloseTo(clean.ev, 6);
+    expect(darnold.ev).toBeLessThan(20);
+    // flagged for the props that really vanished, not for the garbled one
+    expect(darnold.stale).toBe(true);
+    expect(darnold.missingLatest).toEqual(["RushYds", "PassTDs", "PassYds", "Ints"]);
+    expect(darnold.lastSeen).toEqual({ RushYds: 3, PassTDs: 3, PassYds: 3, Ints: 3 });
+  });
+
+  it("drops placeholder prices on the other count props too", () => {
+    // 2026 week 7: Lamar Jackson's 1.5 pass TDs posted at -99900 in /offers
+    // (a pulled line's placeholder) with no /props entry, which read as
+    // ~4.7 TDs.
+    const first = { props: qb("Lamar", { passTD: [1.5, -150] }) };
+    const last = {
+      props: qb("Lamar").filter((p) => p.market_id !== 102),
+      offers: [offer(102, "Lamar", "QB", 1.5, -99900)],
+    };
+    const lamar = run({ first, last, carry: null, lastIndex: 3 }).get("Lamar");
+    const clean = run({ first, last: null, carry: null, lastIndex: 0 }).get("Lamar");
+    expect(lamar.ev).toBeCloseTo(clean.ev, 6);
+    expect(lamar.stale).toBe(false);
+    expect(lamar.missingLatest).toEqual([]);
   });
 });
