@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-07T07:43:09Z",
+ "generatedAt": "2026-11-07T15:04:04Z",
  "baseline": {
   "label": "Half PPR, 10-team",
   "source": "the live Trade Values Google Sheet",
@@ -11,7 +11,7 @@
  "reseed": {
   "week": 9,
   "season": 2026,
-  "snapshotIndex": 12,
+  "snapshotIndex": 13,
   "previousWeek": 8,
   "weight": 0.45,
   "rankShare": 0.7,
@@ -23,7 +23,7 @@
   },
   "skippedPositions": [],
   "usedPreviousWeek": 10,
-  "moved": 80,
+  "moved": 82,
   "noProjection": [
    "DeVonta Smith",
    "Travis Etienne Jr.",
@@ -669,10 +669,10 @@
      ""
     ],
     [
-     17,
+     16,
+     "MarShawn Lloyd",
      "",
      "",
-     "Emeka Egbuka",
      "",
      "",
      "",
@@ -680,9 +680,9 @@
     ],
     [
      16,
-     "MarShawn Lloyd",
      "",
      "",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -712,6 +712,16 @@
      16,
      "",
      "",
+     "Emeka Egbuka",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     16,
+     "",
+     "",
      "Mike Evans",
      "",
      "",
@@ -723,16 +733,6 @@
      "Travis Etienne Jr.",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     15,
-     "",
-     "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -763,6 +763,16 @@
      "",
      "",
      "Zay Flowers",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     14,
+     "",
+     "",
+     "Matthew Golden",
      "",
      "",
      "",
@@ -812,7 +822,7 @@
      13,
      "",
      "",
-     "Matthew Golden",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -852,21 +862,11 @@
      12,
      "",
      "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     12,
      "",
      "",
      "",
      "",
-     "Tyler Warren",
-     "",
-     ""
+     "Jayden Daniels"
     ],
     [
      11,
@@ -884,19 +884,9 @@
      "",
      "",
      "",
-     "Isaiah Likely",
+     "Tyler Warren",
      "",
      ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      11,
@@ -925,6 +915,16 @@
      "DJ Moore",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "Isaiah Likely",
      "",
      ""
     ],
@@ -1206,7 +1206,7 @@
      "value": 62,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -1224,7 +1224,7 @@
      "value": 58,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -1233,7 +1233,7 @@
      "value": 56,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -1242,7 +1242,7 @@
      "value": 53,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -1251,7 +1251,7 @@
      "value": 50,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -1260,7 +1260,7 @@
      "value": 50,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -1269,7 +1269,7 @@
      "value": 48,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -1278,7 +1278,7 @@
      "value": 47,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -1287,7 +1287,7 @@
      "value": 46,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -1296,7 +1296,7 @@
      "value": 44,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -1305,7 +1305,7 @@
      "value": 43,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -1314,7 +1314,7 @@
      "value": 42,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -1323,7 +1323,7 @@
      "value": 41,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -1332,7 +1332,7 @@
      "value": 41,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -1341,7 +1341,7 @@
      "value": 40,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -1359,7 +1359,7 @@
      "value": 37,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -1368,7 +1368,7 @@
      "value": 37,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -1377,7 +1377,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -1386,7 +1386,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -1404,7 +1404,7 @@
      "value": 32,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -1413,7 +1413,7 @@
      "value": 32,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -1422,7 +1422,7 @@
      "value": 31,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -1458,7 +1458,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -1467,7 +1467,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -1476,7 +1476,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -1494,7 +1494,7 @@
      "value": 27,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -1503,7 +1503,7 @@
      "value": 25,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -1521,7 +1521,7 @@
      "value": 23,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -1539,7 +1539,7 @@
      "value": 22,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -1548,7 +1548,7 @@
      "value": 22,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -1557,7 +1557,7 @@
      "value": 22,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -1602,7 +1602,7 @@
      "value": 19,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -1611,7 +1611,7 @@
      "value": 19,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -1620,7 +1620,7 @@
      "value": 18,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -1638,7 +1638,7 @@
      "value": 18,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -1660,15 +1660,6 @@
      "projectionWeek": 8
     },
     {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 17,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
-     "projectionWeek": 9
-    },
-    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
      "value": 16,
@@ -1678,12 +1669,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 16,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 16,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -1692,7 +1692,16 @@
      "value": 16,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 16,
+     "baselineValue": 14,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -1714,21 +1723,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 15,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
-     "projectionWeek": 9
-    },
-    {
      "name": "J.K. Dobbins",
      "pos": "RB",
      "value": 14,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -1737,7 +1737,7 @@
      "value": 14,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -1747,6 +1747,15 @@
      "baselineValue": 15,
      "sheetValue": 25,
      "projection": 8.83,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Matthew Golden",
+     "pos": "WR",
+     "value": 14,
+     "baselineValue": 15,
+     "sheetValue": 5,
+     "projection": 11.86,
      "projectionWeek": 9
     },
     {
@@ -1786,12 +1795,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Matthew Golden",
+     "name": "Rome Odunze",
      "pos": "WR",
      "value": 13,
-     "baselineValue": 14,
-     "sheetValue": 5,
-     "projection": 11.84,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
      "projectionWeek": 9
     },
     {
@@ -1800,7 +1809,7 @@
      "value": 13,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -1818,25 +1827,16 @@
      "value": 12,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Jayden Daniels",
+     "pos": "QB",
      "value": 12,
      "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Tyler Warren",
-     "pos": "TE",
-     "value": 12,
-     "baselineValue": 13,
-     "sheetValue": 16,
-     "projection": 9.23,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -1849,21 +1849,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Isaiah Likely",
+     "name": "Tyler Warren",
      "pos": "TE",
      "value": 11,
-     "baselineValue": 8,
-     "sheetValue": 10,
-     "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 11,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
+     "baselineValue": 12,
+     "sheetValue": 16,
+     "projection": 9.2,
      "projectionWeek": 9
     },
     {
@@ -1872,7 +1863,7 @@
      "value": 11,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -1890,7 +1881,16 @@
      "value": 10,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Isaiah Likely",
+     "pos": "TE",
+     "value": 10,
+     "baselineValue": 7,
+     "sheetValue": 10,
+     "projection": 8.77,
      "projectionWeek": 9
     },
     {
@@ -1926,7 +1926,7 @@
      "value": 8,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -1935,7 +1935,7 @@
      "value": 8,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -1953,7 +1953,7 @@
      "value": 7,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -1962,7 +1962,7 @@
      "value": 7,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -1971,7 +1971,7 @@
      "value": 7,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -2007,7 +2007,7 @@
      "value": 6,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -2043,7 +2043,7 @@
      "value": 6,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -2052,7 +2052,7 @@
      "value": 6,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -2061,7 +2061,7 @@
      "value": 6,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -2106,7 +2106,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -2124,7 +2124,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -2133,7 +2133,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     }
    ]
@@ -2677,10 +2677,10 @@
      ""
     ],
     [
-     15,
+     14,
+     "MarShawn Lloyd",
      "",
      "",
-     "Emeka Egbuka",
      "",
      "",
      "",
@@ -2688,9 +2688,9 @@
     ],
     [
      14,
-     "MarShawn Lloyd",
      "",
      "",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -2720,6 +2720,16 @@
      14,
      "",
      "",
+     "Emeka Egbuka",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     14,
+     "",
+     "",
      "Mike Evans",
      "",
      "",
@@ -2731,16 +2741,6 @@
      "Travis Etienne Jr.",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     13,
-     "",
-     "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -2771,6 +2771,16 @@
      "",
      "",
      "Zay Flowers",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     12,
+     "",
+     "",
+     "Matthew Golden",
      "",
      "",
      "",
@@ -2820,7 +2830,7 @@
      11,
      "",
      "",
-     "Matthew Golden",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -2860,21 +2870,11 @@
      10,
      "",
      "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     10,
      "",
      "",
      "",
      "",
-     "Tyler Warren",
-     "",
-     ""
+     "Jayden Daniels"
     ],
     [
      9,
@@ -2892,19 +2892,9 @@
      "",
      "",
      "",
-     "Isaiah Likely",
+     "Tyler Warren",
      "",
      ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      9,
@@ -2933,6 +2923,16 @@
      "DJ Moore",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "Isaiah Likely",
      "",
      ""
     ],
@@ -3214,7 +3214,7 @@
      "value": 67,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -3232,7 +3232,7 @@
      "value": 61,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -3241,7 +3241,7 @@
      "value": 59,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -3250,7 +3250,7 @@
      "value": 56,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -3259,7 +3259,7 @@
      "value": 52,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -3268,7 +3268,7 @@
      "value": 51,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -3277,7 +3277,7 @@
      "value": 49,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -3286,7 +3286,7 @@
      "value": 49,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -3295,7 +3295,7 @@
      "value": 47,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -3304,7 +3304,7 @@
      "value": 45,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -3313,7 +3313,7 @@
      "value": 43,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -3322,7 +3322,7 @@
      "value": 42,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -3331,7 +3331,7 @@
      "value": 41,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -3340,7 +3340,7 @@
      "value": 41,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -3349,7 +3349,7 @@
      "value": 40,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -3367,7 +3367,7 @@
      "value": 37,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -3376,7 +3376,7 @@
      "value": 37,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -3385,7 +3385,7 @@
      "value": 34,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -3403,7 +3403,7 @@
      "value": 34,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -3412,7 +3412,7 @@
      "value": 32,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -3421,7 +3421,7 @@
      "value": 31,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -3430,7 +3430,7 @@
      "value": 30,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -3466,7 +3466,7 @@
      "value": 26,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -3475,7 +3475,7 @@
      "value": 26,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -3484,7 +3484,7 @@
      "value": 26,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -3502,7 +3502,7 @@
      "value": 25,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -3511,7 +3511,7 @@
      "value": 24,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -3529,7 +3529,7 @@
      "value": 21,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -3547,7 +3547,7 @@
      "value": 20,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -3556,7 +3556,7 @@
      "value": 20,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -3565,7 +3565,7 @@
      "value": 20,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -3610,7 +3610,7 @@
      "value": 17,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -3619,7 +3619,7 @@
      "value": 17,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -3628,7 +3628,7 @@
      "value": 16,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -3646,7 +3646,7 @@
      "value": 16,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -3668,15 +3668,6 @@
      "projectionWeek": 8
     },
     {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 15,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
-     "projectionWeek": 9
-    },
-    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
      "value": 14,
@@ -3686,12 +3677,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 14,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 14,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -3700,7 +3700,16 @@
      "value": 14,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 14,
+     "baselineValue": 14,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -3722,21 +3731,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 13,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
-     "projectionWeek": 9
-    },
-    {
      "name": "J.K. Dobbins",
      "pos": "RB",
      "value": 12,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -3745,7 +3745,7 @@
      "value": 12,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -3755,6 +3755,15 @@
      "baselineValue": 15,
      "sheetValue": 25,
      "projection": 8.83,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Matthew Golden",
+     "pos": "WR",
+     "value": 12,
+     "baselineValue": 15,
+     "sheetValue": 5,
+     "projection": 11.86,
      "projectionWeek": 9
     },
     {
@@ -3794,12 +3803,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Matthew Golden",
+     "name": "Rome Odunze",
      "pos": "WR",
      "value": 11,
-     "baselineValue": 14,
-     "sheetValue": 5,
-     "projection": 11.84,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
      "projectionWeek": 9
     },
     {
@@ -3808,7 +3817,7 @@
      "value": 11,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -3826,25 +3835,16 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Jayden Daniels",
+     "pos": "QB",
      "value": 10,
      "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Tyler Warren",
-     "pos": "TE",
-     "value": 10,
-     "baselineValue": 13,
-     "sheetValue": 16,
-     "projection": 9.23,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -3857,21 +3857,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Isaiah Likely",
+     "name": "Tyler Warren",
      "pos": "TE",
      "value": 9,
-     "baselineValue": 8,
-     "sheetValue": 10,
-     "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 9,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
+     "baselineValue": 12,
+     "sheetValue": 16,
+     "projection": 9.2,
      "projectionWeek": 9
     },
     {
@@ -3880,7 +3871,7 @@
      "value": 9,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -3898,7 +3889,16 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Isaiah Likely",
+     "pos": "TE",
+     "value": 8,
+     "baselineValue": 7,
+     "sheetValue": 10,
+     "projection": 8.77,
      "projectionWeek": 9
     },
     {
@@ -3907,7 +3907,7 @@
      "value": 7,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -3943,7 +3943,7 @@
      "value": 7,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -3961,7 +3961,7 @@
      "value": 6,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -3970,7 +3970,7 @@
      "value": 6,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -3979,7 +3979,7 @@
      "value": 6,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -4015,7 +4015,7 @@
      "value": 5,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -4051,7 +4051,7 @@
      "value": 5,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -4060,7 +4060,7 @@
      "value": 5,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -4069,7 +4069,7 @@
      "value": 5,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -4114,7 +4114,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -4132,7 +4132,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -4141,7 +4141,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     }
    ]
@@ -4685,10 +4685,10 @@
      ""
     ],
     [
-     13,
+     12,
+     "MarShawn Lloyd",
      "",
      "",
-     "Emeka Egbuka",
      "",
      "",
      "",
@@ -4696,9 +4696,9 @@
     ],
     [
      12,
-     "MarShawn Lloyd",
      "",
      "",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -4725,10 +4725,10 @@
      ""
     ],
     [
-     11,
-     "Travis Etienne Jr.",
+     12,
      "",
      "",
+     "Emeka Egbuka",
      "",
      "",
      "",
@@ -4736,9 +4736,9 @@
     ],
     [
      11,
+     "Travis Etienne Jr.",
      "",
      "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -4788,6 +4788,16 @@
      10,
      "",
      "",
+     "Matthew Golden",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     10,
+     "",
+     "",
      "DK Metcalf",
      "",
      "",
@@ -4808,7 +4818,7 @@
      9,
      "",
      "",
-     "Matthew Golden",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -4868,21 +4878,11 @@
      8,
      "",
      "",
-     "Rome Odunze",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     8,
      "",
      "",
      "",
      "",
-     "Tyler Warren",
-     "",
-     ""
+     "Jayden Daniels"
     ],
     [
      7,
@@ -4900,19 +4900,9 @@
      "",
      "",
      "",
-     "Isaiah Likely",
+     "Tyler Warren",
      "",
      ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      7,
@@ -4971,6 +4961,16 @@
      "Brian Thomas Jr.",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "Isaiah Likely",
      "",
      ""
     ],
@@ -5222,7 +5222,7 @@
      "value": 71,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -5240,7 +5240,7 @@
      "value": 64,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -5249,7 +5249,7 @@
      "value": 62,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -5258,7 +5258,7 @@
      "value": 58,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -5267,7 +5267,7 @@
      "value": 53,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -5276,7 +5276,7 @@
      "value": 53,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -5285,7 +5285,7 @@
      "value": 50,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -5294,7 +5294,7 @@
      "value": 49,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -5303,7 +5303,7 @@
      "value": 48,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -5312,7 +5312,7 @@
      "value": 45,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -5321,7 +5321,7 @@
      "value": 43,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -5330,7 +5330,7 @@
      "value": 42,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -5339,7 +5339,7 @@
      "value": 41,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -5348,7 +5348,7 @@
      "value": 40,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -5366,7 +5366,7 @@
      "value": 39,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -5375,7 +5375,7 @@
      "value": 36,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -5384,7 +5384,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -5393,7 +5393,7 @@
      "value": 33,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -5402,7 +5402,7 @@
      "value": 33,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -5420,7 +5420,7 @@
      "value": 30,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -5429,7 +5429,7 @@
      "value": 30,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -5438,7 +5438,7 @@
      "value": 28,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -5474,7 +5474,7 @@
      "value": 25,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -5483,7 +5483,7 @@
      "value": 25,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -5492,7 +5492,7 @@
      "value": 25,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -5510,7 +5510,7 @@
      "value": 23,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -5519,7 +5519,7 @@
      "value": 22,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -5537,7 +5537,7 @@
      "value": 19,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -5555,7 +5555,7 @@
      "value": 18,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -5564,7 +5564,7 @@
      "value": 18,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -5573,7 +5573,7 @@
      "value": 18,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -5618,7 +5618,7 @@
      "value": 15,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -5627,7 +5627,7 @@
      "value": 14,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -5636,7 +5636,7 @@
      "value": 14,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -5654,7 +5654,7 @@
      "value": 14,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -5676,15 +5676,6 @@
      "projectionWeek": 8
     },
     {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 13,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
-     "projectionWeek": 9
-    },
-    {
      "name": "MarShawn Lloyd",
      "pos": "RB",
      "value": 12,
@@ -5694,12 +5685,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 12,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 12,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -5708,7 +5708,16 @@
      "value": 12,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 12,
+     "baselineValue": 14,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -5719,15 +5728,6 @@
      "sheetValue": 17,
      "projection": null,
      "projectionWeek": null
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 11,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
-     "projectionWeek": 9
     },
     {
      "name": "Mike Evans",
@@ -5744,7 +5744,7 @@
      "value": 10,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -5753,7 +5753,7 @@
      "value": 10,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -5763,6 +5763,15 @@
      "baselineValue": 15,
      "sheetValue": 25,
      "projection": 8.83,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Matthew Golden",
+     "pos": "WR",
+     "value": 10,
+     "baselineValue": 15,
+     "sheetValue": 5,
+     "projection": 11.86,
      "projectionWeek": 9
     },
     {
@@ -5784,12 +5793,12 @@
      "projectionWeek": 9
     },
     {
-     "name": "Matthew Golden",
+     "name": "Rome Odunze",
      "pos": "WR",
      "value": 9,
-     "baselineValue": 14,
-     "sheetValue": 5,
-     "projection": 11.84,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
      "projectionWeek": 9
     },
     {
@@ -5798,7 +5807,7 @@
      "value": 9,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -5816,7 +5825,7 @@
      "value": 8,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
@@ -5838,21 +5847,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Jayden Daniels",
+     "pos": "QB",
      "value": 8,
      "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Tyler Warren",
-     "pos": "TE",
-     "value": 8,
-     "baselineValue": 13,
-     "sheetValue": 16,
-     "projection": 9.23,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -5865,21 +5865,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Isaiah Likely",
+     "name": "Tyler Warren",
      "pos": "TE",
      "value": 7,
-     "baselineValue": 8,
-     "sheetValue": 10,
-     "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 7,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
+     "baselineValue": 12,
+     "sheetValue": 16,
+     "projection": 9.2,
      "projectionWeek": 9
     },
     {
@@ -5888,7 +5879,7 @@
      "value": 7,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -5915,7 +5906,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
      "projectionWeek": 9
     },
     {
@@ -5937,12 +5928,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Isaiah Likely",
+     "pos": "TE",
+     "value": 6,
+     "baselineValue": 7,
+     "sheetValue": 10,
+     "projection": 8.77,
+     "projectionWeek": 9
+    },
+    {
      "name": "Jordan Mason",
      "pos": "RB",
      "value": 5,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -5951,7 +5951,7 @@
      "value": 5,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -5969,7 +5969,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -5978,7 +5978,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -5987,7 +5987,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -6023,7 +6023,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -6059,7 +6059,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -6068,7 +6068,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -6086,7 +6086,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -6122,7 +6122,7 @@
      "value": 2,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -6140,7 +6140,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -6149,7 +6149,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     }
    ]
@@ -6676,6 +6676,16 @@
      18,
      "",
      "",
+     "Jaylen Waddle",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     18,
+     "",
+     "",
      "Luther Burden III",
      "",
      "",
@@ -6687,16 +6697,6 @@
      "Travis Etienne Jr.",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     17,
-     "",
-     "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -6746,7 +6746,7 @@
      15,
      "",
      "",
-     "Emeka Egbuka",
+     "Davante Adams",
      "",
      "",
      "",
@@ -6756,7 +6756,7 @@
      15,
      "",
      "",
-     "Davante Adams",
+     "Matthew Golden",
      "",
      "",
      "",
@@ -6796,7 +6796,7 @@
      14,
      "",
      "",
-     "Matthew Golden",
+     "Emeka Egbuka",
      "",
      "",
      "",
@@ -6819,16 +6819,6 @@
      "Mike Evans",
      "",
      "",
-     "",
-     ""
-    ],
-    [
-     13,
-     "",
-     "",
-     "",
-     "",
-     "Tyler Warren",
      "",
      ""
     ],
@@ -6857,6 +6847,26 @@
      "",
      "",
      "DK Metcalf",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     12,
+     "",
+     "",
+     "",
+     "",
+     "Tyler Warren",
+     "",
+     ""
+    ],
+    [
+     11,
+     "",
+     "",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -6896,11 +6906,11 @@
      10,
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
-     ""
+     "",
+     "Jayden Daniels"
     ],
     [
      9,
@@ -6911,26 +6921,6 @@
      "",
      "",
      ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "Isaiah Likely",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      9,
@@ -6969,6 +6959,16 @@
      "Carnell Tate",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "Isaiah Likely",
      "",
      ""
     ],
@@ -7230,7 +7230,7 @@
      "value": 65,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -7248,7 +7248,7 @@
      "value": 59,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -7257,7 +7257,7 @@
      "value": 58,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -7266,7 +7266,7 @@
      "value": 57,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -7275,7 +7275,7 @@
      "value": 54,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -7284,7 +7284,7 @@
      "value": 53,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -7293,7 +7293,7 @@
      "value": 49,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -7302,7 +7302,7 @@
      "value": 48,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -7311,7 +7311,7 @@
      "value": 46,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -7320,7 +7320,7 @@
      "value": 45,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -7329,7 +7329,7 @@
      "value": 44,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -7338,7 +7338,7 @@
      "value": 42,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -7347,7 +7347,7 @@
      "value": 42,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -7356,7 +7356,7 @@
      "value": 41,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -7374,7 +7374,7 @@
      "value": 40,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -7383,7 +7383,7 @@
      "value": 38,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -7392,7 +7392,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -7401,7 +7401,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -7410,7 +7410,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -7419,7 +7419,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -7428,7 +7428,7 @@
      "value": 35,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -7446,7 +7446,7 @@
      "value": 32,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -7482,7 +7482,7 @@
      "value": 29,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -7491,7 +7491,7 @@
      "value": 29,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -7500,7 +7500,7 @@
      "value": 29,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -7518,7 +7518,7 @@
      "value": 27,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -7536,7 +7536,7 @@
      "value": 25,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -7554,7 +7554,7 @@
      "value": 25,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -7563,7 +7563,7 @@
      "value": 24,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -7572,7 +7572,7 @@
      "value": 23,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -7599,7 +7599,7 @@
      "value": 21,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -7608,7 +7608,7 @@
      "value": 20,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -7617,7 +7617,7 @@
      "value": 19,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -7626,7 +7626,7 @@
      "value": 19,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -7635,7 +7635,7 @@
      "value": 19,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -7666,12 +7666,21 @@
      "projectionWeek": 8
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 18,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 18,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -7682,15 +7691,6 @@
      "sheetValue": 17,
      "projection": null,
      "projectionWeek": null
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 17,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
-     "projectionWeek": 9
     },
     {
      "name": "Tony Pollard",
@@ -7729,15 +7729,6 @@
      "projectionWeek": 9
     },
     {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 15,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
-     "projectionWeek": 9
-    },
-    {
      "name": "Davante Adams",
      "pos": "WR",
      "value": 15,
@@ -7745,6 +7736,15 @@
      "sheetValue": 15,
      "projection": null,
      "projectionWeek": null
+    },
+    {
+     "name": "Matthew Golden",
+     "pos": "WR",
+     "value": 15,
+     "baselineValue": 15,
+     "sheetValue": 5,
+     "projection": 11.86,
+     "projectionWeek": 9
     },
     {
      "name": "Cam Skattebo",
@@ -7770,16 +7770,16 @@
      "value": 14,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
      "projectionWeek": 9
     },
     {
-     "name": "Matthew Golden",
+     "name": "Emeka Egbuka",
      "pos": "WR",
      "value": 14,
      "baselineValue": 14,
-     "sheetValue": 5,
-     "projection": 11.84,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -7801,21 +7801,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Tyler Warren",
-     "pos": "TE",
-     "value": 13,
-     "baselineValue": 13,
-     "sheetValue": 16,
-     "projection": 9.23,
-     "projectionWeek": 9
-    },
-    {
      "name": "J.K. Dobbins",
      "pos": "RB",
      "value": 12,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -7824,7 +7815,7 @@
      "value": 12,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -7835,6 +7826,24 @@
      "sheetValue": 2,
      "projection": 9.95,
      "projectionWeek": 8
+    },
+    {
+     "name": "Tyler Warren",
+     "pos": "TE",
+     "value": 12,
+     "baselineValue": 12,
+     "sheetValue": 16,
+     "projection": 9.2,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 11,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
+     "projectionWeek": 9
     },
     {
      "name": "Terry McLaurin",
@@ -7851,7 +7860,7 @@
      "value": 11,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -7860,16 +7869,16 @@
      "value": 10,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Jayden Daniels",
+     "pos": "QB",
      "value": 10,
      "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -7882,30 +7891,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Isaiah Likely",
-     "pos": "TE",
-     "value": 9,
-     "baselineValue": 8,
-     "sheetValue": 10,
-     "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 9,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
-     "projectionWeek": 9
-    },
-    {
      "name": "Dak Prescott",
      "pos": "QB",
      "value": 9,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -7923,7 +7914,7 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
      "projectionWeek": 9
     },
     {
@@ -7934,6 +7925,15 @@
      "sheetValue": 7,
      "projection": 8.96,
      "projectionWeek": 8
+    },
+    {
+     "name": "Isaiah Likely",
+     "pos": "TE",
+     "value": 8,
+     "baselineValue": 7,
+     "sheetValue": 10,
+     "projection": 8.77,
+     "projectionWeek": 9
     },
     {
      "name": "Alec Pierce",
@@ -7959,7 +7959,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -7968,7 +7968,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -7986,7 +7986,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -8004,7 +8004,7 @@
      "value": 5,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -8013,7 +8013,7 @@
      "value": 5,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -8022,7 +8022,7 @@
      "value": 5,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -8058,7 +8058,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -8085,7 +8085,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -8094,7 +8094,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -8103,7 +8103,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -8112,7 +8112,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -8139,7 +8139,7 @@
      "value": 3,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     },
     {
@@ -8684,6 +8684,16 @@
      16,
      "",
      "",
+     "Jaylen Waddle",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     16,
+     "",
+     "",
      "Luther Burden III",
      "",
      "",
@@ -8695,16 +8705,6 @@
      "Travis Etienne Jr.",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     15,
-     "",
-     "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -8754,7 +8754,7 @@
      13,
      "",
      "",
-     "Emeka Egbuka",
+     "Davante Adams",
      "",
      "",
      "",
@@ -8764,7 +8764,7 @@
      13,
      "",
      "",
-     "Davante Adams",
+     "Matthew Golden",
      "",
      "",
      "",
@@ -8804,7 +8804,7 @@
      12,
      "",
      "",
-     "Matthew Golden",
+     "Emeka Egbuka",
      "",
      "",
      "",
@@ -8827,16 +8827,6 @@
      "Mike Evans",
      "",
      "",
-     "",
-     ""
-    ],
-    [
-     11,
-     "",
-     "",
-     "",
-     "",
-     "Tyler Warren",
      "",
      ""
     ],
@@ -8865,6 +8855,26 @@
      "",
      "",
      "DK Metcalf",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     10,
+     "",
+     "",
+     "",
+     "",
+     "Tyler Warren",
+     "",
+     ""
+    ],
+    [
+     9,
+     "",
+     "",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -8904,11 +8914,11 @@
      8,
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
-     ""
+     "",
+     "Jayden Daniels"
     ],
     [
      7,
@@ -8919,26 +8929,6 @@
      "",
      "",
      ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "Isaiah Likely",
-     "",
-     ""
-    ],
-    [
-     7,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      7,
@@ -8977,6 +8967,16 @@
      "Carnell Tate",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "Isaiah Likely",
      "",
      ""
     ],
@@ -9238,7 +9238,7 @@
      "value": 70,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -9256,7 +9256,7 @@
      "value": 62,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -9265,7 +9265,7 @@
      "value": 62,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -9274,7 +9274,7 @@
      "value": 60,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -9283,7 +9283,7 @@
      "value": 57,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -9292,7 +9292,7 @@
      "value": 55,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -9301,7 +9301,7 @@
      "value": 51,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -9310,7 +9310,7 @@
      "value": 50,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -9319,7 +9319,7 @@
      "value": 47,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -9328,7 +9328,7 @@
      "value": 46,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -9337,7 +9337,7 @@
      "value": 45,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -9346,7 +9346,7 @@
      "value": 43,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -9355,7 +9355,7 @@
      "value": 42,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -9364,7 +9364,7 @@
      "value": 41,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -9382,7 +9382,7 @@
      "value": 40,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -9391,7 +9391,7 @@
      "value": 38,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -9400,7 +9400,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -9409,7 +9409,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -9418,7 +9418,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -9427,7 +9427,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -9436,7 +9436,7 @@
      "value": 34,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -9454,7 +9454,7 @@
      "value": 31,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -9490,7 +9490,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -9499,7 +9499,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -9508,7 +9508,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -9526,7 +9526,7 @@
      "value": 25,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -9553,7 +9553,7 @@
      "value": 23,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -9562,7 +9562,7 @@
      "value": 23,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -9571,7 +9571,7 @@
      "value": 23,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -9580,7 +9580,7 @@
      "value": 21,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -9607,7 +9607,7 @@
      "value": 19,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -9616,7 +9616,7 @@
      "value": 18,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -9625,7 +9625,7 @@
      "value": 18,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -9634,7 +9634,7 @@
      "value": 18,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -9643,7 +9643,7 @@
      "value": 17,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -9674,12 +9674,21 @@
      "projectionWeek": 8
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 16,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 16,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -9690,15 +9699,6 @@
      "sheetValue": 17,
      "projection": null,
      "projectionWeek": null
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 15,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
-     "projectionWeek": 9
     },
     {
      "name": "Tony Pollard",
@@ -9737,15 +9737,6 @@
      "projectionWeek": 9
     },
     {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 13,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
-     "projectionWeek": 9
-    },
-    {
      "name": "Davante Adams",
      "pos": "WR",
      "value": 13,
@@ -9753,6 +9744,15 @@
      "sheetValue": 15,
      "projection": null,
      "projectionWeek": null
+    },
+    {
+     "name": "Matthew Golden",
+     "pos": "WR",
+     "value": 13,
+     "baselineValue": 15,
+     "sheetValue": 5,
+     "projection": 11.86,
+     "projectionWeek": 9
     },
     {
      "name": "Cam Skattebo",
@@ -9778,16 +9778,16 @@
      "value": 12,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
      "projectionWeek": 9
     },
     {
-     "name": "Matthew Golden",
+     "name": "Emeka Egbuka",
      "pos": "WR",
      "value": 12,
      "baselineValue": 14,
-     "sheetValue": 5,
-     "projection": 11.84,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -9809,21 +9809,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Tyler Warren",
-     "pos": "TE",
-     "value": 11,
-     "baselineValue": 13,
-     "sheetValue": 16,
-     "projection": 9.23,
-     "projectionWeek": 9
-    },
-    {
      "name": "J.K. Dobbins",
      "pos": "RB",
      "value": 10,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -9832,7 +9823,7 @@
      "value": 10,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -9843,6 +9834,24 @@
      "sheetValue": 2,
      "projection": 9.95,
      "projectionWeek": 8
+    },
+    {
+     "name": "Tyler Warren",
+     "pos": "TE",
+     "value": 10,
+     "baselineValue": 12,
+     "sheetValue": 16,
+     "projection": 9.2,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 9,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
+     "projectionWeek": 9
     },
     {
      "name": "Terry McLaurin",
@@ -9859,7 +9868,7 @@
      "value": 9,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -9868,16 +9877,16 @@
      "value": 8,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Jayden Daniels",
+     "pos": "QB",
      "value": 8,
      "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -9890,30 +9899,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Isaiah Likely",
-     "pos": "TE",
-     "value": 7,
-     "baselineValue": 8,
-     "sheetValue": 10,
-     "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 7,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
-     "projectionWeek": 9
-    },
-    {
      "name": "Dak Prescott",
      "pos": "QB",
      "value": 7,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -9931,7 +9922,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
      "projectionWeek": 9
     },
     {
@@ -9942,6 +9933,15 @@
      "sheetValue": 7,
      "projection": 8.96,
      "projectionWeek": 8
+    },
+    {
+     "name": "Isaiah Likely",
+     "pos": "TE",
+     "value": 6,
+     "baselineValue": 7,
+     "sheetValue": 10,
+     "projection": 8.77,
+     "projectionWeek": 9
     },
     {
      "name": "Alec Pierce",
@@ -9967,7 +9967,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -9985,7 +9985,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -9994,7 +9994,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -10012,7 +10012,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -10021,7 +10021,7 @@
      "value": 4,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -10048,7 +10048,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -10066,7 +10066,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -10093,7 +10093,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -10102,7 +10102,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -10111,7 +10111,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -10120,7 +10120,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -10147,7 +10147,7 @@
      "value": 2,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     },
     {
@@ -10702,7 +10702,7 @@
      13,
      "",
      "",
-     "Luther Burden III",
+     "Jaylen Waddle",
      "",
      "",
      "",
@@ -10712,7 +10712,7 @@
      13,
      "",
      "",
-     "Jaylen Waddle",
+     "Luther Burden III",
      "",
      "",
      "",
@@ -10762,7 +10762,7 @@
      11,
      "",
      "",
-     "Emeka Egbuka",
+     "Davante Adams",
      "",
      "",
      "",
@@ -10772,7 +10772,7 @@
      11,
      "",
      "",
-     "Davante Adams",
+     "Matthew Golden",
      "",
      "",
      "",
@@ -10812,7 +10812,7 @@
      10,
      "",
      "",
-     "Matthew Golden",
+     "Emeka Egbuka",
      "",
      "",
      "",
@@ -10835,16 +10835,6 @@
      "Mike Evans",
      "",
      "",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "",
-     "",
-     "Tyler Warren",
      "",
      ""
     ],
@@ -10873,6 +10863,26 @@
      "",
      "",
      "DK Metcalf",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "",
+     "",
+     "Tyler Warren",
+     "",
+     ""
+    ],
+    [
+     7,
+     "",
+     "",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -10912,11 +10922,11 @@
      6,
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
-     ""
+     "",
+     "Jayden Daniels"
     ],
     [
      5,
@@ -10967,16 +10977,6 @@
      "Isaiah Likely",
      "",
      ""
-    ],
-    [
-     5,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      5,
@@ -11246,7 +11246,7 @@
      "value": 75,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -11264,7 +11264,7 @@
      "value": 65,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -11273,7 +11273,7 @@
      "value": 65,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -11282,7 +11282,7 @@
      "value": 63,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -11291,7 +11291,7 @@
      "value": 59,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -11300,7 +11300,7 @@
      "value": 57,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -11309,7 +11309,7 @@
      "value": 52,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -11318,7 +11318,7 @@
      "value": 51,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -11327,7 +11327,7 @@
      "value": 48,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -11336,7 +11336,7 @@
      "value": 47,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -11345,7 +11345,7 @@
      "value": 45,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -11354,7 +11354,7 @@
      "value": 43,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -11363,7 +11363,7 @@
      "value": 42,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -11372,7 +11372,7 @@
      "value": 41,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -11390,7 +11390,7 @@
      "value": 39,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -11399,7 +11399,7 @@
      "value": 37,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -11408,7 +11408,7 @@
      "value": 34,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -11417,7 +11417,7 @@
      "value": 34,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -11426,7 +11426,7 @@
      "value": 34,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -11435,7 +11435,7 @@
      "value": 34,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -11444,7 +11444,7 @@
      "value": 33,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -11462,7 +11462,7 @@
      "value": 29,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -11498,7 +11498,7 @@
      "value": 26,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -11507,7 +11507,7 @@
      "value": 26,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -11516,7 +11516,7 @@
      "value": 26,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -11534,7 +11534,7 @@
      "value": 23,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -11561,7 +11561,7 @@
      "value": 21,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -11570,7 +11570,7 @@
      "value": 21,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -11579,7 +11579,7 @@
      "value": 21,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -11588,7 +11588,7 @@
      "value": 19,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -11615,7 +11615,7 @@
      "value": 17,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -11624,7 +11624,7 @@
      "value": 16,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -11633,7 +11633,7 @@
      "value": 15,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -11642,7 +11642,7 @@
      "value": 15,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -11651,7 +11651,7 @@
      "value": 14,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -11691,21 +11691,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 13,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 13,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 13,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -11745,15 +11745,6 @@
      "projectionWeek": 9
     },
     {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 11,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
-     "projectionWeek": 9
-    },
-    {
      "name": "Davante Adams",
      "pos": "WR",
      "value": 11,
@@ -11761,6 +11752,15 @@
      "sheetValue": 15,
      "projection": null,
      "projectionWeek": null
+    },
+    {
+     "name": "Matthew Golden",
+     "pos": "WR",
+     "value": 11,
+     "baselineValue": 15,
+     "sheetValue": 5,
+     "projection": 11.86,
+     "projectionWeek": 9
     },
     {
      "name": "Cam Skattebo",
@@ -11786,16 +11786,16 @@
      "value": 10,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
      "projectionWeek": 9
     },
     {
-     "name": "Matthew Golden",
+     "name": "Emeka Egbuka",
      "pos": "WR",
      "value": 10,
      "baselineValue": 14,
-     "sheetValue": 5,
-     "projection": 11.84,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -11817,21 +11817,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Tyler Warren",
-     "pos": "TE",
-     "value": 9,
-     "baselineValue": 13,
-     "sheetValue": 16,
-     "projection": 9.23,
-     "projectionWeek": 9
-    },
-    {
      "name": "J.K. Dobbins",
      "pos": "RB",
      "value": 8,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -11840,7 +11831,7 @@
      "value": 8,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -11851,6 +11842,24 @@
      "sheetValue": 2,
      "projection": 9.95,
      "projectionWeek": 8
+    },
+    {
+     "name": "Tyler Warren",
+     "pos": "TE",
+     "value": 8,
+     "baselineValue": 12,
+     "sheetValue": 16,
+     "projection": 9.2,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 7,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
+     "projectionWeek": 9
     },
     {
      "name": "Terry McLaurin",
@@ -11867,7 +11876,7 @@
      "value": 7,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -11876,16 +11885,16 @@
      "value": 6,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Jayden Daniels",
+     "pos": "QB",
      "value": 6,
      "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -11912,7 +11921,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
      "projectionWeek": 9
     },
     {
@@ -11928,18 +11937,9 @@
      "name": "Isaiah Likely",
      "pos": "TE",
      "value": 5,
-     "baselineValue": 8,
+     "baselineValue": 7,
      "sheetValue": 10,
      "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 5,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
      "projectionWeek": 9
     },
     {
@@ -11948,7 +11948,7 @@
      "value": 5,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -11975,7 +11975,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -11984,7 +11984,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -12002,7 +12002,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -12020,7 +12020,7 @@
      "value": 2,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -12029,7 +12029,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -12056,7 +12056,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -12065,7 +12065,7 @@
      "value": 2,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -12074,7 +12074,7 @@
      "value": 2,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -12101,7 +12101,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -12110,7 +12110,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -12119,7 +12119,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -12155,7 +12155,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     },
     {
@@ -12680,6 +12680,16 @@
      19,
      "",
      "",
+     "Jaylen Waddle",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     19,
+     "",
+     "",
      "Luther Burden III",
      "",
      "",
@@ -12691,16 +12701,6 @@
      "Omarion Hampton",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     18,
-     "",
-     "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -12737,7 +12737,7 @@
      ""
     ],
     [
-     16,
+     17,
      "",
      "",
      "Matthew Golden",
@@ -12817,16 +12817,6 @@
      ""
     ],
     [
-     13,
-     "",
-     "",
-     "Emeka Egbuka",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      12,
      "MarShawn Lloyd",
      "",
@@ -12841,6 +12831,16 @@
      "",
      "",
      "Ladd McConkey",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     12,
+     "",
+     "",
+     "Emeka Egbuka",
      "",
      "",
      "",
@@ -12910,6 +12910,16 @@
      8,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
      "Jameson Williams",
      "",
      "",
@@ -12950,11 +12960,11 @@
      7,
      "",
      "",
-     "Rome Odunze",
      "",
      "",
      "",
-     ""
+     "",
+     "Jayden Daniels"
     ],
     [
      6,
@@ -12965,26 +12975,6 @@
      "",
      "",
      ""
-    ],
-    [
-     6,
-     "",
-     "",
-     "",
-     "",
-     "Isaiah Likely",
-     "",
-     ""
-    ],
-    [
-     6,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      6,
@@ -13033,6 +13023,16 @@
      "DJ Moore",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     5,
+     "",
+     "",
+     "",
+     "",
+     "Isaiah Likely",
      "",
      ""
     ],
@@ -13254,7 +13254,7 @@
      "value": 67,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -13272,7 +13272,7 @@
      "value": 61,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -13281,7 +13281,7 @@
      "value": 61,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -13290,7 +13290,7 @@
      "value": 59,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -13299,7 +13299,7 @@
      "value": 58,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -13308,7 +13308,7 @@
      "value": 56,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -13317,7 +13317,7 @@
      "value": 52,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -13326,7 +13326,7 @@
      "value": 49,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -13335,7 +13335,7 @@
      "value": 48,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -13344,7 +13344,7 @@
      "value": 46,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -13353,7 +13353,7 @@
      "value": 44,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -13362,7 +13362,7 @@
      "value": 43,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -13371,7 +13371,7 @@
      "value": 43,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -13380,7 +13380,7 @@
      "value": 42,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -13398,7 +13398,7 @@
      "value": 39,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -13407,7 +13407,7 @@
      "value": 39,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -13416,7 +13416,7 @@
      "value": 37,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -13425,7 +13425,7 @@
      "value": 37,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -13434,7 +13434,7 @@
      "value": 36,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -13443,7 +13443,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -13452,7 +13452,7 @@
      "value": 34,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -13470,7 +13470,7 @@
      "value": 32,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -13488,7 +13488,7 @@
      "value": 31,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -13497,7 +13497,7 @@
      "value": 31,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -13506,7 +13506,7 @@
      "value": 31,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -13533,7 +13533,7 @@
      "value": 28,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -13560,7 +13560,7 @@
      "value": 27,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -13578,7 +13578,7 @@
      "value": 27,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -13587,7 +13587,7 @@
      "value": 24,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -13605,7 +13605,7 @@
      "value": 23,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -13614,7 +13614,7 @@
      "value": 23,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -13632,7 +13632,7 @@
      "value": 21,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -13641,7 +13641,7 @@
      "value": 20,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -13650,7 +13650,7 @@
      "value": 19,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -13672,12 +13672,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 19,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 19,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -13686,16 +13695,7 @@
      "value": 18,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 18,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -13728,10 +13728,10 @@
     {
      "name": "Matthew Golden",
      "pos": "WR",
-     "value": 16,
-     "baselineValue": 14,
+     "value": 17,
+     "baselineValue": 15,
      "sheetValue": 5,
-     "projection": 11.84,
+     "projection": 11.86,
      "projectionWeek": 9
     },
     {
@@ -13792,18 +13792,9 @@
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 14,
-     "baselineValue": 13,
+     "baselineValue": 12,
      "sheetValue": 16,
-     "projection": 9.23,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 13,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
+     "projection": 9.2,
      "projectionWeek": 9
     },
     {
@@ -13821,7 +13812,16 @@
      "value": 12,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 12,
+     "baselineValue": 14,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -13848,7 +13848,7 @@
      "value": 10,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -13866,7 +13866,7 @@
      "value": 9,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -13879,12 +13879,21 @@
      "projectionWeek": 8
     },
     {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 8,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
+     "projectionWeek": 9
+    },
+    {
      "name": "Jameson Williams",
      "pos": "WR",
      "value": 8,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -13893,7 +13902,7 @@
      "value": 8,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -13911,16 +13920,16 @@
      "value": 7,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
-     "name": "Rome Odunze",
-     "pos": "WR",
+     "name": "Jayden Daniels",
+     "pos": "QB",
      "value": 7,
      "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -13933,30 +13942,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Isaiah Likely",
-     "pos": "TE",
-     "value": 6,
-     "baselineValue": 8,
-     "sheetValue": 10,
-     "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 6,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
-     "projectionWeek": 9
-    },
-    {
      "name": "Dak Prescott",
      "pos": "QB",
      "value": 6,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -13974,7 +13965,7 @@
      "value": 5,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -13983,7 +13974,7 @@
      "value": 5,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     },
     {
@@ -13992,7 +13983,16 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Isaiah Likely",
+     "pos": "TE",
+     "value": 5,
+     "baselineValue": 7,
+     "sheetValue": 10,
+     "projection": 8.77,
      "projectionWeek": 9
     },
     {
@@ -14019,7 +14019,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -14028,7 +14028,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -14046,7 +14046,7 @@
      "value": 2,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -14055,7 +14055,7 @@
      "value": 2,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -14064,7 +14064,7 @@
      "value": 2,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -14100,7 +14100,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -14127,7 +14127,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -14136,7 +14136,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -14154,7 +14154,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -14688,6 +14688,16 @@
      17,
      "",
      "",
+     "Jaylen Waddle",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     17,
+     "",
+     "",
      "Luther Burden III",
      "",
      "",
@@ -14699,16 +14709,6 @@
      "Omarion Hampton",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     16,
-     "",
-     "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -14745,7 +14745,7 @@
      ""
     ],
     [
-     14,
+     15,
      "",
      "",
      "Matthew Golden",
@@ -14825,16 +14825,6 @@
      ""
     ],
     [
-     11,
-     "",
-     "",
-     "Emeka Egbuka",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      10,
      "MarShawn Lloyd",
      "",
@@ -14849,6 +14839,16 @@
      "",
      "",
      "Ladd McConkey",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     10,
+     "",
+     "",
+     "Emeka Egbuka",
      "",
      "",
      "",
@@ -14928,7 +14928,7 @@
      6,
      "",
      "",
-     "Jameson Williams",
+     "Rome Odunze",
      "",
      "",
      "",
@@ -14938,7 +14938,7 @@
      6,
      "",
      "",
-     "Rome Odunze",
+     "Jameson Williams",
      "",
      "",
      "",
@@ -14965,6 +14965,16 @@
      ""
     ],
     [
+     6,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Jayden Daniels"
+    ],
+    [
      5,
      "",
      "",
@@ -14973,26 +14983,6 @@
      "",
      "",
      ""
-    ],
-    [
-     5,
-     "",
-     "",
-     "",
-     "",
-     "Isaiah Likely",
-     "",
-     ""
-    ],
-    [
-     5,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      5,
@@ -15041,6 +15031,16 @@
      "DJ Moore",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     4,
+     "",
+     "",
+     "",
+     "",
+     "Isaiah Likely",
      "",
      ""
     ],
@@ -15262,7 +15262,7 @@
      "value": 73,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -15280,7 +15280,7 @@
      "value": 65,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -15289,7 +15289,7 @@
      "value": 65,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -15298,7 +15298,7 @@
      "value": 63,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -15307,7 +15307,7 @@
      "value": 62,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -15316,7 +15316,7 @@
      "value": 59,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -15325,7 +15325,7 @@
      "value": 54,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -15334,7 +15334,7 @@
      "value": 51,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -15343,7 +15343,7 @@
      "value": 50,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -15352,7 +15352,7 @@
      "value": 47,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -15361,7 +15361,7 @@
      "value": 45,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -15370,7 +15370,7 @@
      "value": 44,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -15379,7 +15379,7 @@
      "value": 43,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -15388,7 +15388,7 @@
      "value": 43,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -15406,7 +15406,7 @@
      "value": 39,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -15415,7 +15415,7 @@
      "value": 39,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -15424,7 +15424,7 @@
      "value": 37,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -15433,7 +15433,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -15442,7 +15442,7 @@
      "value": 36,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -15451,7 +15451,7 @@
      "value": 35,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -15460,7 +15460,7 @@
      "value": 33,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -15469,7 +15469,7 @@
      "value": 32,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -15496,7 +15496,7 @@
      "value": 30,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -15505,7 +15505,7 @@
      "value": 30,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -15514,7 +15514,7 @@
      "value": 30,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -15541,7 +15541,7 @@
      "value": 27,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -15577,7 +15577,7 @@
      "value": 25,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -15586,7 +15586,7 @@
      "value": 25,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -15595,7 +15595,7 @@
      "value": 22,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -15613,7 +15613,7 @@
      "value": 21,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -15622,7 +15622,7 @@
      "value": 21,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -15640,7 +15640,7 @@
      "value": 19,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -15649,7 +15649,7 @@
      "value": 18,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -15658,7 +15658,7 @@
      "value": 17,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -15680,12 +15680,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 17,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 17,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -15694,16 +15703,7 @@
      "value": 16,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 16,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -15736,10 +15736,10 @@
     {
      "name": "Matthew Golden",
      "pos": "WR",
-     "value": 14,
-     "baselineValue": 14,
+     "value": 15,
+     "baselineValue": 15,
      "sheetValue": 5,
-     "projection": 11.84,
+     "projection": 11.86,
      "projectionWeek": 9
     },
     {
@@ -15800,18 +15800,9 @@
      "name": "Tyler Warren",
      "pos": "TE",
      "value": 12,
-     "baselineValue": 13,
+     "baselineValue": 12,
      "sheetValue": 16,
-     "projection": 9.23,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
-     "value": 11,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
+     "projection": 9.2,
      "projectionWeek": 9
     },
     {
@@ -15829,7 +15820,16 @@
      "value": 10,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 10,
+     "baselineValue": 14,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -15856,7 +15856,7 @@
      "value": 8,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -15883,7 +15883,7 @@
      "value": 7,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -15892,7 +15892,16 @@
      "value": 6,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
+     "projection": 12.42,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 6,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
      "projectionWeek": 9
     },
     {
@@ -15901,16 +15910,7 @@
      "value": 6,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 6,
-     "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -15919,7 +15919,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -15932,6 +15932,15 @@
      "projectionWeek": 9
     },
     {
+     "name": "Jayden Daniels",
+     "pos": "QB",
+     "value": 6,
+     "baselineValue": 9,
+     "sheetValue": 8,
+     "projection": 19.31,
+     "projectionWeek": 9
+    },
+    {
      "name": "De'Zhaun Stribling",
      "pos": "WR",
      "value": 5,
@@ -15941,30 +15950,12 @@
      "projectionWeek": null
     },
     {
-     "name": "Isaiah Likely",
-     "pos": "TE",
-     "value": 5,
-     "baselineValue": 8,
-     "sheetValue": 10,
-     "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 5,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
-     "projectionWeek": 9
-    },
-    {
      "name": "Dak Prescott",
      "pos": "QB",
      "value": 5,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -15982,7 +15973,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -15991,7 +15982,7 @@
      "value": 4,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     },
     {
@@ -16000,7 +15991,16 @@
      "value": 4,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Isaiah Likely",
+     "pos": "TE",
+     "value": 4,
+     "baselineValue": 7,
+     "sheetValue": 10,
+     "projection": 8.77,
      "projectionWeek": 9
     },
     {
@@ -16027,7 +16027,7 @@
      "value": 2,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -16036,7 +16036,7 @@
      "value": 2,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -16054,7 +16054,7 @@
      "value": 1,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -16063,7 +16063,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -16090,7 +16090,7 @@
      "value": 1,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -16099,7 +16099,7 @@
      "value": 1,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -16126,7 +16126,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -16135,7 +16135,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -16153,7 +16153,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -16686,6 +16686,16 @@
      15,
      "",
      "",
+     "Jaylen Waddle",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     15,
+     "",
+     "",
      "Luther Burden III",
      "",
      "",
@@ -16697,16 +16707,6 @@
      "Jeremiyah Love",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     14,
-     "",
-     "",
-     "Jaylen Waddle",
      "",
      "",
      "",
@@ -16823,22 +16823,12 @@
      ""
     ],
     [
-     10,
+     9,
      "",
      "",
      "",
      "",
      "Tyler Warren",
-     "",
-     ""
-    ],
-    [
-     9,
-     "",
-     "",
-     "Emeka Egbuka",
-     "",
-     "",
      "",
      ""
     ],
@@ -16857,6 +16847,16 @@
      "",
      "",
      "Ladd McConkey",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     8,
+     "",
+     "",
+     "Emeka Egbuka",
      "",
      "",
      "",
@@ -16926,6 +16926,16 @@
      5,
      "",
      "",
+     "Rome Odunze",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     5,
+     "",
+     "",
      "Jameson Williams",
      "",
      "",
@@ -16937,16 +16947,6 @@
      "Woody Marks",
      "",
      "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     4,
-     "",
-     "",
-     "Rome Odunze",
      "",
      "",
      "",
@@ -16971,6 +16971,16 @@
      "",
      "",
      ""
+    ],
+    [
+     4,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Jayden Daniels"
     ],
     [
      3,
@@ -17021,16 +17031,6 @@
      "Isaiah Likely",
      "",
      ""
-    ],
-    [
-     3,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Jayden Daniels"
     ],
     [
      3,
@@ -17270,7 +17270,7 @@
      "value": 79,
      "baselineValue": 80,
      "sheetValue": 70,
-     "projection": 23.56,
+     "projection": 23.46,
      "projectionWeek": 9
     },
     {
@@ -17288,7 +17288,7 @@
      "value": 69,
      "baselineValue": 71,
      "sheetValue": 66,
-     "projection": 20.19,
+     "projection": 20.15,
      "projectionWeek": 9
     },
     {
@@ -17297,7 +17297,7 @@
      "value": 69,
      "baselineValue": 69,
      "sheetValue": 65,
-     "projection": 18.05,
+     "projection": 18.03,
      "projectionWeek": 9
     },
     {
@@ -17306,7 +17306,7 @@
      "value": 66,
      "baselineValue": 70.85714285714286,
      "sheetValue": 60,
-     "projection": 18.63,
+     "projection": 18.71,
      "projectionWeek": 9
     },
     {
@@ -17315,7 +17315,7 @@
      "value": 65,
      "baselineValue": 65,
      "sheetValue": 60,
-     "projection": 17.48,
+     "projection": 17.23,
      "projectionWeek": 9
     },
     {
@@ -17324,7 +17324,7 @@
      "value": 61,
      "baselineValue": 63,
      "sheetValue": 64,
-     "projection": 15.29,
+     "projection": 15.2,
      "projectionWeek": 9
     },
     {
@@ -17333,7 +17333,7 @@
      "value": 56,
      "baselineValue": 58,
      "sheetValue": 60,
-     "projection": 15.07,
+     "projection": 15.03,
      "projectionWeek": 9
     },
     {
@@ -17342,7 +17342,7 @@
      "value": 52,
      "baselineValue": 57,
      "sheetValue": 61,
-     "projection": 14.93,
+     "projection": 15.08,
      "projectionWeek": 9
     },
     {
@@ -17351,7 +17351,7 @@
      "value": 51,
      "baselineValue": 54,
      "sheetValue": 47,
-     "projection": 15.87,
+     "projection": 15.84,
      "projectionWeek": 9
     },
     {
@@ -17360,7 +17360,7 @@
      "value": 48,
      "baselineValue": 51,
      "sheetValue": 53,
-     "projection": 13.99,
+     "projection": 14.19,
      "projectionWeek": 9
     },
     {
@@ -17369,7 +17369,7 @@
      "value": 45,
      "baselineValue": 49,
      "sheetValue": 47,
-     "projection": 14.82,
+     "projection": 14.76,
      "projectionWeek": 9
     },
     {
@@ -17378,7 +17378,7 @@
      "value": 44,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.35,
+     "projection": 14.43,
      "projectionWeek": 9
     },
     {
@@ -17387,7 +17387,7 @@
      "value": 43,
      "baselineValue": 48,
      "sheetValue": 40,
-     "projection": 15.18,
+     "projection": 15.35,
      "projectionWeek": 9
     },
     {
@@ -17396,7 +17396,7 @@
      "value": 43,
      "baselineValue": 45.714285714285715,
      "sheetValue": 30,
-     "projection": 11.83,
+     "projection": 12.05,
      "projectionWeek": 9
     },
     {
@@ -17414,7 +17414,7 @@
      "value": 38,
      "baselineValue": 40,
      "sheetValue": 41,
-     "projection": 12.96,
+     "projection": 12.9,
      "projectionWeek": 9
     },
     {
@@ -17423,7 +17423,7 @@
      "value": 38,
      "baselineValue": 46.857142857142854,
      "sheetValue": 36,
-     "projection": 20.93,
+     "projection": 20.87,
      "projectionWeek": 9
     },
     {
@@ -17432,7 +17432,7 @@
      "value": 36,
      "baselineValue": 39,
      "sheetValue": 37,
-     "projection": 13.81,
+     "projection": 13.75,
      "projectionWeek": 9
     },
     {
@@ -17441,7 +17441,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 55,
-     "projection": 10.65,
+     "projection": 10.63,
      "projectionWeek": 9
     },
     {
@@ -17450,7 +17450,7 @@
      "value": 35,
      "baselineValue": 40,
      "sheetValue": 37,
-     "projection": 14.25,
+     "projection": 14.35,
      "projectionWeek": 9
     },
     {
@@ -17459,7 +17459,7 @@
      "value": 34,
      "baselineValue": 43,
      "sheetValue": 36,
-     "projection": 14.42,
+     "projection": 14.56,
      "projectionWeek": 9
     },
     {
@@ -17477,7 +17477,7 @@
      "value": 31,
      "baselineValue": 40,
      "sheetValue": 11,
-     "projection": 18.36,
+     "projection": 18.52,
      "projectionWeek": 9
     },
     {
@@ -17486,7 +17486,7 @@
      "value": 30,
      "baselineValue": 35,
      "sheetValue": 55,
-     "projection": 11.59,
+     "projection": 11.58,
      "projectionWeek": 9
     },
     {
@@ -17504,7 +17504,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 30,
-     "projection": 12.38,
+     "projection": 12.37,
      "projectionWeek": 9
     },
     {
@@ -17513,7 +17513,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 25,
-     "projection": 13.96,
+     "projection": 13.98,
      "projectionWeek": 9
     },
     {
@@ -17522,7 +17522,7 @@
      "value": 28,
      "baselineValue": 32,
      "sheetValue": 18,
-     "projection": 11.53,
+     "projection": 11.44,
      "projectionWeek": 9
     },
     {
@@ -17549,7 +17549,7 @@
      "value": 25,
      "baselineValue": 29,
      "sheetValue": 34,
-     "projection": 11.17,
+     "projection": 11.16,
      "projectionWeek": 9
     },
     {
@@ -17585,7 +17585,7 @@
      "value": 23,
      "baselineValue": 26.285714285714285,
      "sheetValue": 3,
-     "projection": 6.64,
+     "projection": 6.66,
      "projectionWeek": 9
     },
     {
@@ -17594,7 +17594,7 @@
      "value": 23,
      "baselineValue": 26,
      "sheetValue": 26,
-     "projection": 11.76,
+     "projection": 11.67,
      "projectionWeek": 9
     },
     {
@@ -17603,7 +17603,7 @@
      "value": 20,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.74,
+     "projection": 12.75,
      "projectionWeek": 9
     },
     {
@@ -17621,7 +17621,7 @@
      "value": 19,
      "baselineValue": 22,
      "sheetValue": 7,
-     "projection": 14.13,
+     "projection": 14.18,
      "projectionWeek": 9
     },
     {
@@ -17630,7 +17630,7 @@
      "value": 19,
      "baselineValue": 26.285714285714285,
      "sheetValue": 2,
-     "projection": 14.52,
+     "projection": 14.53,
      "projectionWeek": 9
     },
     {
@@ -17648,7 +17648,7 @@
      "value": 17,
      "baselineValue": 20,
      "sheetValue": 12,
-     "projection": 12.15,
+     "projection": 12.2,
      "projectionWeek": 9
     },
     {
@@ -17657,7 +17657,7 @@
      "value": 16,
      "baselineValue": 20,
      "sheetValue": 14,
-     "projection": 12.58,
+     "projection": 12.44,
      "projectionWeek": 9
     },
     {
@@ -17666,7 +17666,7 @@
      "value": 15,
      "baselineValue": 19,
      "sheetValue": 8,
-     "projection": 12.8,
+     "projection": 12.88,
      "projectionWeek": 9
     },
     {
@@ -17679,12 +17679,21 @@
      "projectionWeek": null
     },
     {
+     "name": "Jaylen Waddle",
+     "pos": "WR",
+     "value": 15,
+     "baselineValue": 18,
+     "sheetValue": 24,
+     "projection": 9.38,
+     "projectionWeek": 9
+    },
+    {
      "name": "Luther Burden III",
      "pos": "WR",
      "value": 15,
      "baselineValue": 18,
      "sheetValue": 10,
-     "projection": 11.84,
+     "projection": 11.87,
      "projectionWeek": 9
     },
     {
@@ -17697,21 +17706,12 @@
      "projectionWeek": 8
     },
     {
-     "name": "Jaylen Waddle",
-     "pos": "WR",
-     "value": 14,
-     "baselineValue": 17,
-     "sheetValue": 24,
-     "projection": 9.42,
-     "projectionWeek": 9
-    },
-    {
      "name": "Omarion Hampton",
      "pos": "RB",
      "value": 13,
      "baselineValue": 20.571428571428573,
      "sheetValue": 44,
-     "projection": 7.02,
+     "projection": 7.1,
      "projectionWeek": 9
     },
     {
@@ -17745,9 +17745,9 @@
      "name": "Matthew Golden",
      "pos": "WR",
      "value": 12,
-     "baselineValue": 14,
+     "baselineValue": 15,
      "sheetValue": 5,
-     "projection": 11.84,
+     "projection": 11.86,
      "projectionWeek": 9
     },
     {
@@ -17807,19 +17807,10 @@
     {
      "name": "Tyler Warren",
      "pos": "TE",
-     "value": 10,
-     "baselineValue": 13,
-     "sheetValue": 16,
-     "projection": 9.23,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Emeka Egbuka",
-     "pos": "WR",
      "value": 9,
-     "baselineValue": 15,
-     "sheetValue": 18,
-     "projection": 9.57,
+     "baselineValue": 12,
+     "sheetValue": 16,
+     "projection": 9.2,
      "projectionWeek": 9
     },
     {
@@ -17837,7 +17828,16 @@
      "value": 8,
      "baselineValue": 14,
      "sheetValue": 23,
-     "projection": 8.75,
+     "projection": 8.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Emeka Egbuka",
+     "pos": "WR",
+     "value": 8,
+     "baselineValue": 14,
+     "sheetValue": 18,
+     "projection": 9.31,
      "projectionWeek": 9
     },
     {
@@ -17864,7 +17864,7 @@
      "value": 6,
      "baselineValue": 11.428571428571429,
      "sheetValue": 4,
-     "projection": 5.08,
+     "projection": 5.07,
      "projectionWeek": 9
     },
     {
@@ -17873,7 +17873,7 @@
      "value": 6,
      "baselineValue": 11,
      "sheetValue": 16,
-     "projection": 10.05,
+     "projection": 10.07,
      "projectionWeek": 9
     },
     {
@@ -17895,12 +17895,21 @@
      "projectionWeek": 8
     },
     {
+     "name": "Rome Odunze",
+     "pos": "WR",
+     "value": 5,
+     "baselineValue": 10,
+     "sheetValue": 13,
+     "projection": 8.96,
+     "projectionWeek": 9
+    },
+    {
      "name": "Jameson Williams",
      "pos": "WR",
      "value": 5,
      "baselineValue": 10,
      "sheetValue": 9,
-     "projection": 9.72,
+     "projection": 9.71,
      "projectionWeek": 9
     },
     {
@@ -17909,16 +17918,7 @@
      "value": 4,
      "baselineValue": 9,
      "sheetValue": 2,
-     "projection": 12.34,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Rome Odunze",
-     "pos": "WR",
-     "value": 4,
-     "baselineValue": 9,
-     "sheetValue": 13,
-     "projection": 8.95,
+     "projection": 12.42,
      "projectionWeek": 9
     },
     {
@@ -17927,7 +17927,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 5,
-     "projection": 8.85,
+     "projection": 8.94,
      "projectionWeek": 9
     },
     {
@@ -17937,6 +17937,15 @@
      "baselineValue": 5,
      "sheetValue": 4,
      "projection": 9.22,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Jayden Daniels",
+     "pos": "QB",
+     "value": 4,
+     "baselineValue": 9,
+     "sheetValue": 8,
+     "projection": 19.31,
      "projectionWeek": 9
     },
     {
@@ -17954,7 +17963,7 @@
      "value": 3,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.52,
+     "projection": 5.54,
      "projectionWeek": 9
     },
     {
@@ -17972,25 +17981,16 @@
      "value": 3,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.4,
+     "projection": 8.39,
      "projectionWeek": 9
     },
     {
      "name": "Isaiah Likely",
      "pos": "TE",
      "value": 3,
-     "baselineValue": 8,
+     "baselineValue": 7,
      "sheetValue": 10,
      "projection": 8.77,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jayden Daniels",
-     "pos": "QB",
-     "value": 3,
-     "baselineValue": 8,
-     "sheetValue": 8,
-     "projection": 19.13,
      "projectionWeek": 9
     },
     {
@@ -17999,7 +17999,7 @@
      "value": 3,
      "baselineValue": 8,
      "sheetValue": 3,
-     "projection": 19.59,
+     "projection": 19.56,
      "projectionWeek": 9
     },
     {
@@ -18008,7 +18008,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 2,
-     "projection": 9.89,
+     "projection": 9.81,
      "projectionWeek": 9
     },
     {
@@ -18035,7 +18035,7 @@
      "value": 1,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.37,
+     "projection": 7.39,
      "projectionWeek": 9
     },
     {
@@ -18053,7 +18053,7 @@
      "value": 1,
      "baselineValue": 4,
      "sheetValue": 3,
-     "projection": 9.51,
+     "projection": 9.49,
      "projectionWeek": 9
     },
     {
@@ -18062,7 +18062,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.34,
+     "projection": 6.18,
      "projectionWeek": 9
     },
     {
@@ -18089,7 +18089,7 @@
      "value": 1,
      "baselineValue": 4,
      "sheetValue": 6,
-     "projection": 5.21,
+     "projection": 5.3,
      "projectionWeek": 9
     },
     {
@@ -18098,7 +18098,7 @@
      "value": 1,
      "baselineValue": 4,
      "sheetValue": 5,
-     "projection": 8.77,
+     "projection": 8.76,
      "projectionWeek": 9
     },
     {
@@ -18125,7 +18125,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 5,
-     "projection": 5.51,
+     "projection": 5.6,
      "projectionWeek": 9
     },
     {
@@ -18134,7 +18134,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.74,
+     "projection": 6.72,
      "projectionWeek": 9
     },
     {
@@ -18152,7 +18152,7 @@
      "value": 1,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 8.72,
+     "projection": 8.83,
      "projectionWeek": 9
     },
     {
@@ -18161,7 +18161,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 8.69,
+     "projection": 8.68,
      "projectionWeek": 9
     },
     {
@@ -18782,17 +18782,17 @@
   },
   "Jaylen Waddle": {
    "pos": "WR",
-   "baselineValue": 17,
+   "baselineValue": 18,
    "values": {
-    "Standard_8": 15,
-    "Standard_10": 13,
-    "Standard_12": 11,
-    "HalfPPR_8": 17,
-    "HalfPPR_10": 15,
+    "Standard_8": 16,
+    "Standard_10": 14,
+    "Standard_12": 12,
+    "HalfPPR_8": 18,
+    "HalfPPR_10": 16,
     "HalfPPR_12": 13,
-    "FullPPR_8": 18,
-    "FullPPR_10": 16,
-    "FullPPR_12": 14
+    "FullPPR_8": 19,
+    "FullPPR_10": 17,
+    "FullPPR_12": 15
    },
    "sheetValue": 24
   },
@@ -18846,17 +18846,17 @@
   },
   "Emeka Egbuka": {
    "pos": "WR",
-   "baselineValue": 15,
+   "baselineValue": 14,
    "values": {
-    "Standard_8": 17,
-    "Standard_10": 15,
-    "Standard_12": 13,
-    "HalfPPR_8": 15,
-    "HalfPPR_10": 13,
-    "HalfPPR_12": 11,
-    "FullPPR_8": 13,
-    "FullPPR_10": 11,
-    "FullPPR_12": 9
+    "Standard_8": 16,
+    "Standard_10": 14,
+    "Standard_12": 12,
+    "HalfPPR_8": 14,
+    "HalfPPR_10": 12,
+    "HalfPPR_12": 10,
+    "FullPPR_8": 12,
+    "FullPPR_10": 10,
+    "FullPPR_12": 8
    },
    "sheetValue": 18
   },
@@ -18926,17 +18926,17 @@
   },
   "Tyler Warren": {
    "pos": "TE",
-   "baselineValue": 13,
+   "baselineValue": 12,
    "values": {
-    "Standard_8": 12,
-    "Standard_10": 10,
-    "Standard_12": 8,
-    "HalfPPR_8": 13,
-    "HalfPPR_10": 11,
-    "HalfPPR_12": 9,
+    "Standard_8": 11,
+    "Standard_10": 9,
+    "Standard_12": 7,
+    "HalfPPR_8": 12,
+    "HalfPPR_10": 10,
+    "HalfPPR_12": 8,
     "FullPPR_8": 14,
     "FullPPR_10": 12,
-    "FullPPR_12": 10
+    "FullPPR_12": 9
    },
    "sheetValue": 16
   },
@@ -19086,17 +19086,17 @@
   },
   "Rome Odunze": {
    "pos": "WR",
-   "baselineValue": 9,
+   "baselineValue": 10,
    "values": {
-    "Standard_8": 12,
-    "Standard_10": 10,
-    "Standard_12": 8,
-    "HalfPPR_8": 10,
-    "HalfPPR_10": 8,
-    "HalfPPR_12": 6,
-    "FullPPR_8": 7,
+    "Standard_8": 13,
+    "Standard_10": 11,
+    "Standard_12": 9,
+    "HalfPPR_8": 11,
+    "HalfPPR_10": 9,
+    "HalfPPR_12": 7,
+    "FullPPR_8": 8,
     "FullPPR_10": 6,
-    "FullPPR_12": 4
+    "FullPPR_12": 5
    },
    "sheetValue": 13
   },
@@ -19182,16 +19182,16 @@
   },
   "Isaiah Likely": {
    "pos": "TE",
-   "baselineValue": 8,
+   "baselineValue": 7,
    "values": {
-    "Standard_8": 11,
-    "Standard_10": 9,
-    "Standard_12": 7,
-    "HalfPPR_8": 9,
-    "HalfPPR_10": 7,
+    "Standard_8": 10,
+    "Standard_10": 8,
+    "Standard_12": 6,
+    "HalfPPR_8": 8,
+    "HalfPPR_10": 6,
     "HalfPPR_12": 5,
-    "FullPPR_8": 6,
-    "FullPPR_10": 5,
+    "FullPPR_8": 5,
+    "FullPPR_10": 4,
     "FullPPR_12": 3
    },
    "sheetValue": 10
@@ -19278,17 +19278,17 @@
   },
   "Jayden Daniels": {
    "pos": "QB",
-   "baselineValue": 8,
+   "baselineValue": 9,
    "values": {
-    "Standard_8": 11,
-    "Standard_10": 9,
-    "Standard_12": 7,
-    "HalfPPR_8": 9,
-    "HalfPPR_10": 7,
-    "HalfPPR_12": 5,
-    "FullPPR_8": 6,
-    "FullPPR_10": 5,
-    "FullPPR_12": 3
+    "Standard_8": 12,
+    "Standard_10": 10,
+    "Standard_12": 8,
+    "HalfPPR_8": 10,
+    "HalfPPR_10": 8,
+    "HalfPPR_12": 6,
+    "FullPPR_8": 7,
+    "FullPPR_10": 6,
+    "FullPPR_12": 4
    },
    "sheetValue": 8
   },
@@ -19438,16 +19438,16 @@
   },
   "Matthew Golden": {
    "pos": "WR",
-   "baselineValue": 14,
+   "baselineValue": 15,
    "values": {
-    "Standard_8": 13,
-    "Standard_10": 11,
-    "Standard_12": 9,
-    "HalfPPR_8": 14,
-    "HalfPPR_10": 12,
-    "HalfPPR_12": 10,
-    "FullPPR_8": 16,
-    "FullPPR_10": 14,
+    "Standard_8": 14,
+    "Standard_10": 12,
+    "Standard_12": 10,
+    "HalfPPR_8": 15,
+    "HalfPPR_10": 13,
+    "HalfPPR_12": 11,
+    "FullPPR_8": 17,
+    "FullPPR_10": 15,
     "FullPPR_12": 12
    },
    "sheetValue": 5
