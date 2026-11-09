@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T01:10:27Z",
+ "generatedAt": "2026-11-09T08:37:39Z",
  "key": "HalfPPR_10",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -140,16 +140,6 @@
   ],
   [
    43,
-   "",
-   "",
-   "Justin Jefferson",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   41,
    "Javonte Williams",
    "",
    "",
@@ -159,10 +149,10 @@
    ""
   ],
   [
-   41,
-   "D'Andre Swift",
+   43,
    "",
    "",
+   "Justin Jefferson",
    "",
    "",
    "",
@@ -195,6 +185,16 @@
    "",
    "",
    "Trey McBride",
+   "",
+   ""
+  ],
+  [
+   39,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
    "",
    ""
   ],
@@ -1166,7 +1166,16 @@
    "value": 47,
    "baselineValue": 53,
    "sheetValue": 60,
-   "projection": 14.3,
+   "projection": 14.39,
+   "projectionWeek": 9
+  },
+  {
+   "name": "Javonte Williams",
+   "pos": "RB",
+   "value": 43,
+   "baselineValue": 48,
+   "sheetValue": 40,
+   "projection": 15.5,
    "projectionWeek": 9
   },
   {
@@ -1179,30 +1188,12 @@
    "projectionWeek": 9
   },
   {
-   "name": "Javonte Williams",
-   "pos": "RB",
-   "value": 41,
-   "baselineValue": 46,
-   "sheetValue": 40,
-   "projection": 15.5,
-   "projectionWeek": 9
-  },
-  {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "value": 41,
-   "baselineValue": 46,
-   "sheetValue": 36,
-   "projection": 15.59,
-   "projectionWeek": 9
-  },
-  {
    "name": "Josh Allen",
    "pos": "QB",
    "value": 41,
    "baselineValue": 46.27142857142857,
    "sheetValue": 36,
-   "projection": 20.99,
+   "projection": 21.2,
    "projectionWeek": 9
   },
   {
@@ -1221,6 +1212,15 @@
    "baselineValue": 45.142857142857146,
    "sheetValue": 30,
    "projection": 11.93,
+   "projectionWeek": 9
+  },
+  {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "value": 39,
+   "baselineValue": 44,
+   "sheetValue": 36,
+   "projection": 15.47,
    "projectionWeek": 9
   },
   {
@@ -1391,7 +1391,7 @@
    "value": 23,
    "baselineValue": 25.957142857142856,
    "sheetValue": 3,
-   "projection": 6.67,
+   "projection": 6.62,
    "projectionWeek": 9
   },
   {
@@ -1418,7 +1418,7 @@
    "value": 21,
    "baselineValue": 24,
    "sheetValue": 18,
-   "projection": 12.7,
+   "projection": 12.67,
    "projectionWeek": 9
   },
   {
@@ -1526,7 +1526,7 @@
    "value": 15,
    "baselineValue": 17,
    "sheetValue": 10,
-   "projection": 11.73,
+   "projection": 11.62,
    "projectionWeek": 9
   },
   {
@@ -1571,7 +1571,7 @@
    "value": 14,
    "baselineValue": 16,
    "sheetValue": 17,
-   "projection": 10.65,
+   "projection": 10.69,
    "projectionWeek": 9
   },
   {
@@ -1688,7 +1688,7 @@
    "value": 10,
    "baselineValue": 11,
    "sheetValue": 18,
-   "projection": 8.84,
+   "projection": 8.79,
    "projectionWeek": 9
   },
   {
@@ -1760,7 +1760,7 @@
    "value": 6,
    "baselineValue": 7,
    "sheetValue": 10,
-   "projection": 8.44,
+   "projection": 8.43,
    "projectionWeek": 9
   },
   {
@@ -1949,7 +1949,7 @@
    "value": 3,
    "baselineValue": 3,
    "sheetValue": 4,
-   "projection": 6.73,
+   "projection": 6.48,
    "projectionWeek": 9
   },
   {
@@ -1985,7 +1985,7 @@
    "value": 2,
    "baselineValue": 2,
    "sheetValue": 3,
-   "projection": 5.5,
+   "projection": 5.4,
    "projectionWeek": 9
   },
   {

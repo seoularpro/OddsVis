@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T01:10:27Z",
+ "generatedAt": "2026-11-09T08:37:39Z",
  "baseline": {
   "label": "Half PPR, 10-team",
   "source": "the live Trade Values Google Sheet",
@@ -11,7 +11,7 @@
  "reseed": {
   "week": 9,
   "season": 2026,
-  "snapshotIndex": 20,
+  "snapshotIndex": 21,
   "previousWeek": 8,
   "weight": 0.45,
   "rankShare": 0.7,
@@ -280,16 +280,6 @@
     ],
     [
      41,
-     "Kyren Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     40,
      "Javonte Williams",
      "",
      "",
@@ -299,8 +289,8 @@
      ""
     ],
     [
-     40,
-     "D'Andre Swift",
+     41,
+     "Kyren Williams",
      "",
      "",
      "",
@@ -321,6 +311,16 @@
     [
      38,
      "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     38,
+     "D'Andre Swift",
      "",
      "",
      "",
@@ -1278,7 +1278,7 @@
      "value": 48,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
      "projectionWeek": 9
     },
     {
@@ -1305,7 +1305,16 @@
      "value": 43,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 41,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -1315,24 +1324,6 @@
      "baselineValue": 43,
      "sheetValue": 36,
      "projection": 14.59,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 46,
-     "sheetValue": 36,
-     "projection": 15.59,
      "projectionWeek": 9
     },
     {
@@ -1351,6 +1342,15 @@
      "baselineValue": 45,
      "sheetValue": 47,
      "projection": 14.22,
+     "projectionWeek": 9
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 38,
+     "baselineValue": 44,
+     "sheetValue": 36,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -1521,7 +1521,7 @@
      "value": 23,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -1548,7 +1548,7 @@
      "value": 22,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -1620,7 +1620,7 @@
      "value": 19,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -1719,7 +1719,7 @@
      "value": 15,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -1854,7 +1854,7 @@
      "value": 11,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -1998,7 +1998,7 @@
      "value": 7,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -2016,7 +2016,7 @@
      "value": 7,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -2133,7 +2133,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     }
    ]
@@ -2287,17 +2287,7 @@
      "Josh Allen"
     ],
     [
-     41,
-     "Kyren Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     40,
+     42,
      "Javonte Williams",
      "",
      "",
@@ -2307,8 +2297,8 @@
      ""
     ],
     [
-     40,
-     "D'Andre Swift",
+     41,
+     "Kyren Williams",
      "",
      "",
      "",
@@ -2329,6 +2319,16 @@
     [
      38,
      "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     38,
+     "D'Andre Swift",
      "",
      "",
      "",
@@ -3286,7 +3286,7 @@
      "value": 50,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
      "projectionWeek": 9
     },
     {
@@ -3313,7 +3313,16 @@
      "value": 44,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 42,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -3323,24 +3332,6 @@
      "baselineValue": 43,
      "sheetValue": 36,
      "projection": 14.59,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 46,
-     "sheetValue": 36,
-     "projection": 15.59,
      "projectionWeek": 9
     },
     {
@@ -3359,6 +3350,15 @@
      "baselineValue": 45,
      "sheetValue": 47,
      "projection": 14.22,
+     "projectionWeek": 9
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 38,
+     "baselineValue": 44,
+     "sheetValue": 36,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -3529,7 +3529,7 @@
      "value": 21,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -3556,7 +3556,7 @@
      "value": 20,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -3628,7 +3628,7 @@
      "value": 17,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -3727,7 +3727,7 @@
      "value": 13,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -3862,7 +3862,7 @@
      "value": 9,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -3988,7 +3988,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -4006,7 +4006,7 @@
      "value": 6,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -4141,7 +4141,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     }
    ]
@@ -4296,16 +4296,6 @@
     ],
     [
      41,
-     "Kyren Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     39,
      "Javonte Williams",
      "",
      "",
@@ -4315,8 +4305,8 @@
      ""
     ],
     [
-     39,
-     "D'Andre Swift",
+     41,
+     "Kyren Williams",
      "",
      "",
      "",
@@ -4337,6 +4327,16 @@
     [
      37,
      "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     37,
+     "D'Andre Swift",
      "",
      "",
      "",
@@ -5294,7 +5294,7 @@
      "value": 51,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
      "projectionWeek": 9
     },
     {
@@ -5321,7 +5321,16 @@
      "value": 44,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 41,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -5331,24 +5340,6 @@
      "baselineValue": 43,
      "sheetValue": 36,
      "projection": 14.59,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 39,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 39,
-     "baselineValue": 46,
-     "sheetValue": 36,
-     "projection": 15.59,
      "projectionWeek": 9
     },
     {
@@ -5367,6 +5358,15 @@
      "baselineValue": 45,
      "sheetValue": 47,
      "projection": 14.22,
+     "projectionWeek": 9
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 37,
+     "baselineValue": 44,
+     "sheetValue": 36,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -5537,7 +5537,7 @@
      "value": 19,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -5564,7 +5564,7 @@
      "value": 18,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -5627,7 +5627,7 @@
      "value": 15,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -5726,7 +5726,7 @@
      "value": 11,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -5870,7 +5870,7 @@
      "value": 7,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -6014,7 +6014,7 @@
      "value": 4,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -6032,7 +6032,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -6140,7 +6140,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     },
     {
@@ -6294,16 +6294,6 @@
     ],
     [
      42,
-     "",
-     "",
-     "Justin Jefferson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     41,
      "Javonte Williams",
      "",
      "",
@@ -6313,10 +6303,10 @@
      ""
     ],
     [
-     41,
-     "D'Andre Swift",
+     42,
      "",
      "",
+     "Justin Jefferson",
      "",
      "",
      "",
@@ -6349,6 +6339,16 @@
      "",
      "",
      "Trey McBride",
+     "",
+     ""
+    ],
+    [
+     39,
+     "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
      "",
      ""
     ],
@@ -7320,7 +7320,16 @@
      "value": 46,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 42,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -7333,30 +7342,12 @@
      "projectionWeek": 9
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
-     "sheetValue": 36,
-     "projection": 15.59,
-     "projectionWeek": 9
-    },
-    {
      "name": "Josh Allen",
      "pos": "QB",
      "value": 41,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
      "projectionWeek": 9
     },
     {
@@ -7375,6 +7366,15 @@
      "baselineValue": 45.142857142857146,
      "sheetValue": 30,
      "projection": 11.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 39,
+     "baselineValue": 44,
+     "sheetValue": 36,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -7545,7 +7545,7 @@
      "value": 25,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -7572,7 +7572,7 @@
      "value": 23,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -7680,7 +7680,7 @@
      "value": 17,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -7725,7 +7725,7 @@
      "value": 16,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -7842,7 +7842,7 @@
      "value": 12,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -7914,7 +7914,7 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -8103,7 +8103,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -8139,7 +8139,7 @@
      "value": 3,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     },
     {
@@ -8302,16 +8302,6 @@
     ],
     [
      43,
-     "",
-     "",
-     "Justin Jefferson",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     41,
      "Javonte Williams",
      "",
      "",
@@ -8321,10 +8311,10 @@
      ""
     ],
     [
-     41,
-     "D'Andre Swift",
+     43,
      "",
      "",
+     "Justin Jefferson",
      "",
      "",
      "",
@@ -8357,6 +8347,16 @@
      "",
      "",
      "Trey McBride",
+     "",
+     ""
+    ],
+    [
+     39,
+     "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
      "",
      ""
     ],
@@ -9328,7 +9328,16 @@
      "value": 47,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 43,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -9341,30 +9350,12 @@
      "projectionWeek": 9
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
-     "sheetValue": 36,
-     "projection": 15.59,
-     "projectionWeek": 9
-    },
-    {
      "name": "Josh Allen",
      "pos": "QB",
      "value": 41,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
      "projectionWeek": 9
     },
     {
@@ -9383,6 +9374,15 @@
      "baselineValue": 45.142857142857146,
      "sheetValue": 30,
      "projection": 11.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 39,
+     "baselineValue": 44,
+     "sheetValue": 36,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -9553,7 +9553,7 @@
      "value": 23,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -9580,7 +9580,7 @@
      "value": 21,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -9688,7 +9688,7 @@
      "value": 15,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -9733,7 +9733,7 @@
      "value": 14,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -9850,7 +9850,7 @@
      "value": 10,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -9922,7 +9922,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -10111,7 +10111,7 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -10147,7 +10147,7 @@
      "value": 2,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     },
     {
@@ -10310,6 +10310,16 @@
     ],
     [
      42,
+     "Javonte Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     42,
      "",
      "",
      "Justin Jefferson",
@@ -10329,26 +10339,6 @@
      "Josh Allen"
     ],
     [
-     40,
-     "Javonte Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     40,
-     "D'Andre Swift",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
      39,
      "Chase Brown",
      "",
@@ -10365,6 +10355,16 @@
      "",
      "",
      "Trey McBride",
+     "",
+     ""
+    ],
+    [
+     38,
+     "D'Andre Swift",
+     "",
+     "",
+     "",
+     "",
      "",
      ""
     ],
@@ -11336,7 +11336,16 @@
      "value": 47,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 42,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -11354,25 +11363,7 @@
      "value": 41,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 46,
-     "sheetValue": 36,
-     "projection": 15.59,
+     "projection": 21.2,
      "projectionWeek": 9
     },
     {
@@ -11391,6 +11382,15 @@
      "baselineValue": 45.142857142857146,
      "sheetValue": 30,
      "projection": 11.93,
+     "projectionWeek": 9
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 38,
+     "baselineValue": 44,
+     "sheetValue": 36,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -11561,7 +11561,7 @@
      "value": 21,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -11588,7 +11588,7 @@
      "value": 19,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -11696,7 +11696,7 @@
      "value": 13,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -11741,7 +11741,7 @@
      "value": 12,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -11858,7 +11858,7 @@
      "value": 8,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -11912,7 +11912,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -12101,7 +12101,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -12155,7 +12155,7 @@
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     },
     {
@@ -12328,6 +12328,16 @@
     ],
     [
      43,
+     "Javonte Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     43,
      "",
      "",
      "",
@@ -12347,17 +12357,7 @@
      ""
     ],
     [
-     41,
-     "Javonte Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     41,
+     40,
      "D'Andre Swift",
      "",
      "",
@@ -13353,7 +13353,16 @@
      "value": 43,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 43,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -13375,21 +13384,12 @@
      "projectionWeek": 9
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
      "name": "D'Andre Swift",
      "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
+     "value": 40,
+     "baselineValue": 44,
      "sheetValue": 36,
-     "projection": 15.59,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -13416,7 +13416,7 @@
      "value": 38,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
      "projectionWeek": 9
     },
     {
@@ -13560,7 +13560,7 @@
      "value": 27,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -13587,7 +13587,7 @@
      "value": 24,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -13677,7 +13677,7 @@
      "value": 19,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -13812,7 +13812,7 @@
      "value": 13,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -13830,7 +13830,7 @@
      "value": 12,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -13893,7 +13893,7 @@
      "value": 9,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -13983,7 +13983,7 @@
      "value": 5,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     },
     {
@@ -14109,7 +14109,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -14336,6 +14336,16 @@
     ],
     [
      43,
+     "Javonte Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     43,
      "",
      "",
      "",
@@ -14346,27 +14356,17 @@
     ],
     [
      42,
-     "Javonte Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     42,
-     "D'Andre Swift",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     42,
      "Chase Brown",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     40,
+     "D'Andre Swift",
      "",
      "",
      "",
@@ -15361,7 +15361,16 @@
      "value": 43,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 43,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -15374,30 +15383,21 @@
      "projectionWeek": 9
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 42,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
-     "name": "D'Andre Swift",
-     "pos": "RB",
-     "value": 42,
-     "baselineValue": 46,
-     "sheetValue": 36,
-     "projection": 15.59,
-     "projectionWeek": 9
-    },
-    {
      "name": "Chase Brown",
      "pos": "RB",
      "value": 42,
      "baselineValue": 45,
      "sheetValue": 47,
      "projection": 14.22,
+     "projectionWeek": 9
+    },
+    {
+     "name": "D'Andre Swift",
+     "pos": "RB",
+     "value": 40,
+     "baselineValue": 44,
+     "sheetValue": 36,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -15424,7 +15424,7 @@
      "value": 37,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
      "projectionWeek": 9
     },
     {
@@ -15568,7 +15568,7 @@
      "value": 25,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -15595,7 +15595,7 @@
      "value": 22,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -15685,7 +15685,7 @@
      "value": 17,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -15829,7 +15829,7 @@
      "value": 11,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -15847,7 +15847,7 @@
      "value": 10,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -15901,7 +15901,7 @@
      "value": 7,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -15964,7 +15964,7 @@
      "value": 4,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     },
     {
@@ -16117,7 +16117,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -16344,6 +16344,16 @@
     ],
     [
      43,
+     "Javonte Williams",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     43,
      "",
      "",
      "",
@@ -16363,17 +16373,7 @@
      ""
     ],
     [
-     41,
-     "Javonte Williams",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     41,
+     39,
      "D'Andre Swift",
      "",
      "",
@@ -17369,7 +17369,16 @@
      "value": 43,
      "baselineValue": 53,
      "sheetValue": 60,
-     "projection": 14.3,
+     "projection": 14.39,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Javonte Williams",
+     "pos": "RB",
+     "value": 43,
+     "baselineValue": 48,
+     "sheetValue": 40,
+     "projection": 15.5,
      "projectionWeek": 9
     },
     {
@@ -17391,21 +17400,12 @@
      "projectionWeek": 9
     },
     {
-     "name": "Javonte Williams",
-     "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
-     "sheetValue": 40,
-     "projection": 15.5,
-     "projectionWeek": 9
-    },
-    {
      "name": "D'Andre Swift",
      "pos": "RB",
-     "value": 41,
-     "baselineValue": 46,
+     "value": 39,
+     "baselineValue": 44,
      "sheetValue": 36,
-     "projection": 15.59,
+     "projection": 15.47,
      "projectionWeek": 9
     },
     {
@@ -17432,7 +17432,7 @@
      "value": 37,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 20.99,
+     "projection": 21.2,
      "projectionWeek": 9
     },
     {
@@ -17576,7 +17576,7 @@
      "value": 23,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.67,
+     "projection": 6.62,
      "projectionWeek": 9
     },
     {
@@ -17603,7 +17603,7 @@
      "value": 20,
      "baselineValue": 24,
      "sheetValue": 18,
-     "projection": 12.7,
+     "projection": 12.67,
      "projectionWeek": 9
     },
     {
@@ -17693,7 +17693,7 @@
      "value": 14,
      "baselineValue": 17,
      "sheetValue": 10,
-     "projection": 11.73,
+     "projection": 11.62,
      "projectionWeek": 9
     },
     {
@@ -17828,7 +17828,7 @@
      "value": 9,
      "baselineValue": 16,
      "sheetValue": 17,
-     "projection": 10.65,
+     "projection": 10.69,
      "projectionWeek": 9
     },
     {
@@ -17846,7 +17846,7 @@
      "value": 8,
      "baselineValue": 11,
      "sheetValue": 18,
-     "projection": 8.84,
+     "projection": 8.79,
      "projectionWeek": 9
     },
     {
@@ -17927,7 +17927,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.44,
+     "projection": 8.43,
      "projectionWeek": 9
     },
     {
@@ -17963,7 +17963,7 @@
      "value": 3,
      "baselineValue": 2,
      "sheetValue": 3,
-     "projection": 5.5,
+     "projection": 5.4,
      "projectionWeek": 9
     },
     {
@@ -18116,7 +18116,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 4,
-     "projection": 6.73,
+     "projection": 6.48,
      "projectionWeek": 9
     },
     {
@@ -18494,17 +18494,17 @@
   },
   "Javonte Williams": {
    "pos": "RB",
-   "baselineValue": 46,
+   "baselineValue": 48,
    "values": {
-    "Standard_8": 40,
-    "Standard_10": 40,
-    "Standard_12": 39,
-    "HalfPPR_8": 41,
-    "HalfPPR_10": 41,
-    "HalfPPR_12": 40,
-    "FullPPR_8": 41,
-    "FullPPR_10": 42,
-    "FullPPR_12": 41
+    "Standard_8": 41,
+    "Standard_10": 42,
+    "Standard_12": 41,
+    "HalfPPR_8": 42,
+    "HalfPPR_10": 43,
+    "HalfPPR_12": 42,
+    "FullPPR_8": 43,
+    "FullPPR_10": 43,
+    "FullPPR_12": 43
    },
    "sheetValue": 40
   },
@@ -18574,17 +18574,17 @@
   },
   "D'Andre Swift": {
    "pos": "RB",
-   "baselineValue": 46,
+   "baselineValue": 44,
    "values": {
-    "Standard_8": 40,
-    "Standard_10": 40,
-    "Standard_12": 39,
-    "HalfPPR_8": 41,
-    "HalfPPR_10": 41,
-    "HalfPPR_12": 40,
-    "FullPPR_8": 41,
-    "FullPPR_10": 42,
-    "FullPPR_12": 41
+    "Standard_8": 38,
+    "Standard_10": 38,
+    "Standard_12": 37,
+    "HalfPPR_8": 39,
+    "HalfPPR_10": 39,
+    "HalfPPR_12": 38,
+    "FullPPR_8": 40,
+    "FullPPR_10": 40,
+    "FullPPR_12": 39
    },
    "sheetValue": 36
   },
