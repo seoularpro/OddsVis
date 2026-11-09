@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T08:37:39Z",
+ "generatedAt": "2026-11-09T19:59:56Z",
  "baseline": {
   "label": "Half PPR, 10-team",
   "source": "the live Trade Values Google Sheet",
@@ -11,7 +11,7 @@
  "reseed": {
   "week": 9,
   "season": 2026,
-  "snapshotIndex": 21,
+  "snapshotIndex": 22,
   "previousWeek": 8,
   "weight": 0.45,
   "rankShare": 0.7,
@@ -23,7 +23,7 @@
   },
   "skippedPositions": [],
   "usedPreviousWeek": 11,
-  "moved": 79,
+  "moved": 78,
   "noProjection": [
    "DeVonta Smith",
    "Travis Etienne Jr.",
@@ -210,19 +210,19 @@
     ],
     [
      51,
+     "Jonathan Taylor",
      "",
      "",
-     "Jaxon Smith-Njigba",
      "",
      "",
      "",
      ""
     ],
     [
-     50,
-     "Jonathan Taylor",
+     51,
      "",
      "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -309,7 +309,7 @@
      ""
     ],
     [
-     38,
+     39,
      "Chase Brown",
      "",
      "",
@@ -1246,21 +1246,21 @@
      "projectionWeek": 9
     },
     {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
+     "value": 51,
+     "baselineValue": 61,
+     "sheetValue": 61,
+     "projection": 16.11,
+     "projectionWeek": 9
+    },
+    {
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
      "value": 51,
      "baselineValue": 65,
      "sheetValue": 60,
      "projection": 17.52,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jonathan Taylor",
-     "pos": "RB",
-     "value": 50,
-     "baselineValue": 60,
-     "sheetValue": 61,
-     "projection": 16.11,
      "projectionWeek": 9
     },
     {
@@ -1276,9 +1276,9 @@
      "name": "James Cook III",
      "pos": "RB",
      "value": 48,
-     "baselineValue": 53,
+     "baselineValue": 52,
      "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -1305,7 +1305,7 @@
      "value": 43,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -1332,14 +1332,14 @@
      "value": 40,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
+     "projection": 13.76,
      "projectionWeek": 9
     },
     {
      "name": "Chase Brown",
      "pos": "RB",
-     "value": 38,
-     "baselineValue": 45,
+     "value": 39,
+     "baselineValue": 46,
      "sheetValue": 47,
      "projection": 14.22,
      "projectionWeek": 9
@@ -1521,7 +1521,7 @@
      "value": 23,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -1890,7 +1890,7 @@
      "value": 9,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -1998,7 +1998,7 @@
      "value": 7,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -2218,19 +2218,19 @@
     ],
     [
      53,
+     "Jonathan Taylor",
      "",
      "",
-     "Jaxon Smith-Njigba",
      "",
      "",
      "",
      ""
     ],
     [
-     52,
-     "Jonathan Taylor",
+     53,
      "",
      "",
+     "Jaxon Smith-Njigba",
      "",
      "",
      "",
@@ -2247,7 +2247,7 @@
      ""
     ],
     [
-     50,
+     49,
      "James Cook III",
      "",
      "",
@@ -2317,7 +2317,7 @@
      ""
     ],
     [
-     38,
+     39,
      "Chase Brown",
      "",
      "",
@@ -3254,21 +3254,21 @@
      "projectionWeek": 9
     },
     {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
+     "value": 53,
+     "baselineValue": 61,
+     "sheetValue": 61,
+     "projection": 16.11,
+     "projectionWeek": 9
+    },
+    {
      "name": "Jaxon Smith-Njigba",
      "pos": "WR",
      "value": 53,
      "baselineValue": 65,
      "sheetValue": 60,
      "projection": 17.52,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jonathan Taylor",
-     "pos": "RB",
-     "value": 52,
-     "baselineValue": 60,
-     "sheetValue": 61,
-     "projection": 16.11,
      "projectionWeek": 9
     },
     {
@@ -3283,10 +3283,10 @@
     {
      "name": "James Cook III",
      "pos": "RB",
-     "value": 50,
-     "baselineValue": 53,
+     "value": 49,
+     "baselineValue": 52,
      "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -3313,7 +3313,7 @@
      "value": 44,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -3340,14 +3340,14 @@
      "value": 40,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
+     "projection": 13.76,
      "projectionWeek": 9
     },
     {
      "name": "Chase Brown",
      "pos": "RB",
-     "value": 38,
-     "baselineValue": 45,
+     "value": 39,
+     "baselineValue": 46,
      "sheetValue": 47,
      "projection": 14.22,
      "projectionWeek": 9
@@ -3529,7 +3529,7 @@
      "value": 21,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -3898,7 +3898,7 @@
      "value": 7,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -3988,7 +3988,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -4225,7 +4225,7 @@
      ""
     ],
     [
-     54,
+     55,
      "Jonathan Taylor",
      "",
      "",
@@ -4255,7 +4255,7 @@
      ""
     ],
     [
-     51,
+     50,
      "James Cook III",
      "",
      "",
@@ -4325,7 +4325,7 @@
      ""
     ],
     [
-     37,
+     38,
      "Chase Brown",
      "",
      "",
@@ -5264,8 +5264,8 @@
     {
      "name": "Jonathan Taylor",
      "pos": "RB",
-     "value": 54,
-     "baselineValue": 60,
+     "value": 55,
+     "baselineValue": 61,
      "sheetValue": 61,
      "projection": 16.11,
      "projectionWeek": 9
@@ -5291,10 +5291,10 @@
     {
      "name": "James Cook III",
      "pos": "RB",
-     "value": 51,
-     "baselineValue": 53,
+     "value": 50,
+     "baselineValue": 52,
      "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -5321,7 +5321,7 @@
      "value": 44,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -5348,14 +5348,14 @@
      "value": 39,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
+     "projection": 13.76,
      "projectionWeek": 9
     },
     {
      "name": "Chase Brown",
      "pos": "RB",
-     "value": 37,
-     "baselineValue": 45,
+     "value": 38,
+     "baselineValue": 46,
      "sheetValue": 47,
      "projection": 14.22,
      "projectionWeek": 9
@@ -5537,7 +5537,7 @@
      "value": 19,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -5879,7 +5879,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -6014,7 +6014,7 @@
      "value": 4,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -6253,7 +6253,7 @@
      ""
     ],
     [
-     51,
+     52,
      "Jonathan Taylor",
      "",
      "",
@@ -6283,7 +6283,7 @@
      ""
     ],
     [
-     46,
+     45,
      "James Cook III",
      "",
      "",
@@ -6314,16 +6314,6 @@
     ],
     [
      41,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Josh Allen"
-    ],
-    [
-     40,
      "Chase Brown",
      "",
      "",
@@ -6331,6 +6321,16 @@
      "",
      "",
      ""
+    ],
+    [
+     41,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Josh Allen"
     ],
     [
      40,
@@ -7290,8 +7290,8 @@
     {
      "name": "Jonathan Taylor",
      "pos": "RB",
-     "value": 51,
-     "baselineValue": 60,
+     "value": 52,
+     "baselineValue": 61,
      "sheetValue": 61,
      "projection": 16.11,
      "projectionWeek": 9
@@ -7317,10 +7317,10 @@
     {
      "name": "James Cook III",
      "pos": "RB",
-     "value": 46,
-     "baselineValue": 53,
+     "value": 45,
+     "baselineValue": 52,
      "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -7338,7 +7338,16 @@
      "value": 42,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
+     "projection": 13.76,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 41,
+     "baselineValue": 46,
+     "sheetValue": 47,
+     "projection": 14.22,
      "projectionWeek": 9
     },
     {
@@ -7347,16 +7356,7 @@
      "value": 41,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 45,
-     "sheetValue": 47,
-     "projection": 14.22,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -7545,7 +7545,7 @@
      "value": 25,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -7914,7 +7914,7 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -7977,7 +7977,7 @@
      "value": 6,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -8261,7 +8261,7 @@
      ""
     ],
     [
-     53,
+     54,
      "Jonathan Taylor",
      "",
      "",
@@ -8291,7 +8291,7 @@
      ""
     ],
     [
-     47,
+     46,
      "James Cook III",
      "",
      "",
@@ -8322,16 +8322,6 @@
     ],
     [
      41,
-     "",
-     "",
-     "",
-     "",
-     "",
-     "",
-     "Josh Allen"
-    ],
-    [
-     40,
      "Chase Brown",
      "",
      "",
@@ -8339,6 +8329,16 @@
      "",
      "",
      ""
+    ],
+    [
+     41,
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Josh Allen"
     ],
     [
      40,
@@ -9298,8 +9298,8 @@
     {
      "name": "Jonathan Taylor",
      "pos": "RB",
-     "value": 53,
-     "baselineValue": 60,
+     "value": 54,
+     "baselineValue": 61,
      "sheetValue": 61,
      "projection": 16.11,
      "projectionWeek": 9
@@ -9325,10 +9325,10 @@
     {
      "name": "James Cook III",
      "pos": "RB",
-     "value": 47,
-     "baselineValue": 53,
+     "value": 46,
+     "baselineValue": 52,
      "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -9346,7 +9346,16 @@
      "value": 43,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
+     "projection": 13.76,
+     "projectionWeek": 9
+    },
+    {
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 41,
+     "baselineValue": 46,
+     "sheetValue": 47,
+     "projection": 14.22,
      "projectionWeek": 9
     },
     {
@@ -9355,16 +9364,7 @@
      "value": 41,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 40,
-     "baselineValue": 45,
-     "sheetValue": 47,
-     "projection": 14.22,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -9553,7 +9553,7 @@
      "value": 23,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -9922,7 +9922,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -9985,7 +9985,7 @@
      "value": 4,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -10269,7 +10269,7 @@
      ""
     ],
     [
-     55,
+     56,
      "Jonathan Taylor",
      "",
      "",
@@ -10299,7 +10299,7 @@
      ""
     ],
     [
-     47,
+     46,
      "James Cook III",
      "",
      "",
@@ -10339,7 +10339,7 @@
      "Josh Allen"
     ],
     [
-     39,
+     40,
      "Chase Brown",
      "",
      "",
@@ -11306,8 +11306,8 @@
     {
      "name": "Jonathan Taylor",
      "pos": "RB",
-     "value": 55,
-     "baselineValue": 60,
+     "value": 56,
+     "baselineValue": 61,
      "sheetValue": 61,
      "projection": 16.11,
      "projectionWeek": 9
@@ -11333,10 +11333,10 @@
     {
      "name": "James Cook III",
      "pos": "RB",
-     "value": 47,
-     "baselineValue": 53,
+     "value": 46,
+     "baselineValue": 52,
      "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -11354,7 +11354,7 @@
      "value": 42,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
+     "projection": 13.76,
      "projectionWeek": 9
     },
     {
@@ -11363,14 +11363,14 @@
      "value": 41,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
      "name": "Chase Brown",
      "pos": "RB",
-     "value": 39,
-     "baselineValue": 45,
+     "value": 40,
+     "baselineValue": 46,
      "sheetValue": 47,
      "projection": 14.22,
      "projectionWeek": 9
@@ -11561,7 +11561,7 @@
      "value": 21,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -11912,7 +11912,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -11993,7 +11993,7 @@
      "value": 3,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -12278,19 +12278,19 @@
     ],
     [
      53,
+     "Jonathan Taylor",
      "",
      "",
-     "Amon-Ra St. Brown",
      "",
      "",
      "",
      ""
     ],
     [
-     52,
-     "Jonathan Taylor",
+     53,
      "",
      "",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -12318,16 +12318,6 @@
     ],
     [
      43,
-     "James Cook III",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     43,
      "Javonte Williams",
      "",
      "",
@@ -12343,6 +12333,16 @@
      "",
      "",
      "Trey McBride",
+     "",
+     ""
+    ],
+    [
+     42,
+     "James Cook III",
+     "",
+     "",
+     "",
+     "",
      "",
      ""
     ],
@@ -13312,21 +13312,21 @@
      "projectionWeek": 9
     },
     {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
+     "value": 53,
+     "baselineValue": 61,
+     "sheetValue": 61,
+     "projection": 16.11,
+     "projectionWeek": 9
+    },
+    {
      "name": "Amon-Ra St. Brown",
      "pos": "WR",
      "value": 53,
      "baselineValue": 58,
      "sheetValue": 60,
      "projection": 15.13,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jonathan Taylor",
-     "pos": "RB",
-     "value": 52,
-     "baselineValue": 60,
-     "sheetValue": 61,
-     "projection": 16.11,
      "projectionWeek": 9
     },
     {
@@ -13344,16 +13344,7 @@
      "value": 45,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
-     "projectionWeek": 9
-    },
-    {
-     "name": "James Cook III",
-     "pos": "RB",
-     "value": 43,
-     "baselineValue": 53,
-     "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 13.76,
      "projectionWeek": 9
     },
     {
@@ -13375,10 +13366,19 @@
      "projectionWeek": 9
     },
     {
+     "name": "James Cook III",
+     "pos": "RB",
+     "value": 42,
+     "baselineValue": 52,
+     "sheetValue": 60,
+     "projection": 14.05,
+     "projectionWeek": 9
+    },
+    {
      "name": "Chase Brown",
      "pos": "RB",
      "value": 42,
-     "baselineValue": 45,
+     "baselineValue": 46,
      "sheetValue": 47,
      "projection": 14.22,
      "projectionWeek": 9
@@ -13416,7 +13416,7 @@
      "value": 38,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -13560,7 +13560,7 @@
      "value": 27,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -13893,7 +13893,7 @@
      "value": 9,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -14046,7 +14046,7 @@
      "value": 1,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -14286,19 +14286,19 @@
     ],
     [
      55,
+     "Jonathan Taylor",
      "",
      "",
-     "Amon-Ra St. Brown",
      "",
      "",
      "",
      ""
     ],
     [
-     54,
-     "Jonathan Taylor",
+     55,
      "",
      "",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -14346,21 +14346,21 @@
     ],
     [
      43,
-     "",
-     "",
-     "",
-     "",
-     "Trey McBride",
-     "",
-     ""
-    ],
-    [
-     42,
      "Chase Brown",
      "",
      "",
      "",
      "",
+     "",
+     ""
+    ],
+    [
+     43,
+     "",
+     "",
+     "",
+     "",
+     "Trey McBride",
      "",
      ""
     ],
@@ -15320,21 +15320,21 @@
      "projectionWeek": 9
     },
     {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
+     "value": 55,
+     "baselineValue": 61,
+     "sheetValue": 61,
+     "projection": 16.11,
+     "projectionWeek": 9
+    },
+    {
      "name": "Amon-Ra St. Brown",
      "pos": "WR",
      "value": 55,
      "baselineValue": 58,
      "sheetValue": 60,
      "projection": 15.13,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jonathan Taylor",
-     "pos": "RB",
-     "value": 54,
-     "baselineValue": 60,
-     "sheetValue": 61,
-     "projection": 16.11,
      "projectionWeek": 9
     },
     {
@@ -15352,16 +15352,16 @@
      "value": 45,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
+     "projection": 13.76,
      "projectionWeek": 9
     },
     {
      "name": "James Cook III",
      "pos": "RB",
      "value": 43,
-     "baselineValue": 53,
+     "baselineValue": 52,
      "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -15374,21 +15374,21 @@
      "projectionWeek": 9
     },
     {
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 43,
+     "baselineValue": 46,
+     "sheetValue": 47,
+     "projection": 14.22,
+     "projectionWeek": 9
+    },
+    {
      "name": "Trey McBride",
      "pos": "TE",
      "value": 43,
      "baselineValue": 45.142857142857146,
      "sheetValue": 30,
      "projection": 11.93,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Chase Brown",
-     "pos": "RB",
-     "value": 42,
-     "baselineValue": 45,
-     "sheetValue": 47,
-     "projection": 14.22,
      "projectionWeek": 9
     },
     {
@@ -15424,7 +15424,7 @@
      "value": 37,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -15568,7 +15568,7 @@
      "value": 25,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -15901,7 +15901,7 @@
      "value": 7,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -16054,7 +16054,7 @@
      "value": 1,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -16294,19 +16294,19 @@
     ],
     [
      57,
+     "Jonathan Taylor",
      "",
      "",
-     "Amon-Ra St. Brown",
      "",
      "",
      "",
      ""
     ],
     [
-     56,
-     "Jonathan Taylor",
+     57,
      "",
      "",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -16334,7 +16334,7 @@
     ],
     [
      43,
-     "James Cook III",
+     "Javonte Williams",
      "",
      "",
      "",
@@ -16344,7 +16344,7 @@
     ],
     [
      43,
-     "Javonte Williams",
+     "Chase Brown",
      "",
      "",
      "",
@@ -16364,7 +16364,7 @@
     ],
     [
      42,
-     "Chase Brown",
+     "James Cook III",
      "",
      "",
      "",
@@ -17328,21 +17328,21 @@
      "projectionWeek": 9
     },
     {
+     "name": "Jonathan Taylor",
+     "pos": "RB",
+     "value": 57,
+     "baselineValue": 61,
+     "sheetValue": 61,
+     "projection": 16.11,
+     "projectionWeek": 9
+    },
+    {
      "name": "Amon-Ra St. Brown",
      "pos": "WR",
      "value": 57,
      "baselineValue": 58,
      "sheetValue": 60,
      "projection": 15.13,
-     "projectionWeek": 9
-    },
-    {
-     "name": "Jonathan Taylor",
-     "pos": "RB",
-     "value": 56,
-     "baselineValue": 60,
-     "sheetValue": 61,
-     "projection": 16.11,
      "projectionWeek": 9
     },
     {
@@ -17360,16 +17360,7 @@
      "value": 45,
      "baselineValue": 48,
      "sheetValue": 53,
-     "projection": 13.83,
-     "projectionWeek": 9
-    },
-    {
-     "name": "James Cook III",
-     "pos": "RB",
-     "value": 43,
-     "baselineValue": 53,
-     "sheetValue": 60,
-     "projection": 14.39,
+     "projection": 13.76,
      "projectionWeek": 9
     },
     {
@@ -17382,6 +17373,15 @@
      "projectionWeek": 9
     },
     {
+     "name": "Chase Brown",
+     "pos": "RB",
+     "value": 43,
+     "baselineValue": 46,
+     "sheetValue": 47,
+     "projection": 14.22,
+     "projectionWeek": 9
+    },
+    {
      "name": "Trey McBride",
      "pos": "TE",
      "value": 43,
@@ -17391,12 +17391,12 @@
      "projectionWeek": 9
     },
     {
-     "name": "Chase Brown",
+     "name": "James Cook III",
      "pos": "RB",
      "value": 42,
-     "baselineValue": 45,
-     "sheetValue": 47,
-     "projection": 14.22,
+     "baselineValue": 52,
+     "sheetValue": 60,
+     "projection": 14.05,
      "projectionWeek": 9
     },
     {
@@ -17432,7 +17432,7 @@
      "value": 37,
      "baselineValue": 46.27142857142857,
      "sheetValue": 36,
-     "projection": 21.2,
+     "projection": 21.15,
      "projectionWeek": 9
     },
     {
@@ -17576,7 +17576,7 @@
      "value": 23,
      "baselineValue": 25.957142857142856,
      "sheetValue": 3,
-     "projection": 6.62,
+     "projection": 6.53,
      "projectionWeek": 9
     },
     {
@@ -17927,7 +17927,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 10,
-     "projection": 8.43,
+     "projection": 8.38,
      "projectionWeek": 9
     },
     {
@@ -18035,7 +18035,7 @@
      "value": 1,
      "baselineValue": 5,
      "sheetValue": 6,
-     "projection": 7.3,
+     "projection": 7.27,
      "projectionWeek": 9
     },
     {
@@ -18286,17 +18286,17 @@
   },
   "Jonathan Taylor": {
    "pos": "RB",
-   "baselineValue": 60,
+   "baselineValue": 61,
    "values": {
-    "Standard_8": 50,
-    "Standard_10": 52,
-    "Standard_12": 54,
-    "HalfPPR_8": 51,
-    "HalfPPR_10": 53,
-    "HalfPPR_12": 55,
-    "FullPPR_8": 52,
-    "FullPPR_10": 54,
-    "FullPPR_12": 56
+    "Standard_8": 51,
+    "Standard_10": 53,
+    "Standard_12": 55,
+    "HalfPPR_8": 52,
+    "HalfPPR_10": 54,
+    "HalfPPR_12": 56,
+    "FullPPR_8": 53,
+    "FullPPR_10": 55,
+    "FullPPR_12": 57
    },
    "sheetValue": 61
   },
@@ -18334,17 +18334,17 @@
   },
   "James Cook III": {
    "pos": "RB",
-   "baselineValue": 53,
+   "baselineValue": 52,
    "values": {
     "Standard_8": 48,
-    "Standard_10": 50,
-    "Standard_12": 51,
-    "HalfPPR_8": 46,
-    "HalfPPR_10": 47,
-    "HalfPPR_12": 47,
-    "FullPPR_8": 43,
+    "Standard_10": 49,
+    "Standard_12": 50,
+    "HalfPPR_8": 45,
+    "HalfPPR_10": 46,
+    "HalfPPR_12": 46,
+    "FullPPR_8": 42,
     "FullPPR_10": 43,
-    "FullPPR_12": 43
+    "FullPPR_12": 42
    },
    "sheetValue": 60
   },
@@ -18430,17 +18430,17 @@
   },
   "Chase Brown": {
    "pos": "RB",
-   "baselineValue": 45,
+   "baselineValue": 46,
    "values": {
-    "Standard_8": 38,
-    "Standard_10": 38,
-    "Standard_12": 37,
-    "HalfPPR_8": 40,
-    "HalfPPR_10": 40,
-    "HalfPPR_12": 39,
+    "Standard_8": 39,
+    "Standard_10": 39,
+    "Standard_12": 38,
+    "HalfPPR_8": 41,
+    "HalfPPR_10": 41,
+    "HalfPPR_12": 40,
     "FullPPR_8": 42,
-    "FullPPR_10": 42,
-    "FullPPR_12": 42
+    "FullPPR_10": 43,
+    "FullPPR_12": 43
    },
    "sheetValue": 47
   },

@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T08:37:39Z",
+ "generatedAt": "2026-11-09T19:59:56Z",
  "key": "FullPPR_12",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
@@ -100,19 +100,19 @@
   ],
   [
    57,
+   "Jonathan Taylor",
    "",
    "",
-   "Amon-Ra St. Brown",
    "",
    "",
    "",
    ""
   ],
   [
-   56,
-   "Jonathan Taylor",
+   57,
    "",
    "",
+   "Amon-Ra St. Brown",
    "",
    "",
    "",
@@ -140,7 +140,7 @@
   ],
   [
    43,
-   "James Cook III",
+   "Javonte Williams",
    "",
    "",
    "",
@@ -150,7 +150,7 @@
   ],
   [
    43,
-   "Javonte Williams",
+   "Chase Brown",
    "",
    "",
    "",
@@ -170,7 +170,7 @@
   ],
   [
    42,
-   "Chase Brown",
+   "James Cook III",
    "",
    "",
    "",
@@ -1134,21 +1134,21 @@
    "projectionWeek": 9
   },
   {
+   "name": "Jonathan Taylor",
+   "pos": "RB",
+   "value": 57,
+   "baselineValue": 61,
+   "sheetValue": 61,
+   "projection": 16.11,
+   "projectionWeek": 9
+  },
+  {
    "name": "Amon-Ra St. Brown",
    "pos": "WR",
    "value": 57,
    "baselineValue": 58,
    "sheetValue": 60,
    "projection": 15.13,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Jonathan Taylor",
-   "pos": "RB",
-   "value": 56,
-   "baselineValue": 60,
-   "sheetValue": 61,
-   "projection": 16.11,
    "projectionWeek": 9
   },
   {
@@ -1166,16 +1166,7 @@
    "value": 45,
    "baselineValue": 48,
    "sheetValue": 53,
-   "projection": 13.83,
-   "projectionWeek": 9
-  },
-  {
-   "name": "James Cook III",
-   "pos": "RB",
-   "value": 43,
-   "baselineValue": 53,
-   "sheetValue": 60,
-   "projection": 14.39,
+   "projection": 13.76,
    "projectionWeek": 9
   },
   {
@@ -1188,6 +1179,15 @@
    "projectionWeek": 9
   },
   {
+   "name": "Chase Brown",
+   "pos": "RB",
+   "value": 43,
+   "baselineValue": 46,
+   "sheetValue": 47,
+   "projection": 14.22,
+   "projectionWeek": 9
+  },
+  {
    "name": "Trey McBride",
    "pos": "TE",
    "value": 43,
@@ -1197,12 +1197,12 @@
    "projectionWeek": 9
   },
   {
-   "name": "Chase Brown",
+   "name": "James Cook III",
    "pos": "RB",
    "value": 42,
-   "baselineValue": 45,
-   "sheetValue": 47,
-   "projection": 14.22,
+   "baselineValue": 52,
+   "sheetValue": 60,
+   "projection": 14.05,
    "projectionWeek": 9
   },
   {
@@ -1238,7 +1238,7 @@
    "value": 37,
    "baselineValue": 46.27142857142857,
    "sheetValue": 36,
-   "projection": 21.2,
+   "projection": 21.15,
    "projectionWeek": 9
   },
   {
@@ -1382,7 +1382,7 @@
    "value": 23,
    "baselineValue": 25.957142857142856,
    "sheetValue": 3,
-   "projection": 6.62,
+   "projection": 6.53,
    "projectionWeek": 9
   },
   {
@@ -1733,7 +1733,7 @@
    "value": 5,
    "baselineValue": 7,
    "sheetValue": 10,
-   "projection": 8.43,
+   "projection": 8.38,
    "projectionWeek": 9
   },
   {
@@ -1841,7 +1841,7 @@
    "value": 1,
    "baselineValue": 5,
    "sheetValue": 6,
-   "projection": 7.3,
+   "projection": 7.27,
    "projectionWeek": 9
   },
   {
