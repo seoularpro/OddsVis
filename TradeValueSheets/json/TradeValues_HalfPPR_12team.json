@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-09T19:59:56Z",
+ "generatedAt": "2026-11-10T02:53:17Z",
  "key": "HalfPPR_12",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -139,10 +139,10 @@
    ""
   ],
   [
-   42,
-   "Javonte Williams",
+   46,
    "",
    "",
+   "Justin Jefferson",
    "",
    "",
    "",
@@ -150,9 +150,9 @@
   ],
   [
    42,
+   "Javonte Williams",
    "",
    "",
-   "Justin Jefferson",
    "",
    "",
    "",
@@ -232,16 +232,6 @@
    34,
    "",
    "",
-   "Drake London",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   34,
-   "",
-   "",
    "",
    "",
    "Brock Bowers",
@@ -257,6 +247,16 @@
    "",
    "",
    "Drake Maye"
+  ],
+  [
+   33,
+   "",
+   "",
+   "Drake London",
+   "",
+   "",
+   "",
+   ""
   ],
   [
    31,
@@ -1166,7 +1166,16 @@
    "value": 46,
    "baselineValue": 52,
    "sheetValue": 60,
-   "projection": 14.05,
+   "projection": 14.12,
+   "projectionWeek": 9
+  },
+  {
+   "name": "Justin Jefferson",
+   "pos": "WR",
+   "value": 46,
+   "baselineValue": 52,
+   "sheetValue": 53,
+   "projection": 14.51,
    "projectionWeek": 9
   },
   {
@@ -1179,21 +1188,12 @@
    "projectionWeek": 9
   },
   {
-   "name": "Justin Jefferson",
-   "pos": "WR",
-   "value": 42,
-   "baselineValue": 48,
-   "sheetValue": 53,
-   "projection": 13.76,
-   "projectionWeek": 9
-  },
-  {
    "name": "Josh Allen",
    "pos": "QB",
    "value": 41,
    "baselineValue": 46.27142857142857,
    "sheetValue": 36,
-   "projection": 21.15,
+   "projection": 20.78,
    "projectionWeek": 9
   },
   {
@@ -1251,15 +1251,6 @@
    "projectionWeek": 9
   },
   {
-   "name": "Drake London",
-   "pos": "WR",
-   "value": 34,
-   "baselineValue": 40,
-   "sheetValue": 37,
-   "projection": 13.88,
-   "projectionWeek": 9
-  },
-  {
    "name": "Brock Bowers",
    "pos": "TE",
    "value": 34,
@@ -1275,6 +1266,15 @@
    "baselineValue": 39.5,
    "sheetValue": 11,
    "projection": 18.4,
+   "projectionWeek": 9
+  },
+  {
+   "name": "Drake London",
+   "pos": "WR",
+   "value": 33,
+   "baselineValue": 39,
+   "sheetValue": 37,
+   "projection": 13.88,
    "projectionWeek": 9
   },
   {
@@ -1391,7 +1391,7 @@
    "value": 21,
    "baselineValue": 25.957142857142856,
    "sheetValue": 3,
-   "projection": 6.53,
+   "projection": 6.71,
    "projectionWeek": 9
   },
   {
@@ -1742,7 +1742,7 @@
    "value": 5,
    "baselineValue": 7,
    "sheetValue": 10,
-   "projection": 8.38,
+   "projection": 8.37,
    "projectionWeek": 9
   },
   {
@@ -1823,7 +1823,7 @@
    "value": 3,
    "baselineValue": 5,
    "sheetValue": 6,
-   "projection": 7.27,
+   "projection": 7.21,
    "projectionWeek": 9
   },
   {
