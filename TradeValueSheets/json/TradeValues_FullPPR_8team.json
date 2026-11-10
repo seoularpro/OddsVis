@@ -1,12 +1,12 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-10T02:53:17Z",
+ "generatedAt": "2026-11-10T19:58:21Z",
  "key": "FullPPR_8",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
  "leagueSize": 8,
  "xlsx": "TradeValues_FullPPR_8team.xlsx",
- "projectionWeek": 9,
+ "projectionWeek": 10,
  "positionRow": [
   "",
   "RB",
@@ -39,7 +39,7 @@
    ""
   ],
   [
-   65,
+   63,
    "Bijan Robinson",
    "",
    "",
@@ -49,7 +49,7 @@
    ""
   ],
   [
-   62,
+   63,
    "Christian McCaffrey",
    "",
    "",
@@ -59,10 +59,20 @@
    ""
   ],
   [
-   62,
+   63,
    "",
    "",
    "Puka Nacua",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   61,
+   "",
+   "",
+   "Ja'Marr Chase",
    "",
    "",
    "",
@@ -79,7 +89,7 @@
    ""
   ],
   [
-   59,
+   58,
    "",
    "",
    "Jaxon Smith-Njigba",
@@ -89,27 +99,7 @@
    ""
   ],
   [
-   57,
-   "",
-   "",
-   "Ja'Marr Chase",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   53,
-   "Jonathan Taylor",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   53,
+   55,
    "",
    "",
    "Amon-Ra St. Brown",
@@ -119,7 +109,17 @@
    ""
   ],
   [
-   51,
+   54,
+   "Jonathan Taylor",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   50,
    "",
    "",
    "CeeDee Lamb",
@@ -133,6 +133,16 @@
    "",
    "",
    "Justin Jefferson",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   44,
+   "James Cook III",
+   "",
+   "",
    "",
    "",
    "",
@@ -160,7 +170,7 @@
   ],
   [
    42,
-   "James Cook III",
+   "Derrick Henry",
    "",
    "",
    "",
@@ -169,7 +179,17 @@
    ""
   ],
   [
-   42,
+   41,
+   "D'Andre Swift",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   40,
    "Chase Brown",
    "",
    "",
@@ -180,16 +200,6 @@
   ],
   [
    40,
-   "D'Andre Swift",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   39,
    "",
    "",
    "Chris Olave",
@@ -199,17 +209,7 @@
    ""
   ],
   [
-   38,
-   "",
-   "",
-   "Drake London",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   38,
+   39,
    "",
    "",
    "",
@@ -217,6 +217,26 @@
    "",
    "",
    "Josh Allen"
+  ],
+  [
+   38,
+   "Kyren Williams",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   37,
+   "",
+   "",
+   "A.J. Brown",
+   "",
+   "",
+   "",
+   ""
   ],
   [
    37,
@@ -239,17 +259,7 @@
    ""
   ],
   [
-   35,
-   "Kyren Williams",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   33,
+   36,
    "Ashton Jeanty",
    "",
    "",
@@ -259,24 +269,24 @@
    ""
   ],
   [
-   33,
+   36,
    "",
    "",
-   "Nico Collins",
+   "Drake London",
    "",
    "",
    "",
    ""
   ],
   [
-   32,
-   "",
-   "",
-   "Malik Nabers",
+   34,
    "",
    "",
    "",
-   ""
+   "",
+   "",
+   "",
+   "Drake Maye"
   ],
   [
    32,
@@ -287,16 +297,6 @@
    "",
    "",
    ""
-  ],
-  [
-   32,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Drake Maye"
   ],
   [
    31,
@@ -320,16 +320,6 @@
   ],
   [
    30,
-   "Derrick Henry",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   30,
    "Chuba Hubbard",
    "",
    "",
@@ -339,30 +329,60 @@
    ""
   ],
   [
-   28,
+   30,
+   "Jeremiyah Love",
    "",
    "",
-   "A.J. Brown",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   28,
-   "",
-   "",
-   "George Pickens",
    "",
    "",
    "",
    ""
   ],
   [
-   28,
+   30,
+   "",
+   "",
+   "Nico Collins",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   30,
+   "",
+   "",
+   "Malik Nabers",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   29,
    "",
    "",
    "DeVonta Smith",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   27,
+   "Bhayshul Tuten",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   27,
+   "Jaylen Warren",
+   "",
+   "",
    "",
    "",
    "",
@@ -379,17 +399,27 @@
    ""
   ],
   [
-   26,
-   "Bhayshul Tuten",
+   27,
    "",
    "",
+   "George Pickens",
    "",
    "",
    "",
    ""
   ],
   [
-   26,
+   25,
+   "",
+   "",
+   "Zay Flowers",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   25,
    "",
    "",
    "Rashee Rice",
@@ -399,8 +429,8 @@
    ""
   ],
   [
-   24,
-   "Bucky Irving",
+   23,
+   "Breece Hall",
    "",
    "",
    "",
@@ -410,23 +440,23 @@
   ],
   [
    23,
-   "Jaylen Warren",
    "",
    "",
    "",
    "",
+   "George Kittle",
    "",
    ""
   ],
   [
-   22,
-   "Breece Hall",
+   23,
    "",
    "",
    "",
    "",
    "",
-   ""
+   "",
+   "Lamar Jackson"
   ],
   [
    22,
@@ -439,7 +469,7 @@
    ""
   ],
   [
-   22,
+   21,
    "",
    "",
    "Garrett Wilson",
@@ -449,28 +479,8 @@
    ""
   ],
   [
-   21,
-   "",
-   "",
-   "",
-   "",
-   "George Kittle",
-   "",
-   ""
-  ],
-  [
    20,
-   "Jeremiyah Love",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   20,
-   "Josh Jacobs",
+   "Travis Etienne Jr.",
    "",
    "",
    "",
@@ -490,7 +500,7 @@
   ],
   [
    19,
-   "Travis Etienne Jr.",
+   "Bucky Irving",
    "",
    "",
    "",
@@ -499,10 +509,10 @@
    ""
   ],
   [
-   19,
+   18,
+   "Omarion Hampton",
    "",
    "",
-   "Luther Burden III",
    "",
    "",
    "",
@@ -522,7 +532,7 @@
    18,
    "",
    "",
-   "Matthew Golden",
+   "Luther Burden III",
    "",
    "",
    "",
@@ -539,40 +549,10 @@
    ""
   ],
   [
-   17,
-   "",
-   "",
-   "Ladd McConkey",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   17,
-   "",
-   "",
-   "Zay Flowers",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
    16,
-   "Omarion Hampton",
    "",
    "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   15,
-   "Cam Skattebo",
-   "",
-   "",
+   "Matthew Golden",
    "",
    "",
    "",
@@ -580,46 +560,6 @@
   ],
   [
    15,
-   "Quinshon Judkins",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   15,
-   "",
-   "",
-   "",
-   "",
-   "Tyler Warren",
-   "",
-   ""
-  ],
-  [
-   15,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Lamar Jackson"
-  ],
-  [
-   15,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Joe Burrow"
-  ],
-  [
-   14,
    "David Montgomery",
    "",
    "",
@@ -629,27 +569,7 @@
    ""
   ],
   [
-   14,
-   "",
-   "",
-   "Mike Evans",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   13,
-   "",
-   "",
-   "DK Metcalf",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   13,
+   15,
    "",
    "",
    "",
@@ -659,7 +579,7 @@
    ""
   ],
   [
-   12,
+   14,
    "Tony Pollard",
    "",
    "",
@@ -669,27 +589,27 @@
    ""
   ],
   [
-   12,
+   14,
    "",
    "",
-   "Emeka Egbuka",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   12,
-   "",
-   "",
-   "Terry McLaurin",
+   "Ladd McConkey",
    "",
    "",
    "",
    ""
   ],
   [
-   11,
+   14,
+   "",
+   "",
+   "",
+   "",
+   "Tyler Warren",
+   "",
+   ""
+  ],
+  [
+   13,
    "MarShawn Lloyd",
    "",
    "",
@@ -699,8 +619,8 @@
    ""
   ],
   [
-   10,
-   "Woody Marks",
+   13,
+   "Josh Jacobs",
    "",
    "",
    "",
@@ -709,17 +629,67 @@
    ""
   ],
   [
-   10,
+   13,
+   "Cam Skattebo",
    "",
    "",
-   "Jameson Williams",
    "",
    "",
    "",
    ""
   ],
   [
-   10,
+   13,
+   "",
+   "",
+   "Terry McLaurin",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   12,
+   "",
+   "",
+   "Mike Evans",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   12,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Joe Burrow"
+  ],
+  [
+   11,
+   "TreVeyon Henderson",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   11,
+   "Quinshon Judkins",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   11,
    "",
    "",
    "Carnell Tate",
@@ -729,37 +699,7 @@
    ""
   ],
   [
-   9,
-   "",
-   "",
-   "De'Zhaun Stribling",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   9,
-   "",
-   "",
-   "DJ Moore",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   9,
-   "",
-   "",
-   "Stefon Diggs",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   8,
+   10,
    "J.K. Dobbins",
    "",
    "",
@@ -769,8 +709,58 @@
    ""
   ],
   [
-   8,
+   10,
+   "",
+   "",
+   "Emeka Egbuka",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   10,
+   "",
+   "",
+   "DK Metcalf",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   9,
    "Jadarian Price",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   9,
+   "",
+   "",
+   "Jameson Williams",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   9,
+   "",
+   "",
+   "",
+   "",
+   "Isaiah Likely",
+   "",
+   ""
+  ],
+  [
+   8,
+   "Woody Marks",
    "",
    "",
    "",
@@ -782,7 +772,17 @@
    8,
    "",
    "",
-   "Alec Pierce",
+   "Rome Odunze",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   7,
+   "",
+   "",
+   "De'Zhaun Stribling",
    "",
    "",
    "",
@@ -802,7 +802,7 @@
    6,
    "",
    "",
-   "Rome Odunze",
+   "DJ Moore",
    "",
    "",
    "",
@@ -812,17 +812,7 @@
    6,
    "",
    "",
-   "KC Concepcion",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   6,
-   "",
-   "",
-   "Jayden Reed",
+   "Stefon Diggs",
    "",
    "",
    "",
@@ -852,34 +842,14 @@
    5,
    "",
    "",
-   "",
-   "",
-   "",
-   "",
-   "Jayden Daniels"
-  ],
-  [
-   5,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Dak Prescott"
-  ],
-  [
-   4,
-   "TreVeyon Henderson",
-   "",
-   "",
+   "Alec Pierce",
    "",
    "",
    "",
    ""
   ],
   [
-   3,
+   5,
    "",
    "",
    "Brian Thomas Jr.",
@@ -889,7 +859,7 @@
    ""
   ],
   [
-   3,
+   5,
    "",
    "",
    "Marvin Harrison Jr.",
@@ -899,117 +869,17 @@
    ""
   ],
   [
+   5,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Jayden Daniels"
+  ],
+  [
    3,
-   "",
-   "",
-   "",
-   "",
-   "Isaiah Likely",
-   "",
-   ""
-  ],
-  [
-   1,
-   "Jordan Mason",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "Jonathon Brooks",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "Blake Corum",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "Mike Washington Jr.",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "Rico Dowdle",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "Jacory Croskey-Merritt",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "",
-   "",
-   "Quentin Johnston",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "",
-   "",
-   "Chris Godwin Jr.",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "",
-   "",
-   "Jordyn Tyson",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
-   "",
-   "",
-   "Ja'Kobi Lane",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   1,
    "",
    "",
    "",
@@ -1019,7 +889,137 @@
    ""
   ],
   [
-   1,
+   3,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Dak Prescott"
+  ],
+  [
+   2,
+   "Jordan Mason",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "Jonathon Brooks",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "Blake Corum",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "Mike Washington Jr.",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "Rico Dowdle",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "Jacory Croskey-Merritt",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "KC Concepcion",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "Jayden Reed",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "Quentin Johnston",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "Chris Godwin Jr.",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "Jordyn Tyson",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "Ja'Kobi Lane",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   2,
    "",
    "",
    "",
@@ -1029,7 +1029,7 @@
    ""
   ],
   [
-   1,
+   2,
    "",
    "",
    "",
@@ -1039,17 +1039,7 @@
    "Jalen Hurts"
   ],
   [
-   1,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Justin Herbert"
-  ],
-  [
-   1,
+   2,
    "",
    "",
    "",
@@ -1059,7 +1049,17 @@
    "Trevor Lawrence"
   ],
   [
-   1,
+   2,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Justin Herbert"
+  ],
+  [
+   2,
    "",
    "",
    "",
@@ -1074,7 +1074,7 @@
    "name": "Jahmyr Gibbs",
    "pos": "RB",
    "value": 68,
-   "baselineValue": 79,
+   "baselineValue": 76,
    "sheetValue": 70,
    "projection": 23.37,
    "projectionWeek": 9
@@ -1082,359 +1082,386 @@
   {
    "name": "Bijan Robinson",
    "pos": "RB",
-   "value": 65,
-   "baselineValue": 75,
+   "value": 63,
+   "baselineValue": 70,
    "sheetValue": 70,
-   "projection": 20.91,
-   "projectionWeek": 9
+   "projection": 19.12,
+   "projectionWeek": 10
   },
   {
    "name": "Christian McCaffrey",
    "pos": "RB",
-   "value": 62,
-   "baselineValue": 71,
+   "value": 63,
+   "baselineValue": 70,
    "sheetValue": 66,
-   "projection": 20.05,
-   "projectionWeek": 9
+   "projection": 19.77,
+   "projectionWeek": 10
   },
   {
    "name": "Puka Nacua",
    "pos": "WR",
-   "value": 62,
-   "baselineValue": 69,
+   "value": 63,
+   "baselineValue": 68,
    "sheetValue": 65,
    "projection": 18.05,
    "projectionWeek": 9
   },
   {
+   "name": "Ja'Marr Chase",
+   "pos": "WR",
+   "value": 61,
+   "baselineValue": 67,
+   "sheetValue": 64,
+   "projection": 17.71,
+   "projectionWeek": 10
+  },
+  {
    "name": "Kenneth Walker III",
    "pos": "RB",
    "value": 59,
-   "baselineValue": 69.97142857142858,
+   "baselineValue": 67.31428571428572,
    "sheetValue": 60,
-   "projection": 18.88,
-   "projectionWeek": 9
+   "projection": 18.76,
+   "projectionWeek": 10
   },
   {
    "name": "Jaxon Smith-Njigba",
    "pos": "WR",
-   "value": 59,
-   "baselineValue": 65,
-   "sheetValue": 60,
-   "projection": 17.52,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Ja'Marr Chase",
-   "pos": "WR",
-   "value": 57,
-   "baselineValue": 63,
-   "sheetValue": 64,
-   "projection": 15.49,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Jonathan Taylor",
-   "pos": "RB",
-   "value": 53,
+   "value": 58,
    "baselineValue": 61,
-   "sheetValue": 61,
-   "projection": 16.11,
-   "projectionWeek": 9
+   "sheetValue": 60,
+   "projection": 16.17,
+   "projectionWeek": 10
   },
   {
    "name": "Amon-Ra St. Brown",
    "pos": "WR",
-   "value": 53,
+   "value": 55,
    "baselineValue": 58,
    "sheetValue": 60,
    "projection": 15.13,
    "projectionWeek": 9
   },
   {
+   "name": "Jonathan Taylor",
+   "pos": "RB",
+   "value": 54,
+   "baselineValue": 60,
+   "sheetValue": 61,
+   "projection": 16.11,
+   "projectionWeek": 9
+  },
+  {
    "name": "CeeDee Lamb",
    "pos": "WR",
-   "value": 51,
-   "baselineValue": 57,
+   "value": 50,
+   "baselineValue": 54,
    "sheetValue": 47,
-   "projection": 17.35,
-   "projectionWeek": 9
+   "projection": 16.31,
+   "projectionWeek": 10
   },
   {
    "name": "Justin Jefferson",
    "pos": "WR",
    "value": 48,
-   "baselineValue": 52,
+   "baselineValue": 51,
    "sheetValue": 53,
    "projection": 14.51,
+   "projectionWeek": 9
+  },
+  {
+   "name": "James Cook III",
+   "pos": "RB",
+   "value": 44,
+   "baselineValue": 51,
+   "sheetValue": 60,
+   "projection": 14.12,
    "projectionWeek": 9
   },
   {
    "name": "Javonte Williams",
    "pos": "RB",
    "value": 43,
-   "baselineValue": 48,
+   "baselineValue": 46,
    "sheetValue": 40,
-   "projection": 15.5,
-   "projectionWeek": 9
+   "projection": 15.97,
+   "projectionWeek": 10
   },
   {
    "name": "Trey McBride",
    "pos": "TE",
    "value": 43,
-   "baselineValue": 45.142857142857146,
+   "baselineValue": 43.42857142857143,
    "sheetValue": 30,
-   "projection": 11.93,
-   "projectionWeek": 9
+   "projection": 12.5,
+   "projectionWeek": 10
   },
   {
-   "name": "James Cook III",
+   "name": "Derrick Henry",
    "pos": "RB",
    "value": 42,
-   "baselineValue": 52,
-   "sheetValue": 60,
-   "projection": 14.12,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Chase Brown",
-   "pos": "RB",
-   "value": 42,
-   "baselineValue": 46,
-   "sheetValue": 47,
-   "projection": 14.22,
-   "projectionWeek": 9
+   "baselineValue": 49,
+   "sheetValue": 55,
+   "projection": 14.19,
+   "projectionWeek": 10
   },
   {
    "name": "D'Andre Swift",
    "pos": "RB",
-   "value": 40,
+   "value": 41,
    "baselineValue": 44,
    "sheetValue": 36,
    "projection": 15.47,
    "projectionWeek": 9
   },
   {
-   "name": "Chris Olave",
-   "pos": "WR",
-   "value": 39,
-   "baselineValue": 40,
-   "sheetValue": 41,
-   "projection": 13.05,
-   "projectionWeek": 9
+   "name": "Chase Brown",
+   "pos": "RB",
+   "value": 40,
+   "baselineValue": 41,
+   "sheetValue": 47,
+   "projection": 13.53,
+   "projectionWeek": 10
   },
   {
-   "name": "Drake London",
+   "name": "Chris Olave",
    "pos": "WR",
-   "value": 38,
-   "baselineValue": 39,
-   "sheetValue": 37,
-   "projection": 13.88,
-   "projectionWeek": 9
+   "value": 40,
+   "baselineValue": 40,
+   "sheetValue": 41,
+   "projection": 13.56,
+   "projectionWeek": 10
   },
   {
    "name": "Josh Allen",
    "pos": "QB",
-   "value": 38,
-   "baselineValue": 46.27142857142857,
+   "value": 39,
+   "baselineValue": 44.51428571428571,
    "sheetValue": 36,
    "projection": 20.78,
    "projectionWeek": 9
   },
   {
-   "name": "Brock Bowers",
-   "pos": "TE",
-   "value": 37,
-   "baselineValue": 39.5,
-   "sheetValue": 37,
-   "projection": 14.62,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Saquon Barkley",
-   "pos": "RB",
-   "value": 36,
-   "baselineValue": 39.5,
-   "sheetValue": 55,
-   "projection": 10.31,
-   "projectionWeek": 9
-  },
-  {
    "name": "Kyren Williams",
    "pos": "RB",
-   "value": 35,
+   "value": 38,
    "baselineValue": 43,
    "sheetValue": 36,
    "projection": 14.59,
    "projectionWeek": 9
   },
   {
+   "name": "A.J. Brown",
+   "pos": "WR",
+   "value": 37,
+   "baselineValue": 38,
+   "sheetValue": 38,
+   "projection": null,
+   "projectionWeek": null
+  },
+  {
+   "name": "Brock Bowers",
+   "pos": "TE",
+   "value": 37,
+   "baselineValue": 38,
+   "sheetValue": 37,
+   "projection": 14.03,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Saquon Barkley",
+   "pos": "RB",
+   "value": 36,
+   "baselineValue": 38,
+   "sheetValue": 55,
+   "projection": 10.31,
+   "projectionWeek": 9
+  },
+  {
    "name": "Ashton Jeanty",
    "pos": "RB",
-   "value": 33,
-   "baselineValue": 35,
+   "value": 36,
+   "baselineValue": 37,
    "sheetValue": 55,
-   "projection": 11.22,
-   "projectionWeek": 9
+   "projection": 11.74,
+   "projectionWeek": 10
   },
   {
-   "name": "Nico Collins",
+   "name": "Drake London",
    "pos": "WR",
-   "value": 33,
-   "baselineValue": 35,
-   "sheetValue": 36,
-   "projection": 12.11,
-   "projectionWeek": 9
+   "value": 36,
+   "baselineValue": 36,
+   "sheetValue": 37,
+   "projection": 12.82,
+   "projectionWeek": 10
   },
   {
-   "name": "Malik Nabers",
-   "pos": "WR",
-   "value": 32,
-   "baselineValue": 33,
-   "sheetValue": 30,
-   "projection": 12.61,
-   "projectionWeek": 9
+   "name": "Drake Maye",
+   "pos": "QB",
+   "value": 34,
+   "baselineValue": 38,
+   "sheetValue": 11,
+   "projection": 20.59,
+   "projectionWeek": 10
   },
   {
    "name": "Parker Washington",
    "pos": "WR",
    "value": 32,
-   "baselineValue": 31.6,
+   "baselineValue": 30.4,
    "sheetValue": 13,
-   "projection": 11.44,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Drake Maye",
-   "pos": "QB",
-   "value": 32,
-   "baselineValue": 39.5,
-   "sheetValue": 11,
-   "projection": 18.4,
-   "projectionWeek": 9
+   "projection": 13.11,
+   "projectionWeek": 10
   },
   {
    "name": "Tee Higgins",
    "pos": "WR",
    "value": 31,
-   "baselineValue": 31.6,
+   "baselineValue": 30.4,
    "sheetValue": 25,
-   "projection": 14.5,
-   "projectionWeek": 9
+   "projection": 14.2,
+   "projectionWeek": 10
   },
   {
    "name": "Tetairoa McMillan",
    "pos": "WR",
    "value": 31,
-   "baselineValue": 31.6,
+   "baselineValue": 30.4,
    "sheetValue": 18,
-   "projection": 11.19,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Derrick Henry",
-   "pos": "RB",
-   "value": 30,
-   "baselineValue": 37,
-   "sheetValue": 55,
-   "projection": 11.68,
-   "projectionWeek": 9
+   "projection": 12.31,
+   "projectionWeek": 10
   },
   {
    "name": "Chuba Hubbard",
    "pos": "RB",
    "value": 30,
-   "baselineValue": 31.6,
+   "baselineValue": 30.4,
    "sheetValue": 2,
-   "projection": 14.43,
-   "projectionWeek": 9
+   "projection": 16.75,
+   "projectionWeek": 10
   },
   {
-   "name": "A.J. Brown",
-   "pos": "WR",
-   "value": 28,
-   "baselineValue": 28,
-   "sheetValue": 38,
-   "projection": 10.06,
-   "projectionWeek": 8
+   "name": "Jeremiyah Love",
+   "pos": "RB",
+   "value": 30,
+   "baselineValue": 30,
+   "sheetValue": 30,
+   "projection": null,
+   "projectionWeek": null
   },
   {
-   "name": "George Pickens",
+   "name": "Nico Collins",
    "pos": "WR",
-   "value": 28,
-   "baselineValue": 28,
-   "sheetValue": 34,
-   "projection": 10.77,
-   "projectionWeek": 9
+   "value": 30,
+   "baselineValue": 30,
+   "sheetValue": 36,
+   "projection": 11.21,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Malik Nabers",
+   "pos": "WR",
+   "value": 30,
+   "baselineValue": 30,
+   "sheetValue": 30,
+   "projection": 12.45,
+   "projectionWeek": 10
   },
   {
    "name": "DeVonta Smith",
    "pos": "WR",
-   "value": 28,
+   "value": 29,
    "baselineValue": 27,
    "sheetValue": 27,
    "projection": null,
    "projectionWeek": null
   },
   {
+   "name": "Bhayshul Tuten",
+   "pos": "RB",
+   "value": 27,
+   "baselineValue": 30.4,
+   "sheetValue": 13,
+   "projection": 13.24,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Jaylen Warren",
+   "pos": "RB",
+   "value": 27,
+   "baselineValue": 25,
+   "sheetValue": 10,
+   "projection": 14.23,
+   "projectionWeek": 10
+  },
+  {
    "name": "Aaron Jones Sr.",
    "pos": "RB",
    "value": 27,
-   "baselineValue": 25.957142857142856,
+   "baselineValue": 24.97142857142857,
    "sheetValue": 3,
    "projection": 6.71,
    "projectionWeek": 9
   },
   {
-   "name": "Bhayshul Tuten",
-   "pos": "RB",
-   "value": 26,
-   "baselineValue": 31.6,
-   "sheetValue": 13,
-   "projection": 11.67,
+   "name": "George Pickens",
+   "pos": "WR",
+   "value": 27,
+   "baselineValue": 26,
+   "sheetValue": 34,
+   "projection": 10.77,
    "projectionWeek": 9
+  },
+  {
+   "name": "Zay Flowers",
+   "pos": "WR",
+   "value": 25,
+   "baselineValue": 24,
+   "sheetValue": 25,
+   "projection": 11.52,
+   "projectionWeek": 10
   },
   {
    "name": "Rashee Rice",
    "pos": "WR",
-   "value": 26,
-   "baselineValue": 25,
+   "value": 25,
+   "baselineValue": 22,
    "sheetValue": 26,
    "projection": 11.21,
    "projectionWeek": 9
   },
   {
-   "name": "Bucky Irving",
-   "pos": "RB",
-   "value": 24,
-   "baselineValue": 24,
-   "sheetValue": 18,
-   "projection": 12.67,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Jaylen Warren",
-   "pos": "RB",
-   "value": 23,
-   "baselineValue": 22,
-   "sheetValue": 10,
-   "projection": 13.72,
-   "projectionWeek": 8
-  },
-  {
    "name": "Breece Hall",
    "pos": "RB",
-   "value": 22,
+   "value": 23,
    "baselineValue": 22,
    "sheetValue": 37,
    "projection": 8.81,
    "projectionWeek": 9
   },
   {
+   "name": "George Kittle",
+   "pos": "TE",
+   "value": 23,
+   "baselineValue": 24.97142857142857,
+   "sheetValue": 2,
+   "projection": 13.99,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Lamar Jackson",
+   "pos": "QB",
+   "value": 23,
+   "baselineValue": 25,
+   "sheetValue": 25,
+   "projection": null,
+   "projectionWeek": null
+  },
+  {
    "name": "Rhamondre Stevenson",
    "pos": "RB",
    "value": 22,
-   "baselineValue": 21,
+   "baselineValue": 20,
    "sheetValue": 7,
    "projection": 13.76,
    "projectionWeek": 9
@@ -1442,64 +1469,46 @@
   {
    "name": "Garrett Wilson",
    "pos": "WR",
-   "value": 22,
-   "baselineValue": 20,
+   "value": 21,
+   "baselineValue": 18,
    "sheetValue": 23,
    "projection": 10.55,
    "projectionWeek": 9
   },
   {
-   "name": "George Kittle",
-   "pos": "TE",
-   "value": 21,
-   "baselineValue": 25.957142857142856,
-   "sheetValue": 2,
-   "projection": 14.34,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Jeremiyah Love",
-   "pos": "RB",
-   "value": 20,
-   "baselineValue": 19,
-   "sheetValue": 30,
-   "projection": 9.52,
-   "projectionWeek": 8
-  },
-  {
-   "name": "Josh Jacobs",
-   "pos": "RB",
-   "value": 20,
-   "baselineValue": 19,
-   "sheetValue": 8,
-   "projection": 12.87,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Christian Watson",
-   "pos": "WR",
-   "value": 20,
-   "baselineValue": 19,
-   "sheetValue": 12,
-   "projection": 11.91,
-   "projectionWeek": 9
-  },
-  {
    "name": "Travis Etienne Jr.",
    "pos": "RB",
-   "value": 19,
+   "value": 20,
    "baselineValue": 17,
    "sheetValue": 17,
    "projection": null,
    "projectionWeek": null
   },
   {
-   "name": "Luther Burden III",
+   "name": "Christian Watson",
    "pos": "WR",
+   "value": 20,
+   "baselineValue": 18,
+   "sheetValue": 12,
+   "projection": 11.91,
+   "projectionWeek": 9
+  },
+  {
+   "name": "Bucky Irving",
+   "pos": "RB",
    "value": 19,
-   "baselineValue": 17,
-   "sheetValue": 10,
-   "projection": 11.62,
+   "baselineValue": 18,
+   "sheetValue": 18,
+   "projection": 12.67,
+   "projectionWeek": 9
+  },
+  {
+   "name": "Omarion Hampton",
+   "pos": "RB",
+   "value": 18,
+   "baselineValue": 19.542857142857144,
+   "sheetValue": 44,
+   "projection": 6.91,
    "projectionWeek": 9
   },
   {
@@ -1512,12 +1521,12 @@
    "projectionWeek": 9
   },
   {
-   "name": "Matthew Golden",
+   "name": "Luther Burden III",
    "pos": "WR",
    "value": 18,
    "baselineValue": 16,
-   "sheetValue": 5,
-   "projection": 11.96,
+   "sheetValue": 10,
+   "projection": 11.62,
    "projectionWeek": 9
   },
   {
@@ -1530,108 +1539,27 @@
    "projectionWeek": null
   },
   {
-   "name": "Ladd McConkey",
+   "name": "Matthew Golden",
    "pos": "WR",
-   "value": 17,
-   "baselineValue": 16,
-   "sheetValue": 23,
-   "projection": 9.13,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Zay Flowers",
-   "pos": "WR",
-   "value": 17,
-   "baselineValue": 15,
-   "sheetValue": 25,
-   "projection": 8.83,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Omarion Hampton",
-   "pos": "RB",
    "value": 16,
-   "baselineValue": 20.314285714285713,
-   "sheetValue": 44,
-   "projection": 6.91,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Cam Skattebo",
-   "pos": "RB",
-   "value": 15,
    "baselineValue": 14,
-   "sheetValue": 15,
-   "projection": 11.31,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Quinshon Judkins",
-   "pos": "RB",
-   "value": 15,
-   "baselineValue": 14,
-   "sheetValue": 14,
-   "projection": 11.55,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Tyler Warren",
-   "pos": "TE",
-   "value": 15,
-   "baselineValue": 13,
-   "sheetValue": 16,
-   "projection": 9.4,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Lamar Jackson",
-   "pos": "QB",
-   "value": 15,
-   "baselineValue": 19,
-   "sheetValue": 25,
-   "projection": 19.53,
-   "projectionWeek": 8
-  },
-  {
-   "name": "Joe Burrow",
-   "pos": "QB",
-   "value": 15,
-   "baselineValue": 19,
-   "sheetValue": 13,
-   "projection": 20.48,
+   "sheetValue": 5,
+   "projection": 11.96,
    "projectionWeek": 9
   },
   {
    "name": "David Montgomery",
    "pos": "RB",
-   "value": 14,
+   "value": 15,
    "baselineValue": 13,
    "sheetValue": 13,
    "projection": null,
    "projectionWeek": null
-  },
-  {
-   "name": "Mike Evans",
-   "pos": "WR",
-   "value": 14,
-   "baselineValue": 13,
-   "sheetValue": 13,
-   "projection": null,
-   "projectionWeek": null
-  },
-  {
-   "name": "DK Metcalf",
-   "pos": "WR",
-   "value": 13,
-   "baselineValue": 11.285714285714286,
-   "sheetValue": 2,
-   "projection": 9.95,
-   "projectionWeek": 8
   },
   {
    "name": "Colston Loveland",
    "pos": "TE",
-   "value": 13,
+   "value": 15,
    "baselineValue": 16,
    "sheetValue": 17,
    "projection": 10.69,
@@ -1640,117 +1568,189 @@
   {
    "name": "Tony Pollard",
    "pos": "RB",
-   "value": 12,
-   "baselineValue": 15.8,
+   "value": 14,
+   "baselineValue": 15.2,
    "sheetValue": 6,
-   "projection": 11.82,
-   "projectionWeek": 8
+   "projection": 12.24,
+   "projectionWeek": 10
   },
   {
-   "name": "Emeka Egbuka",
+   "name": "Ladd McConkey",
    "pos": "WR",
-   "value": 12,
-   "baselineValue": 11,
-   "sheetValue": 18,
-   "projection": 8.79,
+   "value": 14,
+   "baselineValue": 15,
+   "sheetValue": 23,
+   "projection": 9.13,
    "projectionWeek": 9
   },
   {
-   "name": "Terry McLaurin",
-   "pos": "WR",
-   "value": 12,
-   "baselineValue": 10,
-   "sheetValue": 10,
-   "projection": null,
-   "projectionWeek": null
+   "name": "Tyler Warren",
+   "pos": "TE",
+   "value": 14,
+   "baselineValue": 12,
+   "sheetValue": 16,
+   "projection": 9.4,
+   "projectionWeek": 9
   },
   {
    "name": "MarShawn Lloyd",
    "pos": "RB",
-   "value": 11,
+   "value": 13,
    "baselineValue": 14,
    "sheetValue": 14,
    "projection": null,
    "projectionWeek": null
   },
   {
-   "name": "Woody Marks",
+   "name": "Josh Jacobs",
+   "pos": "RB",
+   "value": 13,
+   "baselineValue": 14,
+   "sheetValue": 8,
+   "projection": 12.87,
+   "projectionWeek": 9
+  },
+  {
+   "name": "Cam Skattebo",
+   "pos": "RB",
+   "value": 13,
+   "baselineValue": 11,
+   "sheetValue": 15,
+   "projection": 9.8,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Terry McLaurin",
+   "pos": "WR",
+   "value": 13,
+   "baselineValue": 10,
+   "sheetValue": 10,
+   "projection": null,
+   "projectionWeek": null
+  },
+  {
+   "name": "Mike Evans",
+   "pos": "WR",
+   "value": 12,
+   "baselineValue": 13,
+   "sheetValue": 13,
+   "projection": null,
+   "projectionWeek": null
+  },
+  {
+   "name": "Joe Burrow",
+   "pos": "QB",
+   "value": 12,
+   "baselineValue": 13,
+   "sheetValue": 13,
+   "projection": 19.78,
+   "projectionWeek": 10
+  },
+  {
+   "name": "TreVeyon Henderson",
+   "pos": "RB",
+   "value": 11,
+   "baselineValue": 12,
+   "sheetValue": 12,
+   "projection": null,
+   "projectionWeek": null
+  },
+  {
+   "name": "Quinshon Judkins",
+   "pos": "RB",
+   "value": 11,
+   "baselineValue": 9,
+   "sheetValue": 14,
+   "projection": 8.42,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Carnell Tate",
+   "pos": "WR",
+   "value": 11,
+   "baselineValue": 8,
+   "sheetValue": 7,
+   "projection": 9.66,
+   "projectionWeek": 10
+  },
+  {
+   "name": "J.K. Dobbins",
    "pos": "RB",
    "value": 10,
-   "baselineValue": 13,
+   "baselineValue": 10.857142857142858,
+   "sheetValue": 4,
+   "projection": null,
+   "projectionWeek": null
+  },
+  {
+   "name": "Emeka Egbuka",
+   "pos": "WR",
+   "value": 10,
+   "baselineValue": 11,
+   "sheetValue": 18,
+   "projection": 8.79,
+   "projectionWeek": 9
+  },
+  {
+   "name": "DK Metcalf",
+   "pos": "WR",
+   "value": 10,
+   "baselineValue": 10.857142857142858,
+   "sheetValue": 2,
+   "projection": 9.64,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Jadarian Price",
+   "pos": "RB",
+   "value": 9,
+   "baselineValue": 10,
+   "sheetValue": 16,
+   "projection": 7.84,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Jameson Williams",
+   "pos": "WR",
+   "value": 9,
+   "baselineValue": 10,
+   "sheetValue": 9,
+   "projection": 9.98,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Isaiah Likely",
+   "pos": "TE",
+   "value": 9,
+   "baselineValue": 10,
+   "sheetValue": 10,
+   "projection": 9.68,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Woody Marks",
+   "pos": "RB",
+   "value": 8,
+   "baselineValue": 9,
    "sheetValue": 2,
    "projection": 12.41,
    "projectionWeek": 9
   },
   {
-   "name": "Jameson Williams",
+   "name": "Rome Odunze",
    "pos": "WR",
-   "value": 10,
+   "value": 8,
    "baselineValue": 9,
-   "sheetValue": 9,
-   "projection": 9.57,
+   "sheetValue": 13,
+   "projection": 8.93,
    "projectionWeek": 9
-  },
-  {
-   "name": "Carnell Tate",
-   "pos": "WR",
-   "value": 10,
-   "baselineValue": 7,
-   "sheetValue": 7,
-   "projection": 8.96,
-   "projectionWeek": 8
   },
   {
    "name": "De'Zhaun Stribling",
    "pos": "WR",
-   "value": 9,
+   "value": 7,
    "baselineValue": 8,
    "sheetValue": 8,
-   "projection": null,
-   "projectionWeek": null
-  },
-  {
-   "name": "DJ Moore",
-   "pos": "WR",
-   "value": 9,
-   "baselineValue": 7,
-   "sheetValue": 10,
-   "projection": 8.37,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Stefon Diggs",
-   "pos": "WR",
-   "value": 9,
-   "baselineValue": 6,
-   "sheetValue": 4,
-   "projection": 9.39,
-   "projectionWeek": 9
-  },
-  {
-   "name": "J.K. Dobbins",
-   "pos": "RB",
-   "value": 8,
-   "baselineValue": 11.285714285714286,
-   "sheetValue": 4,
-   "projection": 6.76,
-   "projectionWeek": 8
-  },
-  {
-   "name": "Jadarian Price",
-   "pos": "RB",
-   "value": 8,
-   "baselineValue": 11,
-   "sheetValue": 16,
-   "projection": 10.19,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Alec Pierce",
-   "pos": "WR",
-   "value": 8,
-   "baselineValue": 6,
-   "sheetValue": 6,
    "projection": null,
    "projectionWeek": null
   },
@@ -1764,31 +1764,22 @@
    "projectionWeek": 9
   },
   {
-   "name": "Rome Odunze",
+   "name": "DJ Moore",
    "pos": "WR",
    "value": 6,
-   "baselineValue": 9,
-   "sheetValue": 13,
-   "projection": 8.93,
+   "baselineValue": 7,
+   "sheetValue": 10,
+   "projection": 8.37,
    "projectionWeek": 9
   },
   {
-   "name": "KC Concepcion",
+   "name": "Stefon Diggs",
    "pos": "WR",
    "value": 6,
-   "baselineValue": 4,
-   "sheetValue": 5,
-   "projection": 8.27,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Jayden Reed",
-   "pos": "WR",
-   "value": 6,
-   "baselineValue": 4,
+   "baselineValue": 3,
    "sheetValue": 4,
-   "projection": null,
-   "projectionWeek": null
+   "projection": 8.19,
+   "projectionWeek": 10
   },
   {
    "name": "Rachaad White",
@@ -1796,8 +1787,8 @@
    "value": 5,
    "baselineValue": 3,
    "sheetValue": 2,
-   "projection": 9.22,
-   "projectionWeek": 9
+   "projection": 9.04,
+   "projectionWeek": 10
   },
   {
    "name": "Kenny Gainwell",
@@ -1809,36 +1800,18 @@
    "projectionWeek": 9
   },
   {
-   "name": "Jayden Daniels",
-   "pos": "QB",
+   "name": "Alec Pierce",
+   "pos": "WR",
    "value": 5,
-   "baselineValue": 8,
-   "sheetValue": 8,
-   "projection": 19.04,
-   "projectionWeek": 9
-  },
-  {
-   "name": "Dak Prescott",
-   "pos": "QB",
-   "value": 5,
-   "baselineValue": 8,
-   "sheetValue": 3,
-   "projection": 19.61,
-   "projectionWeek": 9
-  },
-  {
-   "name": "TreVeyon Henderson",
-   "pos": "RB",
-   "value": 4,
-   "baselineValue": 7,
-   "sheetValue": 12,
-   "projection": 5.26,
-   "projectionWeek": 8
+   "baselineValue": 6,
+   "sheetValue": 6,
+   "projection": null,
+   "projectionWeek": null
   },
   {
    "name": "Brian Thomas Jr.",
    "pos": "WR",
-   "value": 3,
+   "value": 5,
    "baselineValue": 6,
    "sheetValue": 6,
    "projection": null,
@@ -1847,26 +1820,44 @@
   {
    "name": "Marvin Harrison Jr.",
    "pos": "WR",
-   "value": 3,
+   "value": 5,
    "baselineValue": 6,
    "sheetValue": 6,
    "projection": null,
    "projectionWeek": null
   },
   {
-   "name": "Isaiah Likely",
+   "name": "Jayden Daniels",
+   "pos": "QB",
+   "value": 5,
+   "baselineValue": 6,
+   "sheetValue": 8,
+   "projection": 17.51,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Tucker Kraft",
    "pos": "TE",
    "value": 3,
-   "baselineValue": 6,
-   "sheetValue": 10,
-   "projection": 8.61,
+   "baselineValue": 5,
+   "sheetValue": 6,
+   "projection": 8.77,
    "projectionWeek": 9
+  },
+  {
+   "name": "Dak Prescott",
+   "pos": "QB",
+   "value": 3,
+   "baselineValue": 5,
+   "sheetValue": 3,
+   "projection": 18.16,
+   "projectionWeek": 10
   },
   {
    "name": "Jordan Mason",
    "pos": "RB",
-   "value": 1,
-   "baselineValue": 5,
+   "value": 2,
+   "baselineValue": 4,
    "sheetValue": 6,
    "projection": 7.21,
    "projectionWeek": 9
@@ -1874,7 +1865,7 @@
   {
    "name": "Jonathon Brooks",
    "pos": "RB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 4,
    "sheetValue": 4,
    "projection": null,
@@ -1883,7 +1874,7 @@
   {
    "name": "Blake Corum",
    "pos": "RB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 4,
    "sheetValue": 3,
    "projection": 9.4,
@@ -1892,7 +1883,7 @@
   {
    "name": "Mike Washington Jr.",
    "pos": "RB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 3,
    "sheetValue": 4,
    "projection": 6.2,
@@ -1901,25 +1892,43 @@
   {
    "name": "Rico Dowdle",
    "pos": "RB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 3,
    "sheetValue": 4,
-   "projection": 7.59,
-   "projectionWeek": 8
+   "projection": 7.93,
+   "projectionWeek": 10
   },
   {
    "name": "Jacory Croskey-Merritt",
    "pos": "RB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 3,
    "sheetValue": 3,
    "projection": null,
    "projectionWeek": null
   },
   {
+   "name": "KC Concepcion",
+   "pos": "WR",
+   "value": 2,
+   "baselineValue": 4,
+   "sheetValue": 5,
+   "projection": 8.75,
+   "projectionWeek": 10
+  },
+  {
+   "name": "Jayden Reed",
+   "pos": "WR",
+   "value": 2,
+   "baselineValue": 4,
+   "sheetValue": 4,
+   "projection": null,
+   "projectionWeek": null
+  },
+  {
    "name": "Quentin Johnston",
    "pos": "WR",
-   "value": 1,
+   "value": 2,
    "baselineValue": 3,
    "sheetValue": 5,
    "projection": 5.57,
@@ -1928,7 +1937,7 @@
   {
    "name": "Chris Godwin Jr.",
    "pos": "WR",
-   "value": 1,
+   "value": 2,
    "baselineValue": 3,
    "sheetValue": 4,
    "projection": 6.48,
@@ -1937,70 +1946,61 @@
   {
    "name": "Jordyn Tyson",
    "pos": "WR",
-   "value": 1,
+   "value": 2,
    "baselineValue": 3,
    "sheetValue": 4,
-   "projection": 5.05,
-   "projectionWeek": 9
+   "projection": 5.96,
+   "projectionWeek": 10
   },
   {
    "name": "Ja'Kobi Lane",
    "pos": "WR",
-   "value": 1,
+   "value": 2,
    "baselineValue": 2,
    "sheetValue": 2,
-   "projection": 6.28,
-   "projectionWeek": 8
-  },
-  {
-   "name": "Tucker Kraft",
-   "pos": "TE",
-   "value": 1,
-   "baselineValue": 5,
-   "sheetValue": 6,
-   "projection": 8.77,
-   "projectionWeek": 9
+   "projection": null,
+   "projectionWeek": null
   },
   {
    "name": "Harold Fannin Jr.",
    "pos": "TE",
-   "value": 1,
-   "baselineValue": 4,
+   "value": 2,
+   "baselineValue": 3,
    "sheetValue": 4,
-   "projection": 8.82,
-   "projectionWeek": 9
+   "projection": 7.19,
+   "projectionWeek": 10
   },
   {
    "name": "Jalen Hurts",
    "pos": "QB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 4,
    "sheetValue": 4,
    "projection": null,
    "projectionWeek": null
   },
   {
+   "name": "Trevor Lawrence",
+   "pos": "QB",
+   "value": 2,
+   "baselineValue": 4,
+   "sheetValue": 4,
+   "projection": 18.01,
+   "projectionWeek": 9
+  },
+  {
    "name": "Justin Herbert",
    "pos": "QB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 3,
    "sheetValue": 4,
    "projection": 13.87,
    "projectionWeek": 9
   },
   {
-   "name": "Trevor Lawrence",
-   "pos": "QB",
-   "value": 1,
-   "baselineValue": 3,
-   "sheetValue": 4,
-   "projection": 18.01,
-   "projectionWeek": 9
-  },
-  {
    "name": "Jaxson Dart",
    "pos": "QB",
-   "value": 1,
+   "value": 2,
    "baselineValue": 2,
    "sheetValue": 2,
    "projection": null,
