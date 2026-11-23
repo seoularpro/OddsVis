@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-23T03:56:40Z",
+ "generatedAt": "2026-11-23T15:14:51Z",
  "baseline": {
   "label": "Half PPR, 10-team",
   "source": "the live Trade Values Google Sheet",
@@ -11,7 +11,7 @@
  "reseed": {
   "week": 11,
   "season": 2026,
-  "snapshotIndex": 20,
+  "snapshotIndex": 21,
   "previousWeek": 10,
   "weight": 0.45,
   "rankShare": 0.7,
@@ -22,8 +22,8 @@
    "QB": 0.7
   },
   "skippedPositions": [],
-  "usedPreviousWeek": 18,
-  "moved": 79,
+  "usedPreviousWeek": 17,
+  "moved": 78,
   "noProjection": [
    "Puka Nacua",
    "Jeremiyah Love",
@@ -202,7 +202,7 @@
      ""
     ],
     [
-     54,
+     55,
      "",
      "",
      "Ja'Marr Chase",
@@ -242,10 +242,10 @@
      ""
     ],
     [
-     49,
+     48,
      "",
      "",
-     "CeeDee Lamb",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -255,7 +255,7 @@
      48,
      "",
      "",
-     "Amon-Ra St. Brown",
+     "CeeDee Lamb",
      "",
      "",
      "",
@@ -1182,8 +1182,8 @@
      ""
     ],
     [
-     3,
-     "Rachaad White",
+     2,
+     "Kenny Gainwell",
      "",
      "",
      "",
@@ -1193,7 +1193,7 @@
     ],
     [
      2,
-     "Kenny Gainwell",
+     "Rachaad White",
      "",
      "",
      "",
@@ -1242,10 +1242,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 54,
-     "baselineValue": 66,
+     "value": 55,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -1276,21 +1276,21 @@
      "projectionWeek": 10
     },
     {
-     "name": "CeeDee Lamb",
-     "pos": "WR",
-     "value": 49,
-     "baselineValue": 58,
-     "sheetValue": 47,
-     "projection": 18.67,
-     "projectionWeek": 11
-    },
-    {
      "name": "Amon-Ra St. Brown",
      "pos": "WR",
      "value": 48,
      "baselineValue": 58,
      "sheetValue": 60,
      "projection": 15.85,
+     "projectionWeek": 11
+    },
+    {
+     "name": "CeeDee Lamb",
+     "pos": "WR",
+     "value": 48,
+     "baselineValue": 57,
+     "sheetValue": 47,
+     "projection": 18.67,
      "projectionWeek": 11
     },
     {
@@ -1353,7 +1353,7 @@
      "value": 39,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -1479,7 +1479,7 @@
      "value": 28,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -1578,7 +1578,7 @@
      "value": 24,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -1821,7 +1821,7 @@
      "value": 11,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -2019,7 +2019,7 @@
      "value": 7,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
     },
     {
@@ -2064,7 +2064,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -2122,21 +2122,21 @@
      "projectionWeek": null
     },
     {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 3,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 2,
      "baselineValue": 2,
      "sheetValue": 3,
      "projection": 5.38,
+     "projectionWeek": 11
+    },
+    {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 2,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
      "projectionWeek": 11
     }
    ]
@@ -2210,7 +2210,7 @@
      ""
     ],
     [
-     57,
+     58,
      "",
      "",
      "Ja'Marr Chase",
@@ -2250,7 +2250,7 @@
      ""
     ],
     [
-     51,
+     50,
      "",
      "",
      "CeeDee Lamb",
@@ -3190,8 +3190,8 @@
      ""
     ],
     [
-     2,
-     "Rachaad White",
+     1,
+     "Kenny Gainwell",
      "",
      "",
      "",
@@ -3201,7 +3201,7 @@
     ],
     [
      1,
-     "Kenny Gainwell",
+     "Rachaad White",
      "",
      "",
      "",
@@ -3250,10 +3250,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 57,
-     "baselineValue": 66,
+     "value": 58,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -3286,8 +3286,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 51,
-     "baselineValue": 58,
+     "value": 50,
+     "baselineValue": 57,
      "sheetValue": 47,
      "projection": 18.67,
      "projectionWeek": 11
@@ -3361,7 +3361,7 @@
      "value": 39,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -3487,7 +3487,7 @@
      "value": 26,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -3586,7 +3586,7 @@
      "value": 22,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -3820,7 +3820,7 @@
      "value": 10,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -4018,7 +4018,7 @@
      "value": 6,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
     },
     {
@@ -4072,7 +4072,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -4130,21 +4130,21 @@
      "projectionWeek": null
     },
     {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 2,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
      "projection": 5.38,
+     "projectionWeek": 11
+    },
+    {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 1,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
      "projectionWeek": 11
     }
    ]
@@ -4218,7 +4218,7 @@
      ""
     ],
     [
-     59,
+     60,
      "",
      "",
      "Ja'Marr Chase",
@@ -4258,10 +4258,10 @@
      ""
     ],
     [
-     52,
+     50,
      "",
      "",
-     "CeeDee Lamb",
+     "Amon-Ra St. Brown",
      "",
      "",
      "",
@@ -4271,7 +4271,7 @@
      50,
      "",
      "",
-     "Amon-Ra St. Brown",
+     "CeeDee Lamb",
      "",
      "",
      "",
@@ -5199,7 +5199,7 @@
     ],
     [
      1,
-     "Rachaad White",
+     "Kenny Gainwell",
      "",
      "",
      "",
@@ -5209,7 +5209,7 @@
     ],
     [
      1,
-     "Kenny Gainwell",
+     "Rachaad White",
      "",
      "",
      "",
@@ -5258,10 +5258,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 59,
-     "baselineValue": 66,
+     "value": 60,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -5292,21 +5292,21 @@
      "projectionWeek": 10
     },
     {
-     "name": "CeeDee Lamb",
-     "pos": "WR",
-     "value": 52,
-     "baselineValue": 58,
-     "sheetValue": 47,
-     "projection": 18.67,
-     "projectionWeek": 11
-    },
-    {
      "name": "Amon-Ra St. Brown",
      "pos": "WR",
      "value": 50,
      "baselineValue": 58,
      "sheetValue": 60,
      "projection": 15.85,
+     "projectionWeek": 11
+    },
+    {
+     "name": "CeeDee Lamb",
+     "pos": "WR",
+     "value": 50,
+     "baselineValue": 57,
+     "sheetValue": 47,
+     "projection": 18.67,
      "projectionWeek": 11
     },
     {
@@ -5360,7 +5360,7 @@
      "value": 39,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -5495,7 +5495,7 @@
      "value": 24,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -5594,7 +5594,7 @@
      "value": 20,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -5828,7 +5828,7 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -6035,7 +6035,7 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
     },
     {
@@ -6107,7 +6107,7 @@
      "value": 3,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -6138,21 +6138,21 @@
      "projectionWeek": null
     },
     {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 1,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 1,
      "baselineValue": 2,
      "sheetValue": 3,
      "projection": 5.38,
+     "projectionWeek": 11
+    },
+    {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 1,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
      "projectionWeek": 11
     }
    ]
@@ -6216,7 +6216,7 @@
      ""
     ],
     [
-     57,
+     58,
      "",
      "",
      "Ja'Marr Chase",
@@ -7147,16 +7147,6 @@
     ],
     [
      4,
-     "Rachaad White",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     4,
      "",
      "",
      "Quentin Johnston",
@@ -7198,6 +7188,16 @@
     [
      3,
      "Kenny Gainwell",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     3,
+     "Rachaad White",
      "",
      "",
      "",
@@ -7257,10 +7257,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 57,
-     "baselineValue": 66,
+     "value": 58,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -7312,7 +7312,7 @@
      "name": "CeeDee Lamb",
      "pos": "WR",
      "value": 51,
-     "baselineValue": 58,
+     "baselineValue": 57,
      "sheetValue": 47,
      "projection": 18.67,
      "projectionWeek": 11
@@ -7350,7 +7350,7 @@
      "value": 41,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -7503,7 +7503,7 @@
      "value": 29,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -7638,7 +7638,7 @@
      "value": 21,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -7935,7 +7935,7 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -7944,7 +7944,7 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -8088,17 +8088,8 @@
      "value": 4,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
-    },
-    {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 4,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
     },
     {
      "name": "Quentin Johnston",
@@ -8143,6 +8134,15 @@
      "baselineValue": 2,
      "sheetValue": 3,
      "projection": 5.38,
+     "projectionWeek": 11
+    },
+    {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 3,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
      "projectionWeek": 11
     },
     {
@@ -8224,7 +8224,7 @@
      ""
     ],
     [
-     61,
+     62,
      "",
      "",
      "Ja'Marr Chase",
@@ -8284,7 +8284,7 @@
      ""
     ],
     [
-     53,
+     52,
      "",
      "",
      "CeeDee Lamb",
@@ -9155,16 +9155,6 @@
     ],
     [
      3,
-     "Rachaad White",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     3,
      "",
      "",
      "Quentin Johnston",
@@ -9206,6 +9196,16 @@
     [
      2,
      "Kenny Gainwell",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     2,
+     "Rachaad White",
      "",
      "",
      "",
@@ -9265,10 +9265,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 61,
-     "baselineValue": 66,
+     "value": 62,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -9319,8 +9319,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 53,
-     "baselineValue": 58,
+     "value": 52,
+     "baselineValue": 57,
      "sheetValue": 47,
      "projection": 18.67,
      "projectionWeek": 11
@@ -9358,7 +9358,7 @@
      "value": 41,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -9511,7 +9511,7 @@
      "value": 28,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -9646,7 +9646,7 @@
      "value": 19,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -9943,7 +9943,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -9979,7 +9979,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -10096,17 +10096,8 @@
      "value": 3,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
-    },
-    {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 3,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
     },
     {
      "name": "Quentin Johnston",
@@ -10151,6 +10142,15 @@
      "baselineValue": 2,
      "sheetValue": 3,
      "projection": 5.38,
+     "projectionWeek": 11
+    },
+    {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 2,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
      "projectionWeek": 11
     },
     {
@@ -10232,7 +10232,7 @@
      ""
     ],
     [
-     64,
+     65,
      "",
      "",
      "Ja'Marr Chase",
@@ -10292,7 +10292,7 @@
      ""
     ],
     [
-     55,
+     54,
      "",
      "",
      "CeeDee Lamb",
@@ -11163,16 +11163,6 @@
     ],
     [
      2,
-     "Rachaad White",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     2,
      "",
      "",
      "Quentin Johnston",
@@ -11214,6 +11204,16 @@
     [
      1,
      "Kenny Gainwell",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     1,
+     "Rachaad White",
      "",
      "",
      "",
@@ -11273,10 +11273,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 64,
-     "baselineValue": 66,
+     "value": 65,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -11327,8 +11327,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 55,
-     "baselineValue": 58,
+     "value": 54,
+     "baselineValue": 57,
      "sheetValue": 47,
      "projection": 18.67,
      "projectionWeek": 11
@@ -11366,7 +11366,7 @@
      "value": 41,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -11519,7 +11519,7 @@
      "value": 26,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -11654,7 +11654,7 @@
      "value": 17,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -11951,7 +11951,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -11960,7 +11960,7 @@
      "value": 5,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -12104,17 +12104,8 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
-    },
-    {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 2,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
     },
     {
      "name": "Quentin Johnston",
@@ -12159,6 +12150,15 @@
      "baselineValue": 2,
      "sheetValue": 3,
      "projection": 5.38,
+     "projectionWeek": 11
+    },
+    {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 1,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
      "projectionWeek": 11
     },
     {
@@ -12230,7 +12230,7 @@
      ""
     ],
     [
-     61,
+     62,
      "",
      "",
      "Ja'Marr Chase",
@@ -12290,7 +12290,7 @@
      ""
     ],
     [
-     54,
+     53,
      "",
      "",
      "CeeDee Lamb",
@@ -13031,16 +13031,6 @@
     ],
     [
      5,
-     "Rachaad White",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     5,
      "Kenny Gainwell",
      "",
      "",
@@ -13052,6 +13042,16 @@
     [
      4,
      "Woody Marks",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     4,
+     "Rachaad White",
      "",
      "",
      "",
@@ -13272,10 +13272,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 61,
-     "baselineValue": 66,
+     "value": 62,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -13326,8 +13326,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 54,
-     "baselineValue": 58,
+     "value": 53,
+     "baselineValue": 57,
      "sheetValue": 47,
      "projection": 18.67,
      "projectionWeek": 11
@@ -13365,7 +13365,7 @@
      "value": 43,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -13509,7 +13509,7 @@
      "value": 31,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -13725,7 +13725,7 @@
      "value": 18,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -13896,7 +13896,7 @@
      "value": 10,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -13990,15 +13990,6 @@
      "projectionWeek": null
     },
     {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 5,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 5,
@@ -14017,12 +14008,21 @@
      "projectionWeek": 10
     },
     {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 4,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
+     "projectionWeek": 11
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 4,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -14103,7 +14103,7 @@
      "value": 2,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
     },
     {
@@ -14238,7 +14238,7 @@
      ""
     ],
     [
-     65,
+     66,
      "",
      "",
      "Ja'Marr Chase",
@@ -14298,7 +14298,7 @@
      ""
     ],
     [
-     56,
+     55,
      "",
      "",
      "CeeDee Lamb",
@@ -15019,16 +15019,6 @@
     ],
     [
      4,
-     "Rachaad White",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     4,
      "Kenny Gainwell",
      "",
      "",
@@ -15060,6 +15050,16 @@
     [
      3,
      "Woody Marks",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     3,
+     "Rachaad White",
      "",
      "",
      "",
@@ -15280,10 +15280,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 65,
-     "baselineValue": 66,
+     "value": 66,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -15334,8 +15334,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 56,
-     "baselineValue": 58,
+     "value": 55,
+     "baselineValue": 57,
      "sheetValue": 47,
      "projection": 18.67,
      "projectionWeek": 11
@@ -15373,7 +15373,7 @@
      "value": 44,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -15517,7 +15517,7 @@
      "value": 30,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -15733,7 +15733,7 @@
      "value": 16,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -15904,7 +15904,7 @@
      "value": 8,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -15980,15 +15980,6 @@
      "projectionWeek": null
     },
     {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 4,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 4,
@@ -16025,12 +16016,21 @@
      "projectionWeek": 10
     },
     {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 3,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
+     "projectionWeek": 11
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 3,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -16111,7 +16111,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
     },
     {
@@ -16246,7 +16246,7 @@
      ""
     ],
     [
-     69,
+     70,
      "",
      "",
      "Ja'Marr Chase",
@@ -16306,7 +16306,7 @@
      ""
     ],
     [
-     58,
+     57,
      "",
      "",
      "CeeDee Lamb",
@@ -17017,16 +17017,6 @@
     ],
     [
      3,
-     "Rachaad White",
-     "",
-     "",
-     "",
-     "",
-     "",
-     ""
-    ],
-    [
-     3,
      "Kenny Gainwell",
      "",
      "",
@@ -17068,6 +17058,16 @@
     [
      2,
      "Woody Marks",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     2,
+     "Rachaad White",
      "",
      "",
      "",
@@ -17288,10 +17288,10 @@
     {
      "name": "Ja'Marr Chase",
      "pos": "WR",
-     "value": 69,
-     "baselineValue": 66,
+     "value": 70,
+     "baselineValue": 67,
      "sheetValue": 64,
-     "projection": 18.5,
+     "projection": 18.83,
      "projectionWeek": 11
     },
     {
@@ -17342,8 +17342,8 @@
     {
      "name": "CeeDee Lamb",
      "pos": "WR",
-     "value": 58,
-     "baselineValue": 58,
+     "value": 57,
+     "baselineValue": 57,
      "sheetValue": 47,
      "projection": 18.67,
      "projectionWeek": 11
@@ -17381,7 +17381,7 @@
      "value": 43,
      "baselineValue": 45,
      "sheetValue": 47,
-     "projection": 13.75,
+     "projection": 13.78,
      "projectionWeek": 11
     },
     {
@@ -17525,7 +17525,7 @@
      "value": 28,
      "baselineValue": 30.4,
      "sheetValue": 25,
-     "projection": 14.22,
+     "projection": 14.12,
      "projectionWeek": 11
     },
     {
@@ -17714,7 +17714,7 @@
      "value": 14,
      "baselineValue": 21,
      "sheetValue": 13,
-     "projection": 24.32,
+     "projection": 24.48,
      "projectionWeek": 11
     },
     {
@@ -17930,7 +17930,7 @@
      "value": 6,
      "baselineValue": 7,
      "sheetValue": 4,
-     "projection": 9.59,
+     "projection": 9.58,
      "projectionWeek": 11
     },
     {
@@ -17979,15 +17979,6 @@
      "projectionWeek": null
     },
     {
-     "name": "Rachaad White",
-     "pos": "RB",
-     "value": 3,
-     "baselineValue": 3,
-     "sheetValue": 2,
-     "projection": 8.89,
-     "projectionWeek": 10
-    },
-    {
      "name": "Kenny Gainwell",
      "pos": "RB",
      "value": 3,
@@ -18033,12 +18024,21 @@
      "projectionWeek": 10
     },
     {
+     "name": "Rachaad White",
+     "pos": "RB",
+     "value": 2,
+     "baselineValue": 2,
+     "sheetValue": 2,
+     "projection": 7.8,
+     "projectionWeek": 11
+    },
+    {
      "name": "Jayden Daniels",
      "pos": "QB",
      "value": 2,
      "baselineValue": 7,
      "sheetValue": 8,
-     "projection": 21.27,
+     "projection": 20.98,
      "projectionWeek": 11
     },
     {
@@ -18101,7 +18101,7 @@
      "value": 1,
      "baselineValue": 3,
      "sheetValue": 3,
-     "projection": 8.2,
+     "projection": 8.18,
      "projectionWeek": 11
     },
     {
@@ -18273,17 +18273,17 @@
   },
   "Ja'Marr Chase": {
    "pos": "WR",
-   "baselineValue": 66,
+   "baselineValue": 67,
    "values": {
-    "Standard_8": 54,
-    "Standard_10": 57,
-    "Standard_12": 59,
-    "HalfPPR_8": 57,
-    "HalfPPR_10": 61,
-    "HalfPPR_12": 64,
-    "FullPPR_8": 61,
-    "FullPPR_10": 65,
-    "FullPPR_12": 69
+    "Standard_8": 55,
+    "Standard_10": 58,
+    "Standard_12": 60,
+    "HalfPPR_8": 58,
+    "HalfPPR_10": 62,
+    "HalfPPR_12": 65,
+    "FullPPR_8": 62,
+    "FullPPR_10": 66,
+    "FullPPR_12": 70
    },
    "sheetValue": 64
   },
@@ -18449,17 +18449,17 @@
   },
   "CeeDee Lamb": {
    "pos": "WR",
-   "baselineValue": 58,
+   "baselineValue": 57,
    "values": {
-    "Standard_8": 49,
-    "Standard_10": 51,
-    "Standard_12": 52,
+    "Standard_8": 48,
+    "Standard_10": 50,
+    "Standard_12": 50,
     "HalfPPR_8": 51,
-    "HalfPPR_10": 53,
-    "HalfPPR_12": 55,
-    "FullPPR_8": 54,
-    "FullPPR_10": 56,
-    "FullPPR_12": 58
+    "HalfPPR_10": 52,
+    "HalfPPR_12": 54,
+    "FullPPR_8": 53,
+    "FullPPR_10": 55,
+    "FullPPR_12": 57
    },
    "sheetValue": 47
   },
@@ -19825,17 +19825,17 @@
   },
   "Rachaad White": {
    "pos": "RB",
-   "baselineValue": 3,
+   "baselineValue": 2,
    "values": {
-    "Standard_8": 3,
-    "Standard_10": 2,
+    "Standard_8": 2,
+    "Standard_10": 1,
     "Standard_12": 1,
-    "HalfPPR_8": 4,
-    "HalfPPR_10": 3,
-    "HalfPPR_12": 2,
-    "FullPPR_8": 5,
-    "FullPPR_10": 4,
-    "FullPPR_12": 3
+    "HalfPPR_8": 3,
+    "HalfPPR_10": 2,
+    "HalfPPR_12": 1,
+    "FullPPR_8": 4,
+    "FullPPR_10": 3,
+    "FullPPR_12": 2
    },
    "sheetValue": 2
   },
