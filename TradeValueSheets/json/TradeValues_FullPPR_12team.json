@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-22T22:44:40Z",
+ "generatedAt": "2026-11-23T03:56:40Z",
  "key": "FullPPR_12",
  "scoring": "FullPPR",
  "scoringLabel": "Full PPR",
@@ -232,16 +232,6 @@
    35,
    "",
    "",
-   "George Pickens",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   35,
-   "",
-   "",
    "Drake London",
    "",
    "",
@@ -255,6 +245,16 @@
    "",
    "",
    "Brock Bowers",
+   "",
+   ""
+  ],
+  [
+   34,
+   "",
+   "",
+   "George Pickens",
+   "",
+   "",
    "",
    ""
   ],
@@ -562,6 +562,16 @@
    13,
    "",
    "",
+   "Carnell Tate",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   13,
+   "",
+   "",
    "Matthew Golden",
    "",
    "",
@@ -573,16 +583,6 @@
    "Omarion Hampton",
    "",
    "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   12,
-   "",
-   "",
-   "Carnell Tate",
    "",
    "",
    "",
@@ -662,16 +662,6 @@
    8,
    "",
    "",
-   "Mike Evans",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   8,
-   "",
-   "",
    "",
    "",
    "Tyler Warren",
@@ -693,6 +683,16 @@
    "Quinshon Judkins",
    "",
    "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   7,
+   "",
+   "",
+   "Mike Evans",
    "",
    "",
    "",
@@ -869,16 +869,6 @@
    ""
   ],
   [
-   3,
-   "",
-   "",
-   "",
-   "",
-   "",
-   "",
-   "Jayden Daniels"
-  ],
-  [
    2,
    "Woody Marks",
    "",
@@ -887,6 +877,16 @@
    "",
    "",
    ""
+  ],
+  [
+   2,
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "Jayden Daniels"
   ],
   [
    2,
@@ -1094,7 +1094,7 @@
    "value": 69,
    "baselineValue": 66,
    "sheetValue": 64,
-   "projection": 18.46,
+   "projection": 18.5,
    "projectionWeek": 11
   },
   {
@@ -1130,7 +1130,7 @@
    "value": 62,
    "baselineValue": 61,
    "sheetValue": 66,
-   "projection": 15.62,
+   "projection": 15.73,
    "projectionWeek": 11
   },
   {
@@ -1166,7 +1166,7 @@
    "value": 52,
    "baselineValue": 52,
    "sheetValue": 53,
-   "projection": 15.79,
+   "projection": 15.64,
    "projectionWeek": 11
   },
   {
@@ -1251,15 +1251,6 @@
    "projectionWeek": 11
   },
   {
-   "name": "George Pickens",
-   "pos": "WR",
-   "value": 35,
-   "baselineValue": 37,
-   "sheetValue": 34,
-   "projection": 13.78,
-   "projectionWeek": 11
-  },
-  {
    "name": "Drake London",
    "pos": "WR",
    "value": 35,
@@ -1275,6 +1266,15 @@
    "baselineValue": 38,
    "sheetValue": 37,
    "projection": 9.28,
+   "projectionWeek": 11
+  },
+  {
+   "name": "George Pickens",
+   "pos": "WR",
+   "value": 34,
+   "baselineValue": 36,
+   "sheetValue": 34,
+   "projection": 13.78,
    "projectionWeek": 11
   },
   {
@@ -1328,7 +1328,7 @@
    "value": 28,
    "baselineValue": 30.4,
    "sheetValue": 25,
-   "projection": 14.26,
+   "projection": 14.22,
    "projectionWeek": 11
   },
   {
@@ -1409,7 +1409,7 @@
    "value": 23,
    "baselineValue": 24.97142857142857,
    "sheetValue": 3,
-   "projection": 7.61,
+   "projection": 7.48,
    "projectionWeek": 11
   },
   {
@@ -1481,7 +1481,7 @@
    "value": 17,
    "baselineValue": 24.97142857142857,
    "sheetValue": 2,
-   "projection": 9.42,
+   "projection": 9.47,
    "projectionWeek": 11
   },
   {
@@ -1517,7 +1517,7 @@
    "value": 14,
    "baselineValue": 21,
    "sheetValue": 13,
-   "projection": 24.33,
+   "projection": 24.32,
    "projectionWeek": 11
   },
   {
@@ -1548,6 +1548,15 @@
    "projectionWeek": 11
   },
   {
+   "name": "Carnell Tate",
+   "pos": "WR",
+   "value": 13,
+   "baselineValue": 15,
+   "sheetValue": 7,
+   "projection": 11.61,
+   "projectionWeek": 11
+  },
+  {
    "name": "Matthew Golden",
    "pos": "WR",
    "value": 13,
@@ -1563,15 +1572,6 @@
    "baselineValue": 19.542857142857144,
    "sheetValue": 44,
    "projection": 11.33,
-   "projectionWeek": 11
-  },
-  {
-   "name": "Carnell Tate",
-   "pos": "WR",
-   "value": 12,
-   "baselineValue": 14,
-   "sheetValue": 7,
-   "projection": 11.61,
    "projectionWeek": 11
   },
   {
@@ -1596,7 +1596,7 @@
    "name": "Emeka Egbuka",
    "pos": "WR",
    "value": 10,
-   "baselineValue": 12,
+   "baselineValue": 13,
    "sheetValue": 18,
    "projection": 9.09,
    "projectionWeek": 11
@@ -1638,15 +1638,6 @@
    "projectionWeek": 10
   },
   {
-   "name": "Mike Evans",
-   "pos": "WR",
-   "value": 8,
-   "baselineValue": 10,
-   "sheetValue": 13,
-   "projection": 9.23,
-   "projectionWeek": 11
-  },
-  {
    "name": "Tyler Warren",
    "pos": "TE",
    "value": 8,
@@ -1672,6 +1663,15 @@
    "sheetValue": 14,
    "projection": 8.15,
    "projectionWeek": 10
+  },
+  {
+   "name": "Mike Evans",
+   "pos": "WR",
+   "value": 7,
+   "baselineValue": 9,
+   "sheetValue": 13,
+   "projection": 9.06,
+   "projectionWeek": 11
   },
   {
    "name": "DJ Moore",
@@ -1827,15 +1827,6 @@
    "projectionWeek": null
   },
   {
-   "name": "Jayden Daniels",
-   "pos": "QB",
-   "value": 3,
-   "baselineValue": 8,
-   "sheetValue": 8,
-   "projection": 21.29,
-   "projectionWeek": 11
-  },
-  {
    "name": "Woody Marks",
    "pos": "RB",
    "value": 2,
@@ -1843,6 +1834,15 @@
    "sheetValue": 2,
    "projection": 11.41,
    "projectionWeek": 10
+  },
+  {
+   "name": "Jayden Daniels",
+   "pos": "QB",
+   "value": 2,
+   "baselineValue": 7,
+   "sheetValue": 8,
+   "projection": 21.27,
+   "projectionWeek": 11
   },
   {
    "name": "Dak Prescott",
@@ -1868,7 +1868,7 @@
    "value": 1,
    "baselineValue": 4,
    "sheetValue": 6,
-   "projection": 6.7,
+   "projection": 6.63,
    "projectionWeek": 11
   },
   {
@@ -1904,7 +1904,7 @@
    "value": 1,
    "baselineValue": 3,
    "sheetValue": 3,
-   "projection": 8,
+   "projection": 8.2,
    "projectionWeek": 11
   },
   {
