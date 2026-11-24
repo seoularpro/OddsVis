@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-24T12:53:20Z",
+ "generatedAt": "2026-11-24T02:31:51Z",
  "key": "Standard_8",
  "scoring": "Standard",
  "scoringLabel": "Standard",
@@ -259,10 +259,10 @@
    ""
   ],
   [
-   35,
+   34,
    "",
    "",
-   "George Pickens",
+   "Drake London",
    "",
    "",
    "",
@@ -272,7 +272,7 @@
    34,
    "",
    "",
-   "Drake London",
+   "George Pickens",
    "",
    "",
    "",
@@ -792,6 +792,16 @@
    10,
    "",
    "",
+   "Stefon Diggs",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   10,
+   "",
+   "",
    "Alec Pierce",
    "",
    "",
@@ -837,16 +847,6 @@
    "",
    "",
    "Dak Prescott"
-  ],
-  [
-   9,
-   "",
-   "",
-   "Stefon Diggs",
-   "",
-   "",
-   "",
-   ""
   ],
   [
    9,
@@ -1112,7 +1112,7 @@
    "value": 58,
    "baselineValue": 67,
    "sheetValue": 64,
-   "projection": 19.66,
+   "projection": 19.82,
    "projectionWeek": 12
   },
   {
@@ -1193,7 +1193,7 @@
    "value": 43,
    "baselineValue": 46,
    "sheetValue": 47,
-   "projection": 14.1,
+   "projection": 14.14,
    "projectionWeek": 12
   },
   {
@@ -1278,15 +1278,6 @@
    "projectionWeek": 12
   },
   {
-   "name": "George Pickens",
-   "pos": "WR",
-   "value": 35,
-   "baselineValue": 36,
-   "sheetValue": 34,
-   "projection": 13.78,
-   "projectionWeek": 12
-  },
-  {
    "name": "Drake London",
    "pos": "WR",
    "value": 34,
@@ -1294,6 +1285,15 @@
    "sheetValue": 37,
    "projection": null,
    "projectionWeek": null
+  },
+  {
+   "name": "George Pickens",
+   "pos": "WR",
+   "value": 34,
+   "baselineValue": 35,
+   "sheetValue": 34,
+   "projection": 13.78,
+   "projectionWeek": 12
   },
   {
    "name": "Brock Bowers",
@@ -1445,7 +1445,7 @@
    "value": 26,
    "baselineValue": 22,
    "sheetValue": 13,
-   "projection": 24.7,
+   "projection": 24.66,
    "projectionWeek": 12
   },
   {
@@ -1742,7 +1742,7 @@
    "value": 11,
    "baselineValue": 7,
    "sheetValue": 8,
-   "projection": 20.96,
+   "projection": 20.68,
    "projectionWeek": 12
   },
   {
@@ -1753,6 +1753,15 @@
    "sheetValue": 10,
    "projection": null,
    "projectionWeek": null
+  },
+  {
+   "name": "Stefon Diggs",
+   "pos": "WR",
+   "value": 10,
+   "baselineValue": 10,
+   "sheetValue": 4,
+   "projection": 10.21,
+   "projectionWeek": 12
   },
   {
    "name": "Alec Pierce",
@@ -1797,15 +1806,6 @@
    "baselineValue": 6,
    "sheetValue": 3,
    "projection": 22.4,
-   "projectionWeek": 12
-  },
-  {
-   "name": "Stefon Diggs",
-   "pos": "WR",
-   "value": 9,
-   "baselineValue": 9,
-   "sheetValue": 4,
-   "projection": 9.99,
    "projectionWeek": 12
   },
   {
@@ -1913,7 +1913,7 @@
    "value": 7,
    "baselineValue": 3,
    "sheetValue": 3,
-   "projection": 6.5,
+   "projection": 6.54,
    "projectionWeek": 12
   },
   {
@@ -2003,7 +2003,7 @@
    "value": 2,
    "baselineValue": 2,
    "sheetValue": 2,
-   "projection": 5.87,
+   "projection": 5.85,
    "projectionWeek": 12
   }
  ]
