@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-24T02:31:51Z",
+ "generatedAt": "2026-11-24T12:53:20Z",
  "key": "HalfPPR_12",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -262,6 +262,16 @@
    34,
    "",
    "",
+   "George Pickens",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   34,
+   "",
+   "",
    "",
    "",
    "Brock Bowers",
@@ -277,16 +287,6 @@
    "",
    "",
    "Drake Maye"
-  ],
-  [
-   33,
-   "",
-   "",
-   "George Pickens",
-   "",
-   "",
-   "",
-   ""
   ],
   [
    32,
@@ -722,16 +722,6 @@
    8,
    "",
    "",
-   "Stefon Diggs",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   8,
-   "",
-   "",
    "",
    "",
    "Tyler Warren",
@@ -763,6 +753,16 @@
    "",
    "",
    "Jordyn Tyson",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   7,
+   "",
+   "",
+   "Stefon Diggs",
    "",
    "",
    "",
@@ -1094,7 +1094,7 @@
    "value": 70,
    "baselineValue": 67,
    "sheetValue": 64,
-   "projection": 19.82,
+   "projection": 19.66,
    "projectionWeek": 12
   },
   {
@@ -1193,7 +1193,7 @@
    "value": 46,
    "baselineValue": 46,
    "sheetValue": 47,
-   "projection": 14.14,
+   "projection": 14.1,
    "projectionWeek": 12
   },
   {
@@ -1278,6 +1278,15 @@
    "projectionWeek": 12
   },
   {
+   "name": "George Pickens",
+   "pos": "WR",
+   "value": 34,
+   "baselineValue": 36,
+   "sheetValue": 34,
+   "projection": 13.78,
+   "projectionWeek": 12
+  },
+  {
    "name": "Brock Bowers",
    "pos": "TE",
    "value": 34,
@@ -1294,15 +1303,6 @@
    "sheetValue": 11,
    "projection": null,
    "projectionWeek": null
-  },
-  {
-   "name": "George Pickens",
-   "pos": "WR",
-   "value": 33,
-   "baselineValue": 35,
-   "sheetValue": 34,
-   "projection": 13.78,
-   "projectionWeek": 12
   },
   {
    "name": "Ashton Jeanty",
@@ -1463,7 +1463,7 @@
    "value": 19,
    "baselineValue": 22,
    "sheetValue": 13,
-   "projection": 24.66,
+   "projection": 24.7,
    "projectionWeek": 12
   },
   {
@@ -1692,15 +1692,6 @@
    "projectionWeek": null
   },
   {
-   "name": "Stefon Diggs",
-   "pos": "WR",
-   "value": 8,
-   "baselineValue": 10,
-   "sheetValue": 4,
-   "projection": 10.21,
-   "projectionWeek": 12
-  },
-  {
    "name": "Tyler Warren",
    "pos": "TE",
    "value": 8,
@@ -1737,6 +1728,15 @@
    "projectionWeek": 12
   },
   {
+   "name": "Stefon Diggs",
+   "pos": "WR",
+   "value": 7,
+   "baselineValue": 9,
+   "sheetValue": 4,
+   "projection": 9.99,
+   "projectionWeek": 12
+  },
+  {
    "name": "Josh Jacobs",
    "pos": "RB",
    "value": 6,
@@ -1769,7 +1769,7 @@
    "value": 5,
    "baselineValue": 7,
    "sheetValue": 8,
-   "projection": 20.68,
+   "projection": 20.96,
    "projectionWeek": 12
   },
   {
@@ -1940,7 +1940,7 @@
    "value": 2,
    "baselineValue": 3,
    "sheetValue": 3,
-   "projection": 6.54,
+   "projection": 6.5,
    "projectionWeek": 12
   },
   {
@@ -1976,7 +1976,7 @@
    "value": 1,
    "baselineValue": 2,
    "sheetValue": 2,
-   "projection": 5.85,
+   "projection": 5.87,
    "projectionWeek": 12
   },
   {
