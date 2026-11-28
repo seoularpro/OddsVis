@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-11-28T04:10:33Z",
+ "generatedAt": "2026-11-28T13:30:34Z",
  "key": "HalfPPR_10",
  "scoring": "HalfPPR",
  "scoringLabel": "Half PPR",
@@ -59,20 +59,10 @@
    ""
   ],
   [
-   54,
+   53,
    "Christian McCaffrey",
    "",
    "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   54,
-   "",
-   "",
-   "Ja'Marr Chase",
    "",
    "",
    "",
@@ -83,6 +73,16 @@
    "",
    "",
    "Puka Nacua",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   53,
+   "",
+   "",
+   "Ja'Marr Chase",
    "",
    "",
    "",
@@ -110,19 +110,19 @@
   ],
   [
    47,
+   "James Cook III",
    "",
    "",
-   "CeeDee Lamb",
    "",
    "",
    "",
    ""
   ],
   [
-   46,
-   "James Cook III",
+   47,
    "",
    "",
+   "CeeDee Lamb",
    "",
    "",
    "",
@@ -269,7 +269,7 @@
    ""
   ],
   [
-   30,
+   29,
    "Cam Skattebo",
    "",
    "",
@@ -279,8 +279,18 @@
    ""
   ],
   [
-   29,
+   28,
    "Breece Hall",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   28,
+   "Kyren Williams",
    "",
    "",
    "",
@@ -301,16 +311,6 @@
   [
    28,
    "Chuba Hubbard",
-   "",
-   "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   28,
-   "Kyren Williams",
    "",
    "",
    "",
@@ -459,6 +459,16 @@
    "Lamar Jackson"
   ],
   [
+   19,
+   "",
+   "",
+   "",
+   "",
+   "Colston Loveland",
+   "",
+   ""
+  ],
+  [
    18,
    "Omarion Hampton",
    "",
@@ -475,16 +485,6 @@
    "Garrett Wilson",
    "",
    "",
-   "",
-   ""
-  ],
-  [
-   18,
-   "",
-   "",
-   "",
-   "",
-   "Colston Loveland",
    "",
    ""
   ],
@@ -599,18 +599,18 @@
    ""
   ],
   [
-   10,
-   "J.K. Dobbins",
+   11,
    "",
    "",
    "",
    "",
+   "Isaiah Likely",
    "",
    ""
   ],
   [
    10,
-   "Quinshon Judkins",
+   "J.K. Dobbins",
    "",
    "",
    "",
@@ -670,11 +670,11 @@
   ],
   [
    9,
+   "Quinshon Judkins",
    "",
    "",
    "",
    "",
-   "Isaiah Likely",
    "",
    ""
   ],
@@ -760,6 +760,16 @@
   ],
   [
    7,
+   "Rhamondre Stevenson",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   7,
    "",
    "",
    "DJ Moore",
@@ -795,16 +805,6 @@
    "",
    "",
    "Tyler Warren",
-   "",
-   ""
-  ],
-  [
-   6,
-   "Rhamondre Stevenson",
-   "",
-   "",
-   "",
-   "",
    "",
    ""
   ],
@@ -853,6 +853,16 @@
    "",
    "",
    "Brian Thomas Jr.",
+   "",
+   "",
+   "",
+   ""
+  ],
+  [
+   4,
+   "",
+   "",
+   "Marvin Harrison Jr.",
    "",
    "",
    "",
@@ -933,16 +943,6 @@
    "Mike Washington Jr.",
    "",
    "",
-   "",
-   "",
-   "",
-   ""
-  ],
-  [
-   3,
-   "",
-   "",
-   "Marvin Harrison Jr.",
    "",
    "",
    "",
@@ -1094,25 +1094,16 @@
    "value": 56,
    "baselineValue": 69,
    "sheetValue": 70,
-   "projection": 15.74,
+   "projection": 15.66,
    "projectionWeek": 12
   },
   {
    "name": "Christian McCaffrey",
    "pos": "RB",
-   "value": 54,
-   "baselineValue": 66,
+   "value": 53,
+   "baselineValue": 65,
    "sheetValue": 66,
-   "projection": 15.68,
-   "projectionWeek": 12
-  },
-  {
-   "name": "Ja'Marr Chase",
-   "pos": "WR",
-   "value": 54,
-   "baselineValue": 66,
-   "sheetValue": 64,
-   "projection": 17.65,
+   "projection": 15.62,
    "projectionWeek": 12
   },
   {
@@ -1125,12 +1116,21 @@
    "projectionWeek": null
   },
   {
+   "name": "Ja'Marr Chase",
+   "pos": "WR",
+   "value": 53,
+   "baselineValue": 65,
+   "sheetValue": 64,
+   "projection": 17.6,
+   "projectionWeek": 12
+  },
+  {
    "name": "Jaxon Smith-Njigba",
    "pos": "WR",
    "value": 50,
    "baselineValue": 62,
    "sheetValue": 60,
-   "projection": 16.72,
+   "projection": 16.73,
    "projectionWeek": 12
   },
   {
@@ -1143,6 +1143,15 @@
    "projectionWeek": 12
   },
   {
+   "name": "James Cook III",
+   "pos": "RB",
+   "value": 47,
+   "baselineValue": 58,
+   "sheetValue": 60,
+   "projection": 14.38,
+   "projectionWeek": 12
+  },
+  {
    "name": "CeeDee Lamb",
    "pos": "WR",
    "value": 47,
@@ -1152,21 +1161,12 @@
    "projectionWeek": 12
   },
   {
-   "name": "James Cook III",
-   "pos": "RB",
-   "value": 46,
-   "baselineValue": 57,
-   "sheetValue": 60,
-   "projection": 14.38,
-   "projectionWeek": 12
-  },
-  {
    "name": "Jonathan Taylor",
    "pos": "RB",
    "value": 43,
    "baselineValue": 53,
    "sheetValue": 61,
-   "projection": 13.53,
+   "projection": 13.52,
    "projectionWeek": 12
   },
   {
@@ -1202,7 +1202,7 @@
    "value": 40,
    "baselineValue": 49.142857142857146,
    "sheetValue": 30,
-   "projection": 11.72,
+   "projection": 11.6,
    "projectionWeek": 12
   },
   {
@@ -1220,7 +1220,7 @@
    "value": 36,
    "baselineValue": 44,
    "sheetValue": 47,
-   "projection": 13.51,
+   "projection": 13.48,
    "projectionWeek": 12
   },
   {
@@ -1238,7 +1238,7 @@
    "value": 35,
    "baselineValue": 43,
    "sheetValue": 37,
-   "projection": 10.21,
+   "projection": 9.82,
    "projectionWeek": 12
   },
   {
@@ -1256,7 +1256,7 @@
    "value": 34,
    "baselineValue": 42,
    "sheetValue": 18,
-   "projection": 15.78,
+   "projection": 15.82,
    "projectionWeek": 12
   },
   {
@@ -1283,25 +1283,34 @@
    "value": 30,
    "baselineValue": 37,
    "sheetValue": 55,
-   "projection": 11.88,
+   "projection": 11.81,
    "projectionWeek": 12
   },
   {
    "name": "Cam Skattebo",
    "pos": "RB",
-   "value": 30,
-   "baselineValue": 37,
+   "value": 29,
+   "baselineValue": 36,
    "sheetValue": 15,
-   "projection": 15.41,
+   "projection": 15.23,
    "projectionWeek": 12
   },
   {
    "name": "Breece Hall",
    "pos": "RB",
-   "value": 29,
-   "baselineValue": 36,
+   "value": 28,
+   "baselineValue": 35,
    "sheetValue": 37,
-   "projection": 12.74,
+   "projection": 12.68,
+   "projectionWeek": 12
+  },
+  {
+   "name": "Kyren Williams",
+   "pos": "RB",
+   "value": 28,
+   "baselineValue": 35,
+   "sheetValue": 36,
+   "projection": 12.66,
    "projectionWeek": 12
   },
   {
@@ -1319,16 +1328,7 @@
    "value": 28,
    "baselineValue": 34.4,
    "sheetValue": 2,
-   "projection": 13.81,
-   "projectionWeek": 12
-  },
-  {
-   "name": "Kyren Williams",
-   "pos": "RB",
-   "value": 28,
-   "baselineValue": 34,
-   "sheetValue": 36,
-   "projection": 12.66,
+   "projection": 13.67,
    "projectionWeek": 12
   },
   {
@@ -1337,7 +1337,7 @@
    "value": 28,
    "baselineValue": 34.4,
    "sheetValue": 25,
-   "projection": 12.79,
+   "projection": 12.75,
    "projectionWeek": 12
   },
   {
@@ -1364,7 +1364,7 @@
    "value": 28,
    "baselineValue": 34,
    "sheetValue": 41,
-   "projection": 12.1,
+   "projection": 12.02,
    "projectionWeek": 12
   },
   {
@@ -1373,7 +1373,7 @@
    "value": 26,
    "baselineValue": 32,
    "sheetValue": 37,
-   "projection": 12.09,
+   "projection": 12.04,
    "projectionWeek": 12
   },
   {
@@ -1391,7 +1391,7 @@
    "value": 24,
    "baselineValue": 30,
    "sheetValue": 36,
-   "projection": 11.73,
+   "projection": 11.68,
    "projectionWeek": 12
   },
   {
@@ -1409,7 +1409,7 @@
    "value": 24,
    "baselineValue": 30,
    "sheetValue": 25,
-   "projection": 12.82,
+   "projection": 12.89,
    "projectionWeek": 12
   },
   {
@@ -1418,7 +1418,7 @@
    "value": 23,
    "baselineValue": 28.257142857142856,
    "sheetValue": 3,
-   "projection": 8.11,
+   "projection": 8.1,
    "projectionWeek": 12
   },
   {
@@ -1445,7 +1445,7 @@
    "value": 23,
    "baselineValue": 28.257142857142856,
    "sheetValue": 2,
-   "projection": 8.59,
+   "projection": 8.6,
    "projectionWeek": 12
   },
   {
@@ -1456,6 +1456,15 @@
    "sheetValue": 25,
    "projection": null,
    "projectionWeek": null
+  },
+  {
+   "name": "Colston Loveland",
+   "pos": "TE",
+   "value": 19,
+   "baselineValue": 23,
+   "sheetValue": 17,
+   "projection": 11.06,
+   "projectionWeek": 12
   },
   {
    "name": "Omarion Hampton",
@@ -1472,16 +1481,7 @@
    "value": 18,
    "baselineValue": 22,
    "sheetValue": 23,
-   "projection": 10.92,
-   "projectionWeek": 12
-  },
-  {
-   "name": "Colston Loveland",
-   "pos": "TE",
-   "value": 18,
-   "baselineValue": 22,
-   "sheetValue": 17,
-   "projection": 11.06,
+   "projection": 10.89,
    "projectionWeek": 12
   },
   {
@@ -1490,7 +1490,7 @@
    "value": 17,
    "baselineValue": 21,
    "sheetValue": 13,
-   "projection": 21.91,
+   "projection": 21.88,
    "projectionWeek": 12
   },
   {
@@ -1517,7 +1517,7 @@
    "value": 14,
    "baselineValue": 17.2,
    "sheetValue": 6,
-   "projection": 11.7,
+   "projection": 11.76,
    "projectionWeek": 12
   },
   {
@@ -1584,6 +1584,15 @@
    "projectionWeek": 12
   },
   {
+   "name": "Isaiah Likely",
+   "pos": "TE",
+   "value": 11,
+   "baselineValue": 13,
+   "sheetValue": 10,
+   "projection": 9.84,
+   "projectionWeek": 12
+  },
+  {
    "name": "J.K. Dobbins",
    "pos": "RB",
    "value": 10,
@@ -1591,15 +1600,6 @@
    "sheetValue": 4,
    "projection": null,
    "projectionWeek": null
-  },
-  {
-   "name": "Quinshon Judkins",
-   "pos": "RB",
-   "value": 10,
-   "baselineValue": 12,
-   "sheetValue": 14,
-   "projection": 11.16,
-   "projectionWeek": 12
   },
   {
    "name": "TreVeyon Henderson",
@@ -1625,7 +1625,7 @@
    "value": 10,
    "baselineValue": 12,
    "sheetValue": 18,
-   "projection": 7.89,
+   "projection": 7.94,
    "projectionWeek": 12
   },
   {
@@ -1647,12 +1647,12 @@
    "projectionWeek": 12
   },
   {
-   "name": "Isaiah Likely",
-   "pos": "TE",
+   "name": "Quinshon Judkins",
+   "pos": "RB",
    "value": 9,
    "baselineValue": 11,
-   "sheetValue": 10,
-   "projection": 9.84,
+   "sheetValue": 14,
+   "projection": 11.03,
    "projectionWeek": 12
   },
   {
@@ -1688,7 +1688,7 @@
    "value": 8,
    "baselineValue": 10,
    "sheetValue": 5,
-   "projection": 10.33,
+   "projection": 10.39,
    "projectionWeek": 12
   },
   {
@@ -1697,7 +1697,7 @@
    "value": 8,
    "baselineValue": 10,
    "sheetValue": 4,
-   "projection": 10.03,
+   "projection": 9.96,
    "projectionWeek": 12
   },
   {
@@ -1706,7 +1706,7 @@
    "value": 7,
    "baselineValue": 9,
    "sheetValue": 16,
-   "projection": 6.09,
+   "projection": 6.08,
    "projectionWeek": 12
   },
   {
@@ -1715,7 +1715,7 @@
    "value": 7,
    "baselineValue": 9,
    "sheetValue": 13,
-   "projection": 9.95,
+   "projection": 10.02,
    "projectionWeek": 12
   },
   {
@@ -1726,6 +1726,15 @@
    "sheetValue": 8,
    "projection": null,
    "projectionWeek": null
+  },
+  {
+   "name": "Rhamondre Stevenson",
+   "pos": "RB",
+   "value": 7,
+   "baselineValue": 8,
+   "sheetValue": 7,
+   "projection": 11.13,
+   "projectionWeek": 12
   },
   {
    "name": "DJ Moore",
@@ -1751,7 +1760,7 @@
    "value": 7,
    "baselineValue": 8,
    "sheetValue": 7,
-   "projection": 9.46,
+   "projection": 9.43,
    "projectionWeek": 12
   },
   {
@@ -1761,15 +1770,6 @@
    "baselineValue": 9,
    "sheetValue": 16,
    "projection": 6.44,
-   "projectionWeek": 12
-  },
-  {
-   "name": "Rhamondre Stevenson",
-   "pos": "RB",
-   "value": 6,
-   "baselineValue": 7,
-   "sheetValue": 7,
-   "projection": 11.12,
    "projectionWeek": 12
   },
   {
@@ -1787,7 +1787,7 @@
    "value": 6,
    "baselineValue": 7,
    "sheetValue": 8,
-   "projection": 20.21,
+   "projection": 20.25,
    "projectionWeek": 12
   },
   {
@@ -1814,7 +1814,16 @@
    "value": 4,
    "baselineValue": 5,
    "sheetValue": 6,
-   "projection": 6.7,
+   "projection": 6.57,
+   "projectionWeek": 12
+  },
+  {
+   "name": "Marvin Harrison Jr.",
+   "pos": "WR",
+   "value": 4,
+   "baselineValue": 5,
+   "sheetValue": 6,
+   "projection": 5.56,
    "projectionWeek": 12
   },
   {
@@ -1859,7 +1868,7 @@
    "value": 4,
    "baselineValue": 5,
    "sheetValue": 4,
-   "projection": 20.42,
+   "projection": 20.49,
    "projectionWeek": 12
   },
   {
@@ -1868,7 +1877,7 @@
    "value": 3,
    "baselineValue": 4,
    "sheetValue": 6,
-   "projection": 8.79,
+   "projection": 8.72,
    "projectionWeek": 12
   },
   {
@@ -1890,15 +1899,6 @@
    "projectionWeek": null
   },
   {
-   "name": "Marvin Harrison Jr.",
-   "pos": "WR",
-   "value": 3,
-   "baselineValue": 4,
-   "sheetValue": 6,
-   "projection": 5.68,
-   "projectionWeek": 12
-  },
-  {
    "name": "Jayden Reed",
    "pos": "WR",
    "value": 3,
@@ -1913,7 +1913,7 @@
    "value": 3,
    "baselineValue": 4,
    "sheetValue": 4,
-   "projection": 8.44,
+   "projection": 8.4,
    "projectionWeek": 12
   },
   {
@@ -1967,7 +1967,7 @@
    "value": 2,
    "baselineValue": 2,
    "sheetValue": 2,
-   "projection": 6.78,
+   "projection": 6.81,
    "projectionWeek": 12
   },
   {
@@ -1976,8 +1976,8 @@
    "value": 2,
    "baselineValue": 3,
    "sheetValue": 4,
-   "projection": 6.62,
-   "projectionWeek": 11
+   "projection": 5,
+   "projectionWeek": 12
   },
   {
    "name": "Ja'Kobi Lane",
